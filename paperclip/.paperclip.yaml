@@ -210,6 +210,19 @@ agents:
       heartbeat:
         enabled: true
         maxConcurrentRuns: 1
+  klarsprak:
+    role: "method-expert"
+    icon: "pen-tool"
+    capabilities: "Klarspråk, textgranskning och språkvård. Granskar och skriver om myndighetstexter enligt Språkrådets klarspråksriktlinjer. Stöd till granskningsrapporter med balans mellan klarspråk och vetenskaplig precision."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
 projects:
   kompetenskatalog:
     color: "#0ea5e9"
@@ -235,6 +248,7 @@ sidebar:
     - "expert-digitalisering"
     - "expert-rattsvasende"
     - "expert-valfard"
+    - "klarsprak"
     - "utbildningsledare"
     - "webbmaster"
     - "klient-riksrevisionen"
