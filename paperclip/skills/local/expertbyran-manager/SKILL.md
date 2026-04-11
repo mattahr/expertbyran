@@ -15,6 +15,11 @@ Repot har tre datakällor som **alltid måste hållas i synk**:
 | `skills/konsultchef/expert-registry.md` | Kompakt register som konsultchefen läser för routing |
 | `web/site-data.json` | Data för publik webbplats — hämtas av statisk server |
 
+## Förutsättningar
+
+- `gh` (GitHub CLI) måste vara installerat och autentiserat (`gh auth status`)
+- `python3` för valideringsskripten
+
 ## Arbetsflöde
 
 ### 1. Förstå uppgiften
@@ -23,6 +28,7 @@ Fråga användaren om det inte framgår:
 - Ska en **ny expert** läggas till, eller ska en **befintlig** uppdateras?
 - Expertens domän, namn, roll, triggers, capabilities
 - Om ny: vilka befintliga `expertAreas` tillhör experten? (Läs schemat i `references/site-data-schema.md` för tillgängliga areaSlugs)
+- Om ny: ska experten ingå i ett befintligt team? (Kontrollera `teams[]` i site-data.json)
 
 ### 2. Klona repot
 
@@ -51,56 +57,23 @@ Read references/site-data-schema.md
 
 #### EXPERT.md
 
-Skapa `experts/[slug]/EXPERT.md`:
+Skapa `experts/[slug]/EXPERT.md`. Sluggen kan vara antingen ett personnamn i kebab-case (`klara-nordin`) eller ett beskrivande namn (`klarsprak`) — det viktiga är att det är unikt och konsekvent med id, portrait och contactLinks.
 
-```markdown
-***
+Följ den befintliga expertens format exakt. Referera till `experts/klarsprak/EXPERT.md` i det klonade repot som mall — den visar exakt hur frontmatter, struktur och kedjning ser ut. Här är en översikt av strukturen:
 
-name: [Expertens namn]
-domain: [Domän — kort kommaseparerad lista]
-triggers:
+```
+# Strukturöversikt (se befintlig EXPERT.md för exakt format)
 
-* [trigger 1]
-* [trigger 2]
-* [trigger 3]
-  capabilities:
-  [capability-id]: [Kort beskrivning]
-  can_chain_to:
-* [expert-slug]    # Kommentar om när
+Frontmatter (*** som avgränsare):
+  name, domain, triggers (som lista), capabilities, can_chain_to
 
-***
-
-# [Expertens namn]
-
-## Identitet
-
-[2-3 meningar som definierar expertens roll, perspektiv och arbetsfilosofi]
-
-## Metodik
-
-### [Läge 1]
-
-[Steg-för-steg-metodik]
-
-### [Läge 2]
-
-[Steg-för-steg-metodik]
-
-## Principer
-
-[Numrerad lista med expertens kärnprinciper]
-
-## Fördjupning
-
-För detaljerade regler och exempel:
-
-\```
-Read references/[referensfil].md
-\```
-
-## Kedjning
-
-[Instruktioner för när experten ska kontakta en kollega]
+Sektioner:
+  # [Expertens namn]
+  ## Identitet — 2-3 meningar om roll och arbetsfilosofi
+  ## Metodik — Steg-för-steg per arbetsläge
+  ## Principer — Numrerad lista med kärnprinciper
+  ## Fördjupning — Read-referens till references/
+  ## Kedjning — När och hur experten kontaktar kollegor
 ```
 
 Skapa också `experts/[slug]/references/` (kan vara tom initialt, eller med relevant referensmaterial).
@@ -126,13 +99,14 @@ Lägg till ett nytt objekt i `experts[]`-arrayen. Följ **exakt** det schema som
 
 Viktiga regler:
 - **sortOrder**: Använd nästa lediga multipel av 10 (kolla befintliga)
-- **areaSlugs**: Måste matcha befintliga `expertAreas[].slug` — skapa nytt expertArea om inget passar
+- **areaSlugs**: Måste matcha befintliga `expertAreas[].slug`. Skapa nytt expertArea bara om ingen befintlig kategori rimligt täcker expertens domän — fråga användaren först
 - **id**: Formatet `expert-[slug]`
 - **portrait.src**: `/avatars/[slug].svg`
 - **plugin.repositoryUrl**: Alltid `https://github.com/mattahr/expertbyran-plugins`
-- **contactLinks**: Minst email + calendar, url-mönster: `mailto:[slug]@expertbyran.ai` resp. `https://calendar.app.google/[slug]`
+- **contactLinks**: Minst email + calendar. Url-mönster för email: `mailto:[förnamn].[efternamn]@expertbyran.ai` (t.ex. `klara.nordin@expertbyran.ai`). Calendar: `https://calendar.app.google/[slug]`
 - **Alla texter på svenska** med korrekta å, ä, ö
-- Uppdatera `updatedAt` till aktuellt datum i ISO 8601
+- **updatedAt**: Sätt till aktuellt datum och tid i ISO 8601 UTC-format, t.ex. `2026-04-12T10:00:00.000Z`
+- **Team-tillhörighet**: Om experten ska ingå i ett befintligt team, lägg till expertens slug i teamets `expertSlugs[]`-array i site-data.json
 
 ### 4b. Uppdatera befintlig expert
 

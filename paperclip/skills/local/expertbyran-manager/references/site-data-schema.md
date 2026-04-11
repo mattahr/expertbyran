@@ -27,7 +27,7 @@ Varje expert i arrayen har exakt denna struktur. Alla fält är **obligatoriska*
 ```jsonc
 {
   "id": "expert-{slug}",              // string — prefix "expert-" + slug
-  "slug": "förnamn-efternamn",         // string — kebab-case, unikt
+  "slug": "förnamn-efternamn",         // string — kebab-case, unikt (personnamn eller beskrivande)
   "sortOrder": 10,                     // number — multipel av 10, unikt
   "featured": true,                    // boolean — visas på startsidan?
   "name": "Förnamn Efternamn",         // string — expertens fulla namn
@@ -107,7 +107,7 @@ Varje expert i arrayen har exakt denna struktur. Alla fält är **obligatoriska*
       "id": "{slug}-email",            // string
       "label": "Skicka e-post till {förnamn}",
       "type": "email",                 // "email" | "calendar" | "linkedin"
-      "url": "mailto:{slug}@expertbyran.ai",
+      "url": "mailto:{förnamn}.{efternamn}@expertbyran.ai",
       "description": "Kort beskrivning."
     },
     {
