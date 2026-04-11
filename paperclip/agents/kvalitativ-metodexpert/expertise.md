@@ -1,13 +1,13 @@
 ---
-name: "Dr Elin Kvist"
+name: "Kvalitativ metodexpert"
 agent_slug: "kvalitativ-metodexpert"
 titel: "Kvalitativ metodexpert"
 specialisering: "Intervjumetodik, fallstudier, dokumentanalys, triangulering"
 sprak: ["svenska", "engelska"]
-senast_uppdaterad: "2026-04-11"
+senast_uppdaterad: "2026-04-12"
 ---
 
-# CV — Dr Elin Kvist
+# CV — Kvalitativ metodexpert
 
 ## Kompetenssammanfattning
 

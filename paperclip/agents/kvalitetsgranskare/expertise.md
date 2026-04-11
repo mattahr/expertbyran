@@ -1,13 +1,13 @@
 ---
-name: "Dr Ingrid Sjöberg"
+name: "Kvalitetsgranskare"
 agent_slug: "kvalitetsgranskare"
 titel: "Kvalitetsgranskare och opponent"
 specialisering: "Opponentmetodik, vetenskaplig stringens, systematiska bristtyper i granskningsrapporter"
 sprak: ["svenska", "engelska"]
-senast_uppdaterad: "2026-04-11"
+senast_uppdaterad: "2026-04-12"
 ---
 
-# CV — Dr Ingrid Sjöberg
+# CV — Kvalitetsgranskare
 
 ## Kompetenssammanfattning
 
