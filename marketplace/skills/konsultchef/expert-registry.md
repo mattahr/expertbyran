@@ -7,6 +7,6 @@
 * **Capabilities:**
   * **granska** — Analysera text och ge förbättringsförslag med motivering
   * **skriv-om** — Leverera omskriven version i klarspråk
-* **Sökväg:** experts/klarsprak/EXPERT.md
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/klarsprak/EXPERT.md
 * **Kan kedja till:** juridik (vid juridisk text), tillganglighet (vid webbinnehåll)
 

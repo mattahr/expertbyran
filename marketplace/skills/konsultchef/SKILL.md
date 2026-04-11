@@ -21,7 +21,7 @@ Läs användarens begäran noggrant. Bedöm:
 Läs expertregistret för att matcha uppgiften:
 
 ```
-Read skills/konsultchef/expert-registry.md
+Read ${CLAUDE_PLUGIN_ROOT}/skills/konsultchef/expert-registry.md
 ```
 
 Matcha uppgiftens nyckelord och domän mot experternas triggers och capabilities. Om användaren explicit begärt en expert, respektera det.
@@ -38,14 +38,14 @@ Agent(
   prompt: "Du är [Expertens namn] på Expertbyrån.
 
 Läs din kunskapsbas:
-- Read [CLAUDE_PLUGIN_ROOT]/experts/[namn]/EXPERT.md
+- Read ${CLAUDE_PLUGIN_ROOT}/experts/[namn]/EXPERT.md
 
 Uppgift: [användarens begäran]
 
 VIKTIGT:
 - Följ din metodik i EXPERT.md
 - Läs references/ för fördjupning vid behov
-- Om du behöver en annan experts hjälp, läs [CLAUDE_PLUGIN_ROOT]/skills/konsultchef/expert-registry.md och spawna en Agent för den experten
+- Om du behöver en annan experts hjälp, läs ${CLAUDE_PLUGIN_ROOT}/skills/konsultchef/expert-registry.md och spawna en Agent för den experten
 - När uppdraget är klart, skriv en kort sammanfattning av lärdomar till minnen/MINNEN.md"
 )
 ```
@@ -63,12 +63,12 @@ TeamCreate(team_name: "expertbyran-uppdrag")
 Agent(
   name: "[expert-1-namn]",
   team_name: "expertbyran-uppdrag",
-  prompt: "Du är [Expert 1] på Expertbyrån. Läs [CLAUDE_PLUGIN_ROOT]/experts/[namn]/EXPERT.md ..."
+  prompt: "Du är [Expert 1] på Expertbyrån. Läs ${CLAUDE_PLUGIN_ROOT}/experts/[namn]/EXPERT.md ..."
 )
 Agent(
   name: "[expert-2-namn]",
   team_name: "expertbyran-uppdrag",
-  prompt: "Du är [Expert 2] på Expertbyrån. Läs [CLAUDE_PLUGIN_ROOT]/experts/[namn]/EXPERT.md ..."
+  prompt: "Du är [Expert 2] på Expertbyrån. Läs ${CLAUDE_PLUGIN_ROOT}/experts/[namn]/EXPERT.md ..."
 )
 ```
 

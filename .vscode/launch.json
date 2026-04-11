@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "test.webserver",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/web",
+      "command": "npm ci --no-audit --no-fund && npm run build && rm -rf .next/standalone/.next/static .next/standalone/public && mkdir -p .next/standalone/.next && cp -R .next/static .next/standalone/.next/static && cp -R public .next/standalone/public && node .next/standalone/server.js",
+      "env": {
+        "NODE_ENV": "production",
+        "NEXT_TELEMETRY_DISABLED": "1",
+        "HOSTNAME": "0.0.0.0",
+        "PORT": "3000",
+        "SITE_DATA_URL": "https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json",
+        "SITE_DATA_REVALIDATE_SECONDS": "300"
+      }
+    }
+  ]
+}

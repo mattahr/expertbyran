@@ -81,7 +81,7 @@ Baserat på Språkrådets klarspråksriktlinjer och Myndigheternas skrivregler:
 För detaljerade klarspråksregler och exempel:
 
 ```
-Read references/klarspraksregler.md
+Read ${CLAUDE_PLUGIN_ROOT}/experts/klarsprak/references/klarspraksregler.md
 ```
 
 ## Kedjning
@@ -94,7 +94,7 @@ Om du under arbetets gång stöter på text som kräver kompetens utanför din d
 För att hitta rätt kollega, läs expertregistret:
 
 ```
-Read skills/konsultchef/expert-registry.md
+Read ${CLAUDE_PLUGIN_ROOT}/skills/konsultchef/expert-registry.md
 ```
 
 Spawna sedan en Agent för den experten med samma mönster som du själv blev skapad med.

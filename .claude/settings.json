@@ -3,7 +3,14 @@
     "allow": [
       "Bash(xargs -I {} bash -c 'echo \"=== {} ===\" && head -30 \"{}\"')",
       "Bash(git -C /Users/mattias/source/expertbyran status)",
-      "Bash(git -C /Users/mattias/source/expertbyran mv web/.github/workflows/publish-container.yml .github/workflows/publish-web-container.yml)"
+      "Bash(git -C /Users/mattias/source/expertbyran mv web/.github/workflows/publish-container.yml .github/workflows/publish-web-container.yml)",
+      "WebFetch(domain:docs.claude.com)",
+      "Bash(git -C /Users/mattias/source/expertbyran ls-files marketplace/)",
+      "Bash(git -C /Users/mattias/source/expertbyran log --all --oneline -- \"marketplace/TEMP_SKILL*\")",
+      "Bash(git -C /Users/mattias/source/expertbyran branch -a)",
+      "Bash(git -C /Users/mattias/source/expertbyran log --oneline main)",
+      "Bash(git -C /Users/mattias/source/expertbyran show --stat 43a88d7)",
+      "Bash(git -C /Users/mattias/source/expertbyran rm marketplace/.claude-plugin/marketplace.json)"
     ]
   }
 }
