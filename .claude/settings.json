@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(xargs -I {} bash -c 'echo \"=== {} ===\" && head -30 \"{}\"')"
+      "Bash(xargs -I {} bash -c 'echo \"=== {} ===\" && head -30 \"{}\"')",
+      "Bash(git -C /Users/mattias/source/expertbyran status)",
+      "Bash(git -C /Users/mattias/source/expertbyran mv web/.github/workflows/publish-container.yml .github/workflows/publish-web-container.yml)"
     ]
   }
 }

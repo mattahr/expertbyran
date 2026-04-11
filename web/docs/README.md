@@ -9,7 +9,7 @@ Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog
 2. `content-model.md`
    Snapshotformatet, valideringsregler och hur experter, team och pluginmetadata modelleras.
 3. `marketplace-catalog.md`
-   Hur webbappen relaterar till snapshot-repot `mattahr/expertbyran-marketplace` och det separata pluginmonorepot.
+   Hur webbappen relaterar till monorepot `mattahr/expertbyran` och det separata pluginmonorepot.
 4. `development-guide.md`
    Lokal utveckling, testning och drift.
 5. `../public/schemas/site-data.schema.json`
@@ -22,4 +22,4 @@ Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog
 - Webbappen är read-only i drift.
 - `site-data.json` hämtas från `SITE_DATA_URL`.
 - Det finns ingen skrivväg eller admin-API i denna app.
-- `mattahr/expertbyran-marketplace` är källa för katalogsnapshoten och pluginer distribueras via extern marketplace/pluginrepo.
+- `mattahr/expertbyran` är källa för katalogsnapshoten (`web/site-data.json`); pluginer distribueras via extern marketplace/pluginrepo (`mattahr/expertbyran-plugins`).

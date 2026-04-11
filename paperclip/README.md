@@ -8,8 +8,7 @@
 ## Vad är detta?
 
 > Detta är en [Agent Company](https://agentcompanies.io)-paketering från
-> [Paperclip](https://paperclip.ing). Full designdokumentation finns i
-> [../docs/expertbyran-design.md](../docs/expertbyran-design.md).
+> [Paperclip](https://paperclip.ing).
 
 Expertbyrån är ett virtuellt konsultbolag där alla "anställda" är
 AI-agenter. Bolaget har en enda kund — Riksrevisionen — och ett enda
@@ -130,9 +129,6 @@ Fyra principer genomsyrar hela bolaget:
 2. **Ingen schemalagd logik** — allt är reaktivt och task-driven
 3. **Konsultcheferna är informationsnoder, inte flaskhalsar**
 4. **Loose coupling till externa gränssnitt** (kund och webbplats)
-
-Full motivering och arkitekturbeskrivning finns i
-[../docs/expertbyran-design.md](../docs/expertbyran-design.md).
 
 ## Getting Started
 

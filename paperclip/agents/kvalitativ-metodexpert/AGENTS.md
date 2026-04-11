@@ -1,5 +1,5 @@
 ---
-name: "Dr Elin Kvist"
+name: "Kvalitativ metodexpert"
 title: "Kvalitativ metodexpert"
 reportsTo: "konsultchef-metod"
 ---

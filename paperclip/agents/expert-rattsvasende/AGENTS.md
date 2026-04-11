@@ -1,5 +1,5 @@
 ---
-name: "Dr Gustav Nordstrand"
+name: "Expert Rättsväsende"
 title: "Expert: Rättsväsende och civilt försvar"
 reportsTo: "konsultchef-doman"
 ---

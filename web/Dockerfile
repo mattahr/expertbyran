@@ -18,7 +18,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
-ENV SITE_DATA_URL=https://raw.githubusercontent.com/mattahr/expertbyran-marketplace/refs/heads/main/web/site-data.json
+ENV SITE_DATA_URL=https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json
 ENV SITE_DATA_REVALIDATE_SECONDS=300
 
 COPY --from=builder /app/.next/standalone ./

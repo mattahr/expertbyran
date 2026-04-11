@@ -1,5 +1,5 @@
 ---
-name: "Konsultchef Domänexpertis"
+name: "Konsultchef Domän"
 title: "Konsultchef för domänexperterna"
 reportsTo: "vd"
 ---

@@ -70,7 +70,7 @@ Imagen använder GitHub-URL:en i `.env.example` som standard. Om du vill peka mo
 
 ## Innehållsmodell och marketplace
 
-- `site-data.json` läses direkt från `mattahr/expertbyran-marketplace`
+- `site-data.json` läses direkt från `mattahr/expertbyran` (`web/site-data.json` i monorepot)
 - Snapshoten innehåller `marketplace`, `teams` och pluginmetadata på experter och team
 - Den kanoniska marketplace-definitionen och pluginkoden ligger externt i `mattahr/expertbyran-plugins`
 - Webbappen länkar till extern `marketplace.json`, men genererar eller publicerar den inte

@@ -1,5 +1,5 @@
 ---
-name: "Dr Anders Lindstam"
+name: "Effektivitetsrevisor"
 title: "Senior effektivitetsrevisor och processledare"
 reportsTo: "konsultchef-metod"
 ---

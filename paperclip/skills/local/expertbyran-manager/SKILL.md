@@ -1,18 +1,18 @@
 ---
 name: expertbyran-manager
-description: "Hantera Expertbyråns GitHub-repo (mattahr/expertbyran-marketplace) — lägg till nya experter, uppdatera befintliga, och håll web/site-data.json i synk. Använd denna skill när du vill underhålla Expertbyrån-pluginen, lägga till nya konsulter, uppdatera profiler, ändra expertregistret, eller synka webbdata. Trigga även vid omnämnanden av Expertbyrån marketplace, expert-registry, site-data.json, eller EXPERT.md-filer."
+description: "Hantera Expertbyråns monorepo (mattahr/expertbyran) — lägg till nya experter, uppdatera befintliga, och håll web/site-data.json i synk. Använd denna skill när du vill underhålla Expertbyrån-pluginen, lägga till nya konsulter, uppdatera profiler, ändra expertregistret, eller synka webbdata. Trigga även vid omnämnanden av Expertbyrån marketplace, expert-registry, site-data.json, eller EXPERT.md-filer."
 ---
 
 # Expertbyrån Manager
 
-Du hanterar repot `mattahr/expertbyran-marketplace` på GitHub. Repot är en Claude Code-plugin som distribueras via GitHubs plugin-system. Ändringar som pushas till `main` uppdaterar automatiskt alla installerade instanser.
+Du hanterar monorepot `mattahr/expertbyran` på GitHub. Repot innehåller Claude Code-pluginen under `marketplace/` och webbplatsen under `web/`. Ändringar som pushas till `main` uppdaterar automatiskt alla installerade instanser av pluginen.
 
 Repot har tre datakällor som **alltid måste hållas i synk**:
 
 | Källa | Syfte |
 |-------|-------|
-| `experts/[slug]/EXPERT.md` | Expertens identitet och metodik — laddas av subagenter |
-| `skills/konsultchef/expert-registry.md` | Kompakt register som konsultchefen läser för routing |
+| `marketplace/experts/[slug]/EXPERT.md` | Expertens identitet och metodik — laddas av subagenter |
+| `marketplace/skills/konsultchef/expert-registry.md` | Kompakt register som konsultchefen läser för routing |
 | `web/site-data.json` | Data för publik webbplats — hämtas av statisk server |
 
 ## Förutsättningar
@@ -30,12 +30,17 @@ Fråga användaren om det inte framgår:
 - Om ny: vilka befintliga `expertAreas` tillhör experten? (Läs schemat i `references/site-data-schema.md` för tillgängliga areaSlugs)
 - Om ny: ska experten ingå i ett befintligt team? (Kontrollera `teams[]` i site-data.json)
 
-### 2. Klona repot
+### 2. Skapa arbetsgren
+
+Du arbetar direkt i den befintliga monorepo-checkouten (CWD antas vara `mattahr/expertbyran`-roten). Börja med en ren arbetsgren:
 
 ```bash
-WORK_DIR=$(mktemp -d)
-gh repo clone mattahr/expertbyran-marketplace "$WORK_DIR"
-cd "$WORK_DIR"
+# Säkerställ att du är i repo-roten och att working tree är rent
+git rev-parse --show-toplevel
+git status --porcelain  # bör vara tomt
+
+git checkout main
+git pull --ff-only
 git checkout -b expert/[slug]-[add|update]
 ```
 
@@ -43,8 +48,8 @@ git checkout -b expert/[slug]-[add|update]
 
 Innan du ändrar något — läs alltid:
 - `web/site-data.json` (hela filen, den är ~1200 rader)
-- `skills/konsultchef/expert-registry.md`
-- Om uppdatering: `experts/[slug]/EXPERT.md`
+- `marketplace/skills/konsultchef/expert-registry.md`
+- Om uppdatering: `marketplace/experts/[slug]/EXPERT.md`
 
 Det här steget är kritiskt. site-data.json har ett strikt schema och du behöver se befintliga poster för att veta vilka sortOrder, areaSlugs och slug-mönster som redan används.
 
@@ -57,9 +62,9 @@ Read references/site-data-schema.md
 
 #### EXPERT.md
 
-Skapa `experts/[slug]/EXPERT.md`. Sluggen kan vara antingen ett personnamn i kebab-case (`klara-nordin`) eller ett beskrivande namn (`klarsprak`) — det viktiga är att det är unikt och konsekvent med id, portrait och contactLinks.
+Skapa `marketplace/experts/[slug]/EXPERT.md`. Sluggen kan vara antingen ett personnamn i kebab-case (`klara-nordin`) eller ett beskrivande namn (`klarsprak`) — det viktiga är att det är unikt och konsekvent med id, portrait och contactLinks.
 
-Följ den befintliga expertens format exakt. Referera till `experts/klarsprak/EXPERT.md` i det klonade repot som mall — den visar exakt hur frontmatter, struktur och kedjning ser ut. Här är en översikt av strukturen:
+Följ den befintliga expertens format exakt. Referera till `marketplace/experts/klarsprak/EXPERT.md` som mall — den visar exakt hur frontmatter, struktur och kedjning ser ut. Här är en översikt av strukturen:
 
 ```
 # Strukturöversikt (se befintlig EXPERT.md för exakt format)
@@ -76,11 +81,11 @@ Sektioner:
   ## Kedjning — När och hur experten kontaktar kollegor
 ```
 
-Skapa också `experts/[slug]/references/` (kan vara tom initialt, eller med relevant referensmaterial).
+Skapa också `marketplace/experts/[slug]/references/` (kan vara tom initialt, eller med relevant referensmaterial).
 
 #### Expert-registry
 
-Lägg till i `skills/konsultchef/expert-registry.md`:
+Lägg till i `marketplace/skills/konsultchef/expert-registry.md`:
 
 ```markdown
 ## [Expertens namn]
@@ -89,7 +94,7 @@ Lägg till i `skills/konsultchef/expert-registry.md`:
 * **Triggers:** [kommaseparerade triggers]
 * **Capabilities:**
   * **[id]** — [beskrivning]
-* **Sökväg:** experts/[slug]/EXPERT.md
+* **Sökväg:** marketplace/experts/[slug]/EXPERT.md
 * **Kan kedja till:** [expert-slug] (vid [situation])
 ```
 
@@ -110,9 +115,9 @@ Viktiga regler:
 
 ### 4b. Uppdatera befintlig expert
 
-1. Redigera `experts/[slug]/EXPERT.md` med ändringarna
-2. Om triggers eller capabilities ändrats → uppdatera `expert-registry.md`
-3. Uppdatera motsvarande objekt i `site-data.json` → `experts[]` (matcha på `slug`)
+1. Redigera `marketplace/experts/[slug]/EXPERT.md` med ändringarna
+2. Om triggers eller capabilities ändrats → uppdatera `marketplace/skills/konsultchef/expert-registry.md`
+3. Uppdatera motsvarande objekt i `web/site-data.json` → `experts[]` (matcha på `slug`)
 4. Uppdatera `updatedAt`
 
 **Rör aldrig andra experters poster** i site-data.json. Ändra bara den expert som berörs.
@@ -168,8 +173,8 @@ gh pr create \
 - [Vad som ändrats]
 
 ## Synkade filer
-- experts/[slug]/EXPERT.md
-- skills/konsultchef/expert-registry.md
+- marketplace/experts/[slug]/EXPERT.md
+- marketplace/skills/konsultchef/expert-registry.md
 - web/site-data.json
 
 ## Validering

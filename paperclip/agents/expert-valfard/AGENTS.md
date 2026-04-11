@@ -1,5 +1,5 @@
 ---
-name: "Dr Karin Bergström"
+name: "Expert Välfärd"
 title: "Expert: Välfärd och social omsorg"
 reportsTo: "konsultchef-doman"
 ---

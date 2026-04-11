@@ -1,5 +1,5 @@
 ---
-name: "Dr Maria Forsberg"
+name: "Kvantitativ analytiker"
 title: "Kvantitativ analytiker och statistiker"
 reportsTo: "konsultchef-metod"
 ---

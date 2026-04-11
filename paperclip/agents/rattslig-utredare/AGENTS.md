@@ -1,5 +1,5 @@
 ---
-name: "Fredrik Lindén"
+name: "Rättslig utredare"
 title: "Rättslig utredare och författningstolkare"
 reportsTo: "konsultchef-metod"
 ---

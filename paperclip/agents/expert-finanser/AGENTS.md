@@ -1,5 +1,5 @@
 ---
-name: "Dr Henrik Ahlgren"
+name: "Expert Offentliga finanser"
 title: "Expert: Offentliga finanser och styrning"
 reportsTo: "konsultchef-doman"
 ---

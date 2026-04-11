@@ -1,7 +1,7 @@
 import { formatIssues, siteDataSchema, type SiteData } from "@/lib/content/schema";
 
 const DEFAULT_SITE_DATA_URL =
-  "https://raw.githubusercontent.com/mattahr/expertbyran-marketplace/refs/heads/main/web/site-data.json";
+  "https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json";
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const DEFAULT_FETCH_TIMEOUT_MS = 10_000;
 

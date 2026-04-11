@@ -1,5 +1,5 @@
 ---
-name: "Dr Sara Lundqvist"
+name: "Expert Digitalisering"
 title: "Expert: Statlig digitalisering och IT"
 reportsTo: "konsultchef-doman"
 ---

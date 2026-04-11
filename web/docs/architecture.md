@@ -28,20 +28,20 @@ Katalogen visar både mänsklig information och pluginmetadata.
 
 Snapshoten läses från `SITE_DATA_URL`. Standardvärdet pekar på:
 
-- `https://raw.githubusercontent.com/mattahr/expertbyran-marketplace/refs/heads/main/web/site-data.json`
+- `https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json`
 
 Snapshoten valideras alltid med Zod innan den används i renderingen.
 Om fjärrläsningen misslyckas används senast giltiga snapshot i processminnet. Om ingen sådan finns ännu returnerar appen fel tills fjärrkällan åter är läsbar.
 
-### 3. Extern marketplace
+### 3. Marketplace-källor
 
-Den kanoniska Claude Code-marketplacen ligger utanför denna app i:
+Snapshoten `site-data.json` ligger i samma monorepo som webbappen (`mattahr/expertbyran`) under `web/site-data.json`. Den kanoniska Claude Code-marketplacen distribueras dock från ett separat pluginrepo:
 
-- snapshot repository: `https://github.com/mattahr/expertbyran-marketplace`
-- repository: `https://github.com/mattahr/expertbyran-plugins`
+- snapshot repository: `https://github.com/mattahr/expertbyran` (monorepo — webbapp, marketplace-plugin och snapshot)
+- plugin repository: `https://github.com/mattahr/expertbyran-plugins`
 - canonical marketplace: `https://raw.githubusercontent.com/mattahr/expertbyran-plugins/main/.claude-plugin/marketplace.json`
 
-Webbappen håller bara referenser till denna källa.
+Webbappen håller bara referenser till dessa källor.
 
 ## Dataflöde
 

@@ -17,7 +17,7 @@ npm run dev
 För att använda en fjärrsnapshot, sätt:
 
 ```bash
-SITE_DATA_URL=https://raw.githubusercontent.com/mattahr/expertbyran-marketplace/refs/heads/main/web/site-data.json
+SITE_DATA_URL=https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json
 ```
 
 ## Produktionslik lokal körning

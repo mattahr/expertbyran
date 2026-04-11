@@ -1,5 +1,5 @@
 ---
-name: "Dr Ingrid Sjöberg"
+name: "Kvalitetsgranskare"
 title: "Kvalitetsgranskare och opponent"
 reportsTo: "konsultchef-metod"
 ---

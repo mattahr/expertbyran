@@ -18,9 +18,9 @@ Webbappen ansvarar för:
 - länkar till monorepo och kanonisk `marketplace.json`
 - publika schemafiler för vidareutveckling
 
-Monorepot `mattahr/expertbyran-marketplace` ansvarar för:
+Monorepot `mattahr/expertbyran` ansvarar för:
 
-- kanonisk `site-data.json`
+- kanonisk `web/site-data.json`
 - publik `web/`-yta för katalogrelaterade artefakter
 - versionssättning av katalogmetadata
 

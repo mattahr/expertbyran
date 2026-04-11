@@ -1,5 +1,5 @@
 ---
-name: "Konsultchef Metod & process"
+name: "Konsultchef Metod"
 title: "Konsultchef för metodexperterna"
 reportsTo: "vd"
 ---
