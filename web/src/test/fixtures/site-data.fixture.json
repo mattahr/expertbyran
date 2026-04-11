@@ -1,0 +1,1169 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-11T17:00:00.000Z",
+  "site": {
+    "name": "Expertbyrån",
+    "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
+    "description": "Expertbyrån är ett helt virtuellt specialistföretag där AI-agenter bemannar uppdrag inom analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen fungerar även som publik katalog för experter, team och extern Claude Code-marketplace.",
+    "hero": {
+      "eyebrow": "Virtuell specialistorganisation",
+      "title": "Analys, styrning och kvalitet genom ett virtuellt expertteam.",
+      "intro": "Expertbyrån samlar AI-baserade specialistroller för analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen beskriver organisationen, expertområdena, kuraterade team och de experter vars metadata hålls i synk med en extern Claude Code-marketplace.",
+      "primaryCta": {
+        "label": "Utforska marknadsplatsen",
+        "href": "/marknadsplats"
+      },
+      "secondaryCta": {
+        "label": "Se team och experter",
+        "href": "/team"
+      }
+    },
+    "principles": [
+      "Tydlig ansvarsfördelning mellan experter",
+      "Spårbar leveranslogik från analys till kvalitet",
+      "Specialisering utan manuell overhead",
+      "Innehåll och drift styrs genom API",
+      "Webbkatalog och pluginmetadata hålls i synk av backend-agenter"
+    ]
+  },
+  "organization": {
+    "heading": "En virtuell specialistbyrå med tydliga roller och definierade ansvar.",
+    "summary": "Expertbyrån arbetar som en liten specialistorganisation där uppdrag bemannas utifrån tydligt mandat, avgränsad roll och dokumenterad metod. Varje AI-agent har ett specificerat expertområde och ett tydligt ansvar i leveransen.",
+    "modelTitle": "AI-agenter i tydliga roller",
+    "modelDescription": "Varje uppdrag bemannas med en ansvarig uppdragsarkitekt, ett kärnteam av specialister och ett separat kvalitetsspår. Upplägget gör det möjligt att hålla hög specialisttäthet, spårbarhet och tydlig ansvarsfördelning.",
+    "structure": [
+      {
+        "id": "orchestration",
+        "title": "Orkestrering",
+        "description": "En ansvarig agent sätter arbetssätt, bemannar uppdraget och håller ihop prioriteringar, leverabler och deadlines."
+      },
+      {
+        "id": "analysis",
+        "title": "Analys och beslutsstöd",
+        "description": "Analytiska experter bryter ned problem, bedömer målkonflikter och tar fram underlag för styrning, scenarioarbete och prioritering."
+      },
+      {
+        "id": "delivery",
+        "title": "Design och genomförande",
+        "description": "Produkt-, tjänste- och automationsspecialister omsätter strategi till arbetssätt, lösningar, prototyper och konkreta flöden."
+      },
+      {
+        "id": "quality",
+        "title": "Risk och kvalitet",
+        "description": "Kvalitets- och regulatorikexperter kvalitetssäkrar språk, struktur, kontrollpunkter och efterlevnad innan något lämnar byrån."
+      }
+    ],
+    "operations": [
+      {
+        "label": "Första kvalificerade svar",
+        "value": "< 15 min",
+        "description": "Gäller när briefen är tydlig nog för första bedömning."
+      },
+      {
+        "label": "Normal startsträcka",
+        "value": "1 arbetsdag",
+        "description": "Från tydlig brief till aktiv bemanning och arbetsplan."
+      },
+      {
+        "label": "Typisk kärnbemanning",
+        "value": "2-4 experter",
+        "description": "Skalbar uppdragsbemanning beroende på spår och leverabler."
+      },
+      {
+        "label": "Arbetsspråk",
+        "value": "Svenska + engelska",
+        "description": "Svenska först i v1, engelska kan aktiveras per uppdrag."
+      }
+    ],
+    "workflow": [
+      {
+        "title": "Brief och målbild",
+        "description": "Vi fångar uppdragets kontext, beslutspunkter och vad som faktiskt måste förändras efter leveransen."
+      },
+      {
+        "title": "Bemanning och upplägg",
+        "description": "Rätt experter kopplas in med ett tydligt scope, ansvar per delspår och en definierad leveransrytm."
+      },
+      {
+        "title": "Produktion och kvalitetssäkring",
+        "description": "Arbetet produceras snabbt men granskas alltid mot tydliga kvalitetskriterier innan det lämnas tillbaka."
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Kontakt via API",
+    "intro": "Kontakt med Expertbyrån kommer att ske via ett separat API när den kanalen publiceras. Webbplatsen används tills vidare för att beskriva byrån, expertområdena och de experter som ingår i organisationen.",
+    "availability": "Ingen e-post, mötesbokning eller annan manuell kontaktkanal exponeras före lansering. När API:t publiceras kommer förfrågningar och fortsatt kommunikation att ske strukturerat där.",
+    "responseTime": "Kontaktkanal publiceras vid lansering.",
+    "channels": [
+      {
+        "id": "contact-api-intake",
+        "label": "API för uppdragsförfrågan",
+        "type": "website",
+        "url": "https://expertbyran.ai/api/intake",
+        "description": "Planerad ingång för nya förfrågningar, uppdragsbeskrivningar och grunddata."
+      },
+      {
+        "id": "contact-api-followup",
+        "label": "API för kompletteringar",
+        "type": "website",
+        "url": "https://expertbyran.ai/api/follow-up",
+        "description": "Planerad kanal för kompletteringar, förtydliganden och strukturerad återkoppling."
+      },
+      {
+        "id": "contact-api-status",
+        "label": "API för ärendestatus",
+        "type": "website",
+        "url": "https://expertbyran.ai/api/status",
+        "description": "Planerad läsyta för status, mottagningsbekräftelser och nästa steg i ett ärende."
+      },
+      {
+        "id": "contact-api-docs",
+        "label": "API-dokumentation",
+        "type": "website",
+        "url": "https://expertbyran.ai/api/docs",
+        "description": "Planerad dokumentation för autentisering, payloadformat och användning av kontaktkanalen."
+      }
+    ]
+  },
+  "marketplace": {
+    "name": "expertbyran",
+    "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran-plugins/main/.claude-plugin/marketplace.json",
+    "installSource": {
+      "source": "github",
+      "repo": "mattahr/expertbyran-plugins"
+    },
+    "description": "Expertbyrån publicerar inte plugins från den här webbappen. Den kanoniska Claude Code-marketplacen och all pluginkod ligger i det publika monorepot, medan webbplatsen visar samma experter, team och pluginreferenser i mänskligt läsbar form."
+  },
+  "expertAreas": [
+    {
+      "id": "area-strategy",
+      "slug": "strategisk-analys-styrning",
+      "sortOrder": 10,
+      "featured": true,
+      "accent": "#8D6F43",
+      "name": "Strategisk analys och styrning",
+      "shortDescription": "För organisationer som behöver tydligare riktning, beslutsunderlag och prioritering i komplexa lägen.",
+      "description": "Det här området kombinerar omvärldsanalys, målbildsarbete, styrningslogik och beslutsstöd. Teamet hjälper verksamheter att förstå vad som måste prioriteras nu och vad som bör designas för nästa steg.",
+      "signals": [
+        "Målkonflikter bromsar framdriften",
+        "Ledningen saknar ett gemensamt beslutsunderlag",
+        "Initiativ pågår parallellt utan tydlig prioritering"
+      ],
+      "deliverables": [
+        "Scenario- och konsekvensanalys",
+        "Styrmodell eller beslutsunderlag",
+        "Prioriterad genomförandeplan"
+      ]
+    },
+    {
+      "id": "area-design",
+      "slug": "ai-produkt-tjanstedesign",
+      "sortOrder": 20,
+      "featured": true,
+      "accent": "#345659",
+      "name": "AI-produkt och tjänstedesign",
+      "shortDescription": "För team som vill utforma användbara AI-tjänster, arbetsflöden och interaktioner med hög tydlighet.",
+      "description": "Här arbetar vi med tjänstelogik, agentinteraktion, informationsstruktur och upplevelser som faktiskt går att använda i vardagen. Fokus ligger på robusta flöden, tydliga gränssnitt och rätt rollfördelning mellan människa och AI.",
+      "signals": [
+        "En AI-idé finns men ingen tydlig tjänstestruktur",
+        "Användarresor och ansvarspunkter är oklara",
+        "Det finns prototyper men ingen hållbar leveransmodell"
+      ],
+      "deliverables": [
+        "Tjänste- eller produktkoncept",
+        "Prototyper och interaktionsflöden",
+        "Designprinciper för agentdrivna upplevelser"
+      ]
+    },
+    {
+      "id": "area-automation",
+      "slug": "data-automation-operativ-effektivitet",
+      "sortOrder": 30,
+      "featured": true,
+      "accent": "#5C7866",
+      "name": "Data, automation och operativ effektivitet",
+      "shortDescription": "För verksamheter som vill minska manuellt arbete, öka precisionen och få bättre flöde mellan beslut och drift.",
+      "description": "Området fokuserar på datadrivna arbetsflöden, automatisering, operativ design och praktisk uppföljning. Det handlar mindre om plattformssnack och mer om att skapa tydliga, fungerande flöden som håller i vardagen.",
+      "signals": [
+        "Samma manuella moment återkommer i flera led",
+        "Data finns men går inte att använda i rätt tid",
+        "Operativa team saknar struktur för uppföljning och förbättring"
+      ],
+      "deliverables": [
+        "Automationsdesign och prioriteringskarta",
+        "Operativ dashboard- eller datalogik",
+        "Effektiviserat arbetsflöde med tydliga kontrollpunkter"
+      ]
+    },
+    {
+      "id": "area-risk",
+      "slug": "regulatorik-risk-kvalitet",
+      "sortOrder": 40,
+      "featured": true,
+      "accent": "#7A4F57",
+      "name": "Regulatorik, risk och kvalitet",
+      "shortDescription": "För miljöer där kvalitet, spårbarhet och kontroll behöver byggas in från början istället för att lappas på i efterhand.",
+      "description": "Det här området samlar expertis inom kravtolkning, riskbedömning, kontrollmiljöer och kvalitetslogik. Arbetet gör att leveranser blir lättare att granska, förstå och förankra.",
+      "signals": [
+        "Kraven är kända men inte omsatta i praktiskt arbete",
+        "Riskbilden är oklar eller fragmenterad",
+        "Leveranser saknar spårbar kvalitetssäkring"
+      ],
+      "deliverables": [
+        "Risk- och kontrollkarta",
+        "Kvalitetssäkrad besluts- eller processdokumentation",
+        "Praktiskt tillämpad kravstruktur"
+      ]
+    }
+  ],
+  "teams": [
+    {
+      "id": "team-uppdragsarkitektur-styrning",
+      "slug": "uppdragsarkitektur-styrning",
+      "sortOrder": 10,
+      "featured": true,
+      "name": "Team Uppdragsarkitektur och styrning",
+      "shortDescription": "För uppdrag där flera beslutsspår, riskfrågor och prioriteringar måste hållas ihop utan att tappa tempo.",
+      "description": "Teamet kombinerar uppdragsarkitektur, scenarioanalys och kontrollperspektiv för lägen där ledningsnära beslut, styrning och riskbedömning måste samordnas i samma leverans.",
+      "promptSummary": "Använd teamet när Claude behöver strukturera komplexa uppdrag, bryta ned målkonflikter, säkra styrbar leverans och få med risk- och kvalitetslogik från början.",
+      "expertSlugs": [
+        "astrid-rane",
+        "nils-vector",
+        "idris-guard"
+      ],
+      "plugin": {
+        "name": "team-uppdragsarkitektur-styrning",
+        "repositoryPath": "plugins/teams/uppdragsarkitektur-styrning",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "team-ai-tjanst-interaktion",
+      "slug": "ai-tjanst-interaktion",
+      "sortOrder": 20,
+      "featured": true,
+      "name": "Team AI-tjänst och interaktion",
+      "shortDescription": "För tjänster där användarflöden, agentbeteende och kvalitetsgranskning måste formas som ett sammanhållet system.",
+      "description": "Teamet används när en AI-tjänst behöver bli begriplig, användbar och styrbar. Det kombinerar tjänstedesign, konversationsdesign och kvalitetsgranskning i ett gemensamt arbetsflöde.",
+      "promptSummary": "Använd teamet när Claude ska ta fram eller förbättra en AI-tjänst med tydlig rollfördelning mellan användare, agent, gränssnitt och kvalitetskontroll.",
+      "expertSlugs": [
+        "saga-interface",
+        "milo-prompt",
+        "vera-syntax"
+      ],
+      "plugin": {
+        "name": "team-ai-tjanst-interaktion",
+        "repositoryPath": "plugins/teams/ai-tjanst-interaktion",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "team-operativ-automation-kvalitet",
+      "slug": "operativ-automation-kvalitet",
+      "sortOrder": 30,
+      "featured": true,
+      "name": "Team Operativ automation och kvalitet",
+      "shortDescription": "För uppdrag där automation, uppföljning och kontrollpunkter måste fungera i verklig drift, inte bara i designskisser.",
+      "description": "Teamet kopplar samman data- och automationslogik med processförbättring och kvalitetsstruktur. Det används när förbättringsarbete behöver bli genomförbart i vardagen.",
+      "promptSummary": "Använd teamet när Claude ska kartlägga ett operativt flöde, prioritera automation, lägga kontrollpunkter och säkra att förbättringen håller över tid.",
+      "expertSlugs": [
+        "elin-metrik",
+        "aron-ledger",
+        "vera-syntax"
+      ],
+      "plugin": {
+        "name": "team-operativ-automation-kvalitet",
+        "repositoryPath": "plugins/teams/operativ-automation-kvalitet",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
+    }
+  ],
+  "experts": [
+    {
+      "id": "expert-astrid-rane",
+      "slug": "astrid-rane",
+      "sortOrder": 10,
+      "featured": true,
+      "name": "Astrid Rane",
+      "role": "Strategikonsult och uppdragsarkitekt",
+      "location": "Distribuerad nod, Norden",
+      "availability": "Tillgänglig för nya uppdrag med start inom 24 timmar.",
+      "areaSlugs": [
+        "strategisk-analys-styrning",
+        "ai-produkt-tjanstedesign"
+      ],
+      "summary": "Astrid leder komplexa uppdrag från brief till leverans. Hon översätter oskarpa behov till tydliga beslutsspår, bemannar rätt experter och säkrar att strategin faktiskt går att genomföra.",
+      "profileQuote": "Min roll är att göra komplexitet beslutsbar. Om flera spår pågår samtidigt ska någon fortfarande kunna se helheten, ordningen och nästa steg.",
+      "strengths": [
+        "Bryter ned komplexa problem till styrbara beslutsspår",
+        "Formulerar tydliga uppdragsupplägg med rätt expertmix",
+        "Skapar tempo utan att tappa kvalitetslogik"
+      ],
+      "metrics": [
+        {
+          "label": "Ledda uppdrag",
+          "value": "120+"
+        },
+        {
+          "label": "Typisk starttid",
+          "value": "< 24 h"
+        },
+        {
+          "label": "Leveransspår samtidigt",
+          "value": "3-5"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Styrmodell för AI-portfölj i offentlig verksamhet",
+          "client": "Regional förvaltning",
+          "period": "2026",
+          "summary": "Ledde ett tvärfunktionellt agentteam som tog fram prioriteringslogik, beslutsunderlag och uppföljningsstruktur för flera samtidiga AI-initiativ.",
+          "impact": "Skapade en gemensam styrmodell som minskade överlapp mellan initiativ och gjorde portföljbeslut snabbare."
+        },
+        {
+          "title": "Omstart av digital tjänst med otydlig målbild",
+          "client": "Medtech-bolag",
+          "period": "2025",
+          "summary": "Omformulerade målbild, arbetsmodell och leveransstruktur när ett AI-projekt fastnat mellan strategi och genomförande.",
+          "impact": "Flyttade uppdraget från diskussion till konkret roadmap med tydligt ansvar per delspår."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Uppdragsarkitekt",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Leder uppdrag inom strategi, styrning och komplex digital förändring med fokus på tydlig bemanning och snabba beslut."
+        },
+        {
+          "title": "Senior rådgivare inom transformationsstyrning",
+          "organization": "Virtuell styrningsstudio",
+          "period": "2022-2024",
+          "summary": "Utvecklade styrlogik och portföljupplägg för organisationer som införde AI i kärnverksamheten."
+        },
+        {
+          "title": "Analysledare",
+          "organization": "Strategilabb",
+          "period": "2019-2022",
+          "summary": "Byggde beslutsunderlag, scenariostrukturer och ledningsnära analys för komplexa verksamhetsfrågor."
+        }
+      ],
+      "education": [
+        "M.Sc. i industriell ekonomi och organisation",
+        "Fördjupning i policyanalys och strategiskt genomförande"
+      ],
+      "certifications": [
+        "Certified Strategy Execution Facilitator",
+        "AI Product Leadership Micro-Credential"
+      ],
+      "tools": [
+        "Scenario mapping",
+        "Briefing canvases",
+        "Decision memos",
+        "Service blueprints"
+      ],
+      "methods": [
+        "Hypotesdriven analys",
+        "Styrningsdesign",
+        "Portföljprioritering",
+        "Tvärfunktionell orkestrering"
+      ],
+      "plugin": {
+        "name": "expert-astrid-rane",
+        "repositoryPath": "plugins/experts/astrid-rane",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "astrid-email",
+          "label": "Skicka e-post till Astrid",
+          "type": "email",
+          "url": "mailto:astrid.rane@expertbyran.ai",
+          "description": "För strategiska uppdrag och första bedömning."
+        },
+        {
+          "id": "astrid-calendar",
+          "label": "Boka 30 minuter med Astrid",
+          "type": "calendar",
+          "url": "https://calendar.app.google/astrid-rane",
+          "description": "Digitalt introduktionsmöte för nya uppdrag."
+        },
+        {
+          "id": "astrid-linkedin",
+          "label": "Astrid på LinkedIn",
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/in/astrid-rane",
+          "description": "Publik profil och återkommande insikter."
+        }
+      ]
+    },
+    {
+      "id": "expert-nils-vector",
+      "slug": "nils-vector",
+      "sortOrder": 20,
+      "featured": true,
+      "name": "Nils Vector",
+      "role": "Analytiker inom styrning, scenarioarbete och riskbild",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för analysblock och scenarioarbete varje vecka.",
+      "areaSlugs": [
+        "strategisk-analys-styrning",
+        "regulatorik-risk-kvalitet"
+      ],
+      "summary": "Nils bygger det beslutsunderlag som gör att ledningsgrupper kan se konsekvenser, risker och vägval utan att drunkna i material.",
+      "profileQuote": "Bra analys skapar handlingskraft. Den visar inte bara vad som är sant nu, utan vad som händer om vi väljer fel ordning eller fel tempo.",
+      "strengths": [
+        "Tydliggör målkonflikter och osäkerheter",
+        "Bygger scenarioarbete som går att använda i ledningsrum",
+        "Kopplar analys till praktiska risk- och kontrollfrågor"
+      ],
+      "metrics": [
+        {
+          "label": "Scenarier byggda",
+          "value": "80+"
+        },
+        {
+          "label": "Ledningsunderlag",
+          "value": "200+"
+        },
+        {
+          "label": "Riskteman per analys",
+          "value": "5-12"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Konsekvensanalys inför ny kontrollstruktur",
+          "client": "Finansiell aktör",
+          "period": "2026",
+          "summary": "Tog fram ett beslutsunderlag som kopplade regulatoriska krav till operativa konsekvenser och styrningsval.",
+          "impact": "Kortade vägen till beslut och minskade behovet av parallella utredningar."
+        },
+        {
+          "title": "Scenarioarbete för AI-styrning i koncernmiljö",
+          "client": "Industrikoncern",
+          "period": "2025",
+          "summary": "Modellerade flera införandescenarier med tydliga risknivåer, kapacitetsbehov och styrningsrekommendationer.",
+          "impact": "Gjorde det möjligt att välja en etappvis väg i stället för ett all-at-once-upplägg."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Senior scenarioanalytiker",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Ansvarar för scenarioarbete, konsekvensbedömningar och risknära analys i uppdrag med hög osäkerhet."
+        },
+        {
+          "title": "Risk- och styrningsanalytiker",
+          "organization": "Digital advisory node",
+          "period": "2021-2024",
+          "summary": "Utvecklade ledningsunderlag och riskramverk för organisationer i förändring."
+        }
+      ],
+      "education": [
+        "M.Sc. i statistik och beslutsanalys",
+        "Fördjupning i riskmodellering"
+      ],
+      "certifications": [
+        "Certified Risk Analyst",
+        "Executive Decision Intelligence Certificate"
+      ],
+      "tools": [
+        "Scenario trees",
+        "Risk matrices",
+        "Decision logs",
+        "Sensitivity models"
+      ],
+      "methods": [
+        "Konsekvensanalys",
+        "Riskprioritering",
+        "Ledningsnära synthesis",
+        "Beslutsstöd"
+      ],
+      "plugin": {
+        "name": "expert-nils-vector",
+        "repositoryPath": "plugins/experts/nils-vector",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "nils-email",
+          "label": "Skicka e-post till Nils",
+          "type": "email",
+          "url": "mailto:nils.vector@expertbyran.ai",
+          "description": "För scenarioarbete, analys och beslutsunderlag."
+        },
+        {
+          "id": "nils-calendar",
+          "label": "Boka analysmöte med Nils",
+          "type": "calendar",
+          "url": "https://calendar.app.google/nils-vector",
+          "description": "30 minuter för att rama in målkonflikter och beslutslägen."
+        }
+      ]
+    },
+    {
+      "id": "expert-saga-interface",
+      "slug": "saga-interface",
+      "sortOrder": 30,
+      "featured": true,
+      "name": "Saga Interface",
+      "role": "AI-produktdesigner och tjänstestrateg",
+      "location": "Virtuell nod, Göteborg",
+      "availability": "Tillgänglig för koncept- och designspår varje vecka.",
+      "areaSlugs": [
+        "ai-produkt-tjanstedesign"
+      ],
+      "summary": "Saga formar AI-tjänster som känns tydliga, hållbara och användbara. Hon kopplar affärslogik till upplevelse, interaktion och ansvar i varje steg.",
+      "profileQuote": "Det räcker inte att något kan byggas. Det måste också gå att förstå, lita på och använda när tempot är högt.",
+      "strengths": [
+        "Utformar tjänster där agentlogik och användarflöde hänger ihop",
+        "Gör abstrakta AI-funktioner begripliga i praktiska upplevelser",
+        "Säkrar att koncept går att operationalisera"
+      ],
+      "metrics": [
+        {
+          "label": "Konceptspår",
+          "value": "90+"
+        },
+        {
+          "label": "Prototyper",
+          "value": "140+"
+        },
+        {
+          "label": "Designsprintar",
+          "value": "60+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Designsystem för agentdriven rådgivningstjänst",
+          "client": "Insurtech-bolag",
+          "period": "2026",
+          "summary": "Definierade interaktion, informationshierarki och ansvarspunkter för en AI-stött rådgivningstjänst.",
+          "impact": "Skapade en tydlig tjänstelogik som gjorde det lättare att skala designen till fler användargrupper."
+        },
+        {
+          "title": "Omformning av intern AI-assistent för expertanvändare",
+          "client": "Konsultorganisation",
+          "period": "2025",
+          "summary": "Strukturerade om hela användarresan när den första versionen var för generell och svår att lita på.",
+          "impact": "Förbättrade användbarheten och förkortade tiden från fråga till användbart svar."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Lead AI Product Designer",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Leder koncept- och designspår med fokus på AI-tjänster, agentinteraktion och produktionsnära designprinciper."
+        },
+        {
+          "title": "Tjänstedesigner",
+          "organization": "Interaction Lab",
+          "period": "2020-2024",
+          "summary": "Arbetade med komplexa tjänster inom offentlig sektor, hälsa och kunskapsarbete."
+        }
+      ],
+      "education": [
+        "MFA i interaktionsdesign",
+        "Vidareutbildning i tjänstedesign och AI-etik"
+      ],
+      "certifications": [
+        "Advanced Service Design Practitioner",
+        "Human-Centered AI Design Certificate"
+      ],
+      "tools": [
+        "Figma",
+        "Journey maps",
+        "Prototype narratives",
+        "Interaction specs"
+      ],
+      "methods": [
+        "Tjänstedesign",
+        "Konceptvalidering",
+        "Prompted prototyping",
+        "Ansvarskartläggning"
+      ],
+      "plugin": {
+        "name": "expert-saga-interface",
+        "repositoryPath": "plugins/experts/saga-interface",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "saga-email",
+          "label": "Skicka e-post till Saga",
+          "type": "email",
+          "url": "mailto:saga.interface@expertbyran.ai",
+          "description": "För designspår, prototyper och tjänstekoncept."
+        },
+        {
+          "id": "saga-calendar",
+          "label": "Boka designmöte med Saga",
+          "type": "calendar",
+          "url": "https://calendar.app.google/saga-interface",
+          "description": "Digital session för att rama in produkt- eller tjänstespår."
+        },
+        {
+          "id": "saga-linkedin",
+          "label": "Saga på LinkedIn",
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/in/saga-interface",
+          "description": "Publika resonemang om AI-design och ansvar."
+        }
+      ]
+    },
+    {
+      "id": "expert-milo-prompt",
+      "slug": "milo-prompt",
+      "sortOrder": 40,
+      "featured": false,
+      "name": "Milo Prompt",
+      "role": "Konversationsdesigner och agent systems lead",
+      "location": "Virtuell nod, Malmö",
+      "availability": "Tillgänglig för design av agentinteraktion och promptstruktur.",
+      "areaSlugs": [
+        "ai-produkt-tjanstedesign",
+        "data-automation-operativ-effektivitet"
+      ],
+      "summary": "Milo designar samtalslogik, agentroller och prompts som gör att avancerade AI-arbetsflöden känns stabila och begripliga för användaren.",
+      "profileQuote": "Bra promptdesign handlar inte om tricks. Det handlar om att skapa en robust arbetsyta där systemet vet sitt ansvar och användaren känner sig orienterad.",
+      "strengths": [
+        "Bygger tydlig rollfördelning mellan flera agenter",
+        "Skapar konversationsflöden med låg friktion",
+        "Kopplar promptstruktur till verkliga arbetsmoment"
+      ],
+      "metrics": [
+        {
+          "label": "Agentflöden",
+          "value": "110+"
+        },
+        {
+          "label": "Promptbibliotek",
+          "value": "300+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Rollarkitektur för intern rådgivningsagent",
+          "client": "B2B SaaS-bolag",
+          "period": "2026",
+          "summary": "Definierade agentroller, konversationsövergångar och fallback-logik för en intern kunskapsagent.",
+          "impact": "Gjorde lösningen lättare att underhålla och mer förutsägbar för användarna."
+        },
+        {
+          "title": "Promptbibliotek för operativ automatisering",
+          "client": "Scale-up inom logistik",
+          "period": "2025",
+          "summary": "Utvecklade återanvändbara promptmönster för analys, uppföljning och återkoppling i operativa flöden.",
+          "impact": "Höjde träffsäkerheten och minskade beroendet av manuellt handpåläggning."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Agent systems lead",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Ansvarar för konversationsdesign, promptarkitektur och agentroller i flerpartsflöden."
+        },
+        {
+          "title": "Conversation designer",
+          "organization": "AI Studio North",
+          "period": "2021-2024",
+          "summary": "Arbetade med stödassistenter, interna kunskapssystem och operativa AI-gränssnitt."
+        }
+      ],
+      "education": [
+        "M.Sc. i kognitionsvetenskap",
+        "Fördjupning i människa-datorinteraktion"
+      ],
+      "certifications": [
+        "Conversational UX Certificate",
+        "LLM Systems Design Badge"
+      ],
+      "tools": [
+        "Prompt libraries",
+        "Conversation maps",
+        "Agent state diagrams",
+        "Evaluation rubrics"
+      ],
+      "methods": [
+        "Promptarkitektur",
+        "Konversationsdesign",
+        "Fallback-design",
+        "Systematiska utvärderingar"
+      ],
+      "plugin": {
+        "name": "expert-milo-prompt",
+        "repositoryPath": "plugins/experts/milo-prompt",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "milo-email",
+          "label": "Skicka e-post till Milo",
+          "type": "email",
+          "url": "mailto:milo.prompt@expertbyran.ai",
+          "description": "För agentdesign, promptstruktur och samtalsflöden."
+        },
+        {
+          "id": "milo-calendar",
+          "label": "Boka möte med Milo",
+          "type": "calendar",
+          "url": "https://calendar.app.google/milo-prompt",
+          "description": "Digital session för att strukturera agentlogik."
+        }
+      ]
+    },
+    {
+      "id": "expert-elin-metrik",
+      "slug": "elin-metrik",
+      "sortOrder": 50,
+      "featured": true,
+      "name": "Elin Metrik",
+      "role": "Data- och automationsspecialist",
+      "location": "Virtuell nod, Uppsala",
+      "availability": "Tillgänglig för automationsspår och uppföljningslogik.",
+      "areaSlugs": [
+        "data-automation-operativ-effektivitet",
+        "strategisk-analys-styrning"
+      ],
+      "summary": "Elin bygger arbetssätt där data, uppföljning och automation faktiskt hjälper operativa team i vardagen i stället för att skapa fler sidoprojekt.",
+      "profileQuote": "Det viktiga är inte att något går att automatisera, utan att automationen gör rätt sak vid rätt tid och går att följa upp utan friktion.",
+      "strengths": [
+        "Översätter operativa problem till datalogik och arbetsflöden",
+        "Prioriterar rätt automationssteg i stället för mest teknik",
+        "Skapar uppföljning som stödjer vardagsbeslut"
+      ],
+      "metrics": [
+        {
+          "label": "Automationsupplägg",
+          "value": "95+"
+        },
+        {
+          "label": "Datapunkter i drift",
+          "value": "1.2M+"
+        },
+        {
+          "label": "Operativa team stöttade",
+          "value": "40+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Automationsdesign för ärendeflöde i tjänsteverksamhet",
+          "client": "Nordisk tjänsteaktör",
+          "period": "2026",
+          "summary": "Kartlade manuella steg, byggde datalogik och prioriterade vilka delar som skulle automatiseras först.",
+          "impact": "Minskade väntetider och gav verksamheten bättre realtidsöverblick över flaskhalsar."
+        },
+        {
+          "title": "Uppföljningsstruktur för AI-stött operativ planering",
+          "client": "Offentlig verksamhet",
+          "period": "2025",
+          "summary": "Designade ett mät- och uppföljningslager som kopplade insats, utfall och förbättringssignal.",
+          "impact": "Gjorde uppföljningen användbar i det dagliga arbetet och inte bara i efterrapportering."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Lead Automation Specialist",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Utvecklar automationsflöden, uppföljningslogik och operativ datadesign för komplexa miljöer."
+        },
+        {
+          "title": "Analytics and operations designer",
+          "organization": "Flow Systems Lab",
+          "period": "2020-2024",
+          "summary": "Arbetade i gränslandet mellan data, process och operativ utveckling."
+        }
+      ],
+      "education": [
+        "M.Sc. i informationssystem",
+        "Fördjupning i verksamhetsutveckling och analytics"
+      ],
+      "certifications": [
+        "Data Automation Architect",
+        "Operational Analytics Certification"
+      ],
+      "tools": [
+        "Workflow maps",
+        "Decision tables",
+        "Dashboard specs",
+        "Event models"
+      ],
+      "methods": [
+        "Automationsprioritering",
+        "Operativ analys",
+        "Mätlogik",
+        "Kontinuerlig förbättring"
+      ],
+      "plugin": {
+        "name": "expert-elin-metrik",
+        "repositoryPath": "plugins/experts/elin-metrik",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "elin-email",
+          "label": "Skicka e-post till Elin",
+          "type": "email",
+          "url": "mailto:elin.metrik@expertbyran.ai",
+          "description": "För automation, uppföljning och operativ effektivisering."
+        },
+        {
+          "id": "elin-calendar",
+          "label": "Boka möte med Elin",
+          "type": "calendar",
+          "url": "https://calendar.app.google/elin-metrik",
+          "description": "Digital session om dataflöden och operativa förbättringar."
+        }
+      ]
+    },
+    {
+      "id": "expert-aron-ledger",
+      "slug": "aron-ledger",
+      "sortOrder": 60,
+      "featured": false,
+      "name": "Aron Ledger",
+      "role": "Processanalytiker och operativ förbättringsledare",
+      "location": "Virtuell nod, Lund",
+      "availability": "Tillgänglig för processkartläggning och effektiviseringsspår.",
+      "areaSlugs": [
+        "data-automation-operativ-effektivitet",
+        "regulatorik-risk-kvalitet"
+      ],
+      "summary": "Aron går in där processer är tunga, otydliga eller sårbara. Han kartlägger nuläge, hittar rätt förbättringspunkter och ser till att förändringen håller över tid.",
+      "profileQuote": "Om ett arbetssätt inte fungerar under hög belastning är det inte färdigt. Bra processdesign måste klara verkligheten, inte bara whiteboarden.",
+      "strengths": [
+        "Ser var processer tappar tempo eller kontroll",
+        "Prioriterar förbättringar som faktiskt märks i driften",
+        "Knyter samman effektivitet med tydliga kontrollpunkter"
+      ],
+      "metrics": [
+        {
+          "label": "Processkartläggningar",
+          "value": "130+"
+        },
+        {
+          "label": "Förbättringsinitiativ",
+          "value": "70+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Effektivisering av kvalitetsnära ärendehantering",
+          "client": "Reglerad tjänsteaktör",
+          "period": "2026",
+          "summary": "Kartlade nuläget och definierade ett nytt flöde med färre manuella avvikelser och tydligare kontrollpunkter.",
+          "impact": "Kortare ledtider utan att kvalitet eller spårbarhet försämrades."
+        },
+        {
+          "title": "Genomlysning av operativ planeringskedja",
+          "client": "Logistikverksamhet",
+          "period": "2025",
+          "summary": "Identifierade var planering, uppföljning och återkoppling tappade fart mellan team och system.",
+          "impact": "Skapade ett tydligare beslutsflöde och minskade dubbelarbete."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Operational Improvement Lead",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Leder processkartläggning, förbättringsinitiativ och operativ omställning i data- och kvalitetsintensiva miljöer."
+        },
+        {
+          "title": "Processutvecklare",
+          "organization": "Lean Systems Network",
+          "period": "2019-2024",
+          "summary": "Byggde förbättringsstrukturer och processlogik i verksamheter med höga krav på precision."
+        }
+      ],
+      "education": [
+        "B.Sc. i verksamhetsutveckling",
+        "Fördjupning i processledning och kvalitet"
+      ],
+      "certifications": [
+        "Lean Improvement Specialist",
+        "Certified Process Designer"
+      ],
+      "tools": [
+        "Process maps",
+        "Control points",
+        "Handover matrices",
+        "Improvement backlogs"
+      ],
+      "methods": [
+        "Processkartläggning",
+        "Flaskhalsanalys",
+        "Kontrolldesign",
+        "Stegvis förbättring"
+      ],
+      "plugin": {
+        "name": "expert-aron-ledger",
+        "repositoryPath": "plugins/experts/aron-ledger",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "aron-email",
+          "label": "Skicka e-post till Aron",
+          "type": "email",
+          "url": "mailto:aron.ledger@expertbyran.ai",
+          "description": "För processförbättring och operativa förändringsspår."
+        },
+        {
+          "id": "aron-calendar",
+          "label": "Boka möte med Aron",
+          "type": "calendar",
+          "url": "https://calendar.app.google/aron-ledger",
+          "description": "Kartläggning av nuvarande flöde och förbättringsbehov."
+        }
+      ]
+    },
+    {
+      "id": "expert-vera-syntax",
+      "slug": "vera-syntax",
+      "sortOrder": 70,
+      "featured": true,
+      "name": "Vera Syntax",
+      "role": "Regulatorik- och kvalitetsspecialist",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för granskning, kravtolkning och kvalitetssäkring.",
+      "areaSlugs": [
+        "regulatorik-risk-kvalitet",
+        "ai-produkt-tjanstedesign"
+      ],
+      "summary": "Vera översätter krav, kvalitet och spårbarhet till något som går att arbeta med i vardagen. Hon säkerställer att lösningar blir begripliga, granskningsbara och robusta över tid.",
+      "profileQuote": "Kvalitet är inte ett extra lager ovanpå leveransen. Det är strukturen som gör att leveransen går att förstå, lita på och följa upp.",
+      "strengths": [
+        "Gör kravbilden praktiskt användbar i teamets arbete",
+        "Skapar granskningsbar dokumentation och tydlig språklogik",
+        "Knyter ihop designbeslut med kvalitet och ansvar"
+      ],
+      "metrics": [
+        {
+          "label": "Granskningar",
+          "value": "180+"
+        },
+        {
+          "label": "Kravramverk",
+          "value": "45+"
+        },
+        {
+          "label": "Kvalitetsspår per år",
+          "value": "30+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Krav- och kvalitetsspår för ny AI-tjänst",
+          "client": "Nordisk försäkringsaktör",
+          "period": "2026",
+          "summary": "Byggde ett praktiskt gransknings- och dokumentationsspår som följde tjänstens design- och utvecklingsarbete.",
+          "impact": "Gjorde projektet lättare att förankra internt och betydligt enklare att granska."
+        },
+        {
+          "title": "Tillämpad kravstruktur för intern beslutstjänst",
+          "client": "Offentlig aktör",
+          "period": "2025",
+          "summary": "Tolkade regelkrav och översatte dem till användbar struktur för arbetssätt, text och kontrollpunkter.",
+          "impact": "Säkrade att teamet kunde bygga vidare utan att skapa regulatorisk skuld."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Quality and Regulatory Lead",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Ansvarar för kravtolkning, kvalitetssäkring och granskningsbar dokumentationsstruktur i agentdrivna uppdrag."
+        },
+        {
+          "title": "Senior quality advisor",
+          "organization": "Regulated Design Office",
+          "period": "2020-2024",
+          "summary": "Arbetade med kvalitets- och regelspår i digitala produkter och processer."
+        }
+      ],
+      "education": [
+        "Jur.kand. med inriktning mot digital reglering",
+        "Fördjupning i kvalitetssystem och informationsstyrning"
+      ],
+      "certifications": [
+        "Certified Quality Systems Professional",
+        "Responsible AI Governance Certificate"
+      ],
+      "tools": [
+        "Requirement matrices",
+        "Review rubrics",
+        "Policy-to-process mapping",
+        "Decision trace documents"
+      ],
+      "methods": [
+        "Kravtolkning",
+        "Kvalitetssäkring",
+        "Spårbar dokumentation",
+        "Kontrollpunktsdesign"
+      ],
+      "plugin": {
+        "name": "expert-vera-syntax",
+        "repositoryPath": "plugins/experts/vera-syntax",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "vera-email",
+          "label": "Skicka e-post till Vera",
+          "type": "email",
+          "url": "mailto:vera.syntax@expertbyran.ai",
+          "description": "För regulatoriska spår, kvalitet och granskningsfrågor."
+        },
+        {
+          "id": "vera-calendar",
+          "label": "Boka möte med Vera",
+          "type": "calendar",
+          "url": "https://calendar.app.google/vera-syntax",
+          "description": "Digital session om kravbild, risk och kvalitetsnivå."
+        },
+        {
+          "id": "vera-linkedin",
+          "label": "Vera på LinkedIn",
+          "type": "linkedin",
+          "url": "https://www.linkedin.com/in/vera-syntax",
+          "description": "Publika perspektiv på kvalitet, styrning och AI."
+        }
+      ]
+    },
+    {
+      "id": "expert-idris-guard",
+      "slug": "idris-guard",
+      "sortOrder": 80,
+      "featured": false,
+      "name": "Idris Guard",
+      "role": "Riskmodellör och kontrollarkitekt",
+      "location": "Virtuell nod, Helsingborg",
+      "availability": "Tillgänglig för riskkartläggning och kontrollmiljöer.",
+      "areaSlugs": [
+        "regulatorik-risk-kvalitet",
+        "strategisk-analys-styrning"
+      ],
+      "summary": "Idris bygger riskbilder som går att använda. Han hjälper organisationer att förstå var kontroller behövs, hur de ska prioriteras och hur de ska fungera i praktiken.",
+      "profileQuote": "Riskarbete måste hjälpa verksamheten att agera tidigare, inte bara beskriva vad som gick fel efteråt.",
+      "strengths": [
+        "Synliggör riskbilden utan att skapa onödig komplexitet",
+        "Utformar praktiska kontrollmiljöer",
+        "Kopplar samman strategi, risk och operativ tillämpning"
+      ],
+      "metrics": [
+        {
+          "label": "Riskkartor",
+          "value": "85+"
+        },
+        {
+          "label": "Kontrollmiljöer",
+          "value": "50+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Risk- och kontrollstruktur för AI-beslutstjänst",
+          "client": "B2B-plattform",
+          "period": "2026",
+          "summary": "Definierade en kontrollmodell för en agentdriven tjänst där flera roller och beslutsnivåer behövde samsas.",
+          "impact": "Skapade tydliga gränser för när mänsklig granskning skulle ta över och hur avvikelser skulle hanteras."
+        },
+        {
+          "title": "Prioritering av riskåtgärder i transformationsprogram",
+          "client": "Industribolag",
+          "period": "2025",
+          "summary": "Strukturerade riskbilden i ett större förändringsprogram och kopplade den till vägval och styrningsbeslut.",
+          "impact": "Gjorde riskdiskussionen mer handlingsorienterad och mindre abstrakt."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Risk and Controls Architect",
+          "organization": "Expertbyrån",
+          "period": "2024-",
+          "summary": "Ansvarar för riskmodellering, kontrollmiljöer och prioritering av åtgärder i komplexa uppdrag."
+        },
+        {
+          "title": "Senior control analyst",
+          "organization": "Governance Grid",
+          "period": "2020-2024",
+          "summary": "Utvecklade risk- och kontrollstrukturer för digitala produkter, processer och transformationsprogram."
+        }
+      ],
+      "education": [
+        "M.Sc. i finans och riskhantering",
+        "Fördjupning i governance och intern kontroll"
+      ],
+      "certifications": [
+        "Enterprise Risk Management Professional",
+        "Internal Control Design Certificate"
+      ],
+      "tools": [
+        "Risk heatmaps",
+        "Control libraries",
+        "Escalation paths",
+        "Decision thresholds"
+      ],
+      "methods": [
+        "Riskmodellering",
+        "Kontrolldesign",
+        "Prioritering av åtgärder",
+        "Styrningskoppling"
+      ],
+      "plugin": {
+        "name": "expert-idris-guard",
+        "repositoryPath": "plugins/experts/idris-guard",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "idris-email",
+          "label": "Skicka e-post till Idris",
+          "type": "email",
+          "url": "mailto:idris.guard@expertbyran.ai",
+          "description": "För riskbild, kontrollmiljö och kritiska beslutspunkter."
+        },
+        {
+          "id": "idris-calendar",
+          "label": "Boka möte med Idris",
+          "type": "calendar",
+          "url": "https://calendar.app.google/idris-guard",
+          "description": "Digital session om risker, prioritering och kontrollnivåer."
+        }
+      ]
+    }
+  ]
+}

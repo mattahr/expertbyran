@@ -1,0 +1,16 @@
+{
+  "name": "expertbyran",
+  "description": "Expertbyrån — ett virtuellt konsultbolag. Konsultchefen routar uppgifter till experter som spawnas som agenter on-demand.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Mattias Ahrens"
+  },
+  "license": "MIT",
+  "keywords": [
+    "experts",
+    "agents",
+    "routing",
+    "klarspråk",
+    "konsultchef"
+  ]
+}

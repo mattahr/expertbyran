@@ -1,0 +1,289 @@
+schema: "paperclip/v1"
+agents:
+  vd:
+    role: "ceo"
+    icon: "crown"
+    capabilities: "Strategisk ledning av Expertbyrån. Ägare av uppdragsportföljen och partnerskapet med Riksrevisionen. Delegerar allt operativt arbete, fokuserar på strategi, kvalitetsåtagande och hyra av nya experter."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-opus-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+    permissions:
+      canCreateAgents: true
+  klientkoordinator:
+    role: "client-coordinator"
+    icon: "inbox"
+    capabilities: "Enda ingången för Riksrevisionens kundförfrågningar. Processar kundprotokoll-issues, triagerar mot roll-till-uthyrning-tabellen, matchar experter via kompetenskatalogen, delegerar till subtasks och aggregerar leveranser."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  konsultchef-metod:
+    role: "practice-lead"
+    icon: "users"
+    capabilities: "Chef för metodkonsulterna. Kvalitetssäkrar metodval i uppdrag. Tar emot kompetensuppdateringar från utbildningsledaren. Kan kliva in som enhetschef vid större uthyrda granskningsuppdrag."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  konsultchef-doman:
+    role: "practice-lead"
+    icon: "globe"
+    capabilities: "Chef för domänexperterna. Håller expertkatalogen aktuell för de fyra domänklustren. Stödjer klientkoordinatorn vid sammansatta matchningar. Tar emot kompetensuppdateringar från utbildningsledaren."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  utbildningsledare:
+    role: "trainer"
+    icon: "graduation-cap"
+    capabilities: "Facilitator för all kunskapsutveckling. Läser experters memory, initierar dialogbaserad fortbildning, söker externa källor via DocRec MCP, skriver tillbaka till expertfiler. Äger skill-evolution och parallellrapporterar till konsultchef och webbmaster."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  webbmaster:
+    role: "webmaster"
+    icon: "globe-2"
+    capabilities: "Publicerar CV-information och nyhetsinlägg till Expertbyråns externa webbplats. Helt passiv, vaknar endast på Publicera:-tasks från utbildningsledaren. Håller idempotent state i publicerat.md."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  klient-riksrevisionen:
+    role: "client"
+    icon: "key"
+    capabilities: "Fasadagent för extern kundautentisering. Används enbart för API-nyckelgenerering. Körs aldrig, har ingen reportsTo, står utanför hierarkin."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: false
+        maxConcurrentRuns: 1
+  effektivitetsrevisor:
+    role: "method-expert"
+    icon: "compass"
+    capabilities: "Generalist i effektivitetsrevisionens 3-fas/23-stegsprocess. Äger designmatrisen. Kan agera projektledare för en hel granskning. Primär metodreferens för Riksrevisionens arbetssätt."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  kvantitativ-analytiker:
+    role: "method-expert"
+    icon: "line-chart"
+    capabilities: "Registerdata, statistiska test, ekonomisk modellering, kausalinferens. Precision i täljare/nämnare, osäkerhetsmarginaler, undvikande av falsk precision. Implementerar vetenskapliga krav 4.3."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  kvalitativ-metodexpert:
+    role: "method-expert"
+    icon: "message-square"
+    capabilities: "Intervjumetodik, dokumentanalys, kodningsscheman, representativitetsfrågor, triangulering. Implementerar vetenskapliga krav 4.4 om kvalitativa iakttagelser."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  rattslig-utredare:
+    role: "method-expert"
+    icon: "scale"
+    capabilities: "Tolkning av regleringsbrev, förordningar, författningar. Bedömningsgrunders rättsliga ursprung. Mandattolkning för rekommendationer riktade till myndigheter."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  kvalitetsgranskare:
+    role: "method-expert"
+    icon: "shield-check"
+    capabilities: "Opponent vid Riksrevisionens upplägg- och rapportseminarier. Äger den samlade vetenskapliga checklistan. Default peer-reviewer för skill-evolution DRAFT → REVIEW → ADOPT."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  expert-finanser:
+    role: "domain-expert"
+    icon: "wallet"
+    capabilities: "Offentliga finanser och styrning. Finanspolitiska ramverket, generella statsbidrag, avgiftsbelagda tjänster, tillfälliga skatteanstånd. Riksrevisionens granskningar 2024–2025 inom området."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  expert-digitalisering:
+    role: "domain-expert"
+    icon: "cpu"
+    capabilities: "Statlig digitalisering och IT. Strategiska digitaliseringsprojekt, identitetsfastställande, informationshantering. Biometri, digital infrastruktur, tvärmyndighetsintegration."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  expert-rattsvasende:
+    role: "domain-expert"
+    icon: "shield"
+    capabilities: "Rättsväsende och civilt försvar. Statens skydd av hotade personer, infiltration, polisutbildning, civilt försvar, brott av barn. Styrning av rättsväsendets myndigheter."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+  expert-valfard:
+    role: "domain-expert"
+    icon: "heart"
+    capabilities: "Välfärd och social omsorg. LSS, IVO och hälso-/sjukvårdens klagomålshantering, kommunal-statlig styrning av välfärdstjänster. Stöd och insatser för utsatta grupper."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        maxConcurrentRuns: 1
+projects:
+  kompetenskatalog:
+    color: "#0ea5e9"
+    status: "in_progress"
+  metodutveckling:
+    color: "#8b5cf6"
+    status: "in_progress"
+  exempeluppdrag-frekvens:
+    color: "#10b981"
+    status: "done"
+sidebar:
+  agents:
+    - "vd"
+    - "klientkoordinator"
+    - "konsultchef-metod"
+    - "effektivitetsrevisor"
+    - "kvantitativ-analytiker"
+    - "kvalitativ-metodexpert"
+    - "rattslig-utredare"
+    - "kvalitetsgranskare"
+    - "konsultchef-doman"
+    - "expert-finanser"
+    - "expert-digitalisering"
+    - "expert-rattsvasende"
+    - "expert-valfard"
+    - "utbildningsledare"
+    - "webbmaster"
+    - "klient-riksrevisionen"
+  projects:
+    - "kompetenskatalog"
+    - "metodutveckling"
+    - "exempeluppdrag-frekvens"
+tasks:
+  exp-1:
+    identifier: "EXP-1"
+    priority: "high"
+    status: "todo"
+  exp-2:
+    identifier: "EXP-2"
+    priority: "medium"
+    status: "in_progress"
+  exp-3:
+    identifier: "EXP-3"
+    priority: "medium"
+    status: "in_progress"
+  exp-4:
+    identifier: "EXP-4"
+    priority: "medium"
+    status: "todo"
+  exp-5:
+    identifier: "EXP-5"
+    priority: "high"
+    status: "todo"
+  exp-6:
+    identifier: "EXP-6"
+    priority: "medium"
+    status: "todo"
+  exp-7:
+    identifier: "EXP-7"
+    priority: "medium"
+    status: "done"
+  exp-8:
+    identifier: "EXP-8"
+    priority: "low"
+    status: "todo"
+  exp-9:
+    identifier: "EXP-9"
+    priority: "low"
+    status: "todo"
+  exp-10:
+    identifier: "EXP-10"
+    priority: "low"
+    status: "todo"
+  exp-11:
+    identifier: "EXP-11"
+    priority: "low"
+    status: "todo"

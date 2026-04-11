@@ -1,0 +1,9 @@
+{
+  "name": "expertbyran-marketplace",
+  "version": "0.1.0",
+  "description": "Expertbyrån Marketplace — virtuellt konsultbolag för Claude Code",
+  "author": {
+    "name": "Mattias Ahrens"
+  },
+  "license": "MIT"
+}

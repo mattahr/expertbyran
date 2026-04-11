@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Expertbyrån plugin sync",
+  "description": "Publikt JSON Schema för kopplingen mellan experter, team och pluginmetadata.",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "updatedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "marketplace": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "repositoryUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "marketplaceJsonUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "installSource": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string",
+                  "const": "github"
+                },
+                "repo": {
+                  "type": "string",
+                  "pattern": "^[^/\\s]+\\/[^/\\s]+$"
+                },
+                "ref": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source",
+                "repo"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string",
+                  "const": "git"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "ref": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string",
+                  "const": "url"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "source",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string",
+                  "const": "npm"
+                },
+                "package": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "source",
+                "package"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "repositoryUrl",
+        "marketplaceJsonUrl",
+        "installSource",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "experts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "plugin": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              },
+              "repositoryPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "repositoryUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "marketplaceListed": {
+                "type": "boolean"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "name",
+              "repositoryPath",
+              "repositoryUrl",
+              "marketplaceListed",
+              "version"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "plugin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "teams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expertSlugs": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            }
+          },
+          "plugin": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              },
+              "repositoryPath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "repositoryUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "marketplaceListed": {
+                "type": "boolean"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "name",
+              "repositoryPath",
+              "repositoryUrl",
+              "marketplaceListed",
+              "version"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "expertSlugs",
+          "plugin"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "version",
+    "updatedAt",
+    "marketplace",
+    "experts",
+    "teams"
+  ],
+  "additionalProperties": false
+}
