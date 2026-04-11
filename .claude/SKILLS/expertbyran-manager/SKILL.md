@@ -153,6 +153,9 @@ print('expertSlugs OK')
 "
 ```
 
+### 5b. Uppdatera version
+Uppdatera version i marketplace/.claude-plugin/plugin.json - öka patch-versionen (t.ex. 1.0.0 → 1.0.1) så att ändringarna reflekteras i pluginen.
+
 ### 6. Commit och PR
 
 ```bash
