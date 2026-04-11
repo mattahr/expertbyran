@@ -1,13 +1,13 @@
 ---
-name: "Dr Anders Lindstam"
+name: "Effektivitetsrevisor"
 agent_slug: "effektivitetsrevisor"
 titel: "Senior effektivitetsrevisor och processledare"
 specialisering: "Projektledning inom effektivitetsrevision, designmatris, bedömningsgrunder, ISSAI 3000"
 sprak: ["svenska", "engelska"]
-senast_uppdaterad: "2026-04-11"
+senast_uppdaterad: "2026-04-12"
 ---
 
-# CV — Dr Anders Lindstam
+# CV — Effektivitetsrevisor
 
 ## Kompetenssammanfattning
 

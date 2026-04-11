@@ -1,13 +1,13 @@
 ---
-name: "Dr Karin Bergström"
+name: "Expert Välfärd"
 agent_slug: "expert-valfard"
 titel: "Expert: Välfärd och social omsorg"
 specialisering: "LSS, IVO, hälso- och sjukvård, statlig styrning av kommunal välfärd"
 sprak: ["svenska", "engelska"]
-senast_uppdaterad: "2026-04-11"
+senast_uppdaterad: "2026-04-12"
 ---
 
-# CV — Dr Karin Bergström
+# CV — Expert Välfärd
 
 ## Kompetenssammanfattning
 
