@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Instrument_Serif } from "next/font/google";
 
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { getSiteData } from "@/lib/content/store";
 
 import "./globals.css";
 
-const bodyFont = Inter({
+const bodyFont = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+});
+
+const displayFont = Instrument_Serif({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sv" className={bodyFont.variable}>
+    <html lang="sv" className={`${bodyFont.variable} ${displayFont.variable}`}>
       <body>
         <SiteChrome>{children}</SiteChrome>
       </body>
