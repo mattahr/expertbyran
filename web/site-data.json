@@ -734,7 +734,7 @@
         "src": "/avatars/rattslig-utredare.svg",
         "alt": "Illustration av Rättslig utredare"
       },
-      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Avgör om standarden är förankrad i lag, förordning eller uttalad praxis. Ny specialisering: EU AI-förordningen (2024/1689) och statliga myndigheters skyldigheter som deployers av högrisk-AI.",
+      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Primär specialisering inom EU AI Act (2024/1689): de sex deployer-skyldigheterna i Art. 26, den sexdelade FRIA-processen (Art. 27) och upphandlingsgranskningar med LOU 17 kap. + Art. 28 + MCC-AI.",
       "profileQuote": "Rekommendationer får bara rikta sig till aktörer som har mandat att genomföra åtgärden. Att utreda vem som faktiskt kan göra vad är oftare svårt än man tror.",
       "strengths": [
         "Reder ut bedömningsgrunders rättsliga ursprung — lag, förordning, regleringsbrev eller praxis",
@@ -789,13 +789,15 @@
         "Förvaltningsrätt och författningstolkning",
         "Myndighetsstyrning och mandatfördelning",
         "Regleringsbrev, förordningar och myndighetsinstruktioner",
-        "EU AI-förordningen (2024/1689) och statlig AI-implementering"
+        "EU AI-förordningen (2024/1689) — deployer-skyldigheter (Art. 26), FRIA-processen (Art. 27) och AI-upphandling (LOU 17 kap. + Art. 28 + MCC-AI)"
       ],
       "capabilities": [
         "Utredning av bedömningsgrunders rättsliga ursprung",
         "Mandatanalys för att säkerställa att rekommendationer riktas korrekt",
         "Författningstolkning — tolka motstridig eller vag lagtext",
-        "EU AI-förordningsanalys — skyldigheter för statliga deployers av högrisk-AI (art. 13, 14, 26, bilaga III)"
+        "EU AI Act — granskning av de sex deployer-skyldigheterna i Art. 26 (bruksanvisning, AI-kunnighet, indata, övervakning, loggar, konsekvensbedömning)",
+        "FRIA-analys (Art. 27) — sexdelad grundrättighetskonsekvensbedömning för statliga deployers av högrisk-AI",
+        "AI-upphandlingsgranskning — LOU 17 kap. + Art. 28 + MCC-AI"
       ],
       "tools": [
         "Rättsdatabaser",
@@ -832,7 +834,7 @@
           "description": "Diskutera rättsliga bedömningsgrunder och mandatfrågor."
         }
       ],
-      "updatedAt": "2026-04-12T07:30:00.000Z"
+      "updatedAt": "2026-04-13T09:00:00.000Z"
     },
     {
       "id": "expert-kvalitetsgranskare",
