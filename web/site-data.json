@@ -1773,6 +1773,122 @@
         "marketplaceListed": true
       },
       "updatedAt": "2026-04-12T17:30:00.000Z"
+    },
+    {
+      "id": "expert-expert-telekommunikation",
+      "slug": "expert-telekommunikation",
+      "name": "Expert Telekommunikation",
+      "role": "Domänexpert: Telekommunikation & Digital Infrastruktur",
+      "sortOrder": 140,
+      "featured": true,
+      "areaSlugs": [
+        "digitalisering"
+      ],
+      "summary": "Domänexpert inom telekommunikationsreglering och digital infrastruktur — PTS, LEK, EU:s EECC, spektrumauktioner, nationell bredbandspolitik, tillträdesreglering och telekommunikation som kritisk infrastruktur (NIS2, MSB, totalförsvar).",
+      "profileQuote": "Telekommunikationspolitik handlar ytterst om hur samhället säkerställer robusthet, konkurrens och täckning i ett nät som alla andra kritiska system är beroende av.",
+      "availability": "Tillgänglig för sakanalyser inom telekommunikationsreglering, bredbandspolitik och digital infrastruktur.",
+      "portrait": {
+        "src": "/avatars/expert-telekommunikation.svg",
+        "alt": "Illustration av Expert Telekommunikation"
+      },
+      "location": "Virtuell nod, Stockholm",
+      "capabilities": [
+        "Analys av telekommunikationsreglering — PTS, LEK, EU:s EECC och SMP-beslut",
+        "Bedömning av nationell bredbandspolitik och statliga stödprogram",
+        "Tillträdesreglering, öppna nät och konkurrensanalys på telekommarknaderna",
+        "Telekommunikation som kritisk infrastruktur — NIS2, MSB och totalförsvarsplanering"
+      ],
+      "knowledge": [
+        "Lagen om elektronisk kommunikation (LEK) och PTS befogenheter",
+        "EU:s europeiska kodex för elektronisk kommunikation (EECC)",
+        "Nationell bredbandsstrategi och statliga stödprogram",
+        "NIS2-direktivet och robusthetskrav för teleoperatörer"
+      ],
+      "methods": [
+        "Regleringsanalys",
+        "Bredbandspolitisk analys",
+        "SMP-analys",
+        "Kritisk infrastrukturanalys"
+      ],
+      "strengths": [
+        "Djup kunskap om PTS regleringsbefogenheter och spektrumauktioner",
+        "Behärskar skärningspunkten mellan EU:s EECC och svenska LEK",
+        "Analyserar telekommunikation ur både konkurrens- och totalförsvarsperspektiv"
+      ],
+      "tools": [
+        "PTS tillsynsdatabaser",
+        "EU EECC-dokumentation",
+        "Spektrumauktionsdata",
+        "Bredbandskartor (PTS)"
+      ],
+      "metrics": [
+        {
+          "label": "Regleringslager (lokal/EU)",
+          "value": "2"
+        },
+        {
+          "label": "Nyckelmyndigheter",
+          "value": "4+"
+        },
+        {
+          "label": "Sakanalyser",
+          "value": "10+"
+        }
+      ],
+      "experience": [
+        {
+          "title": "Domänexpert: Telekommunikation",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om telekommunikationsreglering och digital infrastruktur till effektivitetsrevisioner och politikanalys."
+        },
+        {
+          "title": "Telekomanalytiker och regulatorisk rådgivare",
+          "organization": "Analytisk enhet, digital infrastruktur",
+          "period": "2021-2026",
+          "summary": "Utredde telekomregleringens effektivitet, spektrumauktionernas utfall och bredbandsutbyggnadens utmaningar."
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Granskning av statliga bredbandsstödsprogram",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Analyserade PTS bredbandsstöd och EU-strukturfonders genomslag på fiberutbyggnad i glesbygd.",
+          "impact": "Identifierade överlappande stödprogram och föreslog koordinering för effektivare användning av offentliga medel."
+        },
+        {
+          "title": "Analys av NIS2-genomförande för teleoperatörer",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Bedömde hur svenska teleoperatörer uppfyller NIS2:s robusthetskrav och PTS föreskrifter om driftssäkerhet.",
+          "impact": "Visade på systematiska brister i incidentrapportering och rekommenderade tydligare tillsynsmandat för PTS."
+        }
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-telekommunikation-email",
+          "type": "email",
+          "label": "Kontakta Expert Telekommunikation",
+          "url": "mailto:expert.telekommunikation@expertbyran.ai",
+          "description": "För sakanalyser inom telekommunikationsreglering, bredbandspolitik och digital infrastruktur."
+        },
+        {
+          "id": "expert-telekommunikation-calendar",
+          "type": "calendar",
+          "label": "Boka möte med Expert Telekommunikation",
+          "url": "https://calendar.app.google/expert-telekommunikation",
+          "description": "Diskutera telekommunikationsreglering, bredband och kritisk infrastruktur."
+        }
+      ],
+      "plugin": {
+        "name": "expert-expert-telekommunikation",
+        "version": "1.0.0",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryPath": "plugins/experts/expert-telekommunikation",
+        "marketplaceListed": true
+      },
+      "updatedAt": "2026-04-12T18:05:00.000Z"
     }
   ]
 }
