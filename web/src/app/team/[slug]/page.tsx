@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { ExpertCard } from "@/components/site/ExpertCard";
-import { PageHero } from "@/components/site/PageHero";
+import { GridCell } from "@/components/site/GridCell";
 import styles from "@/components/site/site.module.css";
 import { getAreasForExpert, getExpertsForTeam, getOrderedSiteData } from "@/lib/content/query";
 
@@ -45,66 +45,75 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
 
   return (
     <div className={styles.pageWrap}>
-      <PageHero
-        eyebrow="Kuraterat team"
-        title={team.name}
-        intro={team.description}
-        primaryAction={{ href: "/marknadsplats", label: "Se installation" }}
-        secondaryAction={{ href: "/team", label: "Alla team" }}
-        asideLabel="Plugin"
-        asideValue={`${team.plugin.name} · v${team.plugin.version}`}
-      />
+      <div className={styles.hero}>
+        <p className={styles.heroEyebrow}>Kuraterat team</p>
+        <h1 className={styles.heroTitle}>{team.name}</h1>
+        <div className={styles.heroLine} />
+        <p className={styles.heroIntro}>{team.description}</p>
+      </div>
 
       <section className={styles.section}>
-        <div className={styles.twoColumn}>
-          <article className={styles.detailBlock}>
-            <p className={styles.eyebrow}>Gemensam prompt</p>
-            <h2 className={styles.sectionTitle}>Hur teamet arbetar tillsammans.</h2>
-            <p className={styles.sectionText}>{team.promptSummary}</p>
-            <ul className={styles.pillList}>
-              {areaNames.map((areaName) => (
-                <li key={areaName} className={styles.pill}>
-                  {areaName}
-                </li>
-              ))}
-            </ul>
-          </article>
-
-          <div className={styles.contactPanel}>
-            <div className={styles.contactLink}>
-              <span className={styles.contactLabel}>Repository path</span>
-              <span className={styles.contactDescription}>{team.plugin.repositoryPath}</span>
+        <div className={styles.detailLayout}>
+          <aside className={styles.detailSidebar}>
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Plugin</span>
+              <span className={styles.metaValueMono}>{team.plugin.name} v{team.plugin.version}</span>
             </div>
-            <div className={styles.contactLink}>
-              <span className={styles.contactLabel}>Marknadsplatsstatus</span>
-              <span className={styles.contactDescription}>
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Repository</span>
+              <span className={styles.metaValue}>
+                <Link href={team.plugin.repositoryUrl as `https://${string}`} className={styles.textLink}>
+                  {team.plugin.repositoryPath}
+                </Link>
+              </span>
+            </div>
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Status</span>
+              <span className={styles.metaValue}>
                 {team.plugin.marketplaceListed
                   ? "Listad i den kanoniska marketplace-katalogen."
                   : "Inte publicerad i marketplace ännu."}
               </span>
             </div>
-            <a href={team.plugin.repositoryUrl} className={styles.contactLink}>
-              <span className={styles.contactLabel}>Monorepo</span>
-              <span className={styles.contactDescription}>Öppna teampluginets repository.</span>
-            </a>
+          </aside>
+
+          <div className={styles.detailMain}>
+            <h2 className={styles.detailHeading}>Hur teamet arbetar tillsammans</h2>
+            <p className={styles.detailText}>{team.promptSummary}</p>
+            {areaNames.length > 0 && (
+              <ul className={styles.inlineList}>
+                {areaNames.map((areaName) => (
+                  <li key={areaName}>{areaName}</li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <div>
-            <p className={styles.eyebrow}>Experter i teamet</p>
-            <h2 className={styles.sectionTitle}>Profiler som ingår i {team.name.toLowerCase()}.</h2>
+      {experts.length > 0 && (
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionLabel}>Experter i teamet</h2>
+            <span className={styles.sectionCount}>{experts.length} experter</span>
           </div>
-        </div>
-
-        <div className={styles.gridCards} data-dense="true">
-          {experts.map((expert) => (
-            <ExpertCard key={expert.id} expert={expert} areas={getAreasForExpert(data, expert)} />
-          ))}
-        </div>
-      </section>
+          <div className={styles.grid}>
+            {experts.map((expert) => {
+              const areas = getAreasForExpert(data, expert);
+              return (
+                <GridCell
+                  key={expert.id}
+                  href={`/experter/${expert.slug}`}
+                  category={expert.role}
+                  categoryColor={areas[0]?.accent}
+                  name={expert.name}
+                  description={expert.summary}
+                />
+              );
+            })}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

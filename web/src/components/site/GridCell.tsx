@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 
 import styles from "./site.module.css";
@@ -12,7 +13,7 @@ type GridCellProps = {
 
 export function GridCell({ href, category, categoryColor, name, description }: GridCellProps) {
   return (
-    <Link href={href} className={styles.gridCell}>
+    <Link href={href as Route} className={styles.gridCell}>
       <span className={styles.gridCellCategory} style={categoryColor ? { color: categoryColor } : undefined}>
         {categoryColor ? (
           <span className={styles.dot} style={{ background: categoryColor }} aria-hidden />
