@@ -109,3 +109,36 @@
   * **ai-textgranskning** — AI-genererade myndighetstexter: 8-punktsgranskningsmodell (AI-1–AI-8) med faktaverifiering före klarspråksgranskning
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/klarsprak/EXPERT.md
 * **Kan kedja till:** rattslig-utredare (vid juridisk text), kvalitetsgranskare (vid vetenskaplig opponering)
+
+## Expert Arbetsmarknad
+
+* **Domän:** Arbetsmarknadspolitik, Arbetsförmedlingen, A-kassa, aktiva arbetsmarknadsåtgärder, IFAU-metodik
+* **Triggers:** Arbetsförmedlingen, A-kassan, IAF, IFAU, arbetsmarknadspolitik, etableringsprogram, nystartsjobb, aktiva arbetsmarknadsåtgärder, LAS, AFL, ersättningssystem, arbetsmarknadslagstiftning
+* **Capabilities:**
+  * **sakanalys** — Sakanalys av arbetsmarknadspolitik, Arbetsförmedlingens uppdrag och styrning
+  * **atgardsbedomning** — Bedöma effektiviteten hos aktiva arbetsmarknadsåtgärder och ersättningssystem
+  * **effektutvärdering** — Tillämpa IFAU-metodik och registerdata för effektutvärdering av arbetsmarknadsprogram
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-arbetsmarknad/EXPERT.md
+* **Kan kedja till:** kvantitativ-analytiker (vid registerbaserad effektutvärdering), effektivitetsrevisor (vid helhetskoordinering), rattslig-utredare (vid LAS/AFL-tolkningsfrågor)
+
+## Expert Utbildning
+
+* **Domän:** Utbildningspolitik, skolstyrning, kvalitetssäkring, högskola, studiestöd
+* **Triggers:** Skolverket, Skolinspektionen, UKÄ, skollagen, gymnasielagen, högskolelagen, PISA, TIMSS, betygsinflation, skolsegregation, friskolesystemet, examenstillstånd, statsbidrag skola, resurstilldelning, likvärdighet
+* **Capabilities:**
+  * **sakanalys** — Sakanalys av utbildningspolitik, skolstyrning och högskolans styrning
+  * **kvalitetsbedömning** — Bedöma skolors och lärosätens kvalitet, tillsyn och resultatutveckling
+  * **likvardhetsanalys** — Analysera likvärdighet, betygsinflation och resurstilldelning i skolan
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-utbildning/EXPERT.md
+* **Kan kedja till:** kvantitativ-analytiker (vid registerbaserad resultatanalys), effektivitetsrevisor (vid helhetskoordinering), rattslig-utredare (vid skollagsfrågor)
+
+## Expert Miljö & Klimat
+
+* **Domän:** Klimatpolitik, miljöstyrning, energisystemet, cirkulär ekonomi, EU-klimatreglering
+* **Triggers:** klimatlagen, netto noll 2045, Klimatpolitiska rådet, miljöbalken, Naturvårdsverket, MKB, tillståndsprocesser, Energimyndigheten, Nord Pool, elcertifikat, producentansvar, avfallsdirektivet, EU ETS, taxonomiförordningen, Green Deal, CBAM, cirkulär ekonomi, energiomställning
+* **Capabilities:**
+  * **sakanalys** — Sakanalys av klimat-, miljö- och energipolitik samt styrmedel
+  * **tillstandsbedomning** — Bedöma tillståndsprocesser och miljöbalkens tillämpning
+  * **eu-klimatreglering** — EU ETS, taxonomin, Green Deal och CBAM — hur EU:s klimatreglering påverkar svenska myndigheter
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-miljo-klimat/EXPERT.md
+* **Kan kedja till:** kvantitativ-analytiker (vid utsläpps- och energianalys), effektivitetsrevisor (vid helhetskoordinering), rattslig-utredare (vid EU-rättsliga tolkningsfrågor)
