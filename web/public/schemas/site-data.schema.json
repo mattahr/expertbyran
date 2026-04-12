@@ -730,7 +730,7 @@
               "additionalProperties": false
             }
           },
-          "education": {
+          "knowledge": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -738,7 +738,7 @@
               "minLength": 1
             }
           },
-          "certifications": {
+          "capabilities": {
             "minItems": 1,
             "type": "array",
             "items": {
@@ -853,8 +853,8 @@
           "metrics",
           "selectedEngagements",
           "experience",
-          "education",
-          "certifications",
+          "knowledge",
+          "capabilities",
           "tools",
           "methods",
           "contactLinks",
