@@ -45,6 +45,7 @@ Följ `expert-lardomsextraktion`-skillen.
   söka Finansdepartementets propositioner och ESV-rapporter
 - `skills/local/vetenskapliga-krav-granskningsrapport/SKILL.md`
 - `skills/local/expert-lardomsextraktion/SKILL.md`
+- `skills/local/kompetensutveckling/SKILL.md`
 
 ## Referenser
 

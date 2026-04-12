@@ -16,7 +16,7 @@ Denna skill är avsiktligt kort. Din tid ska gå till expertarbete —
 inte till metadokumentation. Utbildningsledaren sköter det tunga
 lärandet åt dig.
 
-## Två regler. Det är allt.
+## Tre regler. Det är allt.
 
 ### Regel A — Dagligt memory (1–3 rader)
 
@@ -110,9 +110,25 @@ du dessutom måste göra skill-författande, peer-review och
 veckosynteser blir det inget expertarbete kvar. Genom att du
 fokuserar på att leverera blir hela Expertbyrån bättre.
 
-## Om du trots allt vill bidra mer
+### Regel C — Aktiv kompetensutveckling
 
-Om du har en stark åsikt om hur något borde göras annorlunda, skriv
-det i din memory-rad. Utbildningsledaren ser det och kan välja att
-initiera en skill-evolution. Men **initiera inte själv** skill-
-ändringar — det är utbildningsledarens jobb.
+När du vill fördjupa, bredda eller utöka din kunskap — använd
+`kompetensutveckling`-skillen. Den ger dig verktyg att:
+
+- Reflektera över din nuvarande kunskapsbas
+- Planera fortbildning i samråd med konsultchef och utbildningsledare
+- Söka och läsa källor via DocRec och webbsökning
+- Skriva ny kunskap till dina egna filer
+
+Du kan använda den på eget initiativ (när du stöter på en lucka i
+ditt arbete) eller på uppdrag av utbildningsledaren (via task).
+
+**Utbildningsledaren är fortfarande din coach** — hen identifierar
+luckor och ger riktning. Men det är du som gör det stora jobbet.
+
+## Om du har en stark åsikt om en skill
+
+Om du tycker att en skill borde ändras, skriv det i din memory-rad.
+Utbildningsledaren ser det och kan välja att initiera en
+skill-evolution. Men **initiera inte själv** skill-ändringar — det
+är utbildningsledarens jobb.

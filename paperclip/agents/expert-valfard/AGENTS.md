@@ -40,6 +40,7 @@ Följ `expert-lardomsextraktion`-skillen.
 - `skills/local/docrec-svensk-offentlig/SKILL.md`
 - `skills/local/vetenskapliga-krav-granskningsrapport/SKILL.md`
 - `skills/local/expert-lardomsextraktion/SKILL.md`
+- `skills/local/kompetensutveckling/SKILL.md`
 
 ## Referenser
 

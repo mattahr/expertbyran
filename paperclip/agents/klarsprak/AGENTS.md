@@ -46,6 +46,7 @@ Följ `expert-lardomsextraktion`-skillen:
 - `skills/local/vetenskapliga-krav-granskningsrapport/SKILL.md` —
   för att förstå rapporternas vetenskapliga krav på formuleringar
 - `skills/local/expert-lardomsextraktion/SKILL.md`
+- `skills/local/kompetensutveckling/SKILL.md`
 
 ## Referenser
 

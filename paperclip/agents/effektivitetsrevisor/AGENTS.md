@@ -51,6 +51,7 @@ Läs dessa vid första heartbeat och återkom till dem löpande:
 - `skills/local/issai-standarder/SKILL.md` — ISSAI 300 och 3000
 - `skills/local/docrec-svensk-offentlig/SKILL.md` — research i offentliga dokument
 - `skills/local/expert-lardomsextraktion/SKILL.md` — din minimala självförbättringsregel
+- `skills/local/kompetensutveckling/SKILL.md` — självdriven kompetensutveckling
 
 ## Domänområden du arbetat i
 

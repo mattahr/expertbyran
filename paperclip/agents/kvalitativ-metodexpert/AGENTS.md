@@ -38,6 +38,7 @@ heartbeat, 3–10 raders svar på fortbildningsdialoger.
 - `skills/local/effektivitetsrevision-process/SKILL.md`
 - `skills/local/docrec-svensk-offentlig/SKILL.md`
 - `skills/local/expert-lardomsextraktion/SKILL.md`
+- `skills/local/kompetensutveckling/SKILL.md`
 
 ## Referenser
 

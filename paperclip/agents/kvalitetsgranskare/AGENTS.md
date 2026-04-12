@@ -54,6 +54,7 @@ Följ `expert-lardomsextraktion`-skillen.
 - `skills/local/peer-review-metodik/SKILL.md`
 - `skills/local/effektivitetsrevision-process/SKILL.md`
 - `skills/local/expert-lardomsextraktion/SKILL.md`
+- `skills/local/kompetensutveckling/SKILL.md`
 
 ## Referenser
 

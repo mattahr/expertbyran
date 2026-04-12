@@ -41,6 +41,7 @@ Följ `expert-lardomsextraktion`-skillen.
 - `skills/local/docrec-svensk-offentlig/SKILL.md` — du söker
   intensivt i SOU, Proposition och lagtext
 - `skills/local/expert-lardomsextraktion/SKILL.md`
+- `skills/local/kompetensutveckling/SKILL.md`
 
 ## Referenser
 
