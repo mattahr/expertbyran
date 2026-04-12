@@ -160,7 +160,7 @@ Varje expert i arrayen har exakt denna struktur. Alla fält är **obligatoriska*
   "shortDescription": "...",
   "description": "...",
   "promptSummary": "...",
-  "expertSlugs": ["astrid-rane", ...], // string[] — MÅSTE matcha experts[].slug
+  "expertSlugs": ["effektivitetsrevisor", ...], // string[] — MÅSTE matcha experts[].slug
   "plugin": {
     "name": "team-{slug}",
     "repositoryPath": "plugins/teams/{slug}",
