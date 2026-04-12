@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T07:30:00.000Z",
+  "updatedAt": "2026-04-12T19:40:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -226,22 +226,64 @@
       ]
     },
     {
+      "id": "area-arbetsmarknad",
       "slug": "arbetsmarknad",
+      "sortOrder": 70,
+      "featured": true,
+      "accent": "#4A7E6B",
       "name": "Arbetsmarknad och sysselsättning",
-      "description": "Arbetsmarknadspolitik, Arbetsförmedlingen, A-kassa och aktiva arbetsmarknadsåtgärder.",
-      "icon": "target"
+      "shortDescription": "För granskningar av arbetsmarknadspolitik, Arbetsförmedlingen, A-kassa och aktiva arbetsmarknadsåtgärder.",
+      "description": "Området samlar sakkunskap om arbetsmarknadspolitikens utformning och genomförande — Arbetsförmedlingens uppdrag och styrning, A-kassans ersättningssystem, etableringsprogram, aktiva åtgärder och deras effektivitet. Expertisen täcker både lagstiftning (LAS, AFL) och effektutvärdering med IFAU-metodik.",
+      "signals": [
+        "Granskningen rör Arbetsförmedlingens verksamhet, uppdrag eller styrning",
+        "Aktiva arbetsmarknadsåtgärder eller ersättningssystem ska bedömas",
+        "Arbetsmarknadslagstiftning (LAS, AFL) eller etableringsprogram ingår i uppdraget"
+      ],
+      "deliverables": [
+        "Sakanalys av arbetsmarknadspolitik och Arbetsförmedlingens styrning",
+        "Bedömning av aktiva åtgärders effektivitet och ersättningssystems utformning",
+        "Effektutvärdering med IFAU-metodik och registerdata"
+      ]
     },
     {
+      "id": "area-utbildning",
       "slug": "utbildning",
+      "sortOrder": 80,
+      "featured": true,
+      "accent": "#3D6E8A",
       "name": "Utbildning och skolkvalitet",
-      "description": "Utbildningspolitik, skolstyrning, högskolans styrning och kvalitetssäkring.",
-      "icon": "lightbulb"
+      "shortDescription": "För granskningar av utbildningspolitik, skolstyrning, högskolans styrning och kvalitetssäkring.",
+      "description": "Området täcker utbildningssystemets styrning och kvalitet — från grundskola och gymnasium till högskolans examenstillstånd och lärosätenas resurstilldelning. Expertisen inkluderar Skolverket, Skolinspektionen, UKÄ, betygsinflation, skolsegregation, friskolesystemet och likvärdighetsanalyser.",
+      "signals": [
+        "Granskningen rör Skolverket, Skolinspektionen, UKÄ eller skollagen",
+        "Utbildningskvalitet, betygsinflation eller likvärdighet ska analyseras",
+        "Högskolans styrning, examenstillstånd eller resurstilldelning ingår i uppdraget"
+      ],
+      "deliverables": [
+        "Sakanalys av utbildningspolitik, skolstyrning och högskolans styrning",
+        "Bedömning av skolors och lärosätens kvalitet, tillsyn och resultatutveckling",
+        "Likvärdighetsanalys med fokus på betygsinflation och resurstilldelning"
+      ]
     },
     {
+      "id": "area-miljo-klimat",
       "slug": "miljo-klimat",
+      "sortOrder": 90,
+      "featured": true,
+      "accent": "#4E7A52",
       "name": "Miljö, klimat och energi",
-      "description": "Klimatpolitik, miljöstyrning, energisystemet och EU:s klimatreglering.",
-      "icon": "globe"
+      "shortDescription": "För granskningar av klimatpolitik, miljöstyrning, energisystemet och EU:s klimatreglering.",
+      "description": "Området samlar sakkunskap om det klimatpolitiska ramverket, miljöbalkens tillståndsprocesser och energisystemets styrning — från netto noll 2045-målet och Klimatpolitiska rådet till EU ETS, taxonomiförordningen och Green Deal. Expertisen täcker även cirkulär ekonomi, CBAM och klimatomställningens rättsliga ramar.",
+      "signals": [
+        "Granskningen rör klimatlagen, netto noll-målet eller Klimatpolitiska rådet",
+        "Miljöbalkens tillståndsprocesser eller MKB ingår i uppdraget",
+        "EU:s klimatreglering (EU ETS, taxonomin, Green Deal, CBAM) behöver analyseras"
+      ],
+      "deliverables": [
+        "Sakanalys av klimat-, miljö- och energipolitik samt styrmedel",
+        "Bedömning av tillståndsprocesser och miljöbalkens tillämpning",
+        "Analys av EU:s klimatreglering och dess genomslag i svenska myndigheter"
+      ]
     }
   ],
   "teams": [
