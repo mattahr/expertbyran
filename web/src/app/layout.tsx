@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Manrope, Newsreader } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { getSiteData } from "@/lib/content/store";
 
 import "./globals.css";
 
-const displayFont = Newsreader({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-const bodyFont = Manrope({
+const bodyFont = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -44,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sv" className={`${displayFont.variable} ${bodyFont.variable}`}>
+    <html lang="sv" className={bodyFont.variable}>
       <body>
         <SiteChrome>{children}</SiteChrome>
       </body>

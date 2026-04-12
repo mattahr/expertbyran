@@ -1,21 +1,13 @@
 :root {
-  --page-background: #f6f3ee;
-  --page-surface: rgba(255, 255, 252, 0.9);
-  --page-surface-strong: #fffdfa;
-  --page-border: rgba(19, 26, 28, 0.1);
-  --page-border-strong: rgba(19, 26, 28, 0.18);
-  --foreground: #131b1d;
-  --muted: #6b7673;
-  --muted-strong: #394645;
-  --accent: #173133;
-  --accent-soft: rgba(23, 49, 51, 0.08);
-  --accent-secondary: #8f8475;
-  --shadow: 0 24px 64px rgba(19, 26, 28, 0.05);
-  --radius-lg: 30px;
-  --radius-md: 24px;
-  --radius-sm: 16px;
-  --content-width: min(1180px, calc(100vw - 2.25rem));
-  --section-gap: clamp(4rem, 7vw, 7rem);
+  --white: #ffffff;
+  --black: #000000;
+  --gray-100: #fafafa;
+  --gray-200: #f0f0f0;
+  --gray-300: #e0e0e0;
+  --gray-400: #bbbbbb;
+  --gray-500: #888888;
+  --gray-600: #555555;
+  --content-width: min(1120px, calc(100vw - 3rem));
 }
 
 html {
@@ -33,28 +25,13 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  color: var(--foreground);
-  background:
-    radial-gradient(circle at 0% 0%, rgba(143, 132, 117, 0.12), transparent 28%),
-    radial-gradient(circle at 100% 0%, rgba(23, 49, 51, 0.08), transparent 24%),
-    linear-gradient(180deg, #fbf8f3 0%, #f3f0ea 100%);
-  font-family: var(--font-body), sans-serif;
+  color: var(--black);
+  background: var(--white);
+  font-family: var(--font-body), -apple-system, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.42),
-    rgba(255, 255, 255, 0.04) 20%,
-    transparent 42%
-  );
-  opacity: 0.7;
 }
 
 * {
@@ -64,7 +41,7 @@ body::before {
 }
 
 *::selection {
-  background: rgba(23, 49, 51, 0.16);
+  background: rgba(0, 0, 0, 0.12);
 }
 
 a {
@@ -76,9 +53,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display), serif;
-  font-weight: 600;
-  letter-spacing: -0.035em;
+  font-family: var(--font-body), -apple-system, system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 p,
@@ -95,20 +72,9 @@ main {
   width: 100%;
 }
 
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   :root {
-    --content-width: min(100vw - 1.25rem, 1120px);
+    --content-width: min(100vw - 1.5rem, 1120px);
   }
 }
 
