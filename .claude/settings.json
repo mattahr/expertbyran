@@ -43,7 +43,11 @@
       "Bash(curl -s \"http://localhost:3737/_next/static/chunks/%5Broot-of-the-server%5D__0-n7g4k._.css\")",
       "Bash(env -i PATH=/opt/homebrew/bin:/usr/bin python3 -c ':*)",
       "Edit(/.claude/skills/expertbyran-manager/**)",
-      "Bash(env -i HOME=/Users/mattias PATH=\"/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin\" sh -c 'cd /Users/mattias/source/expertbyran/web && npx vitest run')"
+      "Bash(env -i HOME=/Users/mattias PATH=\"/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin\" sh -c 'cd /Users/mattias/source/expertbyran/web && npx vitest run')",
+      "Bash(git fetch:*)",
+      "Bash(git merge:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)"
     ]
   }
 }
