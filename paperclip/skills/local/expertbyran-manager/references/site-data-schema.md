@@ -76,14 +76,14 @@ Varje expert i arrayen har exakt denna struktur. Alla fält är **obligatoriska*
     }
   ],
 
-  "education": [                       // string[] — 2 poster
-    "Examenstitel",
-    "Fördjupning i ämne"
+  "knowledge": [                        // string[] — 2 poster — domän- eller expertkunskap
+    "Kunskapsområde 1",
+    "Kunskapsområde 2"
   ],
 
-  "certifications": [                  // string[] — 2 poster
-    "Certifiering 1",
-    "Certifiering 2"
+  "capabilities": [                    // string[] — 2 poster — vad agenten kan göra
+    "Förmåga 1",
+    "Förmåga 2"
   ],
 
   "tools": [                           // string[] — 4 poster

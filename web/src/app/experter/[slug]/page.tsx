@@ -127,17 +127,17 @@ export default async function ExpertDetailPage({ params }: ExpertPageProps) {
 
             <div className={styles.twoCol}>
               <div>
-                <p className={styles.twoColLabel}>Utbildning</p>
+                <p className={styles.twoColLabel}>Kunskap</p>
                 <ul className={styles.simpleList}>
-                  {expert.education.map((e) => (
-                    <li key={e}>{e}</li>
+                  {expert.knowledge.map((k) => (
+                    <li key={k}>{k}</li>
                   ))}
                 </ul>
               </div>
               <div>
-                <p className={styles.twoColLabel}>Certifieringar</p>
+                <p className={styles.twoColLabel}>Förmågor</p>
                 <ul className={styles.simpleList}>
-                  {expert.certifications.map((c) => (
+                  {expert.capabilities.map((c) => (
                     <li key={c}>{c}</li>
                   ))}
                 </ul>
