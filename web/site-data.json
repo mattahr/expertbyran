@@ -282,7 +282,11 @@
         "expert-finanser",
         "expert-digitalisering",
         "expert-rattsvasende",
-        "expert-valfard"
+        "expert-valfard",
+        "expert-arbetsmarknad",
+        "expert-utbildning",
+        "expert-miljo-klimat",
+        "expert-telekommunikation"
       ],
       "plugin": {
         "name": "team-domanexperter",
