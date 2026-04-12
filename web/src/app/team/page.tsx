@@ -1,5 +1,4 @@
-import { TeamCard } from "@/components/site/TeamCard";
-import { PageHero } from "@/components/site/PageHero";
+import { GridCell } from "@/components/site/GridCell";
 import styles from "@/components/site/site.module.css";
 import { getOrderedSiteData } from "@/lib/content/query";
 
@@ -12,20 +11,29 @@ export default async function TeamsPage() {
 
   return (
     <div className={styles.pageWrap}>
-      <PageHero
-        eyebrow="Kuraterade team"
-        title="Team med fast expertmix och tydlig promptlogik."
-        intro="Teamen samlar flera experter under en gemensam leveranslogik. Varje team motsvarar ett eget plugin i det externa monorepot."
-        primaryAction={{ href: "/marknadsplats", label: "Se marknadsplats" }}
-        secondaryAction={{ href: "/expertomraden", label: "Se expertområden" }}
-        asideLabel="Antal team"
-        asideValue={`${data.teams.length} kuraterade team i katalogen`}
-      />
+      <div className={styles.hero}>
+        <p className={styles.heroEyebrow}>Kuraterade team</p>
+        <h1 className={styles.heroTitle}>Team med fast expertmix.</h1>
+        <div className={styles.heroLine} />
+        <p className={styles.heroIntro}>
+          Teamen samlar flera experter under en gemensam leveranslogik. Varje team motsvarar ett eget plugin i det externa monorepot.
+        </p>
+      </div>
 
       <section className={styles.section}>
-        <div className={styles.gridCards}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionLabel}>Alla team</h2>
+          <span className={styles.sectionCount}>{data.teams.length} team</span>
+        </div>
+        <div className={styles.grid}>
           {data.teams.map((team) => (
-            <TeamCard key={team.id} team={team} expertCount={team.expertSlugs.length} />
+            <GridCell
+              key={team.id}
+              href={`/team/${team.slug}`}
+              category={`${team.expertSlugs.length} medlemmar`}
+              name={team.name}
+              description={team.shortDescription}
+            />
           ))}
         </div>
       </section>
