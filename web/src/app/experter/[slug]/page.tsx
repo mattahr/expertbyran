@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { PageHero } from "@/components/site/PageHero";
 import styles from "@/components/site/site.module.css";
 import { getAreasForExpert, getOrderedSiteData, getTeamsForExpert } from "@/lib/content/query";
 
@@ -17,9 +17,7 @@ export async function generateMetadata({ params }: ExpertPageProps): Promise<Met
   const expert = data.experts.find((candidate) => candidate.slug === slug);
 
   if (!expert) {
-    return {
-      title: "Expert saknas",
-    };
+    return { title: "Expert saknas" };
   }
 
   return {
@@ -42,177 +40,128 @@ export default async function ExpertDetailPage({ params }: ExpertPageProps) {
 
   return (
     <div className={styles.pageWrap}>
-      <PageHero
-        eyebrow="Expertprofil"
-        title={expert.name}
-        intro={expert.summary}
-        primaryAction={{ href: "/marknadsplats", label: "Se marknadsplats" }}
-        secondaryAction={{ href: "/expertomraden", label: "Alla expertområden" }}
-        asideLabel="Tillgänglighet"
-        asideValue={expert.availability}
-      />
+      <div className={styles.hero}>
+        <p className={styles.heroEyebrow}>Expertprofil</p>
+        <h1 className={styles.heroTitle}>{expert.name}</h1>
+        <div className={styles.heroLine} />
+        <p className={styles.heroIntro}>{expert.summary}</p>
+      </div>
 
       <section className={styles.section}>
-        <div className={styles.detailColumns}>
-          <aside className={styles.stickyColumn}>
-            <div className={styles.detailBlock}>
-              <div className={styles.expertMeta}>
-                <p className={styles.cardMeta}>{expert.role}</p>
-                <p className={styles.expertRole}>{expert.location}</p>
-              </div>
-
-              <ul className={styles.pillList}>
-                {areas.map((area) => (
-                  <li key={area.slug} className={styles.pill}>
-                    {area.name}
-                  </li>
-                ))}
-              </ul>
-
-              {teams.length ? (
-                <ul className={styles.pillList}>
-                  {teams.map((team) => (
-                    <li key={team.slug} className={styles.pill}>
-                      {team.name}
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
+        <div className={styles.detailLayout}>
+          <aside className={styles.detailSidebar}>
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Roll</span>
+              <span className={styles.metaValue}>{expert.role}</span>
             </div>
-
-            <ul className={styles.metricList}>
-              {expert.metrics.map((metric) => (
-                <li key={metric.label} className={styles.metricItem}>
-                  <span className={styles.metricValue}>{metric.value}</span>
-                  <span className={styles.metricLabel}>{metric.label}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className={styles.contactPanel}>
-              <div className={styles.contactLink}>
-                <span className={styles.contactLabel}>Plugin</span>
-                <span className={styles.contactDescription}>
-                  {expert.plugin.name} · v{expert.plugin.version}
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Plats</span>
+              <span className={styles.metaValue}>{expert.location}</span>
+            </div>
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Tillgänglighet</span>
+              <span className={styles.metaValue}>{expert.availability}</span>
+            </div>
+            {areas.map((area) => (
+              <div key={area.slug} className={styles.metaRow}>
+                <span className={styles.metaLabel}>Expertområde</span>
+                <span className={styles.metaValue}>
+                  <span className={styles.dot} style={{ background: area.accent }} aria-hidden />
+                  <Link href={`/expertomraden/${area.slug}`} className={styles.textLink}>{area.name}</Link>
                 </span>
               </div>
-              <div className={styles.contactLink}>
-                <span className={styles.contactLabel}>Repository path</span>
-                <span className={styles.contactDescription}>
-                  {expert.plugin.repositoryPath}
+            ))}
+            {teams.map((team) => (
+              <div key={team.slug} className={styles.metaRow}>
+                <span className={styles.metaLabel}>Team</span>
+                <span className={styles.metaValue}>
+                  <Link href={`/team/${team.slug}`} className={styles.textLink}>{team.name}</Link>
                 </span>
               </div>
-              <div className={styles.contactLink}>
-                <span className={styles.contactLabel}>Marknadsplatsstatus</span>
-                <span className={styles.contactDescription}>
-                  {expert.plugin.marketplaceListed
-                    ? "Listad i den externa marketplace-katalogen."
-                    : "Inte publicerad i marketplace ännu."}
-                </span>
+            ))}
+            {expert.metrics.map((metric) => (
+              <div key={metric.label} className={styles.metaRow}>
+                <span className={styles.metaLabel}>{metric.label}</span>
+                <span className={styles.metaValue}>{metric.value}</span>
               </div>
-              <a href={expert.plugin.repositoryUrl} className={styles.contactLink}>
-                <span className={styles.contactLabel}>Monorepo</span>
-                <span className={styles.contactDescription}>
-                  Öppna pluginets kanoniska repository.
-                </span>
-              </a>
+            ))}
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Plugin</span>
+              <span className={styles.metaValueMono}>{expert.plugin.name} v{expert.plugin.version}</span>
             </div>
           </aside>
 
-          <div className={styles.timeline}>
-            <article className={styles.detailBlock}>
-              <p className={styles.eyebrow}>Sammanfattning</p>
-              <h2 className={styles.sectionTitle}>Fokusområden</h2>
-              <ul className={styles.detailList}>
-                {expert.strengths.map((strength) => (
-                  <li key={strength}>{strength}</li>
-                ))}
-              </ul>
-            </article>
+          <div className={styles.detailMain}>
+            <h2 className={styles.detailHeading}>Fokusområden</h2>
+            <ul className={styles.simpleList}>
+              {expert.strengths.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
 
-            <article className={styles.detailBlock}>
-              <p className={styles.eyebrow}>Perspektiv</p>
+            <div className={styles.timelineSection}>
               <p className={styles.quote}>{expert.profileQuote}</p>
-            </article>
+            </div>
 
-            <article className={styles.detailBlock}>
-              <p className={styles.eyebrow}>Utvalda uppdrag</p>
-              <div className={styles.timeline}>
-                {expert.selectedEngagements.map((engagement) => (
-                  <div key={engagement.title} className={styles.timelineItem}>
-                    <p className={styles.timelineMeta}>
-                      {engagement.client} · {engagement.period}
-                    </p>
-                    <h3 className={styles.timelineTitle}>{engagement.title}</h3>
-                    <p className={styles.timelineText}>{engagement.summary}</p>
-                    <p className={styles.timelineText}>{engagement.impact}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
+            <div className={styles.timelineSection}>
+              <p className={styles.timelineSectionLabel}>Utvalda uppdrag</p>
+              {expert.selectedEngagements.map((engagement) => (
+                <div key={engagement.title} className={styles.timelineItem}>
+                  <span className={styles.timelinePeriod}>{engagement.client} · {engagement.period}</span>
+                  <p className={styles.timelineTitle}>{engagement.title}</p>
+                  <p className={styles.timelineText}>{engagement.summary}</p>
+                </div>
+              ))}
+            </div>
 
-            <article className={styles.detailBlock}>
-              <p className={styles.eyebrow}>Erfarenhet</p>
-              <div className={styles.timeline}>
-                {expert.experience.map((item) => (
-                  <div key={`${item.organization}-${item.title}`} className={styles.timelineItem}>
-                    <p className={styles.timelineMeta}>
-                      {item.organization} · {item.period}
-                    </p>
-                    <h3 className={styles.timelineTitle}>{item.title}</h3>
-                    <p className={styles.timelineText}>{item.summary}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
+            <div className={styles.timelineSection}>
+              <p className={styles.timelineSectionLabel}>Erfarenhet</p>
+              {expert.experience.map((item) => (
+                <div key={`${item.organization}-${item.title}`} className={styles.timelineItem}>
+                  <span className={styles.timelinePeriod}>{item.organization} · {item.period}</span>
+                  <p className={styles.timelineTitle}>{item.title}</p>
+                  <p className={styles.timelineText}>{item.summary}</p>
+                </div>
+              ))}
+            </div>
 
-            <article className={styles.detailBlock}>
-              <p className={styles.eyebrow}>Utbildning och certifieringar</p>
-              <div className={styles.twoColumn}>
-                <div>
-                  <h3 className={styles.timelineTitle}>Utbildning</h3>
-                  <ul className={styles.detailList}>
-                    {expert.education.map((entry) => (
-                      <li key={entry}>{entry}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className={styles.timelineTitle}>Certifieringar</h3>
-                  <ul className={styles.detailList}>
-                    {expert.certifications.map((entry) => (
-                      <li key={entry}>{entry}</li>
-                    ))}
-                  </ul>
-                </div>
+            <div className={styles.twoCol}>
+              <div>
+                <p className={styles.twoColLabel}>Utbildning</p>
+                <ul className={styles.simpleList}>
+                  {expert.education.map((e) => (
+                    <li key={e}>{e}</li>
+                  ))}
+                </ul>
               </div>
-            </article>
+              <div>
+                <p className={styles.twoColLabel}>Certifieringar</p>
+                <ul className={styles.simpleList}>
+                  {expert.certifications.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-            <article className={styles.detailBlock}>
-              <p className={styles.eyebrow}>Verktyg och metoder</p>
-              <div className={styles.twoColumn}>
-                <div>
-                  <h3 className={styles.timelineTitle}>Verktyg</h3>
-                  <ul className={styles.pillList}>
-                    {expert.tools.map((tool) => (
-                      <li key={tool} className={styles.pill}>
-                        {tool}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className={styles.timelineTitle}>Metoder</h3>
-                  <ul className={styles.pillList}>
-                    {expert.methods.map((method) => (
-                      <li key={method} className={styles.pill}>
-                        {method}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className={styles.twoCol}>
+              <div>
+                <p className={styles.twoColLabel}>Verktyg</p>
+                <ul className={styles.inlineList}>
+                  {expert.tools.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
               </div>
-            </article>
+              <div>
+                <p className={styles.twoColLabel}>Metoder</p>
+                <ul className={styles.inlineList}>
+                  {expert.methods.map((m) => (
+                    <li key={m}>{m}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
