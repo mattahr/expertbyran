@@ -224,6 +224,24 @@
         "Omskriven text i klarspråk enligt Språkrådets riktlinjer",
         "Strukturbedömning med förslag på rubriker och styckeindelning"
       ]
+    },
+    {
+      "slug": "arbetsmarknad",
+      "name": "Arbetsmarknad och sysselsättning",
+      "description": "Arbetsmarknadspolitik, Arbetsförmedlingen, A-kassa och aktiva arbetsmarknadsåtgärder.",
+      "icon": "target"
+    },
+    {
+      "slug": "utbildning",
+      "name": "Utbildning och skolkvalitet",
+      "description": "Utbildningspolitik, skolstyrning, högskolans styrning och kvalitetssäkring.",
+      "icon": "lightbulb"
+    },
+    {
+      "slug": "miljo-klimat",
+      "name": "Miljö, klimat och energi",
+      "description": "Klimatpolitik, miljöstyrning, energisystemet och EU:s klimatreglering.",
+      "icon": "globe"
     }
   ],
   "teams": [
@@ -1416,6 +1434,345 @@
         }
       ],
       "updatedAt": "2026-04-12T07:30:00.000Z"
+    },
+    {
+      "id": "expert-expert-arbetsmarknad",
+      "slug": "expert-arbetsmarknad",
+      "name": "Expert Arbetsmarknad",
+      "role": "Domänexpert: Arbetsmarknad och arbetsmarknadspolitik",
+      "sortOrder": 110,
+      "featured": true,
+      "areaSlugs": [
+        "arbetsmarknad"
+      ],
+      "summary": "Domänexpert inom arbetsmarknadspolitikens kärnfrågor — Arbetsförmedlingens uppdrag och styrning, A-kassans ersättningssystem, IAF:s tillsynsroll och aktiva arbetsmarknadsåtgärder utvärderade med IFAU-metodik.",
+      "profileQuote": "Arbetsmarknadsåtgärders effekter ska mätas rigoröst — politiska intentioner räcker inte som bevis på genomslag.",
+      "availability": "Tillgänglig för sakanalyser inom arbetsmarknadspolitik, Arbetsförmedlingen och A-kassan.",
+      "portrait": {
+        "src": "/avatars/expert-arbetsmarknad.svg",
+        "alt": "Illustration av Expert Arbetsmarknad"
+      },
+      "location": "Virtuell nod, Stockholm",
+      "capabilities": [
+        "Sakanalys av arbetsmarknadspolitik och Arbetsförmedlingens styrning",
+        "Bedömning av aktiva arbetsmarknadsåtgärders effektivitet"
+      ],
+      "knowledge": [
+        "Arbetsmarknadspolitik och Arbetsförmedlingens uppdrag",
+        "A-kassa, AFL och IAF:s tillsynsroll",
+        "Aktiva arbetsmarknadsåtgärder och IFAU-metodik"
+      ],
+      "methods": [
+        "Arbetsmarknadspolitisk analys",
+        "Effektutvärdering (DiD, matchning)",
+        "Styrningsanalys",
+        "Registerbaserad analys"
+      ],
+      "strengths": [
+        "Djup kunskap om Arbetsförmedlingens uppdrag, styrning och matchningsfunktion",
+        "Bedömer A-kassans ersättningssystem och incitamentseffekter",
+        "Tillämpar IFAU-metodik för effektutvärdering av arbetsmarknadsprogram"
+      ],
+      "tools": [
+        "IFAU-data",
+        "Registerdata (SCB/AF)",
+        "Styrningskartor",
+        "Incitamentsmatriser"
+      ],
+      "metrics": [
+        {
+          "label": "Granskningsområden",
+          "value": "5"
+        },
+        {
+          "label": "Referensgranskningar",
+          "value": "3+"
+        },
+        {
+          "label": "Sakanalyser",
+          "value": "15+"
+        }
+      ],
+      "experience": [
+        {
+          "title": "Domänexpert: Arbetsmarknad",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om arbetsmarknadspolitik och aktiva arbetsmarknadsåtgärder till effektivitetsrevisioner."
+        },
+        {
+          "title": "Arbetsmarknadsanalytiker",
+          "organization": "Analytisk enhet, arbetsmarknadspolitik",
+          "period": "2021-2026",
+          "summary": "Utredde effektiviteten hos Arbetsförmedlingens insatser och A-kassans regelsystem med IFAU-metodik."
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Analys av etableringsprogrammets genomslag",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Utredde etableringsprogrammets effekter på sysselsättning för nyanlända med registerdata och matchningsmetoder.",
+          "impact": "Identifierade att programeffekterna varierar kraftigt beroende på kommunal kapacitet och AF-handläggartäthet."
+        },
+        {
+          "title": "Utvärdering av nystartsjobbs incitamentsstruktur",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Analyserade om nystartsjobb når rätt målgrupper och om subventionens storlek är ändamålsenlig.",
+          "impact": "Visade på inlåsningseffekter och möjligheter att bättre rikta insatsen mot de mest utsatta."
+        }
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-arbetsmarknad-email",
+          "type": "email",
+          "label": "Kontakta Expert Arbetsmarknad",
+          "url": "mailto:expert.arbetsmarknad@expertbyran.ai",
+          "description": "För sakanalyser inom arbetsmarknadspolitik, Arbetsförmedlingen och A-kassan."
+        },
+        {
+          "id": "expert-arbetsmarknad-calendar",
+          "type": "calendar",
+          "label": "Boka möte med Expert Arbetsmarknad",
+          "url": "https://calendar.app.google/expert-arbetsmarknad",
+          "description": "Diskutera arbetsmarknadspolitik och effektutvärdering."
+        }
+      ],
+      "plugin": {
+        "name": "expert-expert-arbetsmarknad",
+        "version": "1.0.0",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryPath": "plugins/experts/expert-arbetsmarknad",
+        "marketplaceListed": true
+      },
+      "updatedAt": "2026-04-12T17:30:00.000Z"
+    },
+    {
+      "id": "expert-expert-utbildning",
+      "slug": "expert-utbildning",
+      "name": "Expert Utbildning",
+      "role": "Domänexpert: Utbildning och skolkvalitet",
+      "sortOrder": 120,
+      "featured": true,
+      "areaSlugs": [
+        "utbildning"
+      ],
+      "summary": "Domänexpert inom utbildningspolitikens kärnfrågor — Skolverkets och Skolinspektionens roller, högskolans styrning via UKÄ, friskolesystemets incitamentsstruktur och likvärdighet i det svenska skolsystemet.",
+      "profileQuote": "Likvärdighet i skolan avgörs inte enbart av läroplaner — det handlar om resurstilldelning, styrning och incitamentsstrukturer som påverkar varje elev.",
+      "availability": "Tillgänglig för sakanalyser inom utbildningspolitik, skolstyrning och högskola.",
+      "portrait": {
+        "src": "/avatars/expert-utbildning.svg",
+        "alt": "Illustration av Expert Utbildning"
+      },
+      "location": "Virtuell nod, Stockholm",
+      "capabilities": [
+        "Sakanalys av utbildningspolitik, skolstyrning och högskolans styrning",
+        "Bedömning av likvärdighet, betygsinflation och resurstilldelning"
+      ],
+      "knowledge": [
+        "Utbildningspolitik och skollagstiftning",
+        "Skolverket, Skolinspektionen och UKÄ",
+        "Friskolesystemet, PISA/TIMSS och likvärdighet"
+      ],
+      "methods": [
+        "Skolkvalitetsanalys",
+        "Tillsynsbedömning",
+        "Utbildningsekonomisk analys",
+        "Likvärdighetsanalys"
+      ],
+      "strengths": [
+        "Djup kunskap om grundskola, gymnasie och högskolans styrningssystem",
+        "Bedömer friskolesystemets effekter på likvärdighet och resurstilldelning",
+        "Analyserar betygsinflation och skolsegregation med PISA/TIMSS-data"
+      ],
+      "tools": [
+        "PISA/TIMSS-data",
+        "Skolverkets statistik",
+        "Tillsynsdatabaser",
+        "Resurstilldelningsmatriser"
+      ],
+      "metrics": [
+        {
+          "label": "Granskningsområden",
+          "value": "5"
+        },
+        {
+          "label": "Referensgranskningar",
+          "value": "3+"
+        },
+        {
+          "label": "Sakanalyser",
+          "value": "15+"
+        }
+      ],
+      "experience": [
+        {
+          "title": "Domänexpert: Utbildning",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om utbildningspolitik och skolstyrning till effektivitetsrevisioner."
+        },
+        {
+          "title": "Utbildningsanalytiker",
+          "organization": "Analytisk enhet, utbildningspolitik",
+          "period": "2021-2026",
+          "summary": "Utredde friskolesystemets effekter, högskolans styrning och likvärdighet i det svenska utbildningssystemet."
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Analys av Skolinspektionens tillsynseffektivitet",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Utredde om Skolinspektionens tillsyn leder till faktiska förbättringar i skolor med låga resultat.",
+          "impact": "Identifierade brister i uppföljningsmekanismer och rekommenderade skärpt återkopplingssystem."
+        },
+        {
+          "title": "Granskning av friskolesystemets likvärdighetseffekter",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Analyserade hur skolpengsystemet påverkar resurstilldelning och segregation i kommuner med hög friskoleandel.",
+          "impact": "Visade på systematiska skillnader i resurstilldelning som förstärker skolsegregationen."
+        }
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-utbildning-email",
+          "type": "email",
+          "label": "Kontakta Expert Utbildning",
+          "url": "mailto:expert.utbildning@expertbyran.ai",
+          "description": "För sakanalyser inom utbildningspolitik, skolstyrning och högskola."
+        },
+        {
+          "id": "expert-utbildning-calendar",
+          "type": "calendar",
+          "label": "Boka möte med Expert Utbildning",
+          "url": "https://calendar.app.google/expert-utbildning",
+          "description": "Diskutera utbildningspolitik och skolkvalitet."
+        }
+      ],
+      "plugin": {
+        "name": "expert-expert-utbildning",
+        "version": "1.0.0",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryPath": "plugins/experts/expert-utbildning",
+        "marketplaceListed": true
+      },
+      "updatedAt": "2026-04-12T17:30:00.000Z"
+    },
+    {
+      "id": "expert-expert-miljo-klimat",
+      "slug": "expert-miljo-klimat",
+      "name": "Expert Miljö & Klimat",
+      "role": "Domänexpert: Miljö, klimat och energipolitik",
+      "sortOrder": 130,
+      "featured": true,
+      "areaSlugs": [
+        "miljo-klimat"
+      ],
+      "summary": "Domänexpert inom klimat-, miljö- och energipolitik — det klimatpolitiska ramverket, miljöbalkens tillståndsprocesser, energisystemets styrning och EU:s klimatreglering (EU ETS, taxonomin, Green Deal, CBAM).",
+      "profileQuote": "Klimatomställningens hastighet avgörs av om tillståndsprocesserna och styrmedlen faktiskt fungerar — inte av deklarationer om netto noll.",
+      "availability": "Tillgänglig för sakanalyser inom klimatpolitik, miljöstyrning och energisystemet.",
+      "portrait": {
+        "src": "/avatars/expert-miljo-klimat.svg",
+        "alt": "Illustration av Expert Miljö & Klimat"
+      },
+      "location": "Virtuell nod, Stockholm",
+      "capabilities": [
+        "Sakanalys av klimat-, miljö- och energipolitik samt styrmedel",
+        "Bedömning av tillståndsprocesser och EU:s klimatreglering"
+      ],
+      "knowledge": [
+        "Klimatpolitiska ramverket och klimatlagen",
+        "Miljöbalken, tillståndsprocesser och Naturvårdsverket",
+        "EU ETS, taxonomiförordningen, Green Deal och CBAM"
+      ],
+      "methods": [
+        "Klimatpolitisk analys",
+        "Miljörättslig granskning",
+        "Energisystemsanalys",
+        "EU-regleringsanalys"
+      ],
+      "strengths": [
+        "Djup kunskap om det klimatpolitiska ramverket och netto noll 2045-målet",
+        "Bedömer miljöbalkens tillståndsprocesser och MKB:s effektivitet",
+        "Analyserar EU:s klimatreglering och dess genomslag i svenska myndigheter"
+      ],
+      "tools": [
+        "Utsläppsdata (Naturvårdsverket)",
+        "EU ETS-register",
+        "Energistatistik (Energimyndigheten)",
+        "Tillståndsprocessdatabaser"
+      ],
+      "metrics": [
+        {
+          "label": "Granskningsområden",
+          "value": "5"
+        },
+        {
+          "label": "Referensgranskningar",
+          "value": "3+"
+        },
+        {
+          "label": "Sakanalyser",
+          "value": "15+"
+        }
+      ],
+      "experience": [
+        {
+          "title": "Domänexpert: Miljö & Klimat",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om klimatpolitik, miljöstyrning och energisystem till effektivitetsrevisioner."
+        },
+        {
+          "title": "Klimat- och miljöanalytiker",
+          "organization": "Analytisk enhet, klimat och miljö",
+          "period": "2021-2026",
+          "summary": "Utredde klimatpolitiska styrmedels effektivitet och EU-regleringens genomslag i Sverige."
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Analys av klimatlagens genomslag i statliga myndigheter",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Utredde hur klimatlagen och netto noll 2045-målet omsätts i myndigheternas verksamhetsplanering och resultatstyrning.",
+          "impact": "Identifierade systematiska brister i hur myndigheterna integrerar klimatmålen i sin styrning."
+        },
+        {
+          "title": "Granskning av miljöbalkens tillståndsprocesser",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Analyserade om tillståndsprocessernas längd och komplexitet utgör ett hinder för klimatomställningen.",
+          "impact": "Visade på strukturella flaskhalsar och föreslog processomdisponeringar för snabbare klimatomställning."
+        }
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-miljo-klimat-email",
+          "type": "email",
+          "label": "Kontakta Expert Miljö & Klimat",
+          "url": "mailto:expert.miljo.klimat@expertbyran.ai",
+          "description": "För sakanalyser inom klimatpolitik, miljöstyrning och energisystemet."
+        },
+        {
+          "id": "expert-miljo-klimat-calendar",
+          "type": "calendar",
+          "label": "Boka möte med Expert Miljö & Klimat",
+          "url": "https://calendar.app.google/expert-miljo-klimat",
+          "description": "Diskutera klimatpolitik, miljöstyrning och EU-reglering."
+        }
+      ],
+      "plugin": {
+        "name": "expert-expert-miljo-klimat",
+        "version": "1.0.0",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryPath": "plugins/experts/expert-miljo-klimat",
+        "marketplaceListed": true
+      },
+      "updatedAt": "2026-04-12T17:30:00.000Z"
     }
   ]
 }
