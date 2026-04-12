@@ -14,13 +14,15 @@
 
 ## Kvantitativ analytiker
 
-* **Domän:** Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens
-* **Triggers:** registerdata, statistisk analys, kausalinferens, kvantitativa iakttagelser, osäkerhetsmarginaler, tidsserier, korrelation, GRF, Causal Random Forest, heterogena behandlingseffekter, CATE, Synthetic DiD
+* **Domän:** Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens, BSTS/CausalImpact, DEA/benchmarking, Double Machine Learning
+* **Triggers:** registerdata, statistisk analys, kausalinferens, kvantitativa iakttagelser, osäkerhetsmarginaler, tidsserier, korrelation, GRF, Causal Random Forest, heterogena behandlingseffekter, CATE, Synthetic DiD, BSTS, CausalImpact, bayesiansk tidsserieanalys, DEA, Data Envelopment Analysis, benchmarking kommunal sektor, DML, Double Machine Learning, Causal Forests, honest estimation
 * **Capabilities:**
   * **kvantitativ-analys** — Leverera kvantitativa iakttagelser med full precision
   * **registeruttag** — Leta upp och kvalitetskontrollera registerdata från offentliga källor
   * **kausalitetsprovning** — Pröva kausalitet med temporal ordning, kovariation och eliminering
-  * **ml-kausalinferens** — Causal Random Forest/GRF (Athey 2019) för CATE och Synthetic DiD (Arkhangelsky 2021); ML löser dimensionalitet, inte confounding
+  * **ml-kausalinferens** — DML (Chernozhukov 2018), Causal Random Forest/GRF (Athey 2019) för CATE och Synthetic DiD (Arkhangelsky 2021); ML löser dimensionalitet, inte confounding
+  * **bsts-causalimpact** — Bayesiansk strukturell tidsserieanalys (Brodersen m.fl. 2015) — kausalinferens vid svag donor pool
+  * **dea-benchmarking** — DEA med bootstrapped konfidensintervall (Simar & Wilson 1998), VRS-modellering, R-paketet Benchmarking
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/kvantitativ-analytiker/EXPERT.md
 * **Kan kedja till:** effektivitetsrevisor, kvalitetsgranskare
 

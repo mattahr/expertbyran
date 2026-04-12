@@ -494,7 +494,7 @@
         "src": "/avatars/kvantitativ-analytiker.svg",
         "alt": "Illustration av Kvantitativ analytiker"
       },
-      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Ny primär metodskill: ML-baserad kausalinferens — Causal Random Forest/GRF (Athey m.fl. 2019) för heterogena behandlingseffekter (CATE) och Synthetic DiD (Arkhangelsky m.fl. 2021). ML löser dimensionalitet, inte confounding.",
+      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Tre nya primära metodskills (2026-04-12): Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact, Brodersen m.fl. 2015) för kausalinferens vid svag donor pool; Data Envelopment Analysis (DEA) med bootstrapped konfidensintervall (Simar & Wilson 1998) för benchmarking av kommunal effektivitet; utökat kausal ML-ramverk med Double Machine Learning (DML, Chernozhukov m.fl. 2018), Causal Forests (honest estimation) och Synthetic DiD (Arkhangelsky m.fl. 2021).",
       "profileQuote": "Korrelation är aldrig nog. En kausal slutsats kräver temporal ordning, kovariation, eliminering av alternativa förklaringar och en beskriven mekanism.",
       "strengths": [
         "Levererar kvantitativa iakttagelser med full precision enligt vetenskapliga krav 4.3",
@@ -548,25 +548,34 @@
       "knowledge": [
         "Statistik, ekonometri och registerbaserad analys",
         "Kausalinferens och kvantitativa forskningsmetoder",
-        "ML-baserad kausalinferens: GRF (Athey m.fl. 2019) och Synthetic DiD (Arkhangelsky m.fl. 2021)"
+        "ML-baserad kausalinferens: GRF (Athey m.fl. 2019), DML (Chernozhukov m.fl. 2018) och Synthetic DiD (Arkhangelsky m.fl. 2021)",
+        "Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact) — Brodersen m.fl. 2015",
+        "Data Envelopment Analysis (DEA) — bootstrapped DEA (Simar & Wilson 1998), VRS-modellering"
       ],
       "capabilities": [
         "Kvantitativ analys av registerdata med precision och osäkerhetsbedömning",
         "Kausalitetsprövning med temporal ordning, kovariation och eliminering",
         "Registeruttag — leta upp och kvalitetskontrollera registerdata från offentliga källor",
-        "ML-baserad kausalinferens — GRF för heterogena behandlingseffekter (CATE) och Synthetic DiD"
+        "ML-baserad kausalinferens — DML för hög-dimensionell ATE-estimering, GRF för heterogena behandlingseffekter (CATE) och Synthetic DiD",
+        "BSTS/CausalImpact — kausalinferens i tidsserier vid svag donor pool (Brodersen m.fl. 2015)",
+        "DEA med bootstrapped konfidensintervall — benchmarking-design för kommunal sektor, VRS-modellering (Simar & Wilson 1998)"
       ],
       "tools": [
         "Registeruttag",
         "Statistiska testbatterier",
         "Osäkerhetsmodeller",
-        "Tidsseriediagram"
+        "Tidsseriediagram",
+        "R: Benchmarking (DEA)",
+        "R: CausalImpact (BSTS)"
       ],
       "methods": [
         "Kausalinferens",
         "Registeranalys",
-        "GRF / Causal Random Forest",
-        "Synthetic DiD"
+        "GRF / Causal Random Forest (honest estimation)",
+        "Double Machine Learning (DML)",
+        "Synthetic DiD",
+        "BSTS / CausalImpact",
+        "Data Envelopment Analysis (DEA)"
       ],
       "plugin": {
         "name": "expert-kvantitativ-analytiker",
@@ -591,7 +600,7 @@
           "description": "Diskutera dataunderlag och analysupplägg."
         }
       ],
-      "updatedAt": "2026-04-12T07:30:00.000Z"
+      "updatedAt": "2026-04-13T08:00:00.000Z"
     },
     {
       "id": "expert-kvalitativ-metodexpert",
