@@ -21,5 +21,5 @@ Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog
 
 - Webbappen är read-only i drift.
 - `site-data.json` hämtas från `SITE_DATA_URL`.
-- Det finns ingen skrivväg eller admin-API i denna app.
-- `mattahr/expertbyran` är källa för katalogsnapshoten (`web/site-data.json`); pluginer distribueras via extern marketplace/pluginrepo (`mattahr/expertbyran-plugins`).
+- `GET /refresh` kan användas för att tvinga ny inläsning av snapshoten i processminnet.
+- `mattahr/expertbyran` är källa både för katalogsnapshoten (`web/site-data.json`) och för marknadsplatsens GitHub-referens.

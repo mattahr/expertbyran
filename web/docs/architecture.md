@@ -6,7 +6,7 @@ Expertbyrån är en enkel Next.js-applikation med en enda roll:
 
 - publik webb på port `3000`
 
-Allt innehåll läses som en validerad JSON-snapshot. Webbappen skriver inte data och exponerar inget admin-API.
+Allt innehåll läses som en validerad JSON-snapshot. Webbappen skriver inte persistent data, men exponerar en enkel publik route för att tvinga cacheuppdatering.
 
 ## Huvuddelar
 
@@ -20,7 +20,6 @@ Publika sidor renderar:
 - expertsidor
 - teamsidor
 - marknadsplatssida
-- kontaktsida
 
 Katalogen visar både mänsklig information och pluginmetadata.
 
@@ -35,11 +34,11 @@ Om fjärrläsningen misslyckas används senast giltiga snapshot i processminnet.
 
 ### 3. Marketplace-källor
 
-Snapshoten `site-data.json` ligger i samma monorepo som webbappen (`mattahr/expertbyran`) under `web/site-data.json`. Den kanoniska Claude Code-marketplacen distribueras dock från ett separat pluginrepo:
+Snapshoten `site-data.json` ligger i samma monorepo som webbappen (`mattahr/expertbyran`) under `web/site-data.json`. Marknadsplatsreferensen pekar också på samma repo:
 
 - snapshot repository: `https://github.com/mattahr/expertbyran` (monorepo — webbapp, marketplace-plugin och snapshot)
-- plugin repository: `https://github.com/mattahr/expertbyran-plugins`
-- canonical marketplace: `https://raw.githubusercontent.com/mattahr/expertbyran-plugins/main/.claude-plugin/marketplace.json`
+- marketplace repository: `https://github.com/mattahr/expertbyran`
+- marketplace.json: `https://raw.githubusercontent.com/mattahr/expertbyran/main/.claude-plugin/marketplace.json`
 
 Webbappen håller bara referenser till dessa källor.
 
@@ -51,6 +50,8 @@ Webbappen håller bara referenser till dessa källor.
 4. Snapshoten valideras.
 5. Vid fel används senast cacheade snapshot i minnet om en sådan finns.
 6. Sidan renderas med den senaste giltiga snapshoten.
+
+`GET /refresh` hoppar direkt till steg 3 och tvingar en ny hämtning oavsett cacheålder.
 
 ## Publika schemafiler
 

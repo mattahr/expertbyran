@@ -22,7 +22,7 @@
       "Tydlig ansvarsfördelning mellan experter",
       "Spårbar leveranslogik från analys till kvalitet",
       "Specialisering utan manuell overhead",
-      "Innehåll och drift styrs genom API",
+      "Marknadsplatsen publiceras via GitHub",
       "Webbkatalog och pluginmetadata hålls i synk av backend-agenter"
     ]
   },
@@ -90,51 +90,15 @@
       }
     ]
   },
-  "contact": {
-    "heading": "Kontakt via API",
-    "intro": "Kontakt med Expertbyrån kommer att ske via ett separat API när den kanalen publiceras. Webbplatsen används tills vidare för att beskriva byrån, expertområdena och de experter som ingår i organisationen.",
-    "availability": "Ingen e-post, mötesbokning eller annan manuell kontaktkanal exponeras före lansering. När API:t publiceras kommer förfrågningar och fortsatt kommunikation att ske strukturerat där.",
-    "responseTime": "Kontaktkanal publiceras vid lansering.",
-    "channels": [
-      {
-        "id": "contact-api-intake",
-        "label": "API för uppdragsförfrågan",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/intake",
-        "description": "Planerad ingång för nya förfrågningar, uppdragsbeskrivningar och grunddata."
-      },
-      {
-        "id": "contact-api-followup",
-        "label": "API för kompletteringar",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/follow-up",
-        "description": "Planerad kanal för kompletteringar, förtydliganden och strukturerad återkoppling."
-      },
-      {
-        "id": "contact-api-status",
-        "label": "API för ärendestatus",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/status",
-        "description": "Planerad läsyta för status, mottagningsbekräftelser och nästa steg i ett ärende."
-      },
-      {
-        "id": "contact-api-docs",
-        "label": "API-dokumentation",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/docs",
-        "description": "Planerad dokumentation för autentisering, payloadformat och användning av kontaktkanalen."
-      }
-    ]
-  },
   "marketplace": {
     "name": "expertbyran",
-    "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran-plugins/main/.claude-plugin/marketplace.json",
+    "repositoryUrl": "https://github.com/mattahr/expertbyran",
+    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran/main/.claude-plugin/marketplace.json",
     "installSource": {
       "source": "github",
-      "repo": "mattahr/expertbyran-plugins"
+      "repo": "mattahr/expertbyran"
     },
-    "description": "Expertbyrån publicerar inte plugins från den här webbappen. Den kanoniska Claude Code-marketplacen och all pluginkod ligger i det publika monorepot, medan webbplatsen visar samma experter, team och pluginreferenser i mänskligt läsbar form."
+    "description": "Expertbyråns marknadsplats finns i GitHub-repot mattahr/expertbyran."
   },
   "expertAreas": [
     {
@@ -236,7 +200,7 @@
       "plugin": {
         "name": "team-uppdragsarkitektur-styrning",
         "repositoryPath": "plugins/teams/uppdragsarkitektur-styrning",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -258,7 +222,7 @@
       "plugin": {
         "name": "team-ai-tjanst-interaktion",
         "repositoryPath": "plugins/teams/ai-tjanst-interaktion",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -280,7 +244,7 @@
       "plugin": {
         "name": "team-operativ-automation-kvalitet",
         "repositoryPath": "plugins/teams/operativ-automation-kvalitet",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -380,7 +344,7 @@
       "plugin": {
         "name": "expert-astrid-rane",
         "repositoryPath": "plugins/experts/astrid-rane",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -495,7 +459,7 @@
       "plugin": {
         "name": "expert-nils-vector",
         "repositoryPath": "plugins/experts/nils-vector",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -602,7 +566,7 @@
       "plugin": {
         "name": "expert-saga-interface",
         "repositoryPath": "plugins/experts/saga-interface",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -713,7 +677,7 @@
       "plugin": {
         "name": "expert-milo-prompt",
         "repositoryPath": "plugins/experts/milo-prompt",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -821,7 +785,7 @@
       "plugin": {
         "name": "expert-elin-metrik",
         "repositoryPath": "plugins/experts/elin-metrik",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -925,7 +889,7 @@
       "plugin": {
         "name": "expert-aron-ledger",
         "repositoryPath": "plugins/experts/aron-ledger",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -1033,7 +997,7 @@
       "plugin": {
         "name": "expert-vera-syntax",
         "repositoryPath": "plugins/experts/vera-syntax",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -1144,7 +1108,7 @@
       "plugin": {
         "name": "expert-idris-guard",
         "repositoryPath": "plugins/experts/idris-guard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },

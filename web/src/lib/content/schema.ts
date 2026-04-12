@@ -245,13 +245,6 @@ export const siteDataSchema = z
       operations: z.array(metricSchema).min(3),
       workflow: z.array(richListItemSchema).min(3),
     }),
-    contact: z.object({
-      heading: z.string().min(1),
-      intro: z.string().min(1),
-      availability: z.string().min(1),
-      responseTime: z.string().min(1),
-      channels: z.array(contactLinkSchema).min(2),
-    }),
     marketplace: marketplaceSchema,
     expertAreas: z.array(areaSchema).min(1),
     teams: z.array(teamSchema).min(1),

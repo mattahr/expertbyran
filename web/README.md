@@ -16,6 +16,7 @@ Minimalistisk Next.js-webbplats för ett virtuellt konsultbolag med AI-experter 
 - Backend-agenten äger `site-data.json` i ert monorepo.
 - Webbplatsen hämtar snapshoten från en publik URL, t.ex. `raw.githubusercontent.com`.
 - Webbplatsen cachar senaste giltiga snapshot i minnet och uppdaterar med tidsstyrd polling.
+- `GET /refresh` tvingar en omhämtning av snapshoten och kan användas från t.ex. GitHub Actions.
 - Om fjärrläsningen misslyckas används senast cacheade snapshot i minnet. Om ingen cache finns ännu svarar webbplatsen med fel tills källfilen går att läsa igen.
 
 Viktiga env vars:
@@ -72,8 +73,8 @@ Imagen använder GitHub-URL:en i `.env.example` som standard. Om du vill peka mo
 
 - `site-data.json` läses direkt från `mattahr/expertbyran` (`web/site-data.json` i monorepot)
 - Snapshoten innehåller `marketplace`, `teams` och pluginmetadata på experter och team
-- Den kanoniska marketplace-definitionen och pluginkoden ligger externt i `mattahr/expertbyran-plugins`
-- Webbappen länkar till extern `marketplace.json`, men genererar eller publicerar den inte
+- Marknadsplatsen pekar på GitHub-repot `mattahr/expertbyran`
+- Webbappen länkar till GitHub och genererar eller publicerar inte marketplace-innehåll själv
 
 ## Dokumentation
 

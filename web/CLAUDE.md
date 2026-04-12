@@ -4,7 +4,7 @@ Denna mapp (`web/`) är **den publika Next.js-webbplatsen** för Expertbyrån. D
 
 ## Syfte
 
-Read-only katalog som presenterar Expertbyråns experter, team, expertområden och marketplace-metadata. Webbappen skriver inte data, har inget admin-API, och innehåller ingen autentisering.
+Read-only katalog som presenterar Expertbyråns experter, team, expertområden och marketplace-metadata. Webbappen skriver inte persistent data, innehåller ingen autentisering, och exponerar bara en enkel publik refresh-route för cacheuppdatering.
 
 ## Datamodell
 
@@ -12,7 +12,7 @@ All presentationsdata ligger i **en enda JSON-fil**: [site-data.json](site-data.
 
 * **Källa vid runtime**: `SITE_DATA_URL` (default: hämtas från GitHub via `raw.githubusercontent.com`) — se [src/lib/content/store.ts](src/lib/content/store.ts).
 * **Källa vid utveckling**: samma fil lokalt i repot (`web/site-data.json`). Fungerar som test-fixture och som det kanoniska innehållet som driftsatta containrar hämtar.
-* **Snapshot-modell**: webbappen cachar senaste giltiga snapshot i minnet och pollar med `SITE_DATA_REVALIDATE_SECONDS`. Om hämtning misslyckas används cachen; om ingen cache finns svarar appen med fel.
+* **Snapshot-modell**: webbappen cachar senaste giltiga snapshot i minnet och pollar med `SITE_DATA_REVALIDATE_SECONDS`. `GET /refresh` tvingar också en ny hämtning. Om hämtning misslyckas används cachen; om ingen cache finns svarar appen med fel.
 
 `site-data.json` uppdateras av [expertbyran-manager-skillen](../paperclip/skills/local/expertbyran-manager/) när nya experter läggs till i `marketplace/`-pluginen.
 
@@ -37,7 +37,7 @@ Viktiga miljövariabler för containern:
 ## Konventioner
 
 * **Svenska med korrekta å, ä, ö** i all UI-text, docs, kommentarer.
-* **Ingen write-path** — webbplatsen är avsiktligt read-only. Lägg inte till endpoint, form, eller API som muterar data.
+* **Ingen persistent write-path** — webbplatsen är avsiktligt read-only. Behåll eventuella endpoints begränsade till cache/refresh; lägg inte till form eller API som muterar källdata.
 * **Validera alltid** — snapshoten får aldrig användas utan att ha passerat Zod-schemat.
 
 ## Vanliga kommandon

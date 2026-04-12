@@ -14,7 +14,6 @@ const navigation = [
   { href: "/expertomraden", label: "Expertområden" },
   { href: "/team", label: "Team" },
   { href: "/marknadsplats", label: "Marknadsplats" },
-  { href: "/kontakt", label: "Kontakt/API" },
 ] as const;
 
 export async function SiteChrome({ children }: SiteChromeProps) {
@@ -61,7 +60,7 @@ export async function SiteChrome({ children }: SiteChromeProps) {
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
           <p>{data.site.name} är ett helt virtuellt specialistföretag med AI-baserad bemanning.</p>
-          <p>Plugins och kanonisk marketplace ligger externt i monorepot och speglas här som katalog.</p>
+          <p>Marknadsplatsen finns i GitHub-repot mattahr/expertbyran och speglas här som katalog.</p>
         </div>
       </footer>
     </div>

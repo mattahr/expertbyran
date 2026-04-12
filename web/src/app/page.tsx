@@ -116,14 +116,14 @@ export default async function HomePage() {
         <div className={styles.twoColumn}>
           <div className={styles.detailBlock}>
             <p className={styles.eyebrow}>Marknadsplats</p>
-            <h2 className={styles.sectionTitle}>Extern pluginmarknadsplats med samma expertkatalog.</h2>
+            <h2 className={styles.sectionTitle}>Marknadsplatsen finns i GitHub-repot.</h2>
             <p className={styles.sectionText}>{data.marketplace.description}</p>
             <div className={styles.heroActions}>
               <Link href={"/marknadsplats" as Route} className={styles.buttonPrimary}>
-                Se installationsinformation
+                Visa GitHub-länk
               </Link>
               <a href={data.marketplace.repositoryUrl} className={styles.buttonSecondary}>
-                Öppna monorepo
+                Öppna GitHub
               </a>
             </div>
           </div>
@@ -132,29 +132,6 @@ export default async function HomePage() {
               <article key={step.title} className={styles.timelineItem}>
                 <h3 className={styles.timelineTitle}>{step.title}</h3>
                 <p className={styles.timelineText}>{step.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.section}>
-        <div className={styles.twoColumn}>
-          <div className={styles.detailBlock}>
-            <p className={styles.eyebrow}>Kontakt</p>
-            <h2 className={styles.sectionTitle}>Operativ kontakt hanteras separat från webbplatsen.</h2>
-            <p className={styles.sectionText}>{data.contact.intro}</p>
-            <div className={styles.heroActions}>
-              <Link href="/kontakt" className={styles.buttonSecondary}>
-                Läs om kontaktmodellen
-              </Link>
-            </div>
-          </div>
-          <div className={styles.timeline}>
-            {data.contact.channels.map((channel) => (
-              <article key={channel.id} className={styles.timelineItem}>
-                <h3 className={styles.timelineTitle}>{channel.label}</h3>
-                <p className={styles.timelineText}>{channel.description}</p>
               </article>
             ))}
           </div>

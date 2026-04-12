@@ -22,7 +22,7 @@
       "Tydlig ansvarsfördelning mellan experter",
       "Spårbar leveranslogik från analys till kvalitet",
       "Specialisering utan manuell overhead",
-      "Innehåll och drift styrs genom API",
+      "Marknadsplatsen publiceras via GitHub",
       "Webbkatalog och pluginmetadata hålls i synk av backend-agenter"
     ]
   },
@@ -90,51 +90,15 @@
       }
     ]
   },
-  "contact": {
-    "heading": "Kontakt via API",
-    "intro": "Kontakt med Expertbyrån kommer att ske via ett separat API när den kanalen publiceras. Webbplatsen används tills vidare för att beskriva byrån, expertområdena och de experter som ingår i organisationen.",
-    "availability": "Ingen e-post, mötesbokning eller annan manuell kontaktkanal exponeras före lansering. När API:t publiceras kommer förfrågningar och fortsatt kommunikation att ske strukturerat där.",
-    "responseTime": "Kontaktkanal publiceras vid lansering.",
-    "channels": [
-      {
-        "id": "contact-api-intake",
-        "label": "API för uppdragsförfrågan",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/intake",
-        "description": "Planerad ingång för nya förfrågningar, uppdragsbeskrivningar och grunddata."
-      },
-      {
-        "id": "contact-api-followup",
-        "label": "API för kompletteringar",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/follow-up",
-        "description": "Planerad kanal för kompletteringar, förtydliganden och strukturerad återkoppling."
-      },
-      {
-        "id": "contact-api-status",
-        "label": "API för ärendestatus",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/status",
-        "description": "Planerad läsyta för status, mottagningsbekräftelser och nästa steg i ett ärende."
-      },
-      {
-        "id": "contact-api-docs",
-        "label": "API-dokumentation",
-        "type": "website",
-        "url": "https://expertbyran.ai/api/docs",
-        "description": "Planerad dokumentation för autentisering, payloadformat och användning av kontaktkanalen."
-      }
-    ]
-  },
   "marketplace": {
     "name": "expertbyran",
-    "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran-plugins/main/.claude-plugin/marketplace.json",
+    "repositoryUrl": "https://github.com/mattahr/expertbyran",
+    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran/main/.claude-plugin/marketplace.json",
     "installSource": {
       "source": "github",
-      "repo": "mattahr/expertbyran-plugins"
+      "repo": "mattahr/expertbyran"
     },
-    "description": "Expertbyrån publicerar inte plugins från den här webbappen. Den kanoniska Claude Code-marketplacen och all pluginkod ligger i det publika monorepot, medan webbplatsen visar samma experter, team och pluginreferenser i mänskligt läsbar form."
+    "description": "Expertbyråns marknadsplats finns i GitHub-repot mattahr/expertbyran."
   },
   "expertAreas": [
     {
@@ -258,7 +222,7 @@
       "plugin": {
         "name": "team-revisionsmetodik",
         "repositoryPath": "plugins/teams/revisionsmetodik",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -281,7 +245,7 @@
       "plugin": {
         "name": "team-domanexperter",
         "repositoryPath": "plugins/teams/domanexperter",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -378,7 +342,7 @@
       "plugin": {
         "name": "expert-effektivitetsrevisor",
         "repositoryPath": "plugins/experts/effektivitetsrevisor",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -490,7 +454,7 @@
       "plugin": {
         "name": "expert-kvantitativ-analytiker",
         "repositoryPath": "plugins/experts/kvantitativ-analytiker",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -602,7 +566,7 @@
       "plugin": {
         "name": "expert-kvalitativ-metodexpert",
         "repositoryPath": "plugins/experts/kvalitativ-metodexpert",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -714,7 +678,7 @@
       "plugin": {
         "name": "expert-rattslig-utredare",
         "repositoryPath": "plugins/experts/rattslig-utredare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -825,7 +789,7 @@
       "plugin": {
         "name": "expert-kvalitetsgranskare",
         "repositoryPath": "plugins/experts/kvalitetsgranskare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -936,7 +900,7 @@
       "plugin": {
         "name": "expert-expert-finanser",
         "repositoryPath": "plugins/experts/expert-finanser",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -1047,7 +1011,7 @@
       "plugin": {
         "name": "expert-expert-digitalisering",
         "repositoryPath": "plugins/experts/expert-digitalisering",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -1158,7 +1122,7 @@
       "plugin": {
         "name": "expert-expert-rattsvasende",
         "repositoryPath": "plugins/experts/expert-rattsvasende",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },
@@ -1269,7 +1233,7 @@
       "plugin": {
         "name": "expert-expert-valfard",
         "repositoryPath": "plugins/experts/expert-valfard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       },

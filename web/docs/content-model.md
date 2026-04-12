@@ -20,7 +20,6 @@ Snapshoten innehåller:
 - `updatedAt`
 - `site`
 - `organization`
-- `contact`
 - `marketplace`
 - `expertAreas`
 - `teams`
@@ -28,7 +27,7 @@ Snapshoten innehåller:
 
 ## Marketplace
 
-`marketplace` beskriver den externa källan för plugins och innehåller:
+`marketplace` beskriver GitHub-källan för marknadsplatsen och innehåller:
 
 - `name`
 - `repositoryUrl`

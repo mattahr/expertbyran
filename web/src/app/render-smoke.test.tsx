@@ -9,7 +9,6 @@ vi.mock("@/lib/content/store", () => ({
   getSiteData: vi.fn(async () => siteData),
 }));
 
-import ContactPage from "./kontakt/page";
 import ExpertAreaDetailPage from "./expertomraden/[slug]/page";
 import ExpertDetailPage from "./experter/[slug]/page";
 import MarketplacePage from "./marknadsplats/page";
@@ -52,13 +51,6 @@ describe("public pages", () => {
     expect(html).toContain(siteData.experts[0].plugin.name);
   });
 
-  it("renders the contact page", async () => {
-    const html = renderToStaticMarkup(await ContactPage());
-
-    expect(html).toContain(siteData.contact.heading);
-    expect(html).toContain(siteData.contact.channels[0].label);
-  });
-
   it("renders the teams page", async () => {
     const html = renderToStaticMarkup(await TeamsPage());
 
@@ -80,7 +72,7 @@ describe("public pages", () => {
   it("renders the marketplace page", async () => {
     const html = renderToStaticMarkup(await MarketplacePage());
 
-    expect(html).toContain(siteData.marketplace.repositoryUrl);
-    expect(html).toContain("/schemas/plugin-sync.schema.json");
+    expect(html).toContain("https://github.com/mattahr/expertbyran");
+    expect(html).toContain("mattahr/expertbyran");
   });
 });

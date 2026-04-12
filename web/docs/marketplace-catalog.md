@@ -2,12 +2,12 @@
 
 ## Syfte
 
-Webbappen är en publik katalog för Expertbyråns externa Claude Code-marketplace. Den beskriver:
+Webbappen är en publik katalog för Expertbyråns marknadsplats på GitHub. Den beskriver:
 
 - vilka experter som finns
 - vilka kuraterade team som finns
 - vilka plugins som motsvarar dessa objekt
-- var den kanoniska marketplace-definitionen och pluginkoden ligger
+- var GitHub-repot för marknadsplatsen finns
 
 ## Ansvarsfördelning
 
@@ -15,20 +15,16 @@ Webbappen ansvarar för:
 
 - publik presentation av experter, team och expertområden
 - validerad pluginmetadata i snapshoten
-- länkar till monorepo och kanonisk `marketplace.json`
+- länk till GitHub-repot för marknadsplatsen
 - publika schemafiler för vidareutveckling
 
 Monorepot `mattahr/expertbyran` ansvarar för:
 
 - kanonisk `web/site-data.json`
+- `.claude-plugin/marketplace.json`
+- faktisk pluginkod
 - publik `web/`-yta för katalogrelaterade artefakter
 - versionssättning av katalogmetadata
-
-Det separata pluginmonorepot ansvarar för:
-
-- faktisk pluginkod
-- `.claude-plugin/marketplace.json`
-- filstruktur för plugins
 
 Den externa backend-agenten ansvarar för:
 
@@ -48,10 +44,7 @@ Webbplatsen visar för varje expert och team:
 
 På `/marknadsplats` visas även:
 
-- `repositoryUrl`
-- `marketplaceJsonUrl`
-- `installSource`
-- länkar till publika schemafiler
+- en enkel hänvisning till `https://github.com/mattahr/expertbyran`
 
 ## Vad webbappen inte gör
 
