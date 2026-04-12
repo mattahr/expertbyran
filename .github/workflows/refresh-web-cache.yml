@@ -1,0 +1,30 @@
+name: Refresh Web Cache
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Refresh expertbyran.ahrens.nu
+        shell: bash
+        run: |
+          response="$(
+            curl \
+              --fail \
+              --show-error \
+              --silent \
+              --location \
+              --retry 5 \
+              --retry-delay 5 \
+              --retry-all-errors \
+              --max-time 30 \
+              https://expertbyran.ahrens.nu/refresh
+          )"
+
+          echo "$response"
