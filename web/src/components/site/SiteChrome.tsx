@@ -1,7 +1,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 
-import { getOrderedSiteData } from "@/lib/content/query";
+import { getSiteData } from "@/lib/content/store";
 
 import styles from "./site.module.css";
 
@@ -17,41 +17,22 @@ const navigation = [
 ] as const;
 
 export async function SiteChrome({ children }: SiteChromeProps) {
-  const data = await getOrderedSiteData();
+  const data = await getSiteData();
 
   return (
     <div className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <div className={styles.headerTop}>
-            <Link href="/" className={styles.brand}>
-              <span className={styles.brandName}>{data.site.name}</span>
-              <span className={styles.brandTagline}>{data.site.tagline}</span>
-            </Link>
-
-            <nav className={styles.nav} aria-label="Primär navigering">
-              {navigation.map((item) => (
-                <Link key={item.href} href={item.href as Route} className={styles.navLink}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          <div className={styles.areaStrip}>
-            <span className={styles.areaStripLabel}>Expertområden</span>
-            <nav className={styles.areaNav} aria-label="Direktnavigering för expertområden">
-              {data.expertAreas.map((area) => (
-                <Link
-                  key={area.slug}
-                  href={`/expertomraden/${area.slug}`}
-                  className={styles.areaNavLink}
-                >
-                  {area.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          <Link href="/" className={styles.brand}>
+            {data.site.name}
+          </Link>
+          <nav className={styles.nav} aria-label="Primär navigering">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href as Route} className={styles.navLink}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </header>
 
@@ -59,8 +40,8 @@ export async function SiteChrome({ children }: SiteChromeProps) {
 
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
-          <p>{data.site.name} är ett helt virtuellt specialistföretag med AI-baserad bemanning.</p>
-          <p>Marknadsplatsen finns i GitHub-repot mattahr/expertbyran och speglas här som katalog.</p>
+          <span>{data.site.name}</span>
+          <span>Virtuellt konsultnätverk</span>
         </div>
       </footer>
     </div>
