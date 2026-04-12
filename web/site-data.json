@@ -350,7 +350,8 @@
       ],
       "capabilities": [
         "Granskningsdesign med designmatriser och metodval",
-        "Projektledning av effektivitetsrevisioner från förstudie till publicering"
+        "Projektledning av effektivitetsrevisioner från förstudie till publicering",
+        "Metodkoordinering — koppla in rätt metodexpert för varje delmoment i granskningen"
       ],
       "tools": [
         "Designmatriser",
@@ -386,7 +387,8 @@
           "url": "https://calendar.app.google/effektivitetsrevisor",
           "description": "Diskutera granskningsupplägg och metodval."
         }
-      ]
+      ],
+      "updatedAt": "2026-04-12T08:00:00.000Z"
     },
     {
       "id": "expert-kvantitativ-analytiker",
@@ -463,7 +465,8 @@
       ],
       "capabilities": [
         "Kvantitativ analys av registerdata med precision och osäkerhetsbedömning",
-        "Kausalitetsprövning med temporal ordning, kovariation och eliminering"
+        "Kausalitetsprövning med temporal ordning, kovariation och eliminering",
+        "Registeruttag — leta upp och kvalitetskontrollera registerdata från offentliga källor"
       ],
       "tools": [
         "Registeruttag",
@@ -499,7 +502,8 @@
           "url": "https://calendar.app.google/kvantitativ-analytiker",
           "description": "Diskutera dataunderlag och analysupplägg."
         }
-      ]
+      ],
+      "updatedAt": "2026-04-12T08:00:00.000Z"
     },
     {
       "id": "expert-kvalitativ-metodexpert",
@@ -576,7 +580,8 @@
       ],
       "capabilities": [
         "Utformning av intervjuguider med urvalsstrategier och kodningsscheman",
-        "Triangulering av kvalitativa fynd med kvantitativa analyser"
+        "Triangulering av kvalitativa fynd med kvantitativa analyser",
+        "Dokumentanalys — systematisk granskning av regleringsbrev och årsredovisningar"
       ],
       "tools": [
         "Intervjuguider",
@@ -612,7 +617,8 @@
           "url": "https://calendar.app.google/kvalitativ-metodexpert",
           "description": "Diskutera urvalsstrategier och kvalitativt upplägg."
         }
-      ]
+      ],
+      "updatedAt": "2026-04-12T08:00:00.000Z"
     },
     {
       "id": "expert-rattslig-utredare",
@@ -689,7 +695,8 @@
       ],
       "capabilities": [
         "Utredning av bedömningsgrunders rättsliga ursprung",
-        "Mandatanalys för att säkerställa att rekommendationer riktas korrekt"
+        "Mandatanalys för att säkerställa att rekommendationer riktas korrekt",
+        "Författningstolkning — tolka motstridig eller vag lagtext"
       ],
       "tools": [
         "Rättsdatabaser",
@@ -725,7 +732,8 @@
           "url": "https://calendar.app.google/rattslig-utredare",
           "description": "Diskutera rättsliga bedömningsgrunder och mandatfrågor."
         }
-      ]
+      ],
+      "updatedAt": "2026-04-12T08:00:00.000Z"
     },
     {
       "id": "expert-kvalitetsgranskare",
@@ -801,7 +809,8 @@
       ],
       "capabilities": [
         "Vetenskaplig opponering mot intern/extern validitet, reliabilitet och kausalitetskrav",
-        "Slutsatskalibrering — granskning av precision och proportionalitet i formuleringar"
+        "Slutsatskalibrering — granskning av precision och proportionalitet i formuleringar",
+        "Bristkartläggning — identifiera systematiska vetenskapliga brister i granskningsunderlag"
       ],
       "tools": [
         "Vetenskaplig checklista (avsnitt 9)",
@@ -837,7 +846,8 @@
           "url": "https://calendar.app.google/kvalitetsgranskare",
           "description": "Diskutera vetenskapliga kvalitetsfrågor och opponering."
         }
-      ]
+      ],
+      "updatedAt": "2026-04-12T08:00:00.000Z"
     },
     {
       "id": "expert-expert-finanser",
