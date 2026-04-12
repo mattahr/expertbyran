@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T18:00:00.000Z",
+  "updatedAt": "2026-04-12T07:30:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -292,7 +292,7 @@
         "src": "/avatars/effektivitetsrevisor.svg",
         "alt": "Illustration av Effektivitetsrevisor"
       },
-      "summary": "Generalisten som behärskar hela 3-fas/23-stegsprocessen för effektivitetsrevision och kan leda en granskning från idé till publicering. Bryter ned revisionsfrågor i delfrågor med explicita bedömningsgrunder och koordinerar rätt metodexperter för varje delmoment.",
+      "summary": "Generalisten som behärskar hela 3-fas/23-stegsprocessen för effektivitetsrevision och kan leda en granskning från idé till publicering. Bryter ned revisionsfrågor i delfrågor med explicita bedömningsgrunder och koordinerar rätt metodexperter för varje delmoment. Behärskar också ECA:s granskningsmetodik — 7-källsmodell, MECE-krav och Adversarial Procedure — för internationella uppdrag och jämförande metodanalys.",
       "profileQuote": "En bra granskning börjar med en tydlig designmatris. Om delfrågor, bedömningsgrunder och metodval inte hänger ihop från start blir slutsatserna aldrig skarpa nog.",
       "strengths": [
         "Behärskar hela 3-fas/23-stegsprocessen för effektivitetsrevision",
@@ -346,12 +346,14 @@
       "knowledge": [
         "Offentlig förvaltning och statlig styrning",
         "Utvärderingsmetodik och revisionsprocesser",
-        "ISSAI-ramverket för effektivitetsrevision"
+        "ISSAI-ramverket för effektivitetsrevision",
+        "ECA:s granskningsmetodik och internationell revisionsanalys (ECA, IDI/INTOSAI, Riksrevisionen)"
       ],
       "capabilities": [
         "Granskningsdesign med designmatriser och metodval",
         "Projektledning av effektivitetsrevisioner från förstudie till publicering",
-        "Metodkoordinering — koppla in rätt metodexpert för varje delmoment i granskningen"
+        "Metodkoordinering — koppla in rätt metodexpert för varje delmoment i granskningen",
+        "ECA-granskningsmetodik — 7-källsmodell för kriterier, MECE-krav på delfrågor och Adversarial Procedure"
       ],
       "tools": [
         "Designmatriser",
@@ -363,7 +365,7 @@
         "Granskningsdesign",
         "Revisionsplanering",
         "Metodkoordinering",
-        "Kvalitetssäkrad slutsatskedja"
+        "ECA:s jämförande metodanalys"
       ],
       "plugin": {
         "name": "expert-effektivitetsrevisor",
@@ -388,7 +390,7 @@
           "description": "Diskutera granskningsupplägg och metodval."
         }
       ],
-      "updatedAt": "2026-04-12T08:00:00.000Z"
+      "updatedAt": "2026-04-12T07:30:00.000Z"
     },
     {
       "id": "expert-kvantitativ-analytiker",
@@ -407,7 +409,7 @@
         "src": "/avatars/kvantitativ-analytiker.svg",
         "alt": "Illustration av Kvantitativ analytiker"
       },
-      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Levererar kvantitativa iakttagelser med full precision — täljare, nämnare, tidsperiod och osäkerhetsmarginaler.",
+      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Ny primär metodskill: ML-baserad kausalinferens — Causal Random Forest/GRF (Athey m.fl. 2019) för heterogena behandlingseffekter (CATE) och Synthetic DiD (Arkhangelsky m.fl. 2021). ML löser dimensionalitet, inte confounding.",
       "profileQuote": "Korrelation är aldrig nog. En kausal slutsats kräver temporal ordning, kovariation, eliminering av alternativa förklaringar och en beskriven mekanism.",
       "strengths": [
         "Levererar kvantitativa iakttagelser med full precision enligt vetenskapliga krav 4.3",
@@ -461,12 +463,13 @@
       "knowledge": [
         "Statistik, ekonometri och registerbaserad analys",
         "Kausalinferens och kvantitativa forskningsmetoder",
-        "Offentliga register och datakällor"
+        "ML-baserad kausalinferens: GRF (Athey m.fl. 2019) och Synthetic DiD (Arkhangelsky m.fl. 2021)"
       ],
       "capabilities": [
         "Kvantitativ analys av registerdata med precision och osäkerhetsbedömning",
         "Kausalitetsprövning med temporal ordning, kovariation och eliminering",
-        "Registeruttag — leta upp och kvalitetskontrollera registerdata från offentliga källor"
+        "Registeruttag — leta upp och kvalitetskontrollera registerdata från offentliga källor",
+        "ML-baserad kausalinferens — GRF för heterogena behandlingseffekter (CATE) och Synthetic DiD"
       ],
       "tools": [
         "Registeruttag",
@@ -477,8 +480,8 @@
       "methods": [
         "Kausalinferens",
         "Registeranalys",
-        "Kvantitativ iakttagelsestruktur",
-        "Precisionsbedömning"
+        "GRF / Causal Random Forest",
+        "Synthetic DiD"
       ],
       "plugin": {
         "name": "expert-kvantitativ-analytiker",
@@ -503,7 +506,7 @@
           "description": "Diskutera dataunderlag och analysupplägg."
         }
       ],
-      "updatedAt": "2026-04-12T08:00:00.000Z"
+      "updatedAt": "2026-04-12T07:30:00.000Z"
     },
     {
       "id": "expert-kvalitativ-metodexpert",
@@ -637,7 +640,7 @@
         "src": "/avatars/rattslig-utredare.svg",
         "alt": "Illustration av Rättslig utredare"
       },
-      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Avgör om standarden är förankrad i lag, förordning eller uttalad praxis.",
+      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Avgör om standarden är förankrad i lag, förordning eller uttalad praxis. Ny specialisering: EU AI-förordningen (2024/1689) och statliga myndigheters skyldigheter som deployers av högrisk-AI.",
       "profileQuote": "Rekommendationer får bara rikta sig till aktörer som har mandat att genomföra åtgärden. Att utreda vem som faktiskt kan göra vad är oftare svårt än man tror.",
       "strengths": [
         "Reder ut bedömningsgrunders rättsliga ursprung — lag, förordning, regleringsbrev eller praxis",
@@ -691,12 +694,14 @@
       "knowledge": [
         "Förvaltningsrätt och författningstolkning",
         "Myndighetsstyrning och mandatfördelning",
-        "Regleringsbrev, förordningar och myndighetsinstruktioner"
+        "Regleringsbrev, förordningar och myndighetsinstruktioner",
+        "EU AI-förordningen (2024/1689) och statlig AI-implementering"
       ],
       "capabilities": [
         "Utredning av bedömningsgrunders rättsliga ursprung",
         "Mandatanalys för att säkerställa att rekommendationer riktas korrekt",
-        "Författningstolkning — tolka motstridig eller vag lagtext"
+        "Författningstolkning — tolka motstridig eller vag lagtext",
+        "EU AI-förordningsanalys — skyldigheter för statliga deployers av högrisk-AI (art. 13, 14, 26, bilaga III)"
       ],
       "tools": [
         "Rättsdatabaser",
@@ -708,7 +713,7 @@
         "Författningstolkning",
         "Mandatanalys",
         "Bedömningsgrundsprövning",
-        "Rättslig bilagestruktur"
+        "EU AI-regulatorisk analys"
       ],
       "plugin": {
         "name": "expert-rattslig-utredare",
@@ -733,7 +738,7 @@
           "description": "Diskutera rättsliga bedömningsgrunder och mandatfrågor."
         }
       ],
-      "updatedAt": "2026-04-12T08:00:00.000Z"
+      "updatedAt": "2026-04-12T07:30:00.000Z"
     },
     {
       "id": "expert-kvalitetsgranskare",
@@ -1313,7 +1318,7 @@
         "src": "/avatars/klarsprak.svg",
         "alt": "Illustration av Klarspråksexperten"
       },
-      "summary": "Specialist på klarspråk, textgranskning och myndighetsspråk med djup kunskap om Språkrådets riktlinjer och Myndigheternas skrivregler. Noggrann men pragmatisk — förstår att klarspråk inte bara handlar om korta meningar utan om att texten ska fungera för sin läsare i sitt sammanhang.",
+      "summary": "Specialist på klarspråk, textgranskning och myndighetsspråk med djup kunskap om Språkrådets riktlinjer och Myndigheternas skrivregler. Ny kompetens: DOS-lagen och WCAG AA-granskning av digitalt publicerade myndighetstexter (DT-1–DT-7), samt AI-textgranskning med faktaverifiering före klarspråk (AI-1–AI-8).",
       "profileQuote": "Klarspråk handlar inte om att förenkla — det handlar om att texten ska fungera för den som läser den. En väl motiverad omskrivning gör mer nytta än tio grammatikkommentarer.",
       "strengths": [
         "Analyserar text systematiskt mot Språkrådets klarspråksriktlinjer och ger motiverade förbättringsförslag",
@@ -1367,23 +1372,25 @@
       "knowledge": [
         "Språkrådets klarspråksriktlinjer och Myndigheternas skrivregler",
         "Textanalys, läsbarhetsindex och strukturbedömning",
-        "Myndighetsspråk och offentlig kommunikation"
+        "DOS-lagen (2018:1937) och WCAG AA för digital tillgänglighet i myndighetskommunikation"
       ],
       "capabilities": [
         "Textgranskning med motiverade förbättringsförslag",
-        "Omskrivning av komplexa texter till tydlig och tillgänglig svenska"
+        "Omskrivning av komplexa texter till tydlig och tillgänglig svenska",
+        "DOS-lagen och WCAG AA-granskning — 7-regelschecklista (DT-1–DT-7) för digitalt publicerade myndighetstexter",
+        "AI-textgranskning — 8-punktsgranskningsmodell (AI-1–AI-8) med faktaverifiering före klarspråksgranskning"
       ],
       "tools": [
         "Språkrådets klarspråksriktlinjer",
-        "Myndigheternas skrivregler",
+        "DOS-lagen och WCAG AA-checklista",
         "Läsbarhetsindex (LIX)",
-        "Textstrukturanalys"
+        "AI-granskningsmodell (AI-1–AI-8)"
       ],
       "methods": [
         "Klarspråksgranskning",
         "Omskrivning till klarspråk",
-        "Strukturbedömning",
-        "Språklig kvalitetssäkring"
+        "Digital tillgänglighetsrevision (DOS/WCAG)",
+        "AI-textgranskning med faktaverifiering"
       ],
       "plugin": {
         "name": "expert-klarsprak",
@@ -1407,7 +1414,8 @@
           "url": "https://calendar.app.google/klarsprak",
           "description": "Diskutera textgranskning och språkförbättringar."
         }
-      ]
+      ],
+      "updatedAt": "2026-04-12T07:30:00.000Z"
     }
   ]
 }
