@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ExpertCard } from "@/components/site/ExpertCard";
-import { PageHero } from "@/components/site/PageHero";
-import { TeamCard } from "@/components/site/TeamCard";
+import { GridCell } from "@/components/site/GridCell";
 import styles from "@/components/site/site.module.css";
 import {
   getAreasForExpert,
@@ -24,9 +22,7 @@ export async function generateMetadata({ params }: ExpertAreaPageProps): Promise
   const area = data.expertAreas.find((candidate) => candidate.slug === slug);
 
   if (!area) {
-    return {
-      title: "Expertområde saknas",
-    };
+    return { title: "Expertområde saknas" };
   }
 
   return {
@@ -49,75 +45,88 @@ export default async function ExpertAreaDetailPage({ params }: ExpertAreaPagePro
 
   return (
     <div className={styles.pageWrap}>
-      <PageHero
-        eyebrow="Expertområde"
-        title={area.name}
-        intro={area.description}
-        primaryAction={{ href: "/team", label: "Se team" }}
-        secondaryAction={{ href: "/expertomraden", label: "Alla områden" }}
-        asideLabel="Typiska leveranser"
-        asideValue={area.deliverables.slice(0, 2).join(" och ")}
-      />
+      <div className={styles.hero}>
+        <p className={styles.heroEyebrow}>Expertområde</p>
+        <h1 className={styles.heroTitle}>{area.name}</h1>
+        <div className={styles.heroLine} />
+        <p className={styles.heroIntro}>{area.description}</p>
+      </div>
 
       <section className={styles.section}>
-        <div className={styles.twoColumn}>
-          <article className={styles.detailBlock}>
-            <p className={styles.eyebrow}>När området behövs</p>
-            <h2 className={styles.sectionTitle}>Vanliga signaler och uppdragslägen.</h2>
-            <ul className={styles.detailList}>
+        <div className={styles.detailLayout}>
+          <div className={styles.detailSidebar}>
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Område</span>
+              <span className={styles.metaValue}>
+                <span className={styles.dot} style={{ background: area.accent }} aria-hidden />
+                {area.name}
+              </span>
+            </div>
+            <div className={styles.metaRow}>
+              <span className={styles.metaLabel}>Leverabler</span>
+              <ul className={styles.simpleList}>
+                {area.deliverables.map((d) => (
+                  <li key={d}>{d}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.detailMain}>
+            <h2 className={styles.detailHeading}>Signaler</h2>
+            <p className={styles.detailText}>Vanliga signaler och uppdragslägen som pekar mot detta område.</p>
+            <ul className={styles.simpleList}>
               {area.signals.map((signal) => (
                 <li key={signal}>{signal}</li>
               ))}
             </ul>
-          </article>
-
-          <article className={styles.detailBlock}>
-            <p className={styles.eyebrow}>Leverabler</p>
-            <h2 className={styles.sectionTitle}>Vad området brukar leverera.</h2>
-            <ul className={styles.detailList}>
-              {area.deliverables.map((deliverable) => (
-                <li key={deliverable}>{deliverable}</li>
-              ))}
-            </ul>
-          </article>
+          </div>
         </div>
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <div>
-            <p className={styles.eyebrow}>Experter i området</p>
-            <h2 className={styles.sectionTitle}>Experter knutna till {area.name.toLowerCase()}.</h2>
+      {experts.length > 0 && (
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionLabel}>Experter i området</h2>
+            <span className={styles.sectionCount}>{experts.length} experter</span>
           </div>
-        </div>
-        {experts.length ? (
-          <div className={styles.gridCards} data-dense="true">
-            {experts.map((expert) => (
-              <ExpertCard key={expert.id} expert={expert} areas={getAreasForExpert(data, expert)} />
-            ))}
+          <div className={styles.grid}>
+            {experts.map((expert) => {
+              const areas = getAreasForExpert(data, expert);
+              return (
+                <GridCell
+                  key={expert.id}
+                  href={`/experter/${expert.slug}`}
+                  category={expert.role}
+                  categoryColor={areas[0]?.accent}
+                  name={expert.name}
+                  description={expert.summary}
+                />
+              );
+            })}
           </div>
-        ) : (
-          <p className={styles.emptyState}>Inga experter är kopplade till området ännu.</p>
-        )}
-      </section>
+        </section>
+      )}
 
-      <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <div>
-            <p className={styles.eyebrow}>Kuraterade team</p>
-            <h2 className={styles.sectionTitle}>Team som ofta bär området i leverans.</h2>
+      {teams.length > 0 && (
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionLabel}>Relaterade team</h2>
+            <span className={styles.sectionCount}>{teams.length} team</span>
           </div>
-        </div>
-        {teams.length ? (
-          <div className={styles.gridCards}>
+          <div className={styles.grid}>
             {teams.map((team) => (
-              <TeamCard key={team.id} team={team} expertCount={team.expertSlugs.length} />
+              <GridCell
+                key={team.id}
+                href={`/team/${team.slug}`}
+                category={`${team.expertSlugs.length} medlemmar`}
+                name={team.name}
+                description={team.shortDescription}
+              />
             ))}
           </div>
-        ) : (
-          <p className={styles.emptyState}>Inga team är kopplade till området ännu.</p>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   );
 }
