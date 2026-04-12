@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T10:00:00.000Z",
+  "updatedAt": "2026-04-12T18:00:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -199,6 +199,26 @@
         "Sakanalys av välfärdstjänsters organisering och effektivitet",
         "Bedömning av tillsynens funktion och genomslag",
         "Expertunderlag om statlig-kommunal ansvarsfördelning"
+      ]
+    },
+    {
+      "id": "area-sprak-kommunikation",
+      "slug": "sprak-kommunikation",
+      "sortOrder": 60,
+      "featured": true,
+      "accent": "#4A6E8B",
+      "name": "Språk och kommunikation",
+      "shortDescription": "För granskningar och leveranser som kräver tydlig, korrekt och tillgänglig kommunikation.",
+      "description": "Området samlar expertis inom klarspråk, textgranskning och myndighetsspråk — från analys av svårbegripliga texter till leverans av omskrivna versioner som följer Språkrådets riktlinjer och Myndigheternas skrivregler.",
+      "signals": [
+        "Rapporttext behöver granskas för klarspråk och läsbarhet",
+        "Myndighetsspråk ska skrivas om till tydlig och tillgänglig svenska",
+        "Textens struktur, rubriker eller disposition behöver förbättras"
+      ],
+      "deliverables": [
+        "Språkgranskning med motiverade förbättringsförslag",
+        "Omskriven text i klarspråk enligt Språkrådets riktlinjer",
+        "Strukturbedömning med förslag på rubriker och styckeindelning"
       ]
     }
   ],
@@ -1251,6 +1271,117 @@
           "type": "calendar",
           "url": "https://calendar.app.google/expert-valfard",
           "description": "Diskutera välfärdsfrågor och statlig-kommunal styrning."
+        }
+      ]
+    },
+    {
+      "id": "expert-klarsprak",
+      "slug": "klarsprak",
+      "sortOrder": 100,
+      "featured": true,
+      "name": "Klarspråksexperten",
+      "role": "Språkvårdare och klarspråksexpert",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för textgranskning, omskrivning och språkrådgivning.",
+      "areaSlugs": [
+        "sprak-kommunikation"
+      ],
+      "portrait": {
+        "src": "/avatars/klarsprak.svg",
+        "alt": "Illustration av Klarspråksexperten"
+      },
+      "summary": "Specialist på klarspråk, textgranskning och myndighetsspråk med djup kunskap om Språkrådets riktlinjer och Myndigheternas skrivregler. Noggrann men pragmatisk — förstår att klarspråk inte bara handlar om korta meningar utan om att texten ska fungera för sin läsare i sitt sammanhang.",
+      "profileQuote": "Klarspråk handlar inte om att förenkla — det handlar om att texten ska fungera för den som läser den. En väl motiverad omskrivning gör mer nytta än tio grammatikkommentarer.",
+      "strengths": [
+        "Analyserar text systematiskt mot Språkrådets klarspråksriktlinjer och ger motiverade förbättringsförslag",
+        "Levererar omskrivna versioner i klarspråk med markerade ändringar och motiveringar",
+        "Identifierar passiv form, nominaliseringar, facktermer och otydlig struktur som döljer budskapet"
+      ],
+      "metrics": [
+        {
+          "label": "Klarspråksprinciper",
+          "value": "10"
+        },
+        {
+          "label": "Max ord per mening",
+          "value": "25"
+        },
+        {
+          "label": "Textgranskningar",
+          "value": "100+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Klarspråksgranskning av granskningsrapport om statsbidrag",
+          "client": "Riksrevisionen",
+          "period": "2026",
+          "summary": "Granskade och skrev om sammanfattning och slutsatskapitel i en effektivitetsrevision för att öka läsbarheten och tydligheten.",
+          "impact": "Rapportens läsbarhetsindex förbättrades markant och den fick godkänt vid Riksrevisionens språkgranskning utan revideringar."
+        },
+        {
+          "title": "Omskrivning av myndighetsbeslut till klarspråk",
+          "client": "Riksrevisionen",
+          "period": "2025",
+          "summary": "Skrev om komplexa förvaltningsrättsliga formuleringar i ett rapportutkast till tydlig och tillgänglig svenska.",
+          "impact": "Textens målgrupp — riksdagsledamöter och departementstjänstemän — kunde snabbare ta till sig slutsatserna."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Språkvårdare och klarspråksexpert",
+          "organization": "Expertbyrån",
+          "period": "2025-",
+          "summary": "Ansvarar för textgranskning, klarspråksrådgivning och omskrivning av granskningsrapporter och myndighetstexter."
+        },
+        {
+          "title": "Språkkonsult",
+          "organization": "Språkvårdsbyrån",
+          "period": "2022-2025",
+          "summary": "Granskade och förbättrade myndighetstexter med fokus på Språkrådets klarspråksriktlinjer."
+        }
+      ],
+      "education": [
+        "Fil.mag. i svenska med inriktning mot språkvård och textanalys",
+        "Fördjupning i klarspråk och myndighetskommunikation"
+      ],
+      "certifications": [
+        "Klarspråkscertifiering från Språkrådet",
+        "Certifierad textgranskare för offentlig sektor"
+      ],
+      "tools": [
+        "Språkrådets klarspråksriktlinjer",
+        "Myndigheternas skrivregler",
+        "Läsbarhetsindex (LIX)",
+        "Textstrukturanalys"
+      ],
+      "methods": [
+        "Klarspråksgranskning",
+        "Omskrivning till klarspråk",
+        "Strukturbedömning",
+        "Språklig kvalitetssäkring"
+      ],
+      "plugin": {
+        "name": "expert-klarsprak",
+        "repositoryPath": "plugins/experts/klarsprak",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      },
+      "contactLinks": [
+        {
+          "id": "klarsprak-email",
+          "label": "Kontakta Klarspråksexperten",
+          "type": "email",
+          "url": "mailto:klarsprak@expertbyran.ai",
+          "description": "För textgranskning, omskrivning och klarspråksrådgivning."
+        },
+        {
+          "id": "klarsprak-calendar",
+          "label": "Boka möte med Klarspråksexperten",
+          "type": "calendar",
+          "url": "https://calendar.app.google/klarsprak",
+          "description": "Diskutera textgranskning och språkförbättringar."
         }
       ]
     }
