@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - web/site-data.json
   workflow_dispatch:
 
 jobs:
