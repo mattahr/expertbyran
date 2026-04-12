@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T20:34:00.000Z",
+  "updatedAt": "2026-04-12T21:05:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -293,16 +293,16 @@
       "accent": "#4A5E6E",
       "name": "Försvar, säkerhet och underrättelse",
       "shortDescription": "För granskningar av försvarsmaterielanskaffning, militär styrning, exportkontroll, civilförsvar och underrättelseverksamhet.",
-      "description": "Området samlar sakkunskap om svensk försvars- och säkerhetspolitik ur ett granskningsperspektiv — militär styrning och organisation (Försvarsmakten, FMV), exportkontroll av krigsmateriel (ISP), civilförsvarets uppbyggnad och krisberedskap (MSB, totalförsvar) samt den nya underrättelsemyndigheten (NSID). Expertisen är inriktad på effektiviteten i statens styrning och organisering av försvars- och säkerhetsområdet.",
+      "description": "Området samlar sakkunskap om svensk försvars- och säkerhetspolitik ur ett granskningsperspektiv — militär styrning och organisation (Försvarsmakten, FMV), exportkontroll av krigsmateriel (ISP), civilförsvarets uppbyggnad och krisberedskap (MCF, totalförsvar) samt statens underrättelseverksamhet (MUST, FRA och planerade MUU). Expertisen är inriktad på effektiviteten i statens styrning och organisering av försvars- och säkerhetsområdet.",
       "signals": [
-        "Granskningen rör Försvarsmakten, FMV, ISP, MSB eller NSID",
+        "Granskningen rör Försvarsmakten, FMV, ISP, MCF, MUST, FRA eller planerade MUU",
         "Försvarsmaterielanskaffning, exportkontroll eller försvarsanslag ska bedömas",
         "Civilt försvar, krisberedskap eller totalförsvarets uppbyggnad ingår i uppdraget"
       ],
       "deliverables": [
         "Sakanalys av försvars- och säkerhetspolitik, militär styrning och organisering",
         "Bedömning av försvarsmaterielanskaffning och exportkontrollens styrning",
-        "Analys av civilt försvar, krisberedskap och underrättelseverksamhetens kontroll"
+        "Analys av civilt försvar (MCF), krisberedskap och underrättelseverksamhetens kontroll (MUST, FRA, planerad MUU)"
       ]
     }
   ],
@@ -1967,8 +1967,8 @@
       "areaSlugs": [
         "forsvar"
       ],
-      "summary": "Domänexpert inom svensk försvars- och säkerhetspolitik med fokus på Riksrevisionens granskningar. Täcker försvarspolitik, försvarsmateriel och försvarsindustri, exportkontroll och krigsmaterielexport (ISP), militär styrning och organisation (Försvarsmakten, FMV), civilförsvar och krisberedskap (MSB, totalförsvar) samt den nya underrättelsemyndigheten (NSID).",
-      "profileQuote": "Försvarets styrning handlar ytterst om om resurser och mandat omsätts i faktisk förmåga — det är där Riksrevisionens granskning gör störst nytta.",
+      "summary": "Domänexpert inom svensk försvars- och säkerhetspolitik med fokus på Riksrevisionens granskningar. Täcker försvarspolitik, försvarsmateriel och försvarsindustri, exportkontroll och krigsmaterielexport (ISP), militär styrning och organisation (Försvarsmakten, FMV), civilförsvar och krisberedskap (MCF, Myndigheten för civilt försvar, totalförsvar) samt statens underrättelseverksamhet (MUST, FRA och planerade MUU).",
+      "profileQuote": "Försvarets styrning handlar ytterst om hur resurser och mandat omsätts i faktisk förmåga — det är där Riksrevisionens granskning gör störst nytta.",
       "availability": "Tillgänglig för sakanalyser inom försvarspolitik, materielanskaffning, civilförsvar och underrättelseverksamhet.",
       "portrait": {
         "src": "/avatars/expert-forsvar.svg",
@@ -1977,8 +1977,8 @@
       "location": "Virtuell nod, Stockholm",
       "strengths": [
         "Djup kunskap om Försvarsmakten, FMV och ISP:s mandat och styrning",
-        "Bedömer civilt försvars uppbyggnad och totalförsvarets samordning",
-        "Analyserar underrättelseverksamhetens styrning och rättsliga kontroll (NSID, FRA)"
+        "Bedömer civilt försvars uppbyggnad och totalförsvarets samordning (MCF)",
+        "Analyserar underrättelseverksamhetens styrning och rättsliga kontroll (MUST, FRA, planerad MUU)"
       ],
       "metrics": [
         {
@@ -2003,10 +2003,10 @@
           "impact": "Identifierade strukturella brister i kravspecificering och leveransstyrning som fördröjer materielförsörjningen."
         },
         {
-          "title": "Granskning av MSB:s styrning av civilt försvar",
+          "title": "Granskning av MCF:s styrning av civilt försvar",
           "client": "Offentlig sektor",
           "period": "2025",
-          "summary": "Bedömde hur MSB styr länsstyrelsers och kommuners uppbyggnad av civilt försvar mot riksdagens ambitionsnivå.",
+          "summary": "Bedömde hur MCF (Myndigheten för civilt försvar) styr länsstyrelsers och kommuners uppbyggnad av civilt försvar mot riksdagens ambitionsnivå.",
           "impact": "Synliggjorde oklara mandatgränser och otillräcklig uppföljning av uppbyggnadstakten i totalförsvaret."
         }
       ],
@@ -2025,16 +2025,16 @@
         }
       ],
       "knowledge": [
-        "Försvarspolitik, militär styrning och organisation (Försvarsmakten, FMV)",
+        "Försvarspolitik, militär styrning och organisation (Försvarsmakten, FMV, MUST)",
         "Exportkontroll och krigsmaterielexport (ISP, lagen om krigsmateriel)",
-        "Civilt försvar, krisberedskap och totalförsvar (MSB, länsstyrelser)",
-        "Underrättelseverksamhetens styrning och rättsliga ramar (NSID, FRA-lagstiftning)"
+        "Civilt försvar, krisberedskap och totalförsvar (MCF, Myndigheten för civilt försvar, länsstyrelser)",
+        "Underrättelseverksamhetens styrning och rättsliga ramar (MUST, FRA, NCSC, planerad MUU)"
       ],
       "capabilities": [
         "Sakanalys av försvars- och säkerhetspolitik, militär styrning och organisering",
-        "Bedömning av försvarsmaterielanskaffning och exportkontrollens styrning",
-        "Analys av civilt försvars uppbyggnad, krisberedskap och totalförsvarets samordning",
-        "Bedömning av underrättelseverksamhetens styrning, kontroll och rättsliga ramar"
+        "Bedömning av försvarsmaterielanskaffning och exportkontrollens styrning (ISP)",
+        "Analys av civilt försvars uppbyggnad, krisberedskap och totalförsvarets samordning (MCF)",
+        "Bedömning av underrättelseverksamhetens styrning och rättsliga ramar (MUST, FRA, planerad MUU)"
       ],
       "tools": [
         "Riksdagsdokument och propositioner",
@@ -2071,7 +2071,7 @@
           "description": "Diskutera försvars- och säkerhetspolitik och granskningsupplägg."
         }
       ],
-      "updatedAt": "2026-04-12T20:34:00.000Z"
+      "updatedAt": "2026-04-12T21:05:00.000Z"
     }
   ]
 }
