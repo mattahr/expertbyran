@@ -143,10 +143,15 @@ Varje expert i arrayen har exakt denna struktur. Alla fält är **obligatoriska*
 
 | slug | namn |
 |------|------|
-| `strategisk-analys-styrning` | Strategisk analys och styrning |
-| `ai-produkt-tjanstedesign` | AI-produkt och tjänstedesign |
-| `data-automation-operativ-effektivitet` | Data, automation och operativ effektivitet |
-| `regulatorik-risk-kvalitet` | Regulatorik, risk och kvalitet |
+| `revisionsmetodik` | Revisionsmetodik och analys |
+| `offentliga-finanser` | Offentliga finanser och styrning |
+| `digitalisering` | Statlig digitalisering och IT |
+| `rattsvasende` | Rättsväsende och samhällsskydd |
+| `valfard` | Välfärd och social omsorg |
+| `sprak-kommunikation` | Språk och kommunikation |
+| `arbetsmarknad` | Arbetsmarknad och sysselsättning |
+| `utbildning` | Utbildning och skolkvalitet |
+| `miljo-klimat` | Miljö, klimat och energi |
 
 ## teams-objekt (teams[])
 

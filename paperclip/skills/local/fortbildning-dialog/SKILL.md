@@ -1,16 +1,17 @@
----
-name: "fortbildning-dialog"
+***
+
+name: "utvecklingssamtal"
 description: "Utbildningsledarens mall för dialogbaserad fortbildning och uppdragsretrospektiv. Tre steg: initiera fokuserad fråga → bearbeta svar → stäng dialog. Fokuserade frågor skyddar expertens kontextfönster."
 slug: "fortbildning-dialog"
 metadata:
-  paperclip:
-    slug: "fortbildning-dialog"
-    skillKey: "local/expertbyran/fortbildning-dialog"
-  skillKey: "local/expertbyran/fortbildning-dialog"
+paperclip:
+slug: "fortbildning-dialog"
+skillKey: "local/expertbyran/fortbildning-dialog"
+skillKey: "local/expertbyran/fortbildning-dialog"
 key: "local/expertbyran/fortbildning-dialog"
----
+--------------------------------------------
 
-# Fortbildningsdialog
+# Utvecklingssamtal
 
 Detta är utbildningsledarens arbetsverktyg för att genomföra
 dialogbaserad fortbildning eller uppdragsretrospektiv med en expert.
@@ -33,16 +34,16 @@ experternas memory:
 
 ### Fortbildningssignaler
 
-- Återkommande frustration på samma teknik eller metod
-- Konkret fråga som experten ställer sig själv ("önskar jag hade...")
-- Ny observation som experten verkar nyfiken på
-- Tekniskt område där experten nämner att hen kommer till korta
+* Återkommande frustration på samma teknik eller metod
+* Konkret fråga som experten ställer sig själv ("önskar jag hade...")
+* Ny observation som experten verkar nyfiken på
+* Tekniskt område där experten nämner att hen kommer till korta
 
 ### Retrospektivsignaler
 
-- Expertens memory-rad nämner att ett uppdrag är klart
-- Ett subtask med `assigneeAgentId: <expert>` har statusen `done`
-- Klientkoordinatorn har skapat en puls-task efter en kundleverans
+* Expertens memory-rad nämner att ett uppdrag är klart
+* Ett subtask med `assigneeAgentId: <expert>` har statusen `done`
+* Klientkoordinatorn har skapat en puls-task efter en kundleverans
 
 ## Steg 1 — Initiera dialogen
 
@@ -51,7 +52,7 @@ Skapa en task till experten:
 ```
 POST /api/companies/{cid}/issues
 {
-  "title": "Fortbildningsförslag: <kort ämne>",
+  "title": "Utvecklingssamtal: <kort ämne>",
   "description": "<1–2 meningars kontext + max 3 fokuserade frågor>",
   "assigneeAgentId": "<expert-slug>",
   "priority": "low"
@@ -60,7 +61,7 @@ POST /api/companies/{cid}/issues
 
 ### Fortbildningsmall (3 frågor)
 
-```markdown
+```Markdown
 ## Bakgrund
 
 Jag såg i din memory att <kort observation>. Det är en naturlig lucka
@@ -90,7 +91,7 @@ eventuellt webbmastern. Du behöver inte göra något mer.
 
 ### Retrospektivmall (3 frågor)
 
-```markdown
+```Markdown
 ## Bakgrund
 
 Uppdrag <titel> är markerat som klart. Jag vill fånga upp lärdomarna
@@ -124,17 +125,17 @@ När experten svarat:
 
 Parsa svaret. Identifiera:
 
-- Vilka konkreta källor experten nämnt
-- Vilka metodfrågor som behöver svar
-- Vilka praktiska behov experten har
+* Vilka konkreta källor experten nämnt
+* Vilka metodfrågor som behöver svar
+* Vilka praktiska behov experten har
 
 ### 3b. Sök externa källor
 
 Använd `docrec-svensk-offentlig`-skillen för att hitta relevanta:
 
-- Riksrevisionen-granskningar inom området
-- SOU och propositioner
-- ESV, Statskontoret, Myndigheten för vård- och omsorgsanalys
+* Riksrevisionen-granskningar inom området
+* SOU och propositioner
+* ESV, Statskontoret, Myndigheten för vård- och omsorgsanalys
   (beroende på domän)
 
 Läs inte hela dokument — läs snippets och hämta specifika sidor
@@ -147,24 +148,24 @@ Uppdatera två filer:
 
 **`agents/<expert>/life/areas/<domän>.md`**:
 
-- Lägg till en ny sektion eller utvidga en befintlig
-- Inkludera fullständiga källhänvisningar så experten kan verifiera
-- Skriv i tonläge som experten själv skulle ha skrivit
+* Lägg till en ny sektion eller utvidga en befintlig
+* Inkludera fullständiga källhänvisningar så experten kan verifiera
+* Skriv i tonläge som experten själv skulle ha skrivit
 
 **`agents/<expert>/expertise.md`**:
 
-- Uppdatera `senast_uppdaterad`-fält i frontmatter
-- Eventuellt ny rad i "Primära metodskills" (om en helt ny
+* Uppdatera `senast_uppdaterad`-fält i frontmatter
+* Eventuellt ny rad i "Primära metodskills" (om en helt ny
   kompetens tillkommit)
-- Ny rad i "Fortbildning senaste 12 mån" med datum och kort
+* Ny rad i "Fortbildning senaste 12 mån" med datum och kort
   beskrivning
-- Om retrospektiv: ny rad i "Tidigare uppdrag vid Expertbyrån"
+* Om retrospektiv: ny rad i "Tidigare uppdrag vid Expertbyrån"
 
 ### 3d. Stäng dialogtasken
 
 Kommentera dialogtasken med en kort sammanfattning:
 
-```markdown
+```Markdown
 Tack. Jag har:
 
 - Läst <källor>
@@ -199,15 +200,15 @@ Konsultchefen behöver inte agera — bara kvittera att de sett.
 
 Kontrollera beslutstabellen i `fortbildning-trainer`-skillen:
 
-| CV-ändring                                  | Publicera? |
-|---------------------------------------------|------------|
-| Ny rad i "Tidigare uppdrag"                 | **Ja**     |
-| Ny publikation                              | **Ja**     |
-| Ny primär metodskill                        | **Ja**     |
-| Ny större specialisering                    | **Ja**     |
-| Ny fortbildningsrad (inkrementell)          | Nej        |
-| Uppdaterad kompetenssammanfattning (redaktionell) | Nej  |
-| Rättning av stavfel                         | Nej        |
+| CV-ändring                                        | Publicera? |
+| ------------------------------------------------- | ---------- |
+| Ny rad i "Tidigare uppdrag"                       | **Ja**     |
+| Ny publikation                                    | **Ja**     |
+| Ny primär metodskill                              | **Ja**     |
+| Ny större specialisering                          | **Ja**     |
+| Ny fortbildningsrad (inkrementell)                | Nej        |
+| Uppdaterad kompetenssammanfattning (redaktionell) | Nej        |
+| Rättning av stavfel                               | Nej        |
 
 Om Ja:
 
@@ -223,11 +224,12 @@ POST /api/companies/{cid}/issues
 
 ## Begränsningar
 
-- **Max 3 frågor** per dialog. Fler och du förlorar fokus och
+* **Max 3 frågor** per dialog. Fler och du förlorar fokus och
   belastar experten.
-- **Ingen uppföljningsdialog** i samma runda. Om du upptäcker fler
+* **Ingen uppföljningsdialog** i samma runda. Om du upptäcker fler
   saker efter svaret, initiera en ny dialog nästa heartbeat.
-- **Inget trycket på experten**. Om experten svarar "inget akut",
+* **Inget trycket på experten**. Om experten svarar "inget akut",
   acceptera det. Stäng tasken med en rad.
-- **Experten får aldrig veckovisa dialoger**. Det är inte kvantitet
+* **Experten får aldrig veckovisa dialoger**. Det är inte kvantitet
   som spelar roll utan att lärandet faktiskt leder till förändring.
+

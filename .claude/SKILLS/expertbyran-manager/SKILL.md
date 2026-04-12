@@ -124,13 +124,40 @@ Viktiga regler:
 
 ### 5. Validera
 
-Innan commit, kontrollera:
+Innan commit, kontrollera **alla** dessa steg. Missar du ett steg kommer webbplatsen att gå sönder (Zod avvisar hela snapshoten om ett enda fält saknas).
 
 ```bash
-# Validera att site-data.json är giltig JSON
+# 1. Validera att site-data.json är giltig JSON
 python3 -c "import json; json.load(open('web/site-data.json'))"
 
-# Kontrollera att inga areaSlugs pekar på obefintliga areas
+# 2. Kontrollera att alla expertAreas har samtliga obligatoriska fält
+python3 -c "
+import json, re, sys
+data = json.load(open('web/site-data.json'))
+required = {'id','slug','sortOrder','featured','accent','name','shortDescription','description','signals','deliverables'}
+ok = True
+for i, a in enumerate(data['expertAreas']):
+    missing = required - set(a.keys())
+    if missing:
+        print(f'FAIL expertAreas[{i}] ({a.get(\"name\",\"?\")}): saknar {missing}')
+        ok = False
+    extra = set(a.keys()) - required
+    if extra:
+        print(f'VARNING expertAreas[{i}] ({a.get(\"name\",\"?\")}): okända fält {extra}')
+    if 'accent' in a and not re.match(r'^#[0-9a-fA-F]{6}$', a['accent']):
+        print(f'FAIL expertAreas[{i}]: accent \"{a[\"accent\"]}\" är inte giltig hex')
+        ok = False
+    if 'signals' in a and len(a['signals']) < 2:
+        print(f'FAIL expertAreas[{i}]: signals kräver minst 2 poster')
+        ok = False
+    if 'deliverables' in a and len(a['deliverables']) < 2:
+        print(f'FAIL expertAreas[{i}]: deliverables kräver minst 2 poster')
+        ok = False
+assert ok, 'expertAreas-validering misslyckades'
+print(f'expertAreas OK ({len(data[\"expertAreas\"])} områden)')
+"
+
+# 3. Kontrollera att inga areaSlugs pekar på obefintliga areas
 python3 -c "
 import json
 data = json.load(open('web/site-data.json'))
@@ -141,7 +168,7 @@ for e in data['experts']:
 print('areaSlugs OK')
 "
 
-# Kontrollera att inga team-expertSlugs pekar på obefintliga experter
+# 4. Kontrollera att inga team-expertSlugs pekar på obefintliga experter
 python3 -c "
 import json
 data = json.load(open('web/site-data.json'))
