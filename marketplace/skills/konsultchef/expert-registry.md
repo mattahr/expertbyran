@@ -143,6 +143,18 @@
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-miljo-klimat/EXPERT.md
 * **Kan kedja till:** kvantitativ-analytiker (vid utsläpps- och energianalys), effektivitetsrevisor (vid helhetskoordinering), rattslig-utredare (vid EU-rättsliga tolkningsfrågor)
 
+## Expert Försvar
+
+* **Domän:** Försvarspolitik, försvarsmateriel och försvarsindustri, exportkontroll och krigsmaterielexport, militär styrning och organisation, civilförsvar och krisberedskap, underrättelse
+* **Triggers:** försvarspolitik, försvarsmateriel, försvarsindustri, exportkontroll, krigsmaterielexport, ISP, Försvarsmakten, FMV, civilt försvar, civilförsvar, krisberedskap, MSB, totalförsvar, underrättelse, NSID, försvarsgranskning
+* **Capabilities:**
+  * **sakanalys** — Sakanalys av försvars- och säkerhetspolitik, militär styrning och organisering
+  * **exportkontrollbedömning** — Analysera krigsmaterielexport och ISP:s tillståndsgivning
+  * **civilförsvarsbedömning** — Bedöma civilt försvars uppbyggnad, krisberedskap och MSB:s styrning
+  * **underrättelseanalys** — Bedöma styrning och kontroll av underrättelseverksamhet, inklusive NSID
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-forsvar/EXPERT.md
+* **Kan kedja till:** rattslig-utredare (vid tolkningsfrågor om försvarslagstiftning eller exportkontroll), kvantitativ-analytiker (vid registerbaserad analys av försvarsanslag), effektivitetsrevisor (vid helhetskoordinering)
+
 ## Expert Telekommunikation
 
 * **Domän:** Telekommunikation, digital infrastruktur, bredbandsreglering, spektrum, kritisk infrastruktur, NIS2
