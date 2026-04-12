@@ -142,3 +142,15 @@
   * **eu-klimatreglering** — EU ETS, taxonomin, Green Deal och CBAM — hur EU:s klimatreglering påverkar svenska myndigheter
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-miljo-klimat/EXPERT.md
 * **Kan kedja till:** kvantitativ-analytiker (vid utsläpps- och energianalys), effektivitetsrevisor (vid helhetskoordinering), rattslig-utredare (vid EU-rättsliga tolkningsfrågor)
+
+## Expert Telekommunikation
+
+* **Domän:** Telekommunikation, digital infrastruktur, bredbandsreglering, spektrum, kritisk infrastruktur, NIS2
+* **Triggers:** telekommunikationsreglering, PTS, LEK, EECC, spektrumauktion, bredband, bredbandsstrategi, fiberutbyggnad, FTTH, 5G, radiospektrum, SMP, tillträdesreglering, öppna nät, kritisk infrastruktur telekom, NIS2 telekom, totalförsvar telekom
+* **Capabilities:**
+  * **reglering** — Analysera telekommunikationsreglering — PTS, LEK, EU:s EECC, spektrumauktioner och SMP-beslut
+  * **bredbandspolitik** — Bedöma nationell bredbandspolitik, bredbandsstrategi och statliga stödprogram
+  * **marknadsreglering** — Tillträdesreglering, öppna nät och konkurrensanalys på telekommarknaderna
+  * **kritisk-infrastruktur** — Telekommunikation som kritisk infrastruktur — MSB, NIS2, totalförsvarsplanering och robusthetskrav
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-telekommunikation/EXPERT.md
+* **Kan kedja till:** rattslig-utredare (vid tolkningsfrågor om LEK/EECC/NIS2), effektivitetsrevisor (vid helhetskoordinering), expert-digitalisering (vid överlapp med statlig digitaliseringspolitik)

@@ -230,19 +230,19 @@
       "slug": "arbetsmarknad",
       "sortOrder": 70,
       "featured": true,
-      "accent": "#B5594E",
+      "accent": "#4A7E6B",
       "name": "Arbetsmarknad och sysselsättning",
-      "shortDescription": "För granskningar av arbetsmarknadspolitik, Arbetsförmedlingen, a-kassa och aktiva arbetsmarknadsåtgärder.",
-      "description": "Arbetsmarknadspolitik, Arbetsförmedlingen, A-kassa och aktiva arbetsmarknadsåtgärder.",
+      "shortDescription": "För granskningar av arbetsmarknadspolitik, Arbetsförmedlingen, A-kassa och aktiva arbetsmarknadsåtgärder.",
+      "description": "Området samlar sakkunskap om arbetsmarknadspolitikens utformning och genomförande — Arbetsförmedlingens uppdrag och styrning, A-kassans ersättningssystem, etableringsprogram, aktiva åtgärder och deras effektivitet. Expertisen täcker både lagstiftning (LAS, AFL) och effektutvärdering med IFAU-metodik.",
       "signals": [
-        "Granskningen berör statlig arbetsmarknadspolitik eller sysselsättningsåtgärder",
-        "Arbetsförmedlingens verksamhet, reformer eller styrning behöver utvärderas",
-        "Effekter av aktiva arbetsmarknadsåtgärder eller a-kassesystem ska analyseras"
+        "Granskningen rör Arbetsförmedlingens verksamhet, uppdrag eller styrning",
+        "Aktiva arbetsmarknadsåtgärder eller ersättningssystem ska bedömas",
+        "Arbetsmarknadslagstiftning (LAS, AFL) eller etableringsprogram ingår i uppdraget"
       ],
       "deliverables": [
-        "Granskning av arbetsmarknadspolitiska insatsers ändamålsenlighet",
-        "Analys av Arbetsförmedlingens styrning och resultat",
-        "Bedömning av aktiva arbetsmarknadsåtgärders effektivitet och träffsäkerhet"
+        "Sakanalys av arbetsmarknadspolitik och Arbetsförmedlingens styrning",
+        "Bedömning av aktiva åtgärders effektivitet och ersättningssystems utformning",
+        "Effektutvärdering med IFAU-metodik och registerdata"
       ]
     },
     {
@@ -250,19 +250,19 @@
       "slug": "utbildning",
       "sortOrder": 80,
       "featured": true,
-      "accent": "#D4883E",
+      "accent": "#3D6E8A",
       "name": "Utbildning och skolkvalitet",
       "shortDescription": "För granskningar av utbildningspolitik, skolstyrning, högskolans styrning och kvalitetssäkring.",
-      "description": "Utbildningspolitik, skolstyrning, högskolans styrning och kvalitetssäkring.",
+      "description": "Området täcker utbildningssystemets styrning och kvalitet — från grundskola och gymnasium till högskolans examenstillstånd och lärosätenas resurstilldelning. Expertisen inkluderar Skolverket, Skolinspektionen, UKÄ, betygsinflation, skolsegregation, friskolesystemet och likvärdighetsanalyser.",
       "signals": [
-        "Granskningen rör skolans styrkedja, kvalitetssäkring eller likvärdighet",
-        "Högskolans styrning, resurstilldelning eller examinationsresultat behöver utredas",
-        "Statliga satsningar på utbildning ska utvärderas avseende måluppfyllelse"
+        "Granskningen rör Skolverket, Skolinspektionen, UKÄ eller skollagen",
+        "Utbildningskvalitet, betygsinflation eller likvärdighet ska analyseras",
+        "Högskolans styrning, examenstillstånd eller resurstilldelning ingår i uppdraget"
       ],
       "deliverables": [
-        "Granskning av utbildningspolitiska reformers genomslag och resultat",
-        "Analys av skolstyrningens ändamålsenlighet och likvärdighetsperspektiv",
-        "Bedömning av högskolans kvalitetssäkring och resurseffektivitet"
+        "Sakanalys av utbildningspolitik, skolstyrning och högskolans styrning",
+        "Bedömning av skolors och lärosätens kvalitet, tillsyn och resultatutveckling",
+        "Likvärdighetsanalys med fokus på betygsinflation och resurstilldelning"
       ]
     },
     {
@@ -270,19 +270,19 @@
       "slug": "miljo-klimat",
       "sortOrder": 90,
       "featured": true,
-      "accent": "#3E8564",
+      "accent": "#4E7A52",
       "name": "Miljö, klimat och energi",
       "shortDescription": "För granskningar av klimatpolitik, miljöstyrning, energisystemet och EU:s klimatreglering.",
-      "description": "Klimatpolitik, miljöstyrning, energisystemet och EU:s klimatreglering.",
+      "description": "Området samlar sakkunskap om det klimatpolitiska ramverket, miljöbalkens tillståndsprocesser och energisystemets styrning — från netto noll 2045-målet och Klimatpolitiska rådet till EU ETS, taxonomiförordningen och Green Deal. Expertisen täcker även cirkulär ekonomi, CBAM och klimatomställningens rättsliga ramar.",
       "signals": [
-        "Granskningen berör klimatpolitiska mål, styrmedel eller utsläppsredovisning",
-        "Miljöstyrning, tillsyn eller efterlevnad av miljölagstiftning ska utvärderas",
-        "Energipolitiska åtgärder eller EU:s klimatreglering behöver analyseras"
+        "Granskningen rör klimatlagen, netto noll-målet eller Klimatpolitiska rådet",
+        "Miljöbalkens tillståndsprocesser eller MKB ingår i uppdraget",
+        "EU:s klimatreglering (EU ETS, taxonomin, Green Deal, CBAM) behöver analyseras"
       ],
       "deliverables": [
-        "Granskning av klimatpolitiska styrmedels effektivitet och kostnadseffektivitet",
-        "Analys av miljötillsynens ändamålsenlighet och resursutnyttjande",
-        "Bedömning av energipolitiska åtgärders bidrag till klimatmål"
+        "Sakanalys av klimat-, miljö- och energipolitik samt styrmedel",
+        "Bedömning av tillståndsprocesser och miljöbalkens tillämpning",
+        "Analys av EU:s klimatreglering och dess genomslag i svenska myndigheter"
       ]
     }
   ],
@@ -324,7 +324,11 @@
         "expert-finanser",
         "expert-digitalisering",
         "expert-rattsvasende",
-        "expert-valfard"
+        "expert-valfard",
+        "expert-arbetsmarknad",
+        "expert-utbildning",
+        "expert-miljo-klimat",
+        "expert-telekommunikation"
       ],
       "plugin": {
         "name": "team-domanexperter",
@@ -1815,6 +1819,122 @@
         "marketplaceListed": true
       },
       "updatedAt": "2026-04-12T17:30:00.000Z"
+    },
+    {
+      "id": "expert-expert-telekommunikation",
+      "slug": "expert-telekommunikation",
+      "name": "Expert Telekommunikation",
+      "role": "Domänexpert: Telekommunikation & Digital Infrastruktur",
+      "sortOrder": 140,
+      "featured": true,
+      "areaSlugs": [
+        "digitalisering"
+      ],
+      "summary": "Domänexpert inom telekommunikationsreglering och digital infrastruktur — PTS, LEK, EU:s EECC, spektrumauktioner, nationell bredbandspolitik, tillträdesreglering och telekommunikation som kritisk infrastruktur (NIS2, MSB, totalförsvar).",
+      "profileQuote": "Telekommunikationspolitik handlar ytterst om hur samhället säkerställer robusthet, konkurrens och täckning i ett nät som alla andra kritiska system är beroende av.",
+      "availability": "Tillgänglig för sakanalyser inom telekommunikationsreglering, bredbandspolitik och digital infrastruktur.",
+      "portrait": {
+        "src": "/avatars/expert-telekommunikation.svg",
+        "alt": "Illustration av Expert Telekommunikation"
+      },
+      "location": "Virtuell nod, Stockholm",
+      "capabilities": [
+        "Analys av telekommunikationsreglering — PTS, LEK, EU:s EECC och SMP-beslut",
+        "Bedömning av nationell bredbandspolitik och statliga stödprogram",
+        "Tillträdesreglering, öppna nät och konkurrensanalys på telekommarknaderna",
+        "Telekommunikation som kritisk infrastruktur — NIS2, MSB och totalförsvarsplanering"
+      ],
+      "knowledge": [
+        "Lagen om elektronisk kommunikation (LEK) och PTS befogenheter",
+        "EU:s europeiska kodex för elektronisk kommunikation (EECC)",
+        "Nationell bredbandsstrategi och statliga stödprogram",
+        "NIS2-direktivet och robusthetskrav för teleoperatörer"
+      ],
+      "methods": [
+        "Regleringsanalys",
+        "Bredbandspolitisk analys",
+        "SMP-analys",
+        "Kritisk infrastrukturanalys"
+      ],
+      "strengths": [
+        "Djup kunskap om PTS regleringsbefogenheter och spektrumauktioner",
+        "Behärskar skärningspunkten mellan EU:s EECC och svenska LEK",
+        "Analyserar telekommunikation ur både konkurrens- och totalförsvarsperspektiv"
+      ],
+      "tools": [
+        "PTS tillsynsdatabaser",
+        "EU EECC-dokumentation",
+        "Spektrumauktionsdata",
+        "Bredbandskartor (PTS)"
+      ],
+      "metrics": [
+        {
+          "label": "Regleringslager (lokal/EU)",
+          "value": "2"
+        },
+        {
+          "label": "Nyckelmyndigheter",
+          "value": "4+"
+        },
+        {
+          "label": "Sakanalyser",
+          "value": "10+"
+        }
+      ],
+      "experience": [
+        {
+          "title": "Domänexpert: Telekommunikation",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om telekommunikationsreglering och digital infrastruktur till effektivitetsrevisioner och politikanalys."
+        },
+        {
+          "title": "Telekomanalytiker och regulatorisk rådgivare",
+          "organization": "Analytisk enhet, digital infrastruktur",
+          "period": "2021-2026",
+          "summary": "Utredde telekomregleringens effektivitet, spektrumauktionernas utfall och bredbandsutbyggnadens utmaningar."
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Granskning av statliga bredbandsstödsprogram",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Analyserade PTS bredbandsstöd och EU-strukturfonders genomslag på fiberutbyggnad i glesbygd.",
+          "impact": "Identifierade överlappande stödprogram och föreslog koordinering för effektivare användning av offentliga medel."
+        },
+        {
+          "title": "Analys av NIS2-genomförande för teleoperatörer",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Bedömde hur svenska teleoperatörer uppfyller NIS2:s robusthetskrav och PTS föreskrifter om driftssäkerhet.",
+          "impact": "Visade på systematiska brister i incidentrapportering och rekommenderade tydligare tillsynsmandat för PTS."
+        }
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-telekommunikation-email",
+          "type": "email",
+          "label": "Kontakta Expert Telekommunikation",
+          "url": "mailto:expert.telekommunikation@expertbyran.ai",
+          "description": "För sakanalyser inom telekommunikationsreglering, bredbandspolitik och digital infrastruktur."
+        },
+        {
+          "id": "expert-telekommunikation-calendar",
+          "type": "calendar",
+          "label": "Boka möte med Expert Telekommunikation",
+          "url": "https://calendar.app.google/expert-telekommunikation",
+          "description": "Diskutera telekommunikationsreglering, bredband och kritisk infrastruktur."
+        }
+      ],
+      "plugin": {
+        "name": "expert-expert-telekommunikation",
+        "version": "1.0.0",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryPath": "plugins/experts/expert-telekommunikation",
+        "marketplaceListed": true
+      },
+      "updatedAt": "2026-04-12T18:05:00.000Z"
     }
   ]
 }
