@@ -1,4 +1,3 @@
-import { PageHero } from "@/components/site/PageHero";
 import styles from "@/components/site/site.module.css";
 import { getOrderedSiteData } from "@/lib/content/query";
 
@@ -11,50 +10,50 @@ export default async function AboutPage() {
 
   return (
     <div className={styles.pageWrap}>
-      <PageHero
-        eyebrow="Om Expertbyrån"
-        title={data.organization.modelTitle}
-        intro={data.organization.summary}
-        primaryAction={{ href: "/expertomraden", label: "Se expertområden" }}
-        secondaryAction={{ href: "/", label: "Till startsidan" }}
-        asideLabel="Leveransmodell"
-        asideValue={data.organization.modelDescription}
-      />
+      <div className={styles.hero}>
+        <p className={styles.heroEyebrow}>Om Expertbyrån</p>
+        <h1 className={styles.heroTitle}>{data.organization.modelTitle}</h1>
+        <div className={styles.heroLine} />
+        <p className={styles.heroIntro}>{data.organization.summary}</p>
+      </div>
+
+      <div className={styles.stats}>
+        {data.organization.operations.map((op) => (
+          <div key={op.label}>
+            <div className={styles.statValue}>{op.value}</div>
+            <div className={styles.statLabel}>{op.label}</div>
+          </div>
+        ))}
+      </div>
 
       <section className={styles.section}>
-        <div className={styles.sectionHead}>
-          <div>
-            <p className={styles.eyebrow}>Organisation</p>
-            <h2 className={styles.sectionTitle}>Tydliga roller i en helt virtuell byrå.</h2>
-          </div>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionLabel}>Organisation</h2>
+          <span className={styles.sectionCount}>{data.organization.structure.length} funktioner</span>
         </div>
-        <div className={styles.gridCards}>
+        <div className={styles.grid}>
           {data.organization.structure.map((item) => (
-            <article key={item.id} className={styles.card}>
-              <p className={styles.cardMeta}>Funktion</p>
-              <h3 className={styles.cardTitle}>{item.title}</h3>
-              <p className={styles.cardText}>{item.description}</p>
-            </article>
+            <div key={item.id} className={styles.gridCell}>
+              <span className={styles.gridCellCategory}>Funktion</span>
+              <span className={styles.gridCellName}>{item.title}</span>
+              <span className={styles.gridCellDesc}>{item.description}</span>
+            </div>
           ))}
         </div>
       </section>
 
       <section className={styles.section}>
-        <div className={styles.twoColumn}>
-          <div className={styles.detailBlock}>
-            <p className={styles.eyebrow}>Hur vi arbetar</p>
-            <h2 className={styles.sectionTitle}>Från analys till kvalitetssäkrad leverans.</h2>
-            <p className={styles.sectionText}>{data.organization.modelDescription}</p>
-          </div>
-
-          <ul className={styles.metricList}>
-            {data.organization.operations.map((operation) => (
-              <li key={operation.label} className={styles.metricItem}>
-                <span className={styles.metricValue}>{operation.value}</span>
-                <span className={styles.metricLabel}>{operation.label}</span>
-              </li>
-            ))}
-          </ul>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionLabel}>Arbetssätt</h2>
+        </div>
+        <div className={styles.grid}>
+          {data.organization.workflow.map((step, index) => (
+            <div key={step.title} className={styles.gridCell}>
+              <span className={styles.gridCellCategory}>Steg {index + 1}</span>
+              <span className={styles.gridCellName}>{step.title}</span>
+              <span className={styles.gridCellDesc}>{step.description}</span>
+            </div>
+          ))}
         </div>
       </section>
     </div>
