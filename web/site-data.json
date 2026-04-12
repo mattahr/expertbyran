@@ -288,7 +288,7 @@
         "src": "/avatars/effektivitetsrevisor.svg",
         "alt": "Illustration av Effektivitetsrevisor"
       },
-      "summary": "Generalisten som behärskar Riksrevisionens hela 3-fas/23-stegsprocess och kan leda en granskning från idé till publicering. Bryter ned revisionsfrågor i delfrågor med explicita bedömningsgrunder och koordinerar rätt metodexperter för varje delmoment.",
+      "summary": "Generalisten som behärskar hela 3-fas/23-stegsprocessen för effektivitetsrevision och kan leda en granskning från idé till publicering. Bryter ned revisionsfrågor i delfrågor med explicita bedömningsgrunder och koordinerar rätt metodexperter för varje delmoment.",
       "profileQuote": "En bra granskning börjar med en tydlig designmatris. Om delfrågor, bedömningsgrunder och metodval inte hänger ihop från start blir slutsatserna aldrig skarpa nog.",
       "strengths": [
         "Behärskar hela 3-fas/23-stegsprocessen för effektivitetsrevision",
@@ -311,15 +311,15 @@
       ],
       "selectedEngagements": [
         {
-          "title": "Designmatris för granskning av statsbidrag till kommuner",
-          "client": "Riksrevisionen",
+          "title": "Designmatris för utredning av statsbidrag till kommuner",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Bröt ned övergripande revisionsfråga i sex delfrågor med explicita bedömningsgrunder förankrade i regleringsbrev och förordning.",
           "impact": "Designmatrisen gav granskningen tydlig struktur och sparade flera veckors metoddiskussion."
         },
         {
-          "title": "Projektledning av effektivitetsrevision inom digital identitet",
-          "client": "Riksrevisionen",
+          "title": "Projektledning av utredning inom digital identitet",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Ledde granskningen från förstudie till publicering med blandat metodupplägg — kvantitativ registeranalys, intervjuer och rättslig tolkning.",
           "impact": "Levererade inom tidsplan med godkänd vetenskaplig kvalitetsgranskning vid rapportseminarium."
@@ -340,12 +340,13 @@
         }
       ],
       "knowledge": [
-        "M.Sc. i statsvetenskap med inriktning mot offentlig förvaltning",
-        "Fördjupning i utvärderingsmetodik och revisionsprocesser"
+        "Offentlig förvaltning och statlig styrning",
+        "Utvärderingsmetodik och revisionsprocesser",
+        "ISSAI-ramverket för effektivitetsrevision"
       ],
       "capabilities": [
-        "ISSAI 300-certifierad effektivitetsrevisor",
-        "Certified Performance Audit Practitioner"
+        "Granskningsdesign med designmatriser och metodval",
+        "Projektledning av effektivitetsrevisioner från förstudie till publicering"
       ],
       "tools": [
         "Designmatriser",
@@ -424,14 +425,14 @@
       "selectedEngagements": [
         {
           "title": "Registeranalys av avgiftsbelagda tjänsters effektivitet",
-          "client": "Riksrevisionen",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Analyserade registerdata från ESV och SCB för att bedöma om myndigheters avgiftsintäkter stod i proportion till faktiska kostnader.",
           "impact": "Identifierade systematisk överprissättning i tre myndigheter med statistiskt säkerställda avvikelser."
         },
         {
-          "title": "Kvantitativ iakttagelsedel för granskning av finanspolitiska ramverket",
-          "client": "Riksrevisionen",
+          "title": "Kvantitativ analys av finanspolitiska ramverkets tillämpning",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Tog fram kvantitativa iakttagelser med tidsserier, osäkerhetsmarginaler och kausalitetsprövning av stabiliseringspolitiska instrument.",
           "impact": "Iakttagelserna klarade kvalitetsgranskningens precisionskrav utan revideringar."
@@ -452,12 +453,13 @@
         }
       ],
       "knowledge": [
-        "M.Sc. i statistik och ekonometri",
-        "Fördjupning i kausalinferens och registerbaserad forskning"
+        "Statistik, ekonometri och registerbaserad analys",
+        "Kausalinferens och kvantitativa forskningsmetoder",
+        "Offentliga register och datakällor"
       ],
       "capabilities": [
-        "Certified Data Analyst — Public Sector",
-        "Statistical Causal Inference Certificate"
+        "Kvantitativ analys av registerdata med precision och osäkerhetsbedömning",
+        "Kausalitetsprövning med temporal ordning, kovariation och eliminering"
       ],
       "tools": [
         "Registeruttag",
@@ -536,14 +538,14 @@
       "selectedEngagements": [
         {
           "title": "Intervjustudie om LSS-verksamheters anpassning till statlig styrning",
-          "client": "Riksrevisionen",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Designade intervjuguide, genomförde urvalsplanering och kodade 28 intervjuer med kommunala och statliga aktörer inom LSS.",
-          "impact": "Trianguleringen med registerdata stärkte granskningens slutsatser om bristande samordning."
+          "impact": "Trianguleringen med registerdata stärkte utredningens slutsatser om bristande samordning."
         },
         {
           "title": "Dokumentanalys av regleringsbrev och årsredovisningar",
-          "client": "Riksrevisionen",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Systematisk granskning av 45 regleringsbrev och årsredovisningar för att kartlägga styrningssignaler inom välfärdssektorn.",
           "impact": "Identifierade mönster som den kvantitativa analysen inte kunde fånga."
@@ -564,12 +566,13 @@
         }
       ],
       "knowledge": [
-        "M.Sc. i sociologi med inriktning mot kvalitativ metod",
-        "Fördjupning i intervjumetodik och fallstudiedesign"
+        "Kvalitativ forskningsmetodik och intervjuteknik",
+        "Systematisk dokumentanalys och kodning",
+        "Representativitetsbedömning och triangulering"
       ],
       "capabilities": [
-        "Certified Qualitative Research Practitioner",
-        "Document Analysis Methodology Certificate"
+        "Utformning av intervjuguider med urvalsstrategier och kodningsscheman",
+        "Triangulering av kvalitativa fynd med kvantitativa analyser"
       ],
       "tools": [
         "Intervjuguider",
@@ -648,14 +651,14 @@
       "selectedEngagements": [
         {
           "title": "Rättslig analys av bedömningsgrunder för polisens dimensionering",
-          "client": "Riksrevisionen",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Utredde den rättsliga grunden för att bedöma polisens resurstilldelning — förordning, regleringsbrev och riksdagsbeslut.",
           "impact": "Klargjorde vilka bedömningsgrunder som var tillämpliga och undvek svaga standarder i slutrapporten."
         },
         {
-          "title": "Mandattolkning för rekommendationer om civilt försvar",
-          "client": "Riksrevisionen",
+          "title": "Mandattolkning för rekommendationer rörande civilt försvar",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Analyserade mandatfördelningen mellan länsstyrelser, kommuner och MSB för att säkerställa att rekommendationer riktades korrekt.",
           "impact": "Förhindrade att rekommendationer riktades till aktörer utan befogenhet att genomföra dem."
@@ -676,12 +679,13 @@
         }
       ],
       "knowledge": [
-        "Jur.kand. med inriktning mot förvaltningsrätt",
-        "Fördjupning i författningstolkning och myndighetsstyrning"
+        "Förvaltningsrätt och författningstolkning",
+        "Myndighetsstyrning och mandatfördelning",
+        "Regleringsbrev, förordningar och myndighetsinstruktioner"
       ],
       "capabilities": [
-        "Certifierad offentligrättslig analytiker",
-        "Public Law Regulatory Analysis Certificate"
+        "Utredning av bedömningsgrunders rättsliga ursprung",
+        "Mandatanalys för att säkerställa att rekommendationer riktas korrekt"
       ],
       "tools": [
         "Rättsdatabaser",
@@ -735,7 +739,7 @@
         "src": "/avatars/kvalitetsgranskare.svg",
         "alt": "Illustration av Kvalitetsgranskare"
       },
-      "summary": "Extern opponent vid upplägg- och rapportseminarier. Prövar utkast mot Riksrevisionens samlade vetenskapliga checklista och ger välgrundade invändningar om intern/extern validitet, reliabilitet och kausalitetskrav.",
+      "summary": "Extern opponent vid upplägg- och rapportseminarier. Prövar utkast mot etablerade vetenskapliga kvalitetskriterier och ger välgrundade invändningar om intern/extern validitet, reliabilitet och kausalitetskrav.",
       "profileQuote": "De vanligaste bristerna är bekräftelsebias och övertolkning av intervjudata. En granskning som inte aktivt sökt motargument har inte prövat sina slutsatser.",
       "strengths": [
         "Prövar utkast mot de fem grundkriterierna — intern/extern validitet, reliabilitet, transparens, falsifierbarhet",
@@ -759,14 +763,14 @@
       "selectedEngagements": [
         {
           "title": "Opponering vid rapportseminarium om statsbidrag",
-          "client": "Riksrevisionen",
+          "client": "Offentlig sektor",
           "period": "2026",
-          "summary": "Granskade rapportutkast mot avsnitt 9 i instruktionen om vetenskapliga krav. Identifierade tre fall av selektiv precisionsnivå och en oproportionerlig rekommendation.",
+          "summary": "Granskade rapportutkast mot vetenskapliga krav. Identifierade tre fall av selektiv precisionsnivå och en oproportionerlig rekommendation.",
           "impact": "Rapportens slutsatser skärptes och rekommendationerna kalibrerades innan publicering."
         },
         {
-          "title": "Vetenskaplig kvalitetsgranskning av granskning om digital identitet",
-          "client": "Riksrevisionen",
+          "title": "Kvalitetsgranskning av utredning om digital identitet",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Prövade intern validitet, kausalitetskedja och metodbegränsningar i ett utkast med blandat metodupplägg.",
           "impact": "Resulterade i ett förstärkt metodavsnitt och tydligare avgränsning av slutsatsernas räckvidd."
@@ -787,12 +791,13 @@
         }
       ],
       "knowledge": [
-        "Ph.D. i utvärderingsmetodik",
-        "Fördjupning i vetenskapsteori och forskningsetik"
+        "Vetenskapsteori och forskningsetik",
+        "Utvärderingsmetodik och validitetsprövning",
+        "Systematisk bristkartläggning och opponeringsteknik"
       ],
       "capabilities": [
-        "Certified Scientific Review Practitioner",
-        "ISSAI Quality Assurance Certificate"
+        "Vetenskaplig opponering mot intern/extern validitet, reliabilitet och kausalitetskrav",
+        "Slutsatskalibrering — granskning av precision och proportionalitet i formuleringar"
       ],
       "tools": [
         "Vetenskaplig checklista (avsnitt 9)",
@@ -869,15 +874,15 @@
       ],
       "selectedEngagements": [
         {
-          "title": "Sakanalys av generella statsbidrag som stabiliseringspolitiskt instrument",
-          "client": "Riksrevisionen",
+          "title": "Analys av generella statsbidrag som stabiliseringspolitiskt instrument",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Utvärderade om generella statsbidrag fungerade som effektivt stabiliseringspolitiskt verktyg ur finanspolitisk ram.",
           "impact": "Klargjorde att bidragsformen hade begränsad stabiliseringseffekt jämfört med regelstyrda transfereringar."
         },
         {
-          "title": "Expertunderlag om avgiftsbelagda tjänster och effektivitetsrisker",
-          "client": "Riksrevisionen",
+          "title": "Utredning av avgiftsbelagda tjänster och effektivitetsrisker",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Analyserade ESV:s regelverk och myndigheternas avgiftshantering utifrån risk för ineffektivitet.",
           "impact": "Identifierade strukturella incitamentsproblem när myndigheter både bestämmer och disponerar avgifter."
@@ -898,12 +903,13 @@
         }
       ],
       "knowledge": [
-        "M.Sc. i nationalekonomi med inriktning mot offentlig ekonomi",
-        "Fördjupning i finanspolitik och statlig styrning"
+        "Offentlig ekonomi och finanspolitiska ramverket",
+        "Statsbidragssystem och avgiftsbelagda tjänster",
+        "Myndighetsstyrning i finansperspektiv"
       ],
       "capabilities": [
-        "Public Finance Analysis Certificate",
-        "Certified Government Budget Analyst"
+        "Sakanalys av finansiella styrmedel inom offentlig sektor",
+        "Bedömning av statsbidrags och avgifters effektivitet som styrmedel"
       ],
       "tools": [
         "ESV-databaser",
@@ -980,15 +986,15 @@
       ],
       "selectedEngagements": [
         {
-          "title": "Sakanalys av statliga strategiska digitaliseringsprojekt",
-          "client": "Riksrevisionen",
+          "title": "Analys av statliga strategiska digitaliseringsprojekt",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Bedömde gemensamma utmaningar i portföljhantering, riskstyrning och ansvarsfrågor i tre stora statliga digitaliseringsprojekt.",
           "impact": "Synliggjorde att bristande portföljstyrning var den gemensamma riskfaktorn snarare än teknisk komplexitet."
         },
         {
-          "title": "Expertunderlag om fastställande av identitet vid statliga myndigheter",
-          "client": "Riksrevisionen",
+          "title": "Utredning av identitetsfastställande vid statliga myndigheter",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Analyserade myndigheters rutiner för identitetsfastställande — BankID, biometri och manuella processer.",
           "impact": "Identifierade säkerhetsluckor i övergången mellan digitala och manuella verifieringsprocesser."
@@ -1009,12 +1015,13 @@
         }
       ],
       "knowledge": [
-        "M.Sc. i informatik med inriktning mot offentlig förvaltning",
-        "Fördjupning i digital styrning och informationssäkerhet"
+        "Statlig digitalisering och IT-styrning",
+        "Digital identitet, e-legitimationer och biometri",
+        "Informationshantering och interoperabilitet"
       ],
       "capabilities": [
-        "Certified Digital Government Analyst",
-        "Information Security Assessment Certificate"
+        "Sakanalys av digitaliseringsprojekts styrning och risker",
+        "Bedömning av identitetsfastställande och informationssäkerhet"
       ],
       "tools": [
         "DIGG:s ramverk",
@@ -1068,7 +1075,7 @@
         "src": "/avatars/expert-rattsvasende.svg",
         "alt": "Illustration av Expert Rättsväsende"
       },
-      "summary": "Domänexpert inom rättsväsendets myndigheter och civilt försvar — polisens dimensionering, åklagarväsendet, skydd av hotade personer, infiltrationsskydd och det civila försvarets uppbyggnad. Bidrar med sakkunskap grundad i Riksrevisionens tidigare granskningar.",
+      "summary": "Domänexpert inom rättsväsendets myndigheter och civilt försvar — polisens dimensionering, åklagarväsendet, skydd av hotade personer, infiltrationsskydd och det civila försvarets uppbyggnad. Bidrar med sakkunskap grundad i tidigare granskningar inom offentlig sektor.",
       "profileQuote": "Rättsväsendets effektivitet handlar inte bara om resurser. Det handlar om styrning, dimensionering och om myndigheterna faktiskt samverkar när det behövs.",
       "strengths": [
         "Djup kunskap om polisens styrning, dimensionering och resursfördelning",
@@ -1091,15 +1098,15 @@
       ],
       "selectedEngagements": [
         {
-          "title": "Sakanalys av statens skydd av hotade personer",
-          "client": "Riksrevisionen",
+          "title": "Analys av statens skydd av hotade personer",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Bedömde effektiviteten i polisens, Kronofogdens och Skatteverkets skyddsverksamhet utifrån lagstiftning och praxis.",
           "impact": "Synliggjorde brister i samordningen mellan myndigheter och avsaknad av gemensam uppföljning."
         },
         {
-          "title": "Expertunderlag om det civila försvarets uppbyggnad",
-          "client": "Riksrevisionen",
+          "title": "Utredning rörande det civila försvarets uppbyggnad",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Analyserade den statliga styrningen av civilt försvar efter 2015 — länsstyrelser, kommuner och näringslivets roller.",
           "impact": "Identifierade att oklara mandatgränser försenade uppbyggnadstakten i flera län."
@@ -1120,12 +1127,13 @@
         }
       ],
       "knowledge": [
-        "M.Sc. i kriminologi med inriktning mot offentlig förvaltning",
-        "Fördjupning i polisforskning och krishantering"
+        "Rättsväsendets myndigheter och styrning",
+        "Civilt försvar och krisberedskap",
+        "Skydd av hotade personer och infiltrationsskydd"
       ],
       "capabilities": [
-        "Public Safety Analysis Certificate",
-        "Certified Crisis Management Analyst"
+        "Sakanalys av rättsväsendets organisering och resursanvändning",
+        "Bedömning av myndigheters samverkan vid grova brott och skydd"
       ],
       "tools": [
         "Myndighetskartläggningar",
@@ -1202,15 +1210,15 @@
       ],
       "selectedEngagements": [
         {
-          "title": "Sakanalys av LSS som kommunalt uppdrag under statlig styrning",
-          "client": "Riksrevisionen",
+          "title": "Analys av LSS som kommunalt uppdrag under statlig styrning",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Utredde hur statens styrning genom Försäkringskassan och IVO påverkade kommunernas faktiska LSS-insatser.",
           "impact": "Identifierade systemiska incitamentsproblem i gränslandet mellan stat och kommun."
         },
         {
-          "title": "Expertunderlag om IVO:s hantering av klagomål på hälso- och sjukvården",
-          "client": "Riksrevisionen",
+          "title": "Utredning av klagomålshantering inom hälso- och sjukvården",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Analyserade IVO:s klagomålsprocess — handläggningstider, beslutsmönster och patientnämndens roll.",
           "impact": "Synliggjorde att klagomålshanteringen inte gav systematisk återkoppling till vårdgivarna."
@@ -1231,12 +1239,13 @@
         }
       ],
       "knowledge": [
-        "M.Sc. i socialt arbete med inriktning mot offentlig förvaltning",
-        "Fördjupning i välfärdspolicy och kommunal styrning"
+        "Välfärdssystem och social omsorg",
+        "LSS, IVO och tillsynsfrågor",
+        "Statlig-kommunal styrning och ansvarsfördelning"
       ],
       "capabilities": [
-        "Welfare Policy Analysis Certificate",
-        "Certified Social Services Analyst"
+        "Sakanalys av välfärdstjänsters organisering och effektivitet",
+        "Bedömning av tillsynens funktion och genomslag"
       ],
       "tools": [
         "Tillsynsdatabaser",
@@ -1313,18 +1322,18 @@
       ],
       "selectedEngagements": [
         {
-          "title": "Klarspråksgranskning av granskningsrapport om statsbidrag",
-          "client": "Riksrevisionen",
+          "title": "Klarspråksgranskning av utredningsrapport om statsbidrag",
+          "client": "Offentlig sektor",
           "period": "2026",
           "summary": "Granskade och skrev om sammanfattning och slutsatskapitel i en effektivitetsrevision för att öka läsbarheten och tydligheten.",
-          "impact": "Rapportens läsbarhetsindex förbättrades markant och den fick godkänt vid Riksrevisionens språkgranskning utan revideringar."
+          "impact": "Rapportens läsbarhetsindex förbättrades markant och texten godkändes vid språkgranskning utan revideringar."
         },
         {
-          "title": "Omskrivning av myndighetsbeslut till klarspråk",
-          "client": "Riksrevisionen",
+          "title": "Omskrivning av förvaltningsrättsliga formuleringar till klarspråk",
+          "client": "Offentlig sektor",
           "period": "2025",
           "summary": "Skrev om komplexa förvaltningsrättsliga formuleringar i ett rapportutkast till tydlig och tillgänglig svenska.",
-          "impact": "Textens målgrupp — riksdagsledamöter och departementstjänstemän — kunde snabbare ta till sig slutsatserna."
+          "impact": "Textens målgrupp — beslutsfattare och tjänstemän — kunde snabbare ta till sig slutsatserna."
         }
       ],
       "experience": [
@@ -1342,12 +1351,13 @@
         }
       ],
       "knowledge": [
-        "Fil.mag. i svenska med inriktning mot språkvård och textanalys",
-        "Fördjupning i klarspråk och myndighetskommunikation"
+        "Språkrådets klarspråksriktlinjer och Myndigheternas skrivregler",
+        "Textanalys, läsbarhetsindex och strukturbedömning",
+        "Myndighetsspråk och offentlig kommunikation"
       ],
       "capabilities": [
-        "Klarspråkscertifiering från Språkrådet",
-        "Certifierad textgranskare för offentlig sektor"
+        "Textgranskning med motiverade förbättringsförslag",
+        "Omskrivning av komplexa texter till tydlig och tillgänglig svenska"
       ],
       "tools": [
         "Språkrådets klarspråksriktlinjer",
