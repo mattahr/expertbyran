@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T07:30:00.000Z",
+  "updatedAt": "2026-04-12T19:40:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -226,22 +226,64 @@
       ]
     },
     {
+      "id": "area-arbetsmarknad",
       "slug": "arbetsmarknad",
+      "sortOrder": 70,
+      "featured": true,
+      "accent": "#B5594E",
       "name": "Arbetsmarknad och sysselsättning",
+      "shortDescription": "För granskningar av arbetsmarknadspolitik, Arbetsförmedlingen, a-kassa och aktiva arbetsmarknadsåtgärder.",
       "description": "Arbetsmarknadspolitik, Arbetsförmedlingen, A-kassa och aktiva arbetsmarknadsåtgärder.",
-      "icon": "target"
+      "signals": [
+        "Granskningen berör statlig arbetsmarknadspolitik eller sysselsättningsåtgärder",
+        "Arbetsförmedlingens verksamhet, reformer eller styrning behöver utvärderas",
+        "Effekter av aktiva arbetsmarknadsåtgärder eller a-kassesystem ska analyseras"
+      ],
+      "deliverables": [
+        "Granskning av arbetsmarknadspolitiska insatsers ändamålsenlighet",
+        "Analys av Arbetsförmedlingens styrning och resultat",
+        "Bedömning av aktiva arbetsmarknadsåtgärders effektivitet och träffsäkerhet"
+      ]
     },
     {
+      "id": "area-utbildning",
       "slug": "utbildning",
+      "sortOrder": 80,
+      "featured": true,
+      "accent": "#D4883E",
       "name": "Utbildning och skolkvalitet",
+      "shortDescription": "För granskningar av utbildningspolitik, skolstyrning, högskolans styrning och kvalitetssäkring.",
       "description": "Utbildningspolitik, skolstyrning, högskolans styrning och kvalitetssäkring.",
-      "icon": "lightbulb"
+      "signals": [
+        "Granskningen rör skolans styrkedja, kvalitetssäkring eller likvärdighet",
+        "Högskolans styrning, resurstilldelning eller examinationsresultat behöver utredas",
+        "Statliga satsningar på utbildning ska utvärderas avseende måluppfyllelse"
+      ],
+      "deliverables": [
+        "Granskning av utbildningspolitiska reformers genomslag och resultat",
+        "Analys av skolstyrningens ändamålsenlighet och likvärdighetsperspektiv",
+        "Bedömning av högskolans kvalitetssäkring och resurseffektivitet"
+      ]
     },
     {
+      "id": "area-miljo-klimat",
       "slug": "miljo-klimat",
+      "sortOrder": 90,
+      "featured": true,
+      "accent": "#3E8564",
       "name": "Miljö, klimat och energi",
+      "shortDescription": "För granskningar av klimatpolitik, miljöstyrning, energisystemet och EU:s klimatreglering.",
       "description": "Klimatpolitik, miljöstyrning, energisystemet och EU:s klimatreglering.",
-      "icon": "globe"
+      "signals": [
+        "Granskningen berör klimatpolitiska mål, styrmedel eller utsläppsredovisning",
+        "Miljöstyrning, tillsyn eller efterlevnad av miljölagstiftning ska utvärderas",
+        "Energipolitiska åtgärder eller EU:s klimatreglering behöver analyseras"
+      ],
+      "deliverables": [
+        "Granskning av klimatpolitiska styrmedels effektivitet och kostnadseffektivitet",
+        "Analys av miljötillsynens ändamålsenlighet och resursutnyttjande",
+        "Bedömning av energipolitiska åtgärders bidrag till klimatmål"
+      ]
     }
   ],
   "teams": [
