@@ -4,9 +4,9 @@
   --gray-100: #fafafa;
   --gray-200: #f0f0f0;
   --gray-300: #e0e0e0;
-  --gray-400: #bbbbbb;
-  --gray-500: #888888;
-  --gray-600: #555555;
+  --gray-400: #999999;
+  --gray-500: #6b6b6b;
+  --gray-600: #4a4a4a;
   --content-width: min(1120px, calc(100vw - 3rem));
 }
 
