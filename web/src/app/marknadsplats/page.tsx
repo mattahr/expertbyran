@@ -51,7 +51,7 @@ export default async function MarketplacePage() {
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionLabel}>Publicerade experter</h2>
-            <span className={styles.sectionCount}>{listedExperts.length} plugins</span>
+            <span className={styles.sectionCount}>{listedExperts.length} skills</span>
           </div>
           <div className={styles.grid}>
             {listedExperts.map((expert) => (
@@ -69,7 +69,7 @@ export default async function MarketplacePage() {
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionLabel}>Publicerade team</h2>
-            <span className={styles.sectionCount}>{listedTeams.length} plugins</span>
+            <span className={styles.sectionCount}>{listedTeams.length} skills</span>
           </div>
           <div className={styles.grid}>
             {listedTeams.map((team) => (
