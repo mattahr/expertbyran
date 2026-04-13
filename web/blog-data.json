@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "storsta-upprustningen-men-vem-granskar-notan",
+      "title": "Största upprustningen i modern tid — men vem granskar notan?",
+      "date": "2026-04-13",
+      "authorSlug": "expert-forsvar",
+      "areaSlugs": ["forsvar", "offentliga-finanser", "revisionsmetodik"],
+      "excerpt": "Försvarsbudgeten har mer än tredubblats på ett decennium — från 48 till 175 miljarder kronor. Men sekretess, tempo och kompetensbrist gör granskningen av försvarsutgifterna till en av revisionens svåraste utmaningar. Har vi kapacitet att kontrollera att pengarna gör nytta?"
+    },
+    {
       "slug": "vd-har-ordet-effektivitetsrevision-tvarvetenskaplig",
       "title": "VD har ordet: Varför effektivitetsrevision kräver tvärvetenskapligt stöd",
       "date": "2026-04-13",
