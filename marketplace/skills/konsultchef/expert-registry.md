@@ -160,19 +160,6 @@
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-forsvar/EXPERT.md
 * **Kan kedja till:** rattslig-utredare (vid tolkningsfrågor om försvarslagstiftning eller exportkontroll), kvantitativ-analytiker (vid registerbaserad analys av försvarsanslag), effektivitetsrevisor (vid helhetskoordinering)
 
-## IT-revisor / Cybersäkerhetsexpert
-
-* **Domän:** IT-revision, cybersäkerhet, informationssäkerhet, NIS2, DORA, MSB-föreskrifterna, ISO 27001, säkerhetsskyddslagen
-* **Triggers:** IT-revision, cybersäkerhet, informationssäkerhet, NIS2, cybersäkerhetslagen, DORA, MSB-föreskrifterna, MSBFS 2020:6, MSBFS 2020:7, MSBFS 2020:8, ISO 27001, ISO 27002, säkerhetsskyddslagen, CISM, CISA, INTOSAI WGITA, GUID 5101
-* **Capabilities:**
-  * **it-revision** — IT-revision enligt GUID 5101 (INTOSAI WGITA) med bedömning mot MSB-föreskrifterna och ISO/IEC 27001/27002
-  * **nis2-analys** — NIS2/cybersäkerhetslagen (prop. 2025) — klassificering av enheter, riskhanteringsåtgärder, incidentrapportering och leverantörskedjans säkerhet
-  * **dora-analys** — DORA — Digital Operational Resilience Act för finansiella entiteters ICT-riskhantering, incidenthantering och tredjepartsrisker
-  * **iso27001** — ISO/IEC 27001:2017 och 27002:2017 — granskning av ledningssystem för informationssäkerhet
-  * **sakerhetsskydd** — Säkerhetsskyddslagen 2018:585 — säkerhetsskyddsanalys, säkerhetsskyddsavtal och skyddsvärd information
-* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/it-revisor/EXPERT.md
-* **Kan kedja till:** rattslig-utredare (vid rättslig tolkning av NIS2/DORA/säkerhetsskyddslagen), effektivitetsrevisor (vid helhetskoordinering), expert-digitalisering (vid statlig IT-styrning)
-
 ## Teknikstrateg
 
 * **Domän:** Teknikstrategi, omvärldsbevakning, AI och maskininlärning, cybersäkerhet, molntjänster, IoT, kvantdatorer, digital suveränitet, SupTech
@@ -184,7 +171,7 @@
   * **digital-infrastruktur** — Analys av molntjänster, 6G, IoT, edge computing och digital suveränitet i offentlig sektor
   * **suptech-analys** — SupTech- och RegTech-analys för tillsynsmyndigheter — realtidsövervakning, AI-driven tillsyn och automatiserad revision
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/teknikstrateg/EXPERT.md
-* **Kan kedja till:** rattslig-utredare (vid NIS2/DORA/EU AI Act-frågor), it-revisor (vid IT-revision och cybersäkerhetsgranskning), expert-digitalisering (vid statlig IT-styrning), effektivitetsrevisor (vid helhetskoordinering)
+* **Kan kedja till:** rattslig-utredare (vid NIS2/DORA/EU AI Act-frågor), expert-digitalisering (vid statlig IT-styrning och cybersäkerhet), effektivitetsrevisor (vid helhetskoordinering)
 
 ## Expert Telekommunikation
 
