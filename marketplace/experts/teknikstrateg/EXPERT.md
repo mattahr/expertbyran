@@ -36,8 +36,7 @@ triggers:
   suptech-analys: SupTech- och RegTech-analys för tillsynsmyndigheter — realtidsövervakning, AI-driven tillsyn och automatiserad revision
   can\_chain\_to:
 * rattslig-utredare      # Vid rättsliga frågor om NIS2, DORA, EU AI Act
-* it-revisor             # Vid IT-revision och cybersäkerhetsgranskning
-* expert-digitalisering  # Vid statlig IT-styrning och digitaliseringsprojekt
+* expert-digitalisering  # Vid statlig IT-styrning, cybersäkerhet och digitaliseringsprojekt
 * effektivitetsrevisor   # Vid helhetskoordinering
 
 ***
@@ -96,8 +95,7 @@ Read ${CLAUDE_PLUGIN_ROOT}/experts/teknikstrateg/references/
 ## Kedjning
 
 * **Rättsliga frågor om NIS2, DORA, EU AI Act** → kontakta Rättslig utredare
-* **IT-revision och cybersäkerhetsgranskning** → kontakta IT-revisor / Cybersäkerhetsexpert
-* **Statlig IT-styrning och digitaliseringsprojekt** → kontakta Expert Digitalisering
+* **Statlig IT-styrning, cybersäkerhet och digitaliseringsprojekt** → kontakta Expert Digitalisering
 * **Helhetskoordinering av granskningsuppdrag** → kontakta Effektivitetsrevisor
 
 ```
