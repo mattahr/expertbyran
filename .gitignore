@@ -7,3 +7,9 @@
 # lokala env-filer
 .env
 .env*.local
+
+# git worktrees (lokala, isolerade arbetskopior)
+.worktrees/
+
+# superpowers-session-state (brainstorm-mockups, etc.)
+.superpowers/
