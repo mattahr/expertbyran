@@ -54,10 +54,44 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandLogo {
+  flex-shrink: 0;
+}
+
+.footerBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footerNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.footerLink {
+  color: var(--gray-500);
+  transition: color 180ms;
+}
+
+.footerLink:hover {
+  color: var(--accent);
+}
+
+.footerMeta {
+  font-size: 12px;
+  color: var(--gray-400);
 }
 
 .nav {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 20px;
 }
@@ -99,10 +133,10 @@
 .footerInner {
   width: var(--content-width);
   margin: 0 auto;
-  padding: 48px 0;
+  padding: 40px 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 20px;
   font-size: 12px;
   color: var(--gray-400);
 }
@@ -678,6 +712,7 @@
 
 @media (min-width: 1024px) {
   .nav {
+    display: flex;
     gap: 32px;
   }
 
@@ -713,5 +748,17 @@
 
   .section {
     padding-bottom: 100px;
+  }
+
+  .footerInner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 56px 0;
+  }
+
+  .footerNav {
+    flex: 1;
+    justify-content: center;
   }
 }
