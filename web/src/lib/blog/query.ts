@@ -5,10 +5,12 @@ import type { BlogPostEntry } from "@/lib/blog/schema";
 import { getBlogData } from "@/lib/blog/store";
 
 export function formatBlogDate(isoDate: string): string {
-  return new Date(isoDate).toLocaleDateString("sv-SE", {
+  return new Date(isoDate).toLocaleString("sv-SE", {
     year: "numeric",
     month: "long",
     day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 }
 
