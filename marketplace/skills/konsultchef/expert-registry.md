@@ -160,6 +160,19 @@
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-forsvar/EXPERT.md
 * **Kan kedja till:** rattslig-utredare (vid tolkningsfrågor om försvarslagstiftning eller exportkontroll), kvantitativ-analytiker (vid registerbaserad analys av försvarsanslag), effektivitetsrevisor (vid helhetskoordinering)
 
+## IT-revisor / Cybersäkerhetsexpert
+
+* **Domän:** IT-revision, cybersäkerhet, informationssäkerhet, NIS2, DORA, MSB-föreskrifterna, ISO 27001, säkerhetsskyddslagen
+* **Triggers:** IT-revision, cybersäkerhet, informationssäkerhet, NIS2, cybersäkerhetslagen, DORA, MSB-föreskrifterna, MSBFS 2020:6, MSBFS 2020:7, MSBFS 2020:8, ISO 27001, ISO 27002, säkerhetsskyddslagen, CISM, CISA, INTOSAI WGITA, GUID 5101
+* **Capabilities:**
+  * **it-revision** — IT-revision enligt GUID 5101 (INTOSAI WGITA) med bedömning mot MSB-föreskrifterna och ISO/IEC 27001/27002
+  * **nis2-analys** — NIS2/cybersäkerhetslagen (prop. 2025) — klassificering av enheter, riskhanteringsåtgärder, incidentrapportering och leverantörskedjans säkerhet
+  * **dora-analys** — DORA — Digital Operational Resilience Act för finansiella entiteters ICT-riskhantering, incidenthantering och tredjepartsrisker
+  * **iso27001** — ISO/IEC 27001:2017 och 27002:2017 — granskning av ledningssystem för informationssäkerhet
+  * **sakerhetsskydd** — Säkerhetsskyddslagen 2018:585 — säkerhetsskyddsanalys, säkerhetsskyddsavtal och skyddsvärd information
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/it-revisor/EXPERT.md
+* **Kan kedja till:** rattslig-utredare (vid rättslig tolkning av NIS2/DORA/säkerhetsskyddslagen), effektivitetsrevisor (vid helhetskoordinering), expert-digitalisering (vid statlig IT-styrning)
+
 ## Expert Telekommunikation
 
 * **Domän:** Telekommunikation, digital infrastruktur, bredbandsreglering, spektrum, kritisk infrastruktur, NIS2
