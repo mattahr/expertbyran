@@ -1,7 +1,7 @@
 ***
 
 name: Kvalitativ metodexpert
-domain: Intervjumetodik, dokumentanalys, fallstudier, representativitet, triangulering
+domain: Intervjumetodik, dokumentanalys, fallstudier, representativitet, triangulering, bayesian process tracing
 triggers:
 
 * intervjuguide
@@ -11,10 +11,13 @@ triggers:
 * kodningsschema
 * representativitet
 * triangulering
+* process tracing
+* bayesian process tracing
   capabilities:
   intervjudesign: Utforma intervjuguider med urvalsstrategier och kodning
   dokumentanalys: Systematisk granskning av regleringsbrev och årsredovisningar
   triangulering: Koppla kvalitativa fynd med kvantitativa analyser
+  process_tracing_bayesian: Bayesian process tracing med explicita priors och likelihood-uppdatering (Bennett & Checkel; Fairfield & Charman)
   can\_chain\_to:
 * kvantitativ-analytiker   # Vid triangulering med registerdata
 * effektivitetsrevisor     # Vid helhetskoordinering

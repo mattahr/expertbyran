@@ -14,36 +14,39 @@
 
 ## Kvantitativ analytiker
 
-* **Domän:** Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens
-* **Triggers:** registerdata, statistisk analys, kausalinferens, kvantitativa iakttagelser, osäkerhetsmarginaler, tidsserier, korrelation, GRF, Causal Random Forest, heterogena behandlingseffekter, CATE, Synthetic DiD
+* **Domän:** Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens, BSTS/CausalImpact, DEA/benchmarking, Double Machine Learning
+* **Triggers:** registerdata, statistisk analys, kausalinferens, kvantitativa iakttagelser, osäkerhetsmarginaler, tidsserier, korrelation, GRF, Causal Random Forest, heterogena behandlingseffekter, CATE, Synthetic DiD, BSTS, CausalImpact, bayesiansk tidsserieanalys, DEA, Data Envelopment Analysis, benchmarking kommunal sektor, DML, Double Machine Learning, Causal Forests, honest estimation
 * **Capabilities:**
   * **kvantitativ-analys** — Leverera kvantitativa iakttagelser med full precision
   * **registeruttag** — Leta upp och kvalitetskontrollera registerdata från offentliga källor
   * **kausalitetsprovning** — Pröva kausalitet med temporal ordning, kovariation och eliminering
-  * **ml-kausalinferens** — Causal Random Forest/GRF (Athey 2019) för CATE och Synthetic DiD (Arkhangelsky 2021); ML löser dimensionalitet, inte confounding
+  * **ml-kausalinferens** — DML (Chernozhukov 2018), Causal Random Forest/GRF (Athey 2019) för CATE och Synthetic DiD (Arkhangelsky 2021); ML löser dimensionalitet, inte confounding
+  * **bsts-causalimpact** — Bayesiansk strukturell tidsserieanalys (Brodersen m.fl. 2015) — kausalinferens vid svag donor pool
+  * **dea-benchmarking** — DEA med bootstrapped konfidensintervall (Simar & Wilson 1998), VRS-modellering, R-paketet Benchmarking
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/kvantitativ-analytiker/EXPERT.md
 * **Kan kedja till:** effektivitetsrevisor, kvalitetsgranskare
 
 ## Kvalitativ metodexpert
 
-* **Domän:** Intervjumetodik, dokumentanalys, fallstudier, representativitet, triangulering
-* **Triggers:** intervjuguide, intervjumetodik, dokumentanalys, kvalitativa iakttagelser, kodningsschema, representativitet, triangulering
+* **Domän:** Intervjumetodik, dokumentanalys, fallstudier, representativitet, triangulering, bayesian process tracing
+* **Triggers:** intervjuguide, intervjumetodik, dokumentanalys, kvalitativa iakttagelser, kodningsschema, representativitet, triangulering, process tracing, bayesian process tracing
 * **Capabilities:**
   * **intervjudesign** — Utforma intervjuguider med urvalsstrategier och kodning
   * **dokumentanalys** — Systematisk granskning av regleringsbrev och årsredovisningar
   * **triangulering** — Koppla kvalitativa fynd med kvantitativa analyser
+  * **process_tracing_bayesian** — Bayesian process tracing med explicita priors och likelihood-uppdatering (Bennett & Checkel; Fairfield & Charman)
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/kvalitativ-metodexpert/EXPERT.md
 * **Kan kedja till:** kvantitativ-analytiker, effektivitetsrevisor
 
 ## Rättslig utredare
 
-* **Domän:** Författningstolkning, bedömningsgrunder, mandatanalys, förvaltningsrätt, EU AI-förordningen
-* **Triggers:** bedömningsgrund, författningstolkning, mandatanalys, regleringsbrev, förordning, lagtext, myndighetsinstruktion, rekommendationer, EU AI-förordningen, AI Act, högrisk-AI, deployer, AI-reglering
+* **Domän:** Författningstolkning, bedömningsgrunder, mandatanalys, förvaltningsrätt, EU AI-förordningen (Art. 26 deployer-skyldigheter, Art. 27 FRIA, AI-upphandling)
+* **Triggers:** bedömningsgrund, författningstolkning, mandatanalys, regleringsbrev, förordning, lagtext, myndighetsinstruktion, rekommendationer, EU AI-förordningen, AI Act, högrisk-AI, deployer, AI-reglering, FRIA, grundrättighetskonsekvensbedömning, MCC-AI, AI-upphandling
 * **Capabilities:**
   * **bedomningsgrund** — Utreda rättsligt ursprung för bedömningsgrunder
   * **mandatanalys** — Bedöma vilka aktörer som har mandat att genomföra rekommendationer
   * **forfattningstolkning** — Tolka motstridig eller vag lagtext
-  * **eu-ai-forordning** — EU AI-förordningen (2024/1689) för statliga myndigheter som deployers av högrisk-AI — art. 13, 14, 26, bilaga III och koppling FL 28 §
+  * **eu-ai-forordning** — EU AI-förordningen (2024/1689) för statliga myndigheter som deployers av högrisk-AI — de sex kraven i Art. 26, den sexdelade FRIA-processen (Art. 27), koppling FL 28 §, samt upphandlingsgranskningar (LOU 17 kap. + Art. 28 + MCC-AI)
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/rattslig-utredare/EXPERT.md
 * **Kan kedja till:** effektivitetsrevisor, expert-rattsvasende
 

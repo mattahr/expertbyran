@@ -494,7 +494,7 @@
         "src": "/avatars/kvantitativ-analytiker.svg",
         "alt": "Illustration av Kvantitativ analytiker"
       },
-      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Ny primär metodskill: ML-baserad kausalinferens — Causal Random Forest/GRF (Athey m.fl. 2019) för heterogena behandlingseffekter (CATE) och Synthetic DiD (Arkhangelsky m.fl. 2021). ML löser dimensionalitet, inte confounding.",
+      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Tre nya primära metodskills (2026-04-12): Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact, Brodersen m.fl. 2015) för kausalinferens vid svag donor pool; Data Envelopment Analysis (DEA) med bootstrapped konfidensintervall (Simar & Wilson 1998) för benchmarking av kommunal effektivitet; utökat kausal ML-ramverk med Double Machine Learning (DML, Chernozhukov m.fl. 2018), Causal Forests (honest estimation) och Synthetic DiD (Arkhangelsky m.fl. 2021). Fördjupad Causal Forest/GRF-kompetens (2026-04-13): ärlighet (honest forests), CATE-aggregering med AIPW-scores, Best Linear Predictor (BLP) och DR-learner — Causal Forest/GRF är nu primär metodskill för heterogena behandlingseffekter.",
       "profileQuote": "Korrelation är aldrig nog. En kausal slutsats kräver temporal ordning, kovariation, eliminering av alternativa förklaringar och en beskriven mekanism.",
       "strengths": [
         "Levererar kvantitativa iakttagelser med full precision enligt vetenskapliga krav 4.3",
@@ -548,25 +548,34 @@
       "knowledge": [
         "Statistik, ekonometri och registerbaserad analys",
         "Kausalinferens och kvantitativa forskningsmetoder",
-        "ML-baserad kausalinferens: GRF (Athey m.fl. 2019) och Synthetic DiD (Arkhangelsky m.fl. 2021)"
+        "ML-baserad kausalinferens: GRF (Athey m.fl. 2019), DML (Chernozhukov m.fl. 2018) och Synthetic DiD (Arkhangelsky m.fl. 2021)",
+        "Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact) — Brodersen m.fl. 2015",
+        "Data Envelopment Analysis (DEA) — bootstrapped DEA (Simar & Wilson 1998), VRS-modellering"
       ],
       "capabilities": [
         "Kvantitativ analys av registerdata med precision och osäkerhetsbedömning",
         "Kausalitetsprövning med temporal ordning, kovariation och eliminering",
         "Registeruttag — leta upp och kvalitetskontrollera registerdata från offentliga källor",
-        "ML-baserad kausalinferens — GRF för heterogena behandlingseffekter (CATE) och Synthetic DiD"
+        "ML-baserad kausalinferens — DML för hög-dimensionell ATE-estimering, GRF för heterogena behandlingseffekter (CATE) och Synthetic DiD",
+        "BSTS/CausalImpact — kausalinferens i tidsserier vid svag donor pool (Brodersen m.fl. 2015)",
+        "DEA med bootstrapped konfidensintervall — benchmarking-design för kommunal sektor, VRS-modellering (Simar & Wilson 1998)"
       ],
       "tools": [
         "Registeruttag",
         "Statistiska testbatterier",
         "Osäkerhetsmodeller",
-        "Tidsseriediagram"
+        "Tidsseriediagram",
+        "R: Benchmarking (DEA)",
+        "R: CausalImpact (BSTS)"
       ],
       "methods": [
         "Kausalinferens",
         "Registeranalys",
-        "GRF / Causal Random Forest",
-        "Synthetic DiD"
+        "GRF / Causal Random Forest (honest estimation)",
+        "Double Machine Learning (DML)",
+        "Synthetic DiD",
+        "BSTS / CausalImpact",
+        "Data Envelopment Analysis (DEA)"
       ],
       "plugin": {
         "name": "expert-kvantitativ-analytiker",
@@ -591,7 +600,7 @@
           "description": "Diskutera dataunderlag och analysupplägg."
         }
       ],
-      "updatedAt": "2026-04-12T07:30:00.000Z"
+      "updatedAt": "2026-04-13T10:00:00.000Z"
     },
     {
       "id": "expert-kvalitativ-metodexpert",
@@ -681,7 +690,8 @@
         "Intervjumetodik",
         "Systematisk dokumentanalys",
         "Representativitetsbedömning",
-        "Triangulering"
+        "Triangulering",
+        "Bayesian process tracing"
       ],
       "plugin": {
         "name": "expert-kvalitativ-metodexpert",
@@ -706,7 +716,7 @@
           "description": "Diskutera urvalsstrategier och kvalitativt upplägg."
         }
       ],
-      "updatedAt": "2026-04-12T08:00:00.000Z"
+      "updatedAt": "2026-04-13T10:00:00.000Z"
     },
     {
       "id": "expert-rattslig-utredare",
@@ -725,7 +735,7 @@
         "src": "/avatars/rattslig-utredare.svg",
         "alt": "Illustration av Rättslig utredare"
       },
-      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Avgör om standarden är förankrad i lag, förordning eller uttalad praxis. Ny specialisering: EU AI-förordningen (2024/1689) och statliga myndigheters skyldigheter som deployers av högrisk-AI.",
+      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Primär specialisering inom EU AI Act (2024/1689): de sex deployer-skyldigheterna i Art. 26, den sexdelade FRIA-processen (Art. 27) och upphandlingsgranskningar med LOU 17 kap. + Art. 28 + MCC-AI.",
       "profileQuote": "Rekommendationer får bara rikta sig till aktörer som har mandat att genomföra åtgärden. Att utreda vem som faktiskt kan göra vad är oftare svårt än man tror.",
       "strengths": [
         "Reder ut bedömningsgrunders rättsliga ursprung — lag, förordning, regleringsbrev eller praxis",
@@ -780,13 +790,15 @@
         "Förvaltningsrätt och författningstolkning",
         "Myndighetsstyrning och mandatfördelning",
         "Regleringsbrev, förordningar och myndighetsinstruktioner",
-        "EU AI-förordningen (2024/1689) och statlig AI-implementering"
+        "EU AI-förordningen (2024/1689) — deployer-skyldigheter (Art. 26), FRIA-processen (Art. 27) och AI-upphandling (LOU 17 kap. + Art. 28 + MCC-AI)"
       ],
       "capabilities": [
         "Utredning av bedömningsgrunders rättsliga ursprung",
         "Mandatanalys för att säkerställa att rekommendationer riktas korrekt",
         "Författningstolkning — tolka motstridig eller vag lagtext",
-        "EU AI-förordningsanalys — skyldigheter för statliga deployers av högrisk-AI (art. 13, 14, 26, bilaga III)"
+        "EU AI Act — granskning av de sex deployer-skyldigheterna i Art. 26 (bruksanvisning, AI-kunnighet, indata, övervakning, loggar, konsekvensbedömning)",
+        "FRIA-analys (Art. 27) — sexdelad grundrättighetskonsekvensbedömning för statliga deployers av högrisk-AI",
+        "AI-upphandlingsgranskning — LOU 17 kap. + Art. 28 + MCC-AI"
       ],
       "tools": [
         "Rättsdatabaser",
@@ -823,7 +835,7 @@
           "description": "Diskutera rättsliga bedömningsgrunder och mandatfrågor."
         }
       ],
-      "updatedAt": "2026-04-12T07:30:00.000Z"
+      "updatedAt": "2026-04-13T09:00:00.000Z"
     },
     {
       "id": "expert-kvalitetsgranskare",
