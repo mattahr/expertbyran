@@ -88,11 +88,13 @@ describe("blog store", () => {
     expect(data.catalog.posts).toHaveLength(2);
   });
 
-  it("throws when fetch fails without cached data", async () => {
+  it("returns empty catalog when fetch fails without cached data", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => {
       throw new Error("network down");
     }));
 
-    await expect(getBlogData()).rejects.toThrow("network down");
+    const data = await getBlogData();
+    expect(data.catalog.posts).toHaveLength(0);
+    expect(data.renderedPosts.size).toBe(0);
   });
 });

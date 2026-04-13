@@ -19,6 +19,11 @@ type BlogCacheEntry = {
 
 let blogCache: BlogCacheEntry | null = null;
 
+const EMPTY_BLOG_DATA: BlogData = {
+  catalog: { posts: [] },
+  renderedPosts: new Map(),
+};
+
 function getBaseUrl() {
   const siteDataUrl =
     process.env.SITE_DATA_URL?.trim() ||
@@ -148,7 +153,11 @@ export async function getBlogData(options?: { fresh?: boolean }): Promise<BlogDa
       return blogCache.data;
     }
 
-    throw error;
+    log("warn", "No blog-data available, returning empty catalog", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+
+    return EMPTY_BLOG_DATA;
   }
 }
 
