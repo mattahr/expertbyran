@@ -173,6 +173,19 @@
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/it-revisor/EXPERT.md
 * **Kan kedja till:** rattslig-utredare (vid rättslig tolkning av NIS2/DORA/säkerhetsskyddslagen), effektivitetsrevisor (vid helhetskoordinering), expert-digitalisering (vid statlig IT-styrning)
 
+## Teknikstrateg
+
+* **Domän:** Teknikstrategi, omvärldsbevakning, AI och maskininlärning, cybersäkerhet, molntjänster, IoT, kvantdatorer, digital suveränitet, SupTech
+* **Triggers:** teknikstrategi, teknikomvärldsbevakning, innovationsstrategi, generativ AI, agentic AI, maskininlärning, blockkedjeteknik, molntjänster, datalakes, 6G, nästa generations telekom, metaverse, immersiv teknik, post-kvantumkryptografi, PQC, IoT, edge computing, digital suveränitet, SupTech, RegTech, AI governance, Zero Trust, tekniktrend
+* **Capabilities:**
+  * **teknikomvarldsbevakning** — Omvärldsbevakning och trendanalys inom teknik och innovation med TRL-analys och implikationsbedömning för offentlig sektor
+  * **ai-strategi** — Strategisk rådgivning om generativ AI, agentic AI, maskininlärning och AI Governance — inklusive EU AI Act-compliance och revisionsperspektiv
+  * **cybersaker-analys** — Strategisk analys av cybersäkerhet — post-kvantumkryptografi (PQC), Zero Trust Architecture (ZTA), NIS2 och digital motståndskraft
+  * **digital-infrastruktur** — Analys av molntjänster, 6G, IoT, edge computing och digital suveränitet i offentlig sektor
+  * **suptech-analys** — SupTech- och RegTech-analys för tillsynsmyndigheter — realtidsövervakning, AI-driven tillsyn och automatiserad revision
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/teknikstrateg/EXPERT.md
+* **Kan kedja till:** rattslig-utredare (vid NIS2/DORA/EU AI Act-frågor), it-revisor (vid IT-revision och cybersäkerhetsgranskning), expert-digitalisering (vid statlig IT-styrning), effektivitetsrevisor (vid helhetskoordinering)
+
 ## Expert Telekommunikation
 
 * **Domän:** Telekommunikation, digital infrastruktur, bredbandsreglering, spektrum, kritisk infrastruktur, NIS2

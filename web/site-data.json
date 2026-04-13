@@ -350,7 +350,8 @@
         "expert-miljo-klimat",
         "expert-telekommunikation",
         "expert-forsvar",
-        "it-revisor"
+        "it-revisor",
+        "teknikstrateg"
       ],
       "plugin": {
         "name": "team-domanexperter",
@@ -2219,6 +2220,130 @@
         }
       ],
       "updatedAt": "2026-04-13T15:54:00.000Z"
+    },
+    {
+      "id": "expert-teknikstrateg",
+      "slug": "teknikstrateg",
+      "name": "Teknikstrateg",
+      "role": "Strategisk rådgivare inom teknik och innovation",
+      "sortOrder": 170,
+      "featured": true,
+      "areaSlugs": [
+        "digitalisering"
+      ],
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för teknikstrategisk rådgivning, omvärldsbevakning och innovationsanalys.",
+      "summary": "Teknikstrateg och innovationsexpert med bred omvärldsbevakning inom teknik och innovation — direkt relevant för revisionsmyndigheter. Expertområden: generativ AI och agentic AI, post-kvantumkryptografi (PQC), Zero Trust Architecture, molntjänster och datalakes, 6G, IoT och edge computing, AI Governance (EU AI Act), digital suveränitet och SupTech. Fungerar som intern strategisk rådgivare och konsultativ expert vid granskningsuppdrag.",
+      "profileQuote": "Revisionsmyndigheter behöver förstå teknikens mognad och risker — inte för att bli IT-experter, utan för att ställa rätt granskningsfrågor i rätt tid.",
+      "portrait": {
+        "src": "/avatars/teknikstrateg.svg",
+        "alt": "Illustration av Teknikstrateg"
+      },
+      "capabilities": [
+        "Omvärldsbevakning och trendanalys med TRL-analys och implikationsbedömning för offentlig sektor",
+        "Strategisk rådgivning om generativ AI, agentic AI och AI Governance (EU AI Act)",
+        "Cybersäkerhetsanalys — post-kvantumkryptografi (PQC), Zero Trust Architecture och NIS2",
+        "Analys av molntjänster, 6G, IoT, edge computing och digital suveränitet",
+        "SupTech- och RegTech-analys för tillsynsmyndigheter och automatiserad revision"
+      ],
+      "knowledge": [
+        "Generativ AI, agentic AI och maskininlärning — teknikmognad och revisionsperspektiv",
+        "Post-kvantumkryptografi (PQC) — NIST FIPS 203/204/205, migrationsstrategi och 'harvest now, decrypt later'",
+        "Zero Trust Architecture (ZTA) och NIS2 — säkerhetsparadigm och OT-säkerhetsgap",
+        "AI Governance Infrastructure — EU AI Act (fullt tillämplig 2 aug 2026), model cards och AI-register",
+        "Digital suveränitet — molnberoende, CLOUD Act-problematik och europeiska suveränitetsstrategier",
+        "SupTech och RegTech — realtidsövervakning, automatiserad revision och ECB/TCU ALICE-modeller"
+      ],
+      "strengths": [
+        "Översätter komplexa teknologiska trender till konkreta granskningsfrågor för revisionsmyndigheter",
+        "Kombinerar TRL-analys (teknikmognad) med adoptionsmognadsbedömning i svensk offentlig sektor",
+        "Bred täckning: AI, kryptografi, nätverksinfrastruktur, IoT, datastyrning och digital geopolitik",
+        "Koppling till EU-regelverksutveckling: AI Act, NIS2, DORA och PQC-krav i upphandling"
+      ],
+      "methods": [
+        "TRL-analys (Technology Readiness Level)",
+        "Teknik-implikationsanalys för offentlig sektor",
+        "AI Governance-kartläggning",
+        "PQC-mognadsbedömning",
+        "SupTech-scenarioanalys",
+        "Omvärldsbevakning och trendspaning"
+      ],
+      "tools": [
+        "NIST PQC-standarder (FIPS 203/204/205)",
+        "EU AI Act Annex IV (teknisk dokumentationskrav)",
+        "INTOSAI AI standards initiative",
+        "IMF/BIS SupTech-ramverk",
+        "Nationell cybersäkerhetsstrategi 2025–2029",
+        "EU PPDS (api.ted.europa.eu)"
+      ],
+      "metrics": [
+        {
+          "label": "Megatrender",
+          "value": "7"
+        },
+        {
+          "label": "Teknikdomäner",
+          "value": "8+"
+        },
+        {
+          "label": "EU-regelverk",
+          "value": "4"
+        }
+      ],
+      "experience": [
+        {
+          "title": "Teknikstrateg och innovationsexpert",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med teknikstrategisk omvärldsbevakning och innovationsanalys till revisionsmyndigheters granskningsarbete."
+        },
+        {
+          "title": "Senior teknikanalytiker",
+          "organization": "Strategisk innovationsrådgivning",
+          "period": "2020-2026",
+          "summary": "Analyserade teknologiska trender och deras implikationer för offentlig sektor med fokus på AI, cybersäkerhet och digital infrastruktur."
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Teknikstrategisk megatrendanalys 2026–2036",
+          "client": "Expertbyrån — intern kapacitetsuppbyggnad",
+          "period": "2026",
+          "summary": "Identifierade och djupanalyserade sju teknikstrategiska megatrender med TRL-analys, gap-analys och implikationsbedömning för revisionsmyndigheter.",
+          "impact": "Skapade ett strukturerat ramverk för teknikomvärldsbevakning som kopplar teknologisk mognad till granskningsrelevans och urgency."
+        },
+        {
+          "title": "AI Governance och EU AI Act — revisionsperspektiv",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Kartlade EU AI Acts krav för statliga myndigheter som deployers av högrisk-AI med koppling till revisionsfrågor och granskningsbehov.",
+          "impact": "Identifierade att EU AI Act fullt tillämplig 2 aug 2026 skapar ett omedelbart granskningsbehov för autonoma AI-system i offentlig förvaltning."
+        }
+      ],
+      "contactLinks": [
+        {
+          "id": "teknikstrateg-email",
+          "type": "email",
+          "label": "Kontakta Teknikstrateg",
+          "url": "mailto:teknikstrateg@expertbyran.ai",
+          "description": "För teknikstrategisk rådgivning, omvärldsbevakning och innovationsanalys."
+        },
+        {
+          "id": "teknikstrateg-calendar",
+          "type": "calendar",
+          "label": "Boka möte med Teknikstrateg",
+          "url": "https://calendar.app.google/teknikstrateg",
+          "description": "Diskutera teknikstrategiska frågor och granskningsbehov inom teknik och innovation."
+        }
+      ],
+      "plugin": {
+        "name": "expert-teknikstrateg",
+        "version": "1.0.0",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryPath": "plugins/experts/teknikstrateg",
+        "marketplaceListed": true
+      },
+      "updatedAt": "2026-04-13T18:52:00.000Z"
     }
   ]
 }
