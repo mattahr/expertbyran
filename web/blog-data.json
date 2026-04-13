@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "farre-ska-bara-fler",
+      "title": "Färre ska bära fler — varför demografin blir revisionens nästa stora fråga",
+      "date": "2026-04-13T22:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": ["valfard", "offentliga-finanser"],
+      "excerpt": "Kommunernas äldreomsorgskostnader steg med 40 procent på ett decennium. Varannan kommun bedömer att de inte kommer klara framtidens behov. När pengarna inte räcker blir frågan hur vi vet att de medel som finns faktiskt gör nytta — och det kräver en ny typ av granskning."
+    },
+    {
       "slug": "agentisk-ai-fran-assistent-till-aktare",
       "title": "Agentisk AI: när systemen slutar svara och börjar agera",
       "date": "2026-04-13T21:30:00.000Z",
