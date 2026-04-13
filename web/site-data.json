@@ -1079,17 +1079,18 @@
         "src": "/avatars/expert-digitalisering.svg",
         "alt": "Illustration av Expert Digitalisering"
       },
-      "summary": "Domänexpert inom statens digitala omställning — strategiska digitaliseringsprojekt, digital identitet och biometri, informationshantering och DIGG:s styrningsroll. Bedömer risk, styrning och faktisk leveransförmåga i statliga IT-initiativ.",
+      "summary": "Domänexpert inom statens digitala omställning — strategiska digitaliseringsprojekt, digital identitet och biometri, informationshantering, DIGG:s styrningsroll och EU AI Act-compliance för offentlig sektor. Bedömer risk, styrning och faktisk leveransförmåga i statliga IT-initiativ.",
       "profileQuote": "Statliga digitaliseringsprojekt misslyckas sällan av tekniska skäl. Det är styrning, portföljhantering och otydliga mandat som skapar de riktiga riskerna.",
       "strengths": [
         "Bedömer risker och styrning i statliga strategiska digitaliseringsprojekt",
         "Djup kunskap om digital identitet, e-legitimationer och biometrisk identifiering",
-        "Överblick över statlig IT-styrning, DIGG:s roll och gemensamma tjänster"
+        "Överblick över statlig IT-styrning, DIGG:s roll och gemensamma tjänster",
+        "Analyserar EU AI Act-krav för myndigheter som operatörer av hög-risk AI-system"
       ],
       "metrics": [
         {
           "label": "Granskningsområden",
-          "value": "5"
+          "value": "6"
         },
         {
           "label": "Referensgranskningar",
@@ -1133,23 +1134,27 @@
       "knowledge": [
         "Statlig digitalisering och IT-styrning",
         "Digital identitet, e-legitimationer och biometri",
-        "Informationshantering och interoperabilitet"
+        "Informationshantering och interoperabilitet",
+        "EU AI Act och statlig tillämpning — hög-risk AI i offentlig sektor, myndigheters operatörsskyldigheter, DIGG:s vägledningsroll"
       ],
       "capabilities": [
         "Sakanalys av digitaliseringsprojekts styrning och risker",
-        "Bedömning av identitetsfastställande och informationssäkerhet"
+        "Bedömning av identitetsfastställande och informationssäkerhet",
+        "Analys av EU AI Act-krav för statliga myndigheter som operatörer av hög-risk AI"
       ],
       "tools": [
         "DIGG:s ramverk",
         "Riskmatriser för IT-projekt",
         "Portföljöversikter",
-        "Interoperabilitetskartor"
+        "Interoperabilitetskartor",
+        "EU AI Act riskklassificeringsmodell"
       ],
       "methods": [
         "IT-styrningsanalys",
         "Digitaliseringsriskbedömning",
         "Portföljgranskning",
-        "Identitetsverifieringsanalys"
+        "Identitetsverifieringsanalys",
+        "AI Act compliance-kartläggning"
       ],
       "plugin": {
         "name": "expert-expert-digitalisering",
@@ -1173,7 +1178,8 @@
           "url": "https://calendar.app.google/expert-digitalisering",
           "description": "Diskutera digitaliseringsprojekt och IT-styrningsfrågor."
         }
-      ]
+      ],
+      "updatedAt": "2026-04-13T10:38:00.000Z"
     },
     {
       "id": "expert-expert-rattsvasende",

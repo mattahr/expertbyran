@@ -73,11 +73,12 @@
 
 ## Expert Digitalisering
 
-* **Domän:** Statlig digitalisering, digital identitet, IT-styrning, informationshantering
-* **Triggers:** digitaliseringsprojekt, statlig IT, digital identitet, e-legitimation, BankID, biometri, DIGG, informationshantering, interoperabilitet
+* **Domän:** Statlig digitalisering, digital identitet, IT-styrning, informationshantering, EU AI Act
+* **Triggers:** digitaliseringsprojekt, statlig IT, digital identitet, e-legitimation, BankID, biometri, DIGG, informationshantering, interoperabilitet, EU AI Act, AI Act, hög-risk AI, AI-compliance, myndigheters AI-skyldigheter
 * **Capabilities:**
   * **sakanalys** — Sakanalys av statliga digitaliseringsprojekt och IT-styrning
   * **identitetsanalys** — Bedöma rutiner för identitetsfastställande
+  * **eu_ai_act_analys** — Analys av EU AI Act-krav för statliga myndigheter som operatörer av hög-risk AI
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-digitalisering/EXPERT.md
 * **Kan kedja till:** effektivitetsrevisor, rattslig-utredare
 
