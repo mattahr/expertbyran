@@ -149,6 +149,7 @@ Read ${CLAUDE_PLUGIN_ROOT}/experts/kvantitativ-analytiker/references/
 | 2026-04-12 | BSTS/CausalImpact | [EXP-91](/EXP/issues/EXP-91) |
 | 2026-04-12 | DEA och benchmarking-design | [EXP-87](/EXP/issues/EXP-87) |
 | 2026-04-12 | Kausal ML (DML, Causal Forests, SDiD) | [EXP-99](/EXP/issues/EXP-99) |
+| 2026-04-13 | Causal Forest/GRF — ärlighet, CATE, BLP, DR-learner (primär metodskill) | [EXP-213](/EXP/issues/EXP-213) |
 
 ## Kedjning
 
