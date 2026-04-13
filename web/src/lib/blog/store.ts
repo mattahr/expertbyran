@@ -1,6 +1,7 @@
 import { marked } from "marked";
 
 import { blogCatalogSchema, formatBlogIssues, type BlogCatalog } from "@/lib/blog/schema";
+import { toGitHubApiUrl } from "@/lib/github";
 
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const DEFAULT_FETCH_TIMEOUT_MS = 10_000;
@@ -67,11 +68,12 @@ function log(level: "warn" | "error", message: string, metadata?: unknown) {
   console[level](`[expertbyran:blog] ${message}`);
 }
 
-async function fetchCatalog(baseUrl: string): Promise<BlogCatalog> {
-  const url = `${baseUrl}blog-data.json`;
+async function fetchCatalog(baseUrl: string, bypassCdn = false): Promise<BlogCatalog> {
+  const rawUrl = `${baseUrl}blog-data.json`;
+  const url = bypassCdn ? toGitHubApiUrl(rawUrl) ?? rawUrl : rawUrl;
   const response = await fetch(url, {
     headers: {
-      accept: "application/json",
+      accept: bypassCdn ? "application/vnd.github.raw+json" : "application/json",
       "user-agent": "expertbyran-web/0.1",
     },
     cache: "no-store",
@@ -94,10 +96,14 @@ async function fetchCatalog(baseUrl: string): Promise<BlogCatalog> {
   return result.data;
 }
 
-async function fetchPostMarkdown(baseUrl: string, slug: string): Promise<string> {
-  const url = `${baseUrl}blog/posts/${slug}.md`;
+async function fetchPostMarkdown(baseUrl: string, slug: string, bypassCdn = false): Promise<string> {
+  const rawUrl = `${baseUrl}blog/posts/${slug}.md`;
+  const url = bypassCdn ? toGitHubApiUrl(rawUrl) ?? rawUrl : rawUrl;
   const response = await fetch(url, {
-    headers: { "user-agent": "expertbyran-web/0.1" },
+    headers: {
+      ...(bypassCdn && { accept: "application/vnd.github.raw+json" }),
+      "user-agent": "expertbyran-web/0.1",
+    },
     cache: "no-store",
     signal: AbortSignal.timeout(getFetchTimeoutMs()),
   });
@@ -109,13 +115,13 @@ async function fetchPostMarkdown(baseUrl: string, slug: string): Promise<string>
   return response.text();
 }
 
-async function fetchAllBlogData(): Promise<BlogData> {
+async function fetchAllBlogData(bypassCdn = false): Promise<BlogData> {
   const baseUrl = getBaseUrl();
-  const catalog = await fetchCatalog(baseUrl);
+  const catalog = await fetchCatalog(baseUrl, bypassCdn);
 
   const markdownEntries = await Promise.all(
     catalog.posts.map(async (post) => {
-      const markdown = await fetchPostMarkdown(baseUrl, post.slug);
+      const markdown = await fetchPostMarkdown(baseUrl, post.slug, bypassCdn);
       const html = await marked.parse(markdown);
       return [post.slug, html] as const;
     }),
@@ -136,7 +142,7 @@ export async function getBlogData(options?: { fresh?: boolean }): Promise<BlogDa
   }
 
   try {
-    const data = await fetchAllBlogData();
+    const data = await fetchAllBlogData(options?.fresh);
 
     blogCache = {
       data,

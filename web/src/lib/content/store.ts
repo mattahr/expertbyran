@@ -1,4 +1,5 @@
 import { formatIssues, siteDataSchema, type SiteData } from "@/lib/content/schema";
+import { toGitHubApiUrl } from "@/lib/github";
 
 const DEFAULT_SITE_DATA_URL =
   "https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json";
@@ -65,10 +66,11 @@ function parseSiteData(input: unknown, source: string) {
   return result.data;
 }
 
-async function readSiteDataFromUrl(url: string) {
-  const response = await fetch(url, {
+async function readSiteDataFromUrl(url: string, bypassCdn = false) {
+  const fetchUrl = bypassCdn ? toGitHubApiUrl(url) ?? url : url;
+  const response = await fetch(fetchUrl, {
     headers: {
-      accept: "application/json",
+      accept: bypassCdn ? "application/vnd.github.raw+json" : "application/json",
       "user-agent": "expertbyran-web/0.1",
     },
     cache: "no-store",
@@ -92,7 +94,7 @@ export async function getSiteData(options?: { fresh?: boolean }) {
   }
 
   try {
-    const data = await readSiteDataFromUrl(siteDataUrl);
+    const data = await readSiteDataFromUrl(siteDataUrl, options?.fresh);
 
     siteDataCache = {
       data,

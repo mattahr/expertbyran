@@ -84,8 +84,10 @@ Tekniker:
 * **Fråga–svar-dynamik** — varje avsnitt svarar på en fråga som naturligt uppstår i föregående avsnitt.
 
 ## Referenser och källhänvisningar
-Alla faktabaserade påståenden ska ha en tydlig källhänvisning. Använd fotnoter eller parenteser för att länka till offentliga källor (SOU, propositioner, myndighetsrapporter, forskningsresultat). Undvik vaga formuleringar som "enligt experter" utan att specificera vilka.
-I slutet av inlägget kan du inkludera en referenslista med fullständiga källor, särskilt om du har använt många eller komplexa källor.
+Alla faktabaserade påståenden ska ha en tydlig källhänvisning med url. 
+Använd fotnoter eller parenteser för att länka till offentliga källor (SOU, propositioner, myndighetsrapporter, forskningsresultat). 
+Undvik vaga formuleringar som "enligt experter" utan att specificera vilka och ange en fungerande url.
+I slutet av inlägget kan du inkludera en referenslista med fullständiga källor, inklusive url! Särskilt om du har använt många eller komplexa källor.
 
 ## Ton och språk
 

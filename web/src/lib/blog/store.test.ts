@@ -17,15 +17,17 @@ function mockFetchSuccess() {
   vi.stubGlobal(
     "fetch",
     vi.fn(async (url: string) => {
-      if (typeof url === "string" && url.endsWith("blog-data.json")) {
+      const path = typeof url === "string" ? url.split("?")[0] : "";
+
+      if (path.endsWith("blog-data.json")) {
         return new Response(JSON.stringify(blogFixture), { status: 200 });
       }
 
-      if (typeof url === "string" && url.endsWith("test-post-1.md")) {
+      if (path.endsWith("test-post-1.md")) {
         return new Response(post1Md, { status: 200 });
       }
 
-      if (typeof url === "string" && url.endsWith("test-post-2.md")) {
+      if (path.endsWith("test-post-2.md")) {
         return new Response(post2Md, { status: 200 });
       }
 
