@@ -1,6 +1,14 @@
 import React from "react";
 
-import { vi } from "vitest";
+import { afterEach, vi } from "vitest";
+
+// Rensa DOM efter varje test i jsdom-miljö
+if (typeof window !== "undefined") {
+  afterEach(async () => {
+    const { cleanup } = await import("@testing-library/react");
+    cleanup();
+  });
+}
 
 vi.mock("next/cache", async (importOriginal) => {
   const actual = await importOriginal<typeof import("next/cache")>();
