@@ -53,6 +53,8 @@ export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
 
   return (
     <div className={styles.root}>
+      {/* aria-label hålls konstant; aria-expanded bär state.
+          Dynamisk label skulle kollidera med stängknappen i testselektorer. */}
       <button
         ref={triggerRef}
         type="button"
@@ -88,8 +90,6 @@ export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
                 type="button"
                 className={styles.close}
                 aria-label="Stäng meny"
-                aria-expanded={open}
-                aria-controls={panelId}
                 onClick={close}
               >
                 ×

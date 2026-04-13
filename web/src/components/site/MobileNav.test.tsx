@@ -30,7 +30,7 @@ describe("MobileNav", () => {
     render(<MobileNav items={navigation} currentPath="/" />);
     const button = screen.getByRole("button", { name: /öppna meny/i });
     fireEvent.click(button);
-    expect(screen.getByRole("button", { name: /stäng meny/i }).getAttribute("aria-expanded")).toBe("true");
+    expect(screen.getByRole("button", { name: /öppna meny/i }).getAttribute("aria-expanded")).toBe("true");
     expect(screen.getByRole("navigation", { name: /mobilmeny/i })).toBeDefined();
   });
 
