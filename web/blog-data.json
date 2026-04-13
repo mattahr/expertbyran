@@ -1,6 +1,30 @@
 {
   "posts": [
     {
+      "slug": "sverige-bygger-om-men-hanger-styrningen-med",
+      "title": "Sverige bygger om — men hänger styrningen med?",
+      "date": "2026-04-13T20:20:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["offentliga-finanser", "digitalisering", "rattsvasende", "valfard"],
+      "excerpt": "Sverige genomgår fyra parallella omvandlingar — försvar, digitalisering, rättsväsende och välfärd — med historiska ambitioner och resurser. Det gemensamma mönstret är oroande: styrningsverktygen hänger inte med. Finansieringsmodeller haltar, ansvarskedjor är oklara och uppföljningen saknar kraft. Vår analys av tolv trender inom fyra domäner pekar på ett och samma problem."
+    },
+    {
+      "slug": "post-kvantumkryptografi-harvest-now-decrypt-later",
+      "title": "Ditt lösenord är säkert idag — men är det säkert om tio år?",
+      "date": "2026-04-13T23:45:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "Kvantdatorn är kanske tio år bort — men hotet mot krypterad data är här nu. Statliga aktörer samlar redan in krypterad trafik för att dekryptera den senare. NIST har publicerat standarderna, NSA har satt tidslinjerna, och BIS Project Leap visar komplexiteten. Ändå har svensk offentlig sektor knappt börjat inventera sina kryptografiska beroenden."
+    },
+    {
+      "slug": "suptech-nar-revisionen-blir-realtid",
+      "title": "Brasilien granskar upphandlingar på 8 dagar — vad hindrar Sverige?",
+      "date": "2026-04-13T23:30:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "Brasiliens AI-system ALICE granskar 191 000 upphandlingar på åtta dagar — en cykel som tidigare tog 400. Tekniken kallas SupTech och sprids nu till 140 länder. Sverige har förutsättningarna, men saknar den datainfrastruktur som krävs för att ta steget."
+    },
+    {
       "slug": "teknisk-mognad-moter-regleringspress",
       "title": "Regleringen springer ifrån tekniken — sju domäner som avgör framtidens granskning",
       "date": "2026-04-13T23:00:00.000Z",
