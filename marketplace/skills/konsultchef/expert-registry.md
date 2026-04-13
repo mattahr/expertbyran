@@ -53,12 +53,14 @@
 
 ## Kvalitetsgranskare
 
-* **Domän:** Vetenskaplig opponering, kvalitetsgranskning, validitetsprövning, stringens
-* **Triggers:** opponering, kvalitetsgranskning, vetenskaplig stringens, validitet, reliabilitet, bekräftelsebias, slutsatskalibrering
+* **Domän:** Vetenskaplig opponering, kvalitetsgranskning, validitetsprövning, stringens, metaanalys, systematiska översikter
+* **Triggers:** opponering, kvalitetsgranskning, vetenskaplig stringens, validitet, reliabilitet, bekräftelsebias, slutsatskalibrering, metaanalys, systematisk översikt, evidensöversikt, GRADE, PRISMA, Cochrane, heterogenitetsanalys, publication bias
 * **Capabilities:**
   * **opponering** — Pröva utkast mot vetenskaplig checklista och ge invändningar
   * **bristkartlaggning** — Identifiera systematiska vetenskapliga brister
   * **kalibrering** — Granska slutsatsstyrka och precision i formuleringarna
+  * **metaanalys** — Granska och genomföra metaanalyser och systematiska översikter enligt Cochrane/PRISMA 2020
+  * **evidensgranskning** — Tillämpa GRADE-systemet och granska evidensöversikter med 5-dimensionell opponent-checklista
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/kvalitetsgranskare/EXPERT.md
 * **Kan kedja till:** effektivitetsrevisor
 

@@ -914,24 +914,36 @@
       "knowledge": [
         "Vetenskapsteori och forskningsetik",
         "Utvärderingsmetodik och validitetsprövning",
-        "Systematisk bristkartläggning och opponeringsteknik"
+        "Systematisk bristkartläggning och opponeringsteknik",
+        "Metaanalys och systematiska översikter (Cochrane-modellen, PRISMA 2020)",
+        "GRADE-systemet för evidensgradering och SoF-tabeller",
+        "Heterogenitetsanalys: I², τ², random/fixed effects, subgruppsanalyser",
+        "Publication bias: funnel plots, Egger-test, trim-and-fill"
       ],
       "capabilities": [
         "Vetenskaplig opponering mot intern/extern validitet, reliabilitet och kausalitetskrav",
         "Slutsatskalibrering — granskning av precision och proportionalitet i formuleringar",
-        "Bristkartläggning — identifiera systematiska vetenskapliga brister i granskningsunderlag"
+        "Bristkartläggning — identifiera systematiska vetenskapliga brister i granskningsunderlag",
+        "Metaanalys — granska och genomföra systematiska översikter enligt Cochrane/PRISMA 2020",
+        "Evidensgranskning — tillämpa GRADE-systemet och 5-dimensionell opponent-checklista för evidensöversikter"
       ],
       "tools": [
         "Vetenskaplig checklista (avsnitt 9)",
         "Validitetsbedömningar",
         "Bristkartläggningsmatriser",
-        "Opponentprotokoll"
+        "Opponentprotokoll",
+        "PRISMA 2020-flödesschema",
+        "GRADE-evidensprofil och SoF-tabell",
+        "Funnel plot och Egger-test"
       ],
       "methods": [
         "Vetenskaplig opponering",
         "Validitetsprövning",
         "Systematisk bristkartläggning",
-        "Slutsatskalibrering"
+        "Slutsatskalibrering",
+        "Systematisk översikt (Cochrane/PRISMA 2020)",
+        "Metaanalys med heterogenitetsanalys",
+        "GRADE-evidensgradering"
       ],
       "plugin": {
         "name": "expert-kvalitetsgranskare",
@@ -956,7 +968,7 @@
           "description": "Diskutera vetenskapliga kvalitetsfrågor och opponering."
         }
       ],
-      "updatedAt": "2026-04-12T08:00:00.000Z"
+      "updatedAt": "2026-04-14T00:00:00.000Z"
     },
     {
       "id": "expert-expert-finanser",
