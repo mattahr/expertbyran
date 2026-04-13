@@ -349,7 +349,8 @@
         "expert-utbildning",
         "expert-miljo-klimat",
         "expert-telekommunikation",
-        "expert-forsvar"
+        "expert-forsvar",
+        "it-revisor"
       ],
       "plugin": {
         "name": "team-domanexperter",
@@ -2096,6 +2097,128 @@
         }
       ],
       "updatedAt": "2026-04-12T21:05:00.000Z"
+    },
+    {
+      "id": "expert-it-revisor",
+      "slug": "it-revisor",
+      "name": "IT-revisor / Cybersäkerhetsexpert",
+      "role": "IT-revisor och cybersäkerhetsexpert",
+      "sortOrder": 160,
+      "featured": true,
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
+      "summary": "IT-revisor och cybersäkerhetsexpert med specialisering på revision av informationssystem och digital motståndskraft i statlig verksamhet. Bred regelverkskännedom: NIS2/cybersäkerhetslagen, DORA (finanssektorn), säkerhetsskyddslagen och INTOSAI:s IT-revisionsvägledning (GUID 5101). Erfarenhet av bedömning mot MSB-föreskrifterna (MSBFS 2020:6–8) och ISO/IEC 27001/27002. Certifierad CISM och CISA (ISACA).",
+      "profileQuote": "IT-säkerhet i offentlig sektor är inte frivillig — det är ett lagstiftningskrav. Revision av informationssystem kräver samma metodiska precision som finansiell revision.",
+      "availability": "Tillgänglig för IT-revisioner, cybersäkerhetsanalyser och regelverksgranskning.",
+      "portrait": {
+        "src": "/avatars/it-revisor.svg",
+        "alt": "Illustration av IT-revisor / Cybersäkerhetsexpert"
+      },
+      "location": "Virtuell nod, Stockholm",
+      "strengths": [
+        "Behärskar IT-revision enligt GUID 5101 (INTOSAI WGITA) med bedömning mot MSB-föreskrifterna",
+        "Djup kännedom om NIS2/cybersäkerhetslagen och DORA — klassificering, riskhantering och incidentrapportering",
+        "Kombinerar revisionsmetodik med teknisk och regulatorisk kompetens inom ISO/IEC 27001/27002 och säkerhetsskyddslagen"
+      ],
+      "metrics": [
+        {
+          "label": "Regelverksramverk",
+          "value": "5"
+        },
+        {
+          "label": "Certifieringar",
+          "value": "CISM + CISA"
+        },
+        {
+          "label": "Revisionsvägledning",
+          "value": "GUID 5101"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "IT-revision av statlig myndighets informationssäkerhet",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Genomförde IT-revision enligt GUID 5101 med bedömning mot MSB-föreskrifterna (MSBFS 2020:6–8) och ISO/IEC 27001. Kartlade systemarkitektur, granskade styrprocesser och tekniska kontroller.",
+          "impact": "Identifierade systematiska brister i incidentrapporteringen och formulerade rekommendationer förankrade i NIS2 och MSB:s krav."
+        },
+        {
+          "title": "NIS2-efterlevnadsanalys för kritisk infrastruktur",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Bedömde verksamhetens klassificering som kritisk enhet enligt NIS2 och granskade de tio obligatoriska riskhanteringsåtgärderna i Art. 21.",
+          "impact": "Synliggjorde brister i leverantörskedjans säkerhet och ledningens ansvarsskyldighet som krävde åtgärd inför cybersäkerhetslagens ikraftträdande."
+        }
+      ],
+      "experience": [
+        {
+          "title": "IT-revisor och cybersäkerhetsexpert",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Ansvarar för IT-revisioner och cybersäkerhetsanalyser med inriktning på statlig verksamhet och kritisk infrastruktur."
+        },
+        {
+          "title": "IT-revisor och informationssäkerhetsspecialist",
+          "organization": "Revisions- och säkerhetsbyrå",
+          "period": "2020-2026",
+          "summary": "Genomförde IT-revisioner och cybersäkerhetsanalyser för myndigheter och finansiella aktörer med tillämpning av GUID 5101, ISO 27001 och MSB-föreskrifterna."
+        }
+      ],
+      "knowledge": [
+        "IT-revision enligt GUID 5101 (INTOSAI WGITA) och MSB-föreskrifterna (MSBFS 2020:6–8)",
+        "NIS2/cybersäkerhetslagen (prop. 2025) — krav på viktig och kritisk infrastruktur",
+        "DORA — Digital Operational Resilience Act för finansiella entiteters ICT-riskhantering",
+        "ISO/IEC 27001:2017 och 27002:2017 — ledningssystem för informationssäkerhet",
+        "Säkerhetsskyddslagen 2018:585 — säkerhetsskyddsanalys och skyddsvärd information"
+      ],
+      "capabilities": [
+        "IT-revision enligt GUID 5101 med bedömning mot MSB-föreskrifterna och ISO/IEC 27001/27002",
+        "NIS2/cybersäkerhetslagen — klassificering av enheter, riskhanteringsåtgärder och incidentrapportering",
+        "DORA-analys — ICT-riskhantering, incidenthantering och tredjepartsrisker för finansiella entiteter",
+        "Granskning av ledningssystem för informationssäkerhet (ISO/IEC 27001/27002)",
+        "Säkerhetsskyddsanalys enligt säkerhetsskyddslagen 2018:585"
+      ],
+      "tools": [
+        "INTOSAI GUID 5101",
+        "MSB-föreskrifterna (MSBFS 2020:6–8)",
+        "ISO/IEC 27001/27002-checklista",
+        "NIS2 Art. 21-revisionsprotokoll",
+        "DORA ICT-riskregister"
+      ],
+      "methods": [
+        "IT-revision (GUID 5101)",
+        "NIS2-efterlevnadsanalys",
+        "DORA ICT-riskanalys",
+        "Informationssäkerhetsrevision (ISO 27001)",
+        "Säkerhetsskyddsanalys",
+        "Tredjepartsriskbedömning"
+      ],
+      "plugin": {
+        "name": "expert-it-revisor",
+        "version": "1.0.0",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "repositoryPath": "plugins/experts/it-revisor",
+        "marketplaceListed": true
+      },
+      "contactLinks": [
+        {
+          "id": "it-revisor-email",
+          "type": "email",
+          "label": "Kontakta IT-revisor / Cybersäkerhetsexpert",
+          "url": "mailto:it-revisor@expertbyran.ai",
+          "description": "För IT-revisioner, cybersäkerhetsanalyser och NIS2/DORA-granskning."
+        },
+        {
+          "id": "it-revisor-calendar",
+          "type": "calendar",
+          "label": "Boka möte med IT-revisor / Cybersäkerhetsexpert",
+          "url": "https://calendar.app.google/it-revisor",
+          "description": "Diskutera IT-revisionsupplägg och cybersäkerhetsregelverket."
+        }
+      ],
+      "updatedAt": "2026-04-13T15:54:00.000Z"
     }
   ]
 }
