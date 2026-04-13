@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "agentisk-ai-fran-assistent-till-aktare",
+      "title": "Agentisk AI: när systemen slutar svara och börjar agera",
+      "date": "2026-04-13T21:30:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "AI-system som autonomt planerar, delegerar och agerar utan mänsklig godkännande vid varje steg är inte längre en framtidsvision. De rullas ut nu. Men styrning, spårbarhet och ansvarsutkrävning i offentlig sektor hänger inte med — och det är ett problem som behöver lösas innan tekniken expanderar ytterligare."
+    },
+    {
       "slug": "eus-regeltsunami-tre-direktiv-som-andrar-spelplanen",
       "title": "EU:s regeltsunami — tre direktiv som ändrar spelplanen för svensk förvaltning",
       "date": "2026-04-13T20:00:00.000Z",
