@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "suptech-nar-revisionen-blir-realtid",
+      "title": "Brasilien granskar upphandlingar på 8 dagar — vad hindrar Sverige?",
+      "date": "2026-04-13T23:30:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "Brasiliens AI-system ALICE granskar 191 000 upphandlingar på åtta dagar — en cykel som tidigare tog 400. Tekniken kallas SupTech och sprids nu till 140 länder. Sverige har förutsättningarna, men saknar den datainfrastruktur som krävs för att ta steget."
+    },
+    {
       "slug": "teknisk-mognad-moter-regleringspress",
       "title": "Regleringen springer ifrån tekniken — sju domäner som avgör framtidens granskning",
       "date": "2026-04-13T23:00:00.000Z",
