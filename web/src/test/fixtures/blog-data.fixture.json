@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "slug": "test-post-1",
+      "title": "Första testinlägget",
+      "date": "2026-04-13",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["revisionsmetodik"],
+      "excerpt": "Ett testinlägg för smoke-tester."
+    },
+    {
+      "slug": "test-post-2",
+      "title": "Andra testinlägget",
+      "date": "2026-04-12",
+      "authorSlug": "kvantitativ-analytiker",
+      "areaSlugs": ["offentliga-finanser"],
+      "excerpt": "Ännu ett testinlägg."
+    }
+  ]
+}

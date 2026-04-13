@@ -3,12 +3,23 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import blogData from "../test/fixtures/blog-data.fixture.json";
 import siteData from "../test/fixtures/site-data.fixture.json";
 
 vi.mock("@/lib/content/store", () => ({
   getSiteData: vi.fn(async () => siteData),
 }));
 
+vi.mock("@/lib/blog/store", () => ({
+  getBlogData: vi.fn(async () => ({
+    catalog: blogData,
+    renderedPosts: new Map(blogData.posts.map((p) => [p.slug, `<p>${p.title}</p>`])),
+  })),
+  resetBlogCache: vi.fn(),
+}));
+
+import BlogPostPage from "./blogg/[slug]/page";
+import BlogPage from "./blogg/page";
 import ExpertAreaDetailPage from "./expertomraden/[slug]/page";
 import ExpertDetailPage from "./experter/[slug]/page";
 import MarketplacePage from "./marknadsplats/page";
@@ -74,5 +85,23 @@ describe("public pages", () => {
 
     expect(html).toContain("https://github.com/mattahr/expertbyran");
     expect(html).toContain("mattahr/expertbyran");
+  });
+
+  it("renders the blog listing page", async () => {
+    const html = renderToStaticMarkup(await BlogPage());
+
+    expect(html).toContain("Blogg");
+    expect(html).toContain(blogData.posts[0].title);
+  });
+
+  it("renders a blog post page", async () => {
+    const html = renderToStaticMarkup(
+      await BlogPostPage({
+        params: Promise.resolve({ slug: blogData.posts[0].slug }),
+      }),
+    );
+
+    expect(html).toContain(blogData.posts[0].title);
+    expect(html).toContain(siteData.experts[0].name);
   });
 });

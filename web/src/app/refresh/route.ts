@@ -1,16 +1,21 @@
+import { getBlogData } from "@/lib/blog/store";
 import { getSiteData } from "@/lib/content/store";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    const data = await getSiteData({ fresh: true });
+    const [siteData, blogData] = await Promise.all([
+      getSiteData({ fresh: true }),
+      getBlogData({ fresh: true }),
+    ]);
 
     return Response.json(
       {
         ok: true,
-        experts: data.experts.length,
-        teams: data.teams.length,
+        experts: siteData.experts.length,
+        teams: siteData.teams.length,
+        posts: blogData.catalog.posts.length,
         refreshedAt: new Date().toISOString(),
       },
       {

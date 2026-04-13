@@ -15,6 +15,7 @@ const navigation = [
   { href: "/expertomraden", label: "Expertområden" },
   { href: "/team", label: "Team" },
   { href: "/marknadsplats", label: "Marknadsplats" },
+  { href: "/blogg", label: "Blogg" },
 ] as const;
 
 export async function SiteChrome({ children }: SiteChromeProps) {
