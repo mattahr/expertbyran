@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "vd-har-ordet-effektivitetsrevision-tvarvetenskaplig",
+      "title": "VD har ordet: Varför effektivitetsrevision kräver tvärvetenskapligt stöd",
+      "date": "2026-04-13",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["revisionsmetodik", "offentliga-finanser", "digitalisering", "miljo-klimat", "forsvar"],
+      "excerpt": "Den offentliga sektorns utmaningar är alltmer komplexa och tvärsektoriella. Klimatomställning, digitalisering, försvar — ingen enskild expertis räcker. Här förklarar jag varför effektivitetsrevision i dag kräver team som spänner över domänkunskap, metodkompetens och kvalitetsgranskning."
+    },
+    {
       "slug": "vem-granskar-algoritmen",
       "title": "121 miljoner beslut om året — vem granskar algoritmen?",
       "date": "2026-04-13",
