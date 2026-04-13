@@ -2,7 +2,7 @@
 
 Den offentliga sektorns utmaningar är inte längre avgränsade. De är sammankopplade, tvärsektoriella och komplexa på ett sätt som förändrar vad en revision behöver klara av — och vilka kompetenser ett revisionsteam måste ha.
 
-Riksrevisionens effektivitetsrevisioner ska svara på frågan om statliga insatser når avsedda mål på ett effektivt sätt. Det låter rakt fram. Men i praktiken kräver det att vi förstår komplexa system, tolkar motstridiga data och gör välgrundade bedömningar i gränslandet mellan flera fackområden — ofta utan tydliga facit.
+Effektivitetsrevisioner ska svara på frågan om statliga insatser når avsedda mål på ett effektivt sätt. Det låter rakt fram. Men i praktiken kräver det att vi förstår komplexa system, tolkar motstridiga data och gör välgrundade bedömningar i gränslandet mellan flera fackområden — ofta utan tydliga facit.
 
 ## Problemet är sällan enkelt avgränsat
 
@@ -44,7 +44,7 @@ Det är också därför vi kan ta uppdrag där problembilden är oklar vid start
 
 ## Framåt
 
-Riksrevisionens uppdrag är viktigt. Det handlar om att ge riksdag och regering ett oberoende underlag för att fatta välgrundade beslut. Men för att revisionen ska vara trovärdig och relevant måste den hålla jämna steg med de system den granskar.
+För att revision ska vara trovärdig och relevant måste den hålla jämna steg med de system den granskar.
 
 De systemen är alltmer sammankopplade. Behovet av tvärvetenskaplig kompetens är inte en trend — det är ett strukturellt krav.
 

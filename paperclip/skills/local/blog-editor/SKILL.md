@@ -58,6 +58,19 @@ node -e "const d=require('./web/site-data.json'); console.log('Experter:', d.exp
 
 ### 2. Skapa markdown-filen
 
+Läs stilguiden innan du skriver:
+
+```
+Read references/skrivstil.md
+```
+
+Stilguiden innehåller:
+
+* Grundhållning (neutralitet, transparens, balans)
+* Minto-pyramidens principer och SCQA-ramverket för inledningar
+* Regler för röd tråd, rubriksättning och gruppering
+* Ton, språkval och checklista innan publicering
+
 Skapa `web/blog/posts/<slug>.md` med inläggets innehåll i vanlig markdown. Stödd formatering:
 
 * Rubriker (`## h2`, `### h3`)
@@ -106,4 +119,6 @@ git push origin main
 * **Sortering sker på datum** — nyaste först på webbplatsen
 * **Validering sker vid hämtning** — om `blog-data.json` inte passerar Zod-validering visas inga inlägg
 * **Svenska med å, ä, ö** i allt innehåll
+* **Vi röjer ALDRIG kunders namn eller identitet.** Riksrevisionen ska inte nämnas i annat sammanhang än som vilken myndighet som helst.
+
 

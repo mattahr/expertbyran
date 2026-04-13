@@ -62,7 +62,9 @@
       "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && npm install marked')",
       "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && node -e \"const d=require\\(\\\\\"./site-data.json\\\\\"\\); console.log\\(\\\\\"Experts:\\\\\", d.experts.map\\(e=>e.slug\\)\\); console.log\\(\\\\\"Areas:\\\\\", d.expertAreas.map\\(a=>a.slug\\)\\)\"')",
       "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && node -e \"const d=require\\(\\\\\"./src/test/fixtures/site-data.fixture.json\\\\\"\\); console.log\\(\\\\\"Expert[0]:\\\\\", d.experts[0].slug, d.experts[0].name\\); console.log\\(\\\\\"Area[0]:\\\\\", d.expertAreas[0].slug, d.expertAreas[0].name\\)\"')",
-      "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && npx eslint src/lib/blog/ src/app/blogg/ src/app/refresh/route.ts src/components/site/SiteChrome.tsx')"
+      "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && npx eslint src/lib/blog/ src/app/blogg/ src/app/refresh/route.ts src/components/site/SiteChrome.tsx')",
+      "WebSearch",
+      "WebFetch(domain:www.sebastienphlix.com)"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
