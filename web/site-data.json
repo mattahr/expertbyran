@@ -494,7 +494,7 @@
         "src": "/avatars/kvantitativ-analytiker.svg",
         "alt": "Illustration av Kvantitativ analytiker"
       },
-      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Tre nya primära metodskills (2026-04-12): Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact, Brodersen m.fl. 2015) för kausalinferens vid svag donor pool; Data Envelopment Analysis (DEA) med bootstrapped konfidensintervall (Simar & Wilson 1998) för benchmarking av kommunal effektivitet; utökat kausal ML-ramverk med Double Machine Learning (DML, Chernozhukov m.fl. 2018), Causal Forests (honest estimation) och Synthetic DiD (Arkhangelsky m.fl. 2021).",
+      "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Tre nya primära metodskills (2026-04-12): Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact, Brodersen m.fl. 2015) för kausalinferens vid svag donor pool; Data Envelopment Analysis (DEA) med bootstrapped konfidensintervall (Simar & Wilson 1998) för benchmarking av kommunal effektivitet; utökat kausal ML-ramverk med Double Machine Learning (DML, Chernozhukov m.fl. 2018), Causal Forests (honest estimation) och Synthetic DiD (Arkhangelsky m.fl. 2021). Fördjupad Causal Forest/GRF-kompetens (2026-04-13): ärlighet (honest forests), CATE-aggregering med AIPW-scores, Best Linear Predictor (BLP) och DR-learner — Causal Forest/GRF är nu primär metodskill för heterogena behandlingseffekter.",
       "profileQuote": "Korrelation är aldrig nog. En kausal slutsats kräver temporal ordning, kovariation, eliminering av alternativa förklaringar och en beskriven mekanism.",
       "strengths": [
         "Levererar kvantitativa iakttagelser med full precision enligt vetenskapliga krav 4.3",
@@ -600,7 +600,7 @@
           "description": "Diskutera dataunderlag och analysupplägg."
         }
       ],
-      "updatedAt": "2026-04-13T08:00:00.000Z"
+      "updatedAt": "2026-04-13T10:00:00.000Z"
     },
     {
       "id": "expert-kvalitativ-metodexpert",
