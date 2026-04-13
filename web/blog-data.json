@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "eus-regeltsunami-tre-direktiv-som-andrar-spelplanen",
+      "title": "EU:s regeltsunami — tre direktiv som ändrar spelplanen för svensk förvaltning",
+      "date": "2026-04-13",
+      "authorSlug": "rattslig-utredare",
+      "areaSlugs": ["digitalisering", "rattsvasende"],
+      "excerpt": "NIS2, CSRD och CER-direktivet rullar ut samtidigt och ställer nya krav på cybersäkerhet, hållbarhetsrapportering och motståndskraft. Komplexiteten är enorm — men vem kontrollerar att reglerna faktiskt efterlevs?"
+    },
+    {
       "slug": "storsta-upprustningen-men-vem-granskar-notan",
       "title": "Största upprustningen i modern tid — men vem granskar notan?",
       "date": "2026-04-13",
