@@ -1,7 +1,7 @@
 ***
 
 name: blog-editor
-description: "Skapa och hantera blogginlägg på Expertbyråns webbplats. Uppdaterar blog-data.json, skapar markdown-filer, och pushar direkt till main. Använd denna skill när du vill publicera ett nytt blogginlägg, redigera befintliga, eller hantera bloggkatalogen."
+description: "Skapa och hantera blogginlägg, blogposter, bloggposts på Expertbyråns webbplats. Uppdaterar blog-data.json, skapar markdown-filer, och pushar direkt till main. Använd denna skill när du vill publicera ett nytt blogginlägg, redigera befintliga, eller hantera bloggkatalogen."
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Blog Editor — Expertbyråns blogg

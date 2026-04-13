@@ -78,7 +78,10 @@
       "Bash(curl -sI \"https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json?_=unique_$\\(uuidgen\\)\")",
       "Bash(curl -sI \"https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json?_=abc123unique\")",
       "Bash(curl -sI -H \"Cache-Control: no-cache\" \"https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json\")",
-      "Bash(python3 -c \"import sys, json; d=json.load\\(sys.stdin\\); print\\(f'OK: {len\\(d.get\\(\\\\\"experts\\\\\", []\\)\\)} experter, {len\\(d.get\\(\\\\\"teams\\\\\", []\\)\\)} team'\\)\")"
+      "Bash(python3 -c \"import sys, json; d=json.load\\(sys.stdin\\); print\\(f'OK: {len\\(d.get\\(\\\\\"experts\\\\\", []\\)\\)} experter, {len\\(d.get\\(\\\\\"teams\\\\\", []\\)\\)} team'\\)\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/blog-data.json\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{len\\(d[\\\\\"posts\\\\\"]\\)} inlägg'\\); [print\\(f'  - {p[\\\\\"slug\\\\\"]}'\\) for p in d['posts']]\")",
+      "Bash(python3 -c ':*)"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
