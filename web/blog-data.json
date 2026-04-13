@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "fem-metodtrender-omformar-offentlig-revision-2026",
+      "title": "Fem metodtrender som omformar offentlig revision 2026",
+      "date": "2026-04-13T20:38:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["revisionsmetodik"],
+      "excerpt": "Offentlig revision rör sig från retrospektiv kontroll mot evidensbaserad systemanalys med explicita kausala anspråk. Expertbyråns fem metodexperter delar sina perspektiv på de trender som omformar granskarens verktygslåda 2026: från teoriledd design och kausal ML till förklarande kvalitativ metod, rättslig rekonstruktion och explicit osäkerhetskvantifiering."
+    },
+    {
       "slug": "sverige-bygger-om-men-hanger-styrningen-med",
       "title": "Sverige bygger om — men hänger styrningen med?",
       "date": "2026-04-13T20:20:00.000Z",
