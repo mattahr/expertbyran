@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "900-miljarder-utan-helhetsgranskning",
+      "title": "900 miljarder om året — utan helhetsgranskning",
+      "date": "2026-04-13T23:50:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["offentliga-finanser", "rattsvasende"],
+      "excerpt": "Offentlig upphandling i Sverige omsätter närmare 900 miljarder kronor om året — en tredjedel av alla offentliga utgifter. Trots volymen saknas en samlad, oberoende granskning av om pengarna används effektivt. Medan Brasilien granskar 191 000 upphandlingar med AI på åtta dagar förlitar sig Sverige på manuella kontroller. Kriminella aktörer har etablerat sig i systemet. Reformviljan finns — men ingen aktör har uppdraget att bedöma helhetsbilden."
+    },
+    {
       "slug": "fem-miljarder-i-dronar-ukrainas-ratta-lardom",
       "title": "Fem miljarder i drönare — men tar vi med oss rätt lärdom från Ukraina?",
       "date": "2026-04-13T21:30:00.000Z",
