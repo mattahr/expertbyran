@@ -690,7 +690,8 @@
         "Intervjumetodik",
         "Systematisk dokumentanalys",
         "Representativitetsbedömning",
-        "Triangulering"
+        "Triangulering",
+        "Bayesian process tracing"
       ],
       "plugin": {
         "name": "expert-kvalitativ-metodexpert",
@@ -715,7 +716,7 @@
           "description": "Diskutera urvalsstrategier och kvalitativt upplägg."
         }
       ],
-      "updatedAt": "2026-04-12T08:00:00.000Z"
+      "updatedAt": "2026-04-13T10:00:00.000Z"
     },
     {
       "id": "expert-rattslig-utredare",
