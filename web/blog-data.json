@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "sverige-bygger-om-men-hanger-styrningen-med",
+      "title": "Sverige bygger om — men hänger styrningen med?",
+      "date": "2026-04-13T20:20:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["offentliga-finanser", "digitalisering", "rattsvasende", "valfard"],
+      "excerpt": "Sverige genomgår fyra parallella omvandlingar — försvar, digitalisering, rättsväsende och välfärd — med historiska ambitioner och resurser. Det gemensamma mönstret är oroande: styrningsverktygen hänger inte med. Finansieringsmodeller haltar, ansvarskedjor är oklara och uppföljningen saknar kraft. Vår analys av tolv trender inom fyra domäner pekar på ett och samma problem."
+    },
+    {
       "slug": "post-kvantumkryptografi-harvest-now-decrypt-later",
       "title": "Ditt lösenord är säkert idag — men är det säkert om tio år?",
       "date": "2026-04-13T23:45:00.000Z",
