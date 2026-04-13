@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "fem-miljarder-i-dronar-ukrainas-ratta-lardom",
+      "title": "Fem miljarder i drönare — men tar vi med oss rätt lärdom från Ukraina?",
+      "date": "2026-04-13T21:30:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": ["forsvar", "digitalisering"],
+      "excerpt": "Sverige satsar 5,3 miljarder kronor på obemannade system motiverat av Ukraina. Men risken är att vi studerar Ukrainas svar utan att förstå frågan de ställde sig. Ukrainas verkliga lärdom handlar inte om vilka drönare de köpte — den handlar om iterationshastighet, civil-militär integration och förmågan att lära snabbare än sin motståndare."
+    },
+    {
       "slug": "fem-metodtrender-omformar-offentlig-revision-2026",
       "title": "Fem metodtrender som omformar offentlig revision 2026",
       "date": "2026-04-13T20:38:00.000Z",
