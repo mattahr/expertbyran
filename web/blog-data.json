@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "slug": "vem-granskar-algoritmen",
+      "title": "121 miljoner beslut om året — vem granskar algoritmen?",
+      "date": "2026-04-13",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "Svenska myndigheter fattar 121 miljoner automatiserade beslut per år. Med EU:s AI-förordning runt hörnet och en allt snabbare teknikutveckling — har revisionen kapacitet att granska systemen som fattar beslut åt oss?"
+    },
+    {
+      "slug": "exempel-inlagg",
+      "title": "Exempelinlägg: Så fungerar Expertbyråns blogg",
+      "date": "2026-04-13",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["revisionsmetodik"],
+      "excerpt": "En kort introduktion till Expertbyråns nya blogg — hur inlägg skrivs, publiceras och visas."
+    }
+  ]
+}
