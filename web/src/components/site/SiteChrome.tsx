@@ -11,6 +11,7 @@ type SiteChromeProps = {
 
 const navigation = [
   { href: "/om-oss", label: "Om byrån" },
+  { href: "/experter", label: "Våra experter" },
   { href: "/expertomraden", label: "Expertområden" },
   { href: "/team", label: "Team" },
   { href: "/marknadsplats", label: "Marknadsplats" },

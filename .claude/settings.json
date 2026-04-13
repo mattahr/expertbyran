@@ -47,7 +47,16 @@
       "Bash(git fetch:*)",
       "Bash(git merge:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m ':*)"
+      "Bash(git commit -m ':*)",
+      "Bash(npx tsc:*)",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(/Users/mattias/source/expertbyran/web/node_modules/.bin/tsc --noEmit --project /Users/mattias/source/expertbyran/web/tsconfig.json)",
+      "Bash(/Users/mattias/source/expertbyran/web/node_modules/.bin/next lint:*)",
+      "Bash(node_modules/.bin/next lint:*)",
+      "Bash(bash -c 'cd /Users/mattias/source/expertbyran/web && next lint')",
+      "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && npx next lint')",
+      "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && npx eslint src/app/experter/page.tsx src/components/site/SiteChrome.tsx')",
+      "Bash(SHELL=/bin/bash bash -c 'cd /Users/mattias/source/expertbyran/web && npx vitest run')"
     ]
   }
 }

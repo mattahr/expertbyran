@@ -261,6 +261,53 @@
   transform: translateX(3px);
 }
 
+/* === Expert card (non-link wrapper, allows nested links) === */
+.expertCard {
+  background: var(--white);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(28, 25, 23, 0.05), 0 1px 2px rgba(28, 25, 23, 0.04);
+}
+
+.expertCardName {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.expertCardName:hover {
+  color: var(--accent);
+}
+
+.expertCardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.expertCardTag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  color: var(--gray-500);
+  background: var(--gray-100, #f5f3f0);
+  padding: 4px 10px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: color 200ms, background 200ms;
+}
+
+.expertCardTag:hover {
+  color: var(--accent);
+  background: var(--gray-200);
+}
+
 /* === Color dot === */
 .dot {
   display: inline-block;
