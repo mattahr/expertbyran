@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import styles from "@/components/site/site.module.css";
-import { getBlogPost } from "@/lib/blog/query";
+import { formatBlogDate, getBlogPost } from "@/lib/blog/query";
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <p className={styles.heroEyebrow}>Blogg</p>
         <h1 className={styles.heroTitle}>{post.title}</h1>
         <div className={styles.heroLine} />
-        <p className={styles.blogDate}>{post.date}</p>
+        <p className={styles.blogDate}>{formatBlogDate(post.date)}</p>
       </div>
 
       <section className={styles.section}>
@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <aside className={styles.detailSidebar}>
             <div className={styles.metaRow}>
               <span className={styles.metaLabel}>Datum</span>
-              <span className={styles.metaValue}>{post.date}</span>
+              <span className={styles.metaValue}>{formatBlogDate(post.date)}</span>
             </div>
             <div className={styles.metaRow}>
               <span className={styles.metaLabel}>Författare</span>

@@ -1,6 +1,6 @@
 import { GridCell } from "@/components/site/GridCell";
 import styles from "@/components/site/site.module.css";
-import { getOrderedBlogPosts } from "@/lib/blog/query";
+import { formatBlogDate, getOrderedBlogPosts } from "@/lib/blog/query";
 
 export const metadata = {
   title: "Blogg",
@@ -32,7 +32,7 @@ export default async function BlogPage() {
               <GridCell
                 key={post.slug}
                 href={`/blogg/${post.slug}`}
-                category={`${post.date} · ${post.author.name}`}
+                category={`${formatBlogDate(post.date)} · ${post.author.name}`}
                 categoryColor={post.areas[0]?.accent}
                 name={post.title}
                 description={post.excerpt}

@@ -4,6 +4,14 @@ import { getSiteData } from "@/lib/content/store";
 import type { BlogPostEntry } from "@/lib/blog/schema";
 import { getBlogData } from "@/lib/blog/store";
 
+export function formatBlogDate(isoDate: string): string {
+  return new Date(isoDate).toLocaleDateString("sv-SE", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export type BlogPostSummary = BlogPostEntry & {
   author: Expert;
   areas: ExpertArea[];

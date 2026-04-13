@@ -38,7 +38,7 @@ describe("blogCatalogSchema", () => {
 
   it("rejects an invalid date format", () => {
     const data = structuredClone(blogFixture);
-    data.posts[0].date = "13 april 2026";
+    data.posts[0].date = "not-a-date-at-all";
 
     const result = blogCatalogSchema.safeParse(data);
     expect(result.success).toBe(false);

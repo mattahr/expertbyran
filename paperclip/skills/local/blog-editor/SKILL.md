@@ -26,7 +26,7 @@ web/
     {
       "slug": "kebab-case-slug",
       "title": "Inläggets titel",
-      "date": "YYYY-MM-DD",
+      "date": "2026-04-13T14:00:00.000Z",
       "authorSlug": "<expert-slug>",
       "areaSlugs": ["<area-slug>"],
       "excerpt": "Kort sammanfattning för listningen."
@@ -41,7 +41,7 @@ web/
 | ------------ | ---------------------------------------------------------- |
 | `slug`       | Unik, `[a-z0-9-]+`, matchar filnamnet i `blog/posts/`      |
 | `title`      | Minst 1 tecken                                             |
-| `date`       | ISO-datum `YYYY-MM-DD`                                     |
+| `date`       | ISO 8601-tidsstämpel, t.ex. `2026-04-13T14:00:00.000Z`    |
 | `authorSlug` | Måste matcha en expert i `web/site-data.json`              |
 | `areaSlugs`  | Minst 1, måste matcha expertområden i `web/site-data.json` |
 | `excerpt`    | Kort text som visas på listningssidan                      |

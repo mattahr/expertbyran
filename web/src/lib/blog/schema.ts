@@ -4,17 +4,17 @@ const slugSchema = z
   .string()
   .regex(/^[a-z0-9-]+$/, "Slug får bara innehålla a-z, 0-9 och bindestreck.");
 
-const isoDateSchema = z
+const isoDateTimeSchema = z
   .string()
-  .regex(/^\d{4}-\d{2}-\d{2}$/, "Datum måste vara i formatet YYYY-MM-DD.")
+  .min(1)
   .refine((value) => !Number.isNaN(Date.parse(value)), {
-    message: "Måste vara ett giltigt datum.",
+    message: "Måste vara en giltig ISO 8601-tidsstämpel (t.ex. 2026-04-13T10:00:00.000Z).",
   });
 
 const blogPostEntrySchema = z.object({
   slug: slugSchema,
   title: z.string().min(1),
-  date: isoDateSchema,
+  date: isoDateTimeSchema,
   authorSlug: slugSchema,
   areaSlugs: z.array(slugSchema).min(1),
   excerpt: z.string().min(1),
