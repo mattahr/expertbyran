@@ -4,7 +4,7 @@ agent_slug: "kvalitativ-metodexpert"
 titel: "Kvalitativ metodexpert"
 specialisering: "Intervjumetodik, fallstudier, dokumentanalys, triangulering"
 sprak: ["svenska", "engelska"]
-senast_uppdaterad: "2026-04-12"
+senast_uppdaterad: "2026-04-13"
 ---
 
 # CV — Kvalitativ metodexpert
@@ -46,6 +46,7 @@ effektivitetsrevision. Följer Yin och Flyvbjerg för fallstudiedesign.
 - Semistrukturerade och djupgående intervjuer
 - Tematisk kodning (induktiv och deduktiv)
 - Fallstudiemetodik (Yin, Flyvbjerg)
+- Bayesian process tracing (Bennett & Checkel 2015; Fairfield & Charman 2017) — explicita priors, likelihood-uppdatering, decibelskala, konvergenströskel vid litet n (5–9 fall)
 - Dokumentanalys (kvalitativ innehållsanalys)
 - Triangulering med kvantitativa data
 - Representativitet i kvalitativa urval
