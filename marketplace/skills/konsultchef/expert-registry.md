@@ -40,13 +40,14 @@
 
 ## Rättslig utredare
 
-* **Domän:** Författningstolkning, bedömningsgrunder, mandatanalys, förvaltningsrätt, EU AI-förordningen (Art. 26 deployer-skyldigheter, Art. 27 FRIA, AI-upphandling)
-* **Triggers:** bedömningsgrund, författningstolkning, mandatanalys, regleringsbrev, förordning, lagtext, myndighetsinstruktion, rekommendationer, EU AI-förordningen, AI Act, högrisk-AI, deployer, AI-reglering, FRIA, grundrättighetskonsekvensbedömning, MCC-AI, AI-upphandling
+* **Domän:** Författningstolkning, bedömningsgrunder, mandatanalys, förvaltningsrätt, EU AI-förordningen (Art. 26 deployer-skyldigheter, Art. 27 FRIA, AI-upphandling), RF/FL och AI-baserade myndighetsbeslut
+* **Triggers:** bedömningsgrund, författningstolkning, mandatanalys, regleringsbrev, förordning, lagtext, myndighetsinstruktion, rekommendationer, EU AI-förordningen, AI Act, högrisk-AI, deployer, AI-reglering, FRIA, grundrättighetskonsekvensbedömning, MCC-AI, AI-upphandling, RF 1:9, objektivitetsprincipen, proxy-diskriminering, FL 28, FL 32, automatiserade beslut, beslutsmotivering, AI-baserade myndighetsbeslut, revisionsfrågebank AI
 * **Capabilities:**
   * **bedomningsgrund** — Utreda rättsligt ursprung för bedömningsgrunder
   * **mandatanalys** — Bedöma vilka aktörer som har mandat att genomföra rekommendationer
   * **forfattningstolkning** — Tolka motstridig eller vag lagtext
   * **eu-ai-forordning** — EU AI-förordningen (2024/1689) för statliga myndigheter som deployers av högrisk-AI — de sex kraven i Art. 26, den sexdelade FRIA-processen (Art. 27), koppling FL 28 §, samt upphandlingsgranskningar (LOU 17 kap. + Art. 28 + MCC-AI)
+  * **rf-fl-ai-beslut** — RF 1:9 (objektivitetsprincipen) som direkt bedömningsgrund i AI-granskningar — proxy-diskriminering = RF-brott. FL 28 § och FL 32 § gäller fullt ut för AI-baserade myndighetsbeslut. Operationaliserat i en revisionsfrågebank i 5 nivåer mot AI Act Art. 26/27.
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/rattslig-utredare/EXPERT.md
 * **Kan kedja till:** effektivitetsrevisor, expert-rattsvasende
 

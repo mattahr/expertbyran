@@ -735,7 +735,7 @@
         "src": "/avatars/rattslig-utredare.svg",
         "alt": "Illustration av Rättslig utredare"
       },
-      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Primär specialisering inom EU AI Act (2024/1689): de sex deployer-skyldigheterna i Art. 26, den sexdelade FRIA-processen (Art. 27) och upphandlingsgranskningar med LOU 17 kap. + Art. 28 + MCC-AI.",
+      "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Primär specialisering inom EU AI Act (2024/1689): de sex deployer-skyldigheterna i Art. 26, den sexdelade FRIA-processen (Art. 27) och upphandlingsgranskningar med LOU 17 kap. + Art. 28 + MCC-AI. Ny primär metodskill: RF 1:9 (objektivitetsprincipen) som direkt bedömningsgrund i AI-granskningar — proxy-diskriminering = RF-brott. FL 28 § och FL 32 § gäller fullt ut för AI-baserade myndighetsbeslut, operationaliserat i en revisionsfrågebank i 5 nivåer.",
       "profileQuote": "Rekommendationer får bara rikta sig till aktörer som har mandat att genomföra åtgärden. Att utreda vem som faktiskt kan göra vad är oftare svårt än man tror.",
       "strengths": [
         "Reder ut bedömningsgrunders rättsliga ursprung — lag, förordning, regleringsbrev eller praxis",
@@ -790,7 +790,9 @@
         "Förvaltningsrätt och författningstolkning",
         "Myndighetsstyrning och mandatfördelning",
         "Regleringsbrev, förordningar och myndighetsinstruktioner",
-        "EU AI-förordningen (2024/1689) — deployer-skyldigheter (Art. 26), FRIA-processen (Art. 27) och AI-upphandling (LOU 17 kap. + Art. 28 + MCC-AI)"
+        "EU AI-förordningen (2024/1689) — deployer-skyldigheter (Art. 26), FRIA-processen (Art. 27) och AI-upphandling (LOU 17 kap. + Art. 28 + MCC-AI)",
+        "RF 1:9 (objektivitetsprincipen) och proxy-diskriminering — algoritmers faktorsval granskas mot grundlagen",
+        "FL 28 § (automatiserade beslut) + FL 32 § (beslutsmotivering) — förvaltningslagen gäller fullt ut för AI-baserade myndighetsbeslut"
       ],
       "capabilities": [
         "Utredning av bedömningsgrunders rättsliga ursprung",
@@ -798,7 +800,9 @@
         "Författningstolkning — tolka motstridig eller vag lagtext",
         "EU AI Act — granskning av de sex deployer-skyldigheterna i Art. 26 (bruksanvisning, AI-kunnighet, indata, övervakning, loggar, konsekvensbedömning)",
         "FRIA-analys (Art. 27) — sexdelad grundrättighetskonsekvensbedömning för statliga deployers av högrisk-AI",
-        "AI-upphandlingsgranskning — LOU 17 kap. + Art. 28 + MCC-AI"
+        "AI-upphandlingsgranskning — LOU 17 kap. + Art. 28 + MCC-AI",
+        "RF/FL-granskning av AI-baserade myndighetsbeslut — RF 1:9-prövning av algoritmers faktorsval, proxy-diskrimineringsanalys, FL 28 §-kontroll av mänsklig tillsyn och FL 32 §-kontroll av beslutsmotivering",
+        "Revisionsfrågebank i 5 nivåer — systematisk prövning av AI-baserade besluts RF/FL/AI Act-konformitet (systemidentifikation → RF-konformitet → FL-konformitet → Art. 26-efterlevnad → systemisk risk)"
       ],
       "tools": [
         "Rättsdatabaser",
@@ -810,7 +814,9 @@
         "Författningstolkning",
         "Mandatanalys",
         "Bedömningsgrundsprövning",
-        "EU AI-regulatorisk analys"
+        "EU AI-regulatorisk analys",
+        "RF/FL-analys av AI-baserade myndighetsbeslut",
+        "Proxy-diskrimineringsanalys"
       ],
       "plugin": {
         "name": "expert-rattslig-utredare",
@@ -835,7 +841,7 @@
           "description": "Diskutera rättsliga bedömningsgrunder och mandatfrågor."
         }
       ],
-      "updatedAt": "2026-04-13T09:00:00.000Z"
+      "updatedAt": "2026-04-13T10:45:00.000Z"
     },
     {
       "id": "expert-kvalitetsgranskare",
