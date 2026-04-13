@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "teknisk-mognad-moter-regleringspress",
+      "title": "Regleringen springer ifrån tekniken — sju domäner som avgör framtidens granskning",
+      "date": "2026-04-13T23:00:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": ["digitalisering", "forsvar"],
+      "excerpt": "Fem EU-regelverk med skarpa deadlines landar i svensk offentlig sektor under 2025–2027. Men förmågan att leva upp till kraven — och att granska efterlevnaden — varierar dramatiskt mellan teknikdomäner. Vår analys av teknisk mognad mot regleringstryck visar var de mest akuta luckorna finns."
+    },
+    {
       "slug": "farre-ska-bara-fler",
       "title": "Färre ska bära fler — varför demografin blir revisionens nästa stora fråga",
       "date": "2026-04-13T22:00:00.000Z",
