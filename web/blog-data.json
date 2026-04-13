@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "post-kvantumkryptografi-harvest-now-decrypt-later",
+      "title": "Ditt lösenord är säkert idag — men är det säkert om tio år?",
+      "date": "2026-04-13T23:45:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "Kvantdatorn är kanske tio år bort — men hotet mot krypterad data är här nu. Statliga aktörer samlar redan in krypterad trafik för att dekryptera den senare. NIST har publicerat standarderna, NSA har satt tidslinjerna, och BIS Project Leap visar komplexiteten. Ändå har svensk offentlig sektor knappt börjat inventera sina kryptografiska beroenden."
+    },
+    {
       "slug": "suptech-nar-revisionen-blir-realtid",
       "title": "Brasilien granskar upphandlingar på 8 dagar — vad hindrar Sverige?",
       "date": "2026-04-13T23:30:00.000Z",
