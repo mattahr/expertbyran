@@ -343,6 +343,77 @@
   background: var(--gray-200);
 }
 
+/* === Utvalda experter === */
+.featuredExperts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.featuredExpert {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: 0 2px 20px rgba(28, 25, 23, 0.04);
+  transition: transform 250ms, box-shadow 250ms;
+}
+
+.featuredExpert:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(28, 25, 23, 0.08);
+}
+
+.featuredExpertLink {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.featuredExpertPortrait {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-light), var(--marine-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.featuredExpertBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.featuredExpertName {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--black);
+}
+
+.featuredExpertRole {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featuredExpert,
+  .featuredExpert:hover {
+    transform: none;
+    transition: box-shadow 200ms;
+  }
+}
+
 /* === Color dot === */
 .dot {
   display: inline-block;
@@ -775,6 +846,10 @@
 
   .section {
     padding-bottom: 100px;
+  }
+
+  .featuredExperts {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .footerInner {
