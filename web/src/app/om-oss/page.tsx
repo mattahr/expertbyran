@@ -1,3 +1,4 @@
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import styles from "@/components/site/site.module.css";
 import { getOrderedSiteData } from "@/lib/content/query";
 
@@ -26,7 +27,7 @@ export default async function AboutPage() {
         ))}
       </div>
 
-      <section className={styles.section}>
+      <RevealOnScroll as="section" className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionLabel}>Organisation</h2>
           <span className={styles.sectionCount}>{data.organization.structure.length} funktioner</span>
@@ -40,9 +41,9 @@ export default async function AboutPage() {
             </div>
           ))}
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className={styles.section}>
+      <RevealOnScroll as="section" className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionLabel}>Arbetssätt</h2>
         </div>
@@ -55,7 +56,7 @@ export default async function AboutPage() {
             </div>
           ))}
         </div>
-      </section>
+      </RevealOnScroll>
     </div>
   );
 }

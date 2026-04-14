@@ -1,4 +1,5 @@
 import { GridCell } from "@/components/site/GridCell";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import styles from "@/components/site/site.module.css";
 import { getOrderedSiteData } from "@/lib/content/query";
 
@@ -20,7 +21,7 @@ export default async function TeamsPage() {
         </p>
       </div>
 
-      <section className={styles.section}>
+      <RevealOnScroll as="section" className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionLabel}>Alla team</h2>
           <span className={styles.sectionCount}>{data.teams.length} team</span>
@@ -36,7 +37,7 @@ export default async function TeamsPage() {
             />
           ))}
         </div>
-      </section>
+      </RevealOnScroll>
     </div>
   );
 }

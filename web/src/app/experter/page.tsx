@@ -1,6 +1,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import styles from "@/components/site/site.module.css";
 import { getAreasForExpert, getOrderedSiteData, getTeamsForExpert } from "@/lib/content/query";
 
@@ -22,7 +23,7 @@ export default async function ExpertsPage() {
         </p>
       </div>
 
-      <section className={styles.section}>
+      <RevealOnScroll as="section" className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionLabel}>Alla experter</h2>
           <span className={styles.sectionCount}>{data.experts.length} experter</span>
@@ -60,7 +61,7 @@ export default async function ExpertsPage() {
             );
           })}
         </div>
-      </section>
+      </RevealOnScroll>
     </div>
   );
 }

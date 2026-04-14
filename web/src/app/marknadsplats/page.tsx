@@ -1,3 +1,4 @@
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import styles from "@/components/site/site.module.css";
 import { getOrderedSiteData } from "@/lib/content/query";
 
@@ -19,7 +20,7 @@ export default async function MarketplacePage() {
         <p className={styles.heroIntro}>{data.marketplace.description}</p>
       </div>
 
-      <section className={styles.section}>
+      <RevealOnScroll as="section" className={styles.section}>
         <div className={styles.detailLayout}>
           <div className={styles.detailSidebar}>
             <div className={styles.metaRow}>
@@ -45,10 +46,10 @@ export default async function MarketplacePage() {
             }`}</pre>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       {listedExperts.length > 0 && (
-        <section className={styles.section}>
+        <RevealOnScroll as="section" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionLabel}>Publicerade experter</h2>
             <span className={styles.sectionCount}>{listedExperts.length} skills</span>
@@ -62,11 +63,11 @@ export default async function MarketplacePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
       )}
 
       {listedTeams.length > 0 && (
-        <section className={styles.section}>
+        <RevealOnScroll as="section" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionLabel}>Publicerade team</h2>
             <span className={styles.sectionCount}>{listedTeams.length} skills</span>
@@ -80,7 +81,7 @@ export default async function MarketplacePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
       )}
     </div>
   );
