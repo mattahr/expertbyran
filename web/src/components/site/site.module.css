@@ -679,11 +679,31 @@
   line-height: 1.6;
 }
 
+/* === Blog meta (pills ovanför rubriken) === */
+.blogMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* === Bloggrubrik === */
+.blogTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  max-width: 24ch;
+}
+
 /* === Blog content (rendered markdown) === */
 .blogContent {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--gray-600);
-  line-height: 1.8;
+  line-height: 1.75;
+  max-width: 70ch;
 }
 
 .blogContent h2 {

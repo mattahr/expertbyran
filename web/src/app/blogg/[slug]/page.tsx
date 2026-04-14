@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import styles from "@/components/site/site.module.css";
+import { Pill } from "@/components/site/Pill";
+import { ReadingProgress } from "@/components/site/ReadingProgress";
 import { formatBlogDate, getBlogPost } from "@/lib/blog/query";
 
 type BlogPostPageProps = {
@@ -37,11 +39,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Renderad server-side med marked — ingen XSS-risk.
   return (
     <div className={styles.pageWrap}>
+      <ReadingProgress />
       <div className={styles.hero}>
         <p className={styles.heroEyebrow}>Blogg</p>
-        <h1 className={styles.heroTitle}>{post.title}</h1>
+        <div className={styles.blogMeta}>
+          <Pill variant="marine">{formatBlogDate(post.date)}</Pill>
+          <Pill variant="neutral">{post.author.name}</Pill>
+        </div>
+        <h1 className={styles.blogTitle}>{post.title}</h1>
         <div className={styles.heroLine} />
-        <p className={styles.blogDate}>{formatBlogDate(post.date)}</p>
       </div>
 
       <section className={styles.section}>
