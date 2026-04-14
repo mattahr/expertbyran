@@ -29,19 +29,14 @@ export function RevealOnScroll({
     const el = ref.current;
     if (!el) return;
 
-    const reveal = () => {
-      el.setAttribute("data-revealed", "true");
-      setRevealed(true);
-    };
-
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             if (delay > 0) {
-              window.setTimeout(reveal, delay);
+              window.setTimeout(() => setRevealed(true), delay);
             } else {
-              reveal();
+              setRevealed(true);
             }
             observer.disconnect();
             break;

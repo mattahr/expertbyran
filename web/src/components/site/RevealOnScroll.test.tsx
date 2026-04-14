@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { render } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { RevealOnScroll } from "./RevealOnScroll";
@@ -58,7 +58,9 @@ describe("RevealOnScroll", () => {
       target: el,
     } as unknown as IntersectionObserverEntry;
 
-    callback?.([entry], {} as IntersectionObserver);
+    act(() => {
+      callback?.([entry], {} as IntersectionObserver);
+    });
 
     expect(el.getAttribute("data-revealed")).toBe("true");
   });
