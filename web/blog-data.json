@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "klimatmiljarder-utan-kvitto",
+      "title": "Klimatmiljarder utan kvitto — varför ingen vet om pengarna gör klimatnytta",
+      "date": "2026-04-14T08:00:00.000Z",
+      "authorSlug": "expert-miljo-klimat",
+      "areaSlugs": ["miljo-klimat", "offentliga-finanser"],
+      "excerpt": "Sverige har investerat över hundra miljarder i klimatomställningen. Men tre granskningsrapporter visar samma mönster: utsläppsminskningarna är felberäknade, uppföljningsdata saknas och ingen granskar de modeller som styr politiken. Klimatrevision — systematisk verifiering av klimatinvesteringars faktiska effekt — är en disciplin som behöver byggas upp."
+    },
+    {
       "slug": "900-miljarder-utan-helhetsgranskning",
       "title": "900 miljarder om året — utan helhetsgranskning",
       "date": "2026-04-13T23:50:00.000Z",
