@@ -3,6 +3,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import styles from "./MobileNav.module.css";
 
@@ -19,10 +20,18 @@ type MobileNavProps = {
 
 export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const panelId = useId();
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    // SSR-skydd: createPortal behöver document.body som inte finns på servern.
+    // Vi sätter mounted=true efter första client-render så portalen bara aktiveras då.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -94,51 +103,57 @@ export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
         </span>
       </button>
 
-      {open ? (
-        <>
-          <div
-            data-testid="mobilenav-backdrop"
-            className={styles.backdrop}
-            onClick={close}
-            aria-hidden
-          />
-          <nav
-            ref={panelRef}
-            id={panelId}
-            className={styles.panel}
-            aria-label="Mobilmeny"
-          >
-            <div className={styles.panelHeader}>
-              <button
-                ref={closeRef}
-                type="button"
-                className={styles.close}
-                aria-label="Stäng meny"
+      {/* Backdrop + panel renderas via portal till document.body
+          så att de undgår headerns backdrop-filter-stacking context
+          (annars blir de instängda i headerns 56px-höga låda på iOS). */}
+      {open && mounted
+        ? createPortal(
+            <>
+              <div
+                data-testid="mobilenav-backdrop"
+                className={styles.backdrop}
                 onClick={close}
+                aria-hidden
+              />
+              <nav
+                ref={panelRef}
+                id={panelId}
+                className={styles.panel}
+                aria-label="Mobilmeny"
               >
-                ×
-              </button>
-            </div>
-            <div className={styles.links}>
-              {items.map((item) => {
-                const isActive = item.href === currentPath;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href as Route}
-                    className={isActive ? `${styles.link} ${styles.linkActive}` : styles.link}
-                    aria-current={isActive ? "page" : undefined}
+                <div className={styles.panelHeader}>
+                  <button
+                    ref={closeRef}
+                    type="button"
+                    className={styles.close}
+                    aria-label="Stäng meny"
                     onClick={close}
                   >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-            {siteTagline ? <div className={styles.footer}>{siteTagline}</div> : null}
-          </nav>
-        </>
-      ) : null}
+                    ×
+                  </button>
+                </div>
+                <div className={styles.links}>
+                  {items.map((item) => {
+                    const isActive = item.href === currentPath;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href as Route}
+                        className={isActive ? `${styles.link} ${styles.linkActive}` : styles.link}
+                        aria-current={isActive ? "page" : undefined}
+                        onClick={close}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+                {siteTagline ? <div className={styles.footer}>{siteTagline}</div> : null}
+              </nav>
+            </>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }
