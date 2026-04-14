@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import blogFixture from "@/test/fixtures/blog-data.fixture.json";
@@ -7,6 +10,18 @@ import { blogCatalogSchema } from "./schema";
 describe("blogCatalogSchema", () => {
   it("accepts a valid blog catalog", () => {
     const result = blogCatalogSchema.safeParse(blogFixture);
+    expect(result.success).toBe(true);
+  });
+
+  it("validerar den faktiska blog-data.json mot schemat", () => {
+    const raw = readFileSync(path.join(process.cwd(), "blog-data.json"), "utf-8");
+    const data = JSON.parse(raw);
+    const result = blogCatalogSchema.safeParse(data);
+    if (!result.success) {
+      // Skriv ut eventuella fel för enkel felsökning
+      const issues = result.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("\n");
+      expect.fail(`blog-data.json klarar inte schemat:\n${issues}`);
+    }
     expect(result.success).toBe(true);
   });
 

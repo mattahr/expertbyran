@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - web/site-data.json
+      - web/blog-data.json
+      - web/blog/posts/**
   workflow_dispatch:
 
 jobs:
