@@ -1,0 +1,32 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.rust {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.marine {
+  background: var(--marine-light);
+  color: var(--marine);
+}
+
+.gold {
+  background: var(--gold-light);
+  color: var(--gold-deep);
+}
+
+.neutral {
+  background: var(--gray-200);
+  color: var(--gray-600);
+}
