@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "vd-har-ordet-ai-styrning-granskande-staten",
+      "title": "VD har ordet: AI-styrning och den granskande statens nya verklighet",
+      "date": "2026-04-15T06:00:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "EU:s AI-förordning har trätt i kraft, myndigheter automatiserar beslutsprocesser och agentisk AI börjar synas i ärendehantering och resursfördelning. Men vad händer med den demokratiska granskningen när myndigheternas verktyg blir alltmer autonoma? Effektivitetsrevisionen måste förstå hur beslut fattas — inte bara vilka resultat de ger."
+    },
+    {
       "slug": "alla-prioriterar-ingen-summerar",
       "title": "Alla prioriterar — men ingen summerar: den fiskala helhetsbild som saknas",
       "date": "2026-04-14T21:00:00.000Z",
