@@ -23,6 +23,8 @@ const navigation = [
 
 async function getCurrentPath(): Promise<string> {
   const headerList = await headers();
+  // Next.js exponerar inte pathname i server-komponenter direkt;
+  // vi förlitar oss på x-pathname satt via middleware, annars "/".
   return headerList.get("x-pathname") ?? "/";
 }
 
