@@ -1,7 +1,6 @@
 import { marked } from "marked";
 
 import { blogCatalogSchema, formatBlogIssues, type BlogCatalog } from "@/lib/blog/schema";
-import { toGitHubApiUrl } from "@/lib/github";
 
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const DEFAULT_FETCH_TIMEOUT_MS = 10_000;
@@ -70,10 +69,11 @@ function log(level: "warn" | "error", message: string, metadata?: unknown) {
 
 async function fetchCatalog(baseUrl: string, bypassCdn = false): Promise<BlogCatalog> {
   const rawUrl = `${baseUrl}blog-data.json`;
-  const url = bypassCdn ? toGitHubApiUrl(rawUrl) ?? rawUrl : rawUrl;
+  // Istället för att använda GitHub API (som kan blockeras), lägg till cache-busting parameter
+  const url = bypassCdn ? `${rawUrl}?t=${Date.now()}` : rawUrl;
   const response = await fetch(url, {
     headers: {
-      accept: bypassCdn ? "application/vnd.github.raw+json" : "application/json",
+      accept: "application/json",
       "user-agent": "expertbyran-web/0.1",
     },
     cache: "no-store",
@@ -98,10 +98,10 @@ async function fetchCatalog(baseUrl: string, bypassCdn = false): Promise<BlogCat
 
 async function fetchPostMarkdown(baseUrl: string, slug: string, bypassCdn = false): Promise<string> {
   const rawUrl = `${baseUrl}blog/posts/${slug}.md`;
-  const url = bypassCdn ? toGitHubApiUrl(rawUrl) ?? rawUrl : rawUrl;
+  // Istället för att använda GitHub API (som kan blockeras), lägg till cache-busting parameter
+  const url = bypassCdn ? `${rawUrl}?t=${Date.now()}` : rawUrl;
   const response = await fetch(url, {
     headers: {
-      ...(bypassCdn && { accept: "application/vnd.github.raw+json" }),
       "user-agent": "expertbyran-web/0.1",
     },
     cache: "no-store",

@@ -1,5 +1,4 @@
 import { formatIssues, siteDataSchema, type SiteData } from "@/lib/content/schema";
-import { toGitHubApiUrl } from "@/lib/github";
 
 const DEFAULT_SITE_DATA_URL =
   "https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json";
@@ -67,10 +66,11 @@ function parseSiteData(input: unknown, source: string) {
 }
 
 async function readSiteDataFromUrl(url: string, bypassCdn = false) {
-  const fetchUrl = bypassCdn ? toGitHubApiUrl(url) ?? url : url;
+  // Istället för att använda GitHub API (som kan blockeras), lägg till cache-busting parameter
+  const fetchUrl = bypassCdn ? `${url}?t=${Date.now()}` : url;
   const response = await fetch(fetchUrl, {
     headers: {
-      accept: bypassCdn ? "application/vnd.github.raw+json" : "application/json",
+      accept: "application/json",
       "user-agent": "expertbyran-web/0.1",
     },
     cache: "no-store",
