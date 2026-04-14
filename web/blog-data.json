@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "tre-granskningar-som-saknas",
+      "title": "Tre granskningar som saknas — och vad de skulle kunna avslöja",
+      "date": "2026-04-14T11:00:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": ["revisionsmetodik", "arbetsmarknad", "valfard", "forsvar"],
+      "excerpt": "Sverige investerar hundratals miljarder i tre parallella omvandlingar — reformerad arbetsmarknad, totalförsvarets beredskap och en välfärd under demografisk press. Gemensamt för alla tre: det saknas en samlad granskning av om pengarna ger avsedd effekt. Vi pekar ut tre konkreta områden med metod, data och granskningsfrågor."
+    },
+    {
       "slug": "forsvar-beredskap-revision-kvarstande-brister-2026",
       "title": "Försvarsbrister som revisionen ser — men inte kan lösa",
       "date": "2026-04-14T09:00:00.000Z",
