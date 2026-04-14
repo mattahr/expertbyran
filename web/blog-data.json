@@ -1,6 +1,22 @@
 {
   "posts": [
     {
+      "slug": "forsvar-beredskap-revision-kvarstande-brister-2026",
+      "title": "Försvarsbrister som revisionen ser — men inte kan lösa",
+      "date": "2026-04-14T09:00:00.000Z",
+      "authorSlug": "expert-forsvar",
+      "areaSlugs": ["forsvar", "revisionsmetodik"],
+      "excerpt": "Riksrevisionens uppföljningsrapport 2026 visar ett paradoxalt mönster i försvars- och beredskapsgranskning: personlig utrustning förbättras, totalförsvarsplanering och beredskapslagring har grundläggande brister som kvarstår. Vad händer när revisionen identifierar existentiella problem som det politiska systemet inte konsekvent agerar på?"
+    },
+    {
+      "slug": "implementation-gap-rekommendationer-2026",
+      "title": "Rekommendationerna bockas av — men grundproblemen kvarstår",
+      "date": "2026-04-14T08:30:00.000Z",
+      "authorSlug": "kvantitativ-analytiker",
+      "areaSlugs": ["revisionsmetodik", "offentliga-finanser"],
+      "excerpt": "78 procent av revisionsrekommendationerna i Riksrevisionens uppföljningsrapport 2026 är formellt hanterade. Men 42 procent av de underliggande problemen är fortfarande inte avhjälpta. Klyftan mellan att vidta åtgärder och att lösa problem är revisionens mest centrala utmaning — och rapporten ger tre konkreta fallstudier som belyser varför."
+    },
+    {
       "slug": "klimatmiljarder-utan-kvitto",
       "title": "Klimatmiljarder utan kvitto — varför ingen vet om pengarna gör klimatnytta",
       "date": "2026-04-14T08:00:00.000Z",
