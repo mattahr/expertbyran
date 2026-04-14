@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "alla-prioriterar-ingen-summerar",
+      "title": "Alla prioriterar — men ingen summerar: den fiskala helhetsbild som saknas",
+      "date": "2026-04-14T21:00:00.000Z",
+      "authorSlug": "expert-finanser",
+      "areaSlugs": ["offentliga-finanser", "forsvar", "revisionsmetodik"],
+      "excerpt": "Försvaret tredubblas. Klimatomställningen accelererar. Välfärden ska klara en åldrande befolkning. EU-regelverken kräver ny kapacitet. Varje satsning har sin egen logik — men ingen institution har uppdraget att bedöma om Sverige har råd med alltihop samtidigt. Statsbudgeten 2026 visar ett underskott på 167 miljarder kronor, och Finanspolitiska rådet levererade sin hårdaste kritik någonsin. Ändå adderas nya åtaganden utan samlad fiskal konsekvensanalys."
+    },
+    {
       "slug": "agentisk-ai-rollout-governance-2026",
       "title": "40 procent på ett år — agentisk AI rullar ut, styrningen halkar efter",
       "date": "2026-04-14T15:00:00.000Z",
