@@ -129,7 +129,8 @@
       "Bash(python3 -c \"import json; d=json.load\\(open\\('/Users/mattias/source/expertbyran/.worktrees/web-responsive-redesign/web/site-data.json'\\)\\); e=d['experts'][0]; print\\({k:v for k,v in e.items\\(\\) if k in ['name','role','slug','summary','profileQuote']}\\)\")",
       "Bash(/usr/bin/env node:*)",
       "Bash(git -C /Users/mattias/source/expertbyran/.worktrees/web-responsive-redesign diff main..HEAD -- web/package.json)",
-      "Bash(git branch:*)"
+      "Bash(git branch:*)",
+      "Bash(npx --prefix /Users/mattias/source/expertbyran/web tsc --noEmit -p /Users/mattias/source/expertbyran/web/tsconfig.json)"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
