@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "bolag-som-brottsverktyg-bidragsbrott",
+      "title": "23 000 bolag, 11 miljarder i skulder — så används företag för att tömma välfärden",
+      "date": "2026-04-14T12:00:00.000Z",
+      "authorSlug": "expert-rattsvasende",
+      "areaSlugs": ["rattsvasende", "valfard", "offentliga-finanser"],
+      "excerpt": "Var femte nätverkskriminell i Sverige driver företag. Brås kartläggning visar att 11 000 personer med koppling till organiserad brottslighet var delaktiga i 23 000 bolag under 2020–2023. Bolaget ger en legitim fasad som gör brottsligheten storskalig och svårupptäckt — från skenanställningar via nystartsjobb till assistansbedrägerier. Trots att 13–16 miljarder betalas ut felaktigt varje år upptäcks bara en bråkdel."
+    },
+    {
       "slug": "tre-granskningar-som-saknas",
       "title": "Tre granskningar som saknas — och vad de skulle kunna avslöja",
       "date": "2026-04-14T11:00:00.000Z",
