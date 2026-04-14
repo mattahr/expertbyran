@@ -18,11 +18,13 @@ export function RevealOnScroll({
   delay = 0,
 }: RevealOnScrollProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [revealed, setRevealed] = useState(false);
+  const [revealed, setRevealed] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !("IntersectionObserver" in window);
+  });
 
   useEffect(() => {
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      setRevealed(true);
       return;
     }
 
