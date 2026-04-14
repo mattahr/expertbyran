@@ -17,6 +17,7 @@ export default async function HomePage() {
   return (
     <div className={styles.pageWrap}>
       <div className={styles.hero}>
+        <span className={styles.heroDecoCircle} aria-hidden />
         <p className={styles.heroEyebrow}>{data.site.hero.eyebrow}</p>
         <h1 className={styles.heroTitle}>{data.site.hero.title}</h1>
         <div className={styles.heroLine} />

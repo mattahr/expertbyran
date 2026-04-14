@@ -720,6 +720,21 @@
   .section {
     padding-bottom: 88px;
   }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: 80px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(194, 106, 63, 0.05);
+    border: 1px solid rgba(194, 106, 63, 0.08);
+    pointer-events: none;
+    z-index: -1;
+    animation: fadeUp 1s ease-out 0.5s both;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -772,5 +787,26 @@
   .footerNav {
     flex: 1;
     justify-content: center;
+  }
+
+  .hero::after {
+    width: 220px;
+    height: 220px;
+    right: -60px;
+    top: 60px;
+  }
+
+  .heroDecoCircle {
+    position: absolute;
+    right: 140px;
+    top: 200px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(30, 58, 95, 0.04);
+    border: 1px solid rgba(30, 58, 95, 0.08);
+    pointer-events: none;
+    z-index: -1;
+    animation: fadeUp 1s ease-out 0.7s both;
   }
 }
