@@ -3,6 +3,8 @@ import { marked } from "marked";
 import { blogCatalogSchema, formatBlogIssues, type BlogCatalog } from "@/lib/blog/schema";
 import { toGitHubApiUrl } from "@/lib/github";
 
+const DEFAULT_SITE_DATA_URL =
+  "https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json";
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const DEFAULT_FETCH_TIMEOUT_MS = 10_000;
 
@@ -25,12 +27,27 @@ const EMPTY_BLOG_DATA: BlogData = {
   renderedPosts: new Map(),
 };
 
-function getBaseUrl() {
-  const siteDataUrl =
-    process.env.SITE_DATA_URL?.trim() ||
-    "https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json";
+function getSiteDataUrl() {
+  return process.env.SITE_DATA_URL?.trim() || DEFAULT_SITE_DATA_URL;
+}
 
-  return siteDataUrl.replace(/site-data\.json$/, "");
+function buildContentUrl(relativePath: string) {
+  const siteDataUrl = getSiteDataUrl();
+
+  try {
+    const baseUrl = new URL(siteDataUrl);
+    const targetUrl = new URL(relativePath, baseUrl);
+
+    if (baseUrl.search) {
+      targetUrl.search = baseUrl.search;
+    }
+
+    targetUrl.hash = "";
+
+    return targetUrl.toString();
+  } catch {
+    return siteDataUrl.replace(/site-data\.json(\?.*)?$/, (_, query = "") => `${relativePath}${query}`);
+  }
 }
 
 function getRevalidateSeconds() {
@@ -68,10 +85,9 @@ function log(level: "warn" | "error", message: string, metadata?: unknown) {
   console[level](`[expertbyran:blog] ${message}`);
 }
 
-async function fetchCatalog(baseUrl: string, bypassCdn = false): Promise<BlogCatalog> {
-  const rawUrl = `${baseUrl}blog-data.json`;
-  const url = bypassCdn ? toGitHubApiUrl(rawUrl) ?? rawUrl : rawUrl;
-  const response = await fetch(url, {
+async function fetchCatalog(url: string, bypassCdn = false): Promise<BlogCatalog> {
+  const fetchUrl = bypassCdn ? toGitHubApiUrl(url) ?? url : url;
+  const response = await fetch(fetchUrl, {
     headers: {
       accept: bypassCdn ? "application/vnd.github.raw+json" : "application/json",
       "user-agent": "expertbyran-web/0.1",
@@ -96,10 +112,9 @@ async function fetchCatalog(baseUrl: string, bypassCdn = false): Promise<BlogCat
   return result.data;
 }
 
-async function fetchPostMarkdown(baseUrl: string, slug: string, bypassCdn = false): Promise<string> {
-  const rawUrl = `${baseUrl}blog/posts/${slug}.md`;
-  const url = bypassCdn ? toGitHubApiUrl(rawUrl) ?? rawUrl : rawUrl;
-  const response = await fetch(url, {
+async function fetchPostMarkdown(url: string, bypassCdn = false): Promise<string> {
+  const fetchUrl = bypassCdn ? toGitHubApiUrl(url) ?? url : url;
+  const response = await fetch(fetchUrl, {
     headers: {
       ...(bypassCdn && { accept: "application/vnd.github.raw+json" }),
       "user-agent": "expertbyran-web/0.1",
@@ -116,12 +131,13 @@ async function fetchPostMarkdown(baseUrl: string, slug: string, bypassCdn = fals
 }
 
 async function fetchAllBlogData(bypassCdn = false): Promise<BlogData> {
-  const baseUrl = getBaseUrl();
-  const catalog = await fetchCatalog(baseUrl, bypassCdn);
+  const catalogUrl = buildContentUrl("blog-data.json");
+  const catalog = await fetchCatalog(catalogUrl, bypassCdn);
 
   const markdownEntries = await Promise.all(
     catalog.posts.map(async (post) => {
-      const markdown = await fetchPostMarkdown(baseUrl, post.slug, bypassCdn);
+      const markdownUrl = buildContentUrl(`blog/posts/${post.slug}.md`);
+      const markdown = await fetchPostMarkdown(markdownUrl, bypassCdn);
       const html = await marked.parse(markdown);
       return [post.slug, html] as const;
     }),

@@ -78,6 +78,44 @@ describe("blog store", () => {
     expect(fetch).toHaveBeenCalledTimes(6);
   });
 
+  it("derives catalog and post URLs even when SITE_DATA_URL har query-parametrar", async () => {
+    process.env.SITE_DATA_URL =
+      "https://api.github.com/repos/mattahr/expertbyran/contents/web/site-data.json?ref=feature/blog";
+
+    const calledUrls: string[] = [];
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => {
+        calledUrls.push(url);
+
+        const path = typeof url === "string" ? url.split("?")[0] : "";
+
+        if (path.endsWith("blog-data.json")) {
+          return new Response(JSON.stringify(blogFixture), { status: 200 });
+        }
+
+        if (path.endsWith("test-post-1.md")) {
+          return new Response(post1Md, { status: 200 });
+        }
+
+        if (path.endsWith("test-post-2.md")) {
+          return new Response(post2Md, { status: 200 });
+        }
+
+        return new Response("Not found", { status: 404 });
+      }),
+    );
+
+    const data = await getBlogData({ fresh: true });
+
+    expect(data.catalog.posts).toHaveLength(2);
+    expect(calledUrls.some((url) => url.includes("blog-data.json?ref=feature/blog"))).toBe(true);
+    expect(
+      calledUrls.some((url) => url.includes("blog/posts/test-post-1.md?ref=feature/blog")),
+    ).toBe(true);
+  });
+
   it("falls back to cache on fetch failure", async () => {
     mockFetchSuccess();
     await getBlogData();
