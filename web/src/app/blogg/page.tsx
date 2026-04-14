@@ -1,4 +1,7 @@
-import { GridCell } from "@/components/site/GridCell";
+import type { Route } from "next";
+import Link from "next/link";
+
+import { Pill } from "@/components/site/Pill";
 import styles from "@/components/site/site.module.css";
 import { formatBlogDate, getOrderedBlogPosts } from "@/lib/blog/query";
 
@@ -9,6 +12,7 @@ export const metadata = {
 
 export default async function BlogPage() {
   const posts = await getOrderedBlogPosts();
+  const [featured, ...rest] = posts;
 
   return (
     <div className={styles.pageWrap}>
@@ -26,21 +30,32 @@ export default async function BlogPage() {
           <h2 className={styles.sectionLabel}>Alla inlägg</h2>
           <span className={styles.sectionCount}>{posts.length} inlägg</span>
         </div>
-        {posts.length > 0 ? (
-          <div className={styles.grid}>
-            {posts.map((post) => (
-              <GridCell
-                key={post.slug}
-                href={`/blogg/${post.slug}`}
-                category={`${formatBlogDate(post.date)} · ${post.author.name}`}
-                categoryColor={post.areas[0]?.accent}
-                name={post.title}
-                description={post.excerpt}
-              />
-            ))}
-          </div>
-        ) : (
+
+        {posts.length === 0 ? (
           <div className={styles.emptyState}>Inga inlägg publicerade ännu.</div>
+        ) : (
+          <>
+            {featured ? (
+              <Link href={`/blogg/${featured.slug}` as Route} className={styles.blogFeatured}>
+                <div className={styles.blogFeaturedMeta}>
+                  <Pill variant="marine">{formatBlogDate(featured.date)}</Pill>
+                </div>
+                <h2 className={styles.blogFeaturedTitle}>{featured.title}</h2>
+                {featured.excerpt ? <p className={styles.blogFeaturedSummary}>{featured.excerpt}</p> : null}
+                <span className={styles.blogFeaturedReadMore}>Läs artikeln →</span>
+              </Link>
+            ) : null}
+
+            <div className={styles.blogGrid}>
+              {rest.map((post) => (
+                <Link key={post.slug} href={`/blogg/${post.slug}` as Route} className={styles.blogCard}>
+                  <Pill variant="marine">{formatBlogDate(post.date)}</Pill>
+                  <h3 className={styles.blogCardTitle}>{post.title}</h3>
+                  {post.excerpt ? <p className={styles.blogCardSummary}>{post.excerpt}</p> : null}
+                </Link>
+              ))}
+            </div>
+          </>
         )}
       </section>
     </div>
