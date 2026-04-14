@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "agentisk-ai-rollout-governance-2026",
+      "title": "40 procent på ett år — agentisk AI rullar ut, styrningen halkar efter",
+      "date": "2026-04-14T15:00:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "Från under 5 % till 40 % av alla enterprise-applikationer på tolv månader. Den 7 april 2026 aktiverade EY sin agentiska AI-plattform för 130 000 revisorer globalt. Gartner varnar samtidigt att 40 % av alla agentprojekt skrotas innan 2028, och 94 % av organisationerna är oroliga för okontrollerad spridning. Frågan är inte om agentisk AI kommer — utan om styrningen hinner med."
+    },
+    {
       "slug": "bolag-som-brottsverktyg-bidragsbrott",
       "title": "23 000 bolag, 11 miljarder i skulder — så används företag för att tömma välfärden",
       "date": "2026-04-14T12:00:00.000Z",
