@@ -112,7 +112,7 @@ async function fetchCatalog(url: string, bypassCdn = false): Promise<BlogCatalog
   return result.data;
 }
 
-async function fetchPostMarkdown(url: string, bypassCdn = false): Promise<string> {
+async function fetchPostMarkdown(slug: string, url: string, bypassCdn = false): Promise<string> {
   const fetchUrl = bypassCdn ? toGitHubApiUrl(url) ?? url : url;
   const response = await fetch(fetchUrl, {
     headers: {
@@ -137,7 +137,7 @@ async function fetchAllBlogData(bypassCdn = false): Promise<BlogData> {
   const markdownEntries = await Promise.all(
     catalog.posts.map(async (post) => {
       const markdownUrl = buildContentUrl(`blog/posts/${post.slug}.md`);
-      const markdown = await fetchPostMarkdown(markdownUrl, bypassCdn);
+      const markdown = await fetchPostMarkdown(post.slug, markdownUrl, bypassCdn);
       const html = await marked.parse(markdown);
       return [post.slug, html] as const;
     }),
