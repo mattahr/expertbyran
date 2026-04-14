@@ -70,4 +70,32 @@ describe("MobileNav", () => {
     const activeLink = screen.getByRole("link", { name: "Våra experter" });
     expect(activeLink.getAttribute("aria-current")).toBe("page");
   });
+
+  it("focus-trap: Tab från sista länken går tillbaka till stängknappen", () => {
+    render(<MobileNav items={navigation} currentPath="/" />);
+    fireEvent.click(screen.getByRole("button", { name: /öppna meny/i }));
+
+    const links = screen.getAllByRole("link");
+    const lastLink = links[links.length - 1];
+    lastLink.focus();
+
+    fireEvent.keyDown(document, { key: "Tab" });
+
+    const closeButton = screen.getByRole("button", { name: /stäng meny/i });
+    expect(document.activeElement).toBe(closeButton);
+  });
+
+  it("focus-trap: Shift+Tab från stängknappen går till sista länken", () => {
+    render(<MobileNav items={navigation} currentPath="/" />);
+    fireEvent.click(screen.getByRole("button", { name: /öppna meny/i }));
+
+    const closeButton = screen.getByRole("button", { name: /stäng meny/i });
+    closeButton.focus();
+
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+
+    const links = screen.getAllByRole("link");
+    const lastLink = links[links.length - 1];
+    expect(document.activeElement).toBe(lastLink);
+  });
 });

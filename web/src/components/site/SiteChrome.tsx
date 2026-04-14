@@ -41,11 +41,19 @@ export async function SiteChrome({ children }: SiteChromeProps) {
             <span>{data.site.name}</span>
           </Link>
           <nav className={styles.nav} aria-label="Primär navigering">
-            {navigation.map((item) => (
-              <Link key={item.href} href={item.href as Route} className={styles.navLink}>
-                {item.label}
-              </Link>
-            ))}
+            {navigation.map((item) => {
+              const isActive = item.href === currentPath;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href as Route}
+                  className={isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
           <MobileNav
             items={navigation}

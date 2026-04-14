@@ -22,6 +22,7 @@ export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
   const panelId = useId();
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const panelRef = useRef<HTMLElement | null>(null);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -39,6 +40,28 @@ export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
       if (event.key === "Escape") {
         event.preventDefault();
         close();
+      }
+
+      if (event.key === "Tab" && panelRef.current) {
+        const focusables = Array.from(
+          panelRef.current.querySelectorAll<HTMLElement>("button, a[href]"),
+        ).filter((el) => !el.hasAttribute("disabled"));
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+
+        if (event.shiftKey) {
+          if (active === first || !panelRef.current.contains(active)) {
+            event.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (active === last || !panelRef.current.contains(active)) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
       }
     };
     document.addEventListener("keydown", onKey);
@@ -80,6 +103,7 @@ export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
             aria-hidden
           />
           <nav
+            ref={panelRef}
             id={panelId}
             className={styles.panel}
             aria-label="Mobilmeny"
