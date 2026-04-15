@@ -1,4 +1,5 @@
-import { formatIssues, siteDataSchema, type SiteData } from "@/lib/content/schema";
+import { formatIssues, siteDataSchema, parseSiteData, type SiteData } from "@/lib/content/schema";
+import { readSiteDataFromDisk } from "@/lib/storage/disk-storage";
 
 const DEFAULT_SITE_DATA_URL =
   "https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json";
@@ -16,6 +17,12 @@ let siteDataCache: SiteDataCacheEntry | null = null;
 function getSiteDataUrl() {
   const value = process.env.SITE_DATA_URL?.trim();
   return value || DEFAULT_SITE_DATA_URL;
+}
+
+function shouldUseApi() {
+  // Use API if SITE_DATA_URL is not set (local mode) or if explicitly set to "api"
+  const url = process.env.SITE_DATA_URL?.trim();
+  return !url || url === "api";
 }
 
 function getRevalidateSeconds() {
@@ -53,16 +60,8 @@ function log(level: "warn" | "error", message: string, metadata?: unknown) {
   console[level](`[expertbyran] ${message}`);
 }
 
-function parseSiteData(input: unknown, source: string) {
-  const result = siteDataSchema.safeParse(input);
-
-  if (!result.success) {
-    const issues = formatIssues(result.error.issues);
-    log("error", `Invalid site-data from ${source}`, issues);
-    throw new Error(`Invalid site-data from ${source}`);
-  }
-
-  return result.data;
+async function readSiteDataFromApi(): Promise<SiteData> {
+  return readSiteDataFromDisk();
 }
 
 async function readSiteDataFromUrl(url: string, bypassCdn = false) {
@@ -85,7 +84,6 @@ async function readSiteDataFromUrl(url: string, bypassCdn = false) {
 }
 
 export async function getSiteData(options?: { fresh?: boolean }) {
-  const siteDataUrl = getSiteDataUrl();
   const now = Date.now();
   const revalidateMs = getRevalidateSeconds() * 1_000;
 
@@ -94,19 +92,28 @@ export async function getSiteData(options?: { fresh?: boolean }) {
   }
 
   try {
-    const data = await readSiteDataFromUrl(siteDataUrl, options?.fresh);
+    let data: SiteData;
+    let source: string;
+
+    if (shouldUseApi()) {
+      data = await readSiteDataFromApi();
+      source = "disk-storage";
+    } else {
+      const siteDataUrl = getSiteDataUrl();
+      data = await readSiteDataFromUrl(siteDataUrl, options?.fresh);
+      source = siteDataUrl;
+    }
 
     siteDataCache = {
       data,
       fetchedAt: now,
-      source: siteDataUrl,
+      source,
     };
 
     return data;
   } catch (error) {
     if (siteDataCache) {
-      log("warn", "Falling back to cached remote site-data after fetch failure", {
-        siteDataUrl,
+      log("warn", "Falling back to cached site-data after fetch failure", {
         source: siteDataCache.source,
         error: error instanceof Error ? error.message : String(error),
       });

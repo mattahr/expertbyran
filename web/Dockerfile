@@ -18,12 +18,18 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
-ENV SITE_DATA_URL=https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json
+ENV DATA_DIR=/app/data
+ENV SITE_DATA_URL=api
 ENV SITE_DATA_REVALIDATE_SECONDS=300
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
+
+# Copy initial data to a seed directory
+COPY --from=builder /app/site-data.json /app/seed/site-data.json
+COPY --from=builder /app/blog-data.json /app/seed/blog-data.json
+COPY --from=builder /app/blog /app/seed/blog
 
 EXPOSE 3000
 

@@ -4,41 +4,68 @@ Denna mapp (`web/`) är **den publika Next.js-webbplatsen** för Expertbyrån. D
 
 ## Syfte
 
-Read-only katalog som presenterar Expertbyråns experter, team, expertområden och marketplace-metadata. Webbappen skriver inte persistent data, innehåller ingen autentisering, och exponerar bara en enkel publik refresh-route för cacheuppdatering.
+Publik katalog som presenterar Expertbyråns experter, team, expertområden och marketplace-metadata. Webbappen exponerar också ett **REST API** för att hantera innehåll (experter, team, blogginlägg).
 
 ## Datamodell
 
-All presentationsdata ligger i **en enda JSON-fil**: [site-data.json](site-data.json). Den valideras med Zod vid inläsning och exponeras via `public/schemas/` för externa verktyg.
+All presentationsdata hanteras via två mekanismer:
 
-* **Källa vid runtime**: `SITE_DATA_URL` (default: hämtas från GitHub via `raw.githubusercontent.com`) — se [src/lib/content/store.ts](src/lib/content/store.ts).
-* **Källa vid utveckling**: samma fil lokalt i repot (`web/site-data.json`). Fungerar som test-fixture och som det kanoniska innehållet som driftsatta containrar hämtar.
-* **Snapshot-modell**: webbappen cachar senaste giltiga snapshot i minnet och pollar med `SITE_DATA_REVALIDATE_SECONDS`. `GET /refresh` tvingar också en ny hämtning. Om hämtning misslyckas används cachen; om ingen cache finns svarar appen med fel.
+### 1. API-läge (default i Docker)
+Data lagras på disk i `/app/data/` och hanteras via REST API:
+* `GET/PUT /api/v1/site-data` - Hela site-data-strukturen
+* `GET/POST/PUT/DELETE /api/v1/experts/[slug]` - Experthantering
+* `GET/POST/PUT/DELETE /api/v1/blog/posts/[slug]` - Blogginlägg
 
-`site-data.json` uppdateras av [expertbyran-manager-skillen](../paperclip/skills/local/expertbyran-manager/) när nya experter läggs till i `marketplace/`-pluginen.
+Se [API.md](API.md) för fullständig API-dokumentation.
+
+### 2. URL-läge (bakåtkompatibelt)
+När `SITE_DATA_URL` pekar på en HTTP-URL hämtas data från GitHub raw:
+* **Källa vid runtime**: `SITE_DATA_URL` (default: `raw.githubusercontent.com`)
+* **Snapshot-modell**: webbappen cachar senaste giltiga snapshot i minnet
 
 ## Stack
 
 * **Next.js 16** med App Router, TypeScript, `output: "standalone"`
-* **Zod** för schemavalidering av snapshoten
+* **Zod** för schemavalidering
 * **Vitest** för enhet- och render-tester
 * **Docker** via minimal distroless-runner — se [Dockerfile](Dockerfile)
 
 ## Driftsättning
 
-Docker-imagen publiceras till GHCR via GitHub Actions — workflow: [../.github/workflows/publish-web-container.yml](../.github/workflows/publish-web-container.yml). Triggas manuellt (`workflow_dispatch`). Build context är `./web`.
+Docker-imagen publiceras till GHCR via GitHub Actions — workflow: [../.github/workflows/publish-web-container.yml](../.github/workflows/publish-web-container.yml).
 
-Viktiga miljövariabler för containern:
+### Viktiga miljövariabler
 
-* `SITE_DATA_URL` — var snapshoten hämtas ifrån
-* `SITE_DATA_REVALIDATE_SECONDS` — pollintervall (default 300)
-* `SITE_DATA_FETCH_TIMEOUT_MS` — timeout per hämtning (default 10000)
-* `HOSTNAME`, `PORT` — serverbindning
+| Variabel | Beskrivning | Default |
+|----------|-------------|---------|
+| `API_TOKEN` | Token för autentisering av API-anrop | - (måste sättas för API-läge) |
+| `DATA_DIR` | Katalog där data lagras | `/app/data` |
+| `SITE_DATA_URL` | `api` för disklagring, annars HTTP URL | `api` |
+| `SITE_DATA_REVALIDATE_SECONDS` | Pollintervall | 300 |
+| `SITE_DATA_FETCH_TIMEOUT_MS` | Timeout per hämtning | 10000 |
+| `HOSTNAME`, `PORT` | Serverbindning | `0.0.0.0`, `3000` |
+
+### Docker Compose exempel
+
+```yaml
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - expertbyran-data:/app/data
+    environment:
+      - API_TOKEN=your-secret-token
+volumes:
+  expertbyran-data:
+```
 
 ## Konventioner
 
 * **Svenska med korrekta å, ä, ö** i all UI-text, docs, kommentarer.
-* **Ingen persistent write-path** — webbplatsen är avsiktligt read-only. Behåll eventuella endpoints begränsade till cache/refresh; lägg inte till form eller API som muterar källdata.
-* **Validera alltid** — snapshoten får aldrig användas utan att ha passerat Zod-schemat.
+* **API för mutationer** — använd API:et för att uppdatera experter och blogginlägg.
+* **Validera alltid** — data valideras med Zod vid både läsning och skrivning.
 
 ## Vanliga kommandon
 
@@ -53,6 +80,7 @@ npx tsc --noEmit
 ## Vidare läsning
 
 * [README.md](README.md) — översikt och getting started
+* [API.md](API.md) — REST API-dokumentation
 * [docs/architecture.md](docs/architecture.md) — arkitektur och dataflöde
 * [docs/content-model.md](docs/content-model.md) — snapshot-schema
 * [docs/marketplace-catalog.md](docs/marketplace-catalog.md) — förhållande till extern marketplace

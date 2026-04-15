@@ -49,3 +49,15 @@ export function formatBlogIssues(issues: z.ZodIssue[]) {
     message: issue.message,
   }));
 }
+
+export function parseBlogCatalog(input: unknown, source: string): BlogCatalog {
+  const result = blogCatalogSchema.safeParse(input);
+
+  if (!result.success) {
+    const issues = formatBlogIssues(result.error.issues);
+    console.error(`[schema] Invalid blog-data from ${source}`, issues);
+    throw new Error(`Invalid blog-data from ${source}`);
+  }
+
+  return result.data;
+}
