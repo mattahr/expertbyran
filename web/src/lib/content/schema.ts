@@ -408,3 +408,15 @@ export function formatIssues(issues: z.ZodIssue[]) {
     message: issue.message,
   }));
 }
+
+export function parseSiteData(input: unknown, source: string): SiteData {
+  const result = siteDataSchema.safeParse(input);
+
+  if (!result.success) {
+    const issues = formatIssues(result.error.issues);
+    console.error(`[schema] Invalid site-data from ${source}`, issues);
+    throw new Error(`Invalid site-data from ${source}`);
+  }
+
+  return result.data;
+}

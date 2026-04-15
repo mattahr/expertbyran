@@ -1,6 +1,7 @@
 import { marked } from "marked";
 
-import { blogCatalogSchema, formatBlogIssues, type BlogCatalog } from "@/lib/blog/schema";
+import { blogCatalogSchema, formatBlogIssues, parseBlogCatalog, type BlogCatalog } from "@/lib/blog/schema";
+import { readBlogDataFromDisk, readBlogPostMarkdownFromDisk, listBlogPostSlugsFromDisk } from "@/lib/storage/disk-storage";
 
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const DEFAULT_FETCH_TIMEOUT_MS = 10_000;
@@ -23,6 +24,12 @@ const EMPTY_BLOG_DATA: BlogData = {
   catalog: { posts: [] },
   renderedPosts: new Map(),
 };
+
+function shouldUseApi() {
+  // Use API if SITE_DATA_URL is not set (local mode) or if explicitly set to "api"
+  const url = process.env.SITE_DATA_URL?.trim();
+  return !url || url === "api";
+}
 
 function getBaseUrl() {
   const siteDataUrl =
@@ -65,6 +72,23 @@ function log(level: "warn" | "error", message: string, metadata?: unknown) {
   }
 
   console[level](`[expertbyran:blog] ${message}`);
+}
+
+async function fetchBlogDataFromApi(): Promise<BlogData> {
+  const catalog = await readBlogDataFromDisk();
+
+  const markdownEntries = await Promise.all(
+    catalog.posts.map(async (post) => {
+      const markdown = await readBlogPostMarkdownFromDisk(post.slug);
+      const html = await marked.parse(markdown);
+      return [post.slug, html] as const;
+    }),
+  );
+
+  return {
+    catalog,
+    renderedPosts: new Map(markdownEntries),
+  };
 }
 
 async function fetchCatalog(baseUrl: string, bypassCdn = false): Promise<BlogCatalog> {
@@ -142,7 +166,13 @@ export async function getBlogData(options?: { fresh?: boolean }): Promise<BlogDa
   }
 
   try {
-    const data = await fetchAllBlogData(options?.fresh);
+    let data: BlogData;
+
+    if (shouldUseApi()) {
+      data = await fetchBlogDataFromApi();
+    } else {
+      data = await fetchAllBlogData(options?.fresh);
+    }
 
     blogCache = {
       data,
