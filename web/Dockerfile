@@ -9,6 +9,10 @@ COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 
 COPY . .
+RUN mkdir -p /app/data/blog/posts \
+ && cp site-data.json /app/data/site-data.json \
+ && cp blog-data.json /app/data/blog-data.json \
+ && if [ -d blog/posts ] && [ "$(ls -A blog/posts 2>/dev/null)" ]; then cp blog/posts/*.md /app/data/blog/posts/; fi
 RUN npm run build
 
 FROM gcr.io/distroless/nodejs22-debian12:nonroot AS runner
