@@ -39,38 +39,45 @@ async function copyDir(src: string, dest: string) {
 export default async function seedData() {
   const siteDataPath = path.join(DATA_DIR, "site-data.json");
   const blogDataPath = path.join(DATA_DIR, "blog-data.json");
+  const blogPostsDir = path.join(DATA_DIR, "blog", "posts");
 
-  // Check if already initialized
-  if (await fileExists(siteDataPath)) {
+  const hasSiteData = await fileExists(siteDataPath);
+  const hasBlogData = await fileExists(blogDataPath);
+
+  if (hasSiteData && hasBlogData) {
     console.log("[seed] Data directory already initialized, skipping seed");
     return;
   }
 
-  console.log(`[seed] Initializing data directory from ${SEED_DIR}`);
+  console.log(`[seed] Seeding missing data from ${SEED_DIR}`);
 
-  // Create data directory
+  // Ensure directories exist
   await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.mkdir(path.join(DATA_DIR, "blog", "posts"), { recursive: true });
+  await fs.mkdir(blogPostsDir, { recursive: true });
 
-  // Copy site-data.json
-  const seedSiteData = path.join(SEED_DIR, "site-data.json");
-  if (await fileExists(seedSiteData)) {
-    await copyFile(seedSiteData, siteDataPath);
-    console.log("[seed] Copied site-data.json");
+  // Copy site-data.json if missing
+  if (!hasSiteData) {
+    const seedSiteData = path.join(SEED_DIR, "site-data.json");
+    if (await fileExists(seedSiteData)) {
+      await copyFile(seedSiteData, siteDataPath);
+      console.log("[seed] Copied site-data.json");
+    }
   }
 
-  // Copy blog-data.json
-  const seedBlogData = path.join(SEED_DIR, "blog-data.json");
-  if (await fileExists(seedBlogData)) {
-    await copyFile(seedBlogData, blogDataPath);
-    console.log("[seed] Copied blog-data.json");
+  // Copy blog-data.json if missing
+  if (!hasBlogData) {
+    const seedBlogData = path.join(SEED_DIR, "blog-data.json");
+    if (await fileExists(seedBlogData)) {
+      await copyFile(seedBlogData, blogDataPath);
+      console.log("[seed] Copied blog-data.json");
+    }
   }
 
-  // Copy blog posts
+  // Copy blog posts (always sync — cheap if already present)
   const seedBlogPosts = path.join(SEED_DIR, "blog", "posts");
   if (await fileExists(seedBlogPosts)) {
-    await copyDir(seedBlogPosts, path.join(DATA_DIR, "blog", "posts"));
-    console.log("[seed] Copied blog posts");
+    await copyDir(seedBlogPosts, blogPostsDir);
+    console.log("[seed] Synced blog posts");
   }
 
   console.log("[seed] Data directory initialized successfully");

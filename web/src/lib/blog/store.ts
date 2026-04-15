@@ -189,6 +189,20 @@ export async function getBlogData(options?: { fresh?: boolean }): Promise<BlogDa
       return blogCache.data;
     }
 
+    // Om HTTP-hämtning misslyckades, försök läsa från disk som sista utväg
+    if (!shouldUseApi()) {
+      try {
+        const diskData = await fetchBlogDataFromApi();
+        log("warn", "URL fetch failed, resolved blog-data from disk instead", {
+          error: error instanceof Error ? error.message : String(error),
+        });
+        blogCache = { data: diskData, fetchedAt: now };
+        return diskData;
+      } catch {
+        // Disk fallback also failed — fall through to empty data
+      }
+    }
+
     log("warn", "No blog-data available, returning empty catalog", {
       error: error instanceof Error ? error.message : String(error),
     });

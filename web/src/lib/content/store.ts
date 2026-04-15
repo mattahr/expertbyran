@@ -121,6 +121,20 @@ export async function getSiteData(options?: { fresh?: boolean }) {
       return siteDataCache.data;
     }
 
+    // Om HTTP-hämtning misslyckades, försök läsa från disk som sista utväg
+    if (!shouldUseApi()) {
+      try {
+        const diskData = await readSiteDataFromApi();
+        log("warn", "URL fetch failed, resolved site-data from disk instead", {
+          error: error instanceof Error ? error.message : String(error),
+        });
+        siteDataCache = { data: diskData, fetchedAt: now, source: "disk-fallback" };
+        return diskData;
+      } catch {
+        // Disk fallback also failed — re-throw original error
+      }
+    }
+
     throw error;
   }
 }
