@@ -87,11 +87,12 @@
 
 ## Expert Rättsväsende
 
-* **Domän:** Polis, åklagare, civilt försvar, samhällsskydd, infiltrationsskydd
-* **Triggers:** polismyndigheten, åklagarmyndigheten, civilt försvar, krisberedskap, skydd av hotade personer, infiltration, polisutbildning, kronofogden
+* **Domän:** Polis, åklagare, civilt försvar, samhällsskydd, infiltrationsskydd, gängrelaterad brottslighet och organiserad kriminalitet
+* **Triggers:** polismyndigheten, åklagarmyndigheten, civilt försvar, krisberedskap, skydd av hotade personer, infiltration, polisutbildning, kronofogden, gängkriminalitet, organiserad brottslighet, visitationszoner, anonyma vittnen, preventiva tvångsmedel, SSPF, SIG, Barnahus, hemliga tvångsmedel
 * **Capabilities:**
   * **sakanalys** — Sakanalys av rättsväsendets myndigheter och samhällsskydd
   * **samverkansbedomning** — Bedöma myndigheters samverkan vid grova brott och skydd
+  * **gangcrime** — Granskning av gängrelaterad brottslighet och lagstiftningspaketet 2022–2026 (visitationszoner, preventiva tvångsmedel, anonyma vittnen, hemliga tvångsmedel mot barn under 15 år), samverkansstrukturer (Barnahus, SSPF, SIG) samt granskningspotential ur Riksrevisorns perspektiv
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-rattsvasende/EXPERT.md
 * **Kan kedja till:** rattslig-utredare, effektivitetsrevisor, expert-valfard
 
