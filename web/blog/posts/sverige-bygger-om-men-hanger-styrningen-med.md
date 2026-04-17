@@ -49,4 +49,4 @@ Hur ambitionerna och styrningen förhåller sig till varandra under de kommande 
 - EU:s AI-förordning (AI Act), förordning (EU) 2024/1689 — [eur-lex.europa.eu](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R1689)
 - EU:s eIDAS-förordning (reviderad), förordning (EU) 2024/1183 — [eur-lex.europa.eu](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R1183)
 - DIGG: Ena — digital infrastruktur för offentlig förvaltning — [www.digg.se](https://www.digg.se/digitala-tjanster/ena)
-- Ekonomistyrningsverket: Statsskuld och budgetutveckling — [www.esv.se](https://www.esv.se/statens-ekonomi/statsskulden/)
+- Statskontoret: Månadsutfall för statens budget — [www.statskontoret.se](https://www.statskontoret.se/analys-och-statistik/utfall/utfall-for-statens-budget/)
