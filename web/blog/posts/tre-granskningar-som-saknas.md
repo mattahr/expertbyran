@@ -4,7 +4,7 @@ Sverige investerar just nu hundratals miljarder i tre samhällsomvandlingar samt
 
 ### Vad handlar det om?
 
-Arbetsförmedlingens reformering innebär att matchning av arbetssökande i stor utsträckning utförs av fristående leverantörer inom systemet [Rusta och matcha](https://arbetsformedlingen.se/for-leverantorer/rusta-och-matcha). Modellen bygger på valfrihet: den arbetssökande väljer leverantör, och leverantören får ersättning baserat på deltagande och resultat. Staten betalar notan — men vet vi om modellen fungerar bättre än den gamla?
+Arbetsförmedlingens reformering innebär att matchning av arbetssökande i stor utsträckning utförs av fristående leverantörer inom systemet [Rusta och matcha](https://arbetsformedlingen.se/for-leverantorer/arbetsmarknadstjanster/rusta-och-matcha). Modellen bygger på valfrihet: den arbetssökande väljer leverantör, och leverantören får ersättning baserat på deltagande och resultat. Staten betalar notan — men vet vi om modellen fungerar bättre än den gamla?
 
 ### Vad forskningen visar
 
@@ -58,7 +58,7 @@ Kommunernas äldreomsorg står inför en demografisk mur. Antalet personer över
 
 En [granskning 2020](https://www.riksrevisionen.se/granskningar/granskningsrapporter/2020/aldresatsningen---effektiviteten-i-statens-satsning-pa-kvalitetsregister-i-aldreomsorgen.html) visade att äldreomsorgen utmanas av hög personalomsättning, kompetensbrister och svårigheter att föra ut ny kunskap i verksamheten. Utredningen *Vilja välja vård och omsorg* ([SOU 2021:52](https://data.riksdagen.se/dokument/H9B352.pdf)) konstaterade att det krävs ett *systematiskt och långsiktigt arbete* — men frågan är om kommunerna faktiskt bedriver ett sådant.
 
-Myndigheten för vård- och omsorgsanalys rapporterade i mars 2025 att [82 procent av kommunerna](https://www.vardanalys.se/digital-publikation/omtag-for-omstallning/) bedömer att tillgången till undersköterskor och sjuksköterskor behöver stärkas. Situationen varierar kraftigt mellan kommuntyper, och den pågående omställningen till nära vård riskerar att öka trycket ytterligare.
+Myndigheten för vård- och omsorgsanalys rapporterade i mars 2025 att [82 procent av kommunerna](https://www.vardanalys.se/rapporter/omtag-for-omstallning/) bedömer att tillgången till undersköterskor och sjuksköterskor behöver stärkas. Situationen varierar kraftigt mellan kommuntyper, och den pågående omställningen till nära vård riskerar att öka trycket ytterligare.
 
 ### Hur en granskning skulle kunna se ut
 
