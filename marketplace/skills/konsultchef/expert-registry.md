@@ -163,6 +163,30 @@
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-forsvar/EXPERT.md
 * **Kan kedja till:** rattslig-utredare (vid tolkningsfrågor om försvarslagstiftning eller exportkontroll), kvantitativ-analytiker (vid registerbaserad analys av försvarsanslag), effektivitetsrevisor (vid helhetskoordinering)
 
+## Expert Transport
+
+* **Domän:** Transport och infrastruktur, Trafikverket, Transportstyrelsen, järnväg, väg, luftfart, sjöfart, samhällsekonomiska kalkyler
+* **Triggers:** transport, infrastruktur, trafikpolitik, Trafikverket, Transportstyrelsen, Luftfartsverket, Sjöfartsverket, järnvägsinvesteringar, vägunderhåll, luftfartspolitik, sjöfartspolitik, samhällsekonomisk kalkyl, CBA infrastruktur, ASEK, nationell transportplan, hållbar transport, kollektivtrafik
+* **Capabilities:**
+  * **sakanalys** — Sakanalys av transportpolitik, infrastrukturinvesteringar och myndighetsstyrning inom transportsektorn
+  * **cba-analys** — Bedöma samhällsekonomiska kalkyler (CBA) och ASEK-kalkylvärden för infrastrukturinvesteringar
+  * **underhallsanalys** — Analysera eftersläpning i vägunderhåll och järnvägsunderhåll — gap mellan behov och anslagna medel
+  * **myndighetsgranskning** — Granska styrning och uppdragsuppfyllelse för Trafikverket, Transportstyrelsen, LFV och Sjöfartsverket
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-transport/EXPERT.md
+* **Kan kedja till:** effektivitetsrevisor (vid helhetskoordinering), kvantitativ-analytiker (vid registerbaserad underhålls- eller olycksanalys), rattslig-utredare (vid tolkningsfrågor om transportlagstiftning)
+
+## Expert Hållbarhet ESG
+
+* **Domän:** Hållbarhetsrapportering, ESG-datavalidering, CSRD, ESRS, EU-taxonomin, klimatfinansiering, Green Bond
+* **Triggers:** hållbarhetsrapportering, ESG, CSRD, ESRS, EU-taxonomin, taxonomiöverensstämmelse, klimatfinansiering, Green Bond, gröna obligationer, scope 1, scope 2, scope 3, GRI, ISSB, IFRS S1, IFRS S2, dubbel väsentlighetsanalys, hållbarhetsrevision, TCFD, hållbarhetsredovisning
+* **Capabilities:**
+  * **csrd-esrs-granskning** — Granska CSRD-rapportering och ESRS-taxonomiöverensstämmelse för offentlig sektor
+  * **esg-datavalidering** — Validera ESG-data (scope 1–3) och bedöma datakvalitetsramverk
+  * **klimatfinansieringsrevision** — Granska klimatfinansiering och Green Bond-ramverk — spårbarhet mellan obligationsintäkter och klimatinvesteringar
+  * **standardnavigering** — Navigera GRI/ISSB/ESRS och bedöma tillämpbarhet för statliga myndigheter
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-hallbarhet-esg/EXPERT.md
+* **Kan kedja till:** expert-miljo-klimat (vid policykontext), expert-finanser (vid finansieringsdimensionen), kvantitativ-analytiker (vid utsläppsdata), rattslig-utredare (vid EU-rättsliga tolkningsfrågor)
+
 ## Teknikstrateg
 
 * **Domän:** Teknikstrategi, omvärldsbevakning, AI och maskininlärning, cybersäkerhet, molntjänster, IoT, kvantdatorer, digital suveränitet, SupTech
