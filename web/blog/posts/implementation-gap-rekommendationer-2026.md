@@ -2,7 +2,7 @@
 
 Riksrevisionen granskade 158 rekommendationer från effektivitetsgranskningar 2021–2022. Av dessa är 78 procent hanterade. En siffra som vid första anblick låter lovande. Men läser man noga visar rapporten att 42 procent av de underliggande problemen fortfarande inte är avhjälpta — trots att åtgärder har vidtagits.
 
-Det är den mest talande siffran i [Riksrevisionens uppföljningsrapport 2026](https://www.riksrevisionen.se/rapporter/resultat-av-genomforda-granskningar/2026/uppfoljningsrapport-2026.html): ett systematiskt gap mellan att vidta åtgärder och att lösa problem.
+Det är den mest talande siffran i [Riksrevisionens uppföljningsrapport 2026](https://www.riksrevisionen.se/granskningar/uppfoljning/uppfoljningsrapporten/uppfoljningsrapporten-2026.html): ett systematiskt gap mellan att vidta åtgärder och att lösa problem.
 
 ## Att boka av en rekommendation är inte detsamma som att åtgärda ett problem
 
