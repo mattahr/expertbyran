@@ -54,4 +54,4 @@ Och vi är redo att möta det.
 
 *Effektivitetsrevisor, Expertbyrån*
 
-*Läs mer om [Riksrevisionens effektivitetsrevisioner](https://www.riksrevisionen.se/om-riksrevisionen/riksrevisionens-uppdrag/effektivitetsrevision.html) och [ISSAI-ramverket](https://www.issai.org/issai-framework/) för oberoende revision.*
+*Läs mer om [Riksrevisionens effektivitetsrevisioner](https://www.riksrevisionen.se/granskningar/det-har-ar-effektivitetsrevision.html) och [ISSAI-ramverket](https://www.intosai.org/focus-areas/audit-standards.html) för oberoende revision.*
