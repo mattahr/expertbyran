@@ -1,4 +1,4 @@
-Sveriges välfärdssystem betalar ut omkring 800 miljarder kronor i transfereringar varje år. Pengarna ska nå den som behöver sjukersättning, föräldrapenning, assistans eller stöd vid arbetslöshet. En växande andel av dessa medel hamnar dock hos aktörer som aldrig hade rätt till dem. Enligt Ekonomistyrningsverkets senaste uppskattning betalas mellan 13 och 16 miljarder kronor ut felaktigt varje år, och mer än hälften av dessa fel misstänks vara avsiktligt orsakade ([ESV 2023:22](https://www.esv.se/publikationer/2023/22/)).
+Sveriges välfärdssystem betalar ut omkring 800 miljarder kronor i transfereringar varje år. Det är grundbulten i samhällskontraktet: pengarna ska nå den som behöver sjukersättning, föräldrapenning, assistans eller stöd vid arbetslöshet. Men en växande andel av dessa medel hamnar hos aktörer som aldrig hade rätt till dem. Enligt Ekonomistyrningsverkets senaste uppskattning betalas mellan 13 och 16 miljarder kronor ut felaktigt varje år, och mer än hälften av dessa fel misstänks vara avsiktligt orsakade ([ESV 2023:22](https://www.esv.se/publikationer/2023/22/)).
 
 Det gemensamma verktyget i de mest avancerade uppläggen är bolaget. Brottsförebyggande rådet visar i sin rapport *Företag som brottsverktyg* (Brå 2025:20) att cirka 11 000 personer med koppling till nätverkskriminalitet var delaktiga i drygt 23 000 företag under perioden 2020–2023 — motsvarande 1,7 procent av alla företag i landet ([Brå 2025:20](https://bra.se/rapporter/arkiv/2025-12-11-foretag-som-brottsverktyg)). Tillsammans hade dessa företag över 11,5 miljarder kronor i obetalda skulder till staten.
 
@@ -68,7 +68,7 @@ Frågan framåt handlar inte bara om fler kontroller utan om systemdesign. Hur u
 ## Referenser
 
 - Brå 2025:20, *Företag som brottsverktyg* — [bra.se](https://bra.se/rapporter/arkiv/2025-12-11-foretag-som-brottsverktyg)
-- ESV 2023:22, *Omfattningen av felaktiga utbetalningar från välfärdssystemen* — [esv.se](https://www.esv.se/publikationer/2023/22/)
+- ESV 2023:22, *Omfattningen av felaktiga utbetalningar från välfärdssystemen* — [ubm.se](https://ubm.se/publikationer/publikationer-fran-ekonomistyrningsverket/publikationer/2025-12-12-omfattningen-av-felaktiga-utbetalningar-fran-valfardssystemen)
 - ISF 2026:3, *Samverkan mot organiserad brottslighet i socialförsäkringen* — [isf.se](https://isf.se/download/18.17a177719c47958ed431b29/1771929199074/Rapport%202026-3%20Samverkan%20mot%20organiserad%20brottslighet%20i%20socialf%C3%B6rs%C3%A4kringen.pdf)
 - Prop. 2022/23:34, *Utbetalningsmyndigheten* — [riksdagen.se](https://data.riksdagen.se/dokument/HA0334.html)
 - Prop. 2025/26:161, *Förbättrade förutsättningar för kommuner att motverka felaktiga utbetalningar* — [riksdagen.se](https://data.riksdagen.se/dokument/HD03161.html)
