@@ -34,6 +34,11 @@ export async function SiteChrome({ children }: SiteChromeProps) {
 
   return (
     <div className={styles.shell}>
+      <div className={styles.noticeBanner} role="note" aria-label="Information om webbplatsen">
+        <div className={styles.noticeBannerInner}>
+          Detta är en webbplats för ett påhittat företag. Innehållet är skapat med generativ AI och ska inte tas på allvar.
+        </div>
+      </div>
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link href="/" className={styles.brand}>

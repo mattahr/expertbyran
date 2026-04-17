@@ -3,7 +3,21 @@ import path from "node:path";
 import { parseSiteData, type SiteData } from "@/lib/content/schema";
 import { parseBlogCatalog, type BlogCatalog } from "@/lib/blog/schema";
 
-const DATA_DIR = process.env.DATA_DIR || "/app/data";
+function resolveDataDir() {
+  const configuredDir = process.env.DATA_DIR?.trim();
+
+  if (configuredDir) {
+    return path.resolve(configuredDir);
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    return "/app/data";
+  }
+
+  return path.resolve(process.cwd(), "data");
+}
+
+const DATA_DIR = resolveDataDir();
 const SITE_DATA_FILE = "site-data.json";
 const BLOG_DATA_FILE = "blog-data.json";
 const BLOG_POSTS_DIR = "blog/posts";

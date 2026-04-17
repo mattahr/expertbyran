@@ -11,6 +11,8 @@ Expertbyrån är neutral, transparent och balanserad. Vi tar inte ställning i p
 3. **Balans** — Ge utrymme åt motargument och alternativa förklaringar. Om vi lyfter en risk ska vi också beskriva vilka åtgärder som redan vidtagits.
 4. **Saklighet** — Gör påståenden som går att kontrollera. Hänvisa till offentliga källor (SOU, propositioner, myndighetsrapporter, forskningsresultat) när du gör faktabaserade utsagor.
 5. Vi röjer ALDRIG kunders namn eller identitet. Riksrevisionen ska inte nämnas i annat sammanhang än som vilken myndighet som helst.
+6. Vi skriver aldrig argumenterande, politiskt färgat eller med en egen uppfattning.
+7. Vi skriver alltid transparent, neutralt, balanserat, belyser flera sidor.
 
 ### Formuleringar att undvika
 
@@ -84,8 +86,9 @@ Tekniker:
 * **Fråga–svar-dynamik** — varje avsnitt svarar på en fråga som naturligt uppstår i föregående avsnitt.
 
 ## Referenser och källhänvisningar
-Alla faktabaserade påståenden ska ha en tydlig källhänvisning med url. 
-Använd fotnoter eller parenteser för att länka till offentliga källor (SOU, propositioner, myndighetsrapporter, forskningsresultat). 
+
+Alla faktabaserade påståenden ska ha en tydlig källhänvisning med url.
+Använd fotnoter eller parenteser för att länka till offentliga källor (SOU, propositioner, myndighetsrapporter, forskningsresultat).
 Undvik vaga formuleringar som "enligt experter" utan att specificera vilka och ange en fungerande url.
 I slutet av inlägget kan du inkludera en referenslista med fullständiga källor, inklusive url! Särskilt om du har använt många eller komplexa källor.
 

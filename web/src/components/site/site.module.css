@@ -28,6 +28,21 @@
   grid-template-rows: auto 1fr auto;
 }
 
+.noticeBanner {
+  border-bottom: 1px solid var(--gray-200);
+  background: rgba(235, 232, 227, 0.72);
+  color: var(--gray-500);
+}
+
+.noticeBannerInner {
+  width: var(--content-width);
+  margin: 0 auto;
+  padding: 10px 0;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
 /* === Header === */
 .header {
   position: sticky;

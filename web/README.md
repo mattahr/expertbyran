@@ -24,6 +24,8 @@ Viktiga env vars:
 - `SITE_DATA_URL`
 - `SITE_DATA_REVALIDATE_SECONDS`
 - `SITE_DATA_FETCH_TIMEOUT_MS`
+- `DATA_DIR`
+- `API_TOKEN` när `SITE_DATA_URL=api`
 
 ## Kom igång lokalt
 
@@ -67,7 +69,7 @@ docker run --rm \
   expertbyran:latest
 ```
 
-Imagen använder GitHub-URL:en i `.env.example` som standard. Om du vill peka mot en annan snapshot-URL sätter du bara `SITE_DATA_URL`.
+För lokal utveckling använder `.env.example` `SITE_DATA_URL=api` och lagrar data under `DATA_DIR`. Om du vill peka mot en extern snapshot-URL sätter du bara `SITE_DATA_URL` till den adressen.
 
 ## Innehållsmodell och marketplace
 

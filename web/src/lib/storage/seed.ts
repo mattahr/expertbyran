@@ -1,8 +1,36 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const DATA_DIR = process.env.DATA_DIR || "/app/data";
-const SEED_DIR = "/app/seed";
+function resolveDataDir() {
+  const configuredDir = process.env.DATA_DIR?.trim();
+
+  if (configuredDir) {
+    return path.resolve(configuredDir);
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    return "/app/data";
+  }
+
+  return path.resolve(process.cwd(), "data");
+}
+
+function resolveSeedDir() {
+  const configuredDir = process.env.SEED_DIR?.trim();
+
+  if (configuredDir) {
+    return path.resolve(configuredDir);
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    return "/app/seed";
+  }
+
+  return process.cwd();
+}
+
+const DATA_DIR = resolveDataDir();
+const SEED_DIR = resolveSeedDir();
 
 async function fileExists(filePath: string): Promise<boolean> {
   try {
