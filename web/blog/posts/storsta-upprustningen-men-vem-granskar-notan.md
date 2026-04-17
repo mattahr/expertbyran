@@ -6,15 +6,15 @@ Sveriges NATO-medlemskap har förändrat spelplanen. Propositionen *Totalförsva
 
 Regeringen konstaterar själv att "startläget för uppbyggnaden i flera avseenden visat sig vara sämre än vad som tidigare framgått". Underhåll har eftersatts. Materiel saknas. Infrastruktur behöver renoveras eller byggas nytt. Och ovanpå detta ska Sverige integrera sig i NATOs operationsplanering och leverera på nya förmågemål.
 
-Investeringarna skjuter i höjden — från 165 till 182 miljarder kronor fram till 2030. Det handlar om allt från nästa generations ubåtar och stridsflygplan till cybersäkerhet, logistikflöden och beredskapslager. Varje krona ska göra nytta. Men frågan som sällan ställs är: *Har vi kapacitet att kontrollera att den gör det?*
+Investeringarna skjuter i höjden — från 165 till 182 miljarder kronor fram till 2030. Det handlar om allt från nästa generations ubåtar och stridsflygplan till cybersäkerhet, logistikflöden och beredskapslager. Varje krona ska göra nytta. Men frågan om kapaciteten att kontrollera att den gör det ställs sällan.
 
 ## Revisionsbrister som följer med in i tillväxten
 
-Riksrevisionens granskningar under de senaste åren ger en oroväckande bild. I rapporten *Att bygga nationell försvarsförmåga* (RiR 2021:23) konstaterades att Försvarsmakten hade brister i kontrollen och överblicken över sin materiel. Fördelningen av materiel i fred fungerade dåligt. Krigsplaceringen av utrustning var bristfällig. Grundförutsättningarna för att producera krigsförband rationellt och kostnadseffektivt saknades.
+Riksrevisionens granskningar under de senaste åren ger en bekymmersam bild. I rapporten *Att bygga nationell försvarsförmåga* (RiR 2021:23) konstaterades att Försvarsmakten hade brister i kontrollen och överblicken över sin materiel. Fördelningen av materiel i fred fungerade dåligt. Krigsplaceringen av utrustning var bristfällig. Grundförutsättningarna för att producera krigsförband rationellt och kostnadseffektivt saknades.
 
 Året därpå visade granskningen *Expansion utan prioritet* (RiR 2022:19) att personalförsörjningen — en av förmågans grundpelare — led av underskott som berodde på Försvarsmaktens egna prioriteringar, bristande intern styrning och begränsad tillgång till materiel. Behov hade likaställts med tillgång, vilket innebar att brister doldes i statistiken.
 
-Dessa problem uppstod inte i ett vakuum. De är konsekvenser av decennier med nedskärningar och omställningar som urholkade både materiell kapacitet och organisatorisk kunskap. Men poängen är att de inte har försvunnit. Och nu ska samma system hantera en tillväxt som är tre gånger större.
+Dessa problem uppstod inte i ett vakuum. De är konsekvenser av decennier med nedskärningar och omställningar som urholkade både materiell kapacitet och organisatorisk kunskap. Problemen har dock inte försvunnit. Och nu ska samma system hantera en tillväxt som är tre gånger större.
 
 ## Sekretessens paradox
 
@@ -24,7 +24,7 @@ Materielförsörjningsutredningen (SOU 2022:24) beskriver en komplex värld där
 
 Det skapar en paradox: ju viktigare en anskaffning är för nationens säkerhet, desto svårare blir den att granska. De mest kritiska materielprojekten — de som kostar mest och påverkar försvarsförmågan mest — är ofta de som omgärdas av den tyngsta sekretessen.
 
-Nyligen konstaterade regeringen att uppgifter om enskilda försvarsupphandlingar, även var för sig harmlösa, i aggregerad form kan avslöja "försvarsförmåga, beredskapsnivåer eller strategiska svagheter". Det är ett legitimt skäl till sekretess. Men det är också en påminnelse om att den demokratiska kontrollen av försvarsutgifter aldrig kan förlita sig på samma transparens som gäller för exempelvis sjukvård eller utbildning.
+Nyligen konstaterade regeringen att uppgifter om enskilda försvarsupphandlingar, även var för sig harmlösa, i aggregerad form kan avslöja "försvarsförmåga, beredskapsnivåer eller strategiska svagheter". Det är ett legitimt skäl till sekretess. Men det innebär också att den demokratiska kontrollen av försvarsutgifter aldrig kan förlita sig på samma transparens som gäller för exempelvis sjukvård eller utbildning.
 
 ## Tre utmaningar som definierar framtidens försvarsgranskning
 
@@ -46,33 +46,31 @@ NATO-medlemskapet tillför en helt ny dimension. Sveriges försvarsplanering ska
 
 Det innebär också att granskningen behöver hantera frågor om interoperabilitet, om huruvida svenska förmågemål faktiskt uppfylls enligt NATO:s definitioner, och om internationella avtal ger Sverige den handlingsfrihet som utlovas. Ingen av dessa frågor har en naturlig hemvist i traditionell svensk effektivitetsrevision.
 
-## Myndigheten för totalförsvarsanalys — ett steg, men knappast tillräckligt
+## Myndigheten för totalförsvarsanalys — ett steg, men inte hela lösningen
 
-Sedan 2023 finns Myndigheten för totalförsvarsanalys (MTFA) med uppdraget att utvärdera utvecklingen inom totalförsvaret. Det är ett välkommet steg. Men en utvärderingsmyndighet ersätter inte oberoende effektivitetsrevision. Riksrevisionen har ett grundlagsskyddat oberoende som ger den en unik roll — men den rollen förutsätter att rätt kompetens finns i granskningsteamen.
+Sedan 2023 finns Myndigheten för totalförsvarsanalys (MTFA) med uppdraget att utvärdera utvecklingen inom totalförsvaret. Det är ett relevant steg. Men en utvärderingsmyndighet ersätter inte oberoende effektivitetsrevision. Riksrevisionen har ett grundlagsskyddat oberoende som ger den en unik roll — men den rollen förutsätter att rätt kompetens finns i granskningsteamen.
 
-Det civila försvaret — som Riksrevisionen granskat i en färsk rapport — lider av samma problematik. Förmågan byggs upp från "en mycket låg nivå", samtidigt som kraven på styrning och uppföljning ökar explosionsartat. Det finns en uppenbar risk att granskningskapaciteten inte hinner med — varken på militär- eller civilförsvarssidan.
+Det civila försvaret — som Riksrevisionen granskat i en färsk rapport — uppvisar samma problematik. Förmågan byggs upp från "en mycket låg nivå", samtidigt som kraven på styrning och uppföljning ökar kraftigt. Det finns en risk att granskningskapaciteten inte hinner med — varken på militär- eller civilförsvarssidan.
 
-## Vad som behöver hända
+## Åtgärder som framstår som nödvändiga
 
-**Försvarsrevision behöver bli en specialistkompetens, inte en bisyssla.** Granskningsteam som ska bedöma om 175 miljarder kronor används effektivt behöver bestå av personer som förstår materielsystem, säkerhetsskydd, NATO-standarder och försvarslogistik. Det kräver investering i kompetens — inte bara hos Riksrevisionen utan i hela det ekosystem av experter som stödjer effektivitetsrevisionen.
+**Försvarsrevision som specialistkompetens.** Granskningsteam som ska bedöma om 175 miljarder kronor används effektivt behöver bestå av personer som förstår materielsystem, säkerhetsskydd, NATO-standarder och försvarslogistik. Det kräver investering i kompetens — inte bara hos Riksrevisionen utan i hela det ekosystem av experter som stödjer effektivitetsrevisionen.
 
-**Transparens behöver balanseras, inte offras.** Sekretess är nödvändig, men det får inte innebära att hela utgiftsområden undandras meningsfull granskning. Vi behöver utveckla metoder för att granska effektivitet inom ramen för säkerhetsskydd — inte som ett undantag från det.
+**Balans mellan transparens och sekretess.** Sekretess är nödvändig, men den bör inte innebära att hela utgiftsområden undandras meningsfull granskning. Metoder för att granska effektivitet inom ramen för säkerhetsskydd behöver utvecklas — inte som ett undantag från säkerhetsskyddet, utan integrerat med det.
 
-**Granskningen måste bli löpande, inte efterhandskontroll.** Riksrevisionens granskningar publiceras år efter att besluten fattats. I en upprustningsfas där hundratals miljarder binds i fleråriga kontrakt behöver vi modeller för tidig och löpande revision, inte bara retrospektiv granskning av redan genomförda projekt.
+**Löpande granskning, inte bara efterhandskontroll.** Riksrevisionens granskningar publiceras år efter att besluten fattats. I en upprustningsfas där hundratals miljarder binds i fleråriga kontrakt finns behov av modeller för tidig och löpande revision, inte bara retrospektiv granskning av redan genomförda projekt.
 
-## Den demokratiska bottenplattan
+## Den demokratiska dimensionen
 
-Sverige gör rätt som rustar. Omvärldsläget kräver det. Men i en demokrati finns det ett kontrakt mellan medborgare och stat: offentliga medel ska användas effektivt, och det ska gå att kontrollera att de gör det. Det kontraktet gäller även — kanske *särskilt* — för de 175 miljarder kronor som i år går till försvaret.
+Sverige rustar upp i linje med det säkerhetspolitiska läget. Men i en demokrati finns det ett kontrakt mellan medborgare och stat: offentliga medel ska användas effektivt, och det ska gå att kontrollera att de gör det. Det kontraktet gäller även — kanske särskilt — för de 175 miljarder kronor som i år går till försvaret.
 
-Frågan är inte om vi ska spendera mer på försvar. Det ska vi. Frågan är om vi bygger en granskningsförmåga som matchar upprustningens ambition.
-
-Just nu är svaret att vi inte gör det. Och det är ett strategiskt problem i sig.
+Frågan gäller inte om Sverige ska investera mer i försvar. Det är redan beslutat. Frågan gäller om granskningsförmågan dimensioneras i takt med upprustningens ambition. I nuläget finns ett gap mellan uppdraget och kapaciteten — och det gapet utgör i sig en strategisk risk.
 
 ---
 
 *Expert inom försvar och säkerhetspolitik, Expertbyrån*
 
-**Vill du läsa mer?**
+**Lästips:**
 
 - [Riksrevisionen: Att bygga nationell försvarsförmåga (RiR 2021:23)](https://www.riksrevisionen.se/granskningar/granskningsrapporter/2021/att-bygga-nationell-forsvarsformaga---statens-arbete-med-att-starka-armestridskrafterna.html)
 - [Riksrevisionen: Expansion utan prioritet (RiR 2022:19)](https://www.riksrevisionen.se/granskningar/granskningsrapporter/2022/expansion-utan-prioritet---personalforsorjningen-av-kontinuerligt-tjanstgorande-gruppbefal-soldater-och-sjoman.html)

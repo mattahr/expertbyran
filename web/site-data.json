@@ -374,10 +374,6 @@
       "areaSlugs": [
         "revisionsmetodik"
       ],
-      "portrait": {
-        "src": "/avatars/effektivitetsrevisor.svg",
-        "alt": "Illustration av Effektivitetsrevisor"
-      },
       "summary": "Generalisten som behärskar hela 3-fas/23-stegsprocessen för effektivitetsrevision och kan leda en granskning från idé till publicering. Bryter ned revisionsfrågor i delfrågor med explicita bedömningsgrunder och koordinerar rätt metodexperter för varje delmoment. Behärskar också ECA:s granskningsmetodik — 7-källsmodell, MECE-krav och Adversarial Procedure — för internationella uppdrag och jämförande metodanalys.",
       "profileQuote": "En bra granskning börjar med en tydlig designmatris. Om delfrågor, bedömningsgrunder och metodval inte hänger ihop från start blir slutsatserna aldrig skarpa nog.",
       "strengths": [
@@ -453,13 +449,6 @@
         "Metodkoordinering",
         "ECA:s jämförande metodanalys"
       ],
-      "plugin": {
-        "name": "expert-effektivitetsrevisor",
-        "repositoryPath": "plugins/experts/effektivitetsrevisor",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "effektivitetsrevisor-email",
@@ -476,7 +465,13 @@
           "description": "Diskutera granskningsupplägg och metodval."
         }
       ],
-      "updatedAt": "2026-04-12T07:30:00.000Z"
+      "plugin": {
+        "name": "expert-effektivitetsrevisor",
+        "repositoryPath": "plugins/experts/effektivitetsrevisor",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-kvantitativ-analytiker",
@@ -491,10 +486,6 @@
         "revisionsmetodik",
         "offentliga-finanser"
       ],
-      "portrait": {
-        "src": "/avatars/kvantitativ-analytiker.svg",
-        "alt": "Illustration av Kvantitativ analytiker"
-      },
       "summary": "Specialiserad på registerdata, statistiska test och kausalinferens i effektivitetsrevisionens kontext. Tre nya primära metodskills (2026-04-12): Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact, Brodersen m.fl. 2015) för kausalinferens vid svag donor pool; Data Envelopment Analysis (DEA) med bootstrapped konfidensintervall (Simar & Wilson 1998) för benchmarking av kommunal effektivitet; utökat kausal ML-ramverk med Double Machine Learning (DML, Chernozhukov m.fl. 2018), Causal Forests (honest estimation) och Synthetic DiD (Arkhangelsky m.fl. 2021). Fördjupad Causal Forest/GRF-kompetens (2026-04-13): ärlighet (honest forests), CATE-aggregering med AIPW-scores, Best Linear Predictor (BLP) och DR-learner — Causal Forest/GRF är nu primär metodskill för heterogena behandlingseffekter.",
       "profileQuote": "Korrelation är aldrig nog. En kausal slutsats kräver temporal ordning, kovariation, eliminering av alternativa förklaringar och en beskriven mekanism.",
       "strengths": [
@@ -578,13 +569,6 @@
         "BSTS / CausalImpact",
         "Data Envelopment Analysis (DEA)"
       ],
-      "plugin": {
-        "name": "expert-kvantitativ-analytiker",
-        "repositoryPath": "plugins/experts/kvantitativ-analytiker",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "kvantitativ-analytiker-email",
@@ -601,7 +585,13 @@
           "description": "Diskutera dataunderlag och analysupplägg."
         }
       ],
-      "updatedAt": "2026-04-13T10:00:00.000Z"
+      "plugin": {
+        "name": "expert-kvantitativ-analytiker",
+        "repositoryPath": "plugins/experts/kvantitativ-analytiker",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-kvalitativ-metodexpert",
@@ -616,10 +606,6 @@
         "revisionsmetodik",
         "valfard"
       ],
-      "portrait": {
-        "src": "/avatars/kvalitativ-metodexpert.svg",
-        "alt": "Illustration av Kvalitativ metodexpert"
-      },
       "summary": "Specialiserad på intervjumetodik, fallstudier, dokumentanalys och representativitetsfrågor i kvalitativa iakttagelser. Strikt med att inte övertolka intervjudata — enskilda utsagor är bevis för att uppfattningen finns, inte att den är systemisk.",
       "profileQuote": "En enskild intervju visar att en uppfattning finns. Den visar inte att den är korrekt eller representativ. Den distinktionen är avgörande för trovärdiga slutsatser.",
       "strengths": [
@@ -694,13 +680,6 @@
         "Triangulering",
         "Bayesian process tracing"
       ],
-      "plugin": {
-        "name": "expert-kvalitativ-metodexpert",
-        "repositoryPath": "plugins/experts/kvalitativ-metodexpert",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "kvalitativ-metodexpert-email",
@@ -717,7 +696,13 @@
           "description": "Diskutera urvalsstrategier och kvalitativt upplägg."
         }
       ],
-      "updatedAt": "2026-04-13T10:00:00.000Z"
+      "plugin": {
+        "name": "expert-kvalitativ-metodexpert",
+        "repositoryPath": "plugins/experts/kvalitativ-metodexpert",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-rattslig-utredare",
@@ -732,10 +717,6 @@
         "revisionsmetodik",
         "rattsvasende"
       ],
-      "portrait": {
-        "src": "/avatars/rattslig-utredare.svg",
-        "alt": "Illustration av Rättslig utredare"
-      },
       "summary": "Specialist på tolkning av regleringsbrev, förordningar, lagtext och myndighetsinstruktioner — det som bildar de rättsliga bedömningsgrunderna i en effektivitetsgranskning. Primär specialisering inom EU AI Act (2024/1689): de sex deployer-skyldigheterna i Art. 26, den sexdelade FRIA-processen (Art. 27) och upphandlingsgranskningar med LOU 17 kap. + Art. 28 + MCC-AI. Ny primär metodskill: RF 1:9 (objektivitetsprincipen) som direkt bedömningsgrund i AI-granskningar — proxy-diskriminering = RF-brott. FL 28 § och FL 32 § gäller fullt ut för AI-baserade myndighetsbeslut, operationaliserat i en revisionsfrågebank i 5 nivåer.",
       "profileQuote": "Rekommendationer får bara rikta sig till aktörer som har mandat att genomföra åtgärden. Att utreda vem som faktiskt kan göra vad är oftare svårt än man tror.",
       "strengths": [
@@ -819,13 +800,6 @@
         "RF/FL-analys av AI-baserade myndighetsbeslut",
         "Proxy-diskrimineringsanalys"
       ],
-      "plugin": {
-        "name": "expert-rattslig-utredare",
-        "repositoryPath": "plugins/experts/rattslig-utredare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "rattslig-utredare-email",
@@ -842,7 +816,13 @@
           "description": "Diskutera rättsliga bedömningsgrunder och mandatfrågor."
         }
       ],
-      "updatedAt": "2026-04-13T10:45:00.000Z"
+      "plugin": {
+        "name": "expert-rattslig-utredare",
+        "repositoryPath": "plugins/experts/rattslig-utredare",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-kvalitetsgranskare",
@@ -856,10 +836,6 @@
       "areaSlugs": [
         "revisionsmetodik"
       ],
-      "portrait": {
-        "src": "/avatars/kvalitetsgranskare.svg",
-        "alt": "Illustration av Kvalitetsgranskare"
-      },
       "summary": "Extern opponent vid upplägg- och rapportseminarier. Prövar utkast mot etablerade vetenskapliga kvalitetskriterier och ger välgrundade invändningar om intern/extern validitet, reliabilitet och kausalitetskrav.",
       "profileQuote": "De vanligaste bristerna är bekräftelsebias och övertolkning av intervjudata. En granskning som inte aktivt sökt motargument har inte prövat sina slutsatser.",
       "strengths": [
@@ -945,13 +921,6 @@
         "Metaanalys med heterogenitetsanalys",
         "GRADE-evidensgradering"
       ],
-      "plugin": {
-        "name": "expert-kvalitetsgranskare",
-        "repositoryPath": "plugins/experts/kvalitetsgranskare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "kvalitetsgranskare-email",
@@ -968,7 +937,13 @@
           "description": "Diskutera vetenskapliga kvalitetsfrågor och opponering."
         }
       ],
-      "updatedAt": "2026-04-14T00:00:00.000Z"
+      "plugin": {
+        "name": "expert-kvalitetsgranskare",
+        "repositoryPath": "plugins/experts/kvalitetsgranskare",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-finanser",
@@ -982,10 +957,6 @@
       "areaSlugs": [
         "offentliga-finanser"
       ],
-      "portrait": {
-        "src": "/avatars/expert-finanser.svg",
-        "alt": "Illustration av Expert Offentliga finanser"
-      },
       "summary": "Domänexpert inom statens finanser — finanspolitiska ramverket, statsbidrag, avgiftsbelagda tjänster, skattepolitiska instrument och myndighetsstyrning i finansperspektiv. Bidrar med sakkunskap som stöd till effektivitetsrevisionens iakttagelsedel.",
       "profileQuote": "Finanspolitiska instrument är aldrig neutrala. Varje bidragsform och avgiftsmodell skapar incitament — frågan är om de leder i rätt riktning.",
       "strengths": [
@@ -1058,13 +1029,6 @@
         "Incitamentsanalys",
         "Resultatstyrningsbedömning"
       ],
-      "plugin": {
-        "name": "expert-expert-finanser",
-        "repositoryPath": "plugins/experts/expert-finanser",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-finanser-email",
@@ -1080,7 +1044,14 @@
           "url": "https://calendar.app.google/expert-finanser",
           "description": "Diskutera finansiella bedömningsgrunder och styrmedel."
         }
-      ]
+      ],
+      "plugin": {
+        "name": "expert-expert-finanser",
+        "repositoryPath": "plugins/experts/expert-finanser",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-digitalisering",
@@ -1094,10 +1065,6 @@
       "areaSlugs": [
         "digitalisering"
       ],
-      "portrait": {
-        "src": "/avatars/expert-digitalisering.svg",
-        "alt": "Illustration av Expert Digitalisering"
-      },
       "summary": "Domänexpert inom statens digitala omställning — strategiska digitaliseringsprojekt, digital identitet och biometri, informationshantering, DIGG:s styrningsroll och EU AI Act-compliance för offentlig sektor. Bedömer risk, styrning och faktisk leveransförmåga i statliga IT-initiativ.",
       "profileQuote": "Statliga digitaliseringsprojekt misslyckas sällan av tekniska skäl. Det är styrning, portföljhantering och otydliga mandat som skapar de riktiga riskerna.",
       "strengths": [
@@ -1175,13 +1142,6 @@
         "Identitetsverifieringsanalys",
         "AI Act compliance-kartläggning"
       ],
-      "plugin": {
-        "name": "expert-expert-digitalisering",
-        "repositoryPath": "plugins/experts/expert-digitalisering",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-digitalisering-email",
@@ -1198,7 +1158,13 @@
           "description": "Diskutera digitaliseringsprojekt och IT-styrningsfrågor."
         }
       ],
-      "updatedAt": "2026-04-13T10:38:00.000Z"
+      "plugin": {
+        "name": "expert-expert-digitalisering",
+        "repositoryPath": "plugins/experts/expert-digitalisering",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-rattsvasende",
@@ -1212,11 +1178,7 @@
       "areaSlugs": [
         "rattsvasende"
       ],
-      "portrait": {
-        "src": "/avatars/expert-rattsvasende.svg",
-        "alt": "Illustration av Expert Rättsväsende"
-      },
-      "summary": "Domänexpert inom rättsväsendets myndigheter och civilt försvar — polisens dimensionering, åklagarväsendet, skydd av hotade personer, infiltrationsskydd och det civila försvarets uppbyggnad. Bidrar med sakkunskap grundad i tidigare granskningar inom offentlig sektor.",
+      "summary": "Domänexpert inom rättsväsendets myndigheter och civilt försvar — polisens dimensionering, åklagarväsendet, skydd av hotade personer, infiltrationsskydd och det civila försvarets uppbyggnad. Har nu även en heltäckande specialisering inom gängrelaterad brottslighet och organiserad kriminalitet med dokumentation av lagstiftningspaketet 2022–2026. Bidrar med sakkunskap grundad i tidigare granskningar inom offentlig sektor.",
       "profileQuote": "Rättsväsendets effektivitet handlar inte bara om resurser. Det handlar om styrning, dimensionering och om myndigheterna faktiskt samverkar när det behövs.",
       "strengths": [
         "Djup kunskap om polisens styrning, dimensionering och resursfördelning",
@@ -1226,7 +1188,7 @@
       "metrics": [
         {
           "label": "Granskningsområden",
-          "value": "6"
+          "value": "7"
         },
         {
           "label": "Referensgranskningar",
@@ -1270,11 +1232,15 @@
       "knowledge": [
         "Rättsväsendets myndigheter och styrning",
         "Civilt försvar och krisberedskap",
-        "Skydd av hotade personer och infiltrationsskydd"
+        "Skydd av hotade personer och infiltrationsskydd",
+        "Gängrelaterad brottslighet och organiserad kriminalitet",
+        "Lagstiftningspaketet 2022–2026 (visitationszoner, preventiva tvångsmedel, anonyma vittnen)",
+        "Samverkansstrukturer för gängbrottslighet (Barnahus, SSPF, SIG)"
       ],
       "capabilities": [
         "Sakanalys av rättsväsendets organisering och resursanvändning",
-        "Bedömning av myndigheters samverkan vid grova brott och skydd"
+        "Bedömning av myndigheters samverkan vid grova brott och skydd",
+        "Granskning av gängrelaterad brottslighet och samverkansstrukturer för organiserad kriminalitet"
       ],
       "tools": [
         "Myndighetskartläggningar",
@@ -1288,13 +1254,6 @@
         "Dimensioneringsanalys",
         "Samverkansanalys"
       ],
-      "plugin": {
-        "name": "expert-expert-rattsvasende",
-        "repositoryPath": "plugins/experts/expert-rattsvasende",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-rattsvasende-email",
@@ -1310,7 +1269,14 @@
           "url": "https://calendar.app.google/expert-rattsvasende",
           "description": "Diskutera rättsväsendefrågor och samhällsskydd."
         }
-      ]
+      ],
+      "plugin": {
+        "name": "expert-expert-rattsvasende",
+        "repositoryPath": "plugins/experts/expert-rattsvasende",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-valfard",
@@ -1324,10 +1290,6 @@
       "areaSlugs": [
         "valfard"
       ],
-      "portrait": {
-        "src": "/avatars/expert-valfard.svg",
-        "alt": "Illustration av Expert Välfärd"
-      },
       "summary": "Domänexpert inom välfärdssystemets kärnfrågor — LSS, IVO:s tillsynsroll, hälso- och sjukvårdens klagomålshantering och den komplexa relationen mellan statlig styrning och kommunalt självstyre i socialtjänsten.",
       "profileQuote": "Statens styrning av välfärden krockar ofta med kommunalt självstyre. Det är i gränslandet mellan dessa system som de verkliga effektivitetsproblemen uppstår.",
       "strengths": [
@@ -1400,13 +1362,6 @@
         "Stat-kommunal ansvarsanalys",
         "Incitamentsanalys"
       ],
-      "plugin": {
-        "name": "expert-expert-valfard",
-        "repositoryPath": "plugins/experts/expert-valfard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-valfard-email",
@@ -1422,7 +1377,14 @@
           "url": "https://calendar.app.google/expert-valfard",
           "description": "Diskutera välfärdsfrågor och statlig-kommunal styrning."
         }
-      ]
+      ],
+      "plugin": {
+        "name": "expert-expert-valfard",
+        "repositoryPath": "plugins/experts/expert-valfard",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-klarsprak",
@@ -1436,10 +1398,6 @@
       "areaSlugs": [
         "sprak-kommunikation"
       ],
-      "portrait": {
-        "src": "/avatars/klarsprak.svg",
-        "alt": "Illustration av Klarspråksexperten"
-      },
       "summary": "Specialist på klarspråk, textgranskning och myndighetsspråk med djup kunskap om Språkrådets riktlinjer och Myndigheternas skrivregler. Ny kompetens: DOS-lagen och WCAG AA-granskning av digitalt publicerade myndighetstexter (DT-1–DT-7), samt AI-textgranskning med faktaverifiering före klarspråk (AI-1–AI-8).",
       "profileQuote": "Klarspråk handlar inte om att förenkla — det handlar om att texten ska fungera för den som läser den. En väl motiverad omskrivning gör mer nytta än tio grammatikkommentarer.",
       "strengths": [
@@ -1514,13 +1472,6 @@
         "Digital tillgänglighetsrevision (DOS/WCAG)",
         "AI-textgranskning med faktaverifiering"
       ],
-      "plugin": {
-        "name": "expert-klarsprak",
-        "repositoryPath": "plugins/experts/klarsprak",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "klarsprak-email",
@@ -1537,51 +1488,32 @@
           "description": "Diskutera textgranskning och språkförbättringar."
         }
       ],
-      "updatedAt": "2026-04-12T07:30:00.000Z"
+      "plugin": {
+        "name": "expert-klarsprak",
+        "repositoryPath": "plugins/experts/klarsprak",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-arbetsmarknad",
       "slug": "expert-arbetsmarknad",
-      "name": "Expert Arbetsmarknad",
-      "role": "Domänexpert: Arbetsmarknad och arbetsmarknadspolitik",
       "sortOrder": 110,
       "featured": true,
+      "name": "Expert Arbetsmarknad",
+      "role": "Domänexpert: Arbetsmarknad och arbetsmarknadspolitik",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för sakanalyser inom arbetsmarknadspolitik, Arbetsförmedlingen och A-kassan.",
       "areaSlugs": [
         "arbetsmarknad"
       ],
       "summary": "Domänexpert inom arbetsmarknadspolitikens kärnfrågor — Arbetsförmedlingens uppdrag och styrning, A-kassans ersättningssystem, IAF:s tillsynsroll och aktiva arbetsmarknadsåtgärder utvärderade med IFAU-metodik.",
       "profileQuote": "Arbetsmarknadsåtgärders effekter ska mätas rigoröst — politiska intentioner räcker inte som bevis på genomslag.",
-      "availability": "Tillgänglig för sakanalyser inom arbetsmarknadspolitik, Arbetsförmedlingen och A-kassan.",
-      "portrait": {
-        "src": "/avatars/expert-arbetsmarknad.svg",
-        "alt": "Illustration av Expert Arbetsmarknad"
-      },
-      "location": "Virtuell nod, Stockholm",
-      "capabilities": [
-        "Sakanalys av arbetsmarknadspolitik och Arbetsförmedlingens styrning",
-        "Bedömning av aktiva arbetsmarknadsåtgärders effektivitet"
-      ],
-      "knowledge": [
-        "Arbetsmarknadspolitik och Arbetsförmedlingens uppdrag",
-        "A-kassa, AFL och IAF:s tillsynsroll",
-        "Aktiva arbetsmarknadsåtgärder och IFAU-metodik"
-      ],
-      "methods": [
-        "Arbetsmarknadspolitisk analys",
-        "Effektutvärdering (DiD, matchning)",
-        "Styrningsanalys",
-        "Registerbaserad analys"
-      ],
       "strengths": [
         "Djup kunskap om Arbetsförmedlingens uppdrag, styrning och matchningsfunktion",
         "Bedömer A-kassans ersättningssystem och incitamentseffekter",
         "Tillämpar IFAU-metodik för effektutvärdering av arbetsmarknadsprogram"
-      ],
-      "tools": [
-        "IFAU-data",
-        "Registerdata (SCB/AF)",
-        "Styrningskartor",
-        "Incitamentsmatriser"
       ],
       "metrics": [
         {
@@ -1595,20 +1527,6 @@
         {
           "label": "Sakanalyser",
           "value": "15+"
-        }
-      ],
-      "experience": [
-        {
-          "title": "Domänexpert: Arbetsmarknad",
-          "organization": "Expertbyrån",
-          "period": "2026-",
-          "summary": "Bidrar med sakkunskap om arbetsmarknadspolitik och aktiva arbetsmarknadsåtgärder till effektivitetsrevisioner."
-        },
-        {
-          "title": "Arbetsmarknadsanalytiker",
-          "organization": "Analytisk enhet, arbetsmarknadspolitik",
-          "period": "2021-2026",
-          "summary": "Utredde effektiviteten hos Arbetsförmedlingens insatser och A-kassans regelsystem med IFAU-metodik."
         }
       ],
       "selectedEngagements": [
@@ -1627,74 +1545,83 @@
           "impact": "Visade på inlåsningseffekter och möjligheter att bättre rikta insatsen mot de mest utsatta."
         }
       ],
+      "experience": [
+        {
+          "title": "Domänexpert: Arbetsmarknad",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om arbetsmarknadspolitik och aktiva arbetsmarknadsåtgärder till effektivitetsrevisioner."
+        },
+        {
+          "title": "Arbetsmarknadsanalytiker",
+          "organization": "Analytisk enhet, arbetsmarknadspolitik",
+          "period": "2021-2026",
+          "summary": "Utredde effektiviteten hos Arbetsförmedlingens insatser och A-kassans regelsystem med IFAU-metodik."
+        }
+      ],
+      "knowledge": [
+        "Arbetsmarknadspolitik och Arbetsförmedlingens uppdrag",
+        "A-kassa, AFL och IAF:s tillsynsroll",
+        "Aktiva arbetsmarknadsåtgärder och IFAU-metodik"
+      ],
+      "capabilities": [
+        "Sakanalys av arbetsmarknadspolitik och Arbetsförmedlingens styrning",
+        "Bedömning av aktiva arbetsmarknadsåtgärders effektivitet"
+      ],
+      "tools": [
+        "IFAU-data",
+        "Registerdata (SCB/AF)",
+        "Styrningskartor",
+        "Incitamentsmatriser"
+      ],
+      "methods": [
+        "Arbetsmarknadspolitisk analys",
+        "Effektutvärdering (DiD, matchning)",
+        "Styrningsanalys",
+        "Registerbaserad analys"
+      ],
       "contactLinks": [
         {
           "id": "expert-arbetsmarknad-email",
-          "type": "email",
           "label": "Kontakta Expert Arbetsmarknad",
+          "type": "email",
           "url": "mailto:expert.arbetsmarknad@expertbyran.ai",
           "description": "För sakanalyser inom arbetsmarknadspolitik, Arbetsförmedlingen och A-kassan."
         },
         {
           "id": "expert-arbetsmarknad-calendar",
-          "type": "calendar",
           "label": "Boka möte med Expert Arbetsmarknad",
+          "type": "calendar",
           "url": "https://calendar.app.google/expert-arbetsmarknad",
           "description": "Diskutera arbetsmarknadspolitik och effektutvärdering."
         }
       ],
       "plugin": {
         "name": "expert-expert-arbetsmarknad",
-        "version": "1.0.0",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
         "repositoryPath": "plugins/experts/expert-arbetsmarknad",
-        "marketplaceListed": true
-      },
-      "updatedAt": "2026-04-12T17:30:00.000Z"
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-utbildning",
       "slug": "expert-utbildning",
-      "name": "Expert Utbildning",
-      "role": "Domänexpert: Utbildning och skolkvalitet",
       "sortOrder": 120,
       "featured": true,
+      "name": "Expert Utbildning",
+      "role": "Domänexpert: Utbildning och skolkvalitet",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för sakanalyser inom utbildningspolitik, skolstyrning och högskola.",
       "areaSlugs": [
         "utbildning"
       ],
       "summary": "Domänexpert inom utbildningspolitikens kärnfrågor — Skolverkets och Skolinspektionens roller, högskolans styrning via UKÄ, friskolesystemets incitamentsstruktur och likvärdighet i det svenska skolsystemet.",
       "profileQuote": "Likvärdighet i skolan avgörs inte enbart av läroplaner — det handlar om resurstilldelning, styrning och incitamentsstrukturer som påverkar varje elev.",
-      "availability": "Tillgänglig för sakanalyser inom utbildningspolitik, skolstyrning och högskola.",
-      "portrait": {
-        "src": "/avatars/expert-utbildning.svg",
-        "alt": "Illustration av Expert Utbildning"
-      },
-      "location": "Virtuell nod, Stockholm",
-      "capabilities": [
-        "Sakanalys av utbildningspolitik, skolstyrning och högskolans styrning",
-        "Bedömning av likvärdighet, betygsinflation och resurstilldelning"
-      ],
-      "knowledge": [
-        "Utbildningspolitik och skollagstiftning",
-        "Skolverket, Skolinspektionen och UKÄ",
-        "Friskolesystemet, PISA/TIMSS och likvärdighet"
-      ],
-      "methods": [
-        "Skolkvalitetsanalys",
-        "Tillsynsbedömning",
-        "Utbildningsekonomisk analys",
-        "Likvärdighetsanalys"
-      ],
       "strengths": [
         "Djup kunskap om grundskola, gymnasie och högskolans styrningssystem",
         "Bedömer friskolesystemets effekter på likvärdighet och resurstilldelning",
         "Analyserar betygsinflation och skolsegregation med PISA/TIMSS-data"
-      ],
-      "tools": [
-        "PISA/TIMSS-data",
-        "Skolverkets statistik",
-        "Tillsynsdatabaser",
-        "Resurstilldelningsmatriser"
       ],
       "metrics": [
         {
@@ -1708,20 +1635,6 @@
         {
           "label": "Sakanalyser",
           "value": "15+"
-        }
-      ],
-      "experience": [
-        {
-          "title": "Domänexpert: Utbildning",
-          "organization": "Expertbyrån",
-          "period": "2026-",
-          "summary": "Bidrar med sakkunskap om utbildningspolitik och skolstyrning till effektivitetsrevisioner."
-        },
-        {
-          "title": "Utbildningsanalytiker",
-          "organization": "Analytisk enhet, utbildningspolitik",
-          "period": "2021-2026",
-          "summary": "Utredde friskolesystemets effekter, högskolans styrning och likvärdighet i det svenska utbildningssystemet."
         }
       ],
       "selectedEngagements": [
@@ -1740,74 +1653,83 @@
           "impact": "Visade på systematiska skillnader i resurstilldelning som förstärker skolsegregationen."
         }
       ],
+      "experience": [
+        {
+          "title": "Domänexpert: Utbildning",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om utbildningspolitik och skolstyrning till effektivitetsrevisioner."
+        },
+        {
+          "title": "Utbildningsanalytiker",
+          "organization": "Analytisk enhet, utbildningspolitik",
+          "period": "2021-2026",
+          "summary": "Utredde friskolesystemets effekter, högskolans styrning och likvärdighet i det svenska utbildningssystemet."
+        }
+      ],
+      "knowledge": [
+        "Utbildningspolitik och skollagstiftning",
+        "Skolverket, Skolinspektionen och UKÄ",
+        "Friskolesystemet, PISA/TIMSS och likvärdighet"
+      ],
+      "capabilities": [
+        "Sakanalys av utbildningspolitik, skolstyrning och högskolans styrning",
+        "Bedömning av likvärdighet, betygsinflation och resurstilldelning"
+      ],
+      "tools": [
+        "PISA/TIMSS-data",
+        "Skolverkets statistik",
+        "Tillsynsdatabaser",
+        "Resurstilldelningsmatriser"
+      ],
+      "methods": [
+        "Skolkvalitetsanalys",
+        "Tillsynsbedömning",
+        "Utbildningsekonomisk analys",
+        "Likvärdighetsanalys"
+      ],
       "contactLinks": [
         {
           "id": "expert-utbildning-email",
-          "type": "email",
           "label": "Kontakta Expert Utbildning",
+          "type": "email",
           "url": "mailto:expert.utbildning@expertbyran.ai",
           "description": "För sakanalyser inom utbildningspolitik, skolstyrning och högskola."
         },
         {
           "id": "expert-utbildning-calendar",
-          "type": "calendar",
           "label": "Boka möte med Expert Utbildning",
+          "type": "calendar",
           "url": "https://calendar.app.google/expert-utbildning",
           "description": "Diskutera utbildningspolitik och skolkvalitet."
         }
       ],
       "plugin": {
         "name": "expert-expert-utbildning",
-        "version": "1.0.0",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
         "repositoryPath": "plugins/experts/expert-utbildning",
-        "marketplaceListed": true
-      },
-      "updatedAt": "2026-04-12T17:30:00.000Z"
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-miljo-klimat",
       "slug": "expert-miljo-klimat",
-      "name": "Expert Miljö & Klimat",
-      "role": "Domänexpert: Miljö, klimat och energipolitik",
       "sortOrder": 130,
       "featured": true,
+      "name": "Expert Miljö & Klimat",
+      "role": "Domänexpert: Miljö, klimat och energipolitik",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för sakanalyser inom klimatpolitik, miljöstyrning och energisystemet.",
       "areaSlugs": [
         "miljo-klimat"
       ],
       "summary": "Domänexpert inom klimat-, miljö- och energipolitik — det klimatpolitiska ramverket, miljöbalkens tillståndsprocesser, energisystemets styrning och EU:s klimatreglering (EU ETS, taxonomin, Green Deal, CBAM).",
       "profileQuote": "Klimatomställningens hastighet avgörs av om tillståndsprocesserna och styrmedlen faktiskt fungerar — inte av deklarationer om netto noll.",
-      "availability": "Tillgänglig för sakanalyser inom klimatpolitik, miljöstyrning och energisystemet.",
-      "portrait": {
-        "src": "/avatars/expert-miljo-klimat.svg",
-        "alt": "Illustration av Expert Miljö & Klimat"
-      },
-      "location": "Virtuell nod, Stockholm",
-      "capabilities": [
-        "Sakanalys av klimat-, miljö- och energipolitik samt styrmedel",
-        "Bedömning av tillståndsprocesser och EU:s klimatreglering"
-      ],
-      "knowledge": [
-        "Klimatpolitiska ramverket och klimatlagen",
-        "Miljöbalken, tillståndsprocesser och Naturvårdsverket",
-        "EU ETS, taxonomiförordningen, Green Deal och CBAM"
-      ],
-      "methods": [
-        "Klimatpolitisk analys",
-        "Miljörättslig granskning",
-        "Energisystemsanalys",
-        "EU-regleringsanalys"
-      ],
       "strengths": [
         "Djup kunskap om det klimatpolitiska ramverket och netto noll 2045-målet",
         "Bedömer miljöbalkens tillståndsprocesser och MKB:s effektivitet",
         "Analyserar EU:s klimatreglering och dess genomslag i svenska myndigheter"
-      ],
-      "tools": [
-        "Utsläppsdata (Naturvårdsverket)",
-        "EU ETS-register",
-        "Energistatistik (Energimyndigheten)",
-        "Tillståndsprocessdatabaser"
       ],
       "metrics": [
         {
@@ -1821,20 +1743,6 @@
         {
           "label": "Sakanalyser",
           "value": "15+"
-        }
-      ],
-      "experience": [
-        {
-          "title": "Domänexpert: Miljö & Klimat",
-          "organization": "Expertbyrån",
-          "period": "2026-",
-          "summary": "Bidrar med sakkunskap om klimatpolitik, miljöstyrning och energisystem till effektivitetsrevisioner."
-        },
-        {
-          "title": "Klimat- och miljöanalytiker",
-          "organization": "Analytisk enhet, klimat och miljö",
-          "period": "2021-2026",
-          "summary": "Utredde klimatpolitiska styrmedels effektivitet och EU-regleringens genomslag i Sverige."
         }
       ],
       "selectedEngagements": [
@@ -1853,77 +1761,83 @@
           "impact": "Visade på strukturella flaskhalsar och föreslog processomdisponeringar för snabbare klimatomställning."
         }
       ],
+      "experience": [
+        {
+          "title": "Domänexpert: Miljö & Klimat",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om klimatpolitik, miljöstyrning och energisystem till effektivitetsrevisioner."
+        },
+        {
+          "title": "Klimat- och miljöanalytiker",
+          "organization": "Analytisk enhet, klimat och miljö",
+          "period": "2021-2026",
+          "summary": "Utredde klimatpolitiska styrmedels effektivitet och EU-regleringens genomslag i Sverige."
+        }
+      ],
+      "knowledge": [
+        "Klimatpolitiska ramverket och klimatlagen",
+        "Miljöbalken, tillståndsprocesser och Naturvårdsverket",
+        "EU ETS, taxonomiförordningen, Green Deal och CBAM"
+      ],
+      "capabilities": [
+        "Sakanalys av klimat-, miljö- och energipolitik samt styrmedel",
+        "Bedömning av tillståndsprocesser och EU:s klimatreglering"
+      ],
+      "tools": [
+        "Utsläppsdata (Naturvårdsverket)",
+        "EU ETS-register",
+        "Energistatistik (Energimyndigheten)",
+        "Tillståndsprocessdatabaser"
+      ],
+      "methods": [
+        "Klimatpolitisk analys",
+        "Miljörättslig granskning",
+        "Energisystemsanalys",
+        "EU-regleringsanalys"
+      ],
       "contactLinks": [
         {
           "id": "expert-miljo-klimat-email",
-          "type": "email",
           "label": "Kontakta Expert Miljö & Klimat",
+          "type": "email",
           "url": "mailto:expert.miljo.klimat@expertbyran.ai",
           "description": "För sakanalyser inom klimatpolitik, miljöstyrning och energisystemet."
         },
         {
           "id": "expert-miljo-klimat-calendar",
-          "type": "calendar",
           "label": "Boka möte med Expert Miljö & Klimat",
+          "type": "calendar",
           "url": "https://calendar.app.google/expert-miljo-klimat",
           "description": "Diskutera klimatpolitik, miljöstyrning och EU-reglering."
         }
       ],
       "plugin": {
         "name": "expert-expert-miljo-klimat",
-        "version": "1.0.0",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
         "repositoryPath": "plugins/experts/expert-miljo-klimat",
-        "marketplaceListed": true
-      },
-      "updatedAt": "2026-04-12T17:30:00.000Z"
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-telekommunikation",
       "slug": "expert-telekommunikation",
-      "name": "Expert Telekommunikation",
-      "role": "Domänexpert: Telekommunikation & Digital Infrastruktur",
       "sortOrder": 140,
       "featured": true,
+      "name": "Expert Telekommunikation",
+      "role": "Domänexpert: Telekommunikation & Digital Infrastruktur",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för sakanalyser inom telekommunikationsreglering, bredbandspolitik och digital infrastruktur.",
       "areaSlugs": [
         "digitalisering"
       ],
       "summary": "Domänexpert inom telekommunikationsreglering och digital infrastruktur — PTS, LEK, EU:s EECC, spektrumauktioner, nationell bredbandspolitik, tillträdesreglering och telekommunikation som kritisk infrastruktur (NIS2, MSB, totalförsvar).",
       "profileQuote": "Telekommunikationspolitik handlar ytterst om hur samhället säkerställer robusthet, konkurrens och täckning i ett nät som alla andra kritiska system är beroende av.",
-      "availability": "Tillgänglig för sakanalyser inom telekommunikationsreglering, bredbandspolitik och digital infrastruktur.",
-      "portrait": {
-        "src": "/avatars/expert-telekommunikation.svg",
-        "alt": "Illustration av Expert Telekommunikation"
-      },
-      "location": "Virtuell nod, Stockholm",
-      "capabilities": [
-        "Analys av telekommunikationsreglering — PTS, LEK, EU:s EECC och SMP-beslut",
-        "Bedömning av nationell bredbandspolitik och statliga stödprogram",
-        "Tillträdesreglering, öppna nät och konkurrensanalys på telekommarknaderna",
-        "Telekommunikation som kritisk infrastruktur — NIS2, MSB och totalförsvarsplanering"
-      ],
-      "knowledge": [
-        "Lagen om elektronisk kommunikation (LEK) och PTS befogenheter",
-        "EU:s europeiska kodex för elektronisk kommunikation (EECC)",
-        "Nationell bredbandsstrategi och statliga stödprogram",
-        "NIS2-direktivet och robusthetskrav för teleoperatörer"
-      ],
-      "methods": [
-        "Regleringsanalys",
-        "Bredbandspolitisk analys",
-        "SMP-analys",
-        "Kritisk infrastrukturanalys"
-      ],
       "strengths": [
         "Djup kunskap om PTS regleringsbefogenheter och spektrumauktioner",
         "Behärskar skärningspunkten mellan EU:s EECC och svenska LEK",
         "Analyserar telekommunikation ur både konkurrens- och totalförsvarsperspektiv"
-      ],
-      "tools": [
-        "PTS tillsynsdatabaser",
-        "EU EECC-dokumentation",
-        "Spektrumauktionsdata",
-        "Bredbandskartor (PTS)"
       ],
       "metrics": [
         {
@@ -1937,20 +1851,6 @@
         {
           "label": "Sakanalyser",
           "value": "10+"
-        }
-      ],
-      "experience": [
-        {
-          "title": "Domänexpert: Telekommunikation",
-          "organization": "Expertbyrån",
-          "period": "2026-",
-          "summary": "Bidrar med sakkunskap om telekommunikationsreglering och digital infrastruktur till effektivitetsrevisioner och politikanalys."
-        },
-        {
-          "title": "Telekomanalytiker och regulatorisk rådgivare",
-          "organization": "Analytisk enhet, digital infrastruktur",
-          "period": "2021-2026",
-          "summary": "Utredde telekomregleringens effektivitet, spektrumauktionernas utfall och bredbandsutbyggnadens utmaningar."
         }
       ],
       "selectedEngagements": [
@@ -1969,49 +1869,82 @@
           "impact": "Visade på systematiska brister i incidentrapportering och rekommenderade tydligare tillsynsmandat för PTS."
         }
       ],
+      "experience": [
+        {
+          "title": "Domänexpert: Telekommunikation",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med sakkunskap om telekommunikationsreglering och digital infrastruktur till effektivitetsrevisioner och politikanalys."
+        },
+        {
+          "title": "Telekomanalytiker och regulatorisk rådgivare",
+          "organization": "Analytisk enhet, digital infrastruktur",
+          "period": "2021-2026",
+          "summary": "Utredde telekomregleringens effektivitet, spektrumauktionernas utfall och bredbandsutbyggnadens utmaningar."
+        }
+      ],
+      "knowledge": [
+        "Lagen om elektronisk kommunikation (LEK) och PTS befogenheter",
+        "EU:s europeiska kodex för elektronisk kommunikation (EECC)",
+        "Nationell bredbandsstrategi och statliga stödprogram",
+        "NIS2-direktivet och robusthetskrav för teleoperatörer"
+      ],
+      "capabilities": [
+        "Analys av telekommunikationsreglering — PTS, LEK, EU:s EECC och SMP-beslut",
+        "Bedömning av nationell bredbandspolitik och statliga stödprogram",
+        "Tillträdesreglering, öppna nät och konkurrensanalys på telekommarknaderna",
+        "Telekommunikation som kritisk infrastruktur — NIS2, MSB och totalförsvarsplanering"
+      ],
+      "tools": [
+        "PTS tillsynsdatabaser",
+        "EU EECC-dokumentation",
+        "Spektrumauktionsdata",
+        "Bredbandskartor (PTS)"
+      ],
+      "methods": [
+        "Regleringsanalys",
+        "Bredbandspolitisk analys",
+        "SMP-analys",
+        "Kritisk infrastrukturanalys"
+      ],
       "contactLinks": [
         {
           "id": "expert-telekommunikation-email",
-          "type": "email",
           "label": "Kontakta Expert Telekommunikation",
+          "type": "email",
           "url": "mailto:expert.telekommunikation@expertbyran.ai",
           "description": "För sakanalyser inom telekommunikationsreglering, bredbandspolitik och digital infrastruktur."
         },
         {
           "id": "expert-telekommunikation-calendar",
-          "type": "calendar",
           "label": "Boka möte med Expert Telekommunikation",
+          "type": "calendar",
           "url": "https://calendar.app.google/expert-telekommunikation",
           "description": "Diskutera telekommunikationsreglering, bredband och kritisk infrastruktur."
         }
       ],
       "plugin": {
         "name": "expert-expert-telekommunikation",
-        "version": "1.0.0",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
         "repositoryPath": "plugins/experts/expert-telekommunikation",
-        "marketplaceListed": true
-      },
-      "updatedAt": "2026-04-12T18:05:00.000Z"
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-expert-forsvar",
       "slug": "expert-forsvar",
-      "name": "Expert Försvar",
-      "role": "Domänexpert: Försvar, civilförsvar och underrättelse",
       "sortOrder": 150,
       "featured": true,
+      "name": "Expert Försvar",
+      "role": "Domänexpert: Försvar, civilförsvar och underrättelse",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för sakanalyser inom försvarspolitik, materielanskaffning, civilförsvar och underrättelseverksamhet.",
       "areaSlugs": [
         "forsvar"
       ],
       "summary": "Domänexpert inom svensk försvars- och säkerhetspolitik med fokus på Riksrevisionens granskningar. Täcker försvarspolitik, försvarsmateriel och försvarsindustri, exportkontroll och krigsmaterielexport (ISP), militär styrning och organisation (Försvarsmakten, FMV), civilförsvar och krisberedskap (MCF, Myndigheten för civilt försvar, totalförsvar) samt statens underrättelseverksamhet (MUST, FRA och planerade MUU).",
       "profileQuote": "Försvarets styrning handlar ytterst om hur resurser och mandat omsätts i faktisk förmåga — det är där Riksrevisionens granskning gör störst nytta.",
-      "availability": "Tillgänglig för sakanalyser inom försvarspolitik, materielanskaffning, civilförsvar och underrättelseverksamhet.",
-      "portrait": {
-        "src": "/avatars/expert-forsvar.svg",
-        "alt": "Illustration av Expert Försvar"
-      },
-      "location": "Virtuell nod, Stockholm",
       "strengths": [
         "Djup kunskap om Försvarsmakten, FMV och ISP:s mandat och styrning",
         "Bedömer civilt försvars uppbyggnad och totalförsvarets samordning (MCF)",
@@ -2085,85 +2018,49 @@
         "Civilförsvarsbedömning",
         "Underrättelserättslig analys"
       ],
-      "plugin": {
-        "name": "expert-expert-forsvar",
-        "version": "1.0.0",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "repositoryPath": "plugins/experts/expert-forsvar",
-        "marketplaceListed": true
-      },
       "contactLinks": [
         {
           "id": "expert-forsvar-email",
-          "type": "email",
           "label": "Kontakta Expert Försvar",
+          "type": "email",
           "url": "mailto:expert.forsvar@expertbyran.ai",
           "description": "För sakanalyser inom försvarspolitik, materielanskaffning och civilförsvar."
         },
         {
           "id": "expert-forsvar-calendar",
-          "type": "calendar",
           "label": "Boka möte med Expert Försvar",
+          "type": "calendar",
           "url": "https://calendar.app.google/expert-forsvar",
           "description": "Diskutera försvars- och säkerhetspolitik och granskningsupplägg."
         }
       ],
-      "updatedAt": "2026-04-12T21:05:00.000Z"
+      "plugin": {
+        "name": "expert-expert-forsvar",
+        "repositoryPath": "plugins/experts/expert-forsvar",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     },
     {
       "id": "expert-teknikstrateg",
       "slug": "teknikstrateg",
-      "name": "Teknikstrateg",
-      "role": "Strategisk rådgivare inom teknik och innovation",
       "sortOrder": 170,
       "featured": true,
+      "name": "Teknikstrateg",
+      "role": "Strategisk rådgivare inom teknik och innovation",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för teknikstrategisk rådgivning, omvärldsbevakning och innovationsanalys.",
       "areaSlugs": [
         "digitalisering"
       ],
-      "location": "Virtuell nod, Stockholm",
-      "availability": "Tillgänglig för teknikstrategisk rådgivning, omvärldsbevakning och innovationsanalys.",
       "summary": "Teknikstrateg och innovationsexpert med bred omvärldsbevakning inom teknik och innovation — direkt relevant för revisionsmyndigheter. Expertområden: generativ AI och agentic AI, post-kvantumkryptografi (PQC), Zero Trust Architecture, molntjänster och datalakes, 6G, IoT och edge computing, AI Governance (EU AI Act), digital suveränitet och SupTech. Fungerar som intern strategisk rådgivare och konsultativ expert vid granskningsuppdrag.",
       "profileQuote": "Revisionsmyndigheter behöver förstå teknikens mognad och risker — inte för att bli IT-experter, utan för att ställa rätt granskningsfrågor i rätt tid.",
-      "portrait": {
-        "src": "/avatars/teknikstrateg.svg",
-        "alt": "Illustration av Teknikstrateg"
-      },
-      "capabilities": [
-        "Omvärldsbevakning och trendanalys med TRL-analys och implikationsbedömning för offentlig sektor",
-        "Strategisk rådgivning om generativ AI, agentic AI och AI Governance (EU AI Act)",
-        "Cybersäkerhetsanalys — post-kvantumkryptografi (PQC), Zero Trust Architecture och NIS2",
-        "Analys av molntjänster, 6G, IoT, edge computing och digital suveränitet",
-        "SupTech- och RegTech-analys för tillsynsmyndigheter och automatiserad revision"
-      ],
-      "knowledge": [
-        "Generativ AI, agentic AI och maskininlärning — teknikmognad och revisionsperspektiv",
-        "Post-kvantumkryptografi (PQC) — NIST FIPS 203/204/205, migrationsstrategi och 'harvest now, decrypt later'",
-        "Zero Trust Architecture (ZTA) och NIS2 — säkerhetsparadigm och OT-säkerhetsgap",
-        "AI Governance Infrastructure — EU AI Act (fullt tillämplig 2 aug 2026), model cards och AI-register",
-        "Digital suveränitet — molnberoende, CLOUD Act-problematik och europeiska suveränitetsstrategier",
-        "SupTech och RegTech — realtidsövervakning, automatiserad revision och ECB/TCU ALICE-modeller"
-      ],
       "strengths": [
         "Översätter komplexa teknologiska trender till konkreta granskningsfrågor för revisionsmyndigheter",
         "Kombinerar TRL-analys (teknikmognad) med adoptionsmognadsbedömning i svensk offentlig sektor",
         "Bred täckning: AI, kryptografi, nätverksinfrastruktur, IoT, datastyrning och digital geopolitik",
         "Koppling till EU-regelverksutveckling: AI Act, NIS2, DORA och PQC-krav i upphandling"
-      ],
-      "methods": [
-        "TRL-analys (Technology Readiness Level)",
-        "Teknik-implikationsanalys för offentlig sektor",
-        "AI Governance-kartläggning",
-        "PQC-mognadsbedömning",
-        "SupTech-scenarioanalys",
-        "Omvärldsbevakning och trendspaning"
-      ],
-      "tools": [
-        "NIST PQC-standarder (FIPS 203/204/205)",
-        "EU AI Act Annex IV (teknisk dokumentationskrav)",
-        "INTOSAI AI standards initiative",
-        "IMF/BIS SupTech-ramverk",
-        "Nationell cybersäkerhetsstrategi 2025–2029",
-        "EU PPDS (api.ted.europa.eu)"
       ],
       "metrics": [
         {
@@ -2177,20 +2074,6 @@
         {
           "label": "EU-regelverk",
           "value": "4"
-        }
-      ],
-      "experience": [
-        {
-          "title": "Teknikstrateg och innovationsexpert",
-          "organization": "Expertbyrån",
-          "period": "2026-",
-          "summary": "Bidrar med teknikstrategisk omvärldsbevakning och innovationsanalys till revisionsmyndigheters granskningsarbete."
-        },
-        {
-          "title": "Senior teknikanalytiker",
-          "organization": "Strategisk innovationsrådgivning",
-          "period": "2020-2026",
-          "summary": "Analyserade teknologiska trender och deras implikationer för offentlig sektor med fokus på AI, cybersäkerhet och digital infrastruktur."
         }
       ],
       "selectedEngagements": [
@@ -2209,30 +2092,74 @@
           "impact": "Identifierade att EU AI Act fullt tillämplig 2 aug 2026 skapar ett omedelbart granskningsbehov för autonoma AI-system i offentlig förvaltning."
         }
       ],
+      "experience": [
+        {
+          "title": "Teknikstrateg och innovationsexpert",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Bidrar med teknikstrategisk omvärldsbevakning och innovationsanalys till revisionsmyndigheters granskningsarbete."
+        },
+        {
+          "title": "Senior teknikanalytiker",
+          "organization": "Strategisk innovationsrådgivning",
+          "period": "2020-2026",
+          "summary": "Analyserade teknologiska trender och deras implikationer för offentlig sektor med fokus på AI, cybersäkerhet och digital infrastruktur."
+        }
+      ],
+      "knowledge": [
+        "Generativ AI, agentic AI och maskininlärning — teknikmognad och revisionsperspektiv",
+        "Post-kvantumkryptografi (PQC) — NIST FIPS 203/204/205, migrationsstrategi och 'harvest now, decrypt later'",
+        "Zero Trust Architecture (ZTA) och NIS2 — säkerhetsparadigm och OT-säkerhetsgap",
+        "AI Governance Infrastructure — EU AI Act (fullt tillämplig 2 aug 2026), model cards och AI-register",
+        "Digital suveränitet — molnberoende, CLOUD Act-problematik och europeiska suveränitetsstrategier",
+        "SupTech och RegTech — realtidsövervakning, automatiserad revision och ECB/TCU ALICE-modeller"
+      ],
+      "capabilities": [
+        "Omvärldsbevakning och trendanalys med TRL-analys och implikationsbedömning för offentlig sektor",
+        "Strategisk rådgivning om generativ AI, agentic AI och AI Governance (EU AI Act)",
+        "Cybersäkerhetsanalys — post-kvantumkryptografi (PQC), Zero Trust Architecture och NIS2",
+        "Analys av molntjänster, 6G, IoT, edge computing och digital suveränitet",
+        "SupTech- och RegTech-analys för tillsynsmyndigheter och automatiserad revision"
+      ],
+      "tools": [
+        "NIST PQC-standarder (FIPS 203/204/205)",
+        "EU AI Act Annex IV (teknisk dokumentationskrav)",
+        "INTOSAI AI standards initiative",
+        "IMF/BIS SupTech-ramverk",
+        "Nationell cybersäkerhetsstrategi 2025–2029",
+        "EU PPDS (api.ted.europa.eu)"
+      ],
+      "methods": [
+        "TRL-analys (Technology Readiness Level)",
+        "Teknik-implikationsanalys för offentlig sektor",
+        "AI Governance-kartläggning",
+        "PQC-mognadsbedömning",
+        "SupTech-scenarioanalys",
+        "Omvärldsbevakning och trendspaning"
+      ],
       "contactLinks": [
         {
           "id": "teknikstrateg-email",
-          "type": "email",
           "label": "Kontakta Teknikstrateg",
+          "type": "email",
           "url": "mailto:teknikstrateg@expertbyran.ai",
           "description": "För teknikstrategisk rådgivning, omvärldsbevakning och innovationsanalys."
         },
         {
           "id": "teknikstrateg-calendar",
-          "type": "calendar",
           "label": "Boka möte med Teknikstrateg",
+          "type": "calendar",
           "url": "https://calendar.app.google/teknikstrateg",
           "description": "Diskutera teknikstrategiska frågor och granskningsbehov inom teknik och innovation."
         }
       ],
       "plugin": {
         "name": "expert-teknikstrateg",
-        "version": "1.0.0",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
         "repositoryPath": "plugins/experts/teknikstrateg",
-        "marketplaceListed": true
-      },
-      "updatedAt": "2026-04-13T18:52:00.000Z"
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
     }
   ]
 }

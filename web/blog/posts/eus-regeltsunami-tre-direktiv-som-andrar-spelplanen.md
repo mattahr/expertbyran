@@ -1,4 +1,4 @@
-Den 15 januari 2026 trädde den nya cybersäkerhetslagen i kraft — Sveriges genomförande av EU:s NIS2-direktiv. Några månader tidigare hade nya regler om hållbarhetsrapportering (CSRD) börjat gälla för de första företagen. Parallellt rullar direktivet om kritiska entiteters motståndskraft (CER) och cyberresiliensförordningen ut. Sammantaget utgör dessa regelverk den mest omfattande regulatoriska förändringen för svenska myndigheter och företag på decennier. Frågan är inte längre om organisationer behöver anpassa sig — utan om de hinner, och om någon kontrollerar att det faktiskt sker.
+Den 15 januari 2026 trädde den nya cybersäkerhetslagen i kraft — Sveriges genomförande av EU:s NIS2-direktiv. Några månader tidigare hade nya regler om hållbarhetsrapportering (CSRD) börjat gälla för de första företagen. Parallellt rullar direktivet om kritiska entiteters motståndskraft (CER) och cyberresiliensförordningen ut. Sammantaget utgör dessa regelverk den mest omfattande regulatoriska förändringen för svenska myndigheter och företag på decennier. Den centrala frågan gäller inte längre om organisationer behöver anpassa sig — utan om de hinner, och om det finns tillräcklig kapacitet att kontrollera att anpassningen faktiskt sker.
 
 ## NIS2 — cybersäkerhet blir allas ansvar
 
@@ -6,9 +6,9 @@ NIS2-direktivet är, enligt regeringens egen beskrivning, "den mest omfattande a
 
 Cybersäkerhetslagen ([prop. 2025/26:28](https://data.riksdagen.se/dokument/HD0328.html)) ställer krav på riskhantering, incidentrapportering och systematiskt säkerhetsarbete. Tillsynsmyndigheter får utökade befogenheter att ingripa med sanktioner om kraven inte uppfylls.
 
-Det innebär en fundamental förskjutning. Cybersäkerhet går från att vara en teknisk fråga för IT-avdelningen till att bli en ledningsfråga med personligt ansvar. Men en tidigare granskning från 2023 — *Regeringens styrning av samhällets informations- och cybersäkerhet* ([RiR 2023:8](https://www.riksrevisionen.se/granskningar/granskningsrapporter/2023/regeringens-styrning-av-samhallets-informations--och-cybersakerhet---bade-bradskande-och-viktig.html)) — konstaterade att styrningen inte hade varit effektivt utformad. Den centrala bristen handlade om avsaknad av strategiska avvägningar och prioriteringar.
+Det innebär en fundamental förskjutning. Cybersäkerhet går från att vara en teknisk fråga för IT-avdelningen till att bli en ledningsfråga med personligt ansvar. En granskning från 2023 — *Regeringens styrning av samhällets informations- och cybersäkerhet* ([RiR 2023:8](https://www.riksrevisionen.se/granskningar/granskningsrapporter/2023/regeringens-styrning-av-samhallets-informations--och-cybersakerhet---bade-bradskande-och-viktig.html)) — konstaterade att styrningen inte hade varit effektivt utformad. Den centrala bristen handlade om avsaknad av strategiska avvägningar och prioriteringar.
 
-Frågan uppstår naturligt: om styrningen hade brister redan under det enklare NIS-regelverket, hur ska den hantera det avsevärt mer krävande NIS2?
+Om styrningen hade brister redan under det enklare NIS-regelverket uppstår frågan hur den ska hantera det avsevärt mer krävande NIS2.
 
 ## CSRD — hållbarhetsrapportering med skarpa tänder
 
@@ -33,25 +33,25 @@ Vart och ett av dessa regelverk är komplext nog. Men det är kombinationen som 
 
 **Snabb regelutveckling skapar osäkerhet.** EU:s lagstiftningsmaskin producerar nya direktiv och förordningar i hög takt. Cyberresiliensförordningen (SOU 2025:115) ska tillämpas fullt ut från december 2027. Reglerna ändras snabbare än organisationer hinner anpassa sig, vilket skapar ett permanent tillstånd av regelosäkerhet.
 
-## Vad behövs för att reglerna ska bli mer än papper?
+## Förutsättningar för att reglerna ska få genomslag
 
-Erfarenheten från tidigare EU-regleringar visar att det finns en återkommande risk: ambitiösa regler som genomförs formellt men aldrig får reellt genomslag. Reglerna blir papperstigrar — de finns på plats, men efterlevnaden är bristfällig och tillsynen tandlös.
+Erfarenheten från tidigare EU-regleringar visar att det finns en återkommande risk: ambitiösa regler som genomförs formellt men aldrig får reellt genomslag. Reglerna finns på plats, men efterlevnaden är bristfällig och tillsynen underresurserad.
 
-För att undvika det krävs tre saker.
+Tre förutsättningar framstår som centrala.
 
-**Tvärsektoriell kompetens i granskningen.** Cybersäkerhet, hållbarhet och motståndskraft hänger ihop i praktiken — de behöver hanteras sammanhållet även i granskningen. Revisorer och granskare som bara förstår ett av områdena missar sambanden.
+**Tvärsektoriell kompetens i granskningen.** Cybersäkerhet, hållbarhet och motståndskraft hänger ihop i praktiken — de behöver hanteras sammanhållet även i granskningen. Revisorer och granskare som bara förstår ett av områdena riskerar att missa sambanden.
 
-**Proaktiv och riskbaserad tillsyn.** De nya regelverken ger tillsynsmyndigheterna starkare verktyg, men verktygen är bara så bra som resurserna och kompetensen bakom dem. Riskbaserad tillsyn — där de största riskerna prioriteras framför slumpmässiga kontroller — förutsätter att tillsynsmyndigheterna själva har kapacitet att bedöma riskerna.
+**Proaktiv och riskbaserad tillsyn.** De nya regelverken ger tillsynsmyndigheterna starkare verktyg, men verktygen är bara så effektiva som resurserna och kompetensen bakom dem. Riskbaserad tillsyn — där de största riskerna prioriteras framför slumpmässiga kontroller — förutsätter att tillsynsmyndigheterna själva har kapacitet att bedöma riskerna.
 
 **Oberoende utvärdering av genomförandet.** Har de nya cybersäkerhetskraven faktiskt lett till bättre skydd? Ger hållbarhetsrapporterna användbar information, eller är de en administrativ börda utan reell nytta? Sådana frågor kräver oberoende effektivitetsgranskning — inte av enskilda organisationer, utan av regelverkens genomförande som helhet.
 
 ## Möjligheten i utmaningen
 
-Det finns en annan sida av myntet. Sverige har historiskt legat i framkant inom digitalisering och hållbarhet. Många svenska företag och myndigheter har redan kommit långt med frivillig hållbarhetsrapportering. Sverige var bland de första att införa bredare rapporteringskrav. Den kapaciteten är en tillgång.
+Det finns en annan sida av situationen. Sverige har historiskt legat i framkant inom digitalisering och hållbarhet. Många svenska företag och myndigheter har redan kommit långt med frivillig hållbarhetsrapportering. Sverige var bland de första att införa bredare rapporteringskrav. Den kapaciteten är en tillgång.
 
 Dessutom kan väl genomförda regelverk stärka Sveriges konkurrenskraft och samhällets motståndskraft — det är trots allt syftet med dem. Bättre cybersäkerhet skyddar kritisk infrastruktur. Transparent hållbarhetsrapportering styr kapital till hållbara investeringar. Stärkta krav på motståndskraft gör samhällsviktiga tjänster mer robusta.
 
-Men det förutsätter att genomförandet inte bara blir en formalitet. Och det förutsätter att det finns tillräcklig kompetens att granska om reglerna faktiskt gör nytta — eller bara skapar administration. Det är en fråga som Sverige borde ta på allvar redan nu, medan implementeringen fortfarande pågår.
+Men det förutsätter att genomförandet inte bara blir en formalitet. Och det förutsätter att det finns tillräcklig kompetens att granska om reglerna faktiskt ger avsedd effekt — eller bara skapar administration. Det är en fråga som bör adresseras nu, medan implementeringen fortfarande pågår.
 
 ---
 
