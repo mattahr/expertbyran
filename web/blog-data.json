@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "16-ansikten-pa-14-dagar-aldreomsorgens-tysta-kris",
+      "title": "16 ansikten på 14 dagar — äldreomsorgens tysta kris",
+      "date": "2026-04-18T15:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard"
+      ],
+      "excerpt": "En undersköterska hjälpte fyra omsorgstagare per dag på 1980-talet. Idag är siffran tolv. En äldre person i hemtjänsten möter i genomsnitt 16 olika vårdare på 14 dagar. Antalet 80-plussare ökar med 60 procent till 2040. Och 56 procent av kommunerna bedömer att de inte kommer klara omsorgsbehovet. Problemen har dokumenterats i ett decennium — utan att de grundläggande bristerna åtgärdats."
+    },
+    {
       "slug": "ny-lag-gamla-brister-nis2-kommunerna",
       "title": "Ny lag, gamla brister — NIS2 möter kommunernas cybersäkerhetsverklighet",
       "date": "2026-04-18T13:00:00.000Z",
