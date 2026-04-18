@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "900-miljarder-utan-granskning-upphandlingens-svarta-flackar",
+      "title": "900 miljarder utan granskning — upphandlingens svarta fläckar",
+      "date": "2026-04-18T23:00:00.000Z",
+      "authorSlug": "expert-finanser",
+      "areaSlugs": [
+        "offentliga-finanser"
+      ],
+      "excerpt": "Den offentliga upphandlingen omsätter över 900 miljarder kronor per år — nästan en tredjedel av alla offentliga utgifter. 85 procent av kommuner och regioner identifierar själva upphandling som sitt största korruptionsriskområde. En ny utredning pekar uttryckligen ut upphandling som högrisksektor. Och Riksrevisionen har ingen aktuell bred granskning av området."
+    },
+    {
       "slug": "mer-admin-mindre-karnverksamhet-statsforvaltningens-paradox",
       "title": "Mer administration, mindre kärnverksamhet — statsförvaltningens paradox",
       "date": "2026-04-18T21:00:00.000Z",
