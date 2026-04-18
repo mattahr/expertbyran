@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "146000-i-ko-ingen-ansvarar",
+      "title": "146 000 i kö — men ingen ansvarar för helheten",
+      "date": "2026-04-18T11:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard",
+        "offentliga-finanser"
+      ],
+      "excerpt": "146 000 personer väntar på operation. Vårdgarantin uppfylls inte i någon region. Sjukvårdskostnaderna ökar med sex procent per år. Och en parlamentarisk utredning föreslår att staten ska ta över från regionerna. Ändå saknas en bred, oberoende granskning av om de närmare 400 miljarder kronor som sjukvården kostar varje år faktiskt ger den vård medborgarna har rätt att förvänta sig."
+    },
+    {
       "slug": "vd-har-ordet-ai-styrning-granskande-staten",
       "title": "VD har ordet: AI-styrning och effektivitetsrevisionens utmaningar",
       "date": "2026-04-15T06:00:00.000Z",
