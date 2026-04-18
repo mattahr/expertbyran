@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "infiltratoren-inifran-nar-kriminella-tar-plats-i-staten",
+      "title": "Infiltratören inifrån — när kriminella tar plats i staten",
+      "date": "2026-04-19T10:00:00.000Z",
+      "authorSlug": "rattslig-utredare",
+      "areaSlugs": [
+        "rattsvasende"
+      ],
+      "excerpt": "Riksrevisionen konstaterar att statliga myndigheters skydd mot infiltration inte är effektivt. Arbetstillstånd beviljas till arbetsgivare som myndigheten själv bedömt som oseriösa. Möjliggörare — anställda som missbrukar sin position till förmån för kriminella nätverk — finns i rättsväsendet, kommuner och myndigheter. Och felaktiga utbetalningar från välfärdssystemen uppgår till 15–20 miljarder kronor per år. Delarna granskas var för sig. Helheten granskas inte alls."
+    },
+    {
       "slug": "nar-algoritmen-arver-fordomarna-myndigheternas-diskrimineringsblindhet",
       "title": "När algoritmen ärver fördomarna — myndigheternas diskrimineringsblindhet",
       "date": "2026-04-19T08:00:00.000Z",
