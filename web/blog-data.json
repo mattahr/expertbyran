@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "nar-algoritmen-arver-fordomarna-myndigheternas-diskrimineringsblindhet",
+      "title": "När algoritmen ärver fördomarna — myndigheternas diskrimineringsblindhet",
+      "date": "2026-04-19T08:00:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": [
+        "digitalisering",
+        "rattsvasende"
+      ],
+      "excerpt": "Riksrevisionen konstaterar att statens arbete mot etnisk diskriminering vid myndighetsbeslut inte är effektivt. Sju stora myndigheter har begränsad kunskap om sina diskrimineringsrisker. Förebyggande åtgärder bygger inte på riskanalys. Och om åtta månader ska samma myndigheter uppfylla EU:s AI-förordning — som kräver just den typ av bias-analys som de inte gör idag."
+    },
+    {
       "slug": "900-miljarder-utan-granskning-upphandlingens-svarta-flackar",
       "title": "900 miljarder utan granskning — upphandlingens svarta fläckar",
       "date": "2026-04-18T23:00:00.000Z",
