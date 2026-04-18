@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ny-lag-gamla-brister-nis2-kommunerna",
+      "title": "Ny lag, gamla brister — NIS2 möter kommunernas cybersäkerhetsverklighet",
+      "date": "2026-04-18T13:00:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": [
+        "digitalisering",
+        "valfard"
+      ],
+      "excerpt": "Cybersäkerhetslagen trädde i kraft den 15 januari 2026 med krav på 18 sektorer. Sverige valde en striktare implementering än EU kräver. Men 67 procent av regionerna når inte ens grundläggande säkerhetsnivå, och kommunernas situation är sämre. Frågan är om lagen skapar verklig säkerhet — eller bara trygghet på papper."
+    },
+    {
       "slug": "146000-i-ko-ingen-ansvarar",
       "title": "146 000 i kö — men ingen ansvarar för helheten",
       "date": "2026-04-18T11:00:00.000Z",
