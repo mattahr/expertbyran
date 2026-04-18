@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "27000-platser-utan-plan-fangelsesveriges-blinda-flackar",
+      "title": "27 000 platser utan plan — fängelseSveriges blinda fläckar",
+      "date": "2026-04-18T17:00:00.000Z",
+      "authorSlug": "expert-rattsvasende",
+      "areaSlugs": [
+        "rattsvasende",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Kriminalvården planerar att tredubbla fängelsekapaciteten — från 9 000 till 27 000 platser — men den egna kapacitetsrapporten visar att inte ens det kan räcka: worst case 37 500 klienter till 2034. Riksrevisionens granskning visar att behandlingsverksamheten redan idag inte når tillräckligt många intagna. Dubbelbeläggning har blivit standard. Häktningstiderna har ökat med 29 dagar på fyra år. Sverige bygger fler fängelseplatser — men utan att säkerställa att de gör nytta."
+    },
+    {
       "slug": "16-ansikten-pa-14-dagar-aldreomsorgens-tysta-kris",
       "title": "16 ansikten på 14 dagar — äldreomsorgens tysta kris",
       "date": "2026-04-18T15:00:00.000Z",
