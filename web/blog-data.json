@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mer-admin-mindre-karnverksamhet-statsforvaltningens-paradox",
+      "title": "Mer administration, mindre kärnverksamhet — statsförvaltningens paradox",
+      "date": "2026-04-18T21:00:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": [
+        "revisionsmetodik",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Riksrevisionens granskning visar att administrationen i statsförvaltningen har ökat sedan 2010 — inte minskat. Kärnverksamhetens andel sjunker. Chefsbefattningar växer. Tillitsreformen har inte lett till mätbar minskning. Och Statens servicecenter har enligt myndighetschefer snarare ökat administrationen. Sverige har investerat stort i att minska byråkratin — och fått mer av den."
+    },
+    {
       "slug": "130-miljarder-som-inte-finns-kommunernas-demografiska-ekvation",
       "title": "130 miljarder som inte finns — kommunernas demografiska ekvation",
       "date": "2026-04-18T19:00:00.000Z",
