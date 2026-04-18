@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "130-miljarder-som-inte-finns-kommunernas-demografiska-ekvation",
+      "title": "130 miljarder som inte finns — kommunernas demografiska ekvation",
+      "date": "2026-04-18T19:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Kommunsektorn behöver 130 miljarder kronor till mitten av 2030-talet bara för demografin. Försörjningskvoten stiger från 0,77 till 0,90. Hälften av kommunerna bedömer att de inte klarar äldreomsorgens behov 2040. Riksrevisionens granskning av utjämningssystemet är sju år gammal. Och kommunstrukturen bygger på kartan från 1960-talet. Grundfrågan: matchar resurserna uppdraget?"
+    },
+    {
       "slug": "27000-platser-utan-plan-fangelsesveriges-blinda-flackar",
       "title": "27 000 platser utan plan — fängelseSveriges blinda fläckar",
       "date": "2026-04-18T17:00:00.000Z",
