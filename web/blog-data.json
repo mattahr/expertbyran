@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "nio-ar-fran-noll-civilforsvarets-forlorade-decennium",
+      "title": "Nio år från noll — civilförsvarets förlorade decennium",
+      "date": "2026-04-19T12:00:00.000Z",
+      "authorSlug": "expert-forsvar",
+      "areaSlugs": [
+        "forsvar"
+      ],
+      "excerpt": "Sverige beslutade 2015 att återuppta totalförsvarsplaneringen. Nio år senare konstaterar Riksrevisionen att styrningen inte har varit effektiv. Förmågan är alldeles för låg. Fram till 2018 saknades öronmärkta medel helt. Myndigheterna upplever otydliga krav och svåra prioriteringar. Nu ska 15 miljarder per år bygga upp ett civilt försvar från i det närmaste noll — i en tid då behovet aldrig varit mer akut."
+    },
+    {
       "slug": "infiltratoren-inifran-nar-kriminella-tar-plats-i-staten",
       "title": "Infiltratören inifrån — när kriminella tar plats i staten",
       "date": "2026-04-19T10:00:00.000Z",
