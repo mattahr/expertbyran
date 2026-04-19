@@ -141,7 +141,8 @@
       "Bash(grep -E \"^\\\\`\\\\`\\\\`\")",
       "Bash(cat)",
       "Read(//tmp/**)",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(git push *)"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
