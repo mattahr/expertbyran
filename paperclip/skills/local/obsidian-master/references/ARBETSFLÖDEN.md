@@ -2,28 +2,53 @@
 
 Sex arbetsflöden täcker alla tasks obsidian-master hanterar. Identifiera rätt flöde baserat på task-beskrivningen och följ stegen.
 
-## Arbetsflöde 1: Ta emot ny kunskap från expert
+## Arbetsflöde 1: Ta emot granskningsbegäran från expert
 
-**Trigger:** Task säger "expert X har lärt sig Y, lägg in i vaulten".
+**Experter skriver sina utkast själva** i `/Experter/[slug]/` via
+skillen `obsidian-global`. Du skapar inga utkast — du **granskar
+befintliga**.
+
+Task-titeln avgör vilket läge:
+
+- `Obsidian-feedback:` — expert vill ha råd, **ingen publicering**
+- `Obsidian-publicera:` — expert vill att utkastet flyttas till
+  `/Områden/` (se Arbetsflöde 2 för publicering)
+
+### Läge A: `Obsidian-feedback:` — kritik/råd utan publicering
+
+**Trigger:** task med titel `Obsidian-feedback:`. Description har
+länk till expertens utkast och frågor om vad hen vill ha feedback på.
 
 **Steg:**
 
-1. **Läs expertens material.** Anteckna vad som är påstående, vad som är tolkning, vad som är fråga.
-2. **Sök efter duplicates.** I Obsidian: graf + sök på sökord, wikilink-backlinks på relaterade koncept. Kontrollera:
-   - Finns redan en konceptnot i samma område?
-   - Finns en expertnot hos samma expert som berör samma sak?
-3. **Beslut:**
-   - **Ny not** → skapa expertnot i `/Experter/[expert]/` från mall [mall-expertnot.md](../mallar/mall-expertnot.md). Status: `utkast`.
-   - **Komplettering av befintlig konceptnot** → gå till Arbetsflöde 3.
-   - **Duplicerar befintlig utkast** → dialog med expert (se dialogmönster "duplikat").
-4. **Formulera innehåll.** Strukturera i avsnitt: kontext, huvudpåstående(n), implikation. Markera påståenden som saknar källa med `> [!todo] Källa krävs`.
-5. **Gå igenom källor.** För varje påstående: kör Arbetsflöde 4 (källhantering).
-6. **Dialog med experten** om något är oklart, saknas eller är svagt belagt.
-7. **Rapportera till tasken:** vad som skapades, vilka påståenden som saknar källa (om någon), vad som behöver expertens svar.
+1. **Läs utkastet** och expertens frågor. Anteckna vad som är
+   påstående, tolkning respektive fråga.
+2. **Sök efter duplicates i vaulten.** Graf + sök på sökord +
+   wikilink-backlinks. Kontrollera:
+   - Finns redan en publicerad konceptnot i samma område?
+   - Finns annan expertnot (hos samma eller annan expert) som berör
+     samma sak?
+3. **Granska innehåll och källor.** För varje påstående med
+   källhänvisning, kör lätt verifiering (Arbetsflöde 4, men utan att
+   skapa källnoter än — det görs vid publicering).
+4. **Svara på tasken** med konkret feedback:
+   - Formuleringsförslag
+   - Källor som saknas, är svaga, eller inte stödjer påståendet
+   - Duplikat-observation ("redan täckt i [[X]]" eller "nära [[Y]]")
+   - Rekommenderad nästa åtgärd (revidera och skicka ny feedback-
+     task, eller skicka publicera-task när klar)
+5. **Ingen flytt.** Utkastet stannar i `/Experter/[slug]/`.
+
+### Läge B: expert har ingen task men du hittar utkast utan uppföljning
+
+Om du under annan task upptäcker ett utkast som länkats in från en
+publicerad not eller som verkar klart men aldrig har skickats till
+dig — **skicka notis-task tillbaka till experten** med fråga om
+status. Starta inte publicering på eget initiativ.
 
 ## Arbetsflöde 2: Flytta utkast → publicerad
 
-**Trigger:** Task säger "publicera X" eller expertnoten har `status: verifierad` och experten har godkänt.
+**Trigger:** Task med titel `Obsidian-publicera:`. Description har länk till utkastet, lista med källor (URL:er) som experten använt, förslag till område, och motivering att kunskapen är kanonisk.
 
 **Steg:**
 

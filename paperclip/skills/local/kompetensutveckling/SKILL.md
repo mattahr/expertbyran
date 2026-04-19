@@ -252,46 +252,44 @@ Detaljer: `references/integration-och-loggning.md`
 
 ---
 
-## Steg 5b — Skicka generell kunskap till Obsidian-vaulten
+## Steg 5b — Skapa obsidian-utkast (om generell/kanonisk)
 
 Om den nya kunskapen är **generell och kanonisk** — alltså inte
 bara ditt personliga arbetssätt utan metod- eller domänkunskap som
-flera experter i Expertbyrån kan ha nytta av — skicka den till
-Expertbyråns delade kunskapsbas genom att skapa en task till
-**obsidian-master** i projektet **"Obsidian knowledgebase"**.
+flera experter kan ha nytta av — skapa ett utkast direkt i din
+obsidian-mapp `/Experter/[din-slug]/`.
 
-### Kriterier — skicka om minst två stämmer
+Detaljerna för hur du skriver (frontmatter, filnamn, struktur) finns
+i skillen **`obsidian-global`**. Kortversion:
+
+- Utkast = expertnot med `status: utkast` i din mapp
+- Du behöver inte fylla i alla frontmatter-fält en publicerad not har
+- Obsidian-syntax (wikilinks, callouts) hanteras via `obsidian-markdown`
+
+### Kriterier — skriv utkast om minst två stämmer
 
 - Kunskapen är inte bunden till ett specifikt uppdrag
-- Andra experter (inte bara du själv) skulle kunna ha nytta av den
-- Du har en primär- eller sekundärkälla som stödjer påståendena
-- Kunskapen är metodologisk eller strukturell (inte personlig
-  reflektion)
+- Andra experter skulle kunna ha nytta av den
+- Du har primär- eller sekundärkälla som stödjer påståendena
+- Kunskapen är metodologisk eller strukturell
 
-Skicka **inte** om:
+Skriv **inte** utkast om:
 
 - Kunskapen är ditt eget heuristiska arbetssätt utan extern källa
 - Informationen är mycket fältspecifik för ett pågående uppdrag
-- Du är osäker på trovärdigheten i källan
+- Du är osäker på trovärdigheten i källan (stannar i life/areas)
 
-### Så skapar du tasken
+### När utkastet är klart — be obsidian-master om hjälp
 
-```
-POST /api/companies/{cid}/issues
-{
-  "title": "Ny kunskap: <kort beskrivning>",
-  "description": "<vad du lärt dig + källa(or) med URL + ditt förslag till område (metod/domän/allmänt) + eventuellt utkastfil>",
-  "assigneeAgentId": "obsidian-master",
-  "projectId": "<obsidian-knowledgebase-projekt-id>",
-  "priority": "low"
-}
-```
+Två mönster, båda via task i projektet "Obsidian knowledgebase" (se
+`obsidian-global` för fullständiga mallar):
 
-Obsidian-master verifierar källorna, formatterar innehållet och
-återkommer med frågor om något är oklart. Du behöver inte själv
-kunna vaultens struktur eller frontmatter-konventioner — det är
-obsidian-masters jobb. Men räkna med att obsidian-master kan ställa
-följdfrågor om källor eller formulering.
+- **`Obsidian-feedback:`** — du är osäker, vill ha råd innan
+  publicering
+- **`Obsidian-publicera:`** — du är redo för flytt till /Områden/
+
+Obsidian-master verifierar källor, formatterar tekniska delar och
+återkommer vid behov med följdfrågor.
 
 ---
 

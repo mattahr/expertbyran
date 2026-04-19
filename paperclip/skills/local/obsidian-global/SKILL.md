@@ -1,14 +1,15 @@
----
+***
+
 name: "obsidian-global"
-description: "Grundläggande skrivning i Expertbyråns delade Obsidian-vault. Använd när du vill skriva ett utkast eller en expertprofil i din egen mapp (/Experter/[din-slug]/). För kritik eller publicering till kanonisk kunskap — skapa task till obsidian-master i projektet 'Obsidian knowledgebase'."
+description: "Grundläggande skrivning i Expertbyråns delade Obsidian-vault. Använd när du vill skriva ett utkast eller en expertprofil i din egen mapp (/Experter/\[din-slug]/). För kritik eller publicering till kanonisk kunskap — skapa task till obsidianmaster i projektet 'Obsidian knowledgebase'."
 slug: "obsidian-global"
 metadata:
-  paperclip:
-    slug: "obsidian-global"
-    skillKey: "local/expertbyran/obsidian-global"
-  skillKey: "local/expertbyran/obsidian-global"
+paperclip:
+slug: "obsidian-global"
+skillKey: "local/expertbyran/obsidian-global"
+skillKey: "local/expertbyran/obsidian-global"
 key: "local/expertbyran/obsidian-global"
----
+----------------------------------------
 
 # Obsidian-global — grundläggande vault-skrivning
 
@@ -22,15 +23,15 @@ Din mapp: `/Experter/[din-agent-slug]/` (t.ex. `/Experter/metod-statistik-petra/
 
 **Du får skriva i:**
 
-- `/Experter/[din-slug]/_index.md` — din expertprofil (en per expert)
-- `/Experter/[din-slug]/*.md` — expertnoter (utkast, framingar, reflektioner, dagbokstyp)
+* `/Experter/[din-slug]/_index.md` — din expertprofil (en per expert)
+* `/Experter/[din-slug]/*.md` — expertnoter (utkast, framingar, reflektioner, dagbokstyp)
 
 **Du får INTE skriva i:**
 
-- Andra experters mappar (`/Experter/annan-slug/`)
-- `/Områden/` — kanonisk, publicerad kunskap; ägs av obsidian-master
-- `/Källor/` — återanvändbart källbibliotek; ägs av obsidian-master
-- `/00_Index/`, `/_Mallar/` — vaultens infrastruktur
+* Andra experters mappar (`/Experter/annan-slug/`)
+* `/Områden/` — kanonisk, publicerad kunskap; ägs av obsidian-master
+* `/Källor/` — återanvändbart källbibliotek; ägs av obsidian-master
+* `/00_Index/`, `/_Mallar/` — vaultens infrastruktur
 
 **Specialregel för utbildningsledaren:** du får även skriva utkast i andra experters mappar under dialog eller retrospektiv — t.ex. skissa en not åt en expert baserat på hens dialogsvar. Sätt då `expert: [expertens-slug]` i frontmatter, inte din egen.
 
@@ -40,7 +41,7 @@ Din mapp: `/Experter/[din-agent-slug]/` (t.ex. `/Experter/metod-statistik-petra/
 
 Utkast, framingar, reflektioner. Fria rubriker, fri struktur. Kräver bara minimal frontmatter:
 
-```yaml
+```YAML
 ---
 typ: expertnot
 skapad: YYYY-MM-DD
@@ -57,7 +58,7 @@ När en expertnot är klar att bli kanonisk kunskap i `/Områden/` — skicka de
 
 En per expert, alltid i `_index.md`. Beskriver vem du är, din roll och dina ansvarsområden.
 
-```yaml
+```YAML
 ---
 typ: expertprofil
 skapad: YYYY-MM-DD
@@ -73,11 +74,11 @@ Skriv kort: vem du är, vad du äger, hur du arbetar.
 
 ## Filnamnsregler
 
-- Små bokstäver, bindestreck som ordseparator, inga mellanslag
-- Använd åäö direkt i filnamn (`språkbruk.md`, inte `sprakbruk.md`)
-- Inga datum i filnamn — datum lever i frontmatter
-- Max ~60 tecken
-- Din expertprofil: alltid `_index.md`
+* Små bokstäver, bindestreck som ordseparator, inga mellanslag
+* Använd åäö direkt i filnamn (`språkbruk.md`, inte `sprakbruk.md`)
+* Inga datum i filnamn — datum lever i frontmatter
+* Max \~60 tecken
+* Din expertprofil: alltid `_index.md`
 
 ## Två sätt att be obsidian-master om hjälp
 
@@ -104,9 +105,9 @@ Använd när noten är färdig och du vill att den ska bli publicerad konceptnot
 
 **Innan du skickar, kontrollera att:**
 
-- Varje påstående har primär- eller sekundärkälla med fungerande URL
-- Du har läst källan och verifierat att den stödjer påståendet
-- Noten är tillräckligt generell för att vara återanvändbar av flera experter, inte bunden till ett specifikt uppdrag
+* Varje påstående har primär- eller sekundärkälla med fungerande URL
+* Du har läst källan och verifierat att den stödjer påståendet
+* Noten är tillräckligt generell för att vara återanvändbar av flera experter, inte bunden till ett specifikt uppdrag
 
 ```
 POST /api/companies/{cid}/issues
@@ -125,19 +126,20 @@ Obsidian-master svarar via dialog — räkna med följdfrågor om källor, formu
 
 Du behöver inte kunna hela vaulten, men det hjälper att veta:
 
-- Verifierar alla källor mot primärkälle-principen (hård källkritik)
-- Skapar eller återanvänder källnoter i `/Källor/`
-- Skriver fotnoter och wikilinks
-- Flyttar din not till rätt `/Områden/`-mapp
-- Uppdaterar relevant områdeskarta (MOC)
-- Kan avvisa eller degradera om källor inte håller
+* Verifierar alla källor mot primärkälle-principen (hård källkritik)
+* Skapar eller återanvänder källnoter i `/Källor/`
+* Skriver fotnoter och wikilinks
+* Flyttar din not till rätt `/Områden/`-mapp
+* Uppdaterar relevant områdeskarta (MOC)
+* Kan avvisa eller degradera om källor inte håller
 
 Det betyder att **din utkasttext får vara rå**. Du behöver inte fylla i alla frontmatter-fält som en publicerad konceptnot har — obsidian-master fyller i de tekniska delarna vid publicering. Du fokuserar på innehållet och källorna.
 
 ## När du jobbar med utkast över flera heartbeats
 
-- Uppdatera `ändrad:` varje gång du redigerar
-- Behåll `status: utkast` tills obsidian-master har publicerat
-- Flera utkast i samma mapp är OK — fri filnamngivning
-- Länka gärna mellan dina egna expertnoter (wikilinks funkar direkt)
-- Länka INTE in från ett utkast till en publicerad konceptnot i `/Områden/` utan att läsa den först — grafen ska hålla
+* Uppdatera `ändrad:` varje gång du redigerar
+* Behåll `status: utkast` tills obsidian-master har publicerat
+* Flera utkast i samma mapp är OK — fri filnamngivning
+* Länka gärna mellan dina egna expertnoter (wikilinks funkar direkt)
+* Länka INTE in från ett utkast till en publicerad konceptnot i `/Områden/` utan att läsa den först — grafen ska hålla
+

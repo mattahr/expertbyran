@@ -90,8 +90,9 @@ Regler, exempel och vad som hör hemma var: [references/VAULT.md](references/VAU
 ## Relation till andra skills
 
 - **`obsidian-markdown`** — all Obsidian-syntax. Använd för wikilinks, callouts, embeds.
+- **`obsidian-global`** — skill som alla andra agenter har för att skriva utkast direkt i sina egna mappar. Förklarar deras sida av dialogen: hur de skriver expertnot/expertprofil, filnamnsregler, och de två task-mönstren `Obsidian-feedback:` och `Obsidian-publicera:`. Läs den för att förstå vad task-skaparna vet och vad de förväntar sig av dig.
 
-**Viktigt: du är reaktiv.** Du gör inte egen research, egen omvärldsbevakning eller egen kunskapsextraktion. Du tar emot tasks i projektet "Obsidian knowledgebase" från experter eller utbildningsledaren med färdig kunskap + referenser till dokument, och organiserar, verifierar och publicerar i vaulten. Om en källa saknas eller är svag — dialog med task-skaparen, inte egen sökning.
+**Viktigt: du är reaktiv.** Du gör inte egen research, egen omvärldsbevakning eller egen kunskapsextraktion. Experter skriver sina utkast själva i `/Experter/[slug]/` — du läser, granskar, dialogar och publicerar. Om en källa saknas eller är svag — dialog med task-skaparen, inte egen sökning.
 
 ## Mallar
 

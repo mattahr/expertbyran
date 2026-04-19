@@ -84,9 +84,11 @@ något att säga om en fråga, skriv "inget akut".
 
 ## Vad händer sedan
 
-När du svarat utför jag det tunga efterarbetet (DocRec-sök, skrivning
-till dina filer) och rapporterar parallellt till din konsultchef och
-eventuellt webbmastern. Du behöver inte göra något mer.
+När du svarat skickar jag en uppföljnings-task med förslag på riktning
+och källor. Du använder `kompetensutveckling`-skillen för att söka,
+läsa och uppdatera dina filer (`expertise.md`, `life/areas/<domän>.md`)
+samt — om lämpligt — skapa obsidian-utkast via `obsidian-global`.
+Jag finns som bollplank om du fastnar.
 ```
 
 ### Retrospektivmall (3 frågor)
@@ -108,8 +110,12 @@ Svara kort (3–10 rader totalt):
 
 ## Vad händer sedan
 
-Jag lägger in svaret i din `life/areas/<domän>.md` + uppdaterar din
-CV-tabell "Tidigare uppdrag vid Expertbyrån" + rapporterar parallellt.
+Du integrerar lärdomen själv i din `life/areas/<domän>.md` och
+lägger till ny rad i "Tidigare uppdrag vid Expertbyrån" i din
+`expertise.md`. Om lärdomen är generell — skapa ett obsidian-utkast
+via `obsidian-global`. Jag skickar en uppföljnings-task med
+påminnelse och rapporterar parallellt till rätt konsultchef och
+eventuellt webbmastern.
 ```
 
 ## Steg 2 — Vänta på svar
@@ -129,58 +135,54 @@ Parsa svaret. Identifiera:
 * Vilka metodfrågor som behöver svar
 * Vilka praktiska behov experten har
 
-### 3b. Sök externa källor
+### 3b. Skicka uppföljnings-task till experten
 
-Använd `docrec-svensk-offentlig`-skillen för att hitta relevanta:
+**Du skriver inte åt experten.** Du coachar hen att göra jobbet
+själv. Skicka en follow-up-task med tydlig riktning:
 
-* Riksrevisionen-granskningar inom området
-* SOU och propositioner
-* ESV, Statskontoret, Myndigheten för vård- och omsorgsanalys
-  (beroende på domän)
+```
+POST /api/companies/{cid}/issues
+{
+  "title": "Fortbildning: <kort ämne baserat på dialog>",
+  "description": "Baserat på ditt dialogsvar — använd `kompetensutveckling`-skillen för att fördjupa dig i <X>. Förslag på källor att börja med: <1-3 konkreta referenser>. Uppdatera din `expertise.md`, din `life/areas/<domän>.md`, och skapa vid behov ett obsidian-utkast via `obsidian-global`.",
+  "assigneeAgentId": "<expert-slug>",
+  "priority": "low"
+}
+```
 
-Läs inte hela dokument — läs snippets och hämta specifika sidor
-via `fetch_pages` vid behov. **Du är den som läser 40-sidiga
-rapporter, inte experten.**
+Vid **retrospektiv**: skicka istället en task med fokus på
+integration av lärdomen:
 
-### 3c. Skriv till expertens filer
+```
+POST /api/companies/{cid}/issues
+{
+  "title": "Retrospektiv-integration: <uppdrag>",
+  "description": "Integrera din retrospektivlärdom i din `life/areas/<domän>.md` och din `expertise.md` (ny rad i 'Tidigare uppdrag'). Om lärdomen är generell — skapa ett obsidian-utkast via `obsidian-global`.",
+  "assigneeAgentId": "<expert-slug>",
+  "priority": "low"
+}
+```
 
-Uppdatera två filer:
+Du följer upp vid nästa luckanalys att uppföljningen faktiskt sker.
 
-**`agents/<expert>/life/areas/<domän>.md`**:
-
-* Lägg till en ny sektion eller utvidga en befintlig
-* Inkludera fullständiga källhänvisningar så experten kan verifiera
-* Skriv i tonläge som experten själv skulle ha skrivit
-
-**`agents/<expert>/expertise.md`**:
-
-* Uppdatera `senast_uppdaterad`-fält i frontmatter
-* Eventuellt ny rad i "Primära metodskills" (om en helt ny
-  kompetens tillkommit)
-* Ny rad i "Fortbildning senaste 12 mån" med datum och kort
-  beskrivning
-* Om retrospektiv: ny rad i "Tidigare uppdrag vid Expertbyrån"
-
-### 3d. Stäng dialogtasken
+### 3c. Stäng dialogtasken
 
 Kommentera dialogtasken med en kort sammanfattning:
 
-```Markdown
-Tack. Jag har:
-
-- Läst <källor>
-- Lagt till <avsnitt> i din life/areas/<domän>.md
-- Uppdaterat din expertise.md med <vilka sektioner>
-
-Nästa gång du öppnar filerna hittar du det nya materialet. Inget mer
-från din sida — jag rapporterar vidare.
+```markdown
+Tack för svaret. Jag har skickat en uppföljnings-task till dig med
+förslag på riktning och källor. Du styr sökande och skrivande från
+här; jag finns tillgänglig som bollplank om du fastnar.
 ```
 
 Markera tasken `done`.
 
 ## Steg 4 — Parallellrapportera
 
-Efter dialogen, skapa **upp till tre tasks** i parallell — konsultchef (alltid), webbmaster (om publiceringsvärt), obsidian-master (om generell/kanonisk kunskap):
+Dialogen ger dig helhetsöverblick — använd den för att informera rätt
+personer. Upp till två tasks parallellt: konsultchef (alltid), och
+webbmaster (om publiceringsvärt). Båda är din egen coach-bedömning —
+inte en skrivhandling åt experten.
 
 ### Till rätt konsultchef (alltid)
 
@@ -222,27 +224,17 @@ POST /api/companies/{cid}/issues
 }
 ```
 
-### Till obsidian-master (om generell/kanonisk kunskap)
+**Notera:** experten bör själv ha uppdaterat sin `expertise.md` som
+en del av uppföljnings-tasken (steg 3b). Om inte — be om det innan
+du skickar webbmaster-tasken.
 
-Om den nya kunskapen är **generell och kanonisk** — metod- eller
-domänkunskap som även andra experter kan ha nytta av, med primär-
-eller sekundärkälla som stöd — skapa en task till obsidian-master i
-projektet **"Obsidian knowledgebase"**:
+### Inte obsidian-master
 
-```
-POST /api/companies/{cid}/issues
-{
-  "title": "Ny kunskap: <kort beskrivning>",
-  "description": "<vad experten lärt sig + källa(or) med URL + förslag till område (metod/domän/allmänt) + expertens slug>",
-  "assigneeAgentId": "obsidian-master",
-  "projectId": "<obsidian-knowledgebase-projekt-id>",
-  "priority": "low"
-}
-```
-
-Skicka **inte** om kunskapen är expertens personliga heuristik utan
-extern källa, eller mycket fältspecifik för ett pågående uppdrag.
-Obsidian-master verifierar källorna och återkommer vid frågor.
+Du skickar **inte** task till obsidian-master direkt. Om kunskapen
+passar för Expertbyråns delade vault är det **experten själv** som
+skapar obsidian-utkast (via `obsidian-global`) och begär publicering
+(via `Obsidian-publicera:`-task till obsidian-master). Din coaching-
+task i steg 3b påminner om det.
 
 ## Begränsningar
 
