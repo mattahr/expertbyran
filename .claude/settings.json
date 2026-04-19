@@ -130,7 +130,11 @@
       "Bash(/usr/bin/env node:*)",
       "Bash(git -C /Users/mattias/source/expertbyran/.worktrees/web-responsive-redesign diff main..HEAD -- web/package.json)",
       "Bash(git branch:*)",
-      "Bash(npx --prefix /Users/mattias/source/expertbyran/web tsc --noEmit -p /Users/mattias/source/expertbyran/web/tsconfig.json)"
+      "Bash(npx --prefix /Users/mattias/source/expertbyran/web tsc --noEmit -p /Users/mattias/source/expertbyran/web/tsconfig.json)",
+      "Bash(node_modules/.bin/next build:*)",
+      "Bash(DATA_DIR=/Users/mattias/source/expertbyran/web node_modules/.bin/next build)",
+      "Read(//app/data/**)",
+      "Bash(curl -s \"https://nextjs.org/docs/messages/middleware-to-proxy\")"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
