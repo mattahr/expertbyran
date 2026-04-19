@@ -9,7 +9,7 @@ url: {{https://...}}
 publicerad: {{YYYY-MM-DD}}
 organisation: {{organisation}}
 upphovsperson: ""
-ämnesområden: [{{ämne1}}]
+ämnesområden: ["[[_{{ämne1}}]]"]
 ---
 
 # {{Fullständig titel}}

@@ -66,7 +66,7 @@ url: https://www.regeringen.se/rattsliga-dokument/statens-offentliga-utredningar
 publicerad: 2024-05-12                            # originalkällans publiceringsdatum
 organisation: Arbetsmarknadsdepartementet
 upphovsperson: "Namn Efternamn"                   # valfri, när relevant
-ämnesområden: [arbetsmarknad, statistik]         # vilka /Områden/-konceptnoter kan använda denna
+ämnesområden: ["[[_arbetsmarknad]]", "[[_statistik]]"]  # wikilinks till MOC:er som kan använda denna källa
 ```
 
 **Källtyp → trovärdighet (riktlinje):**
@@ -123,6 +123,6 @@ publicerad_i: "[[konceptnot-x]]"                  # valfri, om noten har flyttat
 
 1. **Saknat `område:` på konceptnot** — konceptnoten kan inte länkas från MOC.
 2. **`status: publicerad` utan källfotnoter** — graf-integriteten bryter.
-3. **`expert:` som sträng istället för lista** — fältet tar alltid en lista även vid en enda expert: `expert: [slug]`.
+3. **`expert:` på fel form** — `konceptnot` tar alltid en **lista** (`expert: [slug]`) även vid en enda bidragsgivare. `expertprofil` och `expertnot` tar en **skalär** (`expert: slug`) eftersom de har exakt en ägare.
 4. **Datum som sträng med snedstreck** — använd ISO `YYYY-MM-DD`, inte `2026/04/19`.
 5. **Wikilink utan hakparenteser** — fältet `område:` kräver faktisk wikilink-syntax `"[[_statistik]]"`, inte bara strängen `"statistik"`.

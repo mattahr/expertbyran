@@ -133,7 +133,7 @@ Obsidian-master pratar aldrig "bara med sig själv" när det gäller innehåll. 
 
 ### Dialogmönster: Källa saknas
 
-> **Agent:** För påståendet "X leder till Y" har jag inte hittat någon primärkälla. Kan du peka på en SOU, prop, myndighetspublikation eller motsvarande som stödjer påståendet? Alternativt: kan påståendet tonas ner till "X associeras med Y" utan kausal hävning?
+> **Agent:** För påståendet "X leder till Y" har jag inte hittat någon primärkälla. Kan du peka på en SOU, prop, myndighetspublikation eller motsvarande som stödjer påståendet? Alternativt: kan påståendet tonas ner till "X associeras med Y" utan kausal formulering?
 
 ### Dialogmönster: Källa svag (tertiär)
 

@@ -15,7 +15,7 @@ status: utkast
 
 ## Preliminärt resonemang
 
-{{Öppen text — får vara ofärdigt. Fota gärna påståenden som tänkbara hypoteser.}}
+{{Öppen text — får vara ofärdigt. Formulera gärna påståenden som tänkbara hypoteser.}}
 
 > [!todo] Källor att leta upp
 > - {{ämne1}}: saknar primärkälla

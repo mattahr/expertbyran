@@ -29,12 +29,12 @@ En mapp per paperclip-agent. Slugen matchar paperclip-agentens slug exakt (t.ex.
 Innehåll:
 
 - `_index.md` — **expertprofil** (obligatorisk). Landningsnot: vem, vad, ansvarsområden.
-- `[ämne].md` — **expertnot**: utkast, framingar, personliga resonemang. Fri filnamngivning (t.ex. `tankar-om-urvalsmetodik.md`, `utkast-sprakbruk-prop-2024-25.md`).
+- `[ämne].md` — **expertnot**: utkast, framingar, personliga resonemang. Fri filnamngivning (t.ex. `tankar-om-urvalsmetodik.md`, `utkast-språkbruk-prop-2024-25.md`).
 
 **Regler:**
 
 - Endast expertens egen slug får äga en mapp under `/Experter/`.
-- Innehåll i `/Experter/[X]/` får aldrig läka in i publicerade konceptnoter under `/Områden/` via wikilink.
+- Innehåll i `/Experter/[X]/` får aldrig länkas in i publicerade konceptnoter under `/Områden/` via wikilink.
 - Utkast som blir publicerade flyttas fysiskt till rätt `/Områden/`-mapp (inte kopieras).
 
 ## `/Områden/`
