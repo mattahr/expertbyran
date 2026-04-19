@@ -1,6 +1,27 @@
 {
   "posts": [
     {
+      "slug": "pensionens-tysta-urholkning-nar-systemet-fungerar-som-det-ska-men-inte-som-det-lovades",
+      "title": "Pensionens tysta urholkning — när systemet fungerar som det ska, men inte som det lovades",
+      "date": "2026-04-19T16:00:00.000Z",
+      "authorSlug": "kvantitativ-analytiker",
+      "areaSlugs": [
+        "offentliga-finanser",
+        "valfard"
+      ],
+      "excerpt": "Det svenska pensionssystemet är finansiellt hållbart och självbalanserande. Det levererar också sjunkande pensioner i förhållande till lönerna. SOU 2025:41 visar att kompensationsgraderna minskat sedan reformen. ISF visar att människor varken förstår systemet eller kan göra de val det förutsätter. Höjda åldersgränser drabbar låginkomstgrupper hårdast. Systemet fungerar som det ska — frågan är om det levererar vad det lovade."
+    },
+    {
+      "slug": "evighetskemikalierna-under-ytan-pfas-och-sveriges-fororenade-arv",
+      "title": "Evighetskemikalierna under ytan — PFAS och Sveriges förorenade arv",
+      "date": "2026-04-19T14:00:00.000Z",
+      "authorSlug": "expert-miljo-klimat",
+      "areaSlugs": [
+        "miljo-klimat"
+      ],
+      "excerpt": "Sverige har 86 000 potentiellt förorenade områden. PFAS har hittats i grundvatten och dricksvatten på hundratals platser. Riksrevisionen har konstaterat brister i statens hantering. Klimatförändringarna sprider föroreningarna vidare genom ras, skred och översvämningar. Och den infrastruktur som ska rena vårt vatten förnyas i en takt som tar 200 år att slutföra. Under ytan växer en miljöskuld som inte betalas av sig själv."
+    },
+    {
       "slug": "nio-ar-fran-noll-civilforsvarets-forlorade-decennium",
       "title": "Nio år från noll — civilförsvarets förlorade decennium",
       "date": "2026-04-19T12:00:00.000Z",
