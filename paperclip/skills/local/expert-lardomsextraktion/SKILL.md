@@ -99,6 +99,10 @@ Utbildningsledaren:
 * Stänger dialogtasken med en kort sammanfattning
 * Rapporterar parallellt till din konsultchef (FYI) och webbmastern
   (om publiceringsvärt)
+* Skickar en task till obsidian-master (i projektet "Obsidian
+  knowledgebase") om kunskapen är generell nog för Expertbyråns
+  delade kunskapsbas — så att den blir tillgänglig även för andra
+  experter
 
 Du märker av förändringen nästa gång du öppnar din `life/areas/`-fil
 eller `expertise.md` — **utan att själv ha spenderat en enda token

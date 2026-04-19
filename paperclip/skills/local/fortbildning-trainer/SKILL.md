@@ -100,7 +100,27 @@ Efter att du har utfört fortbildning eller retrospektiv, avgör om
 **Vid osäkerhet: publicera inte.** Hellre en extra fortbildning än
 att översäljа experten på webbplatsen.
 
-## 4. Parallellrapportering — två kanaler
+## 3b. Beslutsregel — skicka till Obsidian-vaulten
+
+Parallellt med publiceringsbeslutet — avgör om kunskapen ska gå till
+Expertbyråns delade kunskapsbas via obsidian-master. Detta är ett
+**separat beslut** från webbpubliceringen och gäller innehåll, inte
+CV-rader.
+
+| Kunskapstyp                                        | Skicka till vault? | Varför |
+|----------------------------------------------------|--------------------|--------|
+| Ny metod- eller domänkunskap med primärkälla       | **Ja**             | Kanonisk, återanvändbar av andra experter |
+| Ny källa (SOU, prop, lag) med relevant innehåll    | **Ja**             | Återanvändbar källnot |
+| Korrigering av felaktigt påstående i befintlig not | **Ja**             | Vaulten ska vara korrekt |
+| Expertens personliga arbetssätt utan extern källa  | Nej                | Hör hemma i expertens egna filer |
+| Fältspecifik observation från ett uppdrag          | Nej                | För smalt för delad kunskapsbas |
+| Retrospektivinsikt utan generaliserbar lärdom      | Nej                | Stannar i retrospektivkommentaren |
+
+**Vid osäkerhet: skicka ändå.** Obsidian-master verifierar källorna
+och avvisar eller degraderar om innehållet inte håller. Bättre en
+avvisad task än en lucka i vaulten.
+
+## 4. Parallellrapportering — upp till tre kanaler
 
 När du har bestämt dig:
 
@@ -138,6 +158,25 @@ POST /api/companies/{cid}/issues
 Konsultchefen är **inte** beslutspunkt för publiceringen. Du har
 sett all kontext och är bäst positionerad. Parallellrapporteringen
 betyder att båda informeras samtidigt.
+
+### Om generell/kanonisk kunskap: till obsidian-master
+
+Följ beslutsregeln i sektion 3b. Om ja:
+
+```
+POST /api/companies/{cid}/issues
+{
+  "title": "Ny kunskap: <kort beskrivning>",
+  "description": "<vad som lärts + källa(or) med URL + förslag till område (metod/domän/allmänt) + expertens slug>",
+  "assigneeAgentId": "obsidian-master",
+  "projectId": "<obsidian-knowledgebase-projekt-id>",
+  "priority": "low"
+}
+```
+
+Obsidian-master verifierar källorna och organiserar i vaulten. Om
+något är oklart eller källorna är svaga återkommer hen med frågor
+direkt till experten (inte till dig).
 
 ## 5. Skill-evolution — när du ser mönster
 

@@ -90,8 +90,8 @@ Regler, exempel och vad som hör hemma var: [references/VAULT.md](references/VAU
 ## Relation till andra skills
 
 - **`obsidian-markdown`** — all Obsidian-syntax. Använd för wikilinks, callouts, embeds.
-- **`docrec-svensk-offentlig`** — sök primärkällor i SOU, propositioner, betänkanden när expert saknar referens.
-- **`expert-lardomsextraktion`** — anropa för att destillera lärdomar från en expertnot innan publicering.
+
+**Viktigt: du är reaktiv.** Du gör inte egen research, egen omvärldsbevakning eller egen kunskapsextraktion. Du tar emot tasks i projektet "Obsidian knowledgebase" från experter eller utbildningsledaren med färdig kunskap + referenser till dokument, och organiserar, verifierar och publicerar i vaulten. Om en källa saknas eller är svag — dialog med task-skaparen, inte egen sökning.
 
 ## Mallar
 

@@ -252,6 +252,49 @@ Detaljer: `references/integration-och-loggning.md`
 
 ---
 
+## Steg 5b — Skicka generell kunskap till Obsidian-vaulten
+
+Om den nya kunskapen är **generell och kanonisk** — alltså inte
+bara ditt personliga arbetssätt utan metod- eller domänkunskap som
+flera experter i Expertbyrån kan ha nytta av — skicka den till
+Expertbyråns delade kunskapsbas genom att skapa en task till
+**obsidian-master** i projektet **"Obsidian knowledgebase"**.
+
+### Kriterier — skicka om minst två stämmer
+
+- Kunskapen är inte bunden till ett specifikt uppdrag
+- Andra experter (inte bara du själv) skulle kunna ha nytta av den
+- Du har en primär- eller sekundärkälla som stödjer påståendena
+- Kunskapen är metodologisk eller strukturell (inte personlig
+  reflektion)
+
+Skicka **inte** om:
+
+- Kunskapen är ditt eget heuristiska arbetssätt utan extern källa
+- Informationen är mycket fältspecifik för ett pågående uppdrag
+- Du är osäker på trovärdigheten i källan
+
+### Så skapar du tasken
+
+```
+POST /api/companies/{cid}/issues
+{
+  "title": "Ny kunskap: <kort beskrivning>",
+  "description": "<vad du lärt dig + källa(or) med URL + ditt förslag till område (metod/domän/allmänt) + eventuellt utkastfil>",
+  "assigneeAgentId": "obsidian-master",
+  "projectId": "<obsidian-knowledgebase-projekt-id>",
+  "priority": "low"
+}
+```
+
+Obsidian-master verifierar källorna, formatterar innehållet och
+återkommer med frågor om något är oklart. Du behöver inte själv
+kunna vaultens struktur eller frontmatter-konventioner — det är
+obsidian-masters jobb. Men räkna med att obsidian-master kan ställa
+följdfrågor om källor eller formulering.
+
+---
+
 ## Steg 6 — Logg och feedback
 
 ### 6a. Memory-rad
@@ -298,12 +341,13 @@ När alla subtasks i fortbildningsplanen är klara:
 ## Sammanfattning av flödet
 
 ```
-Steg 1  Reflektion        Läs egna filer, formulera lucka
-Steg 2  Planering          Bryt ner i subtasks, skapa issues
-Steg 3  Förankring         FYI till konsultchef + utbildningsledare
-Steg 4  Genomförande       En subtask per heartbeat: sök + läs + extrahera
-Steg 5  Integration        Skriv till life/areas/ och expertise.md
-Steg 6  Logg & feedback    Memory-rad + stäng subtask + ev. peer-review
+Steg 1   Reflektion        Läs egna filer, formulera lucka
+Steg 2   Planering         Bryt ner i subtasks, skapa issues
+Steg 3   Förankring        FYI till konsultchef + utbildningsledare
+Steg 4   Genomförande      En subtask per heartbeat: sök + läs + extrahera
+Steg 5   Integration       Skriv till life/areas/ och expertise.md
+Steg 5b  Vault-bidrag      Om generell/kanonisk: task till obsidian-master
+Steg 6   Logg & feedback   Memory-rad + stäng subtask + ev. peer-review
 ```
 
 Steg 4–6 upprepas för varje subtask i planen.

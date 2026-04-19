@@ -180,7 +180,7 @@ Markera tasken `done`.
 
 ## Steg 4 — Parallellrapportera
 
-Efter dialogen, skapa **två tasks** i parallell:
+Efter dialogen, skapa **upp till tre tasks** i parallell — konsultchef (alltid), webbmaster (om publiceringsvärt), obsidian-master (om generell/kanonisk kunskap):
 
 ### Till rätt konsultchef (alltid)
 
@@ -221,6 +221,28 @@ POST /api/companies/{cid}/issues
   "priority": "low"
 }
 ```
+
+### Till obsidian-master (om generell/kanonisk kunskap)
+
+Om den nya kunskapen är **generell och kanonisk** — metod- eller
+domänkunskap som även andra experter kan ha nytta av, med primär-
+eller sekundärkälla som stöd — skapa en task till obsidian-master i
+projektet **"Obsidian knowledgebase"**:
+
+```
+POST /api/companies/{cid}/issues
+{
+  "title": "Ny kunskap: <kort beskrivning>",
+  "description": "<vad experten lärt sig + källa(or) med URL + förslag till område (metod/domän/allmänt) + expertens slug>",
+  "assigneeAgentId": "obsidian-master",
+  "projectId": "<obsidian-knowledgebase-projekt-id>",
+  "priority": "low"
+}
+```
+
+Skicka **inte** om kunskapen är expertens personliga heuristik utan
+extern källa, eller mycket fältspecifik för ett pågående uppdrag.
+Obsidian-master verifierar källorna och återkommer vid frågor.
 
 ## Begränsningar
 

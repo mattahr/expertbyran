@@ -110,20 +110,23 @@ Sex arbetsflöden täcker alla tasks obsidian-master hanterar. Identifiera rätt
 
 ## Arbetsflöde 6: Föråldring
 
-**Trigger:** Task säger "gå igenom föråldrad kunskap", eller du upptäcker en konceptnot med `senaste-översyn:` äldre än ~12 månader.
+**Trigger:** Task säger "gå igenom föråldrad kunskap", eller du upptäcker en konceptnot med `senaste-översyn:` äldre än ~12 månader under annan task.
+
+**Du söker inte själv efter nyare information eller ersättande källor.** Ditt jobb är att kontrollera tekniskt och flagga till ansvarig expert för bedömning.
 
 **Steg:**
 
 1. **Identifiera kandidater.** Filtrera konceptnoter där `senaste-översyn:` är > 12 månader.
-2. **Kontrollera källor.** För varje not:
-   - Är URL:en fortfarande giltig?
-   - Har en ny SOU/prop/lag ersatt den citerade?
-   - Är siffror (t.ex. SCB-statistik) fortfarande aktuella?
-3. **Beslut per not:**
-   - **Fortfarande aktuell** → uppdatera bara `senaste-översyn:`.
-   - **Partiellt föråldrad** → sätt `status: föråldrad` + `osäkerhet: hög`, flagga till expert.
-   - **Ersätts av ny kunskap** → Arbetsflöde 3 för att skapa ersättare.
-4. **Rapportera:** vilka noter är granskade, vilka flaggade för expert, vilka uppdaterade.
+2. **Kontrollera tekniskt.** För varje not:
+   - Svarar källnot-URL:erna fortfarande? (HTTP-check)
+   - Finns notens MOC-länk och övriga wikilinks? (graf-check)
+3. **Flagga till ansvarig expert** via task. Inkludera:
+   - Länk till noten
+   - `senaste-översyn:`-datum och ålder
+   - Eventuella tekniska issues (brutna URL:er, brutna länkar)
+   - Fråga: är innehållet fortfarande aktuellt, eller behöver det uppdateras/ersättas?
+4. **Avvakta expertens svar.** Själva uppdateringen sker via en ny task som triggar Arbetsflöde 3 eller ett nytt utkast.
+5. **Rapportera:** vilka noter granskade, vilka flaggade, vilka hade tekniska issues.
 
 ---
 
@@ -137,7 +140,7 @@ Obsidian-master pratar aldrig "bara med sig själv" när det gäller innehåll. 
 
 ### Dialogmönster: Källa svag (tertiär)
 
-> **Agent:** Den referens du lämnat, [X], är en blogg utan spårbar auktoritet — tertiär i vår källkritikmatris. Jag har sökt i [docrec-svensk-offentlig] och hittat [Y] som verkar behandla samma ämne primärt. Kan vi byta till den källan?
+> **Agent:** Den referens du lämnat, [X], är en blogg utan spårbar auktoritet — tertiär i vår källkritikmatris. Kan du peka på en primär eller sekundär källa som stödjer samma påstående? (T.ex. SOU, proposition, myndighetspublikation eller peer-reviewed artikel.) Om du inte hittar en bättre källa kan vi välja att tona ner påståendet eller avstå från att publicera det.
 
 ### Dialogmönster: Källa stödjer inte påståendet
 
@@ -164,11 +167,7 @@ Obsidian-master pratar aldrig "bara med sig själv" när det gäller innehåll. 
 
 ### Dialogmönster: Föråldrad källa
 
-> **Agent:** Din konceptnot [[X]] refererar till SOU 2019:N. Sedan dess har [prop 2024:M] antagits och [lag] ändrats. Bör vi:
->
-> 1. Uppdatera noten med de nya primärkällorna.
-> 2. Skapa en ny not som ersätter den gamla med `ersätter:`-länk.
-> 3. Låta noten stå som historisk beskrivning och lägga till en callout om uppdaterat rättsläge?
+> **Agent:** Din konceptnot [[X]] refererar till [källa, publicerad ÅÅÅÅ] och har `senaste-översyn: ÅÅÅÅ-MM`. Den är nu > 12 månader gammal. Kan du granska om innehållet och källan fortfarande är aktuella? Om något behöver uppdateras, skicka en ny task med de nya referenserna. Om noten fortfarande är aktuell kan jag bara uppdatera `senaste-översyn:`-datumet.
 
 ---
 

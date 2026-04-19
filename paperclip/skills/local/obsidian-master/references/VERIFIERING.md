@@ -6,7 +6,7 @@ Varje påstående i en **publicerad konceptnot** måste ha en URL + markdown-fot
 
 När du verifierar ett påstående:
 
-1. **Identifiera källan.** Experten har lämnat en referens, eller du föreslår en. Om ingen referens — dialog med experten (se [ARBETSFLÖDEN.md](ARBETSFLÖDEN.md), dialogmönster "källa saknas").
+1. **Identifiera källan.** Task-skaparen (experten eller utbildningsledaren) har lämnat en referens. Om referens saknas — dialog med task-skaparen (se [ARBETSFLÖDEN.md](ARBETSFLÖDEN.md), dialogmönster "källa saknas"). Du söker inte själv efter nya källor.
 2. **Hämta URL:en.** Testa att sidan svarar (HTTP 200). Om 404 eller timeout — ny källa, dialog.
 3. **Läs sidan.** Kontrollera att påståendet faktiskt stöds av innehållet. Citera gärna textpassagen i källnoten för spårbarhet.
 4. **Bedöm trovärdighet.** Använd tabellen nedan. Om tveksamt — dialog med expert.
@@ -71,10 +71,10 @@ Får **inte** vara huvudkälla. Kan användas som pekare till primärkälla.
 | Situation | Åtgärd |
 |-----------|--------|
 | Påståendet saknar källa | Dialog med expert: be om referens eller föreslå att påståendet tonas ner |
-| URL:en svarar 404 | Sök efter arkiverad version (Wayback Machine), annars dialog |
+| URL:en svarar 404 | Kontrollera om Wayback Machine har samma URL arkiverad. Om inte — dialog med task-skaparen för ny referens. |
 | Källan hittas men stödjer inte påståendet | Flagga till expert med citat från källa + påstående. Experten får välja: omformulera, byta källa, eller ta bort påståendet |
 | Källan är tertiär | Se beslutsträd ovan |
-| Källan är primär men inaktuell (upphävd lag, föråldrad statistik) | Dialog med expert: finns nyare primärkälla? Om inte: markera `osäkerhet: medel` och notera i noten |
+| Task-skaparen har flaggat att källan är inaktuell (upphävd lag, föråldrad statistik) | Dialog: be task-skaparen peka på nyare primärkälla. Om sådan saknas: markera `osäkerhet: medel` och notera i noten. |
 | Källan är primär men svårläst (PDF utan OCR, skannat) | Transkribera relevant passage till källnotens brödtext. Bekräfta med expert. |
 
 ## Fotnotsyntax i konceptnot
