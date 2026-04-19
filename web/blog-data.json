@@ -1,6 +1,112 @@
 {
   "posts": [
     {
+      "slug": "nio-ar-fran-noll-civilforsvarets-forlorade-decennium",
+      "title": "Nio år från noll — civilförsvarets förlorade decennium",
+      "date": "2026-04-19T12:00:00.000Z",
+      "authorSlug": "expert-forsvar",
+      "areaSlugs": [
+        "forsvar"
+      ],
+      "excerpt": "Sverige beslutade 2015 att återuppta totalförsvarsplaneringen. Nio år senare konstaterar Riksrevisionen att styrningen inte har varit effektiv. Förmågan är alldeles för låg. Fram till 2018 saknades öronmärkta medel helt. Myndigheterna upplever otydliga krav och svåra prioriteringar. Nu ska 15 miljarder per år bygga upp ett civilt försvar från i det närmaste noll — i en tid då behovet aldrig varit mer akut."
+    },
+    {
+      "slug": "infiltratoren-inifran-nar-kriminella-tar-plats-i-staten",
+      "title": "Infiltratören inifrån — när kriminella tar plats i staten",
+      "date": "2026-04-19T10:00:00.000Z",
+      "authorSlug": "rattslig-utredare",
+      "areaSlugs": [
+        "rattsvasende"
+      ],
+      "excerpt": "Riksrevisionen konstaterar att statliga myndigheters skydd mot infiltration inte är effektivt. Arbetstillstånd beviljas till arbetsgivare som myndigheten själv bedömt som oseriösa. Möjliggörare — anställda som missbrukar sin position till förmån för kriminella nätverk — finns i rättsväsendet, kommuner och myndigheter. Och felaktiga utbetalningar från välfärdssystemen uppgår till 15–20 miljarder kronor per år. Delarna granskas var för sig. Helheten granskas inte alls."
+    },
+    {
+      "slug": "nar-algoritmen-arver-fordomarna-myndigheternas-diskrimineringsblindhet",
+      "title": "När algoritmen ärver fördomarna — myndigheternas diskrimineringsblindhet",
+      "date": "2026-04-19T08:00:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": [
+        "digitalisering",
+        "rattsvasende"
+      ],
+      "excerpt": "Riksrevisionen konstaterar att statens arbete mot etnisk diskriminering vid myndighetsbeslut inte är effektivt. Sju stora myndigheter har begränsad kunskap om sina diskrimineringsrisker. Förebyggande åtgärder bygger inte på riskanalys. Och om åtta månader ska samma myndigheter uppfylla EU:s AI-förordning — som kräver just den typ av bias-analys som de inte gör idag."
+    },
+    {
+      "slug": "900-miljarder-utan-granskning-upphandlingens-svarta-flackar",
+      "title": "900 miljarder utan granskning — upphandlingens svarta fläckar",
+      "date": "2026-04-18T23:00:00.000Z",
+      "authorSlug": "expert-finanser",
+      "areaSlugs": [
+        "offentliga-finanser"
+      ],
+      "excerpt": "Den offentliga upphandlingen omsätter över 900 miljarder kronor per år — nästan en tredjedel av alla offentliga utgifter. 85 procent av kommuner och regioner identifierar själva upphandling som sitt största korruptionsriskområde. En ny utredning pekar uttryckligen ut upphandling som högrisksektor. Och Riksrevisionen har ingen aktuell bred granskning av området."
+    },
+    {
+      "slug": "mer-admin-mindre-karnverksamhet-statsforvaltningens-paradox",
+      "title": "Mer administration, mindre kärnverksamhet — statsförvaltningens paradox",
+      "date": "2026-04-18T21:00:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": [
+        "revisionsmetodik",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Riksrevisionens granskning visar att administrationen i statsförvaltningen har ökat sedan 2010 — inte minskat. Kärnverksamhetens andel sjunker. Chefsbefattningar växer. Tillitsreformen har inte lett till mätbar minskning. Och Statens servicecenter har enligt myndighetschefer snarare ökat administrationen. Sverige har investerat stort i att minska byråkratin — och fått mer av den."
+    },
+    {
+      "slug": "130-miljarder-som-inte-finns-kommunernas-demografiska-ekvation",
+      "title": "130 miljarder som inte finns — kommunernas demografiska ekvation",
+      "date": "2026-04-18T19:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Kommunsektorn behöver 130 miljarder kronor till mitten av 2030-talet bara för demografin. Försörjningskvoten stiger från 0,77 till 0,90. Hälften av kommunerna bedömer att de inte klarar äldreomsorgens behov 2040. Riksrevisionens granskning av utjämningssystemet är sju år gammal. Och kommunstrukturen bygger på kartan från 1960-talet. Grundfrågan: matchar resurserna uppdraget?"
+    },
+    {
+      "slug": "27000-platser-utan-plan-fangelsesveriges-blinda-flackar",
+      "title": "27 000 platser utan plan — fängelseSveriges blinda fläckar",
+      "date": "2026-04-18T17:00:00.000Z",
+      "authorSlug": "expert-rattsvasende",
+      "areaSlugs": [
+        "rattsvasende",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Kriminalvården planerar att tredubbla fängelsekapaciteten — från 9 000 till 27 000 platser — men den egna kapacitetsrapporten visar att inte ens det kan räcka: worst case 37 500 klienter till 2034. Riksrevisionens granskning visar att behandlingsverksamheten redan idag inte når tillräckligt många intagna. Dubbelbeläggning har blivit standard. Häktningstiderna har ökat med 29 dagar på fyra år. Sverige bygger fler fängelseplatser — men utan att säkerställa att de gör nytta."
+    },
+    {
+      "slug": "16-ansikten-pa-14-dagar-aldreomsorgens-tysta-kris",
+      "title": "16 ansikten på 14 dagar — äldreomsorgens tysta kris",
+      "date": "2026-04-18T15:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard"
+      ],
+      "excerpt": "En undersköterska hjälpte fyra omsorgstagare per dag på 1980-talet. Idag är siffran tolv. En äldre person i hemtjänsten möter i genomsnitt 16 olika vårdare på 14 dagar. Antalet 80-plussare ökar med 60 procent till 2040. Och 56 procent av kommunerna bedömer att de inte kommer klara omsorgsbehovet. Problemen har dokumenterats i ett decennium — utan att de grundläggande bristerna åtgärdats."
+    },
+    {
+      "slug": "ny-lag-gamla-brister-nis2-kommunerna",
+      "title": "Ny lag, gamla brister — NIS2 möter kommunernas cybersäkerhetsverklighet",
+      "date": "2026-04-18T13:00:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": [
+        "digitalisering",
+        "valfard"
+      ],
+      "excerpt": "Cybersäkerhetslagen trädde i kraft den 15 januari 2026 med krav på 18 sektorer. Sverige valde en striktare implementering än EU kräver. Men 67 procent av regionerna når inte ens grundläggande säkerhetsnivå, och kommunernas situation är sämre. Frågan är om lagen skapar verklig säkerhet — eller bara trygghet på papper."
+    },
+    {
+      "slug": "146000-i-ko-ingen-ansvarar",
+      "title": "146 000 i kö — men ingen ansvarar för helheten",
+      "date": "2026-04-18T11:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard",
+        "offentliga-finanser"
+      ],
+      "excerpt": "146 000 personer väntar på operation. Vårdgarantin uppfylls inte i någon region. Sjukvårdskostnaderna ökar med sex procent per år. Och en parlamentarisk utredning föreslår att staten ska ta över från regionerna. Ändå saknas en bred, oberoende granskning av om de närmare 400 miljarder kronor som sjukvården kostar varje år faktiskt ger den vård medborgarna har rätt att förvänta sig."
+    },
+    {
       "slug": "vd-har-ordet-ai-styrning-granskande-staten",
       "title": "VD har ordet: AI-styrning och effektivitetsrevisionens utmaningar",
       "date": "2026-04-15T06:00:00.000Z",
