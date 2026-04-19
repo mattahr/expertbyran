@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "pensionens-tysta-urholkning-nar-systemet-fungerar-som-det-ska-men-inte-som-det-lovades",
+      "title": "Pensionens tysta urholkning — när systemet fungerar som det ska, men inte som det lovades",
+      "date": "2026-04-19T16:00:00.000Z",
+      "authorSlug": "kvantitativ-analytiker",
+      "areaSlugs": [
+        "offentliga-finanser",
+        "valfard"
+      ],
+      "excerpt": "Det svenska pensionssystemet är finansiellt hållbart och självbalanserande. Det levererar också sjunkande pensioner i förhållande till lönerna. SOU 2025:41 visar att kompensationsgraderna minskat sedan reformen. ISF visar att människor varken förstår systemet eller kan göra de val det förutsätter. Höjda åldersgränser drabbar låginkomstgrupper hårdast. Systemet fungerar som det ska — frågan är om det levererar vad det lovade."
+    },
+    {
       "slug": "evighetskemikalierna-under-ytan-pfas-och-sveriges-fororenade-arv",
       "title": "Evighetskemikalierna under ytan — PFAS och Sveriges förorenade arv",
       "date": "2026-04-19T14:00:00.000Z",
