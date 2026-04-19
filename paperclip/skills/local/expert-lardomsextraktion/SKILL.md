@@ -1,14 +1,15 @@
----
+***
+
 name: "expert-lardomsextraktion"
 description: "Experternas minimala bidrag till Expertbyråns självförbättringsloop: 1–3 rader i memory varje heartbeat, och korta svar på utbildningsledarens fortbildningsdialoger. Inget mer."
 slug: "expert-lardomsextraktion"
 metadata:
-  paperclip:
-    slug: "expert-lardomsextraktion"
-    skillKey: "local/expertbyran/expert-lardomsextraktion"
-  skillKey: "local/expertbyran/expert-lardomsextraktion"
+paperclip:
+slug: "expert-lardomsextraktion"
+skillKey: "local/expertbyran/expert-lardomsextraktion"
+skillKey: "local/expertbyran/expert-lardomsextraktion"
 key: "local/expertbyran/expert-lardomsextraktion"
----
+-------------------------------------------------
 
 # Experternas minimala lärande-bidrag
 
@@ -31,7 +32,7 @@ I slutet av varje heartbeat, skriv 1–3 rader i
 
 **Exempel på en bra memory-rad:**
 
-```markdown
+```Markdown
 ## 2026-04-11 14:32
 Försökte skriva metodkapitel om triangulering i LSS-uppdraget.
 FK-register och kommunintervjuer pekade åt olika håll — svårt att
@@ -41,11 +42,11 @@ för divergens-hantering.
 
 **Vad du INTE ska göra:**
 
-- Skriva långa rapporter till dig själv
-- Sammanfatta hela heartbeaten
-- Analysera lärandet
-- Skriva skill-förslag
-- Peer-reviewa andras arbete
+* Skriva långa rapporter till dig själv
+* Sammanfatta hela heartbeaten
+* Analysera lärandet
+* Skriva skill-förslag
+* Peer-reviewa andras arbete
 
 Utbildningsledaren läser dina memory-rader och processerar dem åt dig.
 
@@ -64,11 +65,11 @@ svarar på dem direkt, utan att utvidga scope.
 
 Svara kort. Acceptabla svar:
 
-```markdown
+```Markdown
 Inget akut just nu, tack.
 ```
 
-```markdown
+```Markdown
 Inget att tillägga om fråga 2. För fråga 1: jag har sett SOU 2023:53
 men inte hunnit läsa.
 ```
@@ -78,7 +79,7 @@ allmän diskussion.
 
 **Exempel på ett bra svar:**
 
-```markdown
+```Markdown
 1. SOU 2023:53 om LSS har jag sett men inte hunnit läsa. Även
    Myndigheten för vård- och omsorgsanalys 2024:8.
 2. När FK-data säger en sak och kommunerna en annan hedgar jag
@@ -92,11 +93,11 @@ allmän diskussion.
 
 Utbildningsledaren:
 
-- Söker externa källor via DocRec MCP
-- Sammanfattar det relevanta i din `life/areas/<domän>.md`
-- Uppdaterar din `expertise.md` (CV-format)
-- Stänger dialogtasken med en kort sammanfattning
-- Rapporterar parallellt till din konsultchef (FYI) och webbmastern
+* Söker externa källor via DocRec MCP och web search
+* Sammanfattar det relevanta i din `life/areas/<domän>.md`
+* Uppdaterar din `expertise.md` (CV-format)
+* Stänger dialogtasken med en kort sammanfattning
+* Rapporterar parallellt till din konsultchef (FYI) och webbmastern
   (om publiceringsvärt)
 
 Du märker av förändringen nästa gång du öppnar din `life/areas/`-fil
@@ -115,10 +116,10 @@ fokuserar på att leverera blir hela Expertbyrån bättre.
 När du vill fördjupa, bredda eller utöka din kunskap — använd
 `kompetensutveckling`-skillen. Den ger dig verktyg att:
 
-- Reflektera över din nuvarande kunskapsbas
-- Planera fortbildning i samråd med konsultchef och utbildningsledare
-- Söka och läsa källor via DocRec och webbsökning
-- Skriva ny kunskap till dina egna filer
+* Reflektera över din nuvarande kunskapsbas
+* Planera fortbildning i samråd med konsultchef och utbildningsledare
+* Söka och läsa källor via DocRec och webbsökning
+* Skriva ny kunskap till dina egna filer
 
 Du kan använda den på eget initiativ (när du stöter på en lucka i
 ditt arbete) eller på uppdrag av utbildningsledaren (via task).

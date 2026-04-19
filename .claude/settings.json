@@ -134,7 +134,14 @@
       "Bash(node_modules/.bin/next build:*)",
       "Bash(DATA_DIR=/Users/mattias/source/expertbyran/web node_modules/.bin/next build)",
       "Read(//app/data/**)",
-      "Bash(curl -s \"https://nextjs.org/docs/messages/middleware-to-proxy\")"
+      "Bash(curl -s \"https://nextjs.org/docs/messages/middleware-to-proxy\")",
+      "Bash(git commit -m ' *)",
+      "Bash(python3 -c ' *)",
+      "Bash(git commit *)",
+      "Bash(grep -E \"^\\\\`\\\\`\\\\`\")",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(python3)"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
