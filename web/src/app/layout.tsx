@@ -4,6 +4,7 @@ import { DM_Sans, Instrument_Serif } from "next/font/google";
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { VisitLogger } from "@/components/site/VisitLogger";
 import { getSiteData } from "@/lib/content/store";
+import { pageRobots } from "@/lib/robots-policy";
 
 import "./globals.css";
 
@@ -30,6 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${site.name}`,
     },
     description: site.description,
+    robots: pageRobots,
     openGraph: {
       title: site.name,
       description: site.description,
