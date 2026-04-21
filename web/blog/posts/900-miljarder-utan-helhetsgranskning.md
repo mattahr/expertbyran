@@ -1,4 +1,4 @@
-Offentlig upphandling i Sverige omsätter närmare 900 miljarder kronor om året — ungefär en tredjedel av samtliga offentliga utgifter. Det är mer än försvarsbudgeten, biståndet och rättsväsendet tillsammans. Ändå saknas en bred, oberoende granskning av om pengarna faktiskt används effektivt, och om rätt aktörer får kontrakten. Medan det internationella revisionssamhället utvecklar AI-baserade verktyg som kan analysera hundratusentals upphandlingar i realtid, förlitar sig svenska upphandlande organisationer fortfarande på manuella kontroller och fragmenterad tillsyn. Det finns skäl att fråga sig om gapet mellan ambition och verklighet har blivit för stort.
+Offentlig upphandling i Sverige omsätter närmare 900 miljarder kronor om året — ungefär en tredjedel av samtliga offentliga utgifter. Det är mer än försvarsbudgeten, biståndet och rättsväsendet tillsammans. Ändå saknas en bred, oberoende granskning av om pengarna faktiskt används effektivt, och om rätt aktörer får kontrakten. Medan det internationella revisionssamhället utvecklar AI-baserade verktyg som kan analysera hundratusentals upphandlingar i realtid, förlitar sig svenska upphandlande organisationer fortfarande på manuella kontroller och fragmenterad tillsyn. Gapet mellan ambition och operativ kapacitet är betydande.
 
 ## En tredjedel av offentliga utgifter — men begränsad insyn
 
@@ -6,7 +6,7 @@ Statliga myndigheter, regioner och kommuner upphandlar varor och tjänster för 
 
 Trots volymen är den systematiska uppföljningen svag. [Statskontoret noterar](https://www.statskontoret.se/contentassets/e2f87f70180b4bcaa93d813e990ed3a1/2025_17---utskriftsversion.pdf) (rapport 2025:17) att Sverige fortfarande saknar en nationell annonsplats för all offentlig upphandling — något som försvårar både konkurrens och insyn. Konkurrensverket har upprepade gånger påtalat behovet av bättre tillgång till upphandlingsdata, men har fortfarande inget formellt mandat att arbeta med korruptionsfrågor i upphandling.
 
-## Kriminella aktörer har hittat in i systemet
+## Kriminella aktörer i upphandlingssystemet
 
 Den offentliga upphandlingen har sedan länge identifierats som det mest korruptionsutsatta området i svensk förvaltning. I [Statskontorets undersökning från 2023](https://www.statskontoret.se/siteassets/rapporter-pdf/2023/2023_13---utskriftsversion-v1.1.pdf) uppger 85 procent av kommuner och regioner att upphandling och inköp är deras största korruptionsriskområde.
 
@@ -24,9 +24,9 @@ EU:s [Public Procurement Data Space](https://ted.europa.eu/en/) (PPDS), operatio
 
 [OECD:s Anti-Corruption and Integrity Outlook 2026](https://www.oecd.org/en/publications/anti-corruption-and-integrity-outlook-2026_16708b78-en.html) framhåller att digitala verktyg för dataanalys och AI i upphandlingsprocesser är avgörande för att skala upp integritetsarbetet. Manuella kontroller klarar inte längre av den volym och komplexitet som moderna upphandlingssystem innebär.
 
-## Reformdynamik — men utan samordning
+## Reformdynamik — utan samordning
 
-Signalerna om att något behöver göras är starka. Under 2024–2025 har flera parallella utredningar och rapporter adresserat upphandlingens svagheter:
+Signalerna om att förändringar behövs är tydliga. Under 2024–2025 har flera parallella utredningar och rapporter adresserat upphandlingens svagheter:
 
 - **Statskontoret 2025:17** föreslår bland annat nationell annonsplats, sanktioner vid bristande dokumentation, förbättrad leverantörskontroll och en webbaserad antikorruptionsutbildning för inköpare.
 - **SOU 2025:25** om arbetslivskriminalitet konstaterar att [Upphandlingsmyndigheten bedömer att kriminella aktörer i offentlig upphandling har ökat under det senaste decenniet](https://data.riksdagen.se/dokument/HDB325.pdf), drivet av bristande avtalsuppföljning och prispress.
@@ -36,19 +36,19 @@ Signalerna om att något behöver göras är starka. Under 2024–2025 har flera
 
 Det som saknas är en samordnad granskning som binder ihop dessa trådar. Reformerna adresserar delar av problemet — leverantörskontroll här, sanktioner där — men ingen aktör har uppdraget att bedöma helhetsbilden av om upphandlingen i staten ger *value for money*.
 
-## Vad krävs för att komma vidare?
+## Förutsättningar för att komma vidare
 
 Tre förutsättningar framstår som centrala. Den första är **bättre upphandlingsdata**. Utan en nationell annonsplats och strukturerad tillgång till kontraktsdata är systematisk analys omöjlig. EU:s PPDS visar att infrastrukturen finns — men Sverige behöver komplettera den nationellt.
 
 Den andra är **oberoende granskning av upphandlingens effektivitet**. Det räcker inte att granska regelefterlevnad. Frågan är om upphandlingen som system ger de resultat medborgarna har rätt att förvänta sig — rätt kvalitet till rätt kostnad, utan att skattemedel läcker till oseriösa aktörer.
 
-Den tredje är **datadrivna analysverktyg** — inte som ersättning för mänsklig bedömning, utan som ett sätt att hantera den volym som gör manuell kontroll praktiskt omöjlig. Brasiliens erfarenhet med ALICE visar att det är genomförbart; EU:s infrastruktur skapar förutsättningarna. Frågan är om den institutionella viljan finns.
+Den tredje är **datadrivna analysverktyg** — inte som ersättning för mänsklig bedömning, utan som ett sätt att hantera den volym som gör manuell kontroll praktiskt omöjlig. Brasiliens erfarenhet med ALICE visar att det är genomförbart; EU:s infrastruktur skapar förutsättningarna. Den avgörande faktorn är institutionell vilja och kapacitet.
 
-## Pengarna räcker inte — men frågan är om de används rätt
+## En fråga om resursanvändning och tillit
 
 I en tid när den demografiska utvecklingen pressar välfärdens finansiering och försvarsutgifterna ökar snabbt handlar upphandlingens effektivitet inte bara om ekonomi — det handlar om tillit. Medborgare behöver kunna lita på att offentliga medel går till det de är avsedda för, och att systemet är robust nog att stå emot dem som försöker utnyttja det.
 
-De internationella verktygen finns. Den svenska reformdynamiken är stark. Det som återstår är att omsätta ambitionerna i en samlad insats — och att granska om den ger resultat.
+De internationella verktygen finns. Den svenska reformdynamiken är stark. Det som återstår är att omsätta ambitionerna i en samlad insats — och att systematiskt följa upp om den ger resultat.
 
 ---
 

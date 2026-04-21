@@ -4,9 +4,9 @@
 
 ## En gemensam riktning bakom fem perspektiv
 
-Årets trend-insamling från Expertbyråns fem metodexperter avslöjar inte fem separata förskjutningar — utan en och samma förändring sedd från olika vinklar: offentlig revision rör sig från retrospektiv kontroll mot **evidensbaserad systemanalys med explicita kausala anspråk**.
+En genomgång av aktuella metodförskjutningar inom offentlig revision pekar inte mot fem separata trender — utan mot en och samma förändring sedd från olika vinklar: offentlig revision rör sig från retrospektiv kontroll mot **evidensbaserad systemanalys med explicita kausala anspråk**.
 
-Revisionens grundfråga förändras. Det räcker inte längre att konstatera att ett mål inte nåtts. Frågan är nu: *varför* nåddes det inte, *för vem* gäller det, och *hur vet vi det med tillräcklig säkerhet?*
+Revisionens grundfråga förändras. Det räcker inte längre att konstatera att ett mål inte nåtts. Frågan blir nu: *varför* nåddes det inte, *för vem* gäller det, och *hur vet man det med tillräcklig säkerhet?*
 
 ---
 
@@ -46,17 +46,17 @@ Lagstiftaren delegerar allt mer åt myndigheterna att precisera vad regelverket 
 
 *Kvalitetsgranskare*
 
-Den dominerande trenden i kvalitetsgranskning är övergången från implicit till explicit osäkerhetskvantifiering. Varje slutsats ska märkas med evidenstyp och konfidensläge — väl underbyggd, sannolik eller tentativ. Kausala anspråk kräver redovisning av hur alternativa förklaringar uteslutits. Peer review-protokoll börjar kräva evidensmatriser: tabeller som kopplar varje slutsats till källdata, metodval och begränsningar. Det är ett paradigmskifte mot verifierbarhet som lånar från akademisk forskning men tillämpas på revisionens egna villkor.
+Den dominerande trenden i kvalitetsgranskning är övergången från implicit till explicit osäkerhetskvantifiering. Varje slutsats ska märkas med evidenstyp och konfidensläge — väl underbyggd, sannolik eller tentativ. Kausala anspråk kräver redovisning av hur alternativa förklaringar uteslutits. Peer review-protokoll börjar kräva evidensmatriser: tabeller som kopplar varje slutsats till källdata, metodval och begränsningar. Det representerar ett skifte mot verifierbarhet som lånar från akademisk forskning men tillämpas på revisionens egna villkor.
 
 ---
 
-## Vad betyder detta för dig som beställer en granskning?
+## Implikationer för granskningsbeställare
 
-Sammantaget innebär dessa trender att beställaren av en granskning 2026 bör ställa andra frågor än för fem år sedan:
+Sammantaget innebär dessa trender att den som beställer en granskning 2026 bör ställa andra frågor än för fem år sedan:
 
 - **Vilken kausal mekanism testas?** Har designmatrisen en explicit logikmodell?
 - **Är effektanalysen heterogen?** Redovisas det för vem och under vilka villkor insatsen verkar?
 - **Är rättslig bedömningsgrund explicit konstruerad** — inte bara citerad ur lagtexten?
 - **Kommuniceras osäkerhet öppet?** Är slutsatserna märkta med evidensstyrka?
 
-Expertbyrån arbetar aktivt med samtliga dessa trender i pågående fortbildning av metodteamet — och kan bistå granskande myndigheter i att möta de höjda metodkraven.
+Samtliga dessa trender har direkta konsekvenser för hur granskande myndigheter dimensionerar sin metodkompetens och utformar sina uppdragsbeskrivningar.

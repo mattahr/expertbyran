@@ -13,91 +13,255 @@
       "excerpt": "Expertbyrån bevakar nyheter från Regeringskansliet och analyserar vad de innebär för statlig revision. Veckans nyheter: EU förlänger skattebefrielsen för biodrivmedel till 2032, finansminister Svantesson på IMF-möten i Washington, och Sverige grundar tribunal för aggressionsbrottmål mot Ryssland."
     },
     {
+      "slug": "pensionens-tysta-urholkning-nar-systemet-fungerar-som-det-ska-men-inte-som-det-lovades",
+      "title": "Pensionens tysta urholkning — när systemet fungerar som det ska, men inte som det lovades",
+      "date": "2026-04-19T16:00:00.000Z",
+      "authorSlug": "kvantitativ-analytiker",
+      "areaSlugs": [
+        "offentliga-finanser",
+        "valfard"
+      ],
+      "excerpt": "Det svenska pensionssystemet är finansiellt hållbart och självbalanserande. Det levererar också sjunkande pensioner i förhållande till lönerna. SOU 2025:41 visar att kompensationsgraderna minskat sedan reformen. ISF visar att människor varken förstår systemet eller kan göra de val det förutsätter. Höjda åldersgränser drabbar låginkomstgrupper hårdast. Systemet fungerar som det ska — frågan är om det levererar vad det lovade."
+    },
+    {
+      "slug": "evighetskemikalierna-under-ytan-pfas-och-sveriges-fororenade-arv",
+      "title": "Evighetskemikalierna under ytan — PFAS och Sveriges förorenade arv",
+      "date": "2026-04-19T14:00:00.000Z",
+      "authorSlug": "expert-miljo-klimat",
+      "areaSlugs": [
+        "miljo-klimat"
+      ],
+      "excerpt": "Sverige har 86 000 potentiellt förorenade områden. PFAS har hittats i grundvatten och dricksvatten på hundratals platser. Riksrevisionen har konstaterat brister i statens hantering. Klimatförändringarna sprider föroreningarna vidare genom ras, skred och översvämningar. Och den infrastruktur som ska rena vårt vatten förnyas i en takt som tar 200 år att slutföra. Under ytan växer en miljöskuld som inte betalas av sig själv."
+    },
+    {
+      "slug": "nio-ar-fran-noll-civilforsvarets-forlorade-decennium",
+      "title": "Nio år från noll — civilförsvarets förlorade decennium",
+      "date": "2026-04-19T12:00:00.000Z",
+      "authorSlug": "expert-forsvar",
+      "areaSlugs": [
+        "forsvar"
+      ],
+      "excerpt": "Sverige beslutade 2015 att återuppta totalförsvarsplaneringen. Nio år senare konstaterar Riksrevisionen att styrningen inte har varit effektiv. Förmågan är alldeles för låg. Fram till 2018 saknades öronmärkta medel helt. Myndigheterna upplever otydliga krav och svåra prioriteringar. Nu ska 15 miljarder per år bygga upp ett civilt försvar från i det närmaste noll — i en tid då behovet aldrig varit mer akut."
+    },
+    {
+      "slug": "infiltratoren-inifran-nar-kriminella-tar-plats-i-staten",
+      "title": "Infiltratören inifrån — när kriminella tar plats i staten",
+      "date": "2026-04-19T10:00:00.000Z",
+      "authorSlug": "rattslig-utredare",
+      "areaSlugs": [
+        "rattsvasende"
+      ],
+      "excerpt": "Riksrevisionen konstaterar att statliga myndigheters skydd mot infiltration inte är effektivt. Arbetstillstånd beviljas till arbetsgivare som myndigheten själv bedömt som oseriösa. Möjliggörare — anställda som missbrukar sin position till förmån för kriminella nätverk — finns i rättsväsendet, kommuner och myndigheter. Och felaktiga utbetalningar från välfärdssystemen uppgår till 15–20 miljarder kronor per år. Delarna granskas var för sig. Helheten granskas inte alls."
+    },
+    {
+      "slug": "nar-algoritmen-arver-fordomarna-myndigheternas-diskrimineringsblindhet",
+      "title": "När algoritmen ärver fördomarna — myndigheternas diskrimineringsblindhet",
+      "date": "2026-04-19T08:00:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": [
+        "digitalisering",
+        "rattsvasende"
+      ],
+      "excerpt": "Riksrevisionen konstaterar att statens arbete mot etnisk diskriminering vid myndighetsbeslut inte är effektivt. Sju stora myndigheter har begränsad kunskap om sina diskrimineringsrisker. Förebyggande åtgärder bygger inte på riskanalys. Och om åtta månader ska samma myndigheter uppfylla EU:s AI-förordning — som kräver just den typ av bias-analys som de inte gör idag."
+    },
+    {
+      "slug": "900-miljarder-utan-granskning-upphandlingens-svarta-flackar",
+      "title": "900 miljarder utan granskning — upphandlingens svarta fläckar",
+      "date": "2026-04-18T23:00:00.000Z",
+      "authorSlug": "expert-finanser",
+      "areaSlugs": [
+        "offentliga-finanser"
+      ],
+      "excerpt": "Den offentliga upphandlingen omsätter över 900 miljarder kronor per år — nästan en tredjedel av alla offentliga utgifter. 85 procent av kommuner och regioner identifierar själva upphandling som sitt största korruptionsriskområde. En ny utredning pekar uttryckligen ut upphandling som högrisksektor. Och Riksrevisionen har ingen aktuell bred granskning av området."
+    },
+    {
+      "slug": "mer-admin-mindre-karnverksamhet-statsforvaltningens-paradox",
+      "title": "Mer administration, mindre kärnverksamhet — statsförvaltningens paradox",
+      "date": "2026-04-18T21:00:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": [
+        "revisionsmetodik",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Riksrevisionens granskning visar att administrationen i statsförvaltningen har ökat sedan 2010 — inte minskat. Kärnverksamhetens andel sjunker. Chefsbefattningar växer. Tillitsreformen har inte lett till mätbar minskning. Och Statens servicecenter har enligt myndighetschefer snarare ökat administrationen. Sverige har investerat stort i att minska byråkratin — och fått mer av den."
+    },
+    {
+      "slug": "130-miljarder-som-inte-finns-kommunernas-demografiska-ekvation",
+      "title": "130 miljarder som inte finns — kommunernas demografiska ekvation",
+      "date": "2026-04-18T19:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Kommunsektorn behöver 130 miljarder kronor till mitten av 2030-talet bara för demografin. Försörjningskvoten stiger från 0,77 till 0,90. Hälften av kommunerna bedömer att de inte klarar äldreomsorgens behov 2040. Riksrevisionens granskning av utjämningssystemet är sju år gammal. Och kommunstrukturen bygger på kartan från 1960-talet. Grundfrågan: matchar resurserna uppdraget?"
+    },
+    {
+      "slug": "27000-platser-utan-plan-fangelsesveriges-blinda-flackar",
+      "title": "27 000 platser utan plan — fängelseSveriges blinda fläckar",
+      "date": "2026-04-18T17:00:00.000Z",
+      "authorSlug": "expert-rattsvasende",
+      "areaSlugs": [
+        "rattsvasende",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Kriminalvården planerar att tredubbla fängelsekapaciteten — från 9 000 till 27 000 platser — men den egna kapacitetsrapporten visar att inte ens det kan räcka: worst case 37 500 klienter till 2034. Riksrevisionens granskning visar att behandlingsverksamheten redan idag inte når tillräckligt många intagna. Dubbelbeläggning har blivit standard. Häktningstiderna har ökat med 29 dagar på fyra år. Sverige bygger fler fängelseplatser — men utan att säkerställa att de gör nytta."
+    },
+    {
+      "slug": "16-ansikten-pa-14-dagar-aldreomsorgens-tysta-kris",
+      "title": "16 ansikten på 14 dagar — äldreomsorgens tysta kris",
+      "date": "2026-04-18T15:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard"
+      ],
+      "excerpt": "En undersköterska hjälpte fyra omsorgstagare per dag på 1980-talet. Idag är siffran tolv. En äldre person i hemtjänsten möter i genomsnitt 16 olika vårdare på 14 dagar. Antalet 80-plussare ökar med 60 procent till 2040. Och 56 procent av kommunerna bedömer att de inte kommer klara omsorgsbehovet. Problemen har dokumenterats i ett decennium — utan att de grundläggande bristerna åtgärdats."
+    },
+    {
+      "slug": "ny-lag-gamla-brister-nis2-kommunerna",
+      "title": "Ny lag, gamla brister — NIS2 möter kommunernas cybersäkerhetsverklighet",
+      "date": "2026-04-18T13:00:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": [
+        "digitalisering",
+        "valfard"
+      ],
+      "excerpt": "Cybersäkerhetslagen trädde i kraft den 15 januari 2026 med krav på 18 sektorer. Sverige valde en striktare implementering än EU kräver. Men 67 procent av regionerna når inte ens grundläggande säkerhetsnivå, och kommunernas situation är sämre. Frågan är om lagen skapar verklig säkerhet — eller bara trygghet på papper."
+    },
+    {
+      "slug": "146000-i-ko-ingen-ansvarar",
+      "title": "146 000 i kö — men ingen ansvarar för helheten",
+      "date": "2026-04-18T11:00:00.000Z",
+      "authorSlug": "expert-valfard",
+      "areaSlugs": [
+        "valfard",
+        "offentliga-finanser"
+      ],
+      "excerpt": "146 000 personer väntar på operation. Vårdgarantin uppfylls inte i någon region. Sjukvårdskostnaderna ökar med sex procent per år. Och en parlamentarisk utredning föreslår att staten ska ta över från regionerna. Ändå saknas en bred, oberoende granskning av om de närmare 400 miljarder kronor som sjukvården kostar varje år faktiskt ger den vård medborgarna har rätt att förvänta sig."
+    },
+    {
       "slug": "vd-har-ordet-ai-styrning-granskande-staten",
-      "title": "VD har ordet: AI-styrning och den granskande statens nya verklighet",
+      "title": "VD har ordet: AI-styrning och effektivitetsrevisionens utmaningar",
       "date": "2026-04-15T06:00:00.000Z",
       "authorSlug": "effektivitetsrevisor",
-      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
       "excerpt": "EU:s AI-förordning har trätt i kraft, myndigheter automatiserar beslutsprocesser och agentisk AI börjar synas i ärendehantering och resursfördelning. Men vad händer med den demokratiska granskningen när myndigheternas verktyg blir alltmer autonoma? Effektivitetsrevisionen måste förstå hur beslut fattas — inte bara vilka resultat de ger."
     },
     {
       "slug": "know-your-agent-foertroenderamverk-offentlig-sektor",
-      "title": "Know Your Agent — varför offentlig sektor behöver ett nytt förtroenderamverk",
+      "title": "Know Your Agent — ett förtroenderamverk för AI-agenter i offentlig sektor",
       "date": "2026-04-14T22:00:00.000Z",
       "authorSlug": "teknikstrateg",
-      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
       "excerpt": "Åttiotvå procent av offentliga organisationer har adopterat AI-agenter. Samtidigt växer hoten från rogue AI agents och Liar's Dividend — fenomenet att autentiska bevis avfärdas som fabricerade. Offentlig sektor behöver ett nytt förtroenderamverk: Know Your Agent."
     },
     {
       "slug": "alla-prioriterar-ingen-summerar",
-      "title": "Alla prioriterar — men ingen summerar: den fiskala helhetsbild som saknas",
+      "title": "Parallella satsningar utan samlad fiskal konsekvensanalys",
       "date": "2026-04-14T21:00:00.000Z",
       "authorSlug": "expert-finanser",
-      "areaSlugs": ["offentliga-finanser", "forsvar", "revisionsmetodik"],
+      "areaSlugs": [
+        "offentliga-finanser",
+        "forsvar",
+        "revisionsmetodik"
+      ],
       "excerpt": "Försvaret tredubblas. Klimatomställningen accelererar. Välfärden ska klara en åldrande befolkning. EU-regelverken kräver ny kapacitet. Varje satsning har sin egen logik — men ingen institution har uppdraget att bedöma om Sverige har råd med alltihop samtidigt. Statsbudgeten 2026 visar ett underskott på 167 miljarder kronor, och Finanspolitiska rådet levererade sin hårdaste kritik någonsin. Ändå adderas nya åtaganden utan samlad fiskal konsekvensanalys."
     },
     {
       "slug": "agentisk-ai-rollout-governance-2026",
-      "title": "40 procent på ett år — agentisk AI rullar ut, styrningen halkar efter",
+      "title": "Agentisk AI: snabb utrullning, långsammare styrningsanpassning",
       "date": "2026-04-14T15:00:00.000Z",
       "authorSlug": "teknikstrateg",
-      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
       "excerpt": "Från under 5 % till 40 % av alla enterprise-applikationer på tolv månader. Den 7 april 2026 aktiverade EY sin agentiska AI-plattform för 130 000 revisorer globalt. Gartner varnar samtidigt att 40 % av alla agentprojekt skrotas innan 2028, och 94 % av organisationerna är oroliga för okontrollerad spridning. Frågan är inte om agentisk AI kommer — utan om styrningen hinner med."
     },
     {
       "slug": "bolag-som-brottsverktyg-bidragsbrott",
-      "title": "23 000 bolag, 11 miljarder i skulder — så används företag för att tömma välfärden",
+      "title": "23 000 bolag, 11 miljarder i skulder — företag som brottsverktyg i välfärdssystemen",
       "date": "2026-04-14T12:00:00.000Z",
       "authorSlug": "expert-rattsvasende",
-      "areaSlugs": ["rattsvasende", "valfard", "offentliga-finanser"],
+      "areaSlugs": [
+        "rattsvasende",
+        "valfard",
+        "offentliga-finanser"
+      ],
       "excerpt": "Var femte nätverkskriminell i Sverige driver företag. Brås kartläggning visar att 11 000 personer med koppling till organiserad brottslighet var delaktiga i 23 000 bolag under 2020–2023. Bolaget ger en legitim fasad som gör brottsligheten storskalig och svårupptäckt — från skenanställningar via nystartsjobb till assistansbedrägerier. Trots att 13–16 miljarder betalas ut felaktigt varje år upptäcks bara en bråkdel."
     },
     {
       "slug": "tre-granskningar-som-saknas",
-      "title": "Tre granskningar som saknas — och vad de skulle kunna avslöja",
+      "title": "Tre granskningsområden utan samlad uppföljning",
       "date": "2026-04-14T11:00:00.000Z",
       "authorSlug": "effektivitetsrevisor",
-      "areaSlugs": ["revisionsmetodik", "arbetsmarknad", "valfard", "forsvar"],
+      "areaSlugs": [
+        "revisionsmetodik",
+        "arbetsmarknad",
+        "valfard",
+        "forsvar"
+      ],
       "excerpt": "Sverige investerar hundratals miljarder i tre parallella omvandlingar — reformerad arbetsmarknad, totalförsvarets beredskap och en välfärd under demografisk press. Gemensamt för alla tre: det saknas en samlad granskning av om pengarna ger avsedd effekt. Vi pekar ut tre konkreta områden med metod, data och granskningsfrågor."
     },
     {
       "slug": "forsvar-beredskap-revision-kvarstande-brister-2026",
-      "title": "Försvarsbrister som revisionen ser — men inte kan lösa",
+      "title": "Kvarstående försvarsbrister trots revisionsrekommendationer",
       "date": "2026-04-14T09:00:00.000Z",
       "authorSlug": "expert-forsvar",
-      "areaSlugs": ["forsvar", "revisionsmetodik"],
+      "areaSlugs": [
+        "forsvar",
+        "revisionsmetodik"
+      ],
       "excerpt": "Riksrevisionens uppföljningsrapport 2026 visar ett paradoxalt mönster i försvars- och beredskapsgranskning: personlig utrustning förbättras, totalförsvarsplanering och beredskapslagring har grundläggande brister som kvarstår. Vad händer när revisionen identifierar existentiella problem som det politiska systemet inte konsekvent agerar på?"
     },
     {
       "slug": "implementation-gap-rekommendationer-2026",
-      "title": "Rekommendationerna bockas av — men grundproblemen kvarstår",
+      "title": "Gapet mellan hanterade rekommendationer och lösta grundproblem",
       "date": "2026-04-14T08:30:00.000Z",
       "authorSlug": "kvantitativ-analytiker",
-      "areaSlugs": ["revisionsmetodik", "offentliga-finanser"],
+      "areaSlugs": [
+        "revisionsmetodik",
+        "offentliga-finanser"
+      ],
       "excerpt": "78 procent av revisionsrekommendationerna i Riksrevisionens uppföljningsrapport 2026 är formellt hanterade. Men 42 procent av de underliggande problemen är fortfarande inte avhjälpta. Klyftan mellan att vidta åtgärder och att lösa problem är revisionens mest centrala utmaning — och rapporten ger tre konkreta fallstudier som belyser varför."
     },
     {
       "slug": "klimatmiljarder-utan-kvitto",
-      "title": "Klimatmiljarder utan kvitto — varför ingen vet om pengarna gör klimatnytta",
+      "title": "Klimatinvesteringar utan systematisk effektuppföljning",
       "date": "2026-04-14T08:00:00.000Z",
       "authorSlug": "expert-miljo-klimat",
-      "areaSlugs": ["miljo-klimat", "offentliga-finanser"],
+      "areaSlugs": [
+        "miljo-klimat",
+        "offentliga-finanser"
+      ],
       "excerpt": "Sverige har investerat över hundra miljarder i klimatomställningen. Men tre granskningsrapporter visar samma mönster: utsläppsminskningarna är felberäknade, uppföljningsdata saknas och ingen granskar de modeller som styr politiken. Klimatrevision — systematisk verifiering av klimatinvesteringars faktiska effekt — är en disciplin som behöver byggas upp."
     },
     {
       "slug": "900-miljarder-utan-helhetsgranskning",
-      "title": "900 miljarder om året — utan helhetsgranskning",
+      "title": "Offentlig upphandling för 900 miljarder — utan samlad granskning",
       "date": "2026-04-13T23:50:00.000Z",
       "authorSlug": "effektivitetsrevisor",
-      "areaSlugs": ["offentliga-finanser", "rattsvasende"],
+      "areaSlugs": [
+        "offentliga-finanser",
+        "rattsvasende"
+      ],
       "excerpt": "Offentlig upphandling i Sverige omsätter närmare 900 miljarder kronor om året — en tredjedel av alla offentliga utgifter. Trots volymen saknas en samlad, oberoende granskning av om pengarna används effektivt. Medan Brasilien granskar 191 000 upphandlingar med AI på åtta dagar förlitar sig Sverige på manuella kontroller. Kriminella aktörer har etablerat sig i systemet. Reformviljan finns — men ingen aktör har uppdraget att bedöma helhetsbilden."
     },
     {
       "slug": "fem-miljarder-i-dronar-ukrainas-ratta-lardom",
-      "title": "Fem miljarder i drönare — men tar vi med oss rätt lärdom från Ukraina?",
+      "title": "Fem miljarder i drönare — lärdomar från Ukrainas innovationsmodell",
       "date": "2026-04-13T21:30:00.000Z",
       "authorSlug": "teknikstrateg",
-      "areaSlugs": ["forsvar", "digitalisering"],
+      "areaSlugs": [
+        "forsvar",
+        "digitalisering"
+      ],
       "excerpt": "Sverige satsar 5,3 miljarder kronor på obemannade system motiverat av Ukraina. Men risken är att vi studerar Ukrainas svar utan att förstå frågan de ställde sig. Ukrainas verkliga lärdom handlar inte om vilka drönare de köpte — den handlar om iterationshastighet, civil-militär integration och förmågan att lära snabbare än sin motståndare."
     },
     {
@@ -105,88 +269,213 @@
       "title": "Fem metodtrender som omformar offentlig revision 2026",
       "date": "2026-04-13T20:38:00.000Z",
       "authorSlug": "effektivitetsrevisor",
-      "areaSlugs": ["revisionsmetodik"],
+      "areaSlugs": [
+        "revisionsmetodik"
+      ],
       "excerpt": "Offentlig revision rör sig från retrospektiv kontroll mot evidensbaserad systemanalys med explicita kausala anspråk. Expertbyråns fem metodexperter delar sina perspektiv på de trender som omformar granskarens verktygslåda 2026: från teoriledd design och kausal ML till förklarande kvalitativ metod, rättslig rekonstruktion och explicit osäkerhetskvantifiering."
     },
     {
       "slug": "sverige-bygger-om-men-hanger-styrningen-med",
-      "title": "Sverige bygger om — men hänger styrningen med?",
+      "title": "Sveriges parallella omvandlingar — styrningens kapacitet att hålla takt",
       "date": "2026-04-13T20:20:00.000Z",
       "authorSlug": "effektivitetsrevisor",
-      "areaSlugs": ["offentliga-finanser", "digitalisering", "rattsvasende", "valfard"],
+      "areaSlugs": [
+        "offentliga-finanser",
+        "digitalisering",
+        "rattsvasende",
+        "valfard"
+      ],
       "excerpt": "Sverige genomgår fyra parallella omvandlingar — försvar, digitalisering, rättsväsende och välfärd — med historiska ambitioner och resurser. Det gemensamma mönstret är oroande: styrningsverktygen hänger inte med. Finansieringsmodeller haltar, ansvarskedjor är oklara och uppföljningen saknar kraft. Vår analys av tolv trender inom fyra domäner pekar på ett och samma problem."
     },
     {
       "slug": "post-kvantumkryptografi-harvest-now-decrypt-later",
-      "title": "Ditt lösenord är säkert idag — men är det säkert om tio år?",
+      "title": "Post-kvantumkryptografi och harvest now, decrypt later — nuläge och beredskap",
       "date": "2026-04-13T23:45:00.000Z",
       "authorSlug": "teknikstrateg",
-      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
       "excerpt": "Kvantdatorn är kanske tio år bort — men hotet mot krypterad data är här nu. Statliga aktörer samlar redan in krypterad trafik för att dekryptera den senare. NIST har publicerat standarderna, NSA har satt tidslinjerna, och BIS Project Leap visar komplexiteten. Ändå har svensk offentlig sektor knappt börjat inventera sina kryptografiska beroenden."
     },
     {
       "slug": "suptech-nar-revisionen-blir-realtid",
-      "title": "Brasilien granskar upphandlingar på 8 dagar — vad hindrar Sverige?",
+      "title": "SupTech i offentlig revision — internationella exempel och svenska förutsättningar",
       "date": "2026-04-13T23:30:00.000Z",
       "authorSlug": "teknikstrateg",
-      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
       "excerpt": "Brasiliens AI-system ALICE granskar 191 000 upphandlingar på åtta dagar — en cykel som tidigare tog 400. Tekniken kallas SupTech och sprids nu till 140 länder. Sverige har förutsättningarna, men saknar den datainfrastruktur som krävs för att ta steget."
     },
     {
       "slug": "teknisk-mognad-moter-regleringspress",
-      "title": "Regleringen springer ifrån tekniken — sju domäner som avgör framtidens granskning",
+      "title": "Teknisk mognad och regleringstryck — sju domäner i analys",
       "date": "2026-04-13T23:00:00.000Z",
       "authorSlug": "teknikstrateg",
-      "areaSlugs": ["digitalisering", "forsvar"],
+      "areaSlugs": [
+        "digitalisering",
+        "forsvar"
+      ],
       "excerpt": "Fem EU-regelverk med skarpa deadlines landar i svensk offentlig sektor under 2025–2027. Men förmågan att leva upp till kraven — och att granska efterlevnaden — varierar dramatiskt mellan teknikdomäner. Vår analys av teknisk mognad mot regleringstryck visar var de mest akuta luckorna finns."
     },
     {
       "slug": "farre-ska-bara-fler",
-      "title": "Färre ska bära fler — varför demografin blir revisionens nästa stora fråga",
+      "title": "Demografisk omvandling och effektivitetsrevisionens roll",
       "date": "2026-04-13T22:00:00.000Z",
       "authorSlug": "expert-valfard",
-      "areaSlugs": ["valfard", "offentliga-finanser"],
+      "areaSlugs": [
+        "valfard",
+        "offentliga-finanser"
+      ],
       "excerpt": "Kommunernas äldreomsorgskostnader steg med 40 procent på ett decennium. Varannan kommun bedömer att de inte kommer klara framtidens behov. När pengarna inte räcker blir frågan hur vi vet att de medel som finns faktiskt gör nytta — och det kräver en ny typ av granskning."
     },
     {
       "slug": "agentisk-ai-fran-assistent-till-aktare",
-      "title": "Agentisk AI: när systemen slutar svara och börjar agera",
+      "title": "Agentisk AI: från assistans till autonom handling i offentlig sektor",
       "date": "2026-04-13T21:30:00.000Z",
       "authorSlug": "expert-digitalisering",
-      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
       "excerpt": "AI-system som autonomt planerar, delegerar och agerar utan mänsklig godkännande vid varje steg är inte längre en framtidsvision. De rullas ut nu. Men styrning, spårbarhet och ansvarsutkrävning i offentlig sektor hänger inte med — och det är ett problem som behöver lösas innan tekniken expanderar ytterligare."
     },
     {
       "slug": "eus-regeltsunami-tre-direktiv-som-andrar-spelplanen",
-      "title": "EU:s regeltsunami — tre direktiv som ändrar spelplanen för svensk förvaltning",
+      "title": "Tre EU-direktiv med genomgripande konsekvenser för svensk förvaltning",
       "date": "2026-04-13T20:00:00.000Z",
       "authorSlug": "rattslig-utredare",
-      "areaSlugs": ["digitalisering", "rattsvasende"],
+      "areaSlugs": [
+        "digitalisering",
+        "rattsvasende"
+      ],
       "excerpt": "NIS2, CSRD och CER-direktivet rullar ut samtidigt och ställer nya krav på cybersäkerhet, hållbarhetsrapportering och motståndskraft. Komplexiteten är enorm — men vem kontrollerar att reglerna faktiskt efterlevs?"
     },
     {
       "slug": "storsta-upprustningen-men-vem-granskar-notan",
-      "title": "Största upprustningen i modern tid — men vem granskar notan?",
+      "title": "Sveriges försvarsupprustning — revisionens kapacitet att följa resursanvändningen",
       "date": "2026-04-13T18:12:00.000Z",
       "authorSlug": "expert-forsvar",
-      "areaSlugs": ["forsvar", "offentliga-finanser", "revisionsmetodik"],
+      "areaSlugs": [
+        "forsvar",
+        "offentliga-finanser",
+        "revisionsmetodik"
+      ],
       "excerpt": "Försvarsbudgeten har mer än tredubblats på ett decennium — från 48 till 175 miljarder kronor. Men sekretess, tempo och kompetensbrist gör granskningen av försvarsutgifterna till en av revisionens svåraste utmaningar. Har vi kapacitet att kontrollera att pengarna gör nytta?"
     },
     {
       "slug": "vd-har-ordet-effektivitetsrevision-tvarvetenskaplig",
-      "title": "VD har ordet: Varför effektivitetsrevision kräver tvärvetenskapligt stöd",
+      "title": "VD har ordet: Effektivitetsrevisionens behov av tvärvetenskapligt stöd",
       "date": "2026-04-13T16:26:26.000Z",
       "authorSlug": "effektivitetsrevisor",
-      "areaSlugs": ["revisionsmetodik", "offentliga-finanser", "digitalisering", "miljo-klimat", "forsvar"],
+      "areaSlugs": [
+        "revisionsmetodik",
+        "offentliga-finanser",
+        "digitalisering",
+        "miljo-klimat",
+        "forsvar"
+      ],
       "excerpt": "Den offentliga sektorns utmaningar är alltmer komplexa och tvärsektoriella. Klimatomställning, digitalisering, försvar — ingen enskild expertis räcker. Här förklarar jag varför effektivitetsrevision i dag kräver team som spänner över domänkunskap, metodkompetens och kvalitetsgranskning."
     },
     {
       "slug": "vem-granskar-algoritmen",
-      "title": "121 miljoner beslut om året — vem granskar algoritmen?",
+      "title": "121 miljoner automatiserade beslut — granskningskapacitet och kompetenskrav",
       "date": "2026-04-13T15:04:04.000Z",
       "authorSlug": "expert-digitalisering",
-      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
       "excerpt": "Svenska myndigheter fattar 121 miljoner automatiserade beslut per år. Med EU:s AI-förordning runt hörnet och en allt snabbare teknikutveckling — har revisionen kapacitet att granska systemen som fattar beslut åt oss?"
+    },
+    {
+      "slug": "halva-vagen-till-manen-i-gamla-ror",
+      "title": "203 000 kilometer VA-ledningar — en infrastrukturskuld i siffror",
+      "date": "2026-04-16T08:00:00.000Z",
+      "authorSlug": "expert-miljo-klimat",
+      "areaSlugs": [
+        "miljo-klimat",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Under Sveriges gator och torg löper 203 000 kilometer VA-ledningar — mer än halva avståndet till månen. Hälften är från 1960- och 70-talen. Förnyelsetakten är för låg, klimatet förändras, och 290 kommuner kämpar var för sig. Riksrevisionen konstaterar att staten brustit. Frågan är inte om rören kommer gå sönder — utan när, och vem som ansvarar."
+    },
+    {
+      "slug": "1535-vattenverk-noll-kryptering-cybersakerhet-va",
+      "title": "1 535 vattenverk med åldrad styrteknik — cybersäkerhet i VA-sektorn",
+      "date": "2026-04-16T12:00:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": [
+        "digitalisering"
+      ],
+      "excerpt": "Under Sveriges gator löper 200 000 kilometer VA-ledningar styrda av SCADA-system från 1970- och 80-talen — utan kryptering, utan autentisering, utan loggning. NIS2-direktivet kräver cybersäkerhet för kritisk infrastruktur, men legacy OT-system kan inte patchas utan driftstopp. Resultatet: ett 5–10-årigt compliance-gap där varje svensks dricksvatten är tekniskt exponerat."
+    },
+    {
+      "slug": "fem-nat-ingen-agare-sveriges-digitala-ryggrad",
+      "title": "Fem nät utan central samordning — Sveriges digitala infrastruktur",
+      "date": "2026-04-16T14:00:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": [
+        "digitalisering",
+        "forsvar"
+      ],
+      "excerpt": "98 procent av svenska hushåll har fiber i närheten — men bara 60 procent har ett aktivt abonnemang. Bakom framgångssiffran döljer sig ett stamnät som vuxit fram organiskt ur fem aktörers oberoende investeringar, utan central planering och utan att någon myndighet har en komplett bild av var noderna ligger. Östersjökablarna saboteras, glesbygden halkar efter, och ingen vet vad som händer om en kritisk knutpunkt släcks ned."
+    },
+    {
+      "slug": "350000-utan-bredband-digital-klyfta-demokratiproblem",
+      "title": "350 000 utan bredband — digital tillgänglighet på landsbygden",
+      "date": "2026-04-16T15:00:00.000Z",
+      "authorSlug": "expert-digitalisering",
+      "areaSlugs": [
+        "digitalisering",
+        "offentliga-finanser"
+      ],
+      "excerpt": "Sverige har investerat 14 miljarder kronor i bredbandsstöd och nått 98 procent fibertäckning. Ändå saknar 350 000 personer i landsbygden snabbt bredband, och i vissa glesbygdskommuner ligger täckningen under 50 procent. Samtidigt gör myndigheter digitalt till förstahandsval. Resultatet: en växande grupp medborgare som varken kan deklarera, boka vårdtid eller ta del av samhällsinformation utan att lämna hemmet."
+    },
+    {
+      "slug": "europas-ai-suveranitet-nationella-sprakmodeller-2026",
+      "title": "Europas strävan efter AI-suveränitet — nationella språkmodeller och digital autonomi",
+      "date": "2026-04-17T10:00:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": [
+        "digitalisering",
+        "forsvar"
+      ],
+      "excerpt": "Minst sex EU-länder bygger nu egna stora språkmodeller. Tysklands SOOFI, Portugals Amalia, Spaniens Alia och Polens PLLuM är alla svar på samma fråga: hur minskar Europa sitt beroende av amerikanska och kinesiska AI-plattformar? Bakom initiativen finns ett nytt politiskt ramverk, investeringar för miljarder — och grundläggande frågor om vad digital suveränitet egentligen kräver."
+    },
+    {
+      "slug": "fran-21-journalsystem-till-europeiskt-halsodataomrade",
+      "title": "Från 21 journalsystem till ett europeiskt hälsodataområde",
+      "date": "2026-04-17T18:00:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": [
+        "digitalisering",
+        "valfard",
+        "revisionsmetodik"
+      ],
+      "excerpt": "Sverige har 21 regioner med egna journalsystem, decennier av misslyckad samordning och patienter som upprepar sin sjukhistoria vid varje regiongräns. Nu tvingar EU:s hälsodataförordning EHDS fram det som frivillig samverkan inte klarat — med mars 2029 som första skarpa deadline. Frågan är inte bara om omvandlingen lyckas, utan om den klarar granskning."
+    },
+    {
+      "slug": "suveran-ai-europa-nationella-llm-techno-blocs-2026",
+      "title": "Suverän AI: Europas nationella LLM-kapplöpning och techno-blocens framväxt",
+      "date": "2026-04-17T10:00:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": [
+        "digitalisering"
+      ],
+      "excerpt": "Tyskland bygger SOOFI. Portugal lanserar Amalia. Polen har PLLuM, Spanien har Alia. Europa rustar sig med nationella språkmodeller samtidigt som EU investerar 23 miljarder dollar i suverän molninfrastruktur. Men drivkraften bakom rörelsen är inte teknik — det är geopolitik. Techno-blocerna formas, och frågan är om Europa hinner bygga sin plats vid bordet."
+    },
+    {
+      "slug": "80-procent-saknar-gynnsam-status-biologisk-mangfald-2030",
+      "title": "80 procent av naturtyperna saknar gynnsam status — tre bindande åtaganden och en uppföljning som aldrig fungerat",
+      "date": "2026-04-17T16:00:00.000Z",
+      "authorSlug": "expert-miljo-klimat",
+      "areaSlugs": [
+        "miljo-klimat",
+        "revisionsmetodik"
+      ],
+      "excerpt": "Sverige har skrivit under på tre parallella åtaganden för biologisk mångfald: Kunming-Montreal-ramverkets 30×30-mål, EU:s naturrestaureringsförordning med bindande restaureringsmål till 2030, och CSRD:s krav på naturrelaterad rapportering. Samtidigt visar Riksrevisionens granskning att det uppföljningssystem som ska mäta framstegen aldrig fungerat i praktiken — och att 80 procent av naturtyperna saknar gynnsam bevarandestatus."
     }
   ]
 }

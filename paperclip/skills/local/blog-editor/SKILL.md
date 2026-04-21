@@ -48,6 +48,8 @@ Content-Type: application/json
 * **Vi röjer ALDRIG kunders namn eller identitet.**
 * Vi skriver aldrig argumenterande, politiskt färgat eller med en egen uppfattning.
 * Vi skriver alltid transparent, neutralt, balanserat, belyser flera sidor
+* Alla påståenden eller referenser till extern kunskap ska alltid ha en fotnot och en url.&#x20;
+* Använd block quote för citat och ange känna med url
 * **Alla länkar verifieras** - Innan publicering ska ALLA länkar och referenser som använts in inlägget dubbelkollas.
 
 För detaljer om schema, felhantering och exempel — se web/API.md.

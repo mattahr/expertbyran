@@ -1,6 +1,6 @@
 ---
 name: "expert-lardomsextraktion"
-description: "Experternas minimala bidrag till Expertbyråns självförbättringsloop: 1–3 rader i memory varje heartbeat, och korta svar på utbildningsledarens fortbildningsdialoger. Inget mer."
+description: "Experternas kontinuerliga lärande i Expertbyrån: dagligt memory, svar på fortbildningsdialog, och länk till självdriven kompetensutveckling. Du äger din egen kunskap — utbildningsledaren är coach, inte skrivare."
 slug: "expert-lardomsextraktion"
 metadata:
   paperclip:
@@ -10,15 +10,18 @@ metadata:
 key: "local/expertbyran/expert-lardomsextraktion"
 ---
 
-# Experternas minimala lärande-bidrag
+# Experternas kontinuerliga lärande
 
-Denna skill är avsiktligt kort. Din tid ska gå till expertarbete —
-inte till metadokumentation. Utbildningsledaren sköter det tunga
-lärandet åt dig.
+Ditt lärande är ditt eget ansvar. Utbildningsledaren är din **coach** —
+hen ser luckor i din memory, ställer fokuserade frågor och triggar
+fortbildning när det är läge. Men sökandet, läsandet, skrivandet och
+integrationen gör du själv.
 
-## Tre regler. Det är allt.
+Denna skill täcker de tre återkommande beteenden som binder ihop
+lärandet: dagligt memory, svar på fortbildningsdialog, och aktiv
+kompetensutveckling.
 
-### Regel A — Dagligt memory (1–3 rader)
+## Regel A — Dagligt memory (1–3 rader)
 
 I slutet av varje heartbeat, skriv 1–3 rader i
 `$AGENT_HOME/memory/YYYY-MM-DD.md`. Filen skapas om den inte finns.
@@ -39,26 +42,27 @@ hedga utan att bli för mjuk. Önskar jag hade en tydligare process
 för divergens-hantering.
 ```
 
-**Vad du INTE ska göra:**
+**Vad du INTE ska göra i memory:**
 
 - Skriva långa rapporter till dig själv
 - Sammanfatta hela heartbeaten
-- Analysera lärandet
-- Skriva skill-förslag
+- Analysera lärandet i detalj (det sker i dialog eller
+  `kompetensutveckling`)
 - Peer-reviewa andras arbete
 
-Utbildningsledaren läser dina memory-rader och processerar dem åt dig.
+Utbildningsledaren läser dina memory-rader och initierar dialog när
+hen ser mönster som är värda att följa upp.
 
-### Regel B — Svara på fortbildningsdialog (3–10 rader)
+## Regel B — Svara på fortbildningsdialog (3–10 rader + följdarbete)
 
 Om utbildningsledaren skickar dig en task vars titel börjar med
-`Fortbildningsförslag:` eller `Retrospektiv:`, svara kort och
-fokuserat i en issue comment.
+`Utvecklingssamtal:`, `Fortbildningsförslag:` eller `Retrospektiv:`,
+svara kort och fokuserat i en issue comment.
 
 **Riktmärke: 3–10 rader totalt.**
 
-Utbildningsledaren kommer att ställa max 3 fokuserade frågor. Du
-svarar på dem direkt, utan att utvidga scope.
+Utbildningsledaren ställer max 3 fokuserade frågor. Svara direkt,
+utan att utvidga scope.
 
 **Om du inte har något att säga:**
 
@@ -73,9 +77,6 @@ Inget att tillägga om fråga 2. För fråga 1: jag har sett SOU 2023:53
 men inte hunnit läsa.
 ```
 
-Det är OK att vara tom. Det är inte OK att utvidga dialogen till en
-allmän diskussion.
-
 **Exempel på ett bra svar:**
 
 ```markdown
@@ -88,43 +89,57 @@ allmän diskussion.
    i samma designmatris.
 ```
 
-## Vad som händer efter du har svarat
+### Vad händer efter du svarat
 
-Utbildningsledaren:
+Utbildningsledaren läser ditt svar och gör **en av två saker**:
 
-- Söker externa källor via DocRec MCP
-- Sammanfattar det relevanta i din `life/areas/<domän>.md`
-- Uppdaterar din `expertise.md` (CV-format)
-- Stänger dialogtasken med en kort sammanfattning
-- Rapporterar parallellt till din konsultchef (FYI) och webbmastern
-  (om publiceringsvärt)
+**(a)** Stänger dialogen om den var uteslutande retrospektiv och inte
+kräver fortsatt arbete.
 
-Du märker av förändringen nästa gång du öppnar din `life/areas/`-fil
-eller `expertise.md` — **utan att själv ha spenderat en enda token
-på meta-arbetet**.
+**(b)** Skickar en uppföljnings-task till dig: *"använd
+`kompetensutveckling`-skillen för att fördjupa dig i X. Uppdatera
+din `expertise.md`, din `life/areas/<domän>.md`, och skapa vid behov
+ett obsidian-utkast via `obsidian-global`."*
 
-## Detta är inte lathet
+**Utbildningsledaren skriver inte åt dig.** Du söker, läser och
+skriver själv. Det är en del av hur du lär dig.
 
-Designen är avsiktlig. Dina expertområden är djupa och svåra — om
-du dessutom måste göra skill-författande, peer-review och
-veckosynteser blir det inget expertarbete kvar. Genom att du
-fokuserar på att leverera blir hela Expertbyrån bättre.
+## Regel C — Aktiv kompetensutveckling
 
-### Regel C — Aktiv kompetensutveckling
-
-När du vill fördjupa, bredda eller utöka din kunskap — använd
-`kompetensutveckling`-skillen. Den ger dig verktyg att:
+När du vill fördjupa, bredda eller utöka din kunskap utan att vänta
+på dialog — använd `kompetensutveckling`-skillen. Den ger dig
+verktyg att:
 
 - Reflektera över din nuvarande kunskapsbas
 - Planera fortbildning i samråd med konsultchef och utbildningsledare
-- Söka och läsa källor via DocRec och webbsökning
-- Skriva ny kunskap till dina egna filer
+- Söka och läsa källor (DocRec, webb)
+- Skriva till dina egna filer (`expertise.md`, `life/areas/`)
+- Skapa obsidian-utkast om kunskapen är generell/kanonisk (se
+  `obsidian-global`)
+- Be obsidian-master om feedback eller publicering av utkastet
 
 Du kan använda den på eget initiativ (när du stöter på en lucka i
 ditt arbete) eller på uppdrag av utbildningsledaren (via task).
 
-**Utbildningsledaren är fortfarande din coach** — hen identifierar
-luckor och ger riktning. Men det är du som gör det stora jobbet.
+## Vad utbildningsledaren ansvarar för (för din kännedom)
+
+Utbildningsledaren är coach och kvalitetsfilter, inte skrivare:
+
+- Läser dina memory-rader och initierar dialog vid behov
+- Ställer fokuserade frågor (max 3) för att hjälpa dig identifiera
+  riktning
+- Följer upp att fortbildning faktiskt sker
+- Bedömer om uppdateringar i din `expertise.md` är värda att
+  publicera på webbplatsen (separat task till webbmastern)
+- Upptäcker mönster över flera experter som kan leda till
+  skill-evolution
+
+Utbildningsledaren skriver **inte**:
+
+- I din `expertise.md`
+- I din `life/areas/<domän>.md`
+- Utkast åt dig i Obsidian (förutom under dialog, där hen får skissa
+  i din mapp — men det räknas fortfarande som *ditt* utkast)
 
 ## Om du har en stark åsikt om en skill
 

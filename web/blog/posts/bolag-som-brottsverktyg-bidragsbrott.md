@@ -1,10 +1,8 @@
-Sveriges välfärdssystem betalar ut omkring 800 miljarder kronor i transfereringar varje år. Det är grundbulten i samhällskontraktet — pengarna ska nå den som behöver sjukersättning, föräldrapenning, assistans eller stöd vid arbetslöshet. Men en växande andel av dessa medel hamnar hos aktörer som aldrig hade rätt till dem. Enligt Ekonomistyrningsverkets senaste uppskattning betalas mellan 13 och 16 miljarder kronor ut felaktigt varje år, och mer än hälften av dessa fel misstänks vara avsiktligt orsakade ([ESV 2023:22](https://www.esv.se/publikationer/2023/22/)).
+Sveriges välfärdssystem betalar ut omkring 800 miljarder kronor i transfereringar varje år. Det är grundbulten i samhällskontraktet: pengarna ska nå den som behöver sjukersättning, föräldrapenning, assistans eller stöd vid arbetslöshet. Men en växande andel av dessa medel hamnar hos aktörer som aldrig hade rätt till dem. Enligt Ekonomistyrningsverkets senaste uppskattning betalas mellan 13 och 16 miljarder kronor ut felaktigt varje år, och mer än hälften av dessa fel misstänks vara avsiktligt orsakade ([ESV 2023:22](https://www.esv.se/publikationer/2023/22/)).
 
 Det gemensamma verktyget i de mest avancerade uppläggen är bolaget. Brottsförebyggande rådet visar i sin rapport *Företag som brottsverktyg* (Brå 2025:20) att cirka 11 000 personer med koppling till nätverkskriminalitet var delaktiga i drygt 23 000 företag under perioden 2020–2023 — motsvarande 1,7 procent av alla företag i landet ([Brå 2025:20](https://bra.se/rapporter/arkiv/2025-12-11-foretag-som-brottsverktyg)). Tillsammans hade dessa företag över 11,5 miljarder kronor i obetalda skulder till staten.
 
-Hur fungerar bolaget som brottsverktyg? Och räcker de kontrollåtgärder som nu byggs upp?
-
-Svaret är att bolaget ger kriminella aktörer en legitim fasad som gör brottsligheten svårupptäckt och storskalig. Nya verktyg — Utbetalningsmyndigheten, skärpt lagstiftning och utökat informationsutbyte — förbättrar gradvis kontrollen. Men väsentliga luckor kvarstår.
+Bolaget ger kriminella aktörer en legitim fasad som gör brottsligheten svårupptäckt och storskalig. Nya verktyg — Utbetalningsmyndigheten, skärpt lagstiftning och utökat informationsutbyte — förbättrar gradvis kontrollen. Väsentliga luckor kvarstår dock.
 
 ## Bolaget ger brottsligheten en legitim fasad
 
@@ -20,7 +18,7 @@ En annan vanlig metod är att använda så kallade målvakter: personer som form
 
 Den organiserade brottsligheten riktar sig inte slumpmässigt mot välfärdssystemen. Uppläggen koncentreras till system där utbetalningarna är stora, kontrollen svag och företag har en naturlig roll.
 
-### Assistansersättningen — den mest lukrativa kanalen
+### Assistansersättningen — den mest utsatta kanalen
 
 Assistansersättningen är det enskilt mest utsatta systemet. Inspektionen för socialförsäkringen (ISF) rapporterar att felaktigt utbetalda belopp som återkrävts inom ramen för myndighetssamverkan mot organiserad brottslighet (OB-satsningen) uppgick till cirka 295 miljoner kronor för assistansersättning under perioden 2022–2025 — det motsvarar 70 procent av alla återkrav i satsningen ([ISF 2026:3, s. 28](https://isf.se/download/18.17a177719c47958ed431b29/1771929199074/Rapport%202026-3%20Samverkan%20mot%20organiserad%20brottslighet%20i%20socialf%C3%B6rs%C3%A4kringen.pdf)). Det näst högsta återkravsbeloppet, sjukpenning, uppgick till 26 miljoner kronor under samma period.
 
@@ -59,18 +57,18 @@ De senaste åren har staten genomfört flera reformer för att stärka försvare
 
 **Kommunal anslutning** till Utbetalningsmyndighetens verksamhet har utretts (SOU 2025:20), eftersom en betydande del av välfärdsbrottsligheten riktas mot kommunala system som hemtjänst och HVB-hem — system som hittills inte omfattats av den statliga kontrollinfrastrukturen ([SOU 2025:20, s. 100](https://data.riksdagen.se/dokument/HDB320.html)).
 
-## Grundproblemet kvarstår: systemen designades för tillit
+## Grundproblemet: systemen designades för tillit
 
-Alla dessa åtgärder — Utbetalningsmyndigheten, det utökade informationsutbytet, de skärpta lagarna — är steg i rätt riktning. Men de adresserar främst upptäckt och beivran. Grundproblemet är att välfärdssystemen i sin konstruktion bygger på tillit till den sökande. De utformades i en tid när privata utförare var undantag och organiserad brottslighet mot välfärden ännu inte var ett systemhot.
+Dessa åtgärder — Utbetalningsmyndigheten, det utökade informationsutbytet, de skärpta lagarna — stärker gradvis kontrollen. De adresserar dock främst upptäckt och beivran. Grundproblemet är att välfärdssystemen i sin konstruktion bygger på tillit till den sökande. De utformades i en tid när privata utförare var undantag och organiserad brottslighet mot välfärden ännu inte var ett systemhot.
 
-Frågan framåt handlar inte bara om fler kontroller utan om systemdesign. Hur utformar man välfärdsförmåner som är tillgängliga för dem som behöver dem, utan att skapa öppningar som kriminella aktörer systematiskt kan utnyttja? Hur balanserar man effektiv kontroll mot rättssäkerhet och integritetsskydd? Det är frågor som saknar enkla svar, men som inte längre kan skjutas upp.
+Frågan framåt handlar inte bara om fler kontroller utan om systemdesign. Hur utformas välfärdsförmåner som är tillgängliga för dem som behöver dem, utan att skapa öppningar som kriminella aktörer systematiskt kan utnyttja? Hur balanseras effektiv kontroll mot rättssäkerhet och integritetsskydd? Det är frågor som saknar enkla svar, men som kräver systematisk analys.
 
 ---
 
 ## Referenser
 
 - Brå 2025:20, *Företag som brottsverktyg* — [bra.se](https://bra.se/rapporter/arkiv/2025-12-11-foretag-som-brottsverktyg)
-- ESV 2023:22, *Omfattningen av felaktiga utbetalningar från välfärdssystemen* — [esv.se](https://www.esv.se/publikationer/2023/22/)
+- ESV 2023:22, *Omfattningen av felaktiga utbetalningar från välfärdssystemen* — [ubm.se](https://ubm.se/publikationer/publikationer-fran-ekonomistyrningsverket/publikationer/2025-12-12-omfattningen-av-felaktiga-utbetalningar-fran-valfardssystemen)
 - ISF 2026:3, *Samverkan mot organiserad brottslighet i socialförsäkringen* — [isf.se](https://isf.se/download/18.17a177719c47958ed431b29/1771929199074/Rapport%202026-3%20Samverkan%20mot%20organiserad%20brottslighet%20i%20socialf%C3%B6rs%C3%A4kringen.pdf)
 - Prop. 2022/23:34, *Utbetalningsmyndigheten* — [riksdagen.se](https://data.riksdagen.se/dokument/HA0334.html)
 - Prop. 2025/26:161, *Förbättrade förutsättningar för kommuner att motverka felaktiga utbetalningar* — [riksdagen.se](https://data.riksdagen.se/dokument/HD03161.html)

@@ -1,8 +1,8 @@
 ## Agentisk AI: när systemen slutar svara och börjar agera
 
-I ett decennium har vi tränat oss att behandla AI som ett sofistikerat uppslagsverktyg — vi ställer frågor, vi får svar. Men under det senaste året har paradigmet förskjutits. AI-system agerar nu självständigt: de söker information, fattar mellanliggande beslut, anropar externa tjänster och delegerar deluppgifter till underliggande system — allt utan att varje steg godkänns av en människa. Det vi kallar *agentisk AI* är inte en teknisk detalj. Det är en grundläggande förändring av hur digitalt arbete organiseras.
+I ett decennium har AI primärt fungerat som ett sofistikerat uppslagsverktyg — användare ställer frågor och får svar. Under det senaste året har paradigmet dock förskjutits. AI-system agerar nu självständigt: de söker information, fattar mellanliggande beslut, anropar externa tjänster och delegerar deluppgifter till underliggande system — allt utan att varje steg godkänns av en människa. Det som kallas *agentisk AI* är inte en teknisk detalj. Det är en grundläggande förändring av hur digitalt arbete organiseras.
 
-Frågan som uppstår är inte om agentiska system kommer att användas i offentlig förvaltning — de används redan. Frågan är om styrning, ansvarsutkrävning och granskningskapacitet hänger med.
+Agentiska system används redan i offentlig förvaltning. Den centrala frågan är om styrning, ansvarsutkrävning och granskningskapacitet utvecklas i samma takt som adoptionen.
 
 ## Vad som skiljer agentiska system från tidigare automation
 
@@ -24,7 +24,7 @@ Flera länders förvaltningar testar agentiska system för att avlasta handlägg
 
 ### Offentlig upphandling och avtalsgranskning
 
-Agenter som analyserar anbudsunderlag, kontrollerar mot lagkrav och flaggar avvikelser har börjat introduceras i stödfunktioner. Risken är inte att de tar fel beslut — det är att ansvarsfrågan suddas ut när "systemet flaggade inget".
+Agenter som analyserar anbudsunderlag, kontrollerar mot lagkrav och flaggar avvikelser har börjat introduceras i stödfunktioner. Risken ligger inte primärt i felaktiga beslut — utan i att ansvarsfrågan blir otydlig när "systemet flaggade inget".
 
 ### Intern IT-drift och incidenthantering
 
@@ -42,24 +42,24 @@ Traditionell IT-governance är designad för system med definierbara tillstånd 
 
 4. **Ansvarsutkrävning.** Juridiska och förvaltningsrättsliga system bygger på att ett beslut kan härledas till en identifierbar aktör. Kedjad delegation suddar ut den gränsen.
 
-## Principer för ansvarsfull agentic deployment
+## Principer för ansvarsfull utrullning av agentisk AI
 
-Att stoppa tekniken är varken möjligt eller önskvärt. Men att rulla ut utan styrningsramverk är riskabelt — inte minst i offentlig sektor där legitimitet och rättssäkerhet är kritiska egenskaper.
+Att stoppa tekniken är varken möjligt eller önskvärt. Men att rulla ut utan styrningsramverk medför risker — inte minst i offentlig sektor där legitimitet och rättssäkerhet är kritiska egenskaper.
 
-Underlaget från de förvaltningar som kommit längst pekar på fyra principer:
+Erfarenheter från de förvaltningar som kommit längst pekar på fyra principer:
 
 **Mänsklig kontrollpunkt vid rättsverkande steg.** Agenter som bereder, men inte fattar, beslut med rättsverkan. Delegering av utförande är möjlig; delegering av den slutliga rättshandlingen bör inte ske utan explicit godkännande.
 
-**Spårbarhet som designkrav.** Systemarkitekturer måste logga agentkedjor på ett sätt som möjliggör efterhandsgranskning — inte bara händelseloggar, utan kausalkedjor: vilket delmål ledde till vilket verktygsanrop som ledde till vilket utfall.
+**Spårbarhet som designkrav.** Systemarkitekturer behöver logga agentkedjor på ett sätt som möjliggör efterhandsgranskning — inte bara händelseloggar, utan kausalkedjor: vilket delmål ledde till vilket verktygsanrop som ledde till vilket utfall.
 
 **Sandboxade verktygsbehörigheter.** Varje agent bör ha explicit definierade verktygsmandat — vad den får och inte får initiera — snarare än generella behörigheter som löses ut dynamiskt.
 
 **Periodisk konsekvensanalys.** Agentiska system som är i drift förändrar sig indirekt när de underliggande modellerna uppdateras. Regelbunden granskning av om systemets faktiska beteende fortfarande överensstämmer med dess godkända syfte behöver bli en del av förvaltningsrutinen.
 
-## Nästa steg: kompetens och metod behöver växa parallellt
+## Kompetens och metod behöver växa parallellt med adoptionen
 
 Teknikutvecklingen i agentisk AI är snabb — och framstegen accelererar. Allt fler företag och myndigheter experimenterar med autonoma agentflöden för att hantera komplexa arbetsuppgifter. Det är en rationell respons på ett genuint tryck: kompetensförsörjningsproblem, ärendebelastning, krav på snabbare handläggning.
 
 Men förmågan att styra och granska dessa system behöver växa i samma takt som adoptionen. Det innebär inte bara teknisk kompetens — det kräver att jurister, revisorer och förvaltningsutvecklare lär sig ställa rätt frågor om system vars signatur är att de agerar utan att bli tillfrågade.
 
-Morgondagens granskningsfråga är inte "kördes programmet korrekt?" utan "var beslutskedjan i linje med uppdraget — och vem ansvarar för gapet om den inte var det?"
+Den framväxande granskningsfrågan handlar inte längre om "kördes programmet korrekt?" utan om "var beslutskedjan i linje med uppdraget — och var ligger ansvaret om den inte var det?"

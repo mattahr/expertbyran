@@ -1,10 +1,10 @@
 Från färre än 5 procent av alla enterprise-applikationer till 40 procent på tolv månader. Det är Gartners prognos för agentisk AI under 2026 — ett teknikskifte som accelererar snabbare än nästan något som hänt i IT-branschen sedan mobilens genombrott. Den 7 april 2026 aktiverade revisionsföretaget EY sin multi-agentplattform för 130 000 revisorer globalt. Inte som ett pilotprojekt. Som produktionssystem.
 
-Det som händer nu är inte ytterligare en AI-hype-cykel. Det är deployment. Men Gartner varnar samtidigt för att 40 procent av alla agentprojekt kommer att ha skrotats innan 2028 — på grund av oklara affärsvärden, spirande kostnader och otillräcklig riskstyrning. Frågan är inte längre om agentisk AI kommer. Frågan är om styrningen hinner med.
+Det som pågår är inte ytterligare en AI-hype-cykel. Det är deployment i stor skala. Gartner varnar samtidigt för att 40 procent av alla agentprojekt kommer att ha skrotats innan 2028 — på grund av oklara affärsvärden, spirande kostnader och otillräcklig riskstyrning. Den centrala frågan är om styrningen hinner med teknikens utrullningstakt.
 
 ## Vad är agentisk AI — och varför är det annorlunda?
 
-Traditionell AI väntar på en fråga och returnerar ett svar. Agentisk AI planerar, delegerar och utför flegs-uppgifter autonomt — utan att be om mänskligt godkännande vid varje steg.
+Traditionell AI väntar på en fråga och returnerar ett svar. Agentisk AI planerar, delegerar och utför flerstegsuppgifter autonomt — utan att be om mänskligt godkännande vid varje steg.
 
 En AI-agent kan i praktiken: läsa ett dokument, identifiera relevanta datapunkter, köra analyser mot ett externt API, sammanfatta resultaten och skicka ett utkast till en kollega — allt på ett uppdrag utan att en människa sett de mellanliggande stegen. I EY:s fall hanterar plattformen 1,4 biljoner rader journalposter per år.
 
@@ -18,7 +18,7 @@ Tre datapunkter sammanfattar läget:
 - **130 000** revisorer hos EY använder nu agentisk AI i produktion — 160 000 revisionsuppdrag, 150+ länder (EY, 7 april 2026)
 - **94 %** av organisationer som adopterar AI-agenter uttrycker oro för "agent sprawl" — okontrollerad spridning av autonoma system utan samlad styrning (OutSystems, april 2026)
 
-Det är en intressant triangel. Nästan alla deployar. Nästan alla är oroliga. Och var femte projekt riskerar att skrotas.
+Mönstret är anmärkningsvärt: nästan alla deployar, nästan alla är oroliga, och var femte projekt riskerar att skrotas.
 
 ## Tre styrningsproblem som är akuta nu
 
@@ -26,7 +26,7 @@ Underlaget tyder på att organisationer rör sig snabbare än de förstår vart 
 
 ### Beslutskedjor utan tydligt ägarskap
 
-När en AI-agent fattar tio delbeslut på vägen mot ett slutresultat — vem ansvarar för varje steg? I traditionell IT är svaret tydligt: systemen loggar, revisorn kan följa spåret. Med agentisk AI är det mer komplext. Agenten väljer verktyg dynamiskt, ibland i kedja med andra agenter. Utan explicit loggarkitektur som bevarar hela resonemangskedjan är retrospektiv granskning inte möjlig.
+När en AI-agent fattar tio delbeslut på vägen mot ett slutresultat uppstår frågan om ansvar för varje steg. I traditionell IT är svaret tydligt: systemen loggar, revisorn kan följa spåret. Med agentisk AI är det mer komplext. Agenten väljer verktyg dynamiskt, ibland i kedja med andra agenter. Utan explicit loggarkitektur som bevarar hela resonemangskedjan är retrospektiv granskning inte möjlig.
 
 EU:s AI-förordning, som gäller fullt ut för privat sektor från och med den 2 augusti 2026, ställer krav på automatisk loggning, spårbarhet och mänsklig tillsyn för högrisk-AI-system. Det är i teorin ett svar — men teknisk compliance och faktisk ansvarsutkrävning är inte samma sak.
 
@@ -38,17 +38,17 @@ Agent sprawl innebär i praktiken att organisationen inte längre vet vilka auto
 
 ### Governance-infrastrukturen måste byggas parallellt — inte efteråt
 
-Det klassiska mönstret i teknikutrullningar är: deploye först, reglera sedan. PCI DSS kom efter kortbedrägerierna. GDPR kom efter Cambridge Analytica. Den mönstersvansen är kostsam.
+Det klassiska mönstret i teknikutrullningar är: deploye först, reglera sedan. PCI DSS kom efter kortbedrägerierna. GDPR kom efter Cambridge Analytica. Det mönstret är kostsamt.
 
 Gartner konstaterar att 50 procent av alla AI-agentmisslyckanden fram till 2030 förväntas bero på otillräcklig governance-plattform vid driftstillfället — inte i efterhand. Det innebär att governance-infrastrukturen — AI-register, loggarkitektur, konformitetsbedömning, redovisningsprinciper — behöver vara på plats när agenten går i produktion, inte ett år senare.
 
 ## Vad EY:s utrullning signalerar
 
-EY är inte ett teknikföretag. Det är en av världens fyra största revisionsbyråer — en organisation vars trovärdighet ytterst vilar på förmågan att dokumentera och stå till svars för varje revisionsbeslut. Att EY valt att rulla ut agentisk AI i full skala för sina 130 000 revisorer den 7 april är ett branschsignal av rang.
+EY är inte ett teknikföretag. Det är en av världens fyra största revisionsbyråer — en organisation vars trovärdighet ytterst vilar på förmågan att dokumentera och stå till svars för varje revisionsbeslut. Att EY valt att rulla ut agentisk AI i full skala för sina 130 000 revisorer den 7 april är en branschsignal av betydande dignitet.
 
-Det säger två saker. Teknologin är tillräckligt mogen för produktion i professionella tjänster med höga krav på spårbarhet. Och utan AI-integration riskerar revisionsbyråer att tappa konkurrensförmågan — kostnadspress och komplexitet driver adoption.
+Det indikerar två saker. Teknologin är tillräckligt mogen för produktion i professionella tjänster med höga krav på spårbarhet. Och utan AI-integration riskerar revisionsbyråer att tappa konkurrensförmågan — kostnadspress och komplexitet driver adoption.
 
-Men det reser också en reflexiv fråga: vem granskar EY:s agenter? Vilka analytiker kan följa ett AI-systems resonemang och bedöma om varje steg är korrekt? Och hur länge dröjer det innan offentliga myndigheter förväntas ha samma kapabilitet som sina privata granskare?
+Det reser också en reflexiv fråga: vem granskar EY:s agenter? Vilka analytiker kan följa ett AI-systems resonemang och bedöma om varje steg är korrekt? Och hur länge dröjer det innan offentliga myndigheter förväntas ha samma kapabilitet som sina privata granskare?
 
 ## Tre konkreta prioriteringar
 
