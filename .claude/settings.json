@@ -152,7 +152,8 @@
       "Bash(python3 -c \"import json; d=json.load\\(open\\('/Users/mattias/source/expertbyran/web/src/test/fixtures/site-data.fixture.json'\\)\\); print\\('expert slugs:', [e['slug'] for e in d['experts']]\\)\")",
       "Bash(npx --prefix /Users/mattias/source/expertbyran/web tsc -p /Users/mattias/source/expertbyran/web --noEmit)",
       "Bash(npm --prefix /Users/mattias/source/expertbyran/web run test -- --run)",
-      "Bash(npm --prefix /Users/mattias/source/expertbyran/web run lint)"
+      "Bash(npm --prefix /Users/mattias/source/expertbyran/web run lint)",
+      "Bash(curl -sS -X PUT https://expertbyran.ahrens.nu/api/v1/blog/posts/ai-forandrar-spelplanen-for-statlig-revision -H 'Authorization: Bearer 4251' -H 'Content-Type: application/json' -d '{ *)"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
