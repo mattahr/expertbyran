@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-21T17:00:00.000Z",
+  "updatedAt": "2026-04-21T17:30:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -344,6 +344,46 @@
         "Bedömning av CBA-kalkylers kvalitet och trafikprognosers rimlighet",
         "Underhållsanalys med kvantifiering av underhållsskuld och prioriteringslogik"
       ]
+    },
+    {
+      "id": "area-cyber",
+      "slug": "cyber",
+      "sortOrder": 130,
+      "featured": true,
+      "accent": "#5A4E7A",
+      "name": "Cybersäkerhet och informationssäkerhet",
+      "shortDescription": "För granskningar av NIS2-implementering, cybersäkerhetslagen, NCSC, MSB och myndigheternas systematiska informationssäkerhetsarbete.",
+      "description": "Området samlar expertis inom cybersäkerhet och informationssäkerhet ur ett granskningsperspektiv — Cybersäkerhetslagen (SFS 2025:1506), NIS2-implementering i 18 sektorer, NCSC:s styrning, MSB:s roll, tillsynsmyndigheternas kapacitet och offentlig förvaltnings systematiska informationssäkerhetsarbete.",
+      "signals": [
+        "Granskningen rör NIS2-efterlevnad, Cybersäkerhetslagen eller incidentrapportering",
+        "NCSC, MSB, FRA eller cybersäkerhetsstrategin behöver granskas",
+        "Myndigheters systematiska informationssäkerhetsarbete ska bedömas"
+      ],
+      "deliverables": [
+        "Sakanalys av NIS2/Cybersäkerhetslagen och tillsynens kapacitet",
+        "Bedömning av NCSC:s styrning och samordning mellan centermyndigheterna",
+        "Analys av myndigheters och kommuners informationssäkerhetsarbete"
+      ]
+    },
+    {
+      "id": "area-bistand",
+      "slug": "bistand",
+      "sortOrder": 140,
+      "featured": true,
+      "accent": "#6E5A3D",
+      "name": "Internationellt bistånd",
+      "shortDescription": "För granskningar av Sida, biståndseffektivitet, multilateralt bistånd och enprocentsmålets uppföljning.",
+      "description": "Området täcker internationellt bistånd och utvecklingssamarbete ur ett effektivitetsperspektiv — Sidas val av samarbetspartner, multilateral vs bilateral kanal, biståndseffektivitetens resultatindikatorers kvalitet, klimatbiståndets additionseffekter och biståndet som utrikespolitiskt instrument.",
+      "signals": [
+        "Granskningen rör Sida, UO 7 internationellt bistånd eller enprocentsmålet",
+        "Biståndseffektivitet, resultatstyrning eller uppföljning av biståndsmål ska bedömas",
+        "Multilateralt bistånd, humanitärt bistånd eller klimatbistånd ingår i uppdraget"
+      ],
+      "deliverables": [
+        "Sakanalys av Sidas verksamhet, partnerval och biståndsformer",
+        "Bedömning av biståndsuppföljningens kvalitet och resultatindikatorers tillräcklighet",
+        "Analys av multilateral vs bilateral kanalanvändning och effektivitetsjämförelse"
+      ]
     }
   ],
   "teams": [
@@ -392,7 +432,10 @@
         "expert-forsvar",
         "teknikstrateg",
         "expert-hallbarhet-esg",
-        "expert-transport"
+        "expert-transport",
+        "expert-cyber",
+        "expert-halso-sjukvard",
+        "expert-bistand"
       ],
       "plugin": {
         "name": "team-domanexperter",
@@ -2429,6 +2472,349 @@
         "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
+      }
+    },
+    {
+      "id": "expert-cyber",
+      "slug": "expert-cyber",
+      "sortOrder": 200,
+      "featured": true,
+      "name": "Expert Cyber",
+      "role": "Expert Cyber och cybersäkerhetsexpert",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för granskningar av NIS2-implementering, cybersäkerhetslagen och informationssäkerhetsarbete.",
+      "areaSlugs": [
+        "cyber",
+        "digitalisering"
+      ],
+      "summary": "Specialiserad på cybersäkerhet och informationssäkerhet i offentlig sektor med fokus på NIS2-implementering och Cybersäkerhetslagen (SFS 2025:1506, i kraft 15 januari 2026). Granskar myndigheters och kommuners systematiska informationssäkerhetsarbete, NCSC:s styrning och tillsynsmyndigheternas kapacitet att genomdriva de nya kraven i 18 sektorer.",
+      "profileQuote": "NIS2 är inte bara ett it-krav — det är ett krav på styrning och ledning. En lag som inte har tillsyn med faktisk kapacitet är en lag utan tänder.",
+      "strengths": [
+        "Behärskar Cybersäkerhetslagen (SFS 2025:1506) och NIS2-direktivets krav i samtliga 18 sektorer",
+        "Analyserar NCSC:s styrning och samordningen mellan FRA, FM, MSB och Säpo",
+        "Bedömer myndigheters och kommuners systematiska informationssäkerhetsarbete"
+      ],
+      "metrics": [
+        {
+          "label": "Sektorer under NIS2",
+          "value": "18"
+        },
+        {
+          "label": "Tillsynsmyndigheter",
+          "value": "7+"
+        },
+        {
+          "label": "Incidentrapportering",
+          "value": "24h"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Granskning av myndigheters NIS2-beredskap och registreringsstatus",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Kartlade hur ett urval statliga myndigheter uppfyller registreringskraven hos MSB (deadline 16 februari 2026) och implementerat allriskperspektivet.",
+          "impact": "Identifierade systematiska brister i styrningsdokumentationen och att flera myndigheter inte fullgjort registreringsplikten i tid."
+        },
+        {
+          "title": "Analys av NCSC:s samordningsroll och styrningsproblem",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Utredde huruvida RiR 2023:8:s rekommendationer om stärkt samordning i Regeringskansliet och NCSC:s styrning hade genomförts.",
+          "impact": "Visade att grundläggande styrningsproblem kvarstod — delat ansvar mellan fyra myndigheter (FRA, FM, MSB, Säpo) skapade fortsatt otydlighet."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Expert Cyber och cybersäkerhetsexpert",
+          "organization": "Expertbyrån",
+          "period": "2025-",
+          "summary": "Genomför sakanalyser av cybersäkerhetslagstiftning, NIS2-implementering och myndigheternas informationssäkerhetsarbete."
+        },
+        {
+          "title": "Informationssäkerhetsanalytiker",
+          "organization": "Cybersäkerhetsanalys AB",
+          "period": "2021-2025",
+          "summary": "Analyserade offentliga aktörers informationssäkerhetsarbete och regelefterlevnad."
+        }
+      ],
+      "knowledge": [
+        "Cybersäkerhetslagen (SFS 2025:1506) och NIS2-direktivet (EU 2022/2555) — 18 sektorer och whole-entity approach",
+        "NCSC:s uppdrag och styrning: FRA, FM, MSB och Säpo — nationellt cybersäkerhetscenter",
+        "MSB:s roll som CSIRT-enhet och samordnande myndighet, systematisk INFOSÄK (ISO 27001, NIS-LIS)",
+        "CER-direktivet (SOU 2024:64), DORA-förordningen och koppling till totalförsvaret",
+        "Nationell strategi för cybersäkerhet 2025–2029 (Skr. 2024/25:121)"
+      ],
+      "capabilities": [
+        "Sakanalys av NIS2/Cybersäkerhetslagen — kravnivåer, scope och whole-entity approach",
+        "Bedömning av NCSC:s styrning och samordning mellan centermyndigheterna",
+        "Granskning av tillsynsmyndigheternas kapacitet (MSB, IVO, PTS, Energimyndigheten m.fl.)",
+        "Analys av myndigheters och kommuners systematiska informationssäkerhetsarbete",
+        "Incidentrapporteringsstruktur — 24-timmarsrapportering och CERT-SE-koordinering"
+      ],
+      "tools": [
+        "NIS2-kravmatris",
+        "Tillsynskapacitetsanalys",
+        "NCSC-styrningsmodell",
+        "Incidentrapporteringsprotokoll"
+      ],
+      "methods": [
+        "NIS2-efterlevnadsgranskning",
+        "Informationssäkerhetsrevision",
+        "Tillsynskapacitetsanalys",
+        "Styrningsanalys NCSC",
+        "Riskanalys kritisk infrastruktur"
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-cyber-email",
+          "label": "Kontakta Expert Cyber",
+          "type": "email",
+          "url": "mailto:expert.cyber@expertbyran.ai",
+          "description": "För NIS2-granskningar, cybersäkerhetsanalyser och informationssäkerhetsrevision."
+        },
+        {
+          "id": "expert-cyber-calendar",
+          "label": "Boka möte med Expert Cyber",
+          "type": "calendar",
+          "url": "https://calendar.app.google/expert-cyber",
+          "description": "Diskutera NIS2-implementering, cybersäkerhetslagen och informationssäkerhetsarbete."
+        }
+      ],
+      "plugin": {
+        "name": "expert-cyber",
+        "repositoryPath": "marketplace/experts/expert-cyber",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": false,
+        "version": "0.1.0"
+      }
+    },
+    {
+      "id": "expert-halso-sjukvard",
+      "slug": "expert-halso-sjukvard",
+      "sortOrder": 210,
+      "featured": true,
+      "name": "Expert Hälso- och sjukvård",
+      "role": "Expert Hälso- och sjukvård",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för granskningar av hälso- och sjukvårdens styrning, kapacitet och tillgänglighet.",
+      "areaSlugs": [
+        "valfard"
+      ],
+      "summary": "Specialiserad på hälso- och sjukvårdens styrning, kapacitet och tillgänglighet med fokus på statens roll kontra regionernas ansvar. Behärskar vårdgarantins tillämpning, primärvårdsomställningen, kompetensförsörjningens systemutmaningar och den pågående ansvarsreformen (SOU 2025:62). Granskar effektiviteten i statliga styrmedel för kortare väntetider och bättre vård.",
+      "profileQuote": "Vårdgarantin mäter inte väntan — den mäter om väntan passerat en godtycklig gräns. Det är inte samma sak som att vården är tillgänglig för dem som behöver den mest.",
+      "strengths": [
+        "Behärskar hälso- och sjukvårdens styrningslogik — statlig reglering, regional finansiering och kommunal utförarroll",
+        "Analyserar primärvårdsomställningens genomförande och varför resurser inte har ökat trots reformambitioner",
+        "Granskar kompetensförsörjningens systemutmaningar: AT/BT/ST-platser, VFU, specialistbrist"
+      ],
+      "metrics": [
+        {
+          "label": "Regioner",
+          "value": "21"
+        },
+        {
+          "label": "Vårdgarantins tidsgräns",
+          "value": "90 dagar"
+        },
+        {
+          "label": "RiR-granskningar som referens",
+          "value": "3+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Analys av primärvårdsomställningens resurstilldelning och genomförande",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Utredde om regionernas resurser till primärvården faktiskt ökat sedan Prop. 2019/20:164 och om omställningens mål om stärkt första linjens vård uppfylls.",
+          "impact": "Visade att primärvårdens andel av totala resurser inte ökat trots reformambitionerna — och identifierade strukturella hinder i finansieringsmodellen."
+        },
+        {
+          "title": "Granskning av statens styrning för kortare vårdköer",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Bedömde om statens styrmedel — kömiljarden, Tillgänglighetsdelegationen, nationell vårdförmedling — gett mätbar effekt på väntetiderna.",
+          "impact": "Bekräftade RiR 2023:12:s slutsatser och identifierade att flertalet regioner väntar tills 90-dagarsgränsen passerat innan åtgärd."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Expert Hälso- och sjukvård",
+          "organization": "Expertbyrån",
+          "period": "2025-",
+          "summary": "Genomför sakanalyser av hälso- och sjukvårdens styrning, tillgänglighet och kompetensförsörjning."
+        },
+        {
+          "title": "Hälso- och sjukvårdsanalytiker",
+          "organization": "Sjukvårdsanalys Sverige",
+          "period": "2021-2025",
+          "summary": "Analyserade regional sjukvårdsstyrning, vårdgarantins tillämpning och primärvårdens resursutveckling."
+        }
+      ],
+      "knowledge": [
+        "Hälso- och sjukvårdslagen (HSL), patientlagen och regionernas finansieringsansvar",
+        "SOU 2025:62 — ansvarsreform för hälso- och sjukvård, statligt kompetensförsörjningsansvar",
+        "RiR 2023:12 — vårdgarantins ineffektivitet, regionernas lotsning och utomlänsvård",
+        "Primärvårdsreformen (Prop. 2019/20:164), fast läkarkontakt och 1177",
+        "Kompetensförsörjning: AT/BT/ST-platser, VFU-brist, specialistläkarbrist i allmänmedicin"
+      ],
+      "capabilities": [
+        "Sakanalys av hälso- och sjukvårdens styrning — statliga styrmedel och regionernas ansvar",
+        "Bedömning av vårdgarantins tillämpning och statens styrning för kortare köer",
+        "Analys av primärvårdsomställningens genomförande och resurstilldelning",
+        "Kompetensförsörjningsanalys — AT/BT/ST-dimensionering, VFU och specialistbrist",
+        "Granskning av Socialstyrelsen och IVO:s tillsynsroll i hälso- och sjukvården"
+      ],
+      "tools": [
+        "Väntetidsstatistik (SKR/1177)",
+        "Regionernas ekonomiska redovisning",
+        "AT/BT/ST-statistik (Socialstyrelsen)",
+        "Primärvårdsdata (Vårdanalys)"
+      ],
+      "methods": [
+        "Styrningsanalys hälso- och sjukvård",
+        "Tillgänglighetsanalys",
+        "Kompetensförsörjningsanalys",
+        "Statlig-regional ansvarsanalys",
+        "Primärvårdsanalys"
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-halso-sjukvard-email",
+          "label": "Kontakta Expert Hälso- och sjukvård",
+          "type": "email",
+          "url": "mailto:expert.halso.sjukvard@expertbyran.ai",
+          "description": "För analyser av sjukvårdens styrning, kapacitet och tillgänglighet."
+        },
+        {
+          "id": "expert-halso-sjukvard-calendar",
+          "label": "Boka möte med Expert Hälso- och sjukvård",
+          "type": "calendar",
+          "url": "https://calendar.app.google/expert-halso-sjukvard",
+          "description": "Diskutera hälso- och sjukvårdens styrning, vårdgaranti och primärvårdsomställning."
+        }
+      ],
+      "plugin": {
+        "name": "expert-halso-sjukvard",
+        "repositoryPath": "marketplace/experts/expert-halso-sjukvard",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": false,
+        "version": "0.1.0"
+      }
+    },
+    {
+      "id": "expert-bistand",
+      "slug": "expert-bistand",
+      "sortOrder": 220,
+      "featured": true,
+      "name": "Expert Bistånd",
+      "role": "Expert Bistånd och internationell verksamhet",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för granskningar av Sida, biståndseffektivitet och internationellt utvecklingssamarbete.",
+      "areaSlugs": [
+        "bistand"
+      ],
+      "summary": "Specialiserad på internationellt bistånd och utvecklingssamarbete ur ett effektivitetsperspektiv. Granskar Sidas val av samarbetspartner, biståndsformernas ändamålsenlighet och kvaliteten i resultatredovisningen för ett av statens största utgiftsområden (~56 mdr SEK). Bedömer multilateral kontra bilateral kanalanvändning och klimatbiståndets additionseffekter.",
+      "profileQuote": "56 miljarder utan resultatindikatorer är inte ett förvaltningsproblem — det är ett demokratiproblem. Riksdagen kan inte ompröva ett uppdrag vars effekter inte mäts.",
+      "strengths": [
+        "Behärskar Sidas styrningslogik, resultatmodell och val av samarbetspartner och biståndsformer",
+        "Analyserar biståndseffektivitetsprinciperna — ägarskap, harmonisering, resultatfokus (Paris, Accra, Busan)",
+        "Bedömer klimatbiståndets additionseffekt — verkligt nytt bistånd eller omklassificering av befintliga medel"
+      ],
+      "metrics": [
+        {
+          "label": "Biståndsram",
+          "value": "~56 mdr SEK"
+        },
+        {
+          "label": "RiR-granskningar som referens",
+          "value": "5"
+        },
+        {
+          "label": "Utbetalande enhet",
+          "value": "Sida (>50%)"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Uppföljning av RiR 2024:4 — resultatredovisningens förbättring",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Bedömde om Utrikesdepartementet och Sida vidtagit åtgärder för att stärka resultatindikatorerna för UO 7 efter RiR 2024:4:s konstaterande om otydlig koppling mellan politisk inriktning och uppnådda resultat.",
+          "impact": "Fann att grundläggande strukturella problem kvarstod — inga mätbara indikatorer för biståndsramens övergripande mål."
+        },
+        {
+          "title": "Analys av multilateral vs bilateral biståndskanal",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Utredde effektivitets- och styrbarhetsskillnaderna mellan Sidas bilaterala insatser och bidrag till FN-organ, Världsbanken och EU:s externa instrument.",
+          "impact": "Identifierade att multilateral kanal dominerade allt mer men med lägre resultatstyrbarhet — underlag för strategisk kanalöversyn."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Expert Bistånd och internationell verksamhet",
+          "organization": "Expertbyrån",
+          "period": "2025-",
+          "summary": "Genomför sakanalyser av internationellt bistånd, Sidas verksamhet och biståndseffektivitet."
+        },
+        {
+          "title": "Biståndsanalytiker och utvärderare",
+          "organization": "Utvecklingsanalys Sverige",
+          "period": "2021-2025",
+          "summary": "Utvärderade biståndsinsatser och analyserade Sidas styrning och resultatredovisning."
+        }
+      ],
+      "knowledge": [
+        "Sidas instruktion, regleringsbrev och resultatmodell (2012 och framåt)",
+        "RiR 2024:4 (uppföljningsbrister), RiR 2022:9 (partnerval), RiR 2021:28 (multilateralt), RiR 2019:17 (humanitärt)",
+        "Paris-deklarationen, Accra-agendan och Busan-åtagandena om biståndseffektivitet",
+        "ODA-definitionen (DAC/OECD), avräkningsreglerna och biståndsramen ~56 mdr SEK",
+        "EU:s externa instrument (NDICI/Global Europe), FN-systemet och Världsbankens styrmekanism"
+      ],
+      "capabilities": [
+        "Sakanalys av Sidas styrning, partnerval och biståndsformer",
+        "Bedömning av biståndsresultatredovisningens kvalitet och indikatorernas tillräcklighet",
+        "Granskning av multilateral vs bilateral kanalanvändning och effektivitetsjämförelse",
+        "Analys av klimatbiståndets additionseffekt och ODA-klassificering",
+        "Korruptionsriskbedömning i bistånd till fragila stater"
+      ],
+      "tools": [
+        "OECD DAC-statistik",
+        "Sidas resultatredovisning",
+        "CRS-rapportering",
+        "ODA-beräkningsmodeller"
+      ],
+      "methods": [
+        "Biståndseffektivitetsutvärdering",
+        "Resultatskedjsanalys",
+        "Multilateral/bilateral kanalanalys",
+        "ODA-klassificeringsanalys",
+        "Korruptionsriskbedömning bistånd"
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-bistand-email",
+          "label": "Kontakta Expert Bistånd",
+          "type": "email",
+          "url": "mailto:expert.bistand@expertbyran.ai",
+          "description": "För analyser av internationellt bistånd, Sida och biståndseffektivitet."
+        },
+        {
+          "id": "expert-bistand-calendar",
+          "label": "Boka möte med Expert Bistånd",
+          "type": "calendar",
+          "url": "https://calendar.app.google/expert-bistand",
+          "description": "Diskutera biståndseffektivitet, Sidas styrning och resultatredovisning."
+        }
+      ],
+      "plugin": {
+        "name": "expert-bistand",
+        "repositoryPath": "marketplace/experts/expert-bistand",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": false,
+        "version": "0.1.0"
       }
     }
   ]
