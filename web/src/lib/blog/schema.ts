@@ -11,14 +11,21 @@ const isoDateTimeSchema = z
     message: "Måste vara en giltig ISO 8601-tidsstämpel (t.ex. 2026-04-13T10:00:00.000Z).",
   });
 
-const blogPostEntrySchema = z.object({
-  slug: slugSchema,
-  title: z.string().min(1),
-  date: isoDateTimeSchema,
-  authorSlug: slugSchema,
-  areaSlugs: z.array(slugSchema).min(1),
-  excerpt: z.string().min(1),
-});
+const blogPostEntrySchema = z
+  .object({
+    slug: slugSchema,
+    title: z.string().min(1),
+    date: isoDateTimeSchema,
+    authorSlug: slugSchema.optional(),
+    authorName: z.string().min(1).optional(),
+    authorRole: z.string().min(1).optional(),
+    areaSlugs: z.array(slugSchema).min(1),
+    excerpt: z.string().min(1),
+  })
+  .refine((data) => Boolean(data.authorSlug || data.authorName), {
+    message: "Minst en av authorSlug eller authorName måste anges.",
+    path: ["authorName"],
+  });
 
 export const blogCatalogSchema = z
   .object({

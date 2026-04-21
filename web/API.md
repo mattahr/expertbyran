@@ -105,12 +105,20 @@ Hämtar metadata för alla blogginlägg.
       "title": "Titel",
       "date": "2026-04-15T10:00:00.000Z",
       "authorSlug": "expert-slug",
+      "authorName": "Visningsnamn",
+      "authorRole": "Roll (valfri)",
       "areaSlugs": ["område1"],
       "excerpt": "Sammanfattning..."
     }
   ]
 }
 ```
+
+**Författarfält:** Minst en av `authorSlug` och `authorName` måste anges.
+
+- `authorSlug` (valfri): om den matchar en befintlig expert används expertens data och en länk till `/experter/<slug>` skapas på detaljsidan.
+- `authorName` (valfri): visningsnamn. Används alltid om det är satt och fallbackas till expertens namn när bara `authorSlug` finns. Krävs när `authorSlug` saknas eller inte matchar någon expert.
+- `authorRole` (valfri): fri text för roll. Visas endast om satt — för matchande expert används expertens roll om `authorRole` saknas.
 
 #### POST /api/v1/blog/posts
 Skapar ett nytt blogginlägg. Kräver autentisering.
@@ -127,6 +135,23 @@ Skapar ett nytt blogginlägg. Kräver autentisering.
     "excerpt": "Sammanfattning..."
   },
   "markdown": "# Innehåll\n\nMarkdown-text..."
+}
+```
+
+För gästförfattare utan egen expertsida, använd `authorName` (och ev. `authorRole`) istället för `authorSlug`:
+
+```json
+{
+  "post": {
+    "slug": "gastinlagg",
+    "title": "Gästinlägg",
+    "date": "2026-04-15T10:00:00.000Z",
+    "authorName": "Anna Andersson",
+    "authorRole": "Gästskribent, Lunds universitet",
+    "areaSlugs": ["revisionsmetodik"],
+    "excerpt": "..."
+  },
+  "markdown": "..."
 }
 ```
 

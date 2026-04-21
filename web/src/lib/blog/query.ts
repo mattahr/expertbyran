@@ -14,8 +14,15 @@ export function formatBlogDate(isoDate: string): string {
   });
 }
 
+export type ResolvedAuthor = {
+  name: string;
+  role?: string;
+  // Satt när författaren matchar en expert — används för länk till expertsidan.
+  expertSlug?: string;
+};
+
 export type BlogPostSummary = BlogPostEntry & {
-  author: Expert;
+  author: ResolvedAuthor;
   areas: ExpertArea[];
 };
 
@@ -23,8 +30,27 @@ export type BlogPostFull = BlogPostSummary & {
   contentHtml: string;
 };
 
-function resolveAuthor(experts: Expert[], authorSlug: string): Expert | undefined {
-  return experts.find((expert) => expert.slug === authorSlug);
+function resolveAuthor(experts: Expert[], entry: BlogPostEntry): ResolvedAuthor | null {
+  const expert = entry.authorSlug
+    ? experts.find((candidate) => candidate.slug === entry.authorSlug)
+    : undefined;
+
+  if (expert) {
+    return {
+      name: entry.authorName ?? expert.name,
+      role: entry.authorRole ?? expert.role,
+      expertSlug: expert.slug,
+    };
+  }
+
+  if (entry.authorName) {
+    return {
+      name: entry.authorName,
+      role: entry.authorRole,
+    };
+  }
+
+  return null;
 }
 
 function resolveAreas(allAreas: ExpertArea[], areaSlugs: string[]): ExpertArea[] {
@@ -37,8 +63,13 @@ export async function getOrderedBlogPosts(): Promise<BlogPostSummary[]> {
 
   return blogData.catalog.posts
     .map((post) => {
-      const author = resolveAuthor(siteData.experts, post.authorSlug);
-      if (!author) return null;
+      const author = resolveAuthor(siteData.experts, post);
+      if (!author) {
+        console.warn(
+          `[expertbyran:blog] Hoppar över inlägg '${post.slug}' — saknar visningsnamn (authorSlug='${post.authorSlug ?? ""}' matchar ingen expert och authorName saknas).`,
+        );
+        return null;
+      }
 
       const areas = resolveAreas(siteData.expertAreas, post.areaSlugs);
 
@@ -54,7 +85,7 @@ export async function getBlogPost(slug: string): Promise<BlogPostFull | null> {
   const entry = blogData.catalog.posts.find((post) => post.slug === slug);
   if (!entry) return null;
 
-  const author = resolveAuthor(siteData.experts, entry.authorSlug);
+  const author = resolveAuthor(siteData.experts, entry);
   if (!author) return null;
 
   const areas = resolveAreas(siteData.expertAreas, entry.areaSlugs);

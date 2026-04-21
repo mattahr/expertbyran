@@ -59,4 +59,52 @@ describe("blogCatalogSchema", () => {
     const result = blogCatalogSchema.safeParse(data);
     expect(result.success).toBe(false);
   });
+
+  it("accepts a post with only authorName (no authorSlug)", () => {
+    const result = blogCatalogSchema.safeParse({
+      posts: [
+        {
+          slug: "gastinlagg",
+          title: "Gästinlägg",
+          date: "2026-04-22T08:00:00.000Z",
+          authorName: "Anna Andersson",
+          authorRole: "Gästskribent",
+          areaSlugs: ["revisionsmetodik"],
+          excerpt: "Ett gästinlägg utan matchande expert.",
+        },
+      ],
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts a post with authorSlug only (klassisk modell)", () => {
+    const result = blogCatalogSchema.safeParse({
+      posts: [
+        {
+          slug: "expertinlagg",
+          title: "Expertinlägg",
+          date: "2026-04-22T08:00:00.000Z",
+          authorSlug: "effektivitetsrevisor",
+          areaSlugs: ["revisionsmetodik"],
+          excerpt: "Ett inlägg av en känd expert.",
+        },
+      ],
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects a post without both authorSlug and authorName", () => {
+    const result = blogCatalogSchema.safeParse({
+      posts: [
+        {
+          slug: "utan-forfattare",
+          title: "Utan författare",
+          date: "2026-04-22T08:00:00.000Z",
+          areaSlugs: ["revisionsmetodik"],
+          excerpt: "Saknar författareinformation helt.",
+        },
+      ],
+    });
+    expect(result.success).toBe(false);
+  });
 });

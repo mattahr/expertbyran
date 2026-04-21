@@ -60,15 +60,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className={styles.metaRow}>
               <span className={styles.metaLabel}>Författare</span>
               <span className={styles.metaValue}>
-                <Link href={`/experter/${post.author.slug}`} className={styles.textLink}>
-                  {post.author.name}
-                </Link>
+                {post.author.expertSlug ? (
+                  <Link href={`/experter/${post.author.expertSlug}`} className={styles.textLink}>
+                    {post.author.name}
+                  </Link>
+                ) : (
+                  post.author.name
+                )}
               </span>
             </div>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Roll</span>
-              <span className={styles.metaValue}>{post.author.role}</span>
-            </div>
+            {post.author.role ? (
+              <div className={styles.metaRow}>
+                <span className={styles.metaLabel}>Roll</span>
+                <span className={styles.metaValue}>{post.author.role}</span>
+              </div>
+            ) : null}
             {post.areas.map((area) => (
               <div key={area.slug} className={styles.metaRow}>
                 <span className={styles.metaLabel}>Expertområde</span>

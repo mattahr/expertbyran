@@ -142,7 +142,17 @@
       "Bash(cat)",
       "Read(//tmp/**)",
       "Bash(python3)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(curl -s https://expertbyran.ahrens.nu/api/v1/blog/posts/ai-forandrar-spelplanen-for-statlig-revision)",
+      "Bash(curl -s https://expertbyran.ahrens.nu/api/v1/site-data)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('experts count:', len\\(d.get\\('experts',[]\\)\\)\\); print\\('slugs:', [e['slug'] for e in d.get\\('experts',[]\\)]\\)\")",
+      "Bash(curl -s \"https://expertbyran.ahrens.nu/api/v1/blog/posts\")",
+      "Bash(curl -s \"https://expertbyran.ahrens.nu/blogg\" -o /tmp/blogg.html -w \"%{http_code}\")",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('src/test/fixtures/site-data.fixture.json'\\)\\); print\\('expert slugs:', [e['slug'] for e in d['experts']]\\)\")",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('/Users/mattias/source/expertbyran/web/src/test/fixtures/site-data.fixture.json'\\)\\); print\\('expert slugs:', [e['slug'] for e in d['experts']]\\)\")",
+      "Bash(npx --prefix /Users/mattias/source/expertbyran/web tsc -p /Users/mattias/source/expertbyran/web --noEmit)",
+      "Bash(npm --prefix /Users/mattias/source/expertbyran/web run test -- --run)",
+      "Bash(npm --prefix /Users/mattias/source/expertbyran/web run lint)"
     ],
     "additionalDirectories": [
       "/Users/mattias/source/expertbyran/web/blog",
