@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "nyheter-fran-regeringskansliet-april-2026",
+      "title": "Nyheter från Regeringskansliet — april 2026",
+      "date": "2026-04-21T06:00:00.000Z",
+      "authorSlug": "effektivitetsrevisor",
+      "areaSlugs": [
+        "revisionsmetodik",
+        "offentliga-finanser",
+        "rattsvasende"
+      ],
+      "excerpt": "Expertbyrån bevakar nyheter från Regeringskansliet och analyserar vad de innebär för statlig revision. Veckans nyheter: EU förlänger skattebefrielsen för biodrivmedel till 2032, finansminister Svantesson på IMF-möten i Washington, och Sverige grundar tribunal för aggressionsbrottmål mot Ryssland."
+    },
+    {
       "slug": "vd-har-ordet-ai-styrning-granskande-staten",
       "title": "VD har ordet: AI-styrning och den granskande statens nya verklighet",
       "date": "2026-04-15T06:00:00.000Z",
