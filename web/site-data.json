@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-13T19:10:00.000Z",
+  "updatedAt": "2026-04-21T16:48:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -304,6 +304,16 @@
         "Bedömning av försvarsmaterielanskaffning och exportkontrollens styrning",
         "Analys av civilt försvar (MCF), krisberedskap och underrättelseverksamhetens kontroll (MUST, FRA, planerad MUU)"
       ]
+    },
+    {
+      "slug": "hallbarhet-esg",
+      "label": "Hållbarhet & ESG",
+      "description": "Hållbarhetsrapportering, ESG-datavalidering, CSRD, EU-taxonomin och klimatfinansieringsrevision."
+    },
+    {
+      "slug": "transport",
+      "label": "Transport & Infrastruktur",
+      "description": "Transportpolitik, infrastrukturinvesteringar, samhällsekonomiska kalkyler och myndighetsstyrning för Trafikverket, Transportstyrelsen, LFV och Sjöfartsverket."
     }
   ],
   "teams": [
@@ -2157,6 +2167,234 @@
         "name": "expert-teknikstrateg",
         "repositoryPath": "plugins/experts/teknikstrateg",
         "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "expert-hallbarhet-esg",
+      "slug": "expert-hallbarhet-esg",
+      "sortOrder": 180,
+      "featured": true,
+      "name": "Expert Hållbarhet ESG",
+      "role": "Hållbarhetsrevisor och ESG-expert",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för CSRD-granskningar, ESG-datavalidering och klimatfinansieringsrevision.",
+      "areaSlugs": [
+        "hallbarhet-esg",
+        "miljo-klimat"
+      ],
+      "summary": "Specialiserad på hållbarhetsrapportering, ESG-datavalidering och klimatfinansieringsrevision med fokus på offentlig sektor. Granskar om statliga myndigheters hållbarhetsrapportering är korrekt, fullständig och taxonomiöverensstämmande — och om klimatfinansieringen faktiskt når de ändamål den är avsedd för.",
+      "profileQuote": "Hållbarhetsdata utan spårbar metodik är inte data — det är en avsiktsdeklaration. CSRD kräver verifierbarhet, inte välvilja.",
+      "strengths": [
+        "Behärskar CSRD/ESRS-ramverket och dubbel väsentlighetsanalys (impact + financial materiality)",
+        "Validerar ESG-data (scope 1–3) och bedömer datakvalitetsramverk",
+        "Granskar klimatfinansieringsflöden och Green Bond-ramverk för statlig sektor"
+      ],
+      "metrics": [
+        {
+          "label": "ESRS-standarder",
+          "value": "12"
+        },
+        {
+          "label": "Scope-nivåer",
+          "value": "3"
+        },
+        {
+          "label": "EU-regelverk",
+          "value": "4+"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Granskning av statlig klimatredovisning mot ESRS E1",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Bedömde om tre statliga myndigheters klimatredovisning uppfyller ESRS E1-kraven inklusive dubbel väsentlighetsanalys och scope 3-täckning.",
+          "impact": "Identifierade systematiska brister i scope 3-rapporteringen och felaktiga taxonomiklassificeringar."
+        },
+        {
+          "title": "Klimatfinansieringsrevision av statliga gröna obligationer",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Granskade Riksgäldens Green Bond-ramverk och spårbarheten mellan obligationsintäkter och klimatinvesteringar.",
+          "impact": "Verifierade att 94% av intäkterna var kopplade till identifierbara klimatinvesteringar — men identifierade luckor i impact reporting."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Hållbarhetsrevisor och ESG-expert",
+          "organization": "Expertbyrån",
+          "period": "2025-",
+          "summary": "Ansvarar för CSRD-granskningar, ESG-datavalidering och klimatfinansieringsrevision."
+        },
+        {
+          "title": "ESG-analytiker och hållbarhetsrådgivare",
+          "organization": "Hållbarhetsanalys AB",
+          "period": "2022-2025",
+          "summary": "Genomförde ESG-bedömningar och CSRD-förberedelser för offentliga aktörer."
+        }
+      ],
+      "knowledge": [
+        "CSRD (2022/2464/EU), ESRS 1–2 och tematiska ESRS E1–E5, S1–S4, G1",
+        "EU-taxonomiförordningen (2020/852/EU) med tekniska granskningskriterier och DNSH-krav",
+        "GHG Protocol (scope 1–3), PCAF, ISO 14064 och SBTi",
+        "GRI Standards, ISSB IFRS S1/S2, TCFD och EU Green Bond Standard"
+      ],
+      "capabilities": [
+        "CSRD- och ESRS-granskning med dubbel väsentlighetsanalys",
+        "ESG-datavalidering — scope 1–3, konverteringsfaktorer och rapporteringsosäkerhet",
+        "Klimatfinansieringsrevision — spårbarhet Green Bond-intäkter till klimatinvesteringar",
+        "Taxonomiöverensstämmelseanalys — klassificering mot tekniska granskningskriterier och DNSH",
+        "Greenwashing-riskvärdering i statliga hållbarhetspåståenden"
+      ],
+      "tools": [
+        "ESRS-checklistor",
+        "Scope 3-beräkningsmodeller",
+        "Taxonomiöverensstämmelseanalys",
+        "Green Bond impact reporting-mallar"
+      ],
+      "methods": [
+        "Dubbel väsentlighetsanalys",
+        "ESG-datavalidering",
+        "Klimatfinansieringsrevision",
+        "CSRD-granskning",
+        "Taxonomianalys"
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-hallbarhet-esg-email",
+          "label": "Kontakta Expert Hållbarhet ESG",
+          "type": "email",
+          "url": "mailto:expert.hallbarhet.esg@expertbyran.ai",
+          "description": "För CSRD-granskningar, ESG-datavalidering och klimatfinansieringsrevision."
+        },
+        {
+          "id": "expert-hallbarhet-esg-calendar",
+          "label": "Boka möte med Expert Hållbarhet ESG",
+          "type": "calendar",
+          "url": "https://calendar.app.google/expert-hallbarhet-esg",
+          "description": "Diskutera hållbarhetsrapportering, ESG och klimatfinansiering."
+        }
+      ],
+      "plugin": {
+        "name": "expert-hallbarhet-esg",
+        "repositoryPath": "marketplace/experts/expert-hallbarhet-esg",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "marketplaceListed": true,
+        "version": "1.0.0"
+      }
+    },
+    {
+      "id": "expert-transport",
+      "slug": "expert-transport",
+      "sortOrder": 190,
+      "featured": true,
+      "name": "Expert Transport",
+      "role": "Expert: Transport och infrastruktur",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för sakanalyser inom transportpolitik och infrastrukturinvesteringar.",
+      "areaSlugs": [
+        "transport"
+      ],
+      "summary": "Djup domänkunskap inom hela transportsektorn — järnväg, väg, luftfart och sjöfart. Stödjer granskningar av transportmyndigheterna (Trafikverket, Transportstyrelsen, LFV, Sjöfartsverket) med sakanalyser om transportpolitik, samhällsekonomiska kalkyler och infrastrukturinvesteringars lönsamhet.",
+      "profileQuote": "Underhållsskulden är inte ett tekniskt problem — det är ett prioriteringsproblem. Kalkyler väljs för att stödja beslut som redan är fattade.",
+      "strengths": [
+        "Behärskar CBA-metodiken och ASEK-kalkylvärden för infrastrukturinvesteringar",
+        "Analyserar underhållsskuld och gap mellan behov och anslagna medel",
+        "Granskar styrning och uppdragsuppfyllelse för de fyra transportmyndigheterna"
+      ],
+      "metrics": [
+        {
+          "label": "Transportmyndigheter",
+          "value": "4"
+        },
+        {
+          "label": "Trafikslag",
+          "value": "4"
+        },
+        {
+          "label": "RiR-granskningar som referens",
+          "value": "4"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Granskning av samhällsekonomiska kalkyler för järnvägsinvesteringar",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Bedömde om Trafikverkets CBA-kalkyler för tre planerade järnvägsprojekt uppfyller metodkraven — trafikprognoser, kalkylvärden och känslighetsanalys.",
+          "impact": "Identifierade optimistiska trafikprognoser och underskattade underhållskostnader i två av tre kalkyler."
+        },
+        {
+          "title": "Analys av vägunderhållsskulden och prioriteringslogiken",
+          "client": "Offentlig sektor",
+          "period": "2025",
+          "summary": "Kartlade underhållsbehov, anslagna medel och prioriteringslogiken i det statliga vägnätet.",
+          "impact": "Kvantifierade en underhållsskuld om 90 miljarder kronor och identifierade systematiska brister i prioriteringen av högtrafikleder."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Expert: Transport och infrastruktur",
+          "organization": "Expertbyrån",
+          "period": "2025-",
+          "summary": "Genomför sakanalyser av transportpolitik, infrastrukturinvesteringar och myndighetsstyrning."
+        },
+        {
+          "title": "Infrastrukturanalytiker och transportpolitisk utredare",
+          "organization": "Infrastrukturanalys AB",
+          "period": "2021-2025",
+          "summary": "Utredde transportpolitiska frågor och samhällsekonomiska kalkylers kvalitet."
+        }
+      ],
+      "knowledge": [
+        "Nationell transportplan (NTP), Trafikverkets instruktion (SFS 2010:185) och regleringsbrev",
+        "CBA-metodiken, ASEK-kalkylvärden (Trafikverket 2022:168) och Sampers-modellen",
+        "Transportpolitiska mål — tillgänglighet, funktionsmål och hänsynsmål",
+        "Luftfart (LFV, EASA), sjöfart (Sjöfartsverket, IMO) och järnvägskapacitet"
+      ],
+      "capabilities": [
+        "Sakanalys av transportpolitik och myndighetsstyrning (Trafikverket, Transportstyrelsen, LFV, Sjöfartsverket)",
+        "Bedömning av samhällsekonomiska kalkyler (CBA) och ASEK-kalkylvärden",
+        "Underhållsanalys — kvantifiering av underhållsskuld och prioriteringslogik",
+        "Myndighetsgranskning — styrning och uppdragsuppfyllelse för transportmyndigheter",
+        "Analys av klimatmål för transport — 70% utsläppsreduktion 2010–2030"
+      ],
+      "tools": [
+        "CBA-mallar",
+        "ASEK-kalkylvärden",
+        "Underhållsdata (Trafikverket)",
+        "Trafikprognoser (Sampers)",
+        "NTP-dokumentation"
+      ],
+      "methods": [
+        "Samhällsekonomisk analys (CBA)",
+        "Underhållsanalys",
+        "Myndighetsgranskning",
+        "Transportpolitisk analys",
+        "Klimatmålsbedömning transport"
+      ],
+      "contactLinks": [
+        {
+          "id": "expert-transport-email",
+          "label": "Kontakta Expert Transport",
+          "type": "email",
+          "url": "mailto:expert.transport@expertbyran.ai",
+          "description": "För sakanalyser inom transportpolitik och infrastrukturinvesteringar."
+        },
+        {
+          "id": "expert-transport-calendar",
+          "label": "Boka möte med Expert Transport",
+          "type": "calendar",
+          "url": "https://calendar.app.google/expert-transport",
+          "description": "Diskutera transportpolitik, infrastrukturinvesteringar och samhällsekonomiska kalkyler."
+        }
+      ],
+      "plugin": {
+        "name": "expert-transport",
+        "repositoryPath": "marketplace/experts/expert-transport",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
