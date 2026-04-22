@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { GridCell } from "@/components/site/GridCell";
@@ -53,41 +52,16 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
       </div>
 
       <section className={styles.section}>
-        <div className={styles.detailLayout}>
-          <aside className={styles.detailSidebar}>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Plugin</span>
-              <span className={styles.metaValueMono}>{team.plugin.name} v{team.plugin.version}</span>
-            </div>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Repository</span>
-              <span className={styles.metaValue}>
-                <Link href={team.plugin.repositoryUrl as `https://${string}`} className={styles.textLink}>
-                  {team.plugin.repositoryPath}
-                </Link>
-              </span>
-            </div>
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Status</span>
-              <span className={styles.metaValue}>
-                {team.plugin.marketplaceListed
-                  ? "Listad i den kanoniska marketplace-katalogen."
-                  : "Inte publicerad i marketplace ännu."}
-              </span>
-            </div>
-          </aside>
-
-          <div className={styles.detailMain}>
-            <h2 className={styles.detailHeading}>Hur teamet arbetar tillsammans</h2>
-            <p className={styles.detailText}>{team.promptSummary}</p>
-            {areaNames.length > 0 && (
-              <ul className={styles.inlineList}>
-                {areaNames.map((areaName) => (
-                  <li key={areaName}>{areaName}</li>
-                ))}
-              </ul>
-            )}
-          </div>
+        <div className={styles.detailMain}>
+          <h2 className={styles.detailHeading}>Hur teamet arbetar tillsammans</h2>
+          <p className={styles.detailText}>{team.promptSummary}</p>
+          {areaNames.length > 0 && (
+            <ul className={styles.inlineList}>
+              {areaNames.map((areaName) => (
+                <li key={areaName}>{areaName}</li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
 

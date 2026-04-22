@@ -402,14 +402,7 @@
         "kvalitativ-metodexpert",
         "rattslig-utredare",
         "kvalitetsgranskare"
-      ],
-      "plugin": {
-        "name": "team-revisionsmetodik",
-        "repositoryPath": "plugins/teams/revisionsmetodik",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "team-domanexperter",
@@ -436,14 +429,7 @@
         "expert-cyber",
         "expert-halso-sjukvard",
         "expert-bistand"
-      ],
-      "plugin": {
-        "name": "team-domanexperter",
-        "repositoryPath": "plugins/teams/domanexperter",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     }
   ],
   "experts": [
@@ -549,14 +535,7 @@
           "url": "https://calendar.app.google/effektivitetsrevisor",
           "description": "Diskutera granskningsupplägg och metodval."
         }
-      ],
-      "plugin": {
-        "name": "expert-effektivitetsrevisor",
-        "repositoryPath": "plugins/experts/effektivitetsrevisor",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-kvantitativ-analytiker",
@@ -669,14 +648,7 @@
           "url": "https://calendar.app.google/kvantitativ-analytiker",
           "description": "Diskutera dataunderlag och analysupplägg."
         }
-      ],
-      "plugin": {
-        "name": "expert-kvantitativ-analytiker",
-        "repositoryPath": "plugins/experts/kvantitativ-analytiker",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-kvalitativ-metodexpert",
@@ -780,14 +752,7 @@
           "url": "https://calendar.app.google/kvalitativ-metodexpert",
           "description": "Diskutera urvalsstrategier och kvalitativt upplägg."
         }
-      ],
-      "plugin": {
-        "name": "expert-kvalitativ-metodexpert",
-        "repositoryPath": "plugins/experts/kvalitativ-metodexpert",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-rattslig-utredare",
@@ -900,14 +865,7 @@
           "url": "https://calendar.app.google/rattslig-utredare",
           "description": "Diskutera rättsliga bedömningsgrunder och mandatfrågor."
         }
-      ],
-      "plugin": {
-        "name": "expert-rattslig-utredare",
-        "repositoryPath": "plugins/experts/rattslig-utredare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-kvalitetsgranskare",
@@ -1021,14 +979,7 @@
           "url": "https://calendar.app.google/kvalitetsgranskare",
           "description": "Diskutera vetenskapliga kvalitetsfrågor och opponering."
         }
-      ],
-      "plugin": {
-        "name": "expert-kvalitetsgranskare",
-        "repositoryPath": "plugins/experts/kvalitetsgranskare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-finanser",
@@ -1129,14 +1080,7 @@
           "url": "https://calendar.app.google/expert-finanser",
           "description": "Diskutera finansiella bedömningsgrunder och styrmedel."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-finanser",
-        "repositoryPath": "plugins/experts/expert-finanser",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-digitalisering",
@@ -1242,14 +1186,7 @@
           "url": "https://calendar.app.google/expert-digitalisering",
           "description": "Diskutera digitaliseringsprojekt och IT-styrningsfrågor."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-digitalisering",
-        "repositoryPath": "plugins/experts/expert-digitalisering",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-rattsvasende",
@@ -1354,14 +1291,7 @@
           "url": "https://calendar.app.google/expert-rattsvasende",
           "description": "Diskutera rättsväsendefrågor och samhällsskydd."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-rattsvasende",
-        "repositoryPath": "plugins/experts/expert-rattsvasende",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-valfard",
@@ -1462,14 +1392,7 @@
           "url": "https://calendar.app.google/expert-valfard",
           "description": "Diskutera välfärdsfrågor och statlig-kommunal styrning."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-valfard",
-        "repositoryPath": "plugins/experts/expert-valfard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-klarsprak",
@@ -1572,14 +1495,7 @@
           "url": "https://calendar.app.google/klarsprak",
           "description": "Diskutera textgranskning och språkförbättringar."
         }
-      ],
-      "plugin": {
-        "name": "expert-klarsprak",
-        "repositoryPath": "plugins/experts/klarsprak",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-arbetsmarknad",
@@ -1680,14 +1596,7 @@
           "url": "https://calendar.app.google/expert-arbetsmarknad",
           "description": "Diskutera arbetsmarknadspolitik och effektutvärdering."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-arbetsmarknad",
-        "repositoryPath": "plugins/experts/expert-arbetsmarknad",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-utbildning",
@@ -1788,14 +1697,7 @@
           "url": "https://calendar.app.google/expert-utbildning",
           "description": "Diskutera utbildningspolitik och skolkvalitet."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-utbildning",
-        "repositoryPath": "plugins/experts/expert-utbildning",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-miljo-klimat",
@@ -1896,14 +1798,7 @@
           "url": "https://calendar.app.google/expert-miljo-klimat",
           "description": "Diskutera klimatpolitik, miljöstyrning och EU-reglering."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-miljo-klimat",
-        "repositoryPath": "plugins/experts/expert-miljo-klimat",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-telekommunikation",
@@ -2007,14 +1902,7 @@
           "url": "https://calendar.app.google/expert-telekommunikation",
           "description": "Diskutera telekommunikationsreglering, bredband och kritisk infrastruktur."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-telekommunikation",
-        "repositoryPath": "plugins/experts/expert-telekommunikation",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-expert-forsvar",
@@ -2118,14 +2006,7 @@
           "url": "https://calendar.app.google/expert-forsvar",
           "description": "Diskutera försvars- och säkerhetspolitik och granskningsupplägg."
         }
-      ],
-      "plugin": {
-        "name": "expert-expert-forsvar",
-        "repositoryPath": "plugins/experts/expert-forsvar",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-teknikstrateg",
@@ -2237,14 +2118,7 @@
           "url": "https://calendar.app.google/teknikstrateg",
           "description": "Diskutera teknikstrategiska frågor och granskningsbehov inom teknik och innovation."
         }
-      ],
-      "plugin": {
-        "name": "expert-teknikstrateg",
-        "repositoryPath": "plugins/experts/teknikstrateg",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-hallbarhet-esg",
@@ -2351,14 +2225,7 @@
           "url": "https://calendar.app.google/expert-hallbarhet-esg",
           "description": "Diskutera hållbarhetsrapportering, ESG och klimatfinansiering."
         }
-      ],
-      "plugin": {
-        "name": "expert-hallbarhet-esg",
-        "repositoryPath": "marketplace/experts/expert-hallbarhet-esg",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-transport",
@@ -2465,14 +2332,7 @@
           "url": "https://calendar.app.google/expert-transport",
           "description": "Diskutera transportpolitik, infrastrukturinvesteringar och samhällsekonomiska kalkyler."
         }
-      ],
-      "plugin": {
-        "name": "expert-transport",
-        "repositoryPath": "marketplace/experts/expert-transport",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "expert-cyber",
@@ -2580,14 +2440,7 @@
           "url": "https://calendar.app.google/expert-cyber",
           "description": "Diskutera NIS2-implementering, cybersäkerhetslagen och informationssäkerhetsarbete."
         }
-      ],
-      "plugin": {
-        "name": "expert-cyber",
-        "repositoryPath": "marketplace/experts/expert-cyber",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": false,
-        "version": "0.1.0"
-      }
+      ]
     },
     {
       "id": "expert-halso-sjukvard",
@@ -2694,14 +2547,7 @@
           "url": "https://calendar.app.google/expert-halso-sjukvard",
           "description": "Diskutera hälso- och sjukvårdens styrning, vårdgaranti och primärvårdsomställning."
         }
-      ],
-      "plugin": {
-        "name": "expert-halso-sjukvard",
-        "repositoryPath": "marketplace/experts/expert-halso-sjukvard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": false,
-        "version": "0.1.0"
-      }
+      ]
     },
     {
       "id": "expert-bistand",
@@ -2808,14 +2654,7 @@
           "url": "https://calendar.app.google/expert-bistand",
           "description": "Diskutera biståndseffektivitet, Sidas styrning och resultatredovisning."
         }
-      ],
-      "plugin": {
-        "name": "expert-bistand",
-        "repositoryPath": "marketplace/experts/expert-bistand",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": false,
-        "version": "0.1.0"
-      }
+      ]
     },
     {
       "id": "expert-chefsstrateg",
@@ -2829,13 +2668,13 @@
       "areaSlugs": [
         "offentliga-finanser"
       ],
-      "summary": "Chefsstrateg och strategisk rådgivare på McKinsey/BCG/Bain-nivå med primärt uppdrag att identifiera Riksrevisionens framtida kompetensbehov. Ansvarar för långsiktig kompetensplanering, scenarioanalys och djup omvärldsbevakning med framtidsfokus.",
-      "profileQuote": "Framtiden tillhör dem som förbereder sig för den i dag — och Riksrevisionens granskningstäckning av i morgon avgörs av vilka kompetenser vi bygger nu.",
+      "summary": "Chefsstrateg och strategisk rådgivare med primärt uppdrag att identifiera våra kunders framtida kompetensbehov. Ansvarar för långsiktig kompetensplanering, scenarioanalys och djup omvärldsbevakning med framtidsfokus.",
+      "profileQuote": "Framtiden tillhör dem som förbereder sig för den i dag — och våra kunders granskningstäckning av i morgon avgörs av vilka kompetenser vi bygger nu.",
       "strengths": [
-        "Strategisk rådgivning på McKinsey/BCG/Bain-nivå med offentlig sektors perspektiv",
+        "Strategisk rådgivning med offentlig-sektors perspektiv",
         "Scenarioanalys och forecasting med 3-10 års tidhorisont",
         "Djup omvärldsbevakning med framtidsfokus — demografiskt, geopolitiskt, teknologiskt och regulatoriskt",
-        "Kompetensbehovsanalys: identifierar vilka domän- och metodexperter Riksrevisionen behöver i framtiden"
+        "Kompetensbehovsanalys: identifierar vilka domän- och metodexperter våra kunder behöver i framtiden"
       ],
       "metrics": [
         {
@@ -2853,11 +2692,11 @@
       ],
       "selectedEngagements": [
         {
-          "title": "Långsiktig kompetensplanering för Riksrevisionen 2026-2036",
+          "title": "Långsiktig kompetensplanering 2026-2036",
           "client": "Expertbyrån — intern kapacitetsuppbyggnad",
           "period": "2026",
           "summary": "Identifierade 36 framtida kompetensbehov baserat på djupanalys av demografiska, geopolitiska, teknologiska och regulatoriska megatrender.",
-          "impact": "Skapade ett strukturerat ramverk för Riksrevisionens kompetensuppbyggnad med prioriterade rekryteringsrekommendationer."
+          "impact": "Skapade ett strukturerat ramverk för våra kunders kompetensuppbyggnad med prioriterade rekryteringsrekommendationer."
         },
         {
           "title": "Scenarioanalys: Demografisk kaskad och välfärdsstatens omforming",
@@ -2872,7 +2711,7 @@
           "title": "Chefsstrateg och strategisk rådgivare",
           "organization": "Expertbyrån",
           "period": "2026-",
-          "summary": "Ansvarar för långsiktig kompetensplanering och strategisk rådgivning till Riksrevisionens granskningsarbete."
+          "summary": "Ansvarar för långsiktig kompetensplanering och strategisk rådgivning till våra kunders granskningsarbete."
         },
         {
           "title": "Senior strategikonsult",
@@ -2923,14 +2762,7 @@
           "url": "https://calendar.app.google/chefsstrateg",
           "description": "Diskutera strategiska frågor och framtida granskningsbehov."
         }
-      ],
-      "plugin": {
-        "name": "expert-chefsstrateg",
-        "repositoryPath": "plugins/experts/chefsstrateg",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     }
   ]
 }

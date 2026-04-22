@@ -59,7 +59,6 @@ describe("public pages", () => {
 
     expect(html).toContain(siteData.experts[0].name);
     expect(html).toContain(siteData.experts[0].selectedEngagements[0].title);
-    expect(html).toContain(siteData.experts[0].plugin.name);
   });
 
   it("renders the teams page", async () => {
@@ -77,7 +76,7 @@ describe("public pages", () => {
     );
 
     expect(html).toContain(siteData.teams[0].name);
-    expect(html).toContain(siteData.teams[0].plugin.name);
+    expect(html).toContain(siteData.teams[0].promptSummary);
   });
 
   it("renders the marketplace page", async () => {

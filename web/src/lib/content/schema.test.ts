@@ -50,23 +50,6 @@ describe("siteDataSchema", () => {
     }
   });
 
-  it("rejects duplicate plugin repository paths", () => {
-    const broken = structuredClone(siteData);
-    broken.teams[0].plugin.repositoryPath = broken.experts[0].plugin.repositoryPath;
-
-    const result = siteDataSchema.safeParse(broken);
-
-    expect(result.success).toBe(false);
-
-    if (!result.success) {
-      expect(
-        result.error.issues.some(
-          (issue) => issue.path.join(".") === "teams.0.plugin.repositoryPath",
-        ),
-      ).toBe(true);
-    }
-  });
-
   it("rejects invalid marketplace install sources", () => {
     const broken = structuredClone(siteData);
     broken.marketplace.installSource = {

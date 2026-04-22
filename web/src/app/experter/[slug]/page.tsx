@@ -85,10 +85,6 @@ export default async function ExpertDetailPage({ params }: ExpertPageProps) {
                 <span className={styles.metaValue}>{metric.value}</span>
               </div>
             ))}
-            <div className={styles.metaRow}>
-              <span className={styles.metaLabel}>Skill</span>
-              <span className={styles.metaValueMono}>{expert.plugin.name} v{expert.plugin.version}</span>
-            </div>
           </aside>
 
           <div className={styles.detailMain}>

@@ -92,14 +92,6 @@ const experienceItemSchema = z.object({
   summary: z.string().min(1),
 });
 
-const pluginMetadataSchema = z.object({
-  name: slugSchema,
-  repositoryPath: repositoryPathSchema,
-  repositoryUrl: externalHrefSchema,
-  marketplaceListed: z.boolean(),
-  version: z.string().min(1),
-});
-
 const githubInstallSourceSchema = z.object({
   source: z.literal("github"),
   repo: z
@@ -168,7 +160,6 @@ const expertSchema = z.object({
   tools: z.array(z.string().min(1)).min(3),
   methods: z.array(z.string().min(1)).min(3),
   contactLinks: z.array(contactLinkSchema).min(2),
-  plugin: pluginMetadataSchema,
 });
 
 const teamSchema = z.object({
@@ -181,7 +172,6 @@ const teamSchema = z.object({
   description: z.string().min(1),
   promptSummary: z.string().min(1),
   expertSlugs: z.array(slugSchema).min(1),
-  plugin: pluginMetadataSchema,
 });
 
 const marketplaceSchema = z.object({
@@ -190,27 +180,6 @@ const marketplaceSchema = z.object({
   marketplaceJsonUrl: externalHrefSchema,
   installSource: installSourceSchema,
   description: z.string().min(1),
-});
-
-export const pluginSyncSchema = z.object({
-  version: z.number().int().positive(),
-  updatedAt: isoDateTimeSchema,
-  marketplace: marketplaceSchema,
-  experts: z.array(
-    z.object({
-      slug: slugSchema,
-      name: z.string().min(1),
-      plugin: pluginMetadataSchema,
-    }),
-  ),
-  teams: z.array(
-    z.object({
-      slug: slugSchema,
-      name: z.string().min(1),
-      expertSlugs: z.array(slugSchema).min(1),
-      plugin: pluginMetadataSchema,
-    }),
-  ),
 });
 
 export const siteDataSchema = z
@@ -257,8 +226,6 @@ export const siteDataSchema = z
     const expertSlugs = new Set<string>();
     const teamIds = new Set<string>();
     const teamSlugs = new Set<string>();
-    const pluginNames = new Set<string>();
-    const repositoryPaths = new Set<string>();
 
     data.expertAreas.forEach((area, index) => {
       if (areaIds.has(area.id)) {
@@ -308,24 +275,6 @@ export const siteDataSchema = z
         }
       });
 
-      if (pluginNames.has(expert.plugin.name)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["experts", index, "plugin", "name"],
-          message: "Pluginnamn måste vara unikt mellan experter och team.",
-        });
-      }
-
-      if (repositoryPaths.has(expert.plugin.repositoryPath)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["experts", index, "plugin", "repositoryPath"],
-          message: "Repository path måste vara unik mellan experter och team.",
-        });
-      }
-
-      pluginNames.add(expert.plugin.name);
-      repositoryPaths.add(expert.plugin.repositoryPath);
       expertIds.add(expert.id);
       expertSlugs.add(expert.slug);
     });
@@ -344,22 +293,6 @@ export const siteDataSchema = z
           code: z.ZodIssueCode.custom,
           path: ["teams", index, "slug"],
           message: "Teamslug måste vara unik.",
-        });
-      }
-
-      if (pluginNames.has(team.plugin.name)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["teams", index, "plugin", "name"],
-          message: "Pluginnamn måste vara unikt mellan experter och team.",
-        });
-      }
-
-      if (repositoryPaths.has(team.plugin.repositoryPath)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["teams", index, "plugin", "repositoryPath"],
-          message: "Repository path måste vara unik mellan experter och team.",
         });
       }
 
@@ -385,8 +318,6 @@ export const siteDataSchema = z
         seenExpertSlugs.add(slug);
       });
 
-      pluginNames.add(team.plugin.name);
-      repositoryPaths.add(team.plugin.repositoryPath);
       teamIds.add(team.id);
       teamSlugs.add(team.slug);
     });
@@ -398,7 +329,6 @@ export type Expert = SiteData["experts"][number];
 export type Team = SiteData["teams"][number];
 export type Marketplace = SiteData["marketplace"];
 export type InstallSource = z.infer<typeof installSourceSchema>;
-export type PluginMetadata = z.infer<typeof pluginMetadataSchema>;
 export type ContactLink = z.infer<typeof contactLinkSchema>;
 export type Metric = z.infer<typeof metricSchema>;
 

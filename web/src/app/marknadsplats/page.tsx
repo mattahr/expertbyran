@@ -8,8 +8,7 @@ export const metadata = {
 
 export default async function MarketplacePage() {
   const data = await getOrderedSiteData();
-  const listedExperts = data.experts.filter((e) => e.plugin.marketplaceListed);
-  const listedTeams = data.teams.filter((t) => t.plugin.marketplaceListed);
+  const { experts, teams } = data;
 
   return (
     <div className={styles.pageWrap}>
@@ -33,7 +32,7 @@ export default async function MarketplacePage() {
             </div>
             <div className={styles.metaRow}>
               <span className={styles.metaLabel}>Publicerade plugins</span>
-              <span className={styles.metaValue}>{listedExperts.length + listedTeams.length}</span>
+              <span className={styles.metaValue}>{experts.length + teams.length}</span>
             </div>
           </div>
 
@@ -48,36 +47,34 @@ export default async function MarketplacePage() {
         </div>
       </RevealOnScroll>
 
-      {listedExperts.length > 0 && (
+      {experts.length > 0 && (
         <RevealOnScroll as="section" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionLabel}>Publicerade experter</h2>
-            <span className={styles.sectionCount}>{listedExperts.length} skills</span>
+            <span className={styles.sectionCount}>{experts.length} experter</span>
           </div>
           <div className={styles.grid}>
-            {listedExperts.map((expert) => (
+            {experts.map((expert) => (
               <div key={expert.id} className={styles.gridCell}>
-                <span className={styles.gridCellCategory}>{expert.plugin.name}</span>
+                <span className={styles.gridCellCategory}>{expert.role}</span>
                 <span className={styles.gridCellName}>{expert.name}</span>
-                <span className={styles.gridCellDesc}>v{expert.plugin.version}</span>
               </div>
             ))}
           </div>
         </RevealOnScroll>
       )}
 
-      {listedTeams.length > 0 && (
+      {teams.length > 0 && (
         <RevealOnScroll as="section" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionLabel}>Publicerade team</h2>
-            <span className={styles.sectionCount}>{listedTeams.length} skills</span>
+            <span className={styles.sectionCount}>{teams.length} team</span>
           </div>
           <div className={styles.grid}>
-            {listedTeams.map((team) => (
+            {teams.map((team) => (
               <div key={team.id} className={styles.gridCell}>
-                <span className={styles.gridCellCategory}>{team.plugin.name}</span>
                 <span className={styles.gridCellName}>{team.name}</span>
-                <span className={styles.gridCellDesc}>v{team.plugin.version}</span>
+                <span className={styles.gridCellDesc}>{team.shortDescription}</span>
               </div>
             ))}
           </div>

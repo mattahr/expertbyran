@@ -242,14 +242,7 @@
         "kvalitativ-metodexpert",
         "rattslig-utredare",
         "kvalitetsgranskare"
-      ],
-      "plugin": {
-        "name": "team-revisionsmetodik",
-        "repositoryPath": "plugins/teams/revisionsmetodik",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     },
     {
       "id": "team-domanexperter",
@@ -265,14 +258,7 @@
         "expert-digitalisering",
         "expert-rattsvasende",
         "expert-valfard"
-      ],
-      "plugin": {
-        "name": "team-domanexperter",
-        "repositoryPath": "plugins/teams/domanexperter",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      }
+      ]
     }
   ],
   "experts": [
@@ -364,13 +350,6 @@
         "Metodkoordinering",
         "Kvalitetssäkrad slutsatskedja"
       ],
-      "plugin": {
-        "name": "expert-effektivitetsrevisor",
-        "repositoryPath": "plugins/experts/effektivitetsrevisor",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "effektivitetsrevisor-email",
@@ -477,13 +456,6 @@
         "Kvantitativ iakttagelsestruktur",
         "Precisionsbedömning"
       ],
-      "plugin": {
-        "name": "expert-kvantitativ-analytiker",
-        "repositoryPath": "plugins/experts/kvantitativ-analytiker",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "kvantitativ-analytiker-email",
@@ -590,13 +562,6 @@
         "Representativitetsbedömning",
         "Triangulering"
       ],
-      "plugin": {
-        "name": "expert-kvalitativ-metodexpert",
-        "repositoryPath": "plugins/experts/kvalitativ-metodexpert",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "kvalitativ-metodexpert-email",
@@ -703,13 +668,6 @@
         "Bedömningsgrundsprövning",
         "Rättslig bilagestruktur"
       ],
-      "plugin": {
-        "name": "expert-rattslig-utredare",
-        "repositoryPath": "plugins/experts/rattslig-utredare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "rattslig-utredare-email",
@@ -815,13 +773,6 @@
         "Systematisk bristkartläggning",
         "Slutsatskalibrering"
       ],
-      "plugin": {
-        "name": "expert-kvalitetsgranskare",
-        "repositoryPath": "plugins/experts/kvalitetsgranskare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "kvalitetsgranskare-email",
@@ -927,13 +878,6 @@
         "Incitamentsanalys",
         "Resultatstyrningsbedömning"
       ],
-      "plugin": {
-        "name": "expert-expert-finanser",
-        "repositoryPath": "plugins/experts/expert-finanser",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-finanser-email",
@@ -1039,13 +983,6 @@
         "Portföljgranskning",
         "Identitetsverifieringsanalys"
       ],
-      "plugin": {
-        "name": "expert-expert-digitalisering",
-        "repositoryPath": "plugins/experts/expert-digitalisering",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-digitalisering-email",
@@ -1151,13 +1088,6 @@
         "Dimensioneringsanalys",
         "Samverkansanalys"
       ],
-      "plugin": {
-        "name": "expert-expert-rattsvasende",
-        "repositoryPath": "plugins/experts/expert-rattsvasende",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-rattsvasende-email",
@@ -1263,13 +1193,6 @@
         "Stat-kommunal ansvarsanalys",
         "Incitamentsanalys"
       ],
-      "plugin": {
-        "name": "expert-expert-valfard",
-        "repositoryPath": "plugins/experts/expert-valfard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "expert-valfard-email",
@@ -1375,13 +1298,6 @@
         "Strukturbedömning",
         "Språklig kvalitetssäkring"
       ],
-      "plugin": {
-        "name": "expert-klarsprak",
-        "repositoryPath": "plugins/experts/klarsprak",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
-        "marketplaceListed": true,
-        "version": "1.0.0"
-      },
       "contactLinks": [
         {
           "id": "klarsprak-email",
