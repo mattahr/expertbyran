@@ -95,7 +95,7 @@
     ]
   },
   "marketplace": {
-    "name": "expertbyran_plugin",
+    "name": "expertbyran",
     "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
     "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran_marketplace/main/.claude-plugin/marketplace.json",
     "installSource": {
