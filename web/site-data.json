@@ -406,7 +406,7 @@
       "plugin": {
         "name": "team-revisionsmetodik",
         "repositoryPath": "plugins/teams/revisionsmetodik",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -440,7 +440,7 @@
       "plugin": {
         "name": "team-domanexperter",
         "repositoryPath": "plugins/teams/domanexperter",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -553,7 +553,7 @@
       "plugin": {
         "name": "expert-effektivitetsrevisor",
         "repositoryPath": "plugins/experts/effektivitetsrevisor",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -673,7 +673,7 @@
       "plugin": {
         "name": "expert-kvantitativ-analytiker",
         "repositoryPath": "plugins/experts/kvantitativ-analytiker",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -784,7 +784,7 @@
       "plugin": {
         "name": "expert-kvalitativ-metodexpert",
         "repositoryPath": "plugins/experts/kvalitativ-metodexpert",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -904,7 +904,7 @@
       "plugin": {
         "name": "expert-rattslig-utredare",
         "repositoryPath": "plugins/experts/rattslig-utredare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -1025,7 +1025,7 @@
       "plugin": {
         "name": "expert-kvalitetsgranskare",
         "repositoryPath": "plugins/experts/kvalitetsgranskare",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -1133,7 +1133,7 @@
       "plugin": {
         "name": "expert-expert-finanser",
         "repositoryPath": "plugins/experts/expert-finanser",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -1246,7 +1246,7 @@
       "plugin": {
         "name": "expert-expert-digitalisering",
         "repositoryPath": "plugins/experts/expert-digitalisering",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -1358,7 +1358,7 @@
       "plugin": {
         "name": "expert-expert-rattsvasende",
         "repositoryPath": "plugins/experts/expert-rattsvasende",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -1466,7 +1466,7 @@
       "plugin": {
         "name": "expert-expert-valfard",
         "repositoryPath": "plugins/experts/expert-valfard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -1576,7 +1576,7 @@
       "plugin": {
         "name": "expert-klarsprak",
         "repositoryPath": "plugins/experts/klarsprak",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -2355,7 +2355,7 @@
       "plugin": {
         "name": "expert-hallbarhet-esg",
         "repositoryPath": "marketplace/experts/expert-hallbarhet-esg",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -2469,7 +2469,7 @@
       "plugin": {
         "name": "expert-transport",
         "repositoryPath": "marketplace/experts/expert-transport",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": true,
         "version": "1.0.0"
       }
@@ -2584,7 +2584,7 @@
       "plugin": {
         "name": "expert-cyber",
         "repositoryPath": "marketplace/experts/expert-cyber",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": false,
         "version": "0.1.0"
       }
@@ -2698,7 +2698,7 @@
       "plugin": {
         "name": "expert-halso-sjukvard",
         "repositoryPath": "marketplace/experts/expert-halso-sjukvard",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": false,
         "version": "0.1.0"
       }
@@ -2812,7 +2812,7 @@
       "plugin": {
         "name": "expert-bistand",
         "repositoryPath": "marketplace/experts/expert-bistand",
-        "repositoryUrl": "https://github.com/mattahr/expertbyran",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
         "marketplaceListed": false,
         "version": "0.1.0"
       }

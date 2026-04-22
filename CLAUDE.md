@@ -23,7 +23,7 @@ Varje projekt har sin egen `CLAUDE.md` med detaljer om scope, konventioner och s
 Repots rot innehåller [.claude-plugin/marketplace.json](.claude-plugin/marketplace.json) som exponerar `marketplace/`-innehållet som en installerbar Claude Code-plugin:
 
 ```
-/plugin marketplace add mattahr/expertbyran
+/plugin marketplace add mattahr/expertbyran_plugin
 /plugin install expertbyran@expertbyran
 ```
 
