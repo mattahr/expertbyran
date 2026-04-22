@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-21T17:30:00.000Z",
+  "updatedAt": "2026-04-22T19:00:00.000Z",
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
@@ -95,14 +95,14 @@
     ]
   },
   "marketplace": {
-    "name": "expertbyran",
-    "repositoryUrl": "https://github.com/mattahr/expertbyran",
-    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran/main/.claude-plugin/marketplace.json",
+    "name": "expertbyran_plugin",
+    "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
+    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran_marketplace/main/.claude-plugin/marketplace.json",
     "installSource": {
       "source": "github",
-      "repo": "mattahr/expertbyran"
+      "repo": "mattahr/expertbyran_marketplace"
     },
-    "description": "Expertbyråns marknadsplats finns i GitHub-repot mattahr/expertbyran."
+    "description": "Expertbyråns marknadsplats finns i GitHub-repot mattahr/expertbyran_marketplace."
   },
   "expertAreas": [
     {
@@ -2815,6 +2815,121 @@
         "repositoryUrl": "https://github.com/mattahr/expertbyran",
         "marketplaceListed": false,
         "version": "0.1.0"
+      }
+    },
+    {
+      "id": "expert-chefsstrateg",
+      "slug": "chefsstrateg",
+      "sortOrder": 180,
+      "featured": true,
+      "name": "Chefsstrateg",
+      "role": "Strategisk rådgivare och framtidsanalytiker",
+      "location": "Virtuell nod, Stockholm",
+      "availability": "Tillgänglig för strategisk rådgivning, scenarioanalys och långsiktig kompetensplanering.",
+      "areaSlugs": [
+        "offentliga-finanser"
+      ],
+      "summary": "Chefsstrateg och strategisk rådgivare på McKinsey/BCG/Bain-nivå med primärt uppdrag att identifiera Riksrevisionens framtida kompetensbehov. Ansvarar för långsiktig kompetensplanering, scenarioanalys och djup omvärldsbevakning med framtidsfokus.",
+      "profileQuote": "Framtiden tillhör dem som förbereder sig för den i dag — och Riksrevisionens granskningstäckning av i morgon avgörs av vilka kompetenser vi bygger nu.",
+      "strengths": [
+        "Strategisk rådgivning på McKinsey/BCG/Bain-nivå med offentlig sektors perspektiv",
+        "Scenarioanalys och forecasting med 3-10 års tidhorisont",
+        "Djup omvärldsbevakning med framtidsfokus — demografiskt, geopolitiskt, teknologiskt och regulatoriskt",
+        "Kompetensbehovsanalys: identifierar vilka domän- och metodexperter Riksrevisionen behöver i framtiden"
+      ],
+      "metrics": [
+        {
+          "label": "Strategiska scenarier",
+          "value": "4+"
+        },
+        {
+          "label": "Megatrender bevakade",
+          "value": "7+"
+        },
+        {
+          "label": "Tidhorisont",
+          "value": "3-10 år"
+        }
+      ],
+      "selectedEngagements": [
+        {
+          "title": "Långsiktig kompetensplanering för Riksrevisionen 2026-2036",
+          "client": "Expertbyrån — intern kapacitetsuppbyggnad",
+          "period": "2026",
+          "summary": "Identifierade 36 framtida kompetensbehov baserat på djupanalys av demografiska, geopolitiska, teknologiska och regulatoriska megatrender.",
+          "impact": "Skapade ett strukturerat ramverk för Riksrevisionens kompetensuppbyggnad med prioriterade rekryteringsrekommendationer."
+        },
+        {
+          "title": "Scenarioanalys: Demografisk kaskad och välfärdsstatens omforming",
+          "client": "Offentlig sektor",
+          "period": "2026",
+          "summary": "Analyserade hur demografisk förändring kaskaderar till kommunalekonomi, välfärdsfinansiering och granskningsbehov.",
+          "impact": "Identifierade strukturella granskningsluckor inom äldrevård, socialtjänst och kommunal ekonomi."
+        }
+      ],
+      "experience": [
+        {
+          "title": "Chefsstrateg och strategisk rådgivare",
+          "organization": "Expertbyrån",
+          "period": "2026-",
+          "summary": "Ansvarar för långsiktig kompetensplanering och strategisk rådgivning till Riksrevisionens granskningsarbete."
+        },
+        {
+          "title": "Senior strategikonsult",
+          "organization": "Strategisk rådgivning, offentlig sektor",
+          "period": "2016-2026",
+          "summary": "Levererade McKinsey/BCG-nivå strategisk rådgivning till offentliga myndigheter med fokus på framtidsanalys och kompetensplanering."
+        }
+      ],
+      "knowledge": [
+        "Strategisk rådgivning och scenarioplanering — McKinsey/BCG/Bain-ramverk för offentlig sektor",
+        "Demografisk kaskad — åldrande befolkning, försörjningskvot och välfärdsfinansiering",
+        "Geopolitisk reorientering — försörjningskedjor, totalförsvar och EU-integration",
+        "Digital transformation av statsförvaltningen — AI i myndighetsbeslut, SupTech och dataficering",
+        "EU-regeltsunami — CSRD, AI Act, NIS2, DORA och aggregerad compliance-börda"
+      ],
+      "capabilities": [
+        "Scenarioanalys och forecasting om framtida samhällsutveckling och granskningsbehov",
+        "Långsiktig kompetensbehovsanalys för revisionsmyndigheter",
+        "Djup omvärldsbevakning med framtidsfokus",
+        "Strategisk rådgivning på McKinsey/BCG/Bain-nivå för offentlig sektor"
+      ],
+      "tools": [
+        "Scenarioplaneringsramverk (Shell, McKinsey)",
+        "Demografisk framskrivningsdata (SCB)",
+        "EU-policymonitor (EUR-Lex, Consilium)",
+        "Riksrevisionens granskningsarkiv",
+        "Statskontoret och ISF:s rapportdatabas"
+      ],
+      "methods": [
+        "Scenarioanalys och forecasting",
+        "Strukturell omvärldsanalys (PESTLE)",
+        "Kompetensbehovsanalys",
+        "Megatrendkartläggning",
+        "Strategisk implikationsanalys"
+      ],
+      "contactLinks": [
+        {
+          "id": "chefsstrateg-email",
+          "label": "Kontakta Chefsstrateg",
+          "type": "email",
+          "url": "mailto:chefsstrateg@expertbyran.ai",
+          "description": "För strategisk rådgivning, scenarioanalys och långsiktig kompetensplanering."
+        },
+        {
+          "id": "chefsstrateg-calendar",
+          "label": "Boka möte med Chefsstrateg",
+          "type": "calendar",
+          "url": "https://calendar.app.google/chefsstrateg",
+          "description": "Diskutera strategiska frågor och framtida granskningsbehov."
+        }
+      ],
+      "plugin": {
+        "name": "expert-chefsstrateg",
+        "repositoryPath": "plugins/experts/chefsstrateg",
+        "repositoryUrl": "https://github.com/mattahr/expertbyran-plugins",
+        "marketplaceListed": true,
+        "version": "1.0.0"
       }
     }
   ]

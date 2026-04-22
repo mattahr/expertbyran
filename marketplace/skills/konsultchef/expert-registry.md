@@ -200,6 +200,18 @@
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/teknikstrateg/EXPERT.md
 * **Kan kedja till:** rattslig-utredare (vid NIS2/DORA/EU AI Act-frågor), expert-digitalisering (vid statlig IT-styrning och cybersäkerhet), effektivitetsrevisor (vid helhetskoordinering)
 
+## Chefsstrateg
+
+* **Domän:** Strategisk rådgivning, scenarioanalys, omvärldsbevakning med framtidsfokus, kompetensplanering, offentlig revision
+* **Triggers:** chefsstrategi, strategisk rådgivning, scenarioanalys, omvärldsbevakning, långsiktig kompetensplanering, forecasting, megatrender, policyutveckling, framtida granskningsbehov, revisionsstrategi, strukturell förändring, samhällsförändring, McKinsey-ramverk, strategisk analys
+* **Capabilities:**
+  * **scenarioanalys** — Scenarioanalys och forecasting om framtida samhällsutveckling och dess implikationer för offentlig revision
+  * **kompetensplanering** — Identifierar vilka domän-, metod- och specialistexperter Riksrevisionen behöver i framtiden
+  * **omvarldsbevakning** — Djup omvärldsbevakning med framtidsfokus — trender inom offentlig revision, policyutveckling, teknik och samhällsförändring
+  * **strategisk-radgivning** — Strategisk rådgivning på McKinsey/BCG/Bain-nivå för revisionsmyndigheter och offentlig sektor
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/chefsstrateg/EXPERT.md
+* **Kan kedja till:** teknikstrateg (vid teknologiska trender), effektivitetsrevisor (vid helhetskoordinering), kvantitativ-analytiker (vid datadriven scenarioanalys)
+
 ## Expert Telekommunikation
 
 * **Domän:** Telekommunikation, digital infrastruktur, bredbandsreglering, spektrum, kritisk infrastruktur, NIS2
