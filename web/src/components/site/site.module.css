@@ -37,10 +37,47 @@
 .noticeBannerInner {
   width: var(--content-width);
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 8px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.noticeBannerText {
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
+}
+
+.noticeLoginButton {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--gray-600);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background 180ms, border-color 180ms, color 180ms;
+}
+
+.noticeLoginButton:hover {
+  background: var(--white);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+}
+
+.noticeLoginButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* === Header === */
@@ -109,6 +146,13 @@
   display: none;
   align-items: center;
   gap: 20px;
+}
+
+.loginIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: currentColor;
 }
 
 .navLink {

@@ -36,7 +36,24 @@ export async function SiteChrome({ children }: SiteChromeProps) {
     <div className={styles.shell}>
       <div className={styles.noticeBanner} role="note" aria-label="Information om webbplatsen">
         <div className={styles.noticeBannerInner}>
-          Detta är en webbplats för ett påhittat företag. Innehållet är skapat med generativ AI och ska inte tas på allvar.
+          <span className={styles.noticeBannerText}>
+            Detta är en webbplats för ett påhittat företag. Innehållet är skapat med generativ AI och ska inte tas på allvar.
+          </span>
+          <a
+            href="https://paperclip.ahrens.nu"
+            className={styles.noticeLoginButton}
+            aria-label="Logga in i Paperclip"
+          >
+            <svg
+              className={styles.loginIcon}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M16.5 6v11.5a4 4 0 0 1-8 0V5a2.5 2.5 0 0 1 5 0v10.5a1 1 0 0 1-2 0V6H10v9.5a2.5 2.5 0 0 0 5 0V5a4 4 0 0 0-8 0v12.5a5.5 5.5 0 0 0 11 0V6h-1.5Z" />
+            </svg>
+            <span>Logga in</span>
+          </a>
         </div>
       </div>
       <header className={styles.header}>

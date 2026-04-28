@@ -26,6 +26,13 @@ triggers:
 * UK NAO
 * internationell revisionsstandard
 * AI i revision
+* EU AI Act
+* GDPR
+* continuous auditing
+* Audit 4.0
+* algoritmisk bias
+* etik i revision
+* ISSAI 30
   capabilities:
   designmatris: Bryta ned revisionsfråga i delfrågor med bedömningsgrunder, indikatorer och metodval
   projektledning: Leda granskning från förstudie till publicering — alla 23 steg
@@ -128,7 +135,7 @@ Använd detta läge vid **uppföljning av tidigare granskningars rekommendatione
 
 ### AI och digitala verktyg i revisionsprocessen
 
-Använd detta läge när uppgiften berör **AI-integration i SAI-arbete** eller **granskning av AI-system**.
+Använd detta läge när uppgiften berör **AI-integration i SAI-arbete**, **granskning av AI-system** eller **rättslig/etisk reglering av AI**.
 
 1. **Fyra verktygsklasser**:
    - Processautomation/RPA — datainsamling, dokumentsortering, faktakontroll
@@ -140,6 +147,67 @@ Använd detta läge när uppgiften berör **AI-integration i SAI-arbete** eller 
 4. **Designmatristillägg vid ML-urval** — 5 extra kolumner: modellbeskrivning | urvalskriterier | mänsklig oversight | felkällor | INTOSAI-integritetskrav
 5. **GAO:s AI Accountability Framework** — 4 principer (governance, data, performance, monitoring); direkt tillämpbart som bedömningsgrunder vid granskning av AI i statsförvaltningen
 
+### Continuous auditing / Audit 4.0
+
+Använd detta läge när uppgiften berör **realtidsrevision**, **automatiserad normkontroll** eller **löpande AI-driven transaktionsövervakning**.
+
+1. **Definition** — continuous auditing = realtids-elektroniskt stödsystem för automatisk normkontroll (löpande, inte periodvis)
+2. **5-lagers teknisk arkitektur**:
+   - Lager 1: Datapipelines (insamling från affärssystem i realtid)
+   - Lager 2: ML-avvikelsedetektering (transaktioner flaggas automatiskt)
+   - Lager 3: Varningssystem (tröskelvärdes- och riskbaserade larm)
+   - Lager 4: Dashboards (visualisering för revisor och ledning)
+   - Lager 5: Mänsklig verifiering (revisorn bedömer flaggade ärenden)
+3. **ML-tillämpningstyper** — bedrägeridetektering, leverantörsriskpoängsättning, budgetavvikelser, textanalys av avtal, transaktionsanomalier
+4. **SAI-exempel** — Helleniska Revisionsrätten: EU-fondövervakning med continuous auditing-system (live sedan sept 2025); INTOSAI Moscow Declaration 2025: formell uppmaning till alla SAI:er att använda AI och dataanalys
+5. **Utmaningar** — svarta lådan (ogenomskinliga ML-modeller), falsk-positiv utmattning (revisorströthet vid för många larm), GDPR-begränsningar, kapacitetsbrist i SAI:er
+6. **RiR:s nuläge** — effektivitetsrevision ännu ej AI-systematiserad (FiU betänkande 2025); finansiell revision har kommit längre
+
+### EU AI Act och GDPR — implikationer för SAI:ers AI-användning
+
+Använd detta läge när uppgiften berör **granskning av myndigheters AI-system** eller **SAI:ers eget AI-ansvar**.
+
+1. **EU AI Acts tidsplan** — fasad implementering feb 2025 – aug 2030; offentlig sektor som deployer av högrisk-AI måste uppfylla krav senast 2027/2030 beroende på systemtyp
+2. **Högrisk-AI som granskningsobjekt** — AI-system i välfärd (bostadsbidrag, sjukpenning), brottsbekämpning (riskbedömning), migration (asylprövning), anställning (rekrytering) är högrisk enligt bilaga III; dessa är primära granskningsobjekt för Riksrevisionen och Expertbyrån
+3. **DPIA/FRIA-krav** — myndigheterna är skyldiga att genomföra Data Protection Impact Assessment (DPIA) och Fundamental Rights Impact Assessment (FRIA) vid högrisk-AI; revisorns uppgift är att kontrollera att bedömningarna genomförts och är adekvata
+4. **GDPR art. 13–14** — informationsskyldighet: när AI-beslut påverkar enskilda ska myndigheten informera om beslutslogiken; revisorns bedömning: är informationen tillräckligt transparent och begriplig?
+5. **GAO AI Accountability Framework** — 4 principer för myndigheters AI-ansvar:
+   - *Governance*: tydliga beslutsvägar för AI-systemet
+   - *Data*: datakvalitet och representativitet i träningsdata
+   - *Performance*: löpande prestandamätning och felfrekvensövervakning
+   - *Monitoring*: kontinuerlig övervakning och uppdatering
+   — Kan användas direkt som bedömningsgrunder i designmatrisen
+
+### INTOSAI etiska principer för AI i revisionsarbetet
+
+Använd detta läge när uppgiften berör **SAI:ens eget AI-användande** eller **revisorns etiska ansvar vid AI-stödd granskning**.
+
+1. **ISSAI 30 — fem grundvärden med AI-specifik tolkning**:
+   - *Integritet*: AI-modeller får inte användas för att rationalisera förutfattade slutsatser
+   - *Objektivitet*: revisorns bedömning kan inte delegeras till algoritmen — algoritmens output är ett bevis, inte en slutsats
+   - *Kompetens*: revisorn måste förstå AI-modellens begränsningar och felrisker
+   - *Konfidentialitet*: träningsdata och granskningsdata i AI-modeller omfattas av sekretess
+   - *Professionellt beteende*: transparent redovisning av hur AI använts i granskningsprocessen
+2. **ISSAI 3000 §136 — icke-delegerbar skepticism** — professionell skepticism kan aldrig överlåtas till ett AI-system; revisorn bär alltid det slutliga kritiska omdömet
+3. **INTOSAI "Navigating Global Trends" (okt 2024) — fyra handlingspunkter** för SAI:ers AI-etik:
+   - Utveckla intern AI-policy med tydliga etikkrav
+   - Utbilda personal i AI-risker och begränsningar
+   - Dokumentera AI-användning i granskningsprocessen
+   - Delta i INTOSAI-nätverk för erfarenhetsdelning (WGITA)
+4. **Moscow Declaration (INCOSAI XXIII, 2025)** — etikkravet formulerat: SAI:er som använder AI ska säkerställa att AI-användningen uppfyller ISSAI 30:s principer och att det mänskliga ansvaret bibehålls
+5. **Tre etiska risker att flagga i granskning**:
+   - *Svarta lådan*: beslutsprocessen är ogenomskinlig — strider mot förvaltningslagens krav på motivering
+   - *Algoritmisk bias*: systematisk snedvridning i träningsdata ger diskriminerande utfall — granskningsobjekt per diskrimineringslagen
+   - *Ansvarsgap*: oklart vem som bär ansvar när AI-systemet fattar felaktiga beslut — myndigheten kan aldrig friskriva sig via AI-leverantören
+6. **Syntestabell — praktiska implikationer för SAI:er** (5 dimensioner):
+   | Dimension | Krav på SAI som granskare | Krav på SAI som AI-användare |
+   |-----------|--------------------------|------------------------------|
+   | Transparens | Granska om myndighetens AI redovisar beslutslogik | Dokumentera hur AI användes i granskningen |
+   | Oberoende | Bedöm om AI-system påverkar myndighetens beslutsautonomi | Säkerställ att AI-output inte styr revisionsslutsat sen |
+   | Kompetens | Bedöm om myndighetens personal förstår AI-systemet | Bygga intern kompetens om ML/LLM-begränsningar |
+   | Dokumentation | Granska DPIA/FRIA-dokumentationens kvalitet | Dokumentera AI-modell och träningsdata som använts |
+   | Ansvar | Identifiera vem som är ansvarig när AI-beslutet är felaktigt | Revisorn bär alltid det slutliga professionella ansvaret |
+
 ## Principer
 
 1. En designmatris utan explicita bedömningsgrunder är inte färdig
@@ -149,6 +217,8 @@ Använd detta läge när uppgiften berör **AI-integration i SAI-arbete** eller 
 5. Vid internationella uppdrag: ECA:s 7-källsmodell ger bredare kriteriegrund än enbart nationell praxis
 6. Contribution analysis är formellt designad för revision — "bidrog sannolikt till" är ett starkare anspråk än en korrelation, svagare än en RCT
 7. Divergens i trianguleringen är information — analysera den, dölja den inte
+8. Professionell skepticism är icke-delegerbar — AI-systemets output är ett bevis, aldrig en slutsats; revisorn bär alltid det slutliga kritiska omdömet (ISSAI 3000 §136)
+9. AI som granskningsobjekt: tre risker att alltid pröva — svarta lådan (beslutsogenomskinlighet), algoritmisk bias (diskriminerande träningsdata), ansvarsgap (oklar ansvarskedja)
 
 ## Referensmaterial
 
@@ -160,6 +230,9 @@ Read ${CLAUDE_PLUGIN_ROOT}/experts/effektivitetsrevisor/references/
 
 | Datum | Metodskill | Källa |
 |-------|-----------|-------|
+| 2026-04-25 | Syntes EXP-909-cykeln: continuous auditing/Audit 4.0, EU AI Act/GDPR art. 13–14, INTOSAI etiska principer (ISSAI 30, §136-skepticism, Moscow Declaration 2025), tre etiska risker (svarta lådan, algoritmisk bias, ansvarsgap) | [EXP-920](/EXP/issues/EXP-920) |
+| 2026-04-24 | EU AI Act + GDPR implikationer för SAI:er — DPIA/FRIA-krav, högrisk-kategorier som granskningsobjekt; INTOSAI etik för AI-användning — ISSAI 30 fem grundvärden, ISSAI 3000 §136 | [EXP-919](/EXP/issues/EXP-919) |
+| 2026-04-24 | Continuous auditing/Audit 4.0 — definition, 5-lagers arkitektur, ML-tillämpningstabell, SAI-exempel (Helleniska Revisionsrätten), Moscow Declaration 2025; RiR:s nuläge | [EXP-918](/EXP/issues/EXP-918) |
 | 2026-04-20 | AI/digitala verktyg i 23-stegsprocessen — fas-för-fas syntes, SAI-mognadskarta, designmatristillägg vid ML-urval | [EXP-765](/EXP/issues/EXP-765) |
 | 2026-04-20 | Contribution analysis primärkällor, CMO-konfiguration, IDI peer review avvikelsebeskrivning (4-elementmodell) | [EXP-689](/EXP/issues/EXP-689) |
 | 2026-04-16 | Internationell omvärldsbevakning — INTOSAI 7 megatrender, EUROSAI WGMA, WGEA beredskapsrevision, SAI PMF 2025 | [EXP-512](/EXP/issues/EXP-512) |
