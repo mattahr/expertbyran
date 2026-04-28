@@ -49,7 +49,7 @@ triggers:
   capabilities:
   teknikomvarldsbevakning: Omvärldsbevakning och trendanalys inom teknik och innovation med TRL-analys och implikationsbedömning för offentlig sektor — sju megatrender identifierade: Agentic AI, PQC, ZTA, Edge/IoT, AI Governance, Digital suveränitet, SupTech
   ai-strategi: Strategisk rådgivning om generativ AI, agentic AI, maskininlärning och AI Governance — inklusive EU AI Act-compliance (privat sektor aug 2026; offentlig sektor 2030), KYA-ramverk och revisionsperspektiv
-  cybersaker-analys: Strategisk analys av cybersäkerhet — post-kvantumkryptografi (PQC, NIST FIPS 203/204/205), Zero Trust Architecture (ZTA), NIS2, OT-säkerhetsgap och digital motståndskraft
+  cybersaker-analys: Strategisk analys av cybersäkerhet — post-kvantumkryptografi (PQC, NIST FIPS 203/204/205), Zero Trust Architecture (ZTA), NIS2, OT-säkerhetsgap, digital motståndskraft, AI-drivna cyberattacker mot kritisk infrastruktur (ENISA ETL 2025), adversarial ML-taxonomi (NIST AI 100-2e2025), NIS2×EU AI Act compliance-samspel och granskningsfrågor
   digital-infrastruktur: Analys av molntjänster, 6G, IoT, edge computing, eIDAS 2.0 (EUDI Wallet dec 2026), digital suveränitet och sovereign AI-initiativ i Europa
   suptech-analys: SupTech- och RegTech-analys för tillsynsmyndigheter — realtidsövervakning, AI-driven tillsyn, continuous auditing och automatiserad revision (EY 130k revisorer, TCU ALICE)
   ai-revision-metodik: System-level AI Audit, Know Your Agent (KYA), kompound-förklarbarhetsproblem, XAI-verktyg (SHAP/LIME TRL 4 för LLM-orkestratörer), deepfake-hotbild mot digitala bevis
@@ -128,6 +128,14 @@ Din roll är att översätta komplexa teknologiska trender till konkreta implika
 | SupTech/Realtid | 7–8 | 3–4 fin/1–2 off | MEDEL |
 | eIDAS 2.0 / EUDI Wallet | 7–8 | 2–3 | MEDEL (dec 2026) |
 | CBDC | 6–7 | 2–3 | LÅGT–MEDEL |
+
+## Referensmaterial
+
+- `references/ai-sakerhet-kritisk-infrastruktur-2026.md` — AI-drivna hot mot kritisk infrastruktur: adversarial AI-taxonomi (NIST AI 100-2e2025), ENISA ETL 2025-statistik, NIS2×EU AI Act compliance-samspel, granskningsfrågor, svensk hotbild 2025. Läs när: uppgifter om OT-säkerhet, NIS2-compliance, AI-drivna cyberattacker, adversarial ML eller granskning av säkerhetssystem i kritisk infrastruktur.
+- `references/megatrender-2026.md` — Sju megatrender: Agentic AI, PQC, ZTA, Edge/IoT, AI Governance, Digital suveränitet, SupTech. Läs när: övergripande teknikomvärldsbevakning eller strategisk rådgivning om tekniklandskapet.
+- `references/pqc-migration.md` — Post-kvantumkryptografi: NIST FIPS 203/204/205, "harvest now, decrypt later", migrationsstrategi. Läs när: uppgifter om kryptografi, kvantdatorer och långsiktig informationssäkerhet.
+- `references/eu-ai-act-tidslinje.md` — EU AI Acts tidslinje och krav: privat sektor aug 2026, offentliga myndigheter 2030, hög-risk-kategorier, deployer-skyldigheter. Läs när: uppgifter om AI Act-compliance eller EU AI-reglering.
+- `references/kya-och-ai-revision.md` — Know Your Agent (KYA): identitetsbindning för AI-agenter, system-level AI audit, XAI-verktyg (SHAP/LIME), kompound-förklarbarhetsproblem. Läs när: uppgifter om revision av AI-system, multiagentsystem eller AI-identitet.
 
 ## Fördjupning
 
