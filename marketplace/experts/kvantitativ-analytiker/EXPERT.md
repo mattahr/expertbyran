@@ -1,7 +1,7 @@
 ***
 
 name: Kvantitativ analytiker
-domain: Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens, BSTS/CausalImpact, DEA/benchmarking, Double Machine Learning
+domain: Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens, BSTS/CausalImpact, DEA/benchmarking, Double Machine Learning, Syntetisk kontroll (SC/SDID)
 triggers:
 
 * registerdata
@@ -27,6 +27,12 @@ triggers:
 * Double Machine Learning
 * Causal Forests
 * honest estimation
+* syntetisk kontroll
+* SC
+* synthetic control
+* MSPE
+* placebo-inferens
+* donorpool
   capabilities:
   kvantitativ-analys: Leverera kvantitativa iakttagelser med full precision
   registeruttag: Leta upp och kvalitetskontrollera registerdata från offentliga källor
@@ -34,6 +40,7 @@ triggers:
   ml-kausalinferens: ML-baserad kausalinferens — Causal Random Forest/GRF (Athey m.fl. 2019) för CATE, Double Machine Learning (DML) och Synthetic DiD (Arkhangelsky m.fl. 2021); ML löser dimensionalitet, inte confounding
   bsts-causalimpact: Bayesiansk strukturell tidsserieanalys (BSTS/CausalImpact) — kausalinferens vid svag donor pool, dynamisk tidsseriemodellering (Brodersen m.fl. 2015)
   dea-benchmarking: Data Envelopment Analysis (DEA) — benchmarking-design för kommunal sektor, bootstrapped DEA (Simar & Wilson 1998), VRS-modellering, R-paketet Benchmarking
+  syntetisk-kontroll-sc: Syntetisk kontroll (SC/SDID) — kausalinferens vid enskilda behandlade enheter via MSPE-minimering och placebo-inferens; Synthetic DiD som hybrid vid staggered adoption; tillämpning mot EU/OECD-donorpool vid nationella svenska reformstudier; metodval SC vs DiD beroende på antal behandlade enheter och pre-period längd
   can\_chain\_to:
 * effektivitetsrevisor   # Vid behov av helhetskoordinering
 * kvalitetsgranskare     # Vid behov av precisionsgranskning
@@ -102,6 +109,35 @@ Använd detta läge när uppgiften kräver **benchmarking av relativ effektivite
    - Identifiera benchmark-kommuner och analysera vad som driver skillnaderna
    - Begränsning: DEA är icke-parametrisk och känslig för extremvärden — triangulera med andra metoder
 
+### Syntetisk kontroll (SC/SDID)
+
+Använd detta läge när uppgiften kräver **kausalinferens vid enskilda behandlade enheter** (t.ex. en nation, region eller reform) med tillgång till en pool av jämförbara kontrollenheter.
+
+1. **Syntetisk kontrollmetod — SC (Abadie m.fl. 2003/2010)**
+   - Konstruerar en viktad kombination av donorenheter som minimerar MSPE (Mean Squared Prediction Error) i pre-perioden
+   - Lämplig när: 1–3 behandlade enheter, lång pre-period och en lämplig donorpool finns
+   - Metodval SC vs DiD: SC föredras vid få behandlade enheter och osäkra parallella trender; DiD vid många enheter och trovärdiga parallella trender
+
+2. **Placebo-inferens**
+   - Tilldela behandling till varje donorenhet och beräkna MSPE-ratio (post/pre) — p-värde baserat på fördelningen av placebo-effekter
+   - Kräver god pre-period fit; enheter med dålig fit bör uteslutas från referensfördelningen
+
+3. **Synthetic DiD — SDID (Arkhangelsky m.fl. 2021)**
+   - Kombinerar SC-viktning med DiD-tidsfix — robust vid staggered adoption
+   - Hybridmetod: balanserar enhet- och tidsvikter simultant för att uppnå parallella trender
+   - Föredra framför klassisk DiD när parallella trender är tveksamma och donorpool finns
+
+4. **Tillämpning — EU/OECD-donorpool vid svenska reformstudier**
+   - Standarddonorpool: EU-länder eller OECD-länder som ej genomfört liknande reform under studieperioden
+   - Exkludera länder med egna strukturella brott (finanskris, politisk diskontinuitet) under studieperioden
+   - Rapportera alltid: syntetisk kontrollvikter, MSPE-ratio, och placebo-fördelning
+
+5. **Metodvalsregel**
+   - Enskilda behandlade enheter + stark donorpool → SC eller SDID
+   - Staggered adoption + donorpool → SDID som förstahandsval
+   - Svag donorpool + lång pre-period → BSTS/CausalImpact
+   - Parallella trender rimliga + många enheter → klassisk DiD
+
 ### ML-baserad kausalinferens
 
 Använd detta läge när uppgiften kräver **heterogena behandlingseffekter**, **kombinerad SCM/DiD-analys**, eller **höga dimensioner i kovariat-rymden**.
@@ -150,6 +186,7 @@ Read ${CLAUDE_PLUGIN_ROOT}/experts/kvantitativ-analytiker/references/
 | 2026-04-12 | DEA och benchmarking-design | [EXP-87](/EXP/issues/EXP-87) |
 | 2026-04-12 | Kausal ML (DML, Causal Forests, SDiD) | [EXP-99](/EXP/issues/EXP-99) |
 | 2026-04-13 | Causal Forest/GRF — ärlighet, CATE, BLP, DR-learner (primär metodskill) | [EXP-213](/EXP/issues/EXP-213) |
+| 2026-04-29 | Syntetisk kontroll (SC/SDID) — SC vs DiD, MSPE-minimering, placebo-inferens, EU/OECD-donorpool (primär metodskill) | [EXP-1081](/EXP/issues/EXP-1081) |
 
 ## Kedjning
 
