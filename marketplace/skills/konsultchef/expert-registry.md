@@ -178,13 +178,16 @@
 
 ## Expert Hållbarhet ESG
 
-* **Domän:** Hållbarhetsrapportering, ESG-datavalidering, CSRD, ESRS, EU-taxonomin, klimatfinansiering, Green Bond
-* **Triggers:** hållbarhetsrapportering, ESG, CSRD, ESRS, EU-taxonomin, taxonomiöverensstämmelse, klimatfinansiering, Green Bond, gröna obligationer, scope 1, scope 2, scope 3, GRI, ISSB, IFRS S1, IFRS S2, dubbel väsentlighetsanalys, hållbarhetsrevision, TCFD, hållbarhetsredovisning
+* **Domän:** Hållbarhetsrapportering, ESG-datavalidering, CSRD, ESRS, EU-taxonomin, klimatfinansiering, Green Bond, TNFD LEAP, naturrelaterade risker, PCAF, financed emissions, RED III, biodrivmedel
+* **Triggers:** hållbarhetsrapportering, ESG, CSRD, ESRS, EU-taxonomin, taxonomiöverensstämmelse, klimatfinansiering, Green Bond, gröna obligationer, scope 1, scope 2, scope 3, GRI, ISSB, IFRS S1, IFRS S2, dubbel väsentlighetsanalys, hållbarhetsrevision, TCFD, hållbarhetsredovisning, TNFD, LEAP, naturrelaterade risker, biologisk mångfald, ESRS E4, ENCORE, IBAT, Aqueduct, PCAF, financed emissions, finansierade utsläpp, datakvalitetspoäng, RED III, biodrivmedel, bioenergi, biomassa, LCA, DNSH, taxonomi TSC
 * **Capabilities:**
   * **csrd-esrs-granskning** — Granska CSRD-rapportering och ESRS-taxonomiöverensstämmelse för offentlig sektor
   * **esg-datavalidering** — Validera ESG-data (scope 1–3) och bedöma datakvalitetsramverk
   * **klimatfinansieringsrevision** — Granska klimatfinansiering och Green Bond-ramverk — spårbarhet mellan obligationsintäkter och klimatinvesteringar
   * **standardnavigering** — Navigera GRI/ISSB/ESRS och bedöma tillämpbarhet för statliga myndigheter
+  * **tnfd-leap** — Genomföra LEAP-bedömning (Locate, Evaluate, Assess, Prepare) för naturrelaterade risker; LEAP-FI för finansiella institutioner med ENCORE/IBAT/Aqueduct-verktyg; koppling till ESRS E4
+  * **scope3-kat15-pcaf** — Beräkna och granska Scope 3 kat. 15 (financed emissions) för finansiella institutioner — GHG Protocol + PCAF datakvalitetspoäng 1–5 som revisionsverktyg; PCAF v2+ revisionslucka mot GHG Protocol
+  * **red-iii-dnsh** — Tolka RED III Annex V LCA-metodik och Annex IX-klassificering; analysera DNSH-gränssnittet mot taxonomi TSC för biobränslen — RED III-besked ≠ taxonomi-alignment
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-hallbarhet-esg/EXPERT.md
 * **Kan kedja till:** expert-miljo-klimat (vid policykontext), expert-finanser (vid finansieringsdimensionen), kvantitativ-analytiker (vid utsläppsdata), rattslig-utredare (vid EU-rättsliga tolkningsfrågor)
 
