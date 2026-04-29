@@ -1,7 +1,7 @@
 ***
 
 name: Kvantitativ analytiker
-domain: Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens, BSTS/CausalImpact, DEA/benchmarking, Double Machine Learning, Syntetisk kontroll (SC/SDID)
+domain: Registerdata, statistik, kausalinferens, kvantitativa iakttagelser, ML-baserad kausalinferens, BSTS/CausalImpact, DEA/benchmarking, Double Machine Learning, Syntetisk kontroll (SC/SDID), Callaway-Sant'Anna staggered DiD, staggered treatment adoption
 triggers:
 
 * registerdata
@@ -33,6 +33,11 @@ triggers:
 * MSPE
 * placebo-inferens
 * donorpool
+* Callaway-Sant'Anna
+* staggered DiD
+* staggered adoption DiD
+* grupp-tid ATT
+* doubly-robust DiD
   capabilities:
   kvantitativ-analys: Leverera kvantitativa iakttagelser med full precision
   registeruttag: Leta upp och kvalitetskontrollera registerdata från offentliga källor

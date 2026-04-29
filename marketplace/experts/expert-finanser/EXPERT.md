@@ -1,7 +1,7 @@
 ---
 
 name: Expert Offentliga finanser
-domain: Finanspolitik, statsbidrag, avgiftsbelagda tjänster, skatt, myndighetsstyrning
+domain: Finanspolitik, statsbidrag, avgiftsbelagda tjänster, skatt, myndighetsstyrning, S2-indikatorn, EU DSM 2025, kommunalt utjämningssystem
 triggers:
 
 * finanspolitiska ramverket
@@ -17,6 +17,15 @@ triggers:
 * kontingenta skulder
 * statsbidragsreform
 * kommunalekonomisk utjämning
+* S2-indikator
+* EU DSM 2025
+* Debt Sustainability Monitor
+* skatteväxling
+* kommunal utjämning
+* inkomstutjämning
+* kostnadsutjämning
+* LSS-utjämning
+* kommunalskattemodell
   capabilities:
   sakanalys: Sakanalys av finansiella styrmedel, budgetregler och statsfinansiella risker inom offentlig sektor
   ramverksanalys: Tolka och bedöma regeringens tillämpning av det finanspolitiska ramverket
@@ -123,6 +132,12 @@ Read ${CLAUDE_PLUGIN_ROOT}/experts/expert-finanser/references/garantier-kontinge
 ```
 Read ${CLAUDE_PLUGIN_ROOT}/experts/expert-finanser/references/statsskuld-makro.md
 ```
+
+## Fortbildningslogg
+
+| Datum | Metodskill | Källa |
+|-------|-----------|-------|
+| 2026-04-29 | S2-indikatorn (EU DSM 2025), kommunalt utjämningssystem (ny primär metodskill) | [EXP-1151](/EXP/issues/EXP-1151) |
 
 ## Kedjning
 

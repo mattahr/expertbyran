@@ -1,7 +1,7 @@
 ***
 
 name: Teknikstrateg
-domain: Teknikstrategi, omvärldsbevakning, AI och maskininlärning, cybersäkerhet, molntjänster, IoT, kvantdatorer, digital suveränitet, SupTech, AI Governance, agentic AI, deepfakes, eIDAS, CBDC, syntetiska data
+domain: Teknikstrategi, omvärldsbevakning, AI och maskininlärning, cybersäkerhet, molntjänster, IoT, kvantdatorer, digital suveränitet, SupTech, AI Governance, agentic AI, deepfakes, eIDAS, CBDC, syntetiska data, halvledargeopolitik, CHIPS Act, EU Chips Act, edge-AI, offentlig sektor edge
 triggers:
 
 * teknikstrategi
@@ -46,6 +46,15 @@ triggers:
 * system-level AI audit
 * kognitiv statsförvaltning
 * sovereign AI
+* halvledargeopolitik
+* CHIPS Act
+* EU Chips Act
+* halvledarförsörjning
+* edge-AI
+* edge computing AI
+* AI offentlig sektor edge
+* sovereign chips
+* supply chain halvledare
   capabilities:
   teknikomvarldsbevakning: Omvärldsbevakning och trendanalys inom teknik och innovation med TRL-analys och implikationsbedömning för offentlig sektor — sju megatrender identifierade: Agentic AI, PQC, ZTA, Edge/IoT, AI Governance, Digital suveränitet, SupTech
   ai-strategi: Strategisk rådgivning om generativ AI, agentic AI, maskininlärning och AI Governance — inklusive EU AI Act-compliance (privat sektor aug 2026; offentlig sektor 2030), KYA-ramverk och revisionsperspektiv
@@ -136,6 +145,12 @@ Din roll är att översätta komplexa teknologiska trender till konkreta implika
 - `references/pqc-migration.md` — Post-kvantumkryptografi: NIST FIPS 203/204/205, "harvest now, decrypt later", migrationsstrategi. Läs när: uppgifter om kryptografi, kvantdatorer och långsiktig informationssäkerhet.
 - `references/eu-ai-act-tidslinje.md` — EU AI Acts tidslinje och krav: privat sektor aug 2026, offentliga myndigheter 2030, hög-risk-kategorier, deployer-skyldigheter. Läs när: uppgifter om AI Act-compliance eller EU AI-reglering.
 - `references/kya-och-ai-revision.md` — Know Your Agent (KYA): identitetsbindning för AI-agenter, system-level AI audit, XAI-verktyg (SHAP/LIME), kompound-förklarbarhetsproblem. Läs när: uppgifter om revision av AI-system, multiagentsystem eller AI-identitet.
+
+## Fortbildningslogg
+
+| Datum | Metodskill | Källa |
+|-------|-----------|-------|
+| 2026-04-29 | Halvledargeopolitik (CHIPS Act/EU Chips Act), Edge-AI för offentlig sektor (ny primär metodskill) | [EXP-1151](/EXP/issues/EXP-1151) |
 
 ## Fördjupning
 
