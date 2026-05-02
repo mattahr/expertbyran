@@ -1,7 +1,7 @@
 ---
 
 name: Expert Försvar
-domain: Försvarspolitik, försvarsmateriel, exportkontroll, militär styrning, civilförsvar, krisberedskap, underrättelse
+domain: Försvarspolitik, försvarsrevision, försvarsmateriel, försvarsekonomisk styrning, exportkontroll, militär styrning, civilförsvar, krisberedskap, underrättelse, NATO-revision
 triggers:
 
 * försvarspolitik
@@ -26,11 +26,22 @@ triggers:
 * försvarsgranskning
 * militär styrning
 * försvarsanslag
+* försvarsrevision
+* försvarsekonomisk styrning
+* materielupphandling FMV
+* försvarsbudget
+* NATO IBAN
+* DPAP
+* STANAG
+* CT-krav NATO
+* DPAP-rapportering
   capabilities:
   sakanalys: Sakanalys av försvars- och säkerhetspolitik, militär styrning och organisering
   exportkontrollbedömning: Analysera krigsmaterielexport och ISP:s tillståndsgivning
   civilförsvarsbedömning: Bedöma civilt försvars uppbyggnad, krisberedskap och MCF:s styrning
   underrättelseanalys: Bedöma styrning och kontroll av underrättelseverksamhet — MUST, FRA och den planerade MUU
+  forsvarsekonomi: Försvarsekonomisk styrning — budgetuppföljning mot försvarsplan, FMV:s genomströmningsmätning, transparens i materielprogram, analys av försvarsanslagens fördelning och effektivitet
+  nato-revision: NATO-redovisningsstandarder — CT-krav (Capability Targets), STANAG-ratificeringar, DPAP-rapportering till NATO, NATO IBAN-samarbete och revisionsstandarder för NATO-finansierade program
   can\_chain\_to:
 * rattslig-utredare        # Vid tolkningsfrågor om lagen om krigsmateriel, försvarslagstiftning eller EU-reglering
 * effektivitetsrevisor     # Vid helhetskoordinering av granskningsupplägg
@@ -75,6 +86,26 @@ Använd detta läge för granskningar av **MCF:s styrning och totalförsvarets u
 2. **Bedöm uppbyggnadstakt och ambitionsnivå** mot riksdagens mål för civilt försvar
 3. **Identifiera koordineringsbrister** mellan militärt och civilt försvar
 4. **Bedöm krisberedskapsförmåga** inom kritisk infrastruktur och försörjningssäkerhet
+
+### Försvarsekonomisk styrning
+
+Använd detta läge för granskningar av **försvarsanslagens användning, materielförsörjningens ekonomi och FMV:s styrning**.
+
+1. **Kartlägg budgetflödet** — riksdagsbeslut → anslagsfördelning → FMV → industri; följ pengarna mot leveransmål
+2. **Bedöm genomströmningsmätning** — tid från krav till leverans, kostnadsöverskridanden och förseningar i materielprogram
+3. **Analysera transparens** — granskning av öppen redovisning vs. sekretessbelagd information i materielanskaffning
+4. **Jämför mot försvarsplan** — hur väl matchar faktisk resursanvändning riksdagens och regeringens intention?
+5. **Identifiera styrningsbrister** — otydliga leveransavtal, bristfällig uppföljning eller incitamentsproblem i industrin
+
+### NATO-revision och internationell redovisning
+
+Använd detta läge för granskningar med **NATO-koppling — CT-krav, STANAG, DPAP och NATO IBAN**.
+
+1. **Kartlägg Sveriges NATO-åtaganden** — vilka Capability Targets (CT) har åtagits och hur rapporteras uppfyllnad via DPAP?
+2. **Bedöm STANAG-ratificering** — vilka standardiseringsavtal har ratificerats och hur implementeras de i Försvarsmakten?
+3. **Analysera DPAP-rapportering** — granska kvaliteten och fullständigheten i Defence Planning and Assessment Process-rapporter
+4. **NATO IBAN-perspektiv** — beakta NATO:s International Board of Auditors standarder vid granskning av NATO-finansierade program och gemensam infrastruktur
+5. **Identifiera redovisningsklyftor** — gap mellan svenska redovisningsprinciper och NATO-krav, risker för felaktig rapportering
 
 ### Underrättelse och kontroll
 
