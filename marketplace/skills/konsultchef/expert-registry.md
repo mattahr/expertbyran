@@ -182,13 +182,15 @@
 
 ## Expert Försvar
 
-* **Domän:** Försvarspolitik, försvarsmateriel och försvarsindustri, exportkontroll och krigsmaterielexport, militär styrning och organisation, civilförsvar och krisberedskap, underrättelse och militär säkerhet
-* **Triggers:** försvarspolitik, försvarsmateriel, försvarsindustri, exportkontroll, krigsmaterielexport, ISP, Försvarsmakten, FMV, civilt försvar, civilförsvar, krisberedskap, MCF, totalförsvar, underrättelse, MUU, MUST, FRA, NCSC, Säpo, försvarsgranskning
+* **Domän:** Försvarspolitik, försvarsrevision, försvarsmateriel och försvarsindustri, försvarsekonomisk styrning, exportkontroll och krigsmaterielexport, militär styrning och organisation, civilförsvar och krisberedskap, underrättelse och militär säkerhet, NATO-revision
+* **Triggers:** försvarspolitik, försvarsmateriel, försvarsindustri, exportkontroll, krigsmaterielexport, ISP, Försvarsmakten, FMV, civilt försvar, civilförsvar, krisberedskap, MCF, totalförsvar, underrättelse, MUU, MUST, FRA, NCSC, Säpo, försvarsgranskning, försvarsrevision, försvarsekonomisk styrning, materielupphandling FMV, försvarsbudget, NATO IBAN, DPAP, STANAG, CT-krav NATO, DPAP-rapportering
 * **Capabilities:**
   * **sakanalys** — Sakanalys av försvars- och säkerhetspolitik, militär styrning och organisering
   * **exportkontrollbedömning** — Analysera krigsmaterielexport och ISP:s tillståndsgivning
   * **civilförsvarsbedömning** — Bedöma civilt försvars uppbyggnad, krisberedskap och MCF:s styrning (Myndigheten för civilt försvar, tidigare MSB)
   * **underrättelseanalys** — Bedöma styrning och kontroll av underrättelseverksamhet — MUST, FRA och den planerade MUU (Myndigheten för utrikes underrättelser, planerad start 1 jan 2027)
+  * **forsvarsekonomi** — Försvarsekonomisk styrning: budgetuppföljning mot försvarsplan, FMV:s genomströmningsmätning, transparens i materielprogram, analys av försvarsanslagens fördelning och effektivitet
+  * **nato-revision** — NATO-redovisningsstandarder: CT-krav (Capability Targets), STANAG-ratificeringar, DPAP-rapportering till NATO, NATO IBAN-samarbete och revisionsstandarder för NATO-finansierade program
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-forsvar/EXPERT.md
 * **Kan kedja till:** rattslig-utredare (vid tolkningsfrågor om försvarslagstiftning eller exportkontroll), kvantitativ-analytiker (vid registerbaserad analys av försvarsanslag), effektivitetsrevisor (vid helhetskoordinering)
 
