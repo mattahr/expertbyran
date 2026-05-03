@@ -168,8 +168,8 @@
 
 ## Expert Miljö & Klimat
 
-* **Domän:** Klimatpolitik, miljöstyrning, energisystemet, cirkulär ekonomi, EU-klimatreglering, IPCC AR6, utsläppsbudgetar, SCC-diskontering, klimatanpassning
-* **Triggers:** klimatlagen, netto noll 2045, Klimatpolitiska rådet, miljöbalken, Naturvårdsverket, MKB, tillståndsprocesser, Energimyndigheten, Nord Pool, elcertifikat, producentansvar, avfallsdirektivet, EU ETS, taxonomiförordningen, Green Deal, CBAM, cirkulär ekonomi, energiomställning, IPCC AR6, utsläppsbudget, karbonbudget, SCC, social cost of carbon, klimatanpassning, Nordhaus, Stern
+* **Domän:** Klimatpolitik, miljöstyrning, energisystemets omställning (havsbaserad vindkraft, ny kärnkraft), cirkulär ekonomi, EU-klimatreglering, IPCC AR6, utsläppsbudgetar, SCC-diskontering, klimatanpassning
+* **Triggers:** klimatlagen, netto noll 2045, Klimatpolitiska rådet, miljöbalken, Naturvårdsverket, MKB, tillståndsprocesser, Energimyndigheten, Nord Pool, elcertifikat, producentansvar, avfallsdirektivet, EU ETS, taxonomiförordningen, Green Deal, CBAM, cirkulär ekonomi, energiomställning, IPCC AR6, utsläppsbudget, karbonbudget, SCC, social cost of carbon, klimatanpassning, Nordhaus, Stern, havsbaserad vindkraft, ny kärnkraft, klimatpolitiska handlingsplanen
 * **Capabilities:**
   * **sakanalys** — Sakanalys av klimat-, miljö- och energipolitik samt styrmedel
   * **tillstandsbedomning** — Bedöma tillståndsprocesser och miljöbalkens tillämpning
@@ -177,6 +177,7 @@
   * **ipcc-ar6-utslappbudgetar** — IPCC AR6 utsläppsbudgetar (1,5°C/2°C) — kvarvarande kolbudgetar enligt AR6 WG1 (2021); nedbrytning till nationell/sektoriell nivå
   * **scc-diskontering** — SCC-diskontering (Nordhaus/Stern) — social cost of carbon; DICE-modell vs. Stern Review; IWG 2021 ~$51/tCO2; samhällsekonomiska kalkyler
   * **klimatanpassningsanalys** — Klimatanpassningsanalys — granskning av myndigheters klimatanpassningsarbete; nationell strategi 2018; riskbedömning (översvämning, torka, värmeböljor)
+  * **energisystem-omstallning** — Havsbaserad vindkraft (SOU 2024:89 auktionssystem, Poseidon/Galene/Kattegatt Syd), ny kärnkraft (Prop. 2023/24:19 → Prop. 2025/26:171, Vattenfall Ringhals SMR) och Tidöregeringens energipolitik (100 % fossilfri el 2040, 300 TWh-mål)
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-miljo-klimat/EXPERT.md
 * **Kan kedja till:** kvantitativ-analytiker (vid utsläpps- och energianalys), effektivitetsrevisor (vid helhetskoordinering), rattslig-utredare (vid EU-rättsliga tolkningsfrågor)
 
