@@ -5,7 +5,6 @@
 Webbappen är en publik katalog för Expertbyråns marknadsplats på GitHub. Den beskriver:
 
 - vilka experter som finns
-- vilka kuraterade team som finns
 - vilka plugins som motsvarar dessa objekt
 - var GitHub-repot för marknadsplatsen finns
 
@@ -13,7 +12,7 @@ Webbappen är en publik katalog för Expertbyråns marknadsplats på GitHub. Den
 
 Webbappen ansvarar för:
 
-- publik presentation av experter, team och expertområden
+- publik presentation av experter och expertområden
 - validerad pluginmetadata i snapshoten
 - länk till GitHub-repot för marknadsplatsen
 - publika schemafiler för vidareutveckling
@@ -34,7 +33,7 @@ Den externa backend-agenten ansvarar för:
 
 ## Vad som visas på webbplatsen
 
-Webbplatsen visar för varje expert och team:
+Webbplatsen visar för varje expert:
 
 - namn och profilinformation
 - pluginets namn

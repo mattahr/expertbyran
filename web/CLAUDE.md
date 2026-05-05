@@ -4,7 +4,7 @@ Denna mapp (`web/`) är **den publika Next.js-webbplatsen** för Expertbyrån. D
 
 ## Syfte
 
-Publik katalog som presenterar Expertbyråns experter, team, expertområden och marketplace-metadata. Webbappen exponerar också ett **REST API** för att hantera innehåll (experter, team, blogginlägg).
+Publik katalog som presenterar Expertbyråns experter, expertområden och marketplace-metadata. Webbappen exponerar också ett **REST API** för att hantera innehåll (experter, blogginlägg).
 
 ## Datamodell
 

@@ -1,4 +1,4 @@
-import type { Expert, ExpertArea, SiteData, Team } from "@/lib/content/schema";
+import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import { getSiteData } from "@/lib/content/store";
 
 function bySortOrder<T extends { sortOrder: number; name?: string }>(items: T[]) {
@@ -17,7 +17,6 @@ export async function getOrderedSiteData() {
   return {
     ...data,
     expertAreas: bySortOrder(data.expertAreas),
-    teams: bySortOrder(data.teams),
     experts: bySortOrder(data.experts),
   };
 }
@@ -25,11 +24,6 @@ export async function getOrderedSiteData() {
 export async function getFeaturedExpertAreas() {
   const data = await getOrderedSiteData();
   return data.expertAreas.filter((area) => area.featured);
-}
-
-export async function getFeaturedTeams() {
-  const data = await getOrderedSiteData();
-  return data.teams.filter((team) => team.featured);
 }
 
 export async function getFeaturedExperts() {
@@ -47,28 +41,4 @@ export function getAreasForExpert(data: SiteData, expert: Expert) {
   return expert.areaSlugs
     .map((slug) => areaMap.get(slug))
     .filter((area): area is ExpertArea => Boolean(area));
-}
-
-export function getExpertsForTeam(data: SiteData, team: Team) {
-  const expertMap = new Map(data.experts.map((expert) => [expert.slug, expert]));
-
-  return team.expertSlugs
-    .map((slug) => expertMap.get(slug))
-    .filter((expert): expert is Expert => Boolean(expert));
-}
-
-export function getTeamsForExpert(data: SiteData, expertSlug: string) {
-  return bySortOrder(data.teams.filter((team) => team.expertSlugs.includes(expertSlug)));
-}
-
-export function getTeamsForArea(data: SiteData, areaSlug: string) {
-  return bySortOrder(
-    data.teams.filter((team) =>
-      team.expertSlugs.some((expertSlug) =>
-        data.experts.some(
-          (expert) => expert.slug === expertSlug && expert.areaSlugs.includes(areaSlug),
-        ),
-      ),
-    ),
-  );
 }

@@ -1,6 +1,6 @@
 # Expertbyrån
 
-Minimalistisk Next.js-webbplats för ett virtuellt konsultbolag med AI-experter och kuraterade team. Webbplatsen är read-only i drift och läser `site-data.json` från en publik URL, normalt ett GitHub-monorepo.
+Minimalistisk Next.js-webbplats för ett virtuellt konsultbolag med AI-experter och expertområden. Webbplatsen är read-only i drift och läser `site-data.json` från en publik URL, normalt ett GitHub-monorepo.
 
 ## Stack
 
@@ -74,7 +74,7 @@ För lokal utveckling använder `.env.example` `SITE_DATA_URL=api` och lagrar da
 ## Innehållsmodell och marketplace
 
 - `site-data.json` läses direkt från `mattahr/expertbyran` (`web/site-data.json` i monorepot)
-- Snapshoten innehåller `marketplace`, `teams` och pluginmetadata på experter och team
+- Snapshoten innehåller `marketplace`, expertområden och expertmetadata
 - Marknadsplatsen pekar på GitHub-repot `mattahr/expertbyran`
 - Webbappen länkar till GitHub och genererar eller publicerar inte marketplace-innehåll själv
 

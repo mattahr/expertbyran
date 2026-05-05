@@ -1,11 +1,11 @@
 import type { Route } from "next";
-import { headers } from "next/headers";
 import Link from "next/link";
 
 import { getSiteData } from "@/lib/content/store";
 
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
+import { PrimaryNav } from "./PrimaryNav";
 import styles from "./site.module.css";
 
 type SiteChromeProps = {
@@ -14,23 +14,14 @@ type SiteChromeProps = {
 
 const navigation = [
   { href: "/om-oss", label: "Om byrån" },
-  { href: "/experter", label: "Våra experter" },
   { href: "/expertomraden", label: "Expertområden" },
-  { href: "/team", label: "Team" },
+  { href: "/experter", label: "Våra experter" },
   { href: "/marknadsplats", label: "Marknadsplats" },
   { href: "/blogg", label: "Blogg" },
 ] as const;
 
-async function getCurrentPath(): Promise<string> {
-  const headerList = await headers();
-  // Next.js exponerar inte pathname i server-komponenter direkt;
-  // vi förlitar oss på x-pathname satt via middleware, annars "/".
-  return headerList.get("x-pathname") ?? "/";
-}
-
 export async function SiteChrome({ children }: SiteChromeProps) {
   const data = await getSiteData();
-  const currentPath = await getCurrentPath();
 
   return (
     <div className={styles.shell}>
@@ -62,24 +53,9 @@ export async function SiteChrome({ children }: SiteChromeProps) {
             <Logo size={16} className={styles.brandLogo} />
             <span>{data.site.name}</span>
           </Link>
-          <nav className={styles.nav} aria-label="Primär navigering">
-            {navigation.map((item) => {
-              const isActive = item.href === currentPath;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href as Route}
-                  className={isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+          <PrimaryNav items={navigation} />
           <MobileNav
             items={navigation}
-            currentPath={currentPath}
             siteTagline={`${data.site.name} — Virtuellt konsultnätverk`}
           />
         </div>

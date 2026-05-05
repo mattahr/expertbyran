@@ -8,7 +8,7 @@ export const metadata = {
 
 export default async function MarketplacePage() {
   const data = await getOrderedSiteData();
-  const { experts, teams } = data;
+  const { experts } = data;
 
   return (
     <div className={styles.pageWrap}>
@@ -32,7 +32,7 @@ export default async function MarketplacePage() {
             </div>
             <div className={styles.metaRow}>
               <span className={styles.metaLabel}>Publicerade plugins</span>
-              <span className={styles.metaValue}>{experts.length + teams.length}</span>
+              <span className={styles.metaValue}>{experts.length}</span>
             </div>
           </div>
 
@@ -58,23 +58,6 @@ export default async function MarketplacePage() {
               <div key={expert.id} className={styles.gridCell}>
                 <span className={styles.gridCellCategory}>{expert.role}</span>
                 <span className={styles.gridCellName}>{expert.name}</span>
-              </div>
-            ))}
-          </div>
-        </RevealOnScroll>
-      )}
-
-      {teams.length > 0 && (
-        <RevealOnScroll as="section" className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionLabel}>Publicerade team</h2>
-            <span className={styles.sectionCount}>{teams.length} team</span>
-          </div>
-          <div className={styles.grid}>
-            {teams.map((team) => (
-              <div key={team.id} className={styles.gridCell}>
-                <span className={styles.gridCellName}>{team.name}</span>
-                <span className={styles.gridCellDesc}>{team.shortDescription}</span>
               </div>
             ))}
           </div>

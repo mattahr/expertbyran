@@ -162,18 +162,6 @@ const expertSchema = z.object({
   contactLinks: z.array(contactLinkSchema).min(2),
 });
 
-const teamSchema = z.object({
-  id: z.string().min(1),
-  slug: slugSchema,
-  sortOrder: z.number().int().nonnegative(),
-  featured: z.boolean(),
-  name: z.string().min(1),
-  shortDescription: z.string().min(1),
-  description: z.string().min(1),
-  promptSummary: z.string().min(1),
-  expertSlugs: z.array(slugSchema).min(1),
-});
-
 const marketplaceSchema = z.object({
   name: slugSchema,
   repositoryUrl: externalHrefSchema,
@@ -216,7 +204,6 @@ export const siteDataSchema = z
     }),
     marketplace: marketplaceSchema,
     expertAreas: z.array(areaSchema).min(1),
-    teams: z.array(teamSchema).min(1),
     experts: z.array(expertSchema).min(1),
   })
   .superRefine((data, ctx) => {
@@ -224,8 +211,6 @@ export const siteDataSchema = z
     const areaSlugs = new Set<string>();
     const expertIds = new Set<string>();
     const expertSlugs = new Set<string>();
-    const teamIds = new Set<string>();
-    const teamSlugs = new Set<string>();
 
     data.expertAreas.forEach((area, index) => {
       if (areaIds.has(area.id)) {
@@ -278,55 +263,11 @@ export const siteDataSchema = z
       expertIds.add(expert.id);
       expertSlugs.add(expert.slug);
     });
-
-    data.teams.forEach((team, index) => {
-      if (teamIds.has(team.id)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["teams", index, "id"],
-          message: "Team-ID måste vara unikt.",
-        });
-      }
-
-      if (teamSlugs.has(team.slug)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          path: ["teams", index, "slug"],
-          message: "Teamslug måste vara unik.",
-        });
-      }
-
-      const seenExpertSlugs = new Set<string>();
-
-      team.expertSlugs.forEach((slug, slugIndex) => {
-        if (!expertSlugs.has(slug)) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            path: ["teams", index, "expertSlugs", slugIndex],
-            message: `Okänd expert: ${slug}.`,
-          });
-        }
-
-        if (seenExpertSlugs.has(slug)) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            path: ["teams", index, "expertSlugs", slugIndex],
-            message: "En expert får bara förekomma en gång i samma team.",
-          });
-        }
-
-        seenExpertSlugs.add(slug);
-      });
-
-      teamIds.add(team.id);
-      teamSlugs.add(team.slug);
-    });
   });
 
 export type SiteData = z.infer<typeof siteDataSchema>;
 export type ExpertArea = SiteData["expertAreas"][number];
 export type Expert = SiteData["experts"][number];
-export type Team = SiteData["teams"][number];
 export type Marketplace = SiteData["marketplace"];
 export type InstallSource = z.infer<typeof installSourceSchema>;
 export type ContactLink = z.infer<typeof contactLinkSchema>;

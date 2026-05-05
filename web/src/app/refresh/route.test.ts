@@ -44,7 +44,6 @@ describe("/refresh route", () => {
     expect(body).toMatchObject({
       ok: true,
       experts: siteData.experts.length,
-      teams: siteData.teams.length,
       posts: blogData.posts.length,
     });
   });

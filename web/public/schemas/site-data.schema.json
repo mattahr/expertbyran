@@ -479,100 +479,6 @@
         "additionalProperties": false
       }
     },
-    "teams": {
-      "minItems": 1,
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "slug": {
-            "type": "string",
-            "pattern": "^[a-z0-9-]+$"
-          },
-          "sortOrder": {
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 9007199254740991
-          },
-          "featured": {
-            "type": "boolean"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1
-          },
-          "shortDescription": {
-            "type": "string",
-            "minLength": 1
-          },
-          "description": {
-            "type": "string",
-            "minLength": 1
-          },
-          "promptSummary": {
-            "type": "string",
-            "minLength": 1
-          },
-          "expertSlugs": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[a-z0-9-]+$"
-            }
-          },
-          "plugin": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "pattern": "^[a-z0-9-]+$"
-              },
-              "repositoryPath": {
-                "type": "string",
-                "minLength": 1
-              },
-              "repositoryUrl": {
-                "type": "string",
-                "format": "uri"
-              },
-              "marketplaceListed": {
-                "type": "boolean"
-              },
-              "version": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "name",
-              "repositoryPath",
-              "repositoryUrl",
-              "marketplaceListed",
-              "version"
-            ],
-            "additionalProperties": false
-          }
-        },
-        "required": [
-          "id",
-          "slug",
-          "sortOrder",
-          "featured",
-          "name",
-          "shortDescription",
-          "description",
-          "promptSummary",
-          "expertSlugs",
-          "plugin"
-        ],
-        "additionalProperties": false
-      }
-    },
     "experts": {
       "minItems": 1,
       "type": "array",
@@ -872,7 +778,6 @@
     "contact",
     "marketplace",
     "expertAreas",
-    "teams",
     "experts"
   ],
   "additionalProperties": false

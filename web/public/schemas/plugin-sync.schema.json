@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Expertbyrån plugin sync",
-  "description": "Publikt JSON Schema för kopplingen mellan experter, team och pluginmetadata.",
+  "description": "Publikt JSON Schema för kopplingen mellan experter och pluginmetadata.",
   "type": "object",
   "properties": {
     "version": {
@@ -191,77 +191,13 @@
         ],
         "additionalProperties": false
       }
-    },
-    "teams": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "slug": {
-            "type": "string",
-            "pattern": "^[a-z0-9-]+$"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1
-          },
-          "expertSlugs": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[a-z0-9-]+$"
-            }
-          },
-          "plugin": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "pattern": "^[a-z0-9-]+$"
-              },
-              "repositoryPath": {
-                "type": "string",
-                "minLength": 1
-              },
-              "repositoryUrl": {
-                "type": "string",
-                "format": "uri"
-              },
-              "marketplaceListed": {
-                "type": "boolean"
-              },
-              "version": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "name",
-              "repositoryPath",
-              "repositoryUrl",
-              "marketplaceListed",
-              "version"
-            ],
-            "additionalProperties": false
-          }
-        },
-        "required": [
-          "slug",
-          "name",
-          "expertSlugs",
-          "plugin"
-        ],
-        "additionalProperties": false
-      }
     }
   },
   "required": [
     "version",
     "updatedAt",
     "marketplace",
-    "experts",
-    "teams"
+    "experts"
   ],
   "additionalProperties": false
 }

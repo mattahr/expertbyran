@@ -1,6 +1,6 @@
 # Expertbyrån Web API
 
-API för att hantera experter, team, expertområden och blogginlägg på Expertbyråns webbplats.
+API för att hantera experter, expertområden och blogginlägg på Expertbyråns webbplats.
 
 ## Översikt
 
@@ -21,7 +21,7 @@ Token sätts via miljövariabeln `API_TOKEN`.
 ### Site Data
 
 #### GET /api/v1/site-data
-Hämtar hela site-data-strukturen (experter, team, expertområden, etc.).
+Hämtar hela site-data-strukturen (experter, expertområden, etc.).
 
 **Response:**
 ```json
@@ -32,8 +32,7 @@ Hämtar hela site-data-strukturen (experter, team, expertområden, etc.).
   "organization": { ... },
   "marketplace": { ... },
   "expertAreas": [ ... ],
-  "experts": [ ... ],
-  "teams": [ ... ]
+  "experts": [ ... ]
 }
 ```
 
@@ -211,7 +210,7 @@ volumes:
 ## Dataformat
 
 Data lagras i `/app/data/`:
-- `site-data.json` - Experter, team, områden, webbplatsinställningar
+- `site-data.json` - Experter, områden, webbplatsinställningar
 - `blog-data.json` - Blogginlägg metadata
 - `blog/posts/*.md` - Markdown för varje blogginlägg
 

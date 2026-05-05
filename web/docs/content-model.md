@@ -22,7 +22,6 @@ Snapshoten innehåller:
 - `organization`
 - `marketplace`
 - `expertAreas`
-- `teams`
 - `experts`
 
 ## Marketplace
@@ -35,22 +34,6 @@ Snapshoten innehåller:
 - `installSource`
 - `description`
 
-## Team
-
-Team är förstaklassiga katalogobjekt och motsvarar kuraterade teampluginer i monorepot.
-
-Varje team har minst:
-
-- `id`
-- `slug`
-- `sortOrder`
-- `featured`
-- `name`
-- `shortDescription`
-- `description`
-- `promptSummary`
-- `expertSlugs`
-
 ## Experter
 
 Varje expert har vanlig profilinformation och refererar till områden via `areaSlugs`.
@@ -61,7 +44,6 @@ Valideringen avvisar bland annat:
 
 - dubbla `id` eller `slug`
 - ogiltiga `areaSlugs` på experter
-- brutna `expertSlugs` i team
 - ogiltig `installSource`
 - ogiltiga URL:er till marketplace eller repository
 

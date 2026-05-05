@@ -9,14 +9,12 @@ import {
   getAreasForExpert,
   getFeaturedExpertAreas,
   getFeaturedExperts,
-  getFeaturedTeams,
   getOrderedSiteData,
 } from "@/lib/content/query";
 
 export default async function HomePage() {
   const data = await getOrderedSiteData();
   const featuredAreas = await getFeaturedExpertAreas();
-  const featuredTeams = await getFeaturedTeams();
   const featuredExperts = await getFeaturedExperts();
 
   return (
@@ -35,12 +33,6 @@ export default async function HomePage() {
             <StatCounter value={data.experts.length} />
           </div>
           <div className={styles.statLabel}>Experter</div>
-        </div>
-        <div>
-          <div className={styles.statValue}>
-            <StatCounter value={data.teams.length} />
-          </div>
-          <div className={styles.statLabel}>Team</div>
         </div>
         <div>
           <div className={styles.statValue}>
@@ -110,24 +102,6 @@ export default async function HomePage() {
               />
             );
           })}
-        </div>
-      </RevealOnScroll>
-
-      <RevealOnScroll as="section" className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionLabel}>Team</h2>
-          <span className={styles.sectionCount}>{data.teams.length} team</span>
-        </div>
-        <div className={styles.grid}>
-          {featuredTeams.map((team) => (
-            <GridCell
-              key={team.id}
-              href={`/team/${team.slug}`}
-              category={`${team.expertSlugs.length} medlemmar`}
-              name={team.name}
-              description={team.shortDescription}
-            />
-          ))}
         </div>
       </RevealOnScroll>
     </div>

@@ -4,18 +4,18 @@
   "site": {
     "name": "Expertbyrån",
     "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
-    "description": "Expertbyrån är ett helt virtuellt specialistföretag där AI-agenter bemannar uppdrag inom analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen fungerar även som publik katalog för experter, team och extern Claude Code-marketplace.",
+    "description": "Expertbyrån är ett helt virtuellt specialistföretag där AI-agenter bemannar uppdrag inom analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen fungerar även som publik katalog för experter, expertområden och extern Claude Code-marketplace.",
     "hero": {
       "eyebrow": "Virtuell specialistorganisation",
-      "title": "Analys, styrning och kvalitet genom ett virtuellt expertteam.",
-      "intro": "Expertbyrån samlar AI-baserade specialistroller för analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen beskriver organisationen, expertområdena, kuraterade team och de experter vars metadata hålls i synk med en extern Claude Code-marketplace.",
+      "title": "Analys, styrning och kvalitet genom virtuella experter.",
+      "intro": "Expertbyrån samlar AI-baserade specialistroller för analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen beskriver organisationen, expertområdena och de experter vars metadata hålls i synk med en extern Claude Code-marketplace.",
       "primaryCta": {
         "label": "Utforska marknadsplatsen",
         "href": "/marknadsplats"
       },
       "secondaryCta": {
-        "label": "Se team och experter",
-        "href": "/team"
+        "label": "Se expertområden",
+        "href": "/expertomraden"
       }
     },
     "principles": [
@@ -30,7 +30,7 @@
     "heading": "En virtuell specialistbyrå med tydliga roller och definierade ansvar.",
     "summary": "Expertbyrån arbetar som en liten specialistorganisation där uppdrag bemannas utifrån tydligt mandat, avgränsad roll och dokumenterad metod. Varje AI-agent har ett specificerat expertområde och ett tydligt ansvar i leveransen.",
     "modelTitle": "AI-agenter i tydliga roller",
-    "modelDescription": "Varje uppdrag bemannas med en ansvarig uppdragsarkitekt, ett kärnteam av specialister och ett separat kvalitetsspår. Upplägget gör det möjligt att hålla hög specialisttäthet, spårbarhet och tydlig ansvarsfördelning.",
+    "modelDescription": "Varje uppdrag bemannas med en ansvarig uppdragsarkitekt, relevanta specialister och ett separat kvalitetsspår. Upplägget gör det möjligt att hålla hög specialisttäthet, spårbarhet och tydlig ansvarsfördelning.",
     "structure": [
       {
         "id": "orchestration",
@@ -113,7 +113,7 @@
       "accent": "#8D6F43",
       "name": "Revisionsmetodik och analys",
       "shortDescription": "För granskningar som kräver robust metoddesign, kvantitativ och kvalitativ analys och vetenskaplig stringens.",
-      "description": "Området samlar expertis inom effektivitetsrevisionens hela metodkedja — från granskningsdesign och datainsamling till analys, kausalitetsprövning och kvalitetsgranskning. Teamet säkerställer att varje granskning vilar på solid metodgrund.",
+      "description": "Området samlar expertis inom effektivitetsrevisionens hela metodkedja — från granskningsdesign och datainsamling till analys, kausalitetsprövning och kvalitetsgranskning. Kompetensen säkerställer att varje granskning vilar på solid metodgrund.",
       "signals": [
         "Granskningen kräver både kvantitativa och kvalitativa metoder",
         "Bedömningsgrunder och revisionsfrågor behöver brytas ned systematiskt",
@@ -383,52 +383,6 @@
         "Sakanalys av Sidas verksamhet, partnerval och biståndsformer",
         "Bedömning av biståndsuppföljningens kvalitet och resultatindikatorers tillräcklighet",
         "Analys av multilateral vs bilateral kanalanvändning och effektivitetsjämförelse"
-      ]
-    }
-  ],
-  "teams": [
-    {
-      "id": "team-revisionsmetodik",
-      "slug": "revisionsmetodik",
-      "sortOrder": 10,
-      "featured": true,
-      "name": "Kärnteam Revisionsmetodik",
-      "shortDescription": "Det fasta metodteamet som designar, genomför och kvalitetssäkrar effektivitetsrevisioner.",
-      "description": "Teamet samlar hela den metodologiska kedjan för en effektivitetsrevision — från granskningsdesign och kvantitativ/kvalitativ datainsamling till rättslig tolkning av bedömningsgrunder och oberoende opponering. Bemannas som helhet eller i delar beroende på uppdragets metodbehov.",
-      "promptSummary": "Använd teamet när en effektivitetsrevision behöver robust metoddesign, analys och kvalitetssäkring från start till publicering.",
-      "expertSlugs": [
-        "effektivitetsrevisor",
-        "kvantitativ-analytiker",
-        "kvalitativ-metodexpert",
-        "rattslig-utredare",
-        "kvalitetsgranskare"
-      ]
-    },
-    {
-      "id": "team-domanexperter",
-      "slug": "domanexperter",
-      "sortOrder": 20,
-      "featured": true,
-      "name": "Team Domänexperter",
-      "shortDescription": "Sakkunskapspool som engageras utifrån granskningens ämnesområde.",
-      "description": "Teamet samlar domänexperter inom Expertbyråns granskningsområden — offentliga finanser, statlig digitalisering, rättsväsende, välfärd, arbetsmarknad, utbildning, miljö och klimat, telekommunikation, försvar, hållbarhet och ESG samt transport. Experterna bidrar med djup sakkunskap och bedömning av sektorspecifika frågor.",
-      "promptSummary": "Använd teamet när en granskning behöver fördjupad sakkunskap inom ett specifikt politikområde eller myndighetskluster.",
-      "expertSlugs": [
-        "expert-finanser",
-        "expert-digitalisering",
-        "expert-rattsvasende",
-        "expert-valfard",
-        "expert-arbetsmarknad",
-        "expert-utbildning",
-        "expert-miljo-klimat",
-        "expert-telekommunikation",
-        "expert-forsvar",
-        "teknikstrateg",
-        "expert-hallbarhet-esg",
-        "expert-transport",
-        "expert-cyber",
-        "expert-halso-sjukvard",
-        "expert-bistand"
       ]
     }
   ],

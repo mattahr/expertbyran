@@ -1,9 +1,16 @@
 // @vitest-environment jsdom
 
 import { fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MobileNav } from "./MobileNav";
+import { isNavItemActive } from "./PrimaryNav";
+
+const pathnameState = vi.hoisted(() => ({ pathname: "/" }));
+
+vi.mock("next/navigation", () => ({
+  usePathname: () => pathnameState.pathname,
+}));
 
 const navigation = [
   { href: "/om-oss" as const, label: "Om byrån" },
@@ -14,6 +21,7 @@ const navigation = [
 describe("MobileNav", () => {
   beforeEach(() => {
     document.body.style.overflow = "";
+    pathnameState.pathname = "/";
   });
 
   afterEach(() => {
@@ -69,6 +77,19 @@ describe("MobileNav", () => {
     fireEvent.click(screen.getByRole("button", { name: /öppna meny/i }));
     const activeLink = screen.getByRole("link", { name: "Våra experter" });
     expect(activeLink.getAttribute("aria-current")).toBe("page");
+  });
+
+  it("markerar aktuell sida från browser-path när currentPath inte skickas in", () => {
+    pathnameState.pathname = "/blogg/test-post";
+    render(<MobileNav items={navigation} />);
+    fireEvent.click(screen.getByRole("button", { name: /öppna meny/i }));
+    const activeLink = screen.getByRole("link", { name: "Blogg" });
+    expect(activeLink.getAttribute("aria-current")).toBe("page");
+  });
+
+  it("matchar nav-länkar mot undersidor men inte liknande prefix", () => {
+    expect(isNavItemActive("/experter", "/experter/effektivitetsrevisor")).toBe(true);
+    expect(isNavItemActive("/experter", "/expertomraden")).toBe(false);
   });
 
   it("focus-trap: Tab från sista länken går tillbaka till stängknappen", () => {

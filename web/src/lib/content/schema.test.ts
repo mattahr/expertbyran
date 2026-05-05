@@ -37,19 +37,6 @@ describe("siteDataSchema", () => {
     }
   });
 
-  it("rejects broken team references", () => {
-    const broken = structuredClone(siteData);
-    broken.teams[0].expertSlugs = ["saknas"];
-
-    const result = siteDataSchema.safeParse(broken);
-
-    expect(result.success).toBe(false);
-
-    if (!result.success) {
-      expect(result.error.issues[0]?.path.join(".")).toBe("teams.0.expertSlugs.0");
-    }
-  });
-
   it("rejects invalid marketplace install sources", () => {
     const broken = structuredClone(siteData);
     broken.marketplace.installSource = {

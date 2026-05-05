@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import styles from "@/components/site/site.module.css";
-import { getAreasForExpert, getOrderedSiteData, getTeamsForExpert } from "@/lib/content/query";
+import { getAreasForExpert, getOrderedSiteData } from "@/lib/content/query";
 
 type ExpertPageProps = {
   params: Promise<{
@@ -36,7 +36,6 @@ export default async function ExpertDetailPage({ params }: ExpertPageProps) {
   }
 
   const areas = getAreasForExpert(data, expert);
-  const teams = getTeamsForExpert(data, expert.slug);
 
   return (
     <div className={styles.pageWrap}>
@@ -68,14 +67,6 @@ export default async function ExpertDetailPage({ params }: ExpertPageProps) {
                 <span className={styles.metaValue}>
                   <span className={styles.dot} style={{ background: area.accent }} aria-hidden />
                   <Link href={`/expertomraden/${area.slug}`} className={styles.textLink}>{area.name}</Link>
-                </span>
-              </div>
-            ))}
-            {teams.map((team) => (
-              <div key={team.slug} className={styles.metaRow}>
-                <span className={styles.metaLabel}>Team</span>
-                <span className={styles.metaValue}>
-                  <Link href={`/team/${team.slug}`} className={styles.textLink}>{team.name}</Link>
                 </span>
               </div>
             ))}

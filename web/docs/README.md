@@ -1,13 +1,13 @@
 # Expertbyrån Docs
 
-Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog för experter, team och en extern Claude Code-marketplace, med `site-data.json` hämtad från en fjärr-URL.
+Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog för experter, expertområden och en extern Claude Code-marketplace, med `site-data.json` hämtad från en fjärr-URL.
 
 ## Läsordning
 
 1. `architecture.md`
    Systemets huvuddelar, dataflöde och driftmodell.
 2. `content-model.md`
-   Snapshotformatet, valideringsregler och hur experter, team och pluginmetadata modelleras.
+   Snapshotformatet, valideringsregler och hur experter och pluginmetadata modelleras.
 3. `marketplace-catalog.md`
    Hur webbappen relaterar till monorepot `mattahr/expertbyran` och det separata pluginmonorepot.
 4. `development-guide.md`

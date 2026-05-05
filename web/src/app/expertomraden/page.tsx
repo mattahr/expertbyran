@@ -17,7 +17,7 @@ export default async function ExpertAreasPage() {
         <h1 className={styles.heroTitle}>Våra expertområden.</h1>
         <div className={styles.heroLine} />
         <p className={styles.heroIntro}>
-          Varje område beskriver när kompetensen används, vilka leverabler som normalt tas fram och vilka experter och team som knyts till området.
+          Varje område beskriver när kompetensen används, vilka leverabler som normalt tas fram och vilka experter som knyts till området.
         </p>
       </div>
 

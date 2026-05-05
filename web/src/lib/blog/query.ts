@@ -1,7 +1,7 @@
-import type { Expert, ExpertArea } from "@/lib/content/schema";
+import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import { getSiteData } from "@/lib/content/store";
 
-import type { BlogPostEntry } from "@/lib/blog/schema";
+import type { BlogCatalog, BlogPostEntry } from "@/lib/blog/schema";
 import { getBlogData } from "@/lib/blog/store";
 
 export function formatBlogDate(isoDate: string): string {
@@ -28,6 +28,11 @@ export type BlogPostSummary = BlogPostEntry & {
 
 export type BlogPostFull = BlogPostSummary & {
   contentHtml: string;
+};
+
+export type BlogArchive = {
+  posts: BlogPostSummary[];
+  areas: ExpertArea[];
 };
 
 function resolveAuthor(experts: Expert[], entry: BlogPostEntry): ResolvedAuthor | null {
@@ -58,10 +63,18 @@ function resolveAreas(allAreas: ExpertArea[], areaSlugs: string[]): ExpertArea[]
   return areaSlugs.map((slug) => areaMap.get(slug)).filter((area): area is ExpertArea => Boolean(area));
 }
 
-export async function getOrderedBlogPosts(): Promise<BlogPostSummary[]> {
-  const [blogData, siteData] = await Promise.all([getBlogData(), getSiteData()]);
+function byAreaOrder(areas: ExpertArea[]) {
+  return [...areas].sort((left, right) => {
+    if (left.sortOrder === right.sortOrder) {
+      return left.name.localeCompare(right.name, "sv");
+    }
 
-  return blogData.catalog.posts
+    return left.sortOrder - right.sortOrder;
+  });
+}
+
+function resolveBlogPosts(catalog: BlogCatalog, siteData: SiteData): BlogPostSummary[] {
+  return catalog.posts
     .map((post) => {
       const author = resolveAuthor(siteData.experts, post);
       if (!author) {
@@ -77,6 +90,27 @@ export async function getOrderedBlogPosts(): Promise<BlogPostSummary[]> {
     })
     .filter((post): post is BlogPostSummary => post !== null)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+function resolveUsedAreas(allAreas: ExpertArea[], posts: BlogPostSummary[]): ExpertArea[] {
+  const usedAreaSlugs = new Set(posts.flatMap((post) => post.areas.map((area) => area.slug)));
+
+  return byAreaOrder(allAreas.filter((area) => usedAreaSlugs.has(area.slug)));
+}
+
+export async function getBlogArchive(): Promise<BlogArchive> {
+  const [blogData, siteData] = await Promise.all([getBlogData(), getSiteData()]);
+  const posts = resolveBlogPosts(blogData.catalog, siteData);
+
+  return {
+    posts,
+    areas: resolveUsedAreas(siteData.expertAreas, posts),
+  };
+}
+
+export async function getOrderedBlogPosts(): Promise<BlogPostSummary[]> {
+  const archive = await getBlogArchive();
+  return archive.posts;
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPostFull | null> {

@@ -18,7 +18,6 @@ Publika sidor renderar:
 - om-sida
 - expertområden
 - expertsidor
-- teamsidor
 - marknadsplatssida
 
 Katalogen visar både mänsklig information och pluginmetadata.

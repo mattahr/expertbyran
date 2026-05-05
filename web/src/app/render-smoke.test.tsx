@@ -24,8 +24,6 @@ import ExpertAreaDetailPage from "./expertomraden/[slug]/page";
 import ExpertDetailPage from "./experter/[slug]/page";
 import MarketplacePage from "./marknadsplats/page";
 import HomePage from "./page";
-import TeamDetailPage from "./team/[slug]/page";
-import TeamsPage from "./team/page";
 
 describe("public pages", () => {
   beforeEach(() => {
@@ -61,24 +59,6 @@ describe("public pages", () => {
     expect(html).toContain(siteData.experts[0].selectedEngagements[0].title);
   });
 
-  it("renders the teams page", async () => {
-    const html = renderToStaticMarkup(await TeamsPage());
-
-    expect(html).toContain(siteData.teams[0].name);
-    expect(html).toContain(siteData.teams[0].shortDescription);
-  });
-
-  it("renders a team detail page", async () => {
-    const html = renderToStaticMarkup(
-      await TeamDetailPage({
-        params: Promise.resolve({ slug: siteData.teams[0].slug }),
-      }),
-    );
-
-    expect(html).toContain(siteData.teams[0].name);
-    expect(html).toContain(siteData.teams[0].promptSummary);
-  });
-
   it("renders the marketplace page", async () => {
     const html = renderToStaticMarkup(await MarketplacePage());
 
@@ -87,10 +67,41 @@ describe("public pages", () => {
   });
 
   it("renders the blog listing page", async () => {
-    const html = renderToStaticMarkup(await BlogPage());
+    const area = siteData.expertAreas.find((candidate) => candidate.slug === blogData.posts[0].areaSlugs[0]);
+    const html = renderToStaticMarkup(
+      await BlogPage({
+        searchParams: Promise.resolve({}),
+      }),
+    );
 
+    expect(area).toBeDefined();
     expect(html).toContain("Blogg");
     expect(html).toContain(blogData.posts[0].title);
+    expect(html).toContain(area!.name);
+  });
+
+  it("filters the blog listing by one expert area", async () => {
+    const html = renderToStaticMarkup(
+      await BlogPage({
+        searchParams: Promise.resolve({ omrade: blogData.posts[0].areaSlugs[0] }),
+      }),
+    );
+
+    expect(html).toContain(blogData.posts[0].title);
+    expect(html).not.toContain(blogData.posts[1].title);
+  });
+
+  it("filters the blog listing by any selected expert area", async () => {
+    const html = renderToStaticMarkup(
+      await BlogPage({
+        searchParams: Promise.resolve({
+          omrade: [blogData.posts[0].areaSlugs[0], blogData.posts[1].areaSlugs[0]],
+        }),
+      }),
+    );
+
+    expect(html).toContain(blogData.posts[0].title);
+    expect(html).toContain(blogData.posts[1].title);
   });
 
   it("renders a blog post page", async () => {

@@ -2,25 +2,24 @@
 
 import type { Route } from "next";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+import { isNavItemActive, type NavItem } from "./PrimaryNav";
 import styles from "./MobileNav.module.css";
-
-type NavItem = {
-  href: Route | string;
-  label: string;
-};
 
 type MobileNavProps = {
   items: readonly NavItem[];
-  currentPath: string;
+  currentPath?: string;
   siteTagline?: string;
 };
 
 export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const activePath = currentPath ?? pathname ?? "/";
   const panelId = useId();
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -134,7 +133,7 @@ export function MobileNav({ items, currentPath, siteTagline }: MobileNavProps) {
                 </div>
                 <div className={styles.links}>
                   {items.map((item) => {
-                    const isActive = item.href === currentPath;
+                    const isActive = isNavItemActive(item.href, activePath);
                     return (
                       <Link
                         key={item.href}

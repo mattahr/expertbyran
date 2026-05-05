@@ -7,7 +7,6 @@ import {
   getAreasForExpert,
   getExpertsForArea,
   getOrderedSiteData,
-  getTeamsForArea,
 } from "@/lib/content/query";
 
 type ExpertAreaPageProps = {
@@ -41,7 +40,6 @@ export default async function ExpertAreaDetailPage({ params }: ExpertAreaPagePro
   }
 
   const experts = getExpertsForArea(data, area.slug);
-  const teams = getTeamsForArea(data, area.slug);
 
   return (
     <div className={styles.pageWrap}>
@@ -104,26 +102,6 @@ export default async function ExpertAreaDetailPage({ params }: ExpertAreaPagePro
                 />
               );
             })}
-          </div>
-        </section>
-      )}
-
-      {teams.length > 0 && (
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionLabel}>Relaterade team</h2>
-            <span className={styles.sectionCount}>{teams.length} team</span>
-          </div>
-          <div className={styles.grid}>
-            {teams.map((team) => (
-              <GridCell
-                key={team.id}
-                href={`/team/${team.slug}`}
-                category={`${team.expertSlugs.length} medlemmar`}
-                name={team.name}
-                description={team.shortDescription}
-              />
-            ))}
           </div>
         </section>
       )}
