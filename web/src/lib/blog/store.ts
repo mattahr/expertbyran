@@ -1,12 +1,9 @@
-import { marked } from "marked";
-
-import { blogCatalogSchema, formatBlogIssues, parseBlogCatalog, type BlogCatalog } from "@/lib/blog/schema";
-import { readBlogDataFromDisk, readBlogPostMarkdownFromDisk, listBlogPostSlugsFromDisk } from "@/lib/storage/disk-storage";
+import { renderBlogMarkdown } from "@/lib/blog/markdown";
+import { blogCatalogSchema, formatBlogIssues, type BlogCatalog } from "@/lib/blog/schema";
+import { readBlogDataFromDisk, readBlogPostMarkdownFromDisk } from "@/lib/storage/disk-storage";
 
 const DEFAULT_REVALIDATE_SECONDS = 300;
 const DEFAULT_FETCH_TIMEOUT_MS = 10_000;
-
-marked.setOptions({ gfm: true });
 
 export type BlogData = {
   catalog: BlogCatalog;
@@ -80,7 +77,7 @@ async function fetchBlogDataFromApi(): Promise<BlogData> {
   const markdownEntries = await Promise.all(
     catalog.posts.map(async (post) => {
       const markdown = await readBlogPostMarkdownFromDisk(post.slug);
-      const html = await marked.parse(markdown);
+      const html = await renderBlogMarkdown(markdown);
       return [post.slug, html] as const;
     }),
   );
@@ -146,7 +143,7 @@ async function fetchAllBlogData(bypassCdn = false): Promise<BlogData> {
   const markdownEntries = await Promise.all(
     catalog.posts.map(async (post) => {
       const markdown = await fetchPostMarkdown(baseUrl, post.slug, bypassCdn);
-      const html = await marked.parse(markdown);
+      const html = await renderBlogMarkdown(markdown);
       return [post.slug, html] as const;
     }),
   );
