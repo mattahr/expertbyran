@@ -14,7 +14,17 @@ EU antog formellt en revision av den europeiska klimatlagen den 5 mars 2026 (Rå
 - Från 2036: upp till 5 procentenheter av utsläppsminskningarna får komma från högkvalitativa internationella koldioxidkrediter (förenliga med Parisavtalet)
 - Nationella permanenta kolupptag kan kompensera för svåromställda sektorer inom ETS
 
-**Nästa steg:** Kommissionen presenterar genomförandelagstiftning (post-2030 klimatpaket) under H2 2026. Då fastläggs faktiska ESR-mål, ETS-revideringar och sektorsregler för 2040-vägen.
+**Nästa steg — H2 2026 genomförandepaket:**
+
+| Tidpunkt | Åtgärd |
+|----------|--------|
+| Juli 2026 | ETS-revision: permanenta kolsänkor in i ETS för svåromställda sektorer (cement, stål, kemi); DAC och BioCCS som ETS-instrument |
+| Q4 2026 | ESR-revision: nationella mål för 2031–2040 fastläggs; flexibiliteter ETS↔ESR revideras |
+| Q4 2026 | LULUCF-revision: mål för 2031–2040; Sverige under press pga. 63–71 Mton ackumulerat underskott |
+| 2028 | ETS2-start (byggnader + vägtransport, försenad ett år via Omnibus) |
+| Fr.o.m. 2036 | Upp till 5 pp internationella krediter (artikel 6-förenliga) |
+
+Offentlig konsultation för post-2030-implementering hölls **9 februari–4 maj 2026**.
 
 ### Konsekvenser för Sverige
 
@@ -22,15 +32,19 @@ EU antog formellt en revision av den europeiska klimatlagen den 5 mars 2026 (Rå
 
 **Indirekt — skärpt krav:** Naturvårdsverkets snabbanalys visar att Sveriges EU-åtagande under 2040-målet kan bli **mer ambitiöst** än det svenska målet om klimatneutralitet 2045. EU-nivån drar nu framåt snabbare än klimatlagen kräver.
 
-**ESR-revideringar:** ETS1-direktivet ses över 2026. ESR-åtaganden för 2031–2040 formuleras med utgångspunkt i 90 %-målet.
+**Kritisk tidsknapphet:** Styrmedelsutredningen (dir. 2024:98) — som ska lämna förslag på ESR-styrmedelsarkitekturen — har inte levererat sin rapport (ej klar per 4 maj 2026). Sverige riskerar att sakna faktaunderlag för att aktivt påverka sin nationella ESR-tilldelning 2031–2040 innan remissperioden för ESR-revisionen stänger.
 
-**Källa:** [Rådet 2026-03-05](https://www.consilium.europa.eu/en/press/press-releases/2026/03/05/2040-climate-target-council-gives-final-green-light/); [EP-omröstning 2026-02-09](https://www.europarl.europa.eu/news/en/agenda/plenary-news/2026-02-09/4/eu-climate-law-reducing-emissions-by-90-by-2040); [Riksdagen FPM 2024/25:FPM65](https://www.riksdagen.se/sv/dokument-och-lagar/dokument/fakta-pm-om-eu-forslag/forordning-om-revidering-av-europeiska-klimatlagen_hc06fpm65/)
+**CAT-bedömning:** Climate Action Tracker bedömer EU:s -90 %-mål som otillräckligt för 1,5°C-banan — rika länder bör nå netto-noll runt 2040, inte 2050.
+
+**Källa:** [Rådet 2026-03-05](https://www.consilium.europa.eu/en/press/press-releases/2026/03/05/2040-climate-target-council-gives-final-green-light/); [EP-omröstning 2026-02-09](https://www.europarl.europa.eu/news/en/agenda/plenary-news/2026-02-09/4/eu-climate-law-reducing-emissions-by-90-by-2040); [Riksdagen FPM 2024/25:FPM65](https://www.riksdagen.se/sv/dokument-och-lagar/dokument/fakta-pm-om-eu-forslag/forordning-om-revidering-av-europeiska-klimatlagen_hc06fpm65/); [Morgan Lewis: 2040 EU Climate Target](https://www.morganlewis.com/pubs/2026/01/2040-eu-climate-target-and-related-eu-climate-policy-developments); [CAT: EU 2040 target response](https://climateactiontracker.org/press/response-eu-2040-target-approval/)
 
 ### Granskningsrelevans
 
-- Är det svenska klimatmålet 2045 tillräckligt ambitiöst i förhållande till EU:s 2040-mål?
-- Hur förbereds svensk lagstiftning för skärpta ESR-åtaganden post-2030?
-- Hur hanteras de 5 pp internationella krediternas trovärdighet?
+- Är det svenska klimatmålet 2045 tillräckligt ambitiöst i förhållande till EU:s 2040-mål och CAT:s fair share-bedömning?
+- Hur förbereds svensk lagstiftning för skärpta ESR-åtaganden post-2030 — och finns underlag (Styrmedelsutredningen) i tid?
+- Hur hanteras de 5 pp internationella krediternas trovärdighet (artikel 6-förenliga, permanens)?
+- Är ETS2-förseningen till 2028 ett granskningsbart systemfel — ESR-arkitekturen 2027 saknar ETS2-täckning?
+- Permanensrisk vid permanenta kolsänkor i ETS: hur säkerställs att DAC/BioCCS-inlagring faktiskt är permanent?
 
 ---
 
