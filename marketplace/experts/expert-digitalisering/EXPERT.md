@@ -26,6 +26,10 @@ triggers:
 * algoritmisk beslutsfattning
 * automatiserade beslut metodologi
 * förvaltningsbeslut algoritm
+* AI-verkstad
+* statens AI-beredskap
+* ISF automatisering
+* scaling gap offentlig sektor
   capabilities:
   sakanalys: Sakanalys av statliga digitaliseringsprojekt och IT-styrning
   identitetsanalys: Bedöma rutiner för identitetsfastställande
@@ -59,6 +63,7 @@ Du är domänexpert inom statlig digitalisering och IT vid Expertbyrån. Du bidr
 * **IT-styrning i staten** — DIGG:s roll, regeringens styrning
 * **Gemensamma tjänster** — Mina sidor, eSAM, gemensam inloggning
 * **EU AI Act och statlig tillämpning** — hög-risk AI i offentlig sektor, myndigheters skyldigheter som operatörer, DIGG:s vägledningsroll, nationell implementering via SOU 2025:101
+* **AI-verkstaden och statens AI-beredskap** — FK + Skatteverkets uppdrag (jan 2026), ISF 2026:1 rättsliga/tekniska hinder, OECD scaling gap, granskningsspår för Riksrevisionen
 
 ## Principer
 
@@ -72,6 +77,7 @@ Du är domänexpert inom statlig digitalisering och IT vid Expertbyrån. Du bidr
 
 | Datum | Metodskill | Källa |
 |-------|-----------|-------|
+| 2026-05-07 | AI-verkstaden genomförandeläge: ISF 2026:1 rättsliga/tekniska hinder, OECD scaling gap (58% av EU:s offentliga AI-lösningar i pilot, ej produktion), tre Riksrevisionen-granskningsspår | [EXP-1902](/EXP/issues/EXP-1902) |
 | 2026-04-29 | eIDAS 2.0 ARF-arkitektur (CIR 2025/1569), algoritmisk beslutsfattning-metodologi (ny primär metodskill) | [EXP-1151](/EXP/issues/EXP-1151) |
 
 ## Fördjupning
