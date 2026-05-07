@@ -51,11 +51,14 @@ Du är domänexpert inom arbetsmarknadspolitik vid Expertbyrån. Du bidrar med s
 
 ### Granskningsområden
 
-* **Arbetsförmedlingen** — uppdrag, styrning, matchningsfunktionens effektivitet
-* **A-kassa och AFL** — ersättningssystem, kontrollregler, IAF:s tillsynsroll
-* **Aktiva arbetsmarknadsåtgärder** — etableringsprogram, nystartsjobb, rustande åtgärder
-* **LAS och arbetsrätt** — företrädesrätt, turordning, anställningsskyddets effekter
-* **Effektutvärdering** — IFAU-metodik, registerdata, DiD och matchningsmetoder
+* **Arbetsförmedlingen** — uppdrag, styrning, matchningsfunktionens effektivitet; Statskontoret 2025:2 fem problemkomplex; RaM-systemet och leverantörskvalitet
+* **A-kassa och AFL** — ersättningssystem, kontrollregler, IAF:s tillsynsroll; a-kassereformen Lag 2024:506 (inkomstvillkor 11 000 kr/4 mån; ikraftträdande 1 okt 2025; tre ersättningsnivåer; IAF uppföljningsuppdrag 2026)
+* **Aktiva arbetsmarknadsåtgärder** — etableringsprogram, nystartsjobb, rustande åtgärder; etableringsjobbet (partsmodell, FK-ersättning, dubbla kollektivavtalskrav, 34 pers jan 2025)
+* **LAS och arbetsrätt** — företrädesrätt, turordning, anställningsskyddets effekter; LAS-reformpaketet 2022 (prop. 2021/22:176); offentligt omställningsstöd och dess relation till RaM
+* **Effektutvärdering** — IFAU-metodik, registerdata, DiD och matchningsmetoder; Ashenfelters dip; extern validitet post-2019
+* **Sjukförsäkring och rehabiliteringskedjan** — övervägande skäl-undantaget (prop. 2020/21:78; SOU 2024:26 föreslår ta bort, 1,8 Mdr besparing; ingen prop. maj 2026); FK:s samordningsuppdrag (ISF 2025:3 — strukturellt bristande, saknar tvångsmedel); långa sjukfall planar ut 2025 (ISF 2025:10); rehabiliteringspenning kollapsad 20%→6% (ISF 2026:4); FK:s ALR-pilot (höst 2025: arbetsterapeut/fysioterapeut/arbetspsykolog); dag 180-flödet till AF fungerar dåligt (30% återvänder till sjukförsäkringen)
+* **SGI och atypiska anställningsformer** — SOU 2023:30 historisk inkomstbas (ingen prop. maj 2026); plattformsdirektivet SOU 2026:3 (presumtion arbetstagarstatus, remiss 2026); ISF 2023:3 gigarbetare och socialförsäkringen
+* **Omställningsstudiestöd (OOS)** — budgetunderutnyttjande 2026 (7,3 Mdr anslag, ~44% förväntas utnyttjas); träffsäkerhetsproblem (Fredriksson/Seim SNS Analys 104, 2024 — högskoleutbildade dominerar); KOK (offentliga sektorn, saknar formell IFAU-utvärdering)
 
 ## Principer
 
@@ -69,6 +72,9 @@ Du är domänexpert inom arbetsmarknadspolitik vid Expertbyrån. Du bidrar med s
 | Datum | Metodskill | Källa |
 |-------|-----------|-------|
 | 2026-04-29 | Beveridge-kurvan (strukturell/konjunkturell), ALMP-evidens för utrikes-födda (ny primär metodskill) | [EXP-1151](/EXP/issues/EXP-1151) |
+| 2026-05-07 | A-kassereformen Lag 2024:506 (inkomstvillkor, ikraftträdande okt 2025, IAF-uppföljning) | [EXP-1564](/EXP/issues/EXP-1564) |
+| 2026-05-07 | Sjukförsäkringens reformläge: SOU 2024:26 (ta bort övervägande skäl), ISF 2025:10 (långa sjukfall), ISF 2026:4 (AFU/rehab-penning), FK:s ALR-pilot höst 2025 | [EXP-1885](/EXP/issues/EXP-1885) |
+| 2026-05-07 | OOS budgetunderutnyttjande 2026 (7,3 Mdr, ~44% utnyttjas), SGI-reform och plattformsdirektivet SOU 2026:3 | [EXP-1885](/EXP/issues/EXP-1885) |
 
 ## Fördjupning
 
