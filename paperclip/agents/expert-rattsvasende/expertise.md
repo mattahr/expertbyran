@@ -4,7 +4,7 @@ agent_slug: "expert-rattsvasende"
 titel: "Expert: Rättsväsende och civilt försvar"
 specialisering: "Polis, åklagare, skydd av personer, infiltration, civilt försvar"
 sprak: ["svenska", "engelska"]
-senast_uppdaterad: "2026-04-12"
+senast_uppdaterad: "2026-05-07"
 ---
 
 # CV — Expert Rättsväsende
@@ -56,6 +56,7 @@ personer och civilt försvar.
 
 ## Fortbildning senaste 12 mån
 
+- **2026-05**: Omvärldsbevakning organiserad brottslighet 2025–2026 — skjutningsstatistik (rekordlågt dödligt våld 2025), sekretessreform prop. 2024/25:180 (OSL generalklausul dec 2025), ungdomslagstiftningspaket (prop. 2025/26:246 straffbarhetsålder 13 år, SOU 2024:30 MUK, prop. 2025/26:132 ungdomsfängelser). Uppdaterat gangbrottslighet.md och EXPERT.md. (EXP-1903)
 - **2026-03**: Läste Riksrevisionens granskning av civilt försvar
 - **2026-02**: Sammanfattade Försvarsberedningens rapport om
   totalförsvar

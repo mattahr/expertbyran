@@ -78,6 +78,14 @@ Använd detta läge för granskningar av **FMV:s anskaffningsprocesser och förs
 3. **Analysera exportkontrollens styrning** — ISP:s tillståndsprocess och hantering av dual-use-produkter
 4. **Identifiera risker** i industrins beroenden och leveranskapacitet
 
+Viktiga aktuella mönster (2025–2026):
+- FMV under stark tillväxt: ~3 000 anst. (2026), 518 nyanställningar 2024
+- Produktionskapacitet bekräftad som strukturell flaskhals (BP2026 UO6, s. 34–37)
+- FMV:s kundorderstock +80 mdr (2023→2024); 67,7 mdr beställt 2024 (3× 2021-nivån)
+- Faktiska beredskapstillgångar 2025 (Statskontoret 2026:8): 239,2 mdr militärt
+- FMV:s instruktion (SFS 2007:854) 19 år gammal — otillräcklig för ny rollbild (export, snabbupphandling)
+- Riksrevisionen utfärdade modifierat uttalande (reservation) i FMV:s årsredovisning 2024
+
 ### Civilförsvar och krisberedskap
 
 Använd detta läge för granskningar av **MCF:s styrning och totalförsvarets uppbyggnad**.
@@ -125,13 +133,24 @@ Använd detta läge för granskningar av **statens underrättelseverksamhet** �
 4. **Helhetsperspektiv** — se militärt och civilt försvar som delar av ett sammanhållet totalförsvar
 5. **Oberoende bedömning** — analysera effektiviteten i styrningen, inte politikens lämplighet
 
-## Fördjupning
+## Referensmaterial
 
-För detaljerat referensmaterial om försvarslagstiftning och granskningsunderlag:
+- `references/granskningsrisker.md` — Nio identifierade granskningsrisker (Risk 1–9) med
+  specificerade granskningsfrågor, evidens och källhänvisningar. Innehåller hypo-teser om
+  civilt försvar (MCF-reform), STANAG-redovisning, lånefinansiering (300 mdr), typförband,
+  DCA/SOFA, materielförsörjning, JLSG-logistik, personalförsörjning och FMV:s mandat.
+  Läs när: du tar en granskning av totalförsvaret och vill se om ett identifierat
+  revisionsproblem är relevant, eller för att identifiera granskningshypoteser.
 
-```
-Read ${CLAUDE_PLUGIN_ROOT}/experts/expert-forsvar/references/
-```
+- `references/nyckelkallor.md` — Kommenterade nyckelkällor med DocRec-id, sidangivelser
+  och kritiska avsnitt: prop. 2024/25:34 (Totalförsvaret 2025–2030), BP2026 UO6,
+  RiR 2025:4 (civilt försvar), RiR 2025:36 (finanspolitiska ramverket / 300 mdr lån),
+  RiR 2026:3 (FMV / infiltration), Statskontoret 2026:8 (beredskapstillgångar 2025),
+  SOU 2025:86 (personalförsörjning), SOU 2025:78 (MUU), SOU 2026:16 (försvarsexport),
+  MCF-reform, försvarsindustristrategi. Innehåller också strukturella ramverk (NDPP,
+  beredskapssektorer, NATO-logistik, finansieringstak) och DocRec-söktermer.
+  Läs när: du ska söka djupare i ett specifikt dokument, behöver DocRec-id för
+  fetch_pages, eller vill förstå en strukturell försvarsrelaterad process.
 
 ## Kedjning
 

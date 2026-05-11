@@ -1,7 +1,7 @@
 ---
 area: "Effektivitetsrevision"
 description: "Kunskapsbas om Riksrevisionens process, metod och vetenskapliga krav. Uppdateras av utbildningsledaren."
-senast_uppdaterad: "2026-04-11"
+senast_uppdaterad: "2026-04-20"
 ---
 
 # Effektivitetsrevision — kunskapsbas
@@ -76,9 +76,68 @@ revisionens vetenskapliga kontrakt.
 - Internationella erfarenheter via INTOSAI Working Group on Program
   Evaluation
 
+## Kausal analys — contribution analysis och CMO-ramverket
+
+### Contribution analysis (CA) — Mayne (2012)
+
+CA är en iterativ evidensbyggnadsprocess för att göra trovärdiga kausala
+påståenden om en insats bidrag till observerade resultat. Kärnan är att
+insatsen är en *bidragande orsak* — varken nödvändig eller tillräcklig
+på egen hand — i en kausal kedja där flera faktorer samverkar.
+
+**6 steg (iterativa):**
+1. Definiera attribueringsproblemet och krävet på säkerhet
+2. Utveckla/revidera förändringsteori (Theory of Change)
+3. Samla befintlig evidens om aktiviteter, kausala länkar och antaganden
+4. Sätt ihop och bedöm *contribution narrative* — identifiera svaga länkar
+5. Sök kompletterande evidens för de svaga länkarna
+6. Revidera och stärk berättelsen (ev. 7:e steg: organisatoriskt lärande)
+
+**Primärkälla:** Mayne, J. (2012). "Contribution Analysis: Coming of Age?"
+*Evaluation* 18(3):270–280. DOI: 10.1177/1356389012451663 (SAGE, paywalled).
+*Närmast OA-tillgång:* ResearchGate; Semantic Scholar (abstract fritt).
+**Sekundärkälla direkt läst:** Koleros, D. (2024), BetterEvaluation.org;
+IDI PA Handbook 2023 (DocRec GUID 1900).
+
+### Realistic evaluation — CMO-konfigurationer (Pawson & Tilley 1997)
+
+CMO-konfigurationen är grundenheten: "I detta sammanhang aktiverades
+den mekanismen för dessa aktörer och producerade dessa utfall." Programmet
+arbetar inte — *aktörerna* väljer att delta och gör det arbeta.
+
+**Mekanismens definition:** Den teoretiska process *inom* aktörerna som
+kopplar insatsens resurser/möjligheter till ett förändrat beteende. Inte
+programaktiviteten i sig utan den kausala processen den utlöser.
+
+**Middle range theories (MRT):** Specifika nog att generera testbara
+propositioner; generella nog att tillämpas i fler sammanhang.
+
+**Frågan CA/CMO svarar på:** Inte "fungerar detta?" utan "vad fungerar
+för vem, i vilket sammanhang och varför?"
+
+**Primärkälla:** Pawson, R. & Tilley, N. (1997). *Realistic Evaluation*.
+London: Sage. ISBN 9780761950097 (ej OA, SAGE Publications).
+*Tillgängliga sekundärkällor:* BetterEvaluation realist evaluation-sida;
+Wikipedia "Realist Evaluation"; UK Gov HMT brief (assets.publishing.service.gov.uk,
+2021); IDI PA Handbook 2023.
+
+### Relation mellan CA och CMO i revisionsarbete
+
+- **CMO** ger mekanismbaserad *struktur* för vad som ska bevisas
+  (preciserar bedömningsgrunder och indikatorer i designmatrisen)
+- **CA** ger den *iterativa processen* för hur evidens byggs upp
+  (contribution narrative = det operativa resultatet av granskningen)
+- I praktiken: formulera CMO i ToC-fasen (CA steg 2), använd sedan
+  CMO:n som guide för bevisinsamling i steg 3 och 5
+
+**Obsidian-not:** `/Experter/effektivitetsrevisor/cmo-konfiguration-revisionsbruk.md`
+(skickad till obsidian-master för publicering 2026-04-20 via EXP-719)
+
 ## Externa källor jag använder regelbundet
 
 - `docrec-svensk-offentlig` för sökning i SOU, Proposition, Rapport,
   Betänkande
 - Riksrevisionens publikationsarkiv (offentliga granskningsrapporter)
 - INTOSAI-publikationer (engelska)
+- BetterEvaluation.org — metodsidor för contribution analysis och
+  realist evaluation (öppen åtkomst, aggregerar Mayne och Pawson & Tilley)
