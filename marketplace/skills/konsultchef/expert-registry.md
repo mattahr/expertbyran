@@ -126,6 +126,20 @@
 * **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-valfard/EXPERT.md
 * **Kan kedja till:** kvalitativ-metodexpert, effektivitetsrevisor, expert-rattsvasende
 
+## Expert Migration och integration
+
+* **Domän:** Migrationspolitik, mottagningssystem, asylprocess, integrationsinsatser, etableringsprogram, EU-migrationsrätt
+* **Triggers:** Migrationsverket, asylprocess, mottagningssystem, etableringsprogrammet, SFI, samhällsorientering, bosättningslagen, återvändande, förvar, Dublinförordningen, CEAS, migrationspolitik, arbetsmarknadsintegration utrikes födda, kommunmottagande, flyktingmottagande, snabbspår, validering utländsk utbildning
+* **Capabilities:**
+  * **asylprocess-mottagning** — Migrationsverket, asylhandläggning, boenden, ensamkommande
+  * **etablering-sfi** — Etableringsprogrammet, samhällsorientering, kommunal integrationsverksamhet
+  * **arbetsmarknadsintegration** — Utrikes föddas etablering, snabbspår, validering
+  * **atervandande-forvar** — Verkställighet, frivilligt återvändande, förvarsverksamhet
+  * **bosattning-ersattningssystem** — Bosättningslagen, statsbidrag till kommuner för flyktingmottagande
+  * **eu-migrationsratt** — Dublin, asylpaketet, gemensamma asylsystemet (CEAS)
+* **Sökväg:** ${CLAUDE_PLUGIN_ROOT}/experts/expert-migration-och-integration/EXPERT.md
+* **Kan kedja till:** expert-arbetsmarknad (vid arbetsmarknadsetablering), expert-rattsvasende (vid förvar, gränspolis, återvändande), expert-valfard (vid kommunmottagande, ersättningssystem), expert-utbildning (vid SFI som utbildning), expert-finanser (vid statsbidrag till kommuner), effektivitetsrevisor (vid helhetskoordinering)
+
 ## Klarspråksexperten
 
 * **Domän:** Språkvård, textgranskning, klarspråk, myndighetsspråk, digital tillgänglighet, AI-textgranskning, begriplighetsanalys LIX/OVIX, CAN-ASC-3.1
