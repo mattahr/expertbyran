@@ -15,7 +15,6 @@ vi.mock("@/lib/blog/store", () => ({
     catalog: blogData,
     renderedPosts: new Map(blogData.posts.map((p) => [p.slug, `<p>${p.title}</p>`])),
   })),
-  resetBlogCache: vi.fn(),
 }));
 
 import BlogPostPage from "./blogg/[slug]/page";
