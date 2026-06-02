@@ -91,7 +91,10 @@ export interface RadarStore {
 - **`FileRadarStore`** (`src/lib/stores/file-radar-store.ts`): katalog i
   `DATA_DIR/radar-data.json` (`RadarMeta[]` inkl. `segments`); blips per radar i
   `DATA_DIR/radar/{slug}.json` (strukturerad JSON, **inte** markdown). Använder
-  befintliga `fs-helpers` för atomiska skrivningar.
+  befintliga `fs-helpers` för atomiska skrivningar. Den **spårade seeden** ligger i repo:t
+  vid `web/`-roten (`web/radar-data.json` + `web/radar/{slug}.json`) — samma layout som
+  blog-seeden (`web/blog-data.json` + `web/blog/posts/`), eftersom `web/data/` är gitignorerad
+  runtime-katalog.
 - **`InMemoryRadarStore`** (`src/lib/stores/memory-stores.ts`) för tester.
 - Registreras i `src/lib/stores/index.ts`; exponeras via `getRadarStore()` och ingår i
   `Stores`-kompositionsroten + `__setStoresForTest()`.
@@ -170,8 +173,8 @@ En radar `teknikradar-2026` ("Teknikradar 2026") kurerad från **riktiga
 foresight-signaler** i vaultet, ~12–18 blips fördelade över 4 segment (t.ex.
 "AI & agenter", "Infrastruktur & data", "Säkerhet & krypto", "Styrning & regelverk").
 Varje blip får hållning (ring) och två textfält satta redaktionellt. Lagras i
-`web/radar-data.json` (katalog) + `web/data/radar/teknikradar-2026.json` (blips),
-analogt med blog-seedens placering.
+`web/radar-data.json` (katalog) + `web/radar/teknikradar-2026.json` (blips),
+analogt med blog-seedens placering (`web/blog-data.json` + `web/blog/posts/`).
 
 ## 8. Redaktörsflöde (uppföljning — utanför denna spec)
 
@@ -216,7 +219,7 @@ web/src/app/radar/page.tsx            (ny)  lista
 web/src/app/radar/[slug]/page.tsx     (ny)  detalj (server)
 web/src/app/radar/[slug]/RadarChart.tsx (ny) klient-ö (SVG + panel)
 web/radar-data.json                   (ny)  seed-katalog
-web/data/radar/teknikradar-2026.json  (ny)  seed-blips
+web/radar/teknikradar-2026.json       (ny)  seed-blips
 web/API.md                            (mod) radar-endpoints
 web/CLAUDE.md                         (mod) datamodell/skrivväg-not vid behov
 + motsvarande *.test.ts-filer
