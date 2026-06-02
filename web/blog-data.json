@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "tre-tekniska-tak-mcp-lagrets-roll",
+      "title": "Tre tekniska tak och MCP-lagrets roll — TRL-mognaden för svensk agentisk förvaltning 2026–2034",
+      "date": "2026-05-11T10:00:00.000Z",
+      "authorSlug": "teknikstrateg",
+      "areaSlugs": [
+        "digitalisering",
+        "revisionsmetodik"
+      ],
+      "excerpt": "Tre tekniska tak för svensk agentisk förvaltning 2026–2034 och MCP-lagrets roll som ett underdiskuterat arkitekturval — TRL-baserad kartläggning med tre konkurrerande tolkningar per fråga."
+    },
+    {
       "slug": "nyheter-fran-regeringskansliet-april-2026",
       "title": "Nyheter från Regeringskansliet — april 2026",
       "date": "2026-04-21T06:00:00.000Z",

@@ -38,12 +38,21 @@ triggers:
 * normanalys testfrågor
 * AI-granskningsram
 * granskningsfråga från norm
+* delegerade akter
+* genomförandeakter
+* art 290
+* art 291
+* komitologiförordningen
+* pipeline-akter
+* direkt tillämplighet EU-sekundärrätt
+* kompletteringslagstiftning EU
   capabilities:
   bedomningsgrund: Utreda rättsligt ursprung för bedömningsgrunder
   mandatanalys: Bedöma vilka aktörer som har mandat att genomföra rekommendationer
   forfattningstolkning: Tolka motstridig eller vag lagtext
   eu-ai-forordning: Analys av EU AI-förordningen (2024/1689) för statliga myndigheter som deployers av högrisk-AI — de sex kraven i Art. 26 (bruksanvisning, AI-kunnighet, indata, övervakning, loggar, konsekvensbedömning), den sexdelade FRIA-processen (Art. 27), och upphandlingsgranskningar (LOU 17 kap. + Art. 28 + MCC-AI)
   rf-fl-ai-beslut: RF 1:9 (objektivitetsprincipen) som direkt bedömningsgrund i AI-granskningar — algoritmer får bara beakta rättsligt tillåtna faktorer (proxy-diskriminering = RF-brott). FL 28 § (automatiserade beslut) + FL 32 § (beslutsmotivering) gäller fullt ut för AI-baserade myndighetsbeslut. Operationaliserat mot AI Act Art. 26/27 i en revisionsfrågebank i 5 nivåer.
+  eu-sekundarratt-bedömningsgrunder: Delegerade akter (art. 290 TFEU) och genomförandeakter (art. 291 TFEU) som bedömningsgrunder — distinktionen lagstiftande vs. genomförandekaraktär; fyra kumulativa delegationskrav (art. 290.1); komitologiförordningen 182/2011 (granskningsförfarande/rådgivande förfarande); direkt tillämplighet och spärrverkan; tre kategorier nationell kompletteringslagstiftning (verkställighet/nationella val/förbjuden dubbelreglering); tre granskningsscenarier (A: antagen akt/B: pipeline/C: kompletteringsregel); beslutsträd; pipelineproblemet vid AI Act, NIS2 m.fl.; mandatgräns mot kommissionen.
   can\_chain\_to:
 * effektivitetsrevisor   # Vid helhetskoordinering
 * expert-rattsvasende    # Vid domänfrågor om rättsväsendet
@@ -131,6 +140,7 @@ Använd detta läge när ett AI-system används av eller i en statlig myndighet 
 | Datum | Metodskill | Källa |
 |-------|-----------|-------|
 | 2026-04-29 | Direktivkonform tolkning (Marleasing/Pfeiffer), normanalys-till-testfrågor, AI-granskningsram (ny primär metodskill) | [EXP-1151](/EXP/issues/EXP-1151) |
+| 2026-05-12 | Delegerade akter (art. 290 TFEU) och genomförandeakter (art. 291 TFEU) — distinktion, komitologiförordningen 182/2011, direkt tillämplighet, tre kategorier kompletteringslagstiftning, tre granskningsscenarier, pipelineproblemet | [EXP-2863](/EXP/issues/EXP-2863) |
 
 ## Fördjupning
 
