@@ -4,7 +4,9 @@ API för att hantera experter, expertområden och blogginlägg på Expertbyråns
 
 ## Översikt
 
-API:et tillhandahåller RESTful endpoints för att läsa och skriva data. All data lagras på disk i JSON-format och valideras med Zod-schemas.
+All data nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`) med filbaserade implementationer. API:et är den **enda skrivvägen** för innehåll (experter, expertområden, blogginlägg) — konsumenter rör aldrig filer direkt. En databasbackend kan ersätta filimplementationen i framtiden utan att konsumenterna behöver ändras.
+
+Konfigurationsdata (site/organization/marketplace) är fil- och seed-hanterad och kan inte muteras via API.
 
 ## Autentisering
 
@@ -21,7 +23,7 @@ Token sätts via miljövariabeln `API_TOKEN`.
 ### Site Data
 
 #### GET /api/v1/site-data
-Hämtar hela site-data-strukturen (experter, expertområden, etc.).
+Hämtar det sammansatta snapshot:et (config + experter + expertområden).
 
 **Response:**
 ```json
@@ -33,18 +35,6 @@ Hämtar hela site-data-strukturen (experter, expertområden, etc.).
   "marketplace": { ... },
   "expertAreas": [ ... ],
   "experts": [ ... ]
-}
-```
-
-#### PUT /api/v1/site-data
-Uppdaterar hela site-data-strukturen. Kräver autentisering.
-
-**Request:**
-```json
-{
-  "version": 1,
-  "updatedAt": "2026-04-15T10:00:00.000Z",
-  ...
 }
 ```
 
@@ -89,6 +79,37 @@ Uppdaterar en expert. Kräver autentisering.
 
 #### DELETE /api/v1/experts/[slug]
 Tar bort en expert. Kräver autentisering.
+
+### Expertområden
+
+#### GET /api/v1/areas
+
+Hämtar lista av alla expertområden.
+
+**Response:**
+```json
+{
+  "areas": [ ... ]
+}
+```
+
+#### POST /api/v1/areas
+
+Skapar ett nytt expertområde. Kräver autentisering.
+
+**Request:** Ett ExpertArea-objekt. Returnerar 409 om slug redan finns.
+
+#### GET /api/v1/areas/[slug]
+
+Hämtar ett specifikt expertområde. Returnerar 404 om det inte finns.
+
+#### PUT /api/v1/areas/[slug]
+
+Uppdaterar ett expertområde. Kräver autentisering.
+
+#### DELETE /api/v1/areas/[slug]
+
+Tar bort ett expertområde. Kräver autentisering.
 
 ### Blogginlägg
 
@@ -183,11 +204,10 @@ Tar bort ett blogginlägg (både metadata och markdown-fil). Kräver autentiseri
 
 ## Miljövariabler
 
-| Variabel | Beskrivning | Default |
-|----------|-------------|---------|
-| `API_TOKEN` | Token för autentisering | - (måste sättas) |
-| `DATA_DIR` | Katalog där data lagras | `/app/data` |
-| `SITE_DATA_URL` | Om satt till `api`, används disklagring | `api` |
+| Variabel    | Beskrivning             | Default           |
+|-------------|-------------------------|-------------------|
+| `API_TOKEN` | Token för autentisering | - (måste sättas)  |
+| `DATA_DIR`  | Katalog där data lagras | `/app/data`       |
 
 ## Docker
 

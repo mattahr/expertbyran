@@ -4,24 +4,26 @@ Denna mapp (`web/`) är **den publika Next.js-webbplatsen** för Expertbyrån. D
 
 ## Syfte
 
-Publik katalog som presenterar Expertbyråns experter, expertområden och marketplace-metadata. Webbappen exponerar också ett **REST API** för att hantera innehåll (experter, blogginlägg).
+Publik katalog som presenterar Expertbyråns experter, expertområden och marketplace-metadata. Webbappen exponerar också ett **REST API** som är den enda skrivvägen för innehåll (experter, expertområden, blogginlägg).
 
 ## Datamodell
 
-All presentationsdata hanteras via två mekanismer:
+All presentationsdata nås via en **lagringsabstraktion** med tre gränssnitt — `ConfigStore`, `ContentStore` och `BlogStore` — bakom en gemensam kompositionsrot. Implementationerna är filbaserade i dag (data under `DATA_DIR`) men kan bytas mot en databasbackend utan att konsumenterna ändras. Konsumenter rör aldrig filer direkt.
 
-### 1. API-läge (default i Docker)
-Data lagras på disk i `/app/data/` och hanteras via REST API:
-* `GET/PUT /api/v1/site-data` - Hela site-data-strukturen
+### Skrivväg via REST API
+
+Det **enda** sättet att mutera innehåll (experter, expertområden, blogginlägg) är via REST API:et:
+
+* `GET /api/v1/site-data` - Sammansatt snapshot (config + experter + områden); ingen PUT
 * `GET/POST/PUT/DELETE /api/v1/experts/[slug]` - Experthantering
+* `GET/POST/PUT/DELETE /api/v1/areas/[slug]` - Expertområden
 * `GET/POST/PUT/DELETE /api/v1/blog/posts/[slug]` - Blogginlägg
 
-Se [API.md](API.md) för fullständig API-dokumentation.
+Konfigurationsdata (site/organization/marketplace) är fil- och seed-hanterad och kan inte muteras via API.
 
-### 2. URL-läge (bakåtkompatibelt)
-När `SITE_DATA_URL` pekar på en HTTP-URL hämtas data från GitHub raw:
-* **Källa vid runtime**: `SITE_DATA_URL` (default: `raw.githubusercontent.com`)
-* **Snapshot-modell**: webbappen cachar senaste giltiga snapshot i minnet
+Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `blog`). API:et invaliderar med `revalidateTag(tag, "max")` efter skrivningar; `GET /refresh` invaliderar alla innehållstaggar.
+
+Se [API.md](API.md) för fullständig API-dokumentation.
 
 ## Stack
 
@@ -38,11 +40,8 @@ Docker-imagen publiceras till GHCR via GitHub Actions — workflow: [../.github/
 
 | Variabel | Beskrivning | Default |
 |----------|-------------|---------|
-| `API_TOKEN` | Token för autentisering av API-anrop | - (måste sättas för API-läge) |
-| `DATA_DIR` | Katalog där data lagras | `/app/data` |
-| `SITE_DATA_URL` | `api` för disklagring, annars HTTP URL | `api` |
-| `SITE_DATA_REVALIDATE_SECONDS` | Pollintervall | 300 |
-| `SITE_DATA_FETCH_TIMEOUT_MS` | Timeout per hämtning | 10000 |
+| `API_TOKEN` | Bearer-token för autentisering av muterande API-anrop | - (måste sättas) |
+| `DATA_DIR` | Katalog där data lagras | `/app/data` (lokalt `data`) |
 | `HOSTNAME`, `PORT` | Serverbindning | `0.0.0.0`, `3000` |
 
 ### Docker Compose exempel

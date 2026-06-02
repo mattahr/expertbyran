@@ -2,15 +2,15 @@
 
 ## Grundidé
 
-Webbplatsens innehåll representeras som en fullständig snapshot. Snapshoten byggs och publiceras utanför webbappen, normalt i ett GitHub-monorepo.
+Webbplatsens innehåll representeras som ett sammansatt snapshot (config + experter + expertområden). Det seedas från `web/site-data.json` i monorepot och underhålls därefter via webbappens REST API.
 
 Webbappen:
 
-- läser snapshoten från `SITE_DATA_URL`
-- validerar den
+- läser innehåll via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`)
+- validerar det med Zod
 - renderar katalogen
 
-Den lagrar inte någon lokal runtime-kopia av snapshoten.
+Innehållet lagras under `DATA_DIR`; lagringsimplementationen är filbaserad i dag men kan bytas mot en databasbackend utan att konsumenterna ändras.
 
 ## Toppnivå
 

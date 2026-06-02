@@ -1,31 +1,30 @@
 # Expertbyrån
 
-Minimalistisk Next.js-webbplats för ett virtuellt konsultbolag med AI-experter och expertområden. Webbplatsen är read-only i drift och läser `site-data.json` från en publik URL, normalt ett GitHub-monorepo.
+Minimalistisk Next.js-webbplats för ett virtuellt konsultbolag med AI-experter och expertområden. Allt innehåll nås via en lagringsabstraktion och muteras enbart via webbappens REST API.
 
 ## Stack
 
 - Next.js 16 med App Router och TypeScript
-- Remote snapshot via `SITE_DATA_URL`
-- Zod-validering av inkommande snapshot
+- Lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`) — filbaserad i dag, DB-utbytbar senare
+- REST API som enda skrivväg för innehåll
+- Zod-validering av all data
+- Cachning i webblagret via `unstable_cache` + taggar, invaliderad med `revalidateTag`
 - Publika schemafiler under `/schemas/`
 - Minimal Docker-image baserad på Nexts `standalone`-output
 - Vitest för schema-, store- och render-smoke-tester
 
 ## Driftmodell
 
-- Backend-agenten äger `site-data.json` i ert monorepo.
-- Webbplatsen hämtar snapshoten från en publik URL, t.ex. `raw.githubusercontent.com`.
-- Webbplatsen cachar senaste giltiga snapshot i minnet och uppdaterar med tidsstyrd polling.
-- `GET /refresh` tvingar en omhämtning av snapshoten och kan användas från t.ex. GitHub Actions.
-- Om fjärrläsningen misslyckas används senast cacheade snapshot i minnet. Om ingen cache finns ännu svarar webbplatsen med fel tills källfilen går att läsa igen.
+- Innehåll (experter, expertområden, blogginlägg) lagras under `DATA_DIR` och nås via lagringsabstraktionen. Konsumenter rör aldrig filer direkt.
+- Den **enda** skrivvägen för innehåll är webbappens REST API (`/api/v1/...`); muterande anrop kräver `API_TOKEN`.
+- Konfigurationsdata (site/organization/marketplace) är fil- och seed-hanterad och muteras inte via API.
+- Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `blog`). API:et invaliderar med `revalidateTag` efter skrivningar.
+- `GET /refresh` invaliderar alla innehållstaggar.
 
 Viktiga env vars:
 
-- `SITE_DATA_URL`
-- `SITE_DATA_REVALIDATE_SECONDS`
-- `SITE_DATA_FETCH_TIMEOUT_MS`
 - `DATA_DIR`
-- `API_TOKEN` när `SITE_DATA_URL=api`
+- `API_TOKEN`
 
 ## Kom igång lokalt
 
@@ -61,20 +60,20 @@ docker build -t expertbyran:latest .
 
 ### Kör imagen
 
-Exempel med fjärrdata från GitHub:
-
 ```bash
 docker run --rm \
   -p 3000:3000 \
+  -e API_TOKEN=your-secret-token \
+  -v expertbyran-data:/app/data \
   expertbyran:latest
 ```
 
-För lokal utveckling använder `.env.example` `SITE_DATA_URL=api` och lagrar data under `DATA_DIR`. Om du vill peka mot en extern snapshot-URL sätter du bara `SITE_DATA_URL` till den adressen.
+Data lagras under `DATA_DIR` (i imagen `/app/data`). Vid första start kopieras seed-data dit om katalogen är tom. Lokalt pekar `.env.example` `DATA_DIR` mot `data`.
 
 ## Innehållsmodell och marketplace
 
-- `site-data.json` läses direkt från `mattahr/expertbyran` (`web/site-data.json` i monorepot)
-- Snapshoten innehåller `marketplace`, expertområden och expertmetadata
+- Innehåll lagras under `DATA_DIR` och seedas från `web/site-data.json` i monorepot `mattahr/expertbyran`
+- Det sammansatta snapshot:et innehåller `marketplace`, expertområden och expertmetadata
 - Marknadsplatsen pekar på GitHub-repot `mattahr/expertbyran`
 - Webbappen länkar till GitHub och genererar eller publicerar inte marketplace-innehåll själv
 

@@ -1,6 +1,6 @@
 # Expertbyrån Docs
 
-Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog för experter, expertområden och en extern Claude Code-marketplace, med `site-data.json` hämtad från en fjärr-URL.
+Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog för experter, expertområden och en extern Claude Code-marketplace. Innehåll nås via en lagringsabstraktion och muteras enbart via webbappens REST API.
 
 ## Läsordning
 
@@ -19,7 +19,7 @@ Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog
 
 ## Viktigt i korthet
 
-- Webbappen är read-only i drift.
-- `site-data.json` hämtas från `SITE_DATA_URL`.
-- `GET /refresh` kan användas för att tvinga ny inläsning av snapshoten i processminnet.
-- `mattahr/expertbyran` är källa både för katalogsnapshoten (`web/site-data.json`) och för marknadsplatsens GitHub-referens.
+- Innehåll nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`) — filbaserad i dag, DB-utbytbar senare.
+- Webbappens REST API är den enda skrivvägen för innehåll; konfigurationsdata är fil- och seed-hanterad.
+- Cachning sker i webblagret via `unstable_cache` + taggar, invaliderad med `revalidateTag`. `GET /refresh` invaliderar alla innehållstaggar.
+- `mattahr/expertbyran` är källa både för seed-data (`web/site-data.json`) och för marknadsplatsens GitHub-referens.

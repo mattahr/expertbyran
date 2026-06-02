@@ -14,11 +14,7 @@ Starta utvecklingsläge:
 npm run dev
 ```
 
-För att använda en fjärrsnapshot, sätt:
-
-```bash
-SITE_DATA_URL=https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json
-```
+Skapa `.env` eller `.env.local` från `.env.example`. Lokalt pekar `DATA_DIR` mot `data`; sätt `API_TOKEN` för att kunna göra muterande API-anrop. Innehåll seedas från `web/site-data.json` om datakatalogen är tom.
 
 ## Produktionslik lokal körning
 
@@ -31,9 +27,8 @@ Viktiga env vars:
 
 - `HOSTNAME`
 - `PORT`
-- `SITE_DATA_URL`
-- `SITE_DATA_REVALIDATE_SECONDS`
-- `SITE_DATA_FETCH_TIMEOUT_MS`
+- `DATA_DIR`
+- `API_TOKEN`
 
 ## Test och kontroll
 
@@ -55,10 +50,11 @@ npx tsc --noEmit
 4. Uppdatera docs
 5. Kör testsviten
 
-### Ändra drift mot GitHub
+### Byta lagringsbackend
 
-Uppdatera env vars, inte applikationskoden:
+Innehåll nås via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`). De filbaserade implementationerna kan bytas mot t.ex. en databasbackend utan att konsumenterna ändras — byt implementation i kompositionsroten, inte i sidkoden.
 
-- `SITE_DATA_URL`
-- `SITE_DATA_REVALIDATE_SECONDS`
-- `SITE_DATA_FETCH_TIMEOUT_MS`
+Justera drift via env vars, inte applikationskoden:
+
+- `DATA_DIR`
+- `API_TOKEN`

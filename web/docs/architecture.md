@@ -6,7 +6,7 @@ Expertbyrån är en enkel Next.js-applikation med en enda roll:
 
 - publik webb på port `3000`
 
-Allt innehåll läses som en validerad JSON-snapshot. Webbappen skriver inte persistent data, men exponerar en enkel publik route för att tvinga cacheuppdatering.
+Allt innehåll nås via en lagringsabstraktion och valideras med Zod. Innehåll muteras enbart via webbappens REST API; en publik route finns för att tvinga cacheinvalidering.
 
 ## Huvuddelar
 
@@ -24,12 +24,15 @@ Katalogen visar både mänsklig information och pluginmetadata.
 
 ### 2. Innehållslager
 
-Snapshoten läses från `SITE_DATA_URL`. Standardvärdet pekar på:
+Innehåll nås via en **lagringsabstraktion** med tre gränssnitt bakom en gemensam kompositionsrot:
 
-- `https://raw.githubusercontent.com/mattahr/expertbyran/refs/heads/main/web/site-data.json`
+- `ConfigStore` — site/organization/marketplace (fil- och seed-hanterad, ej muterbar via API)
+- `ContentStore` — experter och expertområden
+- `BlogStore` — blogginlägg (metadata + markdown)
 
-Snapshoten valideras alltid med Zod innan den används i renderingen.
-Om fjärrläsningen misslyckas används senast giltiga snapshot i processminnet. Om ingen sådan finns ännu returnerar appen fel tills fjärrkällan åter är läsbar.
+Implementationerna är **filbaserade** i dag (data under `DATA_DIR`) men kan bytas mot en databasbackend utan att konsumenterna ändras — konsumenter rör aldrig filer direkt. All data valideras med Zod.
+
+Den **enda** skrivvägen för innehåll är REST API:et (`/api/v1/...`). Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `blog`); API:et invaliderar berörda taggar med `revalidateTag(tag, "max")` efter skrivningar.
 
 ### 3. Marketplace-källor
 
@@ -43,14 +46,20 @@ Webbappen håller bara referenser till dessa källor.
 
 ## Dataflöde
 
-1. En request kommer in till webbappen.
-2. Innehållslagret avgör om cachead snapshot fortfarande är färsk.
-3. Om cache behöver uppdateras hämtas `SITE_DATA_URL`.
-4. Snapshoten valideras.
-5. Vid fel används senast cacheade snapshot i minnet om en sådan finns.
-6. Sidan renderas med den senaste giltiga snapshoten.
+Läsväg:
 
-`GET /refresh` hoppar direkt till steg 3 och tvingar en ny hämtning oavsett cacheålder.
+1. En request kommer in till webbappen.
+2. Sidan läser innehåll via lagringsabstraktionen, inpackad i `unstable_cache` med taggar (`experts`, `areas`, `blog`).
+3. Vid cache-träff returneras cachat resultat; annars läser stores från `DATA_DIR` och resultatet valideras med Zod.
+4. Sidan renderas.
+
+Skrivväg:
+
+1. Ett muterande anrop går till REST API:et (`/api/v1/...`) med `API_TOKEN`.
+2. Stores skriver till `DATA_DIR` efter Zod-validering.
+3. API:et invaliderar berörda taggar med `revalidateTag(tag, "max")`.
+
+`GET /refresh` invaliderar alla innehållstaggar och tvingar därmed omläsning vid nästa request.
 
 ## Publika schemafiler
 

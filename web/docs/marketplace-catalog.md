@@ -29,7 +29,7 @@ Den externa backend-agenten ansvarar för:
 
 - att uppdatera `site-data.json` i monorepot
 - att hålla pluginmetadata i snapshoten i synk med pluginstruktur och version
-- att publicera nya commits som webbappen sedan läser via `SITE_DATA_URL`
+- att publicera nya commits till `web/site-data.json`, som seedar webbappens innehåll och därefter underhålls via webbappens REST API
 
 ## Vad som visas på webbplatsen
 
