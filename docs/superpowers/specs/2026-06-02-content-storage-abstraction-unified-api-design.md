@@ -246,8 +246,20 @@ Sekvens: **denna spec (web-API)** → **följdspec (skills)** → **senare (rada
 3. **`expertbyran-manager` (befintlig)** — läggs om från **direkt filredigering** av
    `site-data.json` till experter/områden-**endpoints**; länkar till `expertbyran-api`;
    behåller domänkunskap (`references/site-data-schema.md`, registry-synk).
-4. **`expertbyran-radar` (framtida)** — refererar `expertbyran-api`; när Radar byggts i
+4. **`webbmaster-publicering` (befintlig — placeholder-stub)** — denna skill *definierar
+   redan publiceringskontraktet* (`publish-cv`, `publish-blog`, `update-blog`, `delete-cv`,
+   `delete-blog`, `get-status`) och väntar uttryckligen på att "bytas ut mot skarp skill
+   senare". Det enhetliga API:et + `expertbyran-api` är den skarpa implementationen som
+   uppfyller/ersätter kontraktet; stub-beteendet (hash/logga till memory) avvecklas.
+5. **`expertbyran-radar` (framtida)** — refererar `expertbyran-api`; när Radar byggts i
    `web/` utökas `expertbyran-api` med radar-endpoints.
+
+**Bredare genomgång:** följdspecen ska gå igenom **alla** skills i
+`paperclip/skills/local/` och identifiera vilka som rör webbinnehåll/publicering, och
+konsekvensändra dem till API-hanteringen (länka till `expertbyran-api`, ta bort
+direktfil-/stub-beteende). Kända träffar att granska: `blog-editor`, `expertbyran-manager`,
+`webbmaster-publicering`. Övriga skills som nämner "webbplats/blogg" i förbifarten gås
+igenom men ändras bara om de faktiskt författar/publicerar innehåll.
 
 ## Risker & avvägningar
 
