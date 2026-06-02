@@ -8,9 +8,9 @@ description: "Hur Expertbyråns webb-API fungerar och används — den enda käl
 Detta är den **enda källan** för hur Expertbyråns webb-API fungerar. Andra skills hänvisar
 hit ("läs mer i skill `expertbyran-api`") i stället för att duplicera API-mekaniken.
 
-API:et är **enda sättet** att mutera innehåll (experter, expertområden, blogginlägg).
-Konfigurationsdata (site/organisation/marketplace) är seed-/fil-författad och kan **inte**
-muteras via API.
+API:et är **enda sättet** att mutera innehåll (experter, expertområden, blogginlägg,
+radarer). Konfigurationsdata (site/organisation/marketplace) är seed-/fil-författad och kan
+**inte** muteras via API.
 
 ## Konfiguration
 
@@ -51,13 +51,25 @@ muteras via API.
   (metadata, markdown, eller båda). `404`/`409`.
 - `DELETE /api/v1/blog/posts/{slug}` (auth) — `404` om saknas.
 
+### Radarer (tech-radar)
+En radar består av **metadata** (`meta`, inkl. namngivna `segments`) och en lista **blips**.
+Ringarna (`anta`/`prova`/`bevaka`/`avvakta`) är fasta för alla radarer; segmenten definieras
+per radar.
+- `GET /api/v1/radars` → `{ "radars": [ …meta ] }` (utan blips).
+- `POST /api/v1/radars` (auth) — body: `{ "meta": {…}, "blips": [ … ] }`. `201` / `409`.
+- `GET /api/v1/radars/{slug}` → `{ "meta": {…}, "blips": [ … ] }`, `404` om saknas.
+- `PUT /api/v1/radars/{slug}` (auth) — body: `{ "meta"?: {…}, "blips"?: [ … ] }`
+  (metadata, blips, eller båda). `404`/`409`.
+- `DELETE /api/v1/radars/{slug}` (auth) — `404` om saknas.
+
 ### Sammansatt snapshot & cache
 - `GET /api/v1/site-data` → hela den sammansatta snapshoten (config + experter + områden).
   **Läs-only — ingen PUT.**
-- `GET /refresh` → invaliderar cachetaggarna (`experts`, `areas`, `blog`). Behövs sällan,
-  eftersom skrivanrop invaliderar cachen automatiskt.
+- `GET /refresh` → invaliderar cachetaggarna (`experts`, `areas`, `blog`, `radar`). Behövs
+  sällan, eftersom skrivanrop invaliderar cachen automatiskt.
 
-Fältscheman för Expert, ExpertArea och BlogPostEntry finns i `references/payloads.md`.
+Fältscheman för Expert, ExpertArea, BlogPostEntry och Radar (RadarMeta + Blip) finns i
+`references/payloads.md`.
 
 ## Exempel (curl)
 
@@ -99,6 +111,34 @@ Ta bort ett inlägg:
 ```bash
 curl -X DELETE "$WEB_API_URL/api/v1/blog/posts/mitt-inlagg" \
   -H "Authorization: Bearer $WEB_API_TOKEN"
+```
+
+Skapa en radar:
+```bash
+curl -X POST "$WEB_API_URL/api/v1/radars" \
+  -H "Authorization: Bearer $WEB_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "meta": {
+      "slug": "teknikradar-2026",
+      "title": "Teknikradar 2026",
+      "date": "2026-06-03T00:00:00.000Z",
+      "segments": [
+        { "id": "ai-agenter", "name": "AI & agenter" },
+        { "id": "sakerhet-krypto", "name": "Säkerhet & krypto" }
+      ]
+    },
+    "blips": [
+      {
+        "id": "pqc-migration",
+        "name": "Post-kvant-kryptografi",
+        "segmentId": "sakerhet-krypto",
+        "ring": "prova",
+        "description": "Internationella migrationstidslinjer mot PQC konvergerar mot 2030–2035.",
+        "implications": "Granskningsobjekt får explicita PQC-migrationskrav redan 2027."
+      }
+    ]
+  }'
 ```
 
 ## Innehållsregler (skrivregler)

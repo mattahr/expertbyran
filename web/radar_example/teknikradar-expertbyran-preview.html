@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teknikradar 2026 — Expertbyrån (förhandsvisning)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+  :root{
+    --white:#ffffff; --ink:#0d1b2a; --muted:#64718a; --page:#f4f6fa;
+    --line:#e2e7ef; --accent:#1d4e74; --gold:#d4982b; --gold-deep:#92651a;
+    --r-anta:#0e7c7b; --r-prova:#1d4e74; --r-bevaka:#d4982b; --r-avvakta:#64718a;
+    --radius-lg:20px; --radius-md:14px;
+    --shadow-md:0 10px 30px rgba(13,27,42,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;padding:40px 28px 80px}
+  .wrap{max-width:1320px;margin:0 auto}
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;
+    gap:20px;border-bottom:1px solid var(--line);padding-bottom:24px}
+  .kicker{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+  h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.02;margin-top:6px}
+  .sub{color:var(--muted);font-size:15px;max-width:540px;line-height:1.5;margin-top:8px}
+  .meta{text-align:right;color:var(--muted);font-size:12.5px;line-height:1.7}
+  .meta b{color:var(--ink);font-weight:600}
+  .note{font-size:12px;color:var(--gold-deep);margin-top:8px;font-style:italic}
+
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:34px;margin-top:34px;align-items:start}
+  @media(max-width:1080px){.layout{grid-template-columns:1fr}}
+
+  .radar-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:18px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+  .radar-card::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(560px 380px at 50% 6%,rgba(212,152,43,.05),transparent 60%);pointer-events:none}
+  svg{width:100%;height:auto;display:block;position:relative;z-index:1}
+
+  .ring-label{font-family:'DM Sans';font-size:11px;font-weight:600;fill:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+  .seg-label{font-family:'Instrument Serif';font-size:16px;font-weight:400}
+  .blip{cursor:pointer;transition:transform .18s ease}
+  .blip text{font-size:11px;font-weight:600;fill:#fff;pointer-events:none}
+  .blip circle{stroke:#fff;stroke-width:1.4;transition:r .18s ease,filter .18s ease}
+  .blip:hover circle{filter:drop-shadow(0 0 8px rgba(13,27,42,.28))}
+  .blip.active circle{stroke:var(--ink);stroke-width:2.4}
+  .blip:focus{outline:none}
+  .blip:focus circle{stroke:var(--ink);stroke-width:2.4}
+
+  .side{position:sticky;top:24px;display:flex;flex-direction:column;gap:18px}
+  .legend{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow-md)}
+  .legend h3{font-family:'Instrument Serif';font-weight:400;font-size:19px;margin-bottom:14px}
+  .leg-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin:9px 0}
+  .dot{width:13px;height:13px;border-radius:50%;flex:none;border:1px solid rgba(13,27,42,.12)}
+  .leg-row b{color:var(--ink);font-weight:600}
+  .seg-key{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .seg-key .leg-row{margin:4px 0;font-size:12.5px}
+  .sq{width:11px;height:11px;border-radius:3px;flex:none}
+
+  .detail{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px;min-height:260px;box-shadow:var(--shadow-md)}
+  .detail .empty{color:var(--muted);font-size:14px;line-height:1.6}
+  .detail .empty span{display:block;font-family:'Instrument Serif';font-size:21px;color:var(--ink);margin-bottom:8px}
+  .d-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.07em;
+    text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--page);border:1px solid var(--line)}
+  .d-tag .dot{width:9px;height:9px}
+  .detail h2{font-family:'Instrument Serif';font-weight:400;font-size:25px;line-height:1.08;margin:14px 0 4px}
+  .d-seg{font-size:12.5px;color:var(--gold-deep);letter-spacing:.05em;margin-bottom:14px;font-weight:600}
+  .d-desc{font-size:14px;line-height:1.65;color:#33415c}
+  .d-sub{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+  .d-impact{font-size:13.5px;line-height:1.6;color:#33415c;background:rgba(29,78,116,.06);
+    border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0}
+
+  footer{margin-top:46px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);
+    font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="kicker">Expertbyrån · Foresight</span>
+      <h1>Teknikradar 2026</h1>
+      <p class="sub">Framväxande teknik och regelverk som påverkar offentlig granskning. Varje punkt är en kuraterad foresight-signal, placerad efter redaktionell hållning (ring) och tema (segment).</p>
+      <p class="note">Statisk förhandsvisning — speglar web/data/radar/teknikradar-2026.json. Den skarpa sidan renderas av Next.js enligt specen.</p>
+    </div>
+    <div class="meta">
+      <div>Version <b>0.1</b> · Juni 2026</div>
+      <div><b>16</b> blips · <b>4</b> ringar · <b>4</b> segment</div>
+      <div>Klicka på en punkt för detaljer</div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="radar-card">
+      <svg id="radar" viewBox="0 0 900 900" aria-label="Teknikradar 2026"></svg>
+    </div>
+    <aside class="side">
+      <div class="legend">
+        <h3>Hållning (ringar)</h3>
+        <div class="leg-row"><span class="dot" style="background:var(--r-anta)"></span><b>Anta</b>&nbsp;– i drift, hög mognad</div>
+        <div class="leg-row"><span class="dot" style="background:var(--r-prova)"></span><b>Pröva</b>&nbsp;– pilot, bygg kompetens</div>
+        <div class="leg-row"><span class="dot" style="background:var(--r-bevaka)"></span><b>Bevaka</b>&nbsp;– följ utvecklingen aktivt</div>
+        <div class="leg-row"><span class="dot" style="background:var(--r-avvakta)"></span><b>Avvakta</b>&nbsp;– omogen / hög osäkerhet</div>
+        <div class="seg-key">
+          <div class="leg-row"><span class="sq" style="background:var(--accent)"></span>AI &amp; agenter</div>
+          <div class="leg-row"><span class="sq" style="background:var(--r-anta)"></span>Infrastruktur &amp; suveränitet</div>
+          <div class="leg-row"><span class="sq" style="background:var(--gold)"></span>Säkerhet &amp; krypto</div>
+          <div class="leg-row"><span class="sq" style="background:var(--muted)"></span>Styrning &amp; tillsyn</div>
+        </div>
+      </div>
+      <div class="detail" id="detail">
+        <div class="empty">
+          <span>Välj en signal</span>
+          Klicka på valfri punkt i radarn för att se hållning, beskrivning och implikationer.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <span>Källor: Expertbyråns foresight-vault (Tech Foresight). Bedömningarna är redaktionella.</span>
+    <span>Expertbyrån · Teknikradar</span>
+  </footer>
+</div>
+
+<script>
+const RING=["Anta","Pröva","Bevaka","Avvakta"];
+const RINGC=["--r-anta","--r-prova","--r-bevaka","--r-avvakta"];
+const SEG=["AI & agenter","Infrastruktur & suveränitet","Säkerhet & krypto","Styrning & tillsyn"];
+// ring: 0=anta,1=prova,2=bevaka,3=avvakta ; seg: 0..3 motsvarar SEG ovan
+const ITEMS=[
+ {n:"Frontier-AI prissättning",seg:0,ring:0,d:"Anthropic och OpenAI tar bort enterprise-rabatter och höjer priset på frontier-modeller, samtidigt som långa inferenskontrakt binder upp kapacitet.",imp:"Statliga AI-investeringar dimensionerade under rabattperioden möter en steghöjning i driftkostnad vid kontraktsförnyelse — granskningsbart redan 2026."},
+ {n:"Agentisk AI: resursförbrukning",seg:0,ring:1,d:"Agentiska arbetsflöden skalar superlinjärt: orkestrering mångdubblar antalet anrop och energin per slutförd uppgift är flera gånger högre än en linjär baslinje.",imp:"Driftkalkyler för AI-verkstäder och Copilot byggda på pris per token underskattar systematiskt verklig resursåtgång."},
+ {n:"AI på arbetsmarknaden",seg:0,ring:2,d:"Forskning visar relativt sjunkande sysselsättning för de yngsta i AI-exponerade yrken, medan makrodata ännu inte visar någon bred sysselsättningsförsämring.",imp:"Effekten är koncentrerad till instegsjobb snarare än bred utträngning — relevant för hur AI-investeringar utvärderas."},
+ {n:"Statliga bolags agentkapacitet",seg:0,ring:3,d:"Statligt ägda bolag som Vattenfall och PostNord rekryterar agent- och MCP-kompetens, men inga storskaliga produktionsflöden är ännu dokumenterade.",imp:"Agentiska arbetsflöden kan tas i drift 2026–2027 innan styrning och kontroller etablerats."},
+
+ {n:"DORA-tillsynen aktiveras",seg:1,ring:0,d:"DORA är i kraft och EU utser kritiska IKT-tredjepartsleverantörer för direkt tillsyn, vilket lägger ett extra tillsynsskikt på systemviktiga finansaktörer.",imp:"Hur svenska aktörer hanterar dubbel tillsyn och koncentrationsrisk mot stora molnleverantörer blir granskningsbart."},
+ {n:"Stablecoin–CBDC-konvergens",seg:1,ring:2,d:"MiCA-reglerade bankstablecoins, ECB:s digitala euro-pilot och en svensk e-krona-debatt pekar mot flera konkurrerande digitala betalningsinstrument inom några år.",imp:"Tillsynsmyndigheter möter samtidiga utmaningar kring konkurrerande digitala valutor från både privat sektor och centralbank."},
+ {n:"Hyperscaler-beroende via värdmyndighet",seg:1,ring:2,d:"Försäkringskassan öppnar för att vara värdmyndighet för Microsoft Teams i statlig IT-drift, samtidigt som regeringens molnpolicy pekar i motsatt riktning.",imp:"Samordnad IT-drift som reform kan urholkas av enskilda värdmyndigheters molnval när styrningen saknar krav."},
+
+ {n:"Post-kvant-kryptografi",seg:2,ring:1,d:"FRA anger fem år för myndighetssektorn och tio år för samhället för migration till post-kvant-kryptografi, medan EU, USA och UK publicerar konvergenta tidslinjer mot 2030–2035.",imp:"Granskningsobjekt får explicita, granskningsbara PQC-migrationskrav redan 2027 — parallellt med NIS2 och AI Act."},
+ {n:"AI-accelererad sårbarhetsupptäckt",seg:2,ring:2,d:"Frontier-AI kortar tiden från upptäckt sårbarhet till körbar exploatering från veckor till timmar, medan automatiserad åtgärdshantering ännu inte finns i jämförbar skala.",imp:"Statliga IT-system med äldre arkitektur möter en växande asymmetri där upptäckt accelererar men åtgärdscykeln förblir manuell."},
+ {n:"Agentinfrastruktur som angreppsyta",seg:2,ring:2,d:"Flera oberoende källor dokumenterar systematiska angreppsytor i agentiska AI-systems metadata-, skill- och minneslager, med skadliga payloads påträffade i publika skill-kataloger.",imp:"Myndigheters utrullning av AI-agenter och Copilot skapar angreppsytan innan kontroller finns på plats; klassisk kodgranskning missar attacken."},
+
+ {n:"EU-compliance-stacken",seg:3,ring:1,d:"MiCA, AI Act och lagstiftningen om digital euro passerar centrala milstolpar under 2026–2027 med sammanflätade efterlevnadsdatum.",imp:"Granskningsobjekt befinner sig i en exekveringsriskmiljö med tydlig tidsaxel — en klassisk effektivitetsrevisionssituation."},
+ {n:"Svensk implementeringsaxel 2026–2027",seg:3,ring:1,d:"NIS2, AI Act:s högriskregler, sammanslagningen till Digitaliseringsmyndigheten och CER-direktivet infaller inom samma tolvmånadersfönster.",imp:"Granskningsobjekt möter samtidiga efterlevnadsdatum, myndighetsövergång och ny tillsynsstruktur — hög exekveringsrisk."},
+ {n:"Oberoende AI-granskning i förvaltningen",seg:3,ring:2,d:"ESO, ISF, DIGG och Statskontoret rapporterar samstämmigt att AI används begränsat i förvaltningsbeslut, att rättsläget är oklart och att produktivitetseffekter saknar systematisk mätning.",imp:"Ett konvergerande oberoende underlag växer fram för att granska regeringens AI-styrning."},
+ {n:"AI och revisionsbevis",seg:3,ring:2,d:"Branschföreträdare framhåller att ”låter rimligt” inte är revisionsbevis, samtidigt som de stora revisionsbyråerna automatiserar AI-granskning snabbare än svensk praxis.",imp:"Ett normgap riskerar uppstå där privat och offentlig revision hanterar AI-baserat bevis olika."},
+ {n:"CSRD/CSDDD-inbromsning",seg:3,ring:2,d:"EU:s Omnibus- och ”stop-the-clock”-beslut höjer trösklarna för hållbarhetsrapportering kraftigt och skjuter upp senare rapporteringsvågor.",imp:"Statliga bolags rapporteringsbörda omkalibreras medan de största aktörerna fortsatt omfattas — en granskningsbar ändring av ambitionsnivån."},
+ {n:"Algoritmrevision som profession",seg:3,ring:2,d:"Norge, Finland, Tyskland, Nederländerna och Storbritannien publicerar ett gemensamt INTOSAI-whitepaper om revision av maskininlärning, utan svenskt deltagande.",imp:"Frånvaro från den internationella standardsättningen riskerar ett kompetens- och inflytandegap som är svårt att reparera i efterhand."},
+];
+
+const SVG="http://www.w3.org/2000/svg";
+const C=450,R_MAX=400,ringEdges=[0,110,205,300,R_MAX];
+const segRange=[[272,358],[2,88],[92,178],[182,268]];
+const svg=document.getElementById("radar");
+const cs=getComputedStyle(document.documentElement);
+const col=v=>cs.getPropertyValue(v).trim();
+function el(t,a){const e=document.createElementNS(SVG,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+for(let i=ringEdges.length-1;i>0;i--)
+  svg.appendChild(el("circle",{cx:C,cy:C,r:ringEdges[i],fill:col(RINGC[i-1]),"fill-opacity":0.07,stroke:col("--line"),"stroke-width":1}));
+[0,90,180,270].forEach(a=>{const r=a*Math.PI/180;
+  svg.appendChild(el("line",{x1:C,y1:C,x2:C+R_MAX*Math.cos(r),y2:C+R_MAX*Math.sin(r),stroke:col("--line"),"stroke-width":1}));});
+const ringShort=["Anta","Pröva","Bevaka","Avvakta"];
+for(let i=0;i<4;i++){const r=(ringEdges[i]+ringEdges[i+1])/2;
+  svg.appendChild(el("text",{x:C+4,y:C-r+4,"class":"ring-label","text-anchor":"start"})).textContent=ringShort[i];}
+const segLabelPos=[{a:315},{a:45},{a:135},{a:225}];
+const segLabelColor=["--accent","--r-anta","--gold","--muted"];
+segLabelPos.forEach((s,i)=>{const r=s.a*Math.PI/180,rr=R_MAX-24;
+  const t=el("text",{x:C+rr*Math.cos(r),y:C+rr*Math.sin(r),"class":"seg-label",fill:col(segLabelColor[i]),"text-anchor":"middle"});
+  t.textContent=SEG[i];svg.appendChild(t);});
+
+const groups={};ITEMS.forEach((it,idx)=>{const k=it.seg+"-"+it.ring;(groups[k]=groups[k]||[]).push({...it,idx});});
+const blipEls=[];
+Object.keys(groups).forEach(k=>{const[seg,ring]=k.split("-").map(Number);const arr=groups[k];
+  const[a0,a1]=segRange[seg];const rIn=ringEdges[ring]+22,rOut=ringEdges[ring+1]-16;
+  arr.forEach((it,i)=>{const frac=(i+1)/(arr.length+1);const ang=(a0+(a1-a0)*frac)*Math.PI/180;
+    const rr=rIn+(rOut-rIn)*(0.35+0.5*(i%2));const x=C+rr*Math.cos(ang),y=C+rr*Math.sin(ang);
+    const g=el("g",{"class":"blip",tabindex:"0",role:"button","aria-label":`${it.n} — ${RING[it.ring]}, ${SEG[it.seg]}`});
+    g.appendChild(el("circle",{cx:x,cy:y,r:14,fill:col(RINGC[ring])}));
+    const num=el("text",{x,y:y+4,"text-anchor":"middle"});num.textContent=it.idx+1;g.appendChild(num);
+    const sel=()=>select(it.idx,g);
+    g.addEventListener("click",sel);
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();sel();}});
+    svg.appendChild(g);blipEls[it.idx]=g;});});
+
+const detail=document.getElementById("detail");
+let activeG=null;
+function select(idx,g){const it=ITEMS[idx];
+  if(activeG)activeG.classList.remove("active");g.classList.add("active");activeG=g;
+  detail.innerHTML=`
+    <span class="d-tag"><span class="dot" style="background:${col(RINGC[it.ring])}"></span>${RING[it.ring]}</span>
+    <h2>${idx+1}. ${it.n}</h2>
+    <div class="d-seg">${SEG[it.seg]}</div>
+    <div class="d-desc">${it.d}</div>
+    <div class="d-sub">Implikationer</div>
+    <div class="d-impact">${it.imp}</div>`;
+}
+</script>
+</body>
+</html>

@@ -133,6 +133,9 @@ const loadRadarData = unstable_cache(
 
 ## 5. Sidor & interaktion
 
+- **Navigation:** lägg till `{ href: "/radar", label: "Radar" }` i `navigation`-arrayen i
+  `src/components/site/SiteChrome.tsx` **direkt efter `/blogg`** (gäller både primär nav och
+  mobilmenyn, som båda läser samma array). `isNavItemActive` matchar redan `/radar/[slug]`.
 - **`/radar`** (`src/app/radar/page.tsx`) — server-komponent. Listar radarer som kort
   (fungerar med en post). `export const metadata`. Samma CSS-modulstrategi som `/blogg`.
 - **`/radar/[slug]`** (`src/app/radar/[slug]/page.tsx`) — server-komponent. Hämtar
