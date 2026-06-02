@@ -1,55 +1,35 @@
-***
-
+---
 name: blog-editor
-description: "Skapa och hantera blogginlägg på Expertbyråns webbplats via API. Använd denna skill när du vill publicera ett nytt blogginlägg, redigera befintliga, eller hantera bloggkatalogen. API:et hanterar både metadata (blog-data.json) och markdown-filer automatiskt."
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+description: "Skapa och hantera blogginlägg på Expertbyråns webbplats via API. Använd denna skill när du vill publicera ett nytt blogginlägg, redigera befintliga, eller hantera bloggkatalogen. API:et hanterar både metadata och markdown automatiskt."
+---
 
-# Blog Editor — Expertbyråns blogg (API-version)
+# Blog Editor — Expertbyråns blogg
 
-Du hanterar blogginlägg för Expertbyråns webbplats via API. Ändringar görs direkt via HTTP-anrop till API:et — inga git-commits behövs.
+Du skapar och redigerar blogginlägg för Expertbyråns webbplats via web-API:et — inga
+git-commits behövs, API:et hanterar lagringen.
 
-## API-konfiguration
+## API
 
-API-bas-URL måste konfigureras i din miljö. För lokal utveckling/testning:
+Inlägg skapas via `POST /api/v1/blog/posts` (body `{ post, markdown }`) och redigeras/tas
+bort via `PUT`/`DELETE /api/v1/blog/posts/{slug}`. För fullständig API-mekanik —
+autentisering (`WEB_API_URL`/`WEB_API_TOKEN`), payloads, felkoder och exempel — **läs mer i
+skill `expertbyran-api`**.
 
-* `WEB_API_URL` - URL till webbapplikationen (ex: `http://localhost:3000`)
-* `WEB_API_TOKEN` - Autentiseringstoken för API:et
+Snabbnoteringar:
+- Sluggen måste vara unik — API:et returnerar `409 Conflict` om den redan finns.
+- Minst en av `authorSlug` och `authorName` måste anges (se payload-reglerna i skill
+  `expertbyran-api`).
 
-## API Endpoints
+## Skrivregler (superviktiga)
 
-Se `/home/runner/work/expertbyran/expertbyran/web/API.md` för fullständig API-dokumentation.
+- Vi röjer **aldrig** kunders namn eller identitet.
+- Vi skriver aldrig argumenterande, politiskt färgat eller med en egen uppfattning.
+- Vi skriver alltid transparent, neutralt och balanserat och belyser flera sidor.
+- Alla påståenden eller referenser till extern kunskap ska **alltid** ha en **fotnot med
+  URL**.
+- Använd **block quote** för citat och ange källa med URL.
+- **Alla länkar verifieras** — innan publicering ska ALLA länkar och referenser som använts
+  i inlägget dubbelkollas.
+- Svenska med korrekta **å, ä, ö**.
 
-### Skapa nytt inlägg
-
-```HTTP
-POST {WEB_API_URL}/api/v1/blog/posts
-Authorization: Bearer {WEB_API_TOKEN}
-Content-Type: application/json
-
-{
-  "post": {
-    "slug": "kebab-case-slug",
-    "title": "Inläggets titel",
-    "date": "2026-04-15T14:00:00.000Z",
-    "authorSlug": "<expert-slug>",
-    "areaSlugs": ["<area-slug>"],
-    "excerpt": "Kort sammanfattning för listningen."
-  },
-  "markdown": "# Rubrik\n\nMarkdown-innehåll här..."
-}
-```
-
-## Viktigt
-
-* **Sluggen måste vara unik** — API:et returnerar 409 Conflict om sluggen redan finns
-* **Validering sker vid skrivning** — API:et validerar alla fält med Zod-schema
-* **Inga git-commits** — API:et hanterar lagring direkt till disk
-* **Svenska med å, ä, ö** i allt innehåll
-* **Vi röjer ALDRIG kunders namn eller identitet.**
-* Vi skriver aldrig argumenterande, politiskt färgat eller med en egen uppfattning.
-* Vi skriver alltid transparent, neutralt, balanserat, belyser flera sidor
-* Alla påståenden eller referenser till extern kunskap ska alltid ha en fotnot och en url.&#x20;
-* Använd block quote för citat och ange känna med url
-* **Alla länkar verifieras** - Innan publicering ska ALLA länkar och referenser som använts in inlägget dubbelkollas.
-
-För detaljer om schema, felhantering och exempel — se web/API.md.
+Den fullständiga skrivstilen finns i `references/skrivstil.md` i denna skill.
