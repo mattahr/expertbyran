@@ -1,57 +1,56 @@
 ---
 name: expertbyran-manager
-description: "Hantera Expertbyråns monorepo (mattahr/expertbyran) — lägg till nya experter, uppdatera befintliga, via API. Använd denna skill när du vill underhålla Expertbyrån-pluginen, lägga till nya konsulter, uppdatera profiler, ändra expertregistret, eller synka webbdata via API."
+description: "Hantera Expertbyråns monorepo (mattahr/expertbyran) — lägg till och uppdatera experter och expertområden via web-API:et, och håll marketplace-pluginens EXPERT.md och expert-registry i synk via git. Använd denna skill för att underhålla Expertbyrån-pluginen, lägga till nya konsulter, uppdatera profiler eller ändra expertregistret."
 ---
 
-# Expertbyrån Manager (API-version)
+# Expertbyrån Manager
 
-Du hanterar monorepot `mattahr/expertbyran` på GitHub. Data uppdateras via API:et istället för direkta ändringar i JSON-filer.
+Du underhåller monorepot `mattahr/expertbyran`. Två spår:
 
-## API-konfiguration
+1. **Webbplatsdata (experter, expertområden)** — uppdateras via **web-API:et**.
+2. **Marketplace-pluginen** (`marketplace/experts/[slug]/EXPERT.md` och
+   `marketplace/skills/konsultchef/expert-registry.md`) — uppdateras via **git-commit/PR**.
 
-- `WEB_API_URL` - URL till webbapplikationen (ex: `http://localhost:3000`)
-- `WEB_API_TOKEN` - Autentiseringstoken för API:et
+## Webbplatsdata via API
 
-## Datakällor som måste synkas
+API:et är **enda sättet** att mutera experter och områden. För hur API:et fungerar
+(autentisering, endpoints, payloads, felkoder, curl-exempel) — **läs mer i skill
+`expertbyran-api`**.
 
-| Källa | Syfte | Uppdateringsmetod |
-|-------|-------|-------------------|
-| `marketplace/experts/[slug]/EXPERT.md` | Expertens identitet och metodik | Git-commit |
-| `marketplace/skills/konsultchef/expert-registry.md` | Kompakt register för routing | Git-commit |
-| Webbplatsdata (experter, team, områden) | Data för publik webbplats | **API (PUT /api/v1/site-data)** |
+Kortfattat:
+- Ny expert → `POST /api/v1/experts`. Uppdatera → `PUT /api/v1/experts/{slug}`.
+  Ta bort → `DELETE /api/v1/experts/{slug}`.
+- Områden (sällan) → `POST /api/v1/areas`, `PUT|DELETE /api/v1/areas/{slug}`.
+- Läs nuvarande data → `GET /api/v1/experts`, `GET /api/v1/areas` eller hela snapshoten
+  via `GET /api/v1/site-data`.
 
-## Arbetsflöde
+**Begränsning:** organisation/site/marketplace-config är seed-/fil-författad och kan **inte**
+muteras via API — försök inte uppdatera den via API:et.
 
-### 1. Hämta nuvarande data från API
+## Marketplace-pluginen via git
 
-```bash
-curl {WEB_API_URL}/api/v1/site-data > /tmp/site-data.json
-```
+| Källa | Syfte | Metod |
+|-------|-------|-------|
+| `marketplace/experts/[slug]/EXPERT.md` | Expertens identitet och metodik | Git-commit/PR |
+| `marketplace/skills/konsultchef/expert-registry.md` | Kompakt register för routing | Git-commit/PR |
 
-### 2. Lägg till/uppdatera expert
+Följ samma validering och PR-process som tidigare för marketplace-filerna (se
+`SKILL.md.backup` för den fullständiga EXPERT.md-/registry-processen).
 
-För EXPERT.md och expert-registry.md: Följ samma process som tidigare (se SKILL.md.backup).
+## Arbetsflöde för en ny/ändrad expert
 
-För webbplatsdata: Uppdatera den lokala kopian av site-data.json.
+1. Skapa/uppdatera experten via API:et (se skill `expertbyran-api`).
+2. Skapa/uppdatera `EXPERT.md` och `expert-registry.md` och committa via PR.
+3. Verifiera att slug är konsekvent mellan API-data, EXPERT.md och registret.
 
-### 3. Uppdatera via API
+## Innehållsregler (skrivregler)
 
-```bash
-curl -X PUT {WEB_API_URL}/api/v1/site-data \
-  -H "Authorization: Bearer {WEB_API_TOKEN}" \
-  -H "Content-Type: application/json" \
-  -d @/tmp/site-data.json
-```
+- Vi röjer **aldrig** kunders namn eller identitet.
+- Vi skriver aldrig argumenterande, politiskt färgat eller med egen uppfattning — alltid
+  transparent, neutralt och balanserat, och belyser flera sidor.
+- Alla påståenden och referenser till extern kunskap ska ha en **fotnot med URL**.
+- Citat anges i **block quote** med källa (URL).
+- **Alla länkar verifieras** innan publicering.
+- Svenska med korrekta **å, ä, ö**.
 
-### 4. Commit och PR för EXPERT.md och registry
-
-Följ samma validering och PR-process som tidigare för marketplace/-filerna.
-
-## Viktigt
-
-* **API hanterar site-data** — JSON-filen lagras nu via API, inte git
-* **EXPERT.md och registry** — dessa commitas fortfarande via git
-* **Validering** — API:et validerar site-data automatiskt
-* **Svenska med å, ä, ö**
-
-För fullständig API-dokumentation, se `/home/runner/work/expertbyran/expertbyran/web/API.md`.
+Den fullständiga skrivstilen finns i skill `blog-editor`.
