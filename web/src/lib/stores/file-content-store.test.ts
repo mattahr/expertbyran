@@ -6,8 +6,11 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import siteData from "@/test/fixtures/site-data.fixture.json";
+import type { SiteData } from "@/lib/content/schema";
 import { FileContentStore } from "./file-content-store";
 import { ConflictError, NotFoundError } from "./types";
+
+const data = siteData as unknown as SiteData;
 
 let dir: string;
 let store: FileContentStore;
@@ -25,14 +28,14 @@ afterEach(async () => {
 describe("FileContentStore experter", () => {
   it("listar och hämtar experter", async () => {
     const experts = await store.listExperts();
-    expect(experts.length).toBe(siteData.experts.length);
-    const first = await store.getExpert(siteData.experts[0].slug);
-    expect(first?.name).toBe(siteData.experts[0].name);
+    expect(experts.length).toBe(data.experts.length);
+    const first = await store.getExpert(data.experts[0].slug);
+    expect(first?.name).toBe(data.experts[0].name);
     expect(await store.getExpert("finns-inte")).toBeNull();
   });
 
   it("uppdaterar en expert och bevarar config", async () => {
-    const target = siteData.experts[0];
+    const target = data.experts[0];
     const updated = { ...target, name: "Nytt Namn" };
     const result = await store.updateExpert(target.slug, updated);
     expect(result.name).toBe("Nytt Namn");
@@ -40,28 +43,28 @@ describe("FileContentStore experter", () => {
     const onDisk = JSON.parse(
       await fs.readFile(path.join(dir, "site-data.json"), "utf-8"),
     );
-    expect(onDisk.site.name).toBe(siteData.site.name);
+    expect(onDisk.site.name).toBe(data.site.name);
     expect(onDisk.experts.find((e: { slug: string }) => e.slug === target.slug).name).toBe(
       "Nytt Namn",
     );
   });
 
   it("kastar NotFoundError vid uppdatering av okänd slug", async () => {
-    await expect(store.updateExpert("finns-inte", siteData.experts[0])).rejects.toBeInstanceOf(
+    await expect(store.updateExpert("finns-inte", data.experts[0])).rejects.toBeInstanceOf(
       NotFoundError,
     );
   });
 
   it("kastar ConflictError vid skapande av befintlig slug", async () => {
-    await expect(store.createExpert(siteData.experts[0])).rejects.toBeInstanceOf(ConflictError);
+    await expect(store.createExpert(data.experts[0])).rejects.toBeInstanceOf(ConflictError);
   });
 });
 
 describe("FileContentStore områden", () => {
   it("listar och uppdaterar områden", async () => {
     const areas = await store.listAreas();
-    expect(areas.length).toBe(siteData.expertAreas.length);
-    const target = siteData.expertAreas[0];
+    expect(areas.length).toBe(data.expertAreas.length);
+    const target = data.expertAreas[0];
     const result = await store.updateArea(target.slug, { ...target, name: "Nytt Område" });
     expect(result.name).toBe("Nytt Område");
   });
