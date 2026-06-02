@@ -1,179 +1,102 @@
 ---
-name: "webbmaster-publicering"
-description: "PLACEHOLDER-STUB. Kontraktsdeklaration för webbmasterns publicering till extern webbplats. Byts ut mot skarp extern skill senare. Tills dess loggar webbmastern till memory."
-slug: "webbmaster-publicering"
-metadata:
-  paperclip:
-    slug: "webbmaster-publicering"
-    skillKey: "local/expertbyran/webbmaster-publicering"
-  skillKey: "local/expertbyran/webbmaster-publicering"
-key: "local/expertbyran/webbmaster-publicering"
+name: webbmaster-publicering
+description: "Webbmasterns publicering till Expertbyråns webbplats via API. Använd denna skill för att publicera och uppdatera expert-CV:n och blogginlägg på den publika webbplatsen och hålla webbmasterns publicerat.md-tillstånd i synk. Operationerna är idempotenta."
 ---
 
-# Webbmaster-publicering — placeholder
+# Webbmaster-publicering
 
-> **⚠️ TODO: Denna skill är en placeholder-stub som ska bytas ut mot
-> en skarp extern skill senare.** Tills den skarpa skillen är på
-> plats ska webbmastern följa "stub-beteendet" som beskrivs i slutet
-> av denna fil.
+Du publicerar webbmasterns innehåll till Expertbyråns publika webbplats via web-API:et.
+För hur API:et fungerar (autentisering `WEB_API_URL`/`WEB_API_TOKEN`, endpoints, payloads,
+felkoder, curl-exempel) — **läs mer i skill `expertbyran-api`**.
 
-## Syfte
+Alla operationer är **idempotenta**: samma operation två gånger ska vara en no-op. Tillstånd
+hålls i `agents/webbmaster/publicerat.md`.
 
-Denna skill är kontraktet mellan webbmastern och Expertbyråns
-externa webbplats. När den skarpa skillen levereras ska den
-tillhandahålla följande operationer:
+## Kontraktsoperationer → API
 
-### Kontraktsoperationer
+| Operation | API-anrop |
+|-----------|-----------|
+| `publish-cv` (ny expert) | `POST /api/v1/experts` |
+| `publish-cv` (ändrad expert) | `PUT /api/v1/experts/{slug}` |
+| `delete-cv` | `DELETE /api/v1/experts/{slug}` |
+| `publish-blog` | `POST /api/v1/blog/posts` |
+| `update-blog` | `PUT /api/v1/blog/posts/{slug}` |
+| `delete-blog` | `DELETE /api/v1/blog/posts/{slug}` |
+| `get-status` | `GET /api/v1/site-data` + `GET /api/v1/blog/posts` |
 
-| Operation       | Input                                       | Utfall                                      |
-|-----------------|---------------------------------------------|---------------------------------------------|
-| `publish-cv`    | Expert-slug + diff mot publicerat           | CV-sidan uppdaterad på webbplatsen          |
-| `publish-blog`  | Titel, body (markdown), författare          | Nytt blog-inlägg publicerat                 |
-| `update-blog`   | Inlägg-ID, ny body                          | Befintligt inlägg uppdaterat                |
-| `delete-cv`     | Expert-slug                                 | CV-sidan borttagen (när expert lämnar)      |
-| `delete-blog`   | Inlägg-ID                                   | Inlägget borttaget                          |
-| `get-status`    | —                                           | Aktuellt tillstånd på webbplatsen (för diff)|
+## Idempotens
 
-### Förväntad beteende för den skarpa skillen
+### publish-cv
+1. Bygg expertens CV-payload (se fältschema i skill `expertbyran-api`).
+2. Beräkna en hash av CV-innehållet (normalisera whitespace, exkludera `senast_uppdaterad`).
+3. Jämför med `cv_hashar[<slug>]` i `publicerat.md`.
+4. Oförändrad hash → skip (no-op).
+5. Ny/ändrad hash:
+   - Finns experten redan (`GET /api/v1/experts/{slug}` ≠ 404)? → `PUT`. Annars → `POST`.
+   - Uppdatera `cv_hashar[<slug>]` och lägg rad i `publiceringshistorik` i `publicerat.md`.
 
-Den skarpa skillen ska:
+### publish-blog / update-blog
+1. Kontrollera om sluggen finns via `get-status` (`GET /api/v1/blog/posts`).
+2. Finns den inte → `POST /api/v1/blog/posts`. Finns den → `PUT /api/v1/blog/posts/{slug}`.
+3. Lägg/uppdatera raden i `publicerade_inlagg` och `publiceringshistorik`.
 
-1. Vara idempotent — samma operation två gånger är en no-op
-2. Returnera strukturerade fel som webbmastern kan logga
-3. Hantera nätverksfel graciöst (retry, backoff)
-4. Uppdatera `agents/webbmaster/publicerat.md` efter varje lyckad
-   operation
-5. Följa webbplatsens redaktionella stil enligt webbmasterns
-   `SOUL.md`
+### delete-cv / delete-blog
+1. `DELETE` mot rätt endpoint. `404` behandlas som redan borttaget (no-op).
+2. Ta bort posten ur `publicerat.md` och logga i `publiceringshistorik`.
 
-## Stub-beteende (innan skarpa skillen är på plats)
+## Felhantering
 
-**Tills den skarpa skillen är levererad ska webbmastern INTE göra
-externa anrop.** Istället:
+- `401` → token saknas/fel; avbryt och logga i webbmasterns memory.
+- `409` (slug finns) vid `POST` → byt till `PUT` mot samma slug.
+- `404` vid `PUT`/`DELETE` → posten finns inte; för delete = no-op, för put = skapa via POST.
+- `400` → valideringsfel; logga fältfelen och korrigera payloaden.
 
-### Vid `publish-cv`-operation
+Logga varje skarp operation i `agents/webbmaster/memory/YYYY-MM-DD.md`.
 
-1. Läs den relevanta `agents/<expert>/expertise.md`
-2. Beräkna en **hash** av CV-innehållet:
-   - Normalisera whitespace
-   - Exkludera `senast_uppdaterad`-fält (ändras för mycket)
-   - SHA-256 av resten
-3. Jämför med `cv_hashar[<expert>]` i `publicerat.md`
-4. Om hashen är oförändrad → skip (no-op)
-5. Om hashen är ny eller ändrad:
-   - Skriv en sammanfattning till
-     `agents/webbmaster/memory/YYYY-MM-DD.md`:
-
-     ```markdown
-     ## <tidpunkt> — STUB: publish-cv
-     Expert: <slug>
-     Nya/ändrade sektioner: <lista>
-     Skarp skill saknas — inget externt anrop gjort.
-     Ny hash: <hash>
-     ```
-
-   - Uppdatera `publicerat.md`:
-     - Lägg till/uppdatera `cv_hashar[<expert>]: <ny-hash>`
-     - Lägg till rad i `publiceringshistorik` med datum, operation,
-       expert, stub-flag
-
-6. Markera tasken `done` med kommentar:
-
-```markdown
-Stub-publicering utförd.
-
-- Expert: <slug>
-- CV-hash uppdaterad i publicerat.md
-- Ingen extern webbplats-anropad (skarp skill saknas)
-- Loggat i memory/<datum>.md
-
-När den skarpa webbmaster-publicering-skillen är levererad kommer
-denna task att producera faktiska externa anrop.
-```
-
-### Vid `publish-blog`-operation
-
-Samma mönster:
-
-1. Läs description från `Publicera:`-tasken
-2. Skriv en blog-post-fil i `agents/webbmaster/memory/YYYY-MM-DD.md`
-   med rubrik, body, författare
-3. Lägg till entry i `publicerat.md` under `publicerade_inlagg`
-4. Markera tasken `done` med stub-kommentar
-
-### Publicerat.md-format
+## publicerat.md-format
 
 Webbmastern underhåller `agents/webbmaster/publicerat.md`:
 
 ```yaml
 ---
 type: "webmaster-state"
-description: "..."
 senast_uppdaterad: "2026-04-12T14:32:00"
 ---
 
 # Publicerat tillstånd
 
-## CV-hashar
-
 cv_hashar:
-  effektivitetsrevisor: "a1b2c3d4..."
-  kvantitativ-analytiker: "e5f6a7b8..."
-  ...
-
-## Publicerade inlägg
+  effektivitetsrevisor: "a1b2c3d4…"
 
 publicerade_inlagg:
   - id: "blog-2026-04-12-lss-triangulering"
     titel: "Ny specialisering: LSS-triangulering"
     datum: "2026-04-12"
     författare: "Dr Karin Bergström"
-    stub: true
-
-## Publiceringshistorik
 
 publiceringshistorik:
   - datum: "2026-04-12T14:32:00"
     operation: "publish-cv"
     target: "expert-valfard"
-    stub: true
-  - ...
 ```
 
-Kommentarsfältet `stub: true` markerar att detta är en
-stub-publicering, inte en skarp.
+(Fältet `stub: true` används inte längre för skarpa publiceringar; äldre historik-rader får
+stå kvar.)
 
-## När den skarpa skillen levereras
+## Innehållsregler (skrivregler)
 
-När `webbmaster-publicering`-skillen byts ut mot en skarp extern
-version, ska mallen:
+- Vi röjer **aldrig** kunders namn eller identitet.
+- Vi skriver aldrig argumenterande, politiskt färgat eller med egen uppfattning — alltid
+  transparent, neutralt och balanserat, och belyser flera sidor.
+- Alla påståenden och referenser till extern kunskap ska ha en **fotnot med URL**.
+- Citat anges i **block quote** med källa (URL).
+- **Alla länkar verifieras** innan publicering.
+- Svenska med korrekta **å, ä, ö**.
 
-1. Ersätta denna fil helt
-2. **Inte ändra** `publicerat.md` — den redan existerande
-   state-filen är framåtkompatibel
-3. Efter import, webbmastern ska vid nästa `Publicera:`-task
-   automatiskt detektera att skarpa skillen finns och börja göra
-   riktiga externa anrop
-4. `stub: true`-markeringarna i `publicerat.md` kan rensas bort
-   eller lämnas som historik
+Den fullständiga skrivstilen finns i skill `blog-editor`.
 
-## Instruktion till framtida implementerare
-
-Om du är agenten eller utvecklaren som levererar den skarpa skillen:
-
-- **Läs webbmasterns `AGENTS.md` och `SOUL.md`** för att förstå
-  tonläget och roll
-- **Läs `agents/webbmaster/publicerat.md`** för att se vilket
-  tillstånd som finns
-- **Implementera alla 6 kontraktsoperationerna** (se tabellen)
-- **Dokumentera webbplatsens endpoint och autentisering** i skillen
-- **Testa idempotensen** — kör samma operation två gånger och
-  verifiera att andra körningen är en no-op
-
-## Referenser
+## Referenser (webbmasterns egna filer)
 
 - `agents/webbmaster/AGENTS.md` — webbmasterns roll
 - `agents/webbmaster/SOUL.md` — redaktionell röst
 - `agents/webbmaster/publicerat.md` — state-fil
-- `fortbildning-trainer` — beslutstabell för vad som är
-  publiceringsvärt (utbildningsledarens ansvar)
