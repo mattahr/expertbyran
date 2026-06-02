@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 const TAGS = ["experts", "areas", "blog"] as const;
 
 export async function GET() {
-  for (const tag of TAGS) (revalidateTag as (tag: string) => void)(tag);
+  for (const tag of TAGS) revalidateTag(tag, "max");
   return Response.json(
     { ok: true, invalidated: TAGS, refreshedAt: new Date().toISOString() },
     { headers: { "cache-control": "no-store" } },

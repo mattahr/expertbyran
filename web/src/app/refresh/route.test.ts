@@ -11,8 +11,8 @@ describe("GET /refresh", () => {
     const body = await response.json();
 
     expect(body.ok).toBe(true);
-    expect(vi.mocked(revalidateTag)).toHaveBeenCalledWith("experts");
-    expect(vi.mocked(revalidateTag)).toHaveBeenCalledWith("areas");
-    expect(vi.mocked(revalidateTag)).toHaveBeenCalledWith("blog");
+    expect(vi.mocked(revalidateTag)).toHaveBeenCalledWith("experts", "max");
+    expect(vi.mocked(revalidateTag)).toHaveBeenCalledWith("areas", "max");
+    expect(vi.mocked(revalidateTag)).toHaveBeenCalledWith("blog", "max");
   });
 });
