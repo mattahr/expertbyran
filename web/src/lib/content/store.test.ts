@@ -1,69 +1,28 @@
+// web/src/lib/content/store.test.ts
 // @vitest-environment node
+import { afterEach, describe, expect, it } from "vitest";
 
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import siteData from "@/test/fixtures/site-data.fixture.json";
+import type { SiteData } from "@/lib/content/schema";
+import { __setStoresForTest } from "@/lib/stores";
+import { InMemoryConfigStore, InMemoryContentStore } from "@/lib/stores/memory-stores";
+import { getSiteData } from "./store";
 
-import siteData from "../../test/fixtures/site-data.fixture.json";
+const data = siteData as unknown as SiteData;
 
-import { getSiteData, resetSiteDataCache } from "./store";
+afterEach(() => __setStoresForTest(null));
 
-describe("site data store", () => {
-  beforeEach(() => {
-    process.env.SITE_DATA_URL = "https://example.test/site-data.json";
-    process.env.SITE_DATA_REVALIDATE_SECONDS = "300";
-    resetSiteDataCache();
-  });
+describe("getSiteData", () => {
+  it("komponerar config + experter + områden från storarna", async () => {
+    __setStoresForTest({
+      config: new InMemoryConfigStore(data),
+      content: new InMemoryContentStore(data.experts, data.expertAreas),
+    });
 
-  afterEach(() => {
-    delete process.env.SITE_DATA_URL;
-    delete process.env.SITE_DATA_REVALIDATE_SECONDS;
-    delete process.env.SITE_DATA_FETCH_TIMEOUT_MS;
-    resetSiteDataCache();
-    vi.restoreAllMocks();
-  });
+    const result = await getSiteData();
 
-  it("reads site-data from the configured remote URL", async () => {
-    const remote = structuredClone(siteData);
-    remote.site.tagline = "Remote snapshot";
-
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => remote,
-      }),
-    );
-
-    const data = await getSiteData({ fresh: true });
-
-    expect(fetch).toHaveBeenCalledTimes(1);
-    expect(data.site.tagline).toBe("Remote snapshot");
-  });
-
-  it("falls back to the last cached remote snapshot when a refresh fails", async () => {
-    const remote = structuredClone(siteData);
-    remote.site.tagline = "Cached remote snapshot";
-
-    vi.stubGlobal(
-      "fetch",
-      vi
-        .fn()
-        .mockResolvedValueOnce({
-          ok: true,
-          json: async () => remote,
-        })
-        .mockRejectedValueOnce(new Error("network down")),
-    );
-
-    const first = await getSiteData({ fresh: true });
-    const second = await getSiteData({ fresh: true });
-
-    expect(first.site.tagline).toBe("Cached remote snapshot");
-    expect(second.site.tagline).toBe("Cached remote snapshot");
-  });
-
-  it("throws when the remote URL fails before any cache exists", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("network down")));
-
-    await expect(getSiteData({ fresh: true })).rejects.toThrow("network down");
+    expect(result.site.name).toBe(data.site.name);
+    expect(result.experts.length).toBe(data.experts.length);
+    expect(result.expertAreas.length).toBe(data.expertAreas.length);
   });
 });
