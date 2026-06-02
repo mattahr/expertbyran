@@ -79,8 +79,8 @@ export class FileBlogStore implements BlogStore {
 
     if (slugChanged) {
       const existingMarkdown = patch.markdown ?? (await readTextFile(this.markdownPath(slug)));
-      await deleteFileIfExists(this.markdownPath(slug));
       await atomicWriteFile(this.markdownPath(nextMeta.slug), existingMarkdown);
+      await deleteFileIfExists(this.markdownPath(slug));
     } else if (patch.markdown !== undefined) {
       await atomicWriteFile(this.markdownPath(slug), patch.markdown);
     }
