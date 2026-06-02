@@ -16,8 +16,8 @@ export function Logo({ size = 16, className, ...rest }: LogoProps) {
       aria-hidden={rest["aria-hidden"] ?? true}
       focusable="false"
     >
-      <circle cx="8" cy="8" r="7" fill="var(--accent)" />
-      <circle cx="8" cy="8" r="2.5" fill="var(--marine)" />
+      <circle cx="8" cy="8" r="7" fill="var(--logo-outer, var(--accent))" />
+      <circle cx="8" cy="8" r="2.5" fill="var(--logo-inner, var(--gold))" />
     </svg>
   );
 }

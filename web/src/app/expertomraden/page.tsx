@@ -31,10 +31,9 @@ export default async function ExpertAreasPage() {
             <GridCell
               key={area.id}
               href={`/expertomraden/${area.slug}`}
-              category={area.name}
               categoryColor={area.accent}
-              name={area.shortDescription}
-              description=""
+              name={area.name}
+              description={area.shortDescription}
             />
           ))}
         </div>

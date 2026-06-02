@@ -13,7 +13,7 @@ vi.mock("next/navigation", () => ({
 }));
 
 const navigation = [
-  { href: "/om-oss" as const, label: "Om byrån" },
+  { href: "/expertomraden" as const, label: "Expertområden" },
   { href: "/experter" as const, label: "Våra experter" },
   { href: "/blogg" as const, label: "Blogg" },
 ];

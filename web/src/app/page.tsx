@@ -1,6 +1,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 
+import { CTAButton } from "@/components/site/CTAButton";
 import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import { StatCounter } from "@/components/site/StatCounter";
 import { GridCell } from "@/components/site/GridCell";
@@ -20,26 +21,46 @@ export default async function HomePage() {
   return (
     <div className={styles.pageWrap}>
       <div className={styles.hero}>
-        <span className={styles.heroDecoCircle} aria-hidden />
-        <p className={styles.heroEyebrow}>{data.site.hero.eyebrow}</p>
-        <h1 className={styles.heroTitle}>{data.site.hero.title}</h1>
-        <div className={styles.heroLine} />
-        <p className={styles.heroIntro}>{data.site.hero.intro}</p>
+        <div className={styles.heroSignature}>
+          <p className={styles.heroEyebrow}>{data.site.hero.eyebrow}</p>
+          <h1 className={styles.heroTitle}>{data.site.hero.title}</h1>
+          <div className={styles.heroLine} />
+          <p className={styles.heroIntro}>{data.site.hero.intro}</p>
+          <div className={styles.heroActions}>
+            <CTAButton href="/experter" variant="secondary">
+              Utforska experter
+            </CTAButton>
+            <CTAButton href="/expertomraden" variant="outline">
+              Utforska områden
+            </CTAButton>
+          </div>
+        </div>
       </div>
 
-      <div className={styles.stats}>
-        <div>
-          <div className={styles.statValue}>
+      <div className={styles.bento}>
+        <div className={`${styles.bentoTile} ${styles.bentoTileAccent}`}>
+          <span className={styles.bentoLabel}>Experter</span>
+          <span className={styles.bentoStat}>
             <StatCounter value={data.experts.length} />
-          </div>
-          <div className={styles.statLabel}>Experter</div>
+          </span>
+          <span className={styles.bentoText}>Specialister med djup inom sina fält.</span>
         </div>
-        <div>
-          <div className={styles.statValue}>
+        <div className={styles.bentoTile}>
+          <span className={styles.bentoLabel}>Expertområden</span>
+          <span className={styles.bentoStat} style={{ color: "var(--accent)" }}>
             <StatCounter value={data.expertAreas.length} />
-          </div>
-          <div className={styles.statLabel}>Expertområden</div>
+          </span>
+          <span className={styles.bentoText}>Sammanhängande kompetensområden.</span>
         </div>
+        <Link href="/marknadsplats" className={`${styles.bentoTile} ${styles.bentoTileDark} ${styles.bentoWide}`}>
+          <span className={styles.bentoLabel}>Marknadsplats</span>
+          <span className={styles.bentoStat} style={{ fontSize: "1.6rem" }}>
+            Installera byrån som plugin
+          </span>
+          <span className={styles.bentoText}>
+            Routa uppgifter till rätt domänexpert direkt i ditt arbetsflöde →
+          </span>
+        </Link>
       </div>
 
       <RevealOnScroll as="section" className={styles.section}>
@@ -73,10 +94,9 @@ export default async function HomePage() {
             <GridCell
               key={area.id}
               href={`/expertomraden/${area.slug}`}
-              category={area.name}
               categoryColor={area.accent}
-              name={area.shortDescription}
-              description=""
+              name={area.name}
+              description={area.shortDescription}
             />
           ))}
         </div>

@@ -1,45 +1,80 @@
 :root {
-  /* Varma neutraler */
+  /* === Kalla institutionella neutraler (slate) === */
   --white: #ffffff;
-  --black: #1c1917;
-  --gray-100: #f8f6f3;
-  --gray-200: #ebe8e3;
-  --gray-300: #d6d1ca;
-  --gray-400: #a39d94;
-  --gray-500: #716b63;
-  --gray-600: #504a43;
+  --black: #0d1b2a; /* djup kall navy-ink */
+  --gray-100: #f4f6fa; /* sidbakgrund, kall off-white */
+  --gray-200: #e6eaf1;
+  --gray-300: #cdd5e0;
+  --gray-400: #93a0b4;
+  --gray-500: #64718a;
+  --gray-600: #44506a;
 
-  /* Primär — rust-orange */
-  --accent: #c26a3f;
-  --accent-light: rgba(194, 106, 63, 0.08);
-  --accent-border: rgba(194, 106, 63, 0.25);
-  --accent-hover: #a85a34;
+  /* === Primär — institutionell djupblå (lead/brand/CTA) === */
+  --accent: #1d4e74;
+  --accent-light: rgba(29, 78, 116, 0.07);
+  --accent-border: rgba(29, 78, 116, 0.22);
+  --accent-hover: #163c59;
 
-  /* Sekundär — marin */
-  --marine: #1e3a5f;
-  --marine-light: rgba(30, 58, 95, 0.08);
-  --marine-border: rgba(30, 58, 95, 0.25);
-  --marine-hover: #17304d;
+  /* === Sekundär — mycket djup navy (mörka panel/footer) === */
+  --marine: #0c2236;
+  --marine-light: rgba(12, 34, 54, 0.06);
+  --marine-border: rgba(12, 34, 54, 0.16);
+  --marine-hover: #081a2a;
 
-  /* Tertiär — guld (sparsamt) */
-  --gold: #e8b84a;
-  --gold-deep: #8a6b1e;
-  --gold-light: rgba(232, 184, 74, 0.15);
+  /* === Tertiär — teal (institutionell, sparsam) === */
+  --teal: #0e7c7b;
+  --teal-light: rgba(14, 124, 123, 0.1);
+  --teal-border: rgba(14, 124, 123, 0.25);
 
-  /* Layout */
-  --content-width: min(1120px, calc(100vw - 2rem));
-  --header-height: 56px;
+  /* === Enda varma accenten — bärnsten/guld (sparsamt) === */
+  --gold: #d4982b;
+  --gold-deep: #92651a;
+  --gold-light: rgba(212, 152, 43, 0.14);
+  --gold-border: rgba(212, 152, 43, 0.3);
+
+  /* === Radier === */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* === Skuggor (kalltonade, lagerade) === */
+  --shadow-xs: 0 1px 2px rgba(13, 27, 42, 0.05);
+  --shadow-sm: 0 2px 10px rgba(13, 27, 42, 0.05);
+  --shadow-md: 0 10px 30px rgba(13, 27, 42, 0.08);
+  --shadow-lg: 0 24px 60px rgba(13, 27, 42, 0.14);
+  --shadow-ring: inset 0 0 0 1px rgba(13, 27, 42, 0.06);
+
+  /* === Rörelse === */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+
+  /* === Gradienter / signatur === */
+  --grad-brand: linear-gradient(135deg, #1d4e74 0%, #0e7c7b 100%);
+  --grad-ink: linear-gradient(160deg, #0c2236 0%, #11314c 60%, #143a52 100%);
+  --grad-mesh:
+    radial-gradient(60% 50% at 12% 0%, rgba(29, 78, 116, 0.1) 0%, transparent 60%),
+    radial-gradient(45% 45% at 92% 8%, rgba(14, 124, 123, 0.1) 0%, transparent 55%),
+    radial-gradient(40% 40% at 80% 100%, rgba(212, 152, 43, 0.08) 0%, transparent 55%);
+
+  /* === Layout === */
+  --content-width: min(1180px, calc(100vw - 2rem));
+  --header-height: 60px;
 }
 
 @media (min-width: 640px) {
   :root {
-    --content-width: min(1120px, calc(100vw - 3rem));
+    --content-width: min(1180px, calc(100vw - 3rem));
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --header-height: 64px;
+    --header-height: 68px;
   }
 }
 
@@ -62,7 +97,8 @@ body {
   background: var(--gray-100);
   font-family: var(--font-body), -apple-system, system-ui, sans-serif;
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -74,7 +110,7 @@ body {
 }
 
 *::selection {
-  background: rgba(194, 106, 63, 0.16);
+  background: rgba(29, 78, 116, 0.16);
 }
 
 a {
@@ -88,7 +124,7 @@ h3,
 h4 {
   font-family: var(--font-body), -apple-system, system-ui, sans-serif;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 p,
