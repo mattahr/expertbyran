@@ -1,40 +1,14 @@
-import { getBlogData } from "@/lib/blog/store";
-import { getSiteData } from "@/lib/content/store";
+// web/src/app/refresh/route.ts
+import { revalidateTag } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
-  try {
-    const [siteData, blogData] = await Promise.all([
-      getSiteData({ fresh: true }),
-      getBlogData({ fresh: true }),
-    ]);
+const TAGS = ["experts", "areas", "blog"] as const;
 
-    return Response.json(
-      {
-        ok: true,
-        experts: siteData.experts.length,
-        posts: blogData.catalog.posts.length,
-        refreshedAt: new Date().toISOString(),
-      },
-      {
-        headers: {
-          "cache-control": "no-store",
-        },
-      },
-    );
-  } catch (error) {
-    return Response.json(
-      {
-        ok: false,
-        error: error instanceof Error ? error.message : "Unknown refresh error",
-      },
-      {
-        status: 500,
-        headers: {
-          "cache-control": "no-store",
-        },
-      },
-    );
-  }
+export async function GET() {
+  for (const tag of TAGS) (revalidateTag as (tag: string) => void)(tag);
+  return Response.json(
+    { ok: true, invalidated: TAGS, refreshedAt: new Date().toISOString() },
+    { headers: { "cache-control": "no-store" } },
+  );
 }
