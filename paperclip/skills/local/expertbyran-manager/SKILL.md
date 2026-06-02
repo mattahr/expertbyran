@@ -34,8 +34,7 @@ muteras via API — försök inte uppdatera den via API:et.
 | `marketplace/experts/[slug]/EXPERT.md` | Expertens identitet och metodik | Git-commit/PR |
 | `marketplace/skills/konsultchef/expert-registry.md` | Kompakt register för routing | Git-commit/PR |
 
-Följ samma validering och PR-process som tidigare för marketplace-filerna (se
-`SKILL.md.backup` för den fullständiga EXPERT.md-/registry-processen).
+Följ samma validering och PR-process som tidigare för marketplace-filerna. Den fullständiga EXPERT.md-/registry-processen finns i filen `SKILL.md.backup` i denna skills mapp.
 
 ## Arbetsflöde för en ny/ändrad expert
 
