@@ -1,8 +1,7 @@
 import type { NextRequest } from "next/server";
 
-const API_TOKEN = process.env.API_TOKEN;
-
 export function requireAuth(req: NextRequest): boolean {
+  const API_TOKEN = process.env.API_TOKEN;
   if (!API_TOKEN) {
     console.error("[api-auth] API_TOKEN environment variable not set");
     return false;
