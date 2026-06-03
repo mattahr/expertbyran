@@ -18,6 +18,7 @@ const navigation = [
   { href: "/marknadsplats", label: "Marknadsplats" },
   { href: "/blogg", label: "Blogg" },
   { href: "/radar", label: "Radar" },
+  { href: "/foresight", label: "Foresight" },
 ] as const;
 
 export async function SiteChrome({ children }: SiteChromeProps) {
