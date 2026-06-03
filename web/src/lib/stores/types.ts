@@ -1,6 +1,7 @@
 // web/src/lib/stores/types.ts
 import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import type { BlogPostEntry } from "@/lib/blog/schema";
+import type { Blip, RadarMeta } from "@/lib/radar/schema";
 
 /** Config-delen av site-data.json som förblir filförfattad (inte "content"). */
 export type SiteConfig = Pick<
@@ -35,6 +36,17 @@ export interface BlogStore {
     patch: { meta?: BlogPostEntry; markdown?: string },
   ): Promise<BlogPostEntry>;
   deletePost(slug: string): Promise<void>;
+}
+
+export interface RadarStore {
+  listRadars(): Promise<RadarMeta[]>;
+  getRadar(slug: string): Promise<{ meta: RadarMeta; blips: Blip[] } | null>;
+  createRadar(meta: RadarMeta, blips: Blip[]): Promise<RadarMeta>;
+  updateRadar(
+    slug: string,
+    patch: { meta?: RadarMeta; blips?: Blip[] },
+  ): Promise<RadarMeta>;
+  deleteRadar(slug: string): Promise<void>;
 }
 
 /** Kastas av stores när en slug redan finns. API mappar till 409. */
