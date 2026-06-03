@@ -1,0 +1,24 @@
+{
+  "foresights": [
+    {
+      "slug": "digital-suveranitet-statsforvaltning-2026-2030",
+      "title": "Digital suveränitet i svensk statsförvaltning 2026–2030",
+      "date": "2026-05-29T10:00:00.000Z",
+      "authorName": "Chefsstrateg",
+      "authorRole": "Strategisk framsyn",
+      "areaSlugs": ["digitalisering", "cyber"],
+      "excerpt": "Hur regimen för digital suveränitet utvecklas i samspelet mellan svensk soft policy, EU:s CAIDA/EUCS, värdmyndigheterna och hyperscaler-beroendet.",
+      "horizon": "2026–2030"
+    },
+    {
+      "slug": "agentiska-organisationer-utan-governance",
+      "title": "Agentiska organisationer utan governance-skikt",
+      "date": "2026-05-22T10:00:00.000Z",
+      "authorName": "Chefsstrateg",
+      "authorRole": "Strategisk framsyn",
+      "areaSlugs": ["digitalisering", "revisionsmetodik"],
+      "excerpt": "Hur snabbt agentiska arbetsflöden rör sig från pilot till drift, och vad det betyder för granskning och intern revision.",
+      "horizon": "2026–2029"
+    }
+  ]
+}
