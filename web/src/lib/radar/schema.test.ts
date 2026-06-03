@@ -58,4 +58,20 @@ describe("radar schema", () => {
   it("assertRadarIntegrity accepterar giltiga blips", () => {
     expect(() => assertRadarIntegrity(META, [BLIP])).not.toThrow();
   });
+
+  it("tillåter areaSlugs på en blip", () => {
+    const parsed = radarInputSchema.safeParse({
+      meta: META,
+      blips: [{ ...BLIP, areaSlugs: ["digitalisering", "cyber"] }],
+    });
+    expect(parsed.success).toBe(true);
+    if (parsed.success) {
+      expect(parsed.data.blips[0].areaSlugs).toEqual(["digitalisering", "cyber"]);
+    }
+  });
+
+  it("tillåter blip utan areaSlugs (valfritt)", () => {
+    const parsed = radarInputSchema.safeParse({ meta: META, blips: [BLIP] });
+    expect(parsed.success).toBe(true);
+  });
 });

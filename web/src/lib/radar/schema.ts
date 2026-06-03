@@ -50,6 +50,7 @@ export const blipSchema = z.object({
   ring: ringSchema,
   description: z.string().min(1),
   implications: z.string().min(1),
+  areaSlugs: z.array(slugSchema).optional(),
 });
 
 export const radarCatalogSchema = z
