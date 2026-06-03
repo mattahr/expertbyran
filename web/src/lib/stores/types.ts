@@ -1,6 +1,7 @@
 // web/src/lib/stores/types.ts
 import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import type { BlogPostEntry } from "@/lib/blog/schema";
+import type { ForesightEntry } from "@/lib/foresight/schema";
 import type { Blip, RadarMeta } from "@/lib/radar/schema";
 
 /** Config-delen av site-data.json som förblir filförfattad (inte "content"). */
@@ -36,6 +37,17 @@ export interface BlogStore {
     patch: { meta?: BlogPostEntry; markdown?: string },
   ): Promise<BlogPostEntry>;
   deletePost(slug: string): Promise<void>;
+}
+
+export interface ForesightStore {
+  listForesights(): Promise<ForesightEntry[]>;
+  getForesight(slug: string): Promise<{ meta: ForesightEntry; markdown: string } | null>;
+  createForesight(meta: ForesightEntry, markdown: string): Promise<ForesightEntry>;
+  updateForesight(
+    slug: string,
+    patch: { meta?: ForesightEntry; markdown?: string },
+  ): Promise<ForesightEntry>;
+  deleteForesight(slug: string): Promise<void>;
 }
 
 export interface RadarStore {
