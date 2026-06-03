@@ -5,6 +5,8 @@ import styles from "@/components/site/site.module.css";
 import { Pill } from "@/components/site/Pill";
 import { formatRadarDate, getRadarArchive } from "@/lib/radar/query";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Radar",
   description: "Expertbyråns tech-radar — teknik och regelverk som påverkar offentlig granskning.",
