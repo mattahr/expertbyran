@@ -29,7 +29,7 @@ export async function SiteChrome({ children }: SiteChromeProps) {
       <div className={styles.noticeBanner} role="note" aria-label="Information om webbplatsen">
         <div className={styles.noticeBannerInner}>
           <span className={styles.noticeBannerText}>
-            Detta är en webbplats för ett påhittat företag. Innehållet är skapat med generativ AI och ska inte tas på allvar.
+            Detta är en webbplats för ett fiktivt företag. Innehållet är skapat med generativ AI och ska inte tas på allvar. Det fiktiva företaget har ingen koppling till någon verklig myndighet.
           </span>
           <a
             href="https://paperclip.ahrens.nu"
