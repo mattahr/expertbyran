@@ -59,10 +59,15 @@ En radar = `meta` (inkl. namngivna `segments`) + en lista `blips`.
 | `ring` | **Redaktionell hållning** du sätter utifrån mognad och osäkerhet (se nedan) |
 | `description` | EN neutral mening ur `## Påstående` |
 | `implications` | EN mening ur `## Implikationer` (vad det betyder) |
+| `areaSlugs` | Expertområden (slugs) blippen rör — mappa vaultets `domain/topic` → närmaste expertområde (slå upp via `GET /api/v1/areas`). Styr vilket relaterat innehåll (foresights/bloggar) som visas i blip-panelen. |
 
 **Ringen är en bedömning, inte en mekanisk översättning.** `signal/*`-styrkan i taxonomin
 är bara startpunkt: `megatrend`/`trend` lutar mot Anta/Pröva, `strong` mot Pröva/Bevaka,
 `weak` mot Bevaka/Avvakta. Du avgör den faktiska hållningen utifrån mognad och osäkerhet.
+
+**Relaterat innehåll:** blippens `areaSlugs` är tema-nyckeln. Radarpanelen visar
+automatiskt foresights och blogginlägg som delar minst ett expertområde med blippen — så
+tagga blippen med samma områden som relevanta foresights/bloggar för att koppla ihop dem.
 
 ### Arbetsflöde — radar
 
