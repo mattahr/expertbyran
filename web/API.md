@@ -1,10 +1,10 @@
 # Expertbyrån Web API
 
-API för att hantera experter, expertområden och blogginlägg på Expertbyråns webbplats.
+API för att hantera experter, expertområden, blogginlägg och radarer på Expertbyråns webbplats.
 
 ## Översikt
 
-All data nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`) med filbaserade implementationer. API:et är den **enda skrivvägen** för innehåll (experter, expertområden, blogginlägg) — konsumenter rör aldrig filer direkt. En databasbackend kan ersätta filimplementationen i framtiden utan att konsumenterna behöver ändras.
+All data nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`) med filbaserade implementationer. API:et är den **enda skrivvägen** för innehåll (experter, expertområden, blogginlägg, radarer) — konsumenter rör aldrig filer direkt. En databasbackend kan ersätta filimplementationen i framtiden utan att konsumenterna behöver ändras.
 
 Konfigurationsdata (site/organization/marketplace) är fil- och seed-hanterad och kan inte muteras via API.
 
@@ -202,6 +202,35 @@ Kan uppdatera metadata (`post`), markdown (`markdown`), eller båda.
 #### DELETE /api/v1/blog/posts/[slug]
 Tar bort ett blogginlägg (både metadata och markdown-fil). Kräver autentisering.
 
+### Radarer
+
+En radar består av metadata (`meta`, inkl. namngivna `segments`) och en lista `blips`. Ringarna (`anta`/`prova`/`bevaka`/`avvakta`) är fasta för alla radarer; segmenten definieras per radar.
+
+#### GET /api/v1/radars
+
+Hämtar metadata för alla radarer (utan blips).
+
+**Response:**
+```json
+{ "radars": [ { "slug": "teknikradar-2026", "title": "Teknikradar 2026", "date": "2026-06-03T00:00:00.000Z", "segments": [ { "id": "ai-agenter", "name": "AI & agenter" } ] } ] }
+```
+
+#### POST /api/v1/radars
+
+Skapar en radar. Kräver autentisering. Body: `{ "meta": {…}, "blips": [ … ] }`. `201` vid skapad, `409` om slug finns, `400` vid valideringsfel (inkl. blip mot okänt segment).
+
+#### GET /api/v1/radars/[slug]
+
+Hämtar `{ "meta": {…}, "blips": [ … ] }`. `404` om radarn saknas.
+
+#### PUT /api/v1/radars/[slug]
+
+Uppdaterar metadata, blips, eller båda. Kräver autentisering. Body: `{ "meta"?: {…}, "blips"?: [ … ] }`. `404`/`409`/`400`.
+
+#### DELETE /api/v1/radars/[slug]
+
+Tar bort en radar (metadata + blips-fil). Kräver autentisering. `404` om saknas.
+
 ## Miljövariabler
 
 | Variabel    | Beskrivning             | Default           |
@@ -233,6 +262,8 @@ Data lagras i `/app/data/`:
 - `site-data.json` - Experter, områden, webbplatsinställningar
 - `blog-data.json` - Blogginlägg metadata
 - `blog/posts/*.md` - Markdown för varje blogginlägg
+- `radar-data.json` - Radarmetadata (inkl. segment)
+- `radar/*.json` - Blips för varje radar
 
 Vid första start kopieras data från `/app/seed/` till `/app/data/` om data-katalogen är tom.
 
