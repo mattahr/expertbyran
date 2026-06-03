@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type { Blip, Segment } from "@/lib/radar/schema";
 import { RINGS, RING_BY_ID, type RingId } from "@/lib/radar/rings";
+import type { RelatedItem } from "@/lib/radar/related";
 import styles from "./RadarChart.module.css";
 
 const C = 450;
@@ -69,7 +70,15 @@ function placeBlips(segments: Segment[], blips: Blip[]): PlacedBlip[] {
   return placed;
 }
 
-export function RadarChart({ segments, blips }: { segments: Segment[]; blips: Blip[] }) {
+export function RadarChart({
+  segments,
+  blips,
+  relatedByBlip,
+}: {
+  segments: Segment[];
+  blips: Blip[];
+  relatedByBlip?: Record<string, RelatedItem[]>;
+}) {
   const geom = segmentGeometry(segments.length);
   const placed = placeBlips(segments, blips);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -77,6 +86,7 @@ export function RadarChart({ segments, blips }: { segments: Segment[]; blips: Bl
   const selectedSegment = selected
     ? segments.find((segment) => segment.id === selected.segmentId)
     : null;
+  const related = selected ? relatedByBlip?.[selected.id] ?? [] : [];
 
   return (
     <div className={styles.layout}>
@@ -183,6 +193,26 @@ export function RadarChart({ segments, blips }: { segments: Segment[]; blips: Bl
               <p className={styles.dDesc}>{selected.description}</p>
               <div className={styles.dSub}>Implikationer</div>
               <p className={styles.dImpact}>{selected.implications}</p>
+              {related.length > 0 ? (
+                <>
+                  <div className={styles.dSub}>Relaterat</div>
+                  <ul className={styles.related}>
+                    {related.map((item) => (
+                      <li key={`${item.kind}-${item.slug}`}>
+                        <a
+                          className={styles.relatedLink}
+                          href={item.kind === "foresight" ? `/foresight/${item.slug}` : `/blogg/${item.slug}`}
+                        >
+                          <span className={styles.relatedKind}>
+                            {item.kind === "foresight" ? "Foresight" : "Blogg"}
+                          </span>
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
             </>
           ) : (
             <div className={styles.empty}>

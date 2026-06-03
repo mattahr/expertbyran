@@ -33,6 +33,31 @@ describe("RadarChart", () => {
     expect(screen.getByText("Varför det spelar roll för granskning.")).toBeTruthy();
   });
 
+  it("visar Relaterat-länkar för vald blip när relatedByBlip finns", () => {
+    const relatedByBlip = {
+      pqc: [
+        {
+          kind: "foresight" as const,
+          slug: "digital-suveranitet",
+          title: "Digital suveränitet",
+          date: "2026-05-29T00:00:00.000Z",
+          areaSlugs: ["cyber"],
+        },
+      ],
+    };
+    render(<RadarChart segments={SEGMENTS} blips={BLIPS} relatedByBlip={relatedByBlip} />);
+    fireEvent.click(screen.getByRole("button", { name: /Post-kvant-kryptografi/ }));
+
+    const link = screen.getByRole("link", { name: /Digital suveränitet/ });
+    expect(link.getAttribute("href")).toBe("/foresight/digital-suveranitet");
+  });
+
+  it("visar ingen Relaterat-sektion utan relaterade poster", () => {
+    render(<RadarChart segments={SEGMENTS} blips={BLIPS} />);
+    fireEvent.click(screen.getByRole("button", { name: /Post-kvant-kryptografi/ }));
+    expect(screen.queryByText("Relaterat")).toBeNull();
+  });
+
   it("renderar utan krasch för en radar med 6 segment och en blip i sjätte segmentet", () => {
     const sixSegments = [
       { id: "seg-1", name: "Segment 1" },

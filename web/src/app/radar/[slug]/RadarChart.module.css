@@ -164,3 +164,34 @@
   padding: 10px 14px;
   border-radius: 0 8px 8px 0;
 }
+.related {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.relatedLink {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--accent);
+  text-decoration: none;
+}
+.relatedLink:hover {
+  text-decoration: underline;
+}
+.relatedKind {
+  flex: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+}
