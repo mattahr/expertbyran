@@ -2,7 +2,8 @@
 import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import type { BlogPostEntry } from "@/lib/blog/schema";
 import { assertRadarIntegrity, type Blip, type RadarMeta } from "@/lib/radar/schema";
-import type { BlogStore, ConfigStore, ContentStore, RadarStore, SiteConfig } from "./types";
+import type { ForesightEntry } from "@/lib/foresight/schema";
+import type { BlogStore, ConfigStore, ContentStore, ForesightStore, RadarStore, SiteConfig } from "./types";
 import { ConflictError, NotFoundError } from "./types";
 
 export class InMemoryConfigStore implements ConfigStore {
@@ -160,5 +161,46 @@ export class InMemoryRadarStore implements RadarStore {
     if (i === -1) throw new NotFoundError(`Radar with slug ${slug} not found`);
     this.radars.splice(i, 1);
     this.blips.delete(slug);
+  }
+}
+
+export class InMemoryForesightStore implements ForesightStore {
+  private foresights: ForesightEntry[] = [];
+  private markdown = new Map<string, string>();
+
+  async listForesights() {
+    return [...this.foresights];
+  }
+  async getForesight(slug: string) {
+    const meta = this.foresights.find((f) => f.slug === slug);
+    if (!meta) return null;
+    return { meta, markdown: this.markdown.get(slug) ?? "" };
+  }
+  async createForesight(meta: ForesightEntry, markdown: string) {
+    if (this.foresights.some((f) => f.slug === meta.slug)) {
+      throw new ConflictError(`Foresight with slug ${meta.slug} already exists`);
+    }
+    this.foresights.push(meta);
+    this.markdown.set(meta.slug, markdown);
+    return meta;
+  }
+  async updateForesight(slug: string, patch: { meta?: ForesightEntry; markdown?: string }) {
+    const i = this.foresights.findIndex((f) => f.slug === slug);
+    if (i === -1) throw new NotFoundError(`Foresight with slug ${slug} not found`);
+    const nextMeta = patch.meta ?? this.foresights[i];
+    if (nextMeta.slug !== slug && this.foresights.some((f) => f.slug === nextMeta.slug)) {
+      throw new ConflictError(`Foresight with slug ${nextMeta.slug} already exists`);
+    }
+    const md = patch.markdown ?? this.markdown.get(slug) ?? "";
+    if (nextMeta.slug !== slug) this.markdown.delete(slug);
+    this.markdown.set(nextMeta.slug, md);
+    this.foresights[i] = nextMeta;
+    return nextMeta;
+  }
+  async deleteForesight(slug: string) {
+    const i = this.foresights.findIndex((f) => f.slug === slug);
+    if (i === -1) throw new NotFoundError(`Foresight with slug ${slug} not found`);
+    this.foresights.splice(i, 1);
+    this.markdown.delete(slug);
   }
 }

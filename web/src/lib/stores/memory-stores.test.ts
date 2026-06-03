@@ -8,10 +8,12 @@ import {
   InMemoryBlogStore,
   InMemoryConfigStore,
   InMemoryContentStore,
+  InMemoryForesightStore,
   InMemoryRadarStore,
 } from "./memory-stores";
 import { ConflictError, NotFoundError } from "./types";
 import type { Blip, RadarMeta } from "@/lib/radar/schema";
+import type { ForesightEntry } from "@/lib/foresight/schema";
 
 const data = siteData as unknown as SiteData;
 
@@ -112,6 +114,57 @@ describe("InMemoryRadarStore", () => {
     await store.createRadar(meta, blips);
     await expect(store.createRadar(meta, blips)).rejects.toBeInstanceOf(ConflictError);
     await expect(store.deleteRadar("finns-inte")).rejects.toBeInstanceOf(NotFoundError);
+  });
+});
+
+function foresightFixture(): ForesightEntry {
+  return {
+    slug: "digital-framtid",
+    title: "Digital framtid",
+    date: "2026-05-01T10:00:00.000Z",
+    authorName: "Chefsstrateg",
+    areaSlugs: ["digitalisering"],
+    excerpt: "En analys av digitaliseringens framtid.",
+  };
+}
+
+describe("InMemoryForesightStore", () => {
+  it("skapar och hämtar foresight", async () => {
+    const store = new InMemoryForesightStore();
+    const meta = foresightFixture();
+    await store.createForesight(meta, "# Digital framtid");
+    expect((await store.listForesights()).length).toBe(1);
+    const detail = await store.getForesight("digital-framtid");
+    expect(detail?.meta.slug).toBe("digital-framtid");
+    expect(detail?.markdown).toBe("# Digital framtid");
+  });
+
+  it("uppdaterar markdown och speglar i getForesight", async () => {
+    const store = new InMemoryForesightStore();
+    const meta = foresightFixture();
+    await store.createForesight(meta, "# Ursprung");
+    await store.updateForesight("digital-framtid", { markdown: "# Uppdaterad" });
+    expect((await store.getForesight("digital-framtid"))?.markdown).toBe("# Uppdaterad");
+  });
+
+  it("tar bort foresight och returnerar null", async () => {
+    const store = new InMemoryForesightStore();
+    const meta = foresightFixture();
+    await store.createForesight(meta, "# Digital framtid");
+    await store.deleteForesight("digital-framtid");
+    expect(await store.getForesight("digital-framtid")).toBeNull();
+  });
+
+  it("kastar ConflictError vid dubblettslug", async () => {
+    const store = new InMemoryForesightStore();
+    const meta = foresightFixture();
+    await store.createForesight(meta, "# Digital framtid");
+    await expect(store.createForesight(meta, "# Kopia")).rejects.toBeInstanceOf(ConflictError);
+  });
+
+  it("kastar NotFoundError vid okänd slug vid delete", async () => {
+    const store = new InMemoryForesightStore();
+    await expect(store.deleteForesight("finns-inte")).rejects.toBeInstanceOf(NotFoundError);
   });
 });
 

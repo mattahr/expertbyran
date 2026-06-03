@@ -1,14 +1,16 @@
 // web/src/lib/stores/index.ts
-import type { BlogStore, ConfigStore, ContentStore, RadarStore } from "./types";
+import type { BlogStore, ConfigStore, ContentStore, ForesightStore, RadarStore } from "./types";
 import { FileConfigStore } from "./file-config-store";
 import { FileContentStore } from "./file-content-store";
 import { FileBlogStore } from "./file-blog-store";
+import { FileForesightStore } from "./file-foresight-store";
 import { FileRadarStore } from "./file-radar-store";
 
 type Stores = {
   config: ConfigStore;
   content: ContentStore;
   blog: BlogStore;
+  foresight: ForesightStore;
   radar: RadarStore;
 };
 
@@ -21,6 +23,7 @@ function getDefaults(): Stores {
       config: new FileConfigStore(),
       content: new FileContentStore(),
       blog: new FileBlogStore(),
+      foresight: new FileForesightStore(),
       radar: new FileRadarStore(),
     };
   }
@@ -35,6 +38,9 @@ export function getContentStore(): ContentStore {
 }
 export function getBlogStore(): BlogStore {
   return override?.blog ?? getDefaults().blog;
+}
+export function getForesightStore(): ForesightStore {
+  return override?.foresight ?? getDefaults().foresight;
 }
 export function getRadarStore(): RadarStore {
   return override?.radar ?? getDefaults().radar;
