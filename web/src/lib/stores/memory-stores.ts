@@ -1,7 +1,8 @@
 // web/src/lib/stores/memory-stores.ts
 import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import type { BlogPostEntry } from "@/lib/blog/schema";
-import type { BlogStore, ConfigStore, ContentStore, SiteConfig } from "./types";
+import { assertRadarIntegrity, type Blip, type RadarMeta } from "@/lib/radar/schema";
+import type { BlogStore, ConfigStore, ContentStore, RadarStore, SiteConfig } from "./types";
 import { ConflictError, NotFoundError } from "./types";
 
 export class InMemoryConfigStore implements ConfigStore {
@@ -116,5 +117,48 @@ export class InMemoryBlogStore implements BlogStore {
     if (i === -1) throw new NotFoundError(`Blog post with slug ${slug} not found`);
     this.posts.splice(i, 1);
     this.markdown.delete(slug);
+  }
+}
+
+export class InMemoryRadarStore implements RadarStore {
+  private radars: RadarMeta[] = [];
+  private blips = new Map<string, Blip[]>();
+
+  async listRadars() {
+    return [...this.radars];
+  }
+  async getRadar(slug: string) {
+    const meta = this.radars.find((r) => r.slug === slug);
+    if (!meta) return null;
+    return { meta, blips: [...(this.blips.get(slug) ?? [])] };
+  }
+  async createRadar(meta: RadarMeta, blips: Blip[]) {
+    assertRadarIntegrity(meta, blips);
+    if (this.radars.some((r) => r.slug === meta.slug)) {
+      throw new ConflictError(`Radar with slug ${meta.slug} already exists`);
+    }
+    this.radars.push(meta);
+    this.blips.set(meta.slug, blips);
+    return meta;
+  }
+  async updateRadar(slug: string, patch: { meta?: RadarMeta; blips?: Blip[] }) {
+    const i = this.radars.findIndex((r) => r.slug === slug);
+    if (i === -1) throw new NotFoundError(`Radar with slug ${slug} not found`);
+    const nextMeta = patch.meta ?? this.radars[i];
+    const nextBlips = patch.blips ?? this.blips.get(slug) ?? [];
+    assertRadarIntegrity(nextMeta, nextBlips);
+    if (nextMeta.slug !== slug && this.radars.some((r) => r.slug === nextMeta.slug)) {
+      throw new ConflictError(`Radar with slug ${nextMeta.slug} already exists`);
+    }
+    if (nextMeta.slug !== slug) this.blips.delete(slug);
+    this.blips.set(nextMeta.slug, nextBlips);
+    this.radars[i] = nextMeta;
+    return nextMeta;
+  }
+  async deleteRadar(slug: string) {
+    const i = this.radars.findIndex((r) => r.slug === slug);
+    if (i === -1) throw new NotFoundError(`Radar with slug ${slug} not found`);
+    this.radars.splice(i, 1);
+    this.blips.delete(slug);
   }
 }

@@ -8,10 +8,37 @@ import {
   InMemoryBlogStore,
   InMemoryConfigStore,
   InMemoryContentStore,
+  InMemoryRadarStore,
 } from "./memory-stores";
 import { ConflictError, NotFoundError } from "./types";
+import type { Blip, RadarMeta } from "@/lib/radar/schema";
 
 const data = siteData as unknown as SiteData;
+
+function radarFixture(): { meta: RadarMeta; blips: Blip[] } {
+  const meta: RadarMeta = {
+    slug: "teknikradar",
+    title: "Teknikradar",
+    date: "2026-06-03T00:00:00.000Z",
+    segments: [
+      { id: "verktyg", name: "Verktyg" },
+      { id: "metoder", name: "Metoder" },
+      { id: "plattformar", name: "Plattformar" },
+      { id: "tekniker", name: "Tekniker" },
+    ],
+  };
+  const blips: Blip[] = [
+    {
+      id: "ai-granskning",
+      name: "AI-granskning",
+      segmentId: "metoder",
+      ring: "prova" as const,
+      description: "Maskinassisterad granskning av underlag.",
+      implications: "Snabbare iteration, kräver kvalitetskontroll.",
+    },
+  ];
+  return { meta, blips };
+}
 
 describe("InMemoryContentStore", () => {
   it("speglar fil-storens kontrakt", async () => {
@@ -37,6 +64,54 @@ describe("InMemoryBlogStore", () => {
       "# X",
     );
     expect((await store.getPost("x"))?.markdown).toBe("# X");
+  });
+});
+
+describe("InMemoryRadarStore", () => {
+  it("skapar och hämtar radar", async () => {
+    const store = new InMemoryRadarStore();
+    const { meta, blips } = radarFixture();
+    await store.createRadar(meta, blips);
+    expect((await store.listRadars()).length).toBe(1);
+    const detail = await store.getRadar("teknikradar");
+    expect(detail?.meta.slug).toBe("teknikradar");
+    expect(detail?.blips).toHaveLength(1);
+    expect(detail?.blips[0].segmentId).toBe("metoder");
+  });
+
+  it("uppdaterar blips och speglar i getRadar", async () => {
+    const store = new InMemoryRadarStore();
+    const { meta, blips } = radarFixture();
+    await store.createRadar(meta, blips);
+    const nextBlips: Blip[] = [
+      ...blips,
+      {
+        id: "ny-plattform",
+        name: "Ny plattform",
+        segmentId: "plattformar",
+        ring: "prova" as const,
+        description: "Pilot av ny plattform.",
+        implications: "Bygg kompetens stegvis.",
+      },
+    ];
+    await store.updateRadar("teknikradar", { blips: nextBlips });
+    expect((await store.getRadar("teknikradar"))?.blips).toHaveLength(2);
+  });
+
+  it("tar bort radar", async () => {
+    const store = new InMemoryRadarStore();
+    const { meta, blips } = radarFixture();
+    await store.createRadar(meta, blips);
+    await store.deleteRadar("teknikradar");
+    expect(await store.getRadar("teknikradar")).toBeNull();
+  });
+
+  it("kastar ConflictError vid dubblettslug och NotFoundError vid okänd slug", async () => {
+    const store = new InMemoryRadarStore();
+    const { meta, blips } = radarFixture();
+    await store.createRadar(meta, blips);
+    await expect(store.createRadar(meta, blips)).rejects.toBeInstanceOf(ConflictError);
+    await expect(store.deleteRadar("finns-inte")).rejects.toBeInstanceOf(NotFoundError);
   });
 });
 
