@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import styles from "@/components/site/site.module.css";
 import { getRadar } from "@/lib/radar/query";
+import { getRelatedByBlips } from "@/lib/radar/related";
 import { RadarChart } from "./RadarChart";
 
 type RadarPageProps = {
@@ -21,6 +22,8 @@ export default async function RadarDetailPage({ params }: RadarPageProps) {
   const radar = await getRadar(slug);
   if (!radar) notFound();
 
+  const relatedByBlip = await getRelatedByBlips(radar.blips);
+
   return (
     <div className={styles.pageWrap}>
       <div className={styles.hero}>
@@ -31,7 +34,7 @@ export default async function RadarDetailPage({ params }: RadarPageProps) {
       </div>
 
       <section className={styles.section}>
-        <RadarChart segments={radar.meta.segments} blips={radar.blips} />
+        <RadarChart segments={radar.meta.segments} blips={radar.blips} relatedByBlip={relatedByBlip} />
       </section>
     </div>
   );
