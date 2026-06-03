@@ -6,7 +6,8 @@
       "segmentId": "ai-agenter",
       "ring": "anta",
       "description": "Anthropic och OpenAI tar bort enterprise-rabatter och höjer priset på frontier-modeller, samtidigt som långa inferenskontrakt binder upp kapacitet.",
-      "implications": "Statliga AI-investeringar dimensionerade under rabattperioden möter en steghöjning i driftkostnad vid kontraktsförnyelse — granskningsbart redan 2026."
+      "implications": "Statliga AI-investeringar dimensionerade under rabattperioden möter en steghöjning i driftkostnad vid kontraktsförnyelse — granskningsbart redan 2026.",
+      "areaSlugs": ["digitalisering"]
     },
     {
       "id": "agentisk-ai-energi",
@@ -14,7 +15,8 @@
       "segmentId": "ai-agenter",
       "ring": "prova",
       "description": "Agentiska arbetsflöden skalar superlinjärt: orkestrering mångdubblar antalet anrop och energin per slutförd uppgift är flera gånger högre än en linjär baslinje.",
-      "implications": "Driftkalkyler för AI-verkstäder och Copilot byggda på pris per token underskattar systematiskt verklig resursåtgång."
+      "implications": "Driftkalkyler för AI-verkstäder och Copilot byggda på pris per token underskattar systematiskt verklig resursåtgång.",
+      "areaSlugs": ["digitalisering", "miljo-klimat"]
     },
     {
       "id": "ai-arbetsmarknad",
@@ -22,7 +24,8 @@
       "segmentId": "ai-agenter",
       "ring": "bevaka",
       "description": "Forskning visar relativt sjunkande sysselsättning för de yngsta i AI-exponerade yrken, medan makrodata ännu inte visar någon bred sysselsättningsförsämring.",
-      "implications": "Effekten är koncentrerad till instegsjobb snarare än bred utträngning — relevant för hur AI-investeringar utvärderas."
+      "implications": "Effekten är koncentrerad till instegsjobb snarare än bred utträngning — relevant för hur AI-investeringar utvärderas.",
+      "areaSlugs": ["arbetsmarknad", "digitalisering"]
     },
     {
       "id": "statliga-bolag-agentisk-ai",
@@ -30,7 +33,8 @@
       "segmentId": "ai-agenter",
       "ring": "avvakta",
       "description": "Statligt ägda bolag som Vattenfall och PostNord rekryterar agent- och MCP-kompetens, men inga storskaliga produktionsflöden är ännu dokumenterade.",
-      "implications": "Agentiska arbetsflöden kan tas i drift 2026–2027 innan styrning och kontroller etablerats."
+      "implications": "Agentiska arbetsflöden kan tas i drift 2026–2027 innan styrning och kontroller etablerats.",
+      "areaSlugs": ["digitalisering"]
     },
     {
       "id": "dora-tillsyn",
@@ -38,7 +42,8 @@
       "segmentId": "infra-suveranitet",
       "ring": "anta",
       "description": "DORA är i kraft och EU utser kritiska IKT-tredjepartsleverantörer för direkt tillsyn, vilket lägger ett extra tillsynsskikt på systemviktiga finansaktörer.",
-      "implications": "Hur svenska aktörer hanterar dubbel tillsyn och koncentrationsrisk mot stora molnleverantörer blir granskningsbart."
+      "implications": "Hur svenska aktörer hanterar dubbel tillsyn och koncentrationsrisk mot stora molnleverantörer blir granskningsbart.",
+      "areaSlugs": ["offentliga-finanser", "cyber"]
     },
     {
       "id": "stablecoin-cbdc",
@@ -46,7 +51,8 @@
       "segmentId": "infra-suveranitet",
       "ring": "bevaka",
       "description": "MiCA-reglerade bankstablecoins, ECB:s digitala euro-pilot och en svensk e-krona-debatt pekar mot flera konkurrerande digitala betalningsinstrument inom några år.",
-      "implications": "Tillsynsmyndigheter möter samtidiga utmaningar kring konkurrerande digitala valutor från både privat sektor och centralbank."
+      "implications": "Tillsynsmyndigheter möter samtidiga utmaningar kring konkurrerande digitala valutor från både privat sektor och centralbank.",
+      "areaSlugs": ["offentliga-finanser"]
     },
     {
       "id": "hyperscaler-beroende-teams",
@@ -54,7 +60,8 @@
       "segmentId": "infra-suveranitet",
       "ring": "bevaka",
       "description": "Försäkringskassan öppnar för att vara värdmyndighet för Microsoft Teams i statlig IT-drift, samtidigt som regeringens molnpolicy pekar i motsatt riktning.",
-      "implications": "Samordnad IT-drift som reform kan urholkas av enskilda värdmyndigheters molnval när styrningen saknar krav."
+      "implications": "Samordnad IT-drift som reform kan urholkas av enskilda värdmyndigheters molnval när styrningen saknar krav.",
+      "areaSlugs": ["digitalisering", "cyber"]
     },
     {
       "id": "pqc-migration",
@@ -62,7 +69,8 @@
       "segmentId": "sakerhet-krypto",
       "ring": "prova",
       "description": "FRA anger fem år för myndighetssektorn och tio år för samhället för migration till post-kvant-kryptografi, medan EU, USA och UK publicerar konvergenta tidslinjer mot 2030–2035.",
-      "implications": "Granskningsobjekt får explicita, granskningsbara PQC-migrationskrav redan 2027 — parallellt med NIS2 och AI Act."
+      "implications": "Granskningsobjekt får explicita, granskningsbara PQC-migrationskrav redan 2027 — parallellt med NIS2 och AI Act.",
+      "areaSlugs": ["cyber"]
     },
     {
       "id": "ai-sarbarhetsupptackt",
@@ -70,7 +78,8 @@
       "segmentId": "sakerhet-krypto",
       "ring": "bevaka",
       "description": "Frontier-AI kortar tiden från upptäckt sårbarhet till körbar exploatering från veckor till timmar, medan automatiserad åtgärdshantering ännu inte finns i jämförbar skala.",
-      "implications": "Statliga IT-system med äldre arkitektur möter en växande asymmetri där upptäckt accelererar men åtgärdscykeln förblir manuell."
+      "implications": "Statliga IT-system med äldre arkitektur möter en växande asymmetri där upptäckt accelererar men åtgärdscykeln förblir manuell.",
+      "areaSlugs": ["cyber"]
     },
     {
       "id": "agentinfra-angreppsyta",
@@ -78,7 +87,8 @@
       "segmentId": "sakerhet-krypto",
       "ring": "bevaka",
       "description": "Flera oberoende källor dokumenterar systematiska angreppsytor i agentiska AI-systems metadata-, skill- och minneslager, med skadliga payloads påträffade i publika skill-kataloger.",
-      "implications": "Myndigheters utrullning av AI-agenter och Copilot skapar angreppsytan innan kontroller finns på plats; klassisk kodgranskning missar attacken."
+      "implications": "Myndigheters utrullning av AI-agenter och Copilot skapar angreppsytan innan kontroller finns på plats; klassisk kodgranskning missar attacken.",
+      "areaSlugs": ["cyber", "digitalisering"]
     },
     {
       "id": "eu-compliance-stack",
@@ -86,7 +96,8 @@
       "segmentId": "styrning-tillsyn",
       "ring": "prova",
       "description": "MiCA, AI Act och lagstiftningen om digital euro passerar centrala milstolpar under 2026–2027 med sammanflätade efterlevnadsdatum.",
-      "implications": "Granskningsobjekt befinner sig i en exekveringsriskmiljö med tydlig tidsaxel — en klassisk effektivitetsrevisionssituation."
+      "implications": "Granskningsobjekt befinner sig i en exekveringsriskmiljö med tydlig tidsaxel — en klassisk effektivitetsrevisionssituation.",
+      "areaSlugs": ["digitalisering", "rattsvasende"]
     },
     {
       "id": "svensk-implementeringsaxel",
@@ -94,7 +105,8 @@
       "segmentId": "styrning-tillsyn",
       "ring": "prova",
       "description": "NIS2, AI Act:s högriskregler, sammanslagningen till Digitaliseringsmyndigheten och CER-direktivet infaller inom samma tolvmånadersfönster.",
-      "implications": "Granskningsobjekt möter samtidiga efterlevnadsdatum, myndighetsövergång och ny tillsynsstruktur — hög exekveringsrisk."
+      "implications": "Granskningsobjekt möter samtidiga efterlevnadsdatum, myndighetsövergång och ny tillsynsstruktur — hög exekveringsrisk.",
+      "areaSlugs": ["digitalisering", "cyber"]
     },
     {
       "id": "oberoende-ai-granskning",
@@ -102,7 +114,8 @@
       "segmentId": "styrning-tillsyn",
       "ring": "bevaka",
       "description": "ESO, ISF, DIGG och Statskontoret rapporterar samstämmigt att AI används begränsat i förvaltningsbeslut, att rättsläget är oklart och att produktivitetseffekter saknar systematisk mätning.",
-      "implications": "Ett konvergerande oberoende underlag växer fram för att granska regeringens AI-styrning."
+      "implications": "Ett konvergerande oberoende underlag växer fram för att granska regeringens AI-styrning.",
+      "areaSlugs": ["revisionsmetodik", "digitalisering"]
     },
     {
       "id": "epistemisk-klyfta-revisionsbevis",
@@ -110,7 +123,8 @@
       "segmentId": "styrning-tillsyn",
       "ring": "bevaka",
       "description": "Branschföreträdare framhåller att \"låter rimligt\" inte är revisionsbevis, samtidigt som de stora revisionsbyråerna automatiserar AI-granskning snabbare än svensk praxis.",
-      "implications": "Ett normgap riskerar uppstå där privat och offentlig revision hanterar AI-baserat bevis olika."
+      "implications": "Ett normgap riskerar uppstå där privat och offentlig revision hanterar AI-baserat bevis olika.",
+      "areaSlugs": ["revisionsmetodik"]
     },
     {
       "id": "csrd-csddd-inbromsning",
@@ -118,7 +132,8 @@
       "segmentId": "styrning-tillsyn",
       "ring": "bevaka",
       "description": "EU:s Omnibus- och \"stop-the-clock\"-beslut höjer trösklarna för hållbarhetsrapportering kraftigt och skjuter upp senare rapporteringsvågor.",
-      "implications": "Statliga bolags rapporteringsbörda omkalibreras medan de största aktörerna fortsatt omfattas — en granskningsbar ändring av ambitionsnivån."
+      "implications": "Statliga bolags rapporteringsbörda omkalibreras medan de största aktörerna fortsatt omfattas — en granskningsbar ändring av ambitionsnivån.",
+      "areaSlugs": ["hallbarhet-esg"]
     },
     {
       "id": "algoritmrevision-profession",
@@ -126,7 +141,8 @@
       "segmentId": "styrning-tillsyn",
       "ring": "bevaka",
       "description": "Norge, Finland, Tyskland, Nederländerna och Storbritannien publicerar ett gemensamt INTOSAI-whitepaper om revision av maskininlärning, utan svenskt deltagande.",
-      "implications": "Frånvaro från den internationella standardsättningen riskerar ett kompetens- och inflytandegap som är svårt att reparera i efterhand."
+      "implications": "Frånvaro från den internationella standardsättningen riskerar ett kompetens- och inflytandegap som är svårt att reparera i efterhand.",
+      "areaSlugs": ["revisionsmetodik"]
     }
   ]
 }
