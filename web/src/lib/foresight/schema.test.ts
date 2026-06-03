@@ -23,7 +23,8 @@ describe("foresight schema", () => {
   });
 
   it("kräver författarnamn eller -slug", () => {
-    const { authorName: _omit, ...withoutAuthor } = ENTRY;
+    const withoutAuthor = { ...ENTRY };
+    delete (withoutAuthor as Partial<ForesightEntry>).authorName;
     expect(() => parseForesightCatalog({ foresights: [withoutAuthor] }, "test")).toThrow();
   });
 
@@ -32,7 +33,8 @@ describe("foresight schema", () => {
   });
 
   it("tillåter utelämnad horizon", () => {
-    const { horizon: _omit, ...noHorizon } = ENTRY;
+    const noHorizon = { ...ENTRY };
+    delete (noHorizon as Partial<ForesightEntry>).horizon;
     expect(() => parseForesightCatalog({ foresights: [noHorizon] }, "test")).not.toThrow();
   });
 });
