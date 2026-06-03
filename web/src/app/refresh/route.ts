@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 
 export const dynamic = "force-dynamic";
 
-const TAGS = ["experts", "areas", "blog"] as const;
+const TAGS = ["experts", "areas", "blog", "radar"] as const;
 
 export async function GET() {
   for (const tag of TAGS) revalidateTag(tag, "max");
