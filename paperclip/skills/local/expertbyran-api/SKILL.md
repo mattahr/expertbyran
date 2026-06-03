@@ -1,6 +1,6 @@
 ---
 name: expertbyran-api
-description: "Hur Expertbyråns webb-API fungerar och används — den enda källan för att läsa och skriva innehåll (experter, expertområden, blogginlägg) via REST. Använd denna skill när du ska publicera eller uppdatera innehåll på Expertbyråns webbplats via API, slå upp endpoints, payloads, autentisering (WEB_API_URL/WEB_API_TOKEN) eller felkoder. Andra skills hänvisar hit för API-mekaniken."
+description: "Hur Expertbyråns webb-API fungerar och används — den enda källan för att läsa och skriva innehåll (experter, expertområden, blogginlägg, foresights) via REST. Använd denna skill när du ska publicera eller uppdatera innehåll på Expertbyråns webbplats via API, slå upp endpoints, payloads, autentisering (WEB_API_URL/WEB_API_TOKEN) eller felkoder. Andra skills hänvisar hit för API-mekaniken."
 ---
 
 # Expertbyrån API — referens
@@ -9,7 +9,7 @@ Detta är den **enda källan** för hur Expertbyråns webb-API fungerar. Andra s
 hit ("läs mer i skill `expertbyran-api`") i stället för att duplicera API-mekaniken.
 
 API:et är **enda sättet** att mutera innehåll (experter, expertområden, blogginlägg,
-radarer). Konfigurationsdata (site/organisation/marketplace) är seed-/fil-författad och kan
+radarer, foresights). Konfigurationsdata (site/organisation/marketplace) är seed-/fil-författad och kan
 **inte** muteras via API.
 
 ## Konfiguration
@@ -62,14 +62,24 @@ per radar.
   (metadata, blips, eller båda). `404`/`409`.
 - `DELETE /api/v1/radars/{slug}` (auth) — `404` om saknas.
 
+### Foresights
+En foresight är en strategisk framsynsanalys: metadata + markdown, med ett extra `horizon`-fält.
+- `GET /api/v1/foresights` → `{ "foresights": [ …metadata ] }`
+- `POST /api/v1/foresights` (auth) — body: `{ "foresight": {…metadata}, "markdown": "…" }`.
+  `201` / `409` / `400`.
+- `GET /api/v1/foresights/{slug}` → `{ "foresight": {…}, "markdown": "…" }`, `404` om saknas.
+- `PUT /api/v1/foresights/{slug}` (auth) — body: `{ "foresight"?: {…}, "markdown"?: "…" }`
+  (metadata, markdown, eller båda). `404`/`409`.
+- `DELETE /api/v1/foresights/{slug}` (auth) — `404` om saknas.
+
 ### Sammansatt snapshot & cache
 - `GET /api/v1/site-data` → hela den sammansatta snapshoten (config + experter + områden).
   **Läs-only — ingen PUT.**
-- `GET /refresh` → invaliderar cachetaggarna (`experts`, `areas`, `blog`, `radar`). Behövs
+- `GET /refresh` → invaliderar cachetaggarna (`experts`, `areas`, `blog`, `radar`, `foresight`). Behövs
   sällan, eftersom skrivanrop invaliderar cachen automatiskt.
 
-Fältscheman för Expert, ExpertArea, BlogPostEntry och Radar (RadarMeta + Blip) finns i
-`references/payloads.md`.
+Fältscheman för Expert, ExpertArea, BlogPostEntry, Radar (RadarMeta + Blip) och ForesightEntry
+finns i `references/payloads.md`.
 
 ## Exempel (curl)
 
@@ -138,6 +148,26 @@ curl -X POST "$WEB_API_URL/api/v1/radars" \
         "implications": "Granskningsobjekt får explicita PQC-migrationskrav redan 2027."
       }
     ]
+  }'
+```
+
+Skapa en foresight:
+```bash
+curl -X POST "$WEB_API_URL/api/v1/foresights" \
+  -H "Authorization: Bearer $WEB_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "foresight": {
+      "slug": "ai-i-offentlig-sektor-2030",
+      "title": "AI i offentlig sektor 2030",
+      "date": "2026-06-03T00:00:00.000Z",
+      "horizon": "2026–2030",
+      "authorName": "Effektivitetsrevisor",
+      "authorRole": "Analytiker, Expertbyrån",
+      "areaSlugs": ["digitalisering"],
+      "excerpt": "En framsynsanalys av hur AI förändrar offentlig förvaltning fram till 2030."
+    },
+    "markdown": "## Kärnfråga\n\nHur påverkar AI offentliga myndigheters förmåga att fatta välgrundade beslut?\n\n## Scenarier\n\n…\n\n## Implikationer\n\n…"
   }'
 ```
 

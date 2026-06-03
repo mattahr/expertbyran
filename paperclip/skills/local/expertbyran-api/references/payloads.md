@@ -97,3 +97,22 @@ En radar skickas som `{ meta, blips }`. `meta` beskriver radaren och dess segmen
 
 Ringarna är desamma för alla radarer och definieras inte per radar. Inre ring = `anta`,
 yttre = `avvakta`.
+
+## Foresight
+
+### ForesightEntry (metadata)
+
+| Fält | Typ | Not |
+|------|-----|-----|
+| `slug` | string (slug) | unikt |
+| `title` | string | |
+| `date` | ISO 8601 | |
+| `authorSlug` | string (slug), valfri | om den matchar en expert länkas foresighten till expertsidan |
+| `authorName` | string, valfri | visningsnamn; krävs när `authorSlug` saknas/inte matchar |
+| `authorRole` | string, valfri | fri roll-text |
+| `areaSlugs` | string[] (slug) ≥ 1 | |
+| `excerpt` | string | sammanfattning för listningen |
+| `horizon` | string, valfri | t.ex. `"2026–2030"` |
+
+**Författarregel:** minst en av `authorSlug` och `authorName` måste anges. Markdown skickas
+separat (fältet `markdown` i POST/PUT-body), inte i metadata-objektet.
