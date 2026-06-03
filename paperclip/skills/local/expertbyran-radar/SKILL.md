@@ -11,8 +11,8 @@ speglar inte vaultet automatiskt, utan ett **urval du gör med omdöme**.
 
 ## Källa: foresight-vaultet
 
-Signalerna finns i Expertbyråns Obsidian-vault i din working folder ("Tech Foresight").
-Du **läser** därifrån, du skriver aldrig dit. Relevant struktur:
+Signalerna finns i Expertbyråns Tech Foresight-vault i din working folder för projektet ("Tech Foresight").
+Du **läser** därifrån, du skriver aldrig dit vid publicering. Relevant struktur:
 
 - `30 Signals/` — signalnoter (primära blip-kandidater).
 - `40 Foresights/` — syntetiserade narrativ (kontext, tidshorisont).

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teknikradar – Riksrevisionen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Spline+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#0e1217;
+    --panel:#161c24;
+    --panel-2:#1d2530;
+    --ink:#eef2f6;
+    --muted:#9aa7b4;
+    --line:#2a3340;
+    --gold:#c9a24b;
+    /* ring colours */
+    --r1:#1f6f5c;   /* Anta / Etablerad  */
+    --r2:#2f6f9e;   /* Pröva */
+    --r3:#9e7a2f;   /* Bevaka */
+    --r4:#7a4150;   /* Avvakta */
+    /* segment accents */
+    --s1:#5fb3a1;   /* AI & dataanalys */
+    --s2:#7aa8d4;   /* Data, infra & moln */
+    --s3:#d6b25e;   /* Säkerhet & tillit */
+    --s4:#c98aa0;   /* Förtroende & tillsyn */
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:
+     radial-gradient(1200px 800px at 80% -10%, rgba(201,162,75,.08), transparent 60%),
+     radial-gradient(900px 700px at -10% 110%, rgba(95,179,161,.06), transparent 55%),
+     var(--bg);
+    color:var(--ink);
+    font-family:'Spline Sans',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body{min-height:100vh;padding:40px 28px 80px}
+
+  .wrap{max-width:1320px;margin:0 auto}
+
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;
+    flex-wrap:wrap;gap:20px;border-bottom:1px solid var(--line);padding-bottom:24px}
+  .brand{display:flex;flex-direction:column;gap:6px}
+  .kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(34px,5vw,56px);
+    line-height:1;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:15px;max-width:520px;line-height:1.5;margin-top:8px}
+  .meta{text-align:right;color:var(--muted);font-size:12.5px;line-height:1.7}
+  .meta b{color:var(--ink);font-weight:600}
+
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:34px;margin-top:34px;align-items:start}
+  @media(max-width:1080px){.layout{grid-template-columns:1fr}}
+
+  .radar-card{background:linear-gradient(180deg,var(--panel),#12171e);
+    border:1px solid var(--line);border-radius:22px;padding:18px;position:relative;overflow:hidden}
+  .radar-card::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(600px 400px at 50% 8%,rgba(201,162,75,.05),transparent 60%);pointer-events:none}
+  svg{width:100%;height:auto;display:block;position:relative;z-index:1}
+
+  .ring-label{font-family:'Spline Sans';font-size:11px;font-weight:600;
+    fill:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  .seg-label{font-family:'Fraunces';font-size:15px;font-weight:600;letter-spacing:.02em}
+  .blip{cursor:pointer;transition:transform .18s ease}
+  .blip text{font-size:11px;font-weight:600;fill:#0e1217;pointer-events:none}
+  .blip circle{stroke:rgba(255,255,255,.85);stroke-width:1.4;transition:r .18s ease, filter .18s ease}
+  .blip:hover circle{filter:drop-shadow(0 0 10px rgba(255,255,255,.45))}
+  .blip.active circle{stroke:#fff;stroke-width:2.4}
+
+  /* side panel */
+  .side{position:sticky;top:24px;display:flex;flex-direction:column;gap:18px}
+  .legend{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+  .legend h3{font-family:'Fraunces';font-weight:600;font-size:18px;margin-bottom:14px}
+  .leg-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin:9px 0}
+  .dot{width:13px;height:13px;border-radius:50%;flex:none;border:1px solid rgba(255,255,255,.6)}
+  .leg-row b{color:var(--ink);font-weight:600}
+  .seg-key{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:14px;
+    padding-top:14px;border-top:1px solid var(--line)}
+  .seg-key .leg-row{margin:4px 0;font-size:12.5px}
+  .sq{width:11px;height:11px;border-radius:3px;flex:none}
+
+  .detail{background:linear-gradient(180deg,var(--panel-2),#171d26);
+    border:1px solid var(--line);border-radius:18px;padding:22px;min-height:280px}
+  .detail .empty{color:var(--muted);font-size:14px;line-height:1.6}
+  .detail .empty span{display:block;font-family:'Fraunces';font-size:20px;color:var(--ink);margin-bottom:8px}
+  .d-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;
+    background:rgba(255,255,255,.05);border:1px solid var(--line)}
+  .d-tag .dot{width:9px;height:9px}
+  .detail h2{font-family:'Fraunces';font-weight:600;font-size:24px;line-height:1.1;margin:14px 0 6px}
+  .d-seg{font-size:12.5px;color:var(--gold);letter-spacing:.06em;margin-bottom:14px}
+  .d-desc{font-size:14px;line-height:1.65;color:#d4dbe2}
+  .d-sub{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);margin:18px 0 8px}
+  .d-impact{font-size:13.5px;line-height:1.6;color:#cfd7df;
+    background:rgba(95,179,161,.07);border-left:2px solid var(--s1);padding:10px 14px;border-radius:0 8px 8px 0}
+  .laws{display:flex;flex-wrap:wrap;gap:7px}
+  .law{font-size:12px;padding:6px 11px;border-radius:8px;background:rgba(201,162,75,.1);
+    border:1px solid rgba(201,162,75,.28);color:#e6d4a4;line-height:1.3}
+
+  footer{margin-top:46px;border-top:1px solid var(--line);padding-top:18px;
+    color:var(--muted);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <span class="kicker">Riksrevisionen · Datalabbet</span>
+      <h1>Teknikradar 2026</h1>
+      <p class="sub">Framväxande och etablerade teknologier som påverkar Riksrevisionens verksamhet – som granskningsverktyg och som föremål för granskning. Varje teknik är kopplad till relevant lagstiftning och regelverk.</p>
+    </div>
+    <div class="meta">
+      <div>Version <b>1.0</b> · Juni 2026</div>
+      <div><b>32</b> teknologier · <b>4</b> ringar · <b>4</b> områden</div>
+      <div>Klicka på en punkt för detaljer</div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="radar-card">
+      <svg id="radar" viewBox="0 0 900 900" aria-label="Teknikradar"></svg>
+    </div>
+
+    <aside class="side">
+      <div class="legend">
+        <h3>Beredskapsgrad</h3>
+        <div class="leg-row"><span class="dot" style="background:var(--r1)"></span><b>Anta / Etablerad</b>&nbsp;– i drift, hög mognad</div>
+        <div class="leg-row"><span class="dot" style="background:var(--r2)"></span><b>Pröva</b>&nbsp;– pilot, bygg kompetens</div>
+        <div class="leg-row"><span class="dot" style="background:var(--r3)"></span><b>Bevaka</b>&nbsp;– följ utvecklingen aktivt</div>
+        <div class="leg-row"><span class="dot" style="background:var(--r4)"></span><b>Avvakta</b>&nbsp;– omogen / hög osäkerhet</div>
+        <div class="seg-key">
+          <div class="leg-row"><span class="sq" style="background:var(--s1)"></span>AI &amp; dataanalys</div>
+          <div class="leg-row"><span class="sq" style="background:var(--s2)"></span>Data, infra &amp; moln</div>
+          <div class="leg-row"><span class="sq" style="background:var(--s3)"></span>Säkerhet &amp; integritet</div>
+          <div class="leg-row"><span class="sq" style="background:var(--s4)"></span>Förtroende &amp; tillsyn</div>
+        </div>
+      </div>
+
+      <div class="detail" id="detail">
+        <div class="empty">
+          <span>Välj en teknologi</span>
+          Klicka på valfri punkt i radarn för att se bedömning, påverkan på Riksrevisionens verksamhet och kopplade lagar och regler.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <span>Källor: Gartner Emerging Technologies, EU-rättsakter, svensk förvaltningsrätt, INTOSAI/OECD. Bedömningar är illustrativa.</span>
+    <span>Riksrevisionen · Teknikradar</span>
+  </footer>
+</div>
+
+<script>
+/* ---------- DATA ----------
+ segment: 0=AI & dataanalys, 1=Data/infra/moln, 2=Säkerhet & integritet, 3=Förtroende & tillsyn
+ ring:    0=Anta, 1=Pröva, 2=Bevaka, 3=Avvakta
+*/
+const SEG = ["AI & dataanalys","Data, infra & moln","Säkerhet & integritet","Förtroende & tillsyn"];
+const SEGC = ["--s1","--s2","--s3","--s4"];
+const RING = ["Anta / Etablerad","Pröva","Bevaka","Avvakta"];
+const RINGC = ["--r1","--r2","--r3","--r4"];
+
+const ITEMS = [
+ // ---- AI & dataanalys (seg 0) ----
+ {n:"Maskininlärning för dataanalys",seg:0,ring:0,d:"Etablerade ML-metoder för mönsterigenkänning, anomalidetektion och klustring i granskningsdata.",imp:"Kärnan i datadriven granskning – urval, riskindikatorer och felidentifiering i stora register.",laws:["GDPR","Förvaltningslagen","Dataskyddsförordningen art. 22"]},
+ {n:"Generativa språkmodeller (LLM)",seg:0,ring:1,d:"Stora språkmodeller för textsammanfattning, kodgenerering och utkast i granskningsarbetet.",imp:"Effektiviserar dokumentanalys och rapportskrivande – men kräver mänsklig kvalitetssäkring och källkritik.",laws:["EU AI Act","GDPR","Offentlighets- och sekretesslagen","Upphovsrättslagen"]},
+ {n:"AI-agenter (agentic AI)",seg:0,ring:2,d:"Autonoma agenter som planerar och utför fleregsstegsuppgifter, t.ex. datainsamling och förbehandling.",imp:"Lovande för automatiserade granskningsflöden men oprövad tillförlitlighet och spårbarhet (audit trail).",laws:["EU AI Act (högrisk)","Förvaltningslagen § 27","Arkivlagen"]},
+ {n:"Retrieval-Augmented Generation (RAG)",seg:0,ring:1,d:"LLM kopplad till verifierade interna källor för faktagrundade svar med referenser.",imp:"Gör AI-stöd spårbart mot källdokument – minskar hallucinationer i juridisk och metodisk research.",laws:["GDPR","OSL","Informationssäkerhet (NIS2)"]},
+ {n:"Prediktiv riskmodellering",seg:0,ring:1,d:"Statistiska och ML-baserade modeller som rangordnar granskningsobjekt efter risk.",imp:"Stärker väsentlighets- och riskanalysen vid val av granskningsinsatser.",laws:["Diskrimineringslagen","EU AI Act","GDPR art. 22"]},
+ {n:"Processgruvdrift (process mining)",seg:0,ring:0,d:"Rekonstruktion av faktiska processflöden ur loggdata i myndigheters system.",imp:"Avslöjar avvikelser mellan föreskriven och faktisk handläggning – kraftfullt i effektivitetsgranskning.",laws:["OSL","GDPR","Arkivlagen"]},
+ {n:"Datorseende / dokument-AI",seg:0,ring:2,d:"OCR och layoutförståelse för att strukturera skannade handlingar och blanketter.",imp:"Frigör data ur historiska och icke-strukturerade arkiv inför analys.",laws:["GDPR","Arkivlagen","OSL"]},
+ {n:"Syntetiska data",seg:0,ring:2,d:"Artificiellt genererade datamängder som speglar verkliga statistiska egenskaper.",imp:"Möjliggör metodutveckling och delning utan att exponera känsliga personuppgifter.",laws:["GDPR","Dataskyddsförordningen","OSL"]},
+
+ // ---- Data, infra & moln (seg 1) ----
+ {n:"Datalager & analysplattform",seg:1,ring:0,d:"Centraliserad lagring och bearbetning av granskningsdata (jfr Tida-plattformen).",imp:"Grundinfrastruktur för all datadriven granskning inom myndigheten.",laws:["OSL","Säkerhetsskyddslagen","Arkivlagen","GDPR"]},
+ {n:"Datadelning mellan myndigheter",seg:1,ring:1,d:"Säker, reglerad delning av register och data mellan offentliga aktörer.",imp:"Avgörande för tvärsektoriella granskningar – begränsas av sekretess- och registerförfattningar.",laws:["OSL","Registerförfattningar","EU Data Governance Act","GDPR"]},
+ {n:"Offentligt moln (public cloud)",seg:1,ring:2,d:"Molntjänster för lagring och beräkning från externa leverantörer.",imp:"Skalbarhet och kostnadseffektivitet vägs mot dataskydd, leverantörsberoende och tillgänglighet.",laws:["Säkerhetsskyddslagen","FRA/Cloud Act-risk","NIS2","GDPR","LOU"]},
+ {n:"Suverän molninfrastruktur",seg:1,ring:2,d:"EU/nationellt kontrollerade molnlösningar med dataresidens inom rättsområdet.",imp:"Adresserar tredjelandsåtkomst och digital suveränitet för känslig granskningsdata.",laws:["EUCS","Säkerhetsskyddslagen","Schrems II","NIS2"]},
+ {n:"Öppna data & API:er",seg:1,ring:0,d:"Maskinläsbar publicering och konsumtion av offentlig information via gränssnitt.",imp:"Underlättar automatiserad insamling av jämförelsedata och transparens i granskning.",laws:["PSI-direktivet/Öppna data-lagen","Förvaltningslagen","OSL"]},
+ {n:"Knowledge graphs",seg:1,ring:2,d:"Grafbaserad representation av relationer mellan aktörer, transaktioner och beslut.",imp:"Stödjer nätverksanalys, t.ex. ägarstrukturer och bidragsflöden.",laws:["GDPR","OSL","Penningtvättsregelverk"]},
+ {n:"Edge computing & IoT-data",seg:1,ring:3,d:"Datainsamling och bearbetning nära källan via sensorer och uppkopplade enheter.",imp:"Marginell direkt nytta idag; relevant främst som granskningsobjekt i digitaliserade verksamheter.",laws:["NIS2","Cyberresiliensakten","GDPR","Produktsäkerhet"]},
+
+ // ---- Säkerhet & integritet (seg 2) ----
+ {n:"Zero Trust-arkitektur",seg:2,ring:1,d:"Säkerhetsmodell utan implicit tillit – varje åtkomst verifieras.",imp:"Höjer skyddet för känslig granskningsdata i en hotbild med statliga aktörer.",laws:["Säkerhetsskyddslagen","NIS2","Informationssäkerhetsförordningen"]},
+ {n:"Differential privacy",seg:2,ring:2,d:"Matematiskt garanterat integritetsskydd genom kontrollerad brusinjektion i statistik.",imp:"Möjliggör publicering av aggregat utan att röja enskilda – relevant vid känsliga register.",laws:["GDPR","Dataskyddsförordningen","Statistiksekretess"]},
+ {n:"Homomorf kryptering",seg:2,ring:3,d:"Beräkning direkt på krypterade data utan dekryptering.",imp:"Potential för sekretessbevarande analys på tredjepartsdata; ännu prestandakrävande.",laws:["GDPR","Säkerhetsskyddslagen","OSL"]},
+ {n:"Post-kvant-kryptografi",seg:2,ring:2,d:"Krypteringsalgoritmer motståndskraftiga mot framtida kvantdatorer.",imp:"Långsiktig informationssäkerhet – data med långt skyddsbehov bör migreras i tid.",laws:["NIS2","Säkerhetsskyddslagen","NIST PQC-standarder"]},
+ {n:"Stark e-legitimation",seg:2,ring:0,d:"Federerad digital identitet (BankID, eIDAS) för åtkomst och underskrift.",imp:"Grund för säker handläggning och e-underskrift av granskningsbeslut.",laws:["eIDAS 2.0","Lag om elektroniska underskrifter","GDPR"]},
+ {n:"EU Digital Identity Wallet",seg:2,ring:2,d:"EU-gemensam digital plånbok för identitet och attestering av uppgifter.",imp:"Förändrar identifiering i hela förvaltningen – framtida granskningsobjekt och verktyg.",laws:["eIDAS 2.0","GDPR","Förvaltningslagen"]},
+ {n:"AI-genererad desinformation / deepfakes",seg:2,ring:2,d:"Syntetiskt manipulerat bild-, ljud- och videomaterial.",imp:"Hotar bevisvärde och äkthetsprövning av digitalt underlag i granskning.",laws:["EU AI Act (transparenskrav)","Brottsbalken","Tryckfrihetsförordningen"]},
+
+ // ---- Förtroende & tillsyn (seg 3) ----
+ {n:"AI-styrning & modellrevision",seg:3,ring:1,d:"Ramverk och metoder för att granska AI-systems data, modeller och beslut.",imp:"Centralt nytt granskningsobjekt – Riksrevisionen måste kunna revidera myndigheters AI-användning.",laws:["EU AI Act","Förvaltningslagen","Dataskyddsförordningen","Diskrimineringslagen"]},
+ {n:"Algoritmisk transparens",seg:3,ring:1,d:"Krav på spårbarhet, dokumentation och förklarbarhet i automatiserat beslutsfattande.",imp:"Förutsättning för att granska legalitet och likabehandling i myndighetsbeslut.",laws:["Förvaltningslagen § 32","EU AI Act","GDPR art. 22","Offentlighetsprincipen"]},
+ {n:"Automatiserat beslutsfattande",seg:3,ring:0,d:"Helt eller delvis automatiserade förvaltningsbeslut i myndigheternas handläggning.",imp:"Utbrett granskningsobjekt – rättssäkerhet, dokumentation och möjlighet till omprövning.",laws:["Förvaltningslagen 28 §","GDPR art. 22","Tryckfrihetsförordningen"]},
+ {n:"Digitala tvillingar av förvaltning",seg:3,ring:3,d:"Simuleringsmodeller av processer och system för analys av reformeffekter.",imp:"Framtida stöd för effektanalys och kontrafaktiska scenarier i effektivitetsgranskning.",laws:["GDPR","OSL","Förvaltningslagen"]},
+ {n:"Blockkedja & verifierbara liggare",seg:3,ring:3,d:"Distribuerade, manipulationssäkra register för transaktioner och attestering.",imp:"Möjlig oföränderlig revisionslogg; begränsad mognad i svensk förvaltning.",laws:["MiCA","GDPR (raderingskonflikt)","Arkivlagen","Bokföringslagen"]},
+ {n:"Smarta kontrakt",seg:3,ring:3,d:"Självexekverande avtalsvillkor på blockkedja.",imp:"Relevant som framtida granskningsobjekt vid automatiserade utbetalningar och villkor.",laws:["MiCA","Avtalslagen","DORA","Bokföringslagen"]},
+ {n:"Tillsynsteknik (SupTech/RegTech)",seg:3,ring:1,d:"Teknik som digitaliserar tillsyn, regelefterlevnad och rapportering.",imp:"Direkt tillämpbar för löpande, datadriven granskning och realtidsindikatorer.",laws:["Sektorsregelverk","GDPR","DORA","OSL"]},
+ {n:"Continuous auditing",seg:3,ring:2,d:"Automatiserad, fortlöpande kontroll av transaktioner mot regler i nära realtid.",imp:"Skiftar granskning från stickprov i efterhand till löpande övervakning av flöden.",laws:["Budgetlagen","Förordning om intern styrning","GDPR","OSL"]},
+ {n:"Förklarbar AI (XAI)",seg:3,ring:1,d:"Metoder som gör AI-modellers beslut begripliga och granskningsbara.",imp:"Nödvändig för att Riksrevisionen ska kunna bedöma och ifrågasätta AI-grundade beslut.",laws:["EU AI Act","Förvaltningslagen","GDPR art. 22"]},
+ {n:"Kvantberäkning",seg:3,ring:3,d:"Beräkningsparadigm med potential att lösa vissa problem exponentiellt snabbare.",imp:"Långsiktig osäkerhet; främst relevant för kryptografisk hotbild och statlig kapacitet.",laws:["Säkerhetsskyddslagen","Exportkontroll","NIS2"]},
+];
+
+/* ---------- GEOMETRY ---------- */
+const SVG="http://www.w3.org/2000/svg";
+const C=450, R_MAX=400;
+const ringEdges=[0,110,205,300,R_MAX]; // inner->outer
+const svg=document.getElementById("radar");
+const cs=getComputedStyle(document.documentElement);
+const col=v=>cs.getPropertyValue(v).trim();
+
+function el(t,a){const e=document.createElementNS(SVG,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+// background ring fills
+for(let i=ringEdges.length-1;i>0;i--){
+  const c=el("circle",{cx:C,cy:C,r:ringEdges[i],
+    fill:col(RINGC[i-1]),"fill-opacity":0.10,stroke:col("--line"),"stroke-width":1});
+  svg.appendChild(c);
+}
+// segment divider lines
+[0,90,180,270].forEach(a=>{
+  const rad=a*Math.PI/180;
+  svg.appendChild(el("line",{x1:C,y1:C,x2:C+R_MAX*Math.cos(rad),y2:C+R_MAX*Math.sin(rad),
+    stroke:col("--line"),"stroke-width":1}));
+});
+
+// ring labels (along top vertical)
+const ringNamesShort=["Anta","Pröva","Bevaka","Avvakta"];
+for(let i=0;i<4;i++){
+  const r=(ringEdges[i]+ringEdges[i+1])/2;
+  svg.appendChild(el("text",{x:C+4,y:C-r+4,"class":"ring-label","text-anchor":"start"})).textContent=ringNamesShort[i];
+}
+
+// segment labels
+const segLabelPos=[
+  {a:315,t:"AI & dataanalys",c:SEGC[0]},
+  {a:45, t:"Data, infra & moln",c:SEGC[1]},
+  {a:135,t:"Säkerhet & integritet",c:SEGC[2]},
+  {a:225,t:"Förtroende & tillsyn",c:SEGC[3]},
+];
+segLabelPos.forEach(s=>{
+  const rad=s.a*Math.PI/180, rr=R_MAX-26;
+  const x=C+rr*Math.cos(rad), y=C+rr*Math.sin(rad);
+  const t=el("text",{x,y,"class":"seg-label",fill:col(s.c),"text-anchor":"middle"});
+  t.textContent=s.t; svg.appendChild(t);
+});
+
+/* place blips: each segment spans 90°, distribute items inside its ring band */
+// segment angular ranges (deg): 0:270-360, 1:0-90, 2:90-180, 3:180-270
+const segRange=[[272,358],[2,88],[92,178],[182,268]];
+
+// group by seg+ring
+const groups={};
+ITEMS.forEach((it,idx)=>{const k=it.seg+"-"+it.ring;(groups[k]=groups[k]||[]).push({...it,idx});});
+
+const blipEls=[];
+Object.keys(groups).forEach(k=>{
+  const [seg,ring]=k.split("-").map(Number);
+  const arr=groups[k];
+  const [a0,a1]=segRange[seg];
+  const rIn=ringEdges[ring]+22, rOut=ringEdges[ring+1]-16;
+  arr.forEach((it,i)=>{
+    const frac=(i+1)/(arr.length+1);
+    const ang=(a0+(a1-a0)*frac)*Math.PI/180;
+    // vary radius a little for readability
+    const rr=rIn+(rOut-rIn)*(0.35+0.5*((i%2)));
+    const x=C+rr*Math.cos(ang), y=C+rr*Math.sin(ang);
+    const g=el("g",{"class":"blip"});
+    g.appendChild(el("circle",{cx:x,cy:y,r:13,fill:col(RINGC[ring])}));
+    const num=el("text",{x,y:y+3.6,"text-anchor":"middle"});
+    num.textContent=it.idx+1; g.appendChild(num);
+    g.addEventListener("click",()=>select(it.idx,g));
+    svg.appendChild(g);
+    blipEls[it.idx]=g;
+  });
+});
+
+/* ---------- DETAIL PANEL ---------- */
+const detail=document.getElementById("detail");
+let activeG=null;
+function select(idx,g){
+  const it=ITEMS[idx];
+  if(activeG)activeG.classList.remove("active");
+  g.classList.add("active");activeG=g;
+  const lawTags=it.laws.map(l=>`<span class="law">${l}</span>`).join("");
+  detail.innerHTML=`
+    <span class="d-tag"><span class="dot" style="background:${col(RINGC[it.ring])}"></span>${RING[it.ring]}</span>
+    <h2>${idx+1}. ${it.n}</h2>
+    <div class="d-seg" style="color:${col(SEGC[it.seg])}">${SEG[it.seg]}</div>
+    <div class="d-desc">${it.d}</div>
+    <div class="d-sub">Påverkan på Riksrevisionen</div>
+    <div class="d-impact">${it.imp}</div>
+    <div class="d-sub">Lagar &amp; regler</div>
+    <div class="laws">${lawTags}</div>`;
+}
+</script>
+</body>
+</html>
