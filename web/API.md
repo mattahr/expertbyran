@@ -1,10 +1,10 @@
 # Expertbyrån Web API
 
-API för att hantera experter, expertområden, blogginlägg och radarer på Expertbyråns webbplats.
+API för att hantera experter, expertområden, blogginlägg, radarer och foresights på Expertbyråns webbplats.
 
 ## Översikt
 
-All data nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`) med filbaserade implementationer. API:et är den **enda skrivvägen** för innehåll (experter, expertområden, blogginlägg, radarer) — konsumenter rör aldrig filer direkt. En databasbackend kan ersätta filimplementationen i framtiden utan att konsumenterna behöver ändras.
+All data nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`) med filbaserade implementationer. API:et är den **enda skrivvägen** för innehåll (experter, expertområden, blogginlägg, radarer, foresights) — konsumenter rör aldrig filer direkt. En databasbackend kan ersätta filimplementationen i framtiden utan att konsumenterna behöver ändras.
 
 Konfigurationsdata (site/organization/marketplace) är fil- och seed-hanterad och kan inte muteras via API.
 
@@ -231,6 +231,30 @@ Uppdaterar metadata, blips, eller båda. Kräver autentisering. Body: `{ "meta"?
 
 Tar bort en radar (metadata + blips-fil). Kräver autentisering. `404` om saknas.
 
+### Foresights
+
+En foresight är en strategisk framsynsanalys: metadata + markdown, precis som ett blogginlägg, med ett extra `horizon`-fält.
+
+#### GET /api/v1/foresights
+
+Hämtar metadata för alla foresights.
+
+#### POST /api/v1/foresights
+
+Skapar en foresight. Kräver autentisering. Body: `{ "foresight": {…metadata}, "markdown": "…" }`. `201` / `409` / `400`.
+
+#### GET /api/v1/foresights/[slug]
+
+Hämtar `{ "foresight": {…}, "markdown": "…" }`. `404` om saknas.
+
+#### PUT /api/v1/foresights/[slug]
+
+Uppdaterar metadata, markdown, eller båda. Kräver autentisering. Body: `{ "foresight"?: {…}, "markdown"?: "…" }`. `404`/`409`.
+
+#### DELETE /api/v1/foresights/[slug]
+
+Tar bort en foresight (metadata + markdown-fil). Kräver autentisering. `404` om saknas.
+
 ## Miljövariabler
 
 | Variabel    | Beskrivning             | Default           |
@@ -264,6 +288,8 @@ Data lagras i `/app/data/`:
 - `blog/posts/*.md` - Markdown för varje blogginlägg
 - `radar-data.json` - Radarmetadata (inkl. segment)
 - `radar/*.json` - Blips för varje radar
+- `foresight-data.json` - Foresight-metadata
+- `foresight/*.md` - Markdown för varje foresight
 
 Vid första start kopieras data från `/app/seed/` till `/app/data/` om data-katalogen är tom.
 
