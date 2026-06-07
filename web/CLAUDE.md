@@ -41,6 +41,7 @@ Docker-imagen publiceras till GHCR via GitHub Actions — workflow: [../.github/
 | Variabel | Beskrivning | Default |
 |----------|-------------|---------|
 | `API_TOKEN` | Bearer-token för autentisering av muterande API-anrop | - (måste sättas) |
+| `ADMIN_LOGIN_URL` | Mål-URL för "Logga in"-knappen i notisbannern | `https://admin.expertbyran.se` |
 | `DATA_DIR` | Katalog där data lagras | `/app/data` (lokalt `data`) |
 | `HOSTNAME`, `PORT` | Serverbindning | `0.0.0.0`, `3000` |
 

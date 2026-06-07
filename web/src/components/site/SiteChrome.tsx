@@ -21,6 +21,8 @@ const navigation = [
   { href: "/foresight", label: "Foresight" },
 ] as const;
 
+const ADMIN_LOGIN_URL = process.env.ADMIN_LOGIN_URL ?? "https://admin.expertbyran.se";
+
 export async function SiteChrome({ children }: SiteChromeProps) {
   const data = await getSiteData();
 
@@ -32,9 +34,9 @@ export async function SiteChrome({ children }: SiteChromeProps) {
             Detta är en webbplats för ett fiktivt företag. Innehållet är skapat med generativ AI och ska inte tas på allvar. Det fiktiva företaget har ingen koppling till någon verklig myndighet.
           </span>
           <a
-            href="https://paperclip.ahrens.nu"
+            href={ADMIN_LOGIN_URL}
             className={styles.noticeLoginButton}
-            aria-label="Logga in i Paperclip"
+            aria-label="Logga in"
           >
             <svg
               className={styles.loginIcon}
