@@ -21,6 +21,7 @@
   width: 100%;
   height: auto;
   display: block;
+  overflow: visible; /* etiketter nära ytterkanten ska inte klippas av viewBox */
 }
 
 .ringLabel {
@@ -59,6 +60,20 @@
   font-weight: 600;
   fill: var(--white);
   pointer-events: none;
+}
+.blipLabel {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--gray-600);
+  /* Vit halo bakom texten: ritas stroke först, så residual överlapp förblir läsbart. */
+  paint-order: stroke;
+  stroke: var(--white);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.blipLabelActive {
+  fill: var(--black);
 }
 
 .side {

@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
-import { RadarChart } from "./RadarChart";
+import { RadarChart, wrapLabel } from "./RadarChart";
 
 const SEGMENTS = [
   { id: "ai-agenter", name: "AI & agenter" },
@@ -83,5 +83,37 @@ describe("RadarChart", () => {
     expect(
       screen.getByRole("button", { name: /Signal i sjätte segmentet/ }),
     ).toBeTruthy();
+  });
+
+  it("renderar blip-namnet som rubrik under blobben", () => {
+    render(<RadarChart segments={SEGMENTS} blips={BLIPS} />);
+    // Rubriken ligger i ett aria-hidden <text>; blip-namnet ska finnas i DOM:en
+    // även utan att man klickat på blobben.
+    expect(screen.getByText("Post-kvant-kryptografi")).toBeTruthy();
+  });
+});
+
+describe("wrapLabel", () => {
+  it("låter korta namn ligga på en rad", () => {
+    expect(wrapLabel("Säkerhet")).toEqual(["Säkerhet"]);
+  });
+
+  it("behåller ett långt enskilt ord på en rad (inget att bryta på)", () => {
+    expect(wrapLabel("Post-kvant-kryptografi")).toEqual(["Post-kvant-kryptografi"]);
+  });
+
+  it("bryter ett flerords-namn på ordgräns", () => {
+    expect(wrapLabel("AI på arbetsmarknaden")).toEqual(["AI på", "arbetsmarknaden"]);
+  });
+
+  it("avkortar med … istället för att spilla över på en tredje rad", () => {
+    const lines = wrapLabel("Svensk implementeringsaxel 2026 2027 extra ord");
+    expect(lines).toHaveLength(2);
+    expect(lines[lines.length - 1].endsWith("…")).toBe(true);
+  });
+
+  it("överskrider aldrig maxLines", () => {
+    const lines = wrapLabel("ett två tre fyra fem sex sju åtta nio tio elva tolv");
+    expect(lines.length).toBeLessThanOrEqual(2);
   });
 });
