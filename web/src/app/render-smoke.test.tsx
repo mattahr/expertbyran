@@ -11,10 +11,11 @@ vi.mock("@/lib/content/store", () => ({
 }));
 
 vi.mock("@/lib/blog/store", () => ({
-  getBlogData: vi.fn(async () => ({
-    catalog: blogData,
-    renderedPosts: new Map(blogData.posts.map((p) => [p.slug, `<p>${p.title}</p>`])),
-  })),
+  getBlogCatalog: vi.fn(async () => blogData),
+  getRenderedPost: vi.fn(async (slug: string) => {
+    const post = blogData.posts.find((candidate) => candidate.slug === slug);
+    return post ? `<p>${post.title}</p>` : null;
+  }),
 }));
 
 import BlogPostPage from "./blogg/[slug]/page";

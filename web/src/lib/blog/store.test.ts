@@ -4,29 +4,48 @@ import { afterEach, describe, expect, it } from "vitest";
 
 import { __setStoresForTest } from "@/lib/stores";
 import { InMemoryBlogStore } from "@/lib/stores/memory-stores";
-import { getBlogData } from "./store";
+import { getBlogCatalog, getRenderedPost } from "./store";
 
 afterEach(() => __setStoresForTest(null));
 
-describe("getBlogData", () => {
-  it("läser katalog och renderar markdown till HTML via BlogStore", async () => {
-    const blog = new InMemoryBlogStore();
-    await blog.createPost(
-      {
-        slug: "test",
-        title: "Test",
-        date: "2026-04-15T10:00:00.000Z",
-        authorName: "A",
-        areaSlugs: ["revisionsmetodik"],
-        excerpt: "e",
-      },
-      "# Rubrik\n\nText.",
-    );
-    __setStoresForTest({ blog });
+async function seedPost(markdown = "# Rubrik\n\nText.") {
+  const blog = new InMemoryBlogStore();
+  await blog.createPost(
+    {
+      slug: "test",
+      title: "Test",
+      date: "2026-04-15T10:00:00.000Z",
+      authorName: "A",
+      areaSlugs: ["revisionsmetodik"],
+      excerpt: "e",
+    },
+    markdown,
+  );
+  __setStoresForTest({ blog });
+  return blog;
+}
 
-    const data = await getBlogData();
+describe("getBlogCatalog", () => {
+  it("läser katalogens metadata utan att rendera markdown", async () => {
+    await seedPost();
 
-    expect(data.catalog.posts).toHaveLength(1);
-    expect(data.renderedPosts.get("test")).toContain("<h1");
+    const catalog = await getBlogCatalog();
+
+    expect(catalog.posts).toHaveLength(1);
+    expect(catalog.posts[0]?.slug).toBe("test");
+  });
+});
+
+describe("getRenderedPost", () => {
+  it("renderar markdown till HTML för ett enskilt inlägg", async () => {
+    await seedPost();
+
+    expect(await getRenderedPost("test")).toContain("<h1");
+  });
+
+  it("returnerar null för ett inlägg som saknas", async () => {
+    await seedPost();
+
+    expect(await getRenderedPost("saknas")).toBeNull();
   });
 });

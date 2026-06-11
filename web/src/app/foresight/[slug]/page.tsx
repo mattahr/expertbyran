@@ -6,10 +6,16 @@ import styles from "@/components/site/site.module.css";
 import { Pill } from "@/components/site/Pill";
 import { ReadingProgress } from "@/components/site/ReadingProgress";
 import { formatForesightDate, getForesight } from "@/lib/foresight/query";
+import { getForesightCatalog } from "@/lib/foresight/store";
 
 type ForesightPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateStaticParams() {
+  const { foresights } = await getForesightCatalog();
+  return foresights.map((foresight) => ({ slug: foresight.slug }));
+}
 
 export async function generateMetadata({ params }: ForesightPageProps): Promise<Metadata> {
   const { slug } = await params;

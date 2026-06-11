@@ -2,7 +2,7 @@ import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import { getSiteData } from "@/lib/content/store";
 
 import type { BlogCatalog, BlogPostEntry } from "@/lib/blog/schema";
-import { getBlogData } from "@/lib/blog/store";
+import { getBlogCatalog, getRenderedPost } from "@/lib/blog/store";
 
 export function formatBlogDate(isoDate: string): string {
   return new Date(isoDate).toLocaleString("sv-SE", {
@@ -99,8 +99,8 @@ function resolveUsedAreas(allAreas: ExpertArea[], posts: BlogPostSummary[]): Exp
 }
 
 export async function getBlogArchive(): Promise<BlogArchive> {
-  const [blogData, siteData] = await Promise.all([getBlogData(), getSiteData()]);
-  const posts = resolveBlogPosts(blogData.catalog, siteData);
+  const [catalog, siteData] = await Promise.all([getBlogCatalog(), getSiteData()]);
+  const posts = resolveBlogPosts(catalog, siteData);
 
   return {
     posts,
@@ -114,17 +114,21 @@ export async function getOrderedBlogPosts(): Promise<BlogPostSummary[]> {
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPostFull | null> {
-  const [blogData, siteData] = await Promise.all([getBlogData(), getSiteData()]);
+  const [catalog, siteData, contentHtml] = await Promise.all([
+    getBlogCatalog(),
+    getSiteData(),
+    getRenderedPost(slug),
+  ]);
 
-  const entry = blogData.catalog.posts.find((post) => post.slug === slug);
+  const entry = catalog.posts.find((post) => post.slug === slug);
   if (!entry) return null;
 
   const author = resolveAuthor(siteData.experts, entry);
   if (!author) return null;
 
-  const areas = resolveAreas(siteData.expertAreas, entry.areaSlugs);
-  const contentHtml = blogData.renderedPosts.get(slug);
   if (!contentHtml) return null;
+
+  const areas = resolveAreas(siteData.expertAreas, entry.areaSlugs);
 
   return { ...entry, author, areas, contentHtml };
 }

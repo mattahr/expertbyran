@@ -4,35 +4,39 @@
 DATA_DIR="${DATA_DIR:-/app/data}"
 SEED_DIR="/app/seed"
 
-# Create data directory if it doesn't exist
-mkdir -p "$DATA_DIR"
-mkdir -p "$DATA_DIR/blog/posts"
+# Create data directories if they don't exist
+mkdir -p "$DATA_DIR" "$DATA_DIR/blog/posts" "$DATA_DIR/foresight" "$DATA_DIR/radar"
 
-# Check if data directory is empty or missing site-data.json
-if [ ! -f "$DATA_DIR/site-data.json" ]; then
-    echo "[init] Seeding data directory from $SEED_DIR"
-
-    # Copy JSON files
-    if [ -f "$SEED_DIR/site-data.json" ]; then
-        cp "$SEED_DIR/site-data.json" "$DATA_DIR/site-data.json"
-        echo "[init] Copied site-data.json"
+# Copy a seed catalog file only if it does not already exist
+seed_file() {
+    if [ -f "$SEED_DIR/$1" ] && [ ! -f "$DATA_DIR/$1" ]; then
+        cp "$SEED_DIR/$1" "$DATA_DIR/$1"
+        echo "[init] Seeded $1"
     fi
+}
 
-    if [ -f "$SEED_DIR/blog-data.json" ]; then
-        cp "$SEED_DIR/blog-data.json" "$DATA_DIR/blog-data.json"
-        echo "[init] Copied blog-data.json"
-    fi
+# Copy files from a seed directory, skipping any that already exist
+seed_dir() {
+    [ -d "$SEED_DIR/$1" ] || return 0
+    for src in "$SEED_DIR/$1"/*; do
+        [ -e "$src" ] || continue
+        dest="$DATA_DIR/$1/$(basename "$src")"
+        if [ ! -e "$dest" ]; then
+            cp "$src" "$dest"
+        fi
+    done
+}
 
-    # Copy blog posts
-    if [ -d "$SEED_DIR/blog/posts" ]; then
-        cp -r "$SEED_DIR/blog/posts/"* "$DATA_DIR/blog/posts/" 2>/dev/null || true
-        echo "[init] Copied blog posts"
-    fi
+seed_file site-data.json
+seed_file blog-data.json
+seed_file foresight-data.json
+seed_file radar-data.json
 
-    echo "[init] Data directory seeded successfully"
-else
-    echo "[init] Data directory already initialized, skipping seed"
-fi
+seed_dir blog/posts
+seed_dir foresight
+seed_dir radar
+
+echo "[init] Data directory ready"
 
 # Start the Next.js server
 exec node server.js

@@ -4,31 +4,33 @@ import { renderBlogMarkdown } from "@/lib/blog/markdown";
 import type { ForesightCatalog } from "@/lib/foresight/schema";
 import { getForesightStore } from "@/lib/stores";
 
-export type ForesightData = {
-  catalog: ForesightCatalog;
-  renderedPosts: Map<string, string>;
-};
-
 export const FORESIGHT_TAGS = ["foresight"] as const;
 
-const loadForesightData = unstable_cache(
-  async (): Promise<{ catalog: ForesightCatalog; rendered: [string, string][] }> => {
-    const store = getForesightStore();
-    const foresights = await store.listForesights();
-    const rendered = await Promise.all(
-      foresights.map(async (meta): Promise<[string, string]> => {
-        const full = await store.getForesight(meta.slug);
-        const html = full ? await renderBlogMarkdown(full.markdown) : "";
-        return [meta.slug, html];
-      }),
-    );
-    return { catalog: { foresights }, rendered };
+const loadForesightCatalog = unstable_cache(
+  async (): Promise<ForesightCatalog> => {
+    const foresights = await getForesightStore().listForesights();
+    return { foresights };
   },
-  ["foresight-data"],
+  ["foresight-catalog"],
   { tags: [...FORESIGHT_TAGS] },
 );
 
-export async function getForesightData(): Promise<ForesightData> {
-  const { catalog, rendered } = await loadForesightData();
-  return { catalog, renderedPosts: new Map(rendered) };
+const loadRenderedForesight = unstable_cache(
+  async (slug: string): Promise<string | null> => {
+    const full = await getForesightStore().getForesight(slug);
+    if (!full) return null;
+    return renderBlogMarkdown(full.markdown);
+  },
+  ["foresight-rendered-post"],
+  { tags: [...FORESIGHT_TAGS] },
+);
+
+/** Lättviktig katalog (endast metadata) — renderar ingen markdown. */
+export async function getForesightCatalog(): Promise<ForesightCatalog> {
+  return loadForesightCatalog();
+}
+
+/** Renderad HTML för en enskild foresight; cachas per slug. */
+export async function getRenderedForesight(slug: string): Promise<string | null> {
+  return loadRenderedForesight(slug);
 }

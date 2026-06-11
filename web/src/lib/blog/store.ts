@@ -5,31 +5,33 @@ import { renderBlogMarkdown } from "@/lib/blog/markdown";
 import type { BlogCatalog } from "@/lib/blog/schema";
 import { getBlogStore } from "@/lib/stores";
 
-export type BlogData = {
-  catalog: BlogCatalog;
-  renderedPosts: Map<string, string>;
-};
-
 export const BLOG_TAGS = ["blog"] as const;
 
-const loadBlogData = unstable_cache(
-  async (): Promise<{ catalog: BlogCatalog; rendered: [string, string][] }> => {
-    const store = getBlogStore();
-    const posts = await store.listPosts();
-    const rendered = await Promise.all(
-      posts.map(async (meta): Promise<[string, string]> => {
-        const full = await store.getPost(meta.slug);
-        const html = full ? await renderBlogMarkdown(full.markdown) : "";
-        return [meta.slug, html];
-      }),
-    );
-    return { catalog: { posts }, rendered };
+const loadBlogCatalog = unstable_cache(
+  async (): Promise<BlogCatalog> => {
+    const posts = await getBlogStore().listPosts();
+    return { posts };
   },
-  ["blog-data"],
+  ["blog-catalog"],
   { tags: [...BLOG_TAGS] },
 );
 
-export async function getBlogData(): Promise<BlogData> {
-  const { catalog, rendered } = await loadBlogData();
-  return { catalog, renderedPosts: new Map(rendered) };
+const loadRenderedPost = unstable_cache(
+  async (slug: string): Promise<string | null> => {
+    const full = await getBlogStore().getPost(slug);
+    if (!full) return null;
+    return renderBlogMarkdown(full.markdown);
+  },
+  ["blog-rendered-post"],
+  { tags: [...BLOG_TAGS] },
+);
+
+/** Lättviktig katalog (endast metadata) — renderar ingen markdown. */
+export async function getBlogCatalog(): Promise<BlogCatalog> {
+  return loadBlogCatalog();
+}
+
+/** Renderad HTML för ett enskilt inlägg; cachas per slug. */
+export async function getRenderedPost(slug: string): Promise<string | null> {
+  return loadRenderedPost(slug);
 }

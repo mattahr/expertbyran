@@ -2,7 +2,7 @@ import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import { getSiteData } from "@/lib/content/store";
 
 import type { ForesightCatalog, ForesightEntry } from "@/lib/foresight/schema";
-import { getForesightData } from "@/lib/foresight/store";
+import { getForesightCatalog, getRenderedForesight } from "@/lib/foresight/store";
 
 export function formatForesightDate(isoDate: string): string {
   return new Date(isoDate).toLocaleDateString("sv-SE", {
@@ -71,8 +71,8 @@ function resolveForesights(catalog: ForesightCatalog, siteData: SiteData): Fores
 }
 
 export async function getForesightArchive(): Promise<ForesightArchive> {
-  const [foresightData, siteData] = await Promise.all([getForesightData(), getSiteData()]);
-  const foresights = resolveForesights(foresightData.catalog, siteData);
+  const [catalog, siteData] = await Promise.all([getForesightCatalog(), getSiteData()]);
+  const foresights = resolveForesights(catalog, siteData);
   const usedSlugs = new Set(foresights.flatMap((f) => f.areas.map((area) => area.slug)));
   return {
     foresights,
@@ -81,13 +81,16 @@ export async function getForesightArchive(): Promise<ForesightArchive> {
 }
 
 export async function getForesight(slug: string): Promise<ForesightFull | null> {
-  const [foresightData, siteData] = await Promise.all([getForesightData(), getSiteData()]);
-  const entry = foresightData.catalog.foresights.find((f) => f.slug === slug);
+  const [catalog, siteData, contentHtml] = await Promise.all([
+    getForesightCatalog(),
+    getSiteData(),
+    getRenderedForesight(slug),
+  ]);
+  const entry = catalog.foresights.find((f) => f.slug === slug);
   if (!entry) return null;
   const author = resolveAuthor(siteData.experts, entry);
   if (!author) return null;
-  const areas = resolveAreas(siteData.expertAreas, entry.areaSlugs);
-  const contentHtml = foresightData.renderedPosts.get(slug);
   if (!contentHtml) return null;
+  const areas = resolveAreas(siteData.expertAreas, entry.areaSlugs);
   return { ...entry, author, areas, contentHtml };
 }

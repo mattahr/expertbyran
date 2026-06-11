@@ -47,7 +47,18 @@ async function copyFile(src: string, dest: string) {
   await fs.copyFile(src, dest);
 }
 
-async function copyDir(src: string, dest: string) {
+async function copyFileIfMissing(src: string, dest: string): Promise<boolean> {
+  if (!(await fileExists(src))) return false;
+  if (await fileExists(dest)) return false;
+  await copyFile(src, dest);
+  return true;
+}
+
+// Synkar en seed-katalog men skriver aldrig över filer som redan finns
+// (t.ex. innehåll som skapats eller redigerats via API:et).
+async function syncDirMissingOnly(src: string, dest: string) {
+  if (!(await fileExists(src))) return;
+
   await fs.mkdir(dest, { recursive: true });
 
   const entries = await fs.readdir(src, { withFileTypes: true });
@@ -57,56 +68,47 @@ async function copyDir(src: string, dest: string) {
     const destPath = path.join(dest, entry.name);
 
     if (entry.isDirectory()) {
-      await copyDir(srcPath, destPath);
+      await syncDirMissingOnly(srcPath, destPath);
     } else {
-      await copyFile(srcPath, destPath);
+      await copyFileIfMissing(srcPath, destPath);
     }
   }
 }
 
+// Spårade seed-katalogfiler på repo-roten.
+const SEED_CATALOG_FILES = [
+  "site-data.json",
+  "blog-data.json",
+  "foresight-data.json",
+  "radar-data.json",
+];
+
+// Innehållskataloger med markdown/json per slug.
+const SEED_CONTENT_DIRS = [["blog", "posts"], ["foresight"], ["radar"]];
+
 export default async function seedData() {
-  const siteDataPath = path.join(DATA_DIR, "site-data.json");
-  const blogDataPath = path.join(DATA_DIR, "blog-data.json");
-  const blogPostsDir = path.join(DATA_DIR, "blog", "posts");
-
-  const hasSiteData = await fileExists(siteDataPath);
-  const hasBlogData = await fileExists(blogDataPath);
-
-  if (hasSiteData && hasBlogData) {
-    console.log("[seed] Data directory already initialized, skipping seed");
-    return;
-  }
-
-  console.log(`[seed] Seeding missing data from ${SEED_DIR}`);
-
-  // Ensure directories exist
   await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.mkdir(blogPostsDir, { recursive: true });
 
-  // Copy site-data.json if missing
-  if (!hasSiteData) {
-    const seedSiteData = path.join(SEED_DIR, "site-data.json");
-    if (await fileExists(seedSiteData)) {
-      await copyFile(seedSiteData, siteDataPath);
-      console.log("[seed] Copied site-data.json");
-    }
+  const seeded: string[] = [];
+
+  for (const file of SEED_CATALOG_FILES) {
+    const copied = await copyFileIfMissing(
+      path.join(SEED_DIR, file),
+      path.join(DATA_DIR, file),
+    );
+    if (copied) seeded.push(file);
   }
 
-  // Copy blog-data.json if missing
-  if (!hasBlogData) {
-    const seedBlogData = path.join(SEED_DIR, "blog-data.json");
-    if (await fileExists(seedBlogData)) {
-      await copyFile(seedBlogData, blogDataPath);
-      console.log("[seed] Copied blog-data.json");
-    }
+  for (const segments of SEED_CONTENT_DIRS) {
+    await syncDirMissingOnly(
+      path.join(SEED_DIR, ...segments),
+      path.join(DATA_DIR, ...segments),
+    );
   }
 
-  // Copy blog posts (always sync — cheap if already present)
-  const seedBlogPosts = path.join(SEED_DIR, "blog", "posts");
-  if (await fileExists(seedBlogPosts)) {
-    await copyDir(seedBlogPosts, blogPostsDir);
-    console.log("[seed] Synced blog posts");
+  if (seeded.length > 0) {
+    console.log(`[seed] Seeded from ${SEED_DIR}: ${seeded.join(", ")}`);
+  } else {
+    console.log("[seed] Data directory already initialized, skipping seed");
   }
-
-  console.log("[seed] Data directory initialized successfully");
 }
