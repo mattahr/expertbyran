@@ -1,5 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { Pagination } from "@/components/site/Pagination";
 import { Pill } from "@/components/site/Pill";
@@ -89,6 +90,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps = {}) {
     requestedPage,
     requestedAreaSlugs,
   );
+  // ?sida= bortom sista sidan: riktig 404 i stället för vilseledande tomläge.
+  // Sida 1 är alltid giltig (totalPages är minst 1 även för tomt arkiv).
+  if (page > totalPages) notFound();
   const selectedAreaSlugSet = new Set(selectedAreaSlugs);
   const isFiltered = selectedAreaSlugs.length > 0;
 

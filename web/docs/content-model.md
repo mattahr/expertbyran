@@ -2,15 +2,15 @@
 
 ## Grundidé
 
-Webbplatsens innehåll representeras som ett sammansatt snapshot (config + experter + expertområden). Det seedas från `web/site-data.json` i monorepot och underhålls därefter via webbappens REST API.
+Webbplatsens innehåll representeras som ett sammansatt snapshot (config + experter + expertområden). Config-delen (site/organization/marketplace) bundlas i imagen via `src/config/site-config.json`; experter och områden skapas och underhålls via webbappens REST API. Det finns ingen seed-mekanism — `web/site-data.json` i monorepot konsumeras inte av webben utan underhålls som marketplace-synkad presentationsdata.
 
 Webbappen:
 
-- läser innehåll via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`)
+- läser innehåll via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`)
 - validerar det med Zod
 - renderar katalogen
 
-Innehållet lagras under `DATA_DIR`; lagringsimplementationen är filbaserad i dag men kan bytas mot en databasbackend utan att konsumenterna ändras.
+Innehållet lagras i SQLite-databasen `${DATA_DIR}/expertbyran.db`; lagringsbackenden kan bytas utan att konsumenterna ändras (en ny backend ska klara den delade kontraktssviten).
 
 ## Toppnivå
 

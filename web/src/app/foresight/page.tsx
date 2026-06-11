@@ -1,5 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { Pagination } from "@/components/site/Pagination";
 import styles from "@/components/site/site.module.css";
@@ -49,6 +50,8 @@ export default async function ForesightListPage({ searchParams }: ForesightListP
   const { foresights, total, totalPages, page } = await getForesightArchivePage(
     parsePage(resolvedSearchParams.sida),
   );
+  // ?sida= bortom sista sidan: riktig 404 i stället för vilseledande tomläge.
+  if (page > totalPages) notFound();
   // Featured-layouten visas bara överst på första sidan.
   const [featured, ...rest] = page === 1 ? foresights : [null, ...foresights];
 

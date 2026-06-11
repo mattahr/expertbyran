@@ -24,8 +24,8 @@ Kortfattat:
 - Läs nuvarande data → `GET /api/v1/experts`, `GET /api/v1/areas` eller hela snapshoten
   via `GET /api/v1/site-data`.
 
-**Begränsning:** organisation/site/marketplace-config är seed-/fil-författad och kan **inte**
-muteras via API — försök inte uppdatera den via API:et.
+**Begränsning:** organisation/site/marketplace-config är bundlad i webbappens image (ändras
+via repo + deploy) och kan **inte** muteras via API — försök inte uppdatera den via API:et.
 
 ## Marketplace-pluginen via git
 

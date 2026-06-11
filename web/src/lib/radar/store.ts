@@ -26,5 +26,8 @@ export async function getRadarList(): Promise<RadarMeta[]> {
 
 /** En radar med blips; cachas per slug. */
 export async function getRadarDetail(slug: string): Promise<RadarDetail | null> {
+  // Existens-gate mot den cachade listan — se kommentar i blog/store.ts.
+  const radars = await loadRadarList();
+  if (!radars.some((radar) => radar.slug === slug)) return null;
   return loadRadarDetail(slug);
 }

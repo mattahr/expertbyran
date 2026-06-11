@@ -19,7 +19,7 @@ Det här dokumentbiblioteket beskriver hur webbappen fungerar som publik katalog
 
 ## Viktigt i korthet
 
-- Innehåll nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`) — filbaserad i dag, DB-utbytbar senare.
-- Webbappens REST API är den enda skrivvägen för innehåll; konfigurationsdata är fil- och seed-hanterad.
-- Cachning sker i webblagret via `unstable_cache` + taggar, invaliderad med `revalidateTag`. `GET /refresh` invaliderar alla innehållstaggar.
-- `mattahr/expertbyran` är källa både för seed-data (`web/site-data.json`) och för marknadsplatsens GitHub-referens.
+- Innehåll nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`) med SQLite-backend (`${DATA_DIR}/expertbyran.db`).
+- Webbappens REST API är den enda skrivvägen för innehåll; konfigurationsdata bundlas i imagen via `src/config/site-config.json`. Inga seeds — nyinstallation ger tom databas, gamla JSON-filer på volymen importeras automatiskt.
+- Cachning sker i webblagret via `unstable_cache` + taggar, invaliderad med `revalidateTag`. `GET /refresh` (bearer-auth) invaliderar alla innehållstaggar; inget innehåll prerendras vid build.
+- `mattahr/expertbyran` är källa för marknadsplatsens GitHub-referens; `web/site-data.json` underhålls som marketplace-synkad presentationsdata och läses inte av webbappen.

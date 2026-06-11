@@ -44,6 +44,52 @@ export class SqliteContentStore implements ContentStore {
       .map((row) => row.slug);
   }
 
+  // Områden refereras även av innehåll (bloggens junction-tabell och
+  // foresights areaSlugs) — radering/slug-byte får inte lämna dinglande
+  // referenser. Radar-blips areaSlugs guardas inte: de degraderar ofarligt
+  // (matchningen i related-poolen sker slug-mot-slug).
+  private contentReferencingArea(areaSlug: string): string[] {
+    const posts = this.db
+      .prepare("SELECT post_slug FROM blog_post_areas WHERE area_slug = ?")
+      .all(areaSlug) as { post_slug: string }[];
+    const foresights = this.db
+      .prepare(
+        "SELECT slug FROM foresights WHERE EXISTS (SELECT 1 FROM json_each(foresights.area_slugs) WHERE json_each.value = ?)",
+      )
+      .all(areaSlug) as { slug: string }[];
+    return [
+      ...posts.map((row) => `blogg:${row.post_slug}`),
+      ...foresights.map((row) => `foresight:${row.slug}`),
+    ];
+  }
+
+  private assertAreaUnreferenced(slug: string, action: string): void {
+    const referencing = [
+      ...this.expertsReferencingArea(slug),
+      ...this.contentReferencingArea(slug),
+    ];
+    if (referencing.length > 0) {
+      throw new Error(
+        `Expertområdet '${slug}' kan inte ${action} — refereras av: ${referencing.join(", ")}.`,
+      );
+    }
+  }
+
+  // Gamla helfilsvalideringen garanterade unika id:n utöver slugs; här
+  // kontrolleras det explicit per mutation.
+  private assertUniqueId(table: "experts" | "expert_areas", id: string, excludeSlug?: string): void {
+    const row = excludeSlug
+      ? this.db
+          .prepare(`SELECT slug FROM ${table} WHERE json_extract(data, '$.id') = ? AND slug <> ?`)
+          .get(id, excludeSlug)
+      : this.db.prepare(`SELECT slug FROM ${table} WHERE json_extract(data, '$.id') = ?`).get(id);
+    if (row) {
+      throw new ConflictError(
+        `${table === "experts" ? "Expert" : "Area"} with id ${id} already exists`,
+      );
+    }
+  }
+
   async listExperts(): Promise<Expert[]> {
     const rows = this.db.prepare("SELECT data FROM experts ORDER BY rowid").all() as {
       data: string;
@@ -63,6 +109,7 @@ export class SqliteContentStore implements ContentStore {
     if (await this.getExpert(validated.slug)) {
       throw new ConflictError(`Expert with slug ${validated.slug} already exists`);
     }
+    this.assertUniqueId("experts", validated.id);
     this.assertAreaRefs(validated);
     this.db
       .prepare("INSERT INTO experts (slug, data) VALUES (?, ?)")
@@ -78,6 +125,7 @@ export class SqliteContentStore implements ContentStore {
     if (validated.slug !== slug && (await this.getExpert(validated.slug))) {
       throw new ConflictError(`Expert with slug ${validated.slug} already exists`);
     }
+    this.assertUniqueId("experts", validated.id, slug);
     this.assertAreaRefs(validated);
     this.db
       .prepare("UPDATE experts SET slug = ?, data = ? WHERE slug = ?")
@@ -109,6 +157,7 @@ export class SqliteContentStore implements ContentStore {
     if (await this.getArea(validated.slug)) {
       throw new ConflictError(`Area with slug ${validated.slug} already exists`);
     }
+    this.assertUniqueId("expert_areas", validated.id);
     this.db
       .prepare("INSERT INTO expert_areas (slug, data) VALUES (?, ?)")
       .run(validated.slug, JSON.stringify(validated));
@@ -124,13 +173,9 @@ export class SqliteContentStore implements ContentStore {
       if (await this.getArea(validated.slug)) {
         throw new ConflictError(`Area with slug ${validated.slug} already exists`);
       }
-      const referencing = this.expertsReferencingArea(slug);
-      if (referencing.length > 0) {
-        throw new Error(
-          `Expertområdet '${slug}' kan inte byta slug — refereras av: ${referencing.join(", ")}.`,
-        );
-      }
+      this.assertAreaUnreferenced(slug, "byta slug");
     }
+    this.assertUniqueId("expert_areas", validated.id, slug);
     this.db
       .prepare("UPDATE expert_areas SET slug = ?, data = ? WHERE slug = ?")
       .run(validated.slug, JSON.stringify(validated), slug);
@@ -141,12 +186,7 @@ export class SqliteContentStore implements ContentStore {
     if (!(await this.getArea(slug))) {
       throw new NotFoundError(`Area with slug ${slug} not found`);
     }
-    const referencing = this.expertsReferencingArea(slug);
-    if (referencing.length > 0) {
-      throw new Error(
-        `Expertområdet '${slug}' kan inte tas bort — refereras av: ${referencing.join(", ")}.`,
-      );
-    }
+    this.assertAreaUnreferenced(slug, "tas bort");
     this.db.prepare("DELETE FROM expert_areas WHERE slug = ?").run(slug);
   }
 }

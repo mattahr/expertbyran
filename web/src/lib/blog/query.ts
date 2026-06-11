@@ -95,23 +95,27 @@ function byAreaOrder(areas: ExpertArea[]) {
   });
 }
 
-// Bevarar storens ordning (nyast först); inlägg utan upplösbart visningsnamn filtreras bort.
+// Inlägg vars authorSlug inte längre matchar någon expert får ett neutralt
+// visningsnamn i stället för att släppas — annars divergerar sidans innehåll
+// från SQL-räknade total/totalPages (tomma mellansidor i värsta fall).
+const FALLBACK_AUTHOR: ResolvedAuthor = { name: "Expertbyrån" };
+
+function resolveAuthorWithFallback(experts: Expert[], entry: BlogPostEntry): ResolvedAuthor {
+  const author = resolveAuthor(experts, entry);
+  if (author) return author;
+  console.warn(
+    `[expertbyran:blog] Inlägg '${entry.slug}' saknar upplösbart visningsnamn (authorSlug='${entry.authorSlug ?? ""}') — visar '${FALLBACK_AUTHOR.name}'.`,
+  );
+  return FALLBACK_AUTHOR;
+}
+
+// Bevarar storens ordning (nyast först).
 function resolveBlogPosts(posts: BlogPostEntry[], siteData: SiteData): BlogPostSummary[] {
-  return posts
-    .map((post) => {
-      const author = resolveAuthor(siteData.experts, post);
-      if (!author) {
-        console.warn(
-          `[expertbyran:blog] Hoppar över inlägg '${post.slug}' — saknar visningsnamn (authorSlug='${post.authorSlug ?? ""}' matchar ingen expert och authorName saknas).`,
-        );
-        return null;
-      }
-
-      const areas = resolveAreas(siteData.expertAreas, post.areaSlugs);
-
-      return { ...post, author, areas };
-    })
-    .filter((post): post is BlogPostSummary => post !== null);
+  return posts.map((post) => ({
+    ...post,
+    author: resolveAuthorWithFallback(siteData.experts, post),
+    areas: resolveAreas(siteData.expertAreas, post.areaSlugs),
+  }));
 }
 
 function resolveUsedAreas(allAreas: ExpertArea[], usedSlugs: Iterable<string>): ExpertArea[] {
@@ -174,9 +178,7 @@ export async function getBlogPost(slug: string): Promise<BlogPostFull | null> {
   const [stored, siteData] = await Promise.all([getStoredBlogPost(slug), getSiteData()]);
   if (!stored) return null;
 
-  const author = resolveAuthor(siteData.experts, stored.meta);
-  if (!author) return null;
-
+  const author = resolveAuthorWithFallback(siteData.experts, stored.meta);
   const areas = resolveAreas(siteData.expertAreas, stored.meta.areaSlugs);
 
   return { ...stored.meta, author, areas, contentHtml: stored.html };

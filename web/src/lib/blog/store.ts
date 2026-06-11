@@ -16,22 +16,6 @@ const loadBlogCatalog = unstable_cache(
   { tags: [...BLOG_TAGS] },
 );
 
-const loadBlogPage = unstable_cache(
-  async (
-    offset: number,
-    limit: number,
-    areaKey: string,
-  ): Promise<{ posts: BlogPostEntry[]; total: number }> => {
-    return getBlogStore().listPostsPage({
-      offset,
-      limit,
-      areaSlugs: areaKey ? areaKey.split(",") : undefined,
-    });
-  },
-  ["blog-page"],
-  { tags: [...BLOG_TAGS] },
-);
-
 const loadUsedAreaSlugs = unstable_cache(
   async (): Promise<string[]> => getBlogStore().listUsedAreaSlugs(),
   ["blog-used-areas"],
@@ -50,15 +34,21 @@ export async function getBlogCatalog(): Promise<BlogCatalog> {
   return loadBlogCatalog();
 }
 
-/** Paginerad metadatasida, nyast först; areaSlugs filtrerar på minst ett område. */
+/**
+ * Paginerad metadatasida, nyast först; areaSlugs filtrerar på minst ett område.
+ * Cachas medvetet INTE: nyckelutrymmet (sida × filterkombination) är
+ * användarstyrt och obegränsat — den indexerade SQLite-frågan är ändå sub-ms.
+ */
 export async function getBlogPage(
   offset: number,
   limit: number,
   areaSlugs: string[] = [],
 ): Promise<{ posts: BlogPostEntry[]; total: number }> {
-  // Normaliserad nyckel så att samma filter i annan ordning delar cachepost.
-  const areaKey = [...new Set(areaSlugs)].sort().join(",");
-  return loadBlogPage(offset, limit, areaKey);
+  return getBlogStore().listPostsPage({
+    offset,
+    limit,
+    areaSlugs: areaSlugs.length > 0 ? [...new Set(areaSlugs)].sort() : undefined,
+  });
 }
 
 /** Områdes-slugs som används av minst ett inlägg (för filterpiller). */
@@ -70,6 +60,10 @@ export async function getUsedBlogAreaSlugs(): Promise<string[]> {
 export async function getStoredBlogPost(
   slug: string,
 ): Promise<StoredPost<BlogPostEntry> | null> {
+  // Existens-gate mot den cachade katalogen: utan den skulle varje påhittad
+  // slug skapa en egen (null-)cachepost — obegränsat, användarstyrt utrymme.
+  const catalog = await getBlogCatalog();
+  if (!catalog.posts.some((post) => post.slug === slug)) return null;
   return loadStoredPost(slug);
 }
 

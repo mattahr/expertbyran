@@ -7,15 +7,15 @@ Detta är ett monorepo som innehåller **tre olika projekt** under samma tak. Al
 | Mapp | Vad | Plattform |
 |---|---|---|
 | [marketplace/](marketplace/) | Claude Code-plugin — konsultchef som routar uppgifter till domänexperter | Claude Code plugin |
-| [web/](web/) | Publik Next.js-webbplats som presenterar experter och team | Next.js 16 (statisk snapshot) |
+| [web/](web/) | Publik Next.js-webbplats som presenterar experter och team | Next.js 16 (SQLite, on-demand-rendering) |
 | [paperclip/](paperclip/) | Paperclip-paketering — 16 AI-agenter som bemannar Riksrevisionens effektivitetsrevision | [Paperclip](https://paperclip.ing) |
 
 Varje projekt har sin egen `CLAUDE.md` med detaljer om scope, konventioner och struktur. Läs den innan du arbetar i respektive mapp.
 
 ## Hur de hänger ihop
 
-* **Datafil som delas**: [web/site-data.json](web/site-data.json) är den kanoniska presentationsdatan för experterna. Den konsumeras av webbplatsen (`web/`) via `SITE_DATA_URL` och underhålls när nya experter läggs till i `marketplace/`-pluginen.
-* **Teknisk koppling**: Projekten är annars tekniskt oberoende. `marketplace/` och `paperclip/` känner inte till `web/`; `web/` läser `site-data.json` via URL (inte från disk), så den har ingen build-time-koppling till de andra.
+* **Datafil som delas**: [web/site-data.json](web/site-data.json) är den kanoniska presentationsdatan för experterna i marketplace-sammanhang. Den underhålls när nya experter läggs till i `marketplace/`-pluginen. Webbplatsen (`web/`) läser den **inte** — webben får sin expertdata via sitt eget REST API och SQLite-databas.
+* **Teknisk koppling**: Projekten är annars tekniskt oberoende. `marketplace/` och `paperclip/` känner inte till `web/`; `web/` läser inte `site-data.json` alls, så den har ingen build-time-koppling till de andra.
 * **Pluginkedja**: `paperclip/skills/local/expertbyran-manager/` är en skill som paperclip-agenter använder för att underhålla marketplace-pluginen (lägga till experter, hålla expert-registry i synk).
 
 ## Claude Code-plugin

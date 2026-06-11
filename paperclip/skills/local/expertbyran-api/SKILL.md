@@ -9,14 +9,18 @@ Detta är den **enda källan** för hur Expertbyråns webb-API fungerar. Andra s
 hit ("läs mer i skill `expertbyran-api`") i stället för att duplicera API-mekaniken.
 
 API:et är **enda sättet** att mutera innehåll (experter, expertområden, blogginlägg,
-radarer, foresights). Konfigurationsdata (site/organisation/marketplace) är seed-/fil-författad och kan
-**inte** muteras via API.
+radarer, foresights). Konfigurationsdata (site/organisation/marketplace) bundlas i webbappens
+image och kan **inte** muteras via API — den ändras via repo + deploy.
+
+Webbappen lagrar innehållet i SQLite, men det påverkar inte API-kontraktet: endpoints,
+payloads och felkoder är oförändrade. GET-listorna är opaginerade och innehållslistor (blogg/foresights/radars) sorteras nyast först (medvetet kontrakt).
 
 ## Konfiguration
 
 - `WEB_API_URL` — basadress till webbappen (ex: `http://localhost:3000`).
 - `WEB_API_TOKEN` — token som skickas som `Authorization: Bearer <token>` vid muterande
-  anrop (POST/PUT/DELETE). Läsanrop (GET) kräver ingen token.
+  anrop (POST/PUT/DELETE) samt `GET /refresh` och `POST /api/v1/rerender`. Övriga
+  läsanrop (GET) kräver ingen token.
 
 ## Konventioner
 
@@ -72,11 +76,15 @@ En foresight är en strategisk framsynsanalys: metadata + markdown, med ett extr
   (metadata, markdown, eller båda). `404`/`409`.
 - `DELETE /api/v1/foresights/{slug}` (auth) — `404` om saknas.
 
-### Sammansatt snapshot & cache
+### Sammansatt snapshot, cache & underhåll
 - `GET /api/v1/site-data` → hela den sammansatta snapshoten (config + experter + områden).
   **Läs-only — ingen PUT.**
-- `GET /refresh` → invaliderar cachetaggarna (`experts`, `areas`, `blog`, `radar`, `foresight`). Behövs
-  sällan, eftersom skrivanrop invaliderar cachen automatiskt.
+- `GET /refresh` (auth) → invaliderar cachetaggarna (`experts`, `areas`, `config`, `blog`,
+  `radar`, `foresight`). Kräver `Authorization: Bearer` (samma `WEB_API_TOKEN`); `401` utan
+  token. Behövs sällan, eftersom skrivanrop invaliderar cachen automatiskt.
+- `POST /api/v1/rerender` (auth) → renderar om lagrad HTML för blogginlägg och foresights
+  som renderats med en äldre renderarversion (markdown är källan). Underhållsoperation som
+  körs efter deploy av ny renderare; svar: `{ "ok": true, "rerendered": { "blog": n, "foresights": n }, … }`.
 
 Fältscheman för Expert, ExpertArea, BlogPostEntry, Radar (RadarMeta + Blip) och ForesightEntry
 finns i `references/payloads.md`.

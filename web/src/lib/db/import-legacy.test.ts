@@ -153,6 +153,16 @@ describe("importLegacyData", () => {
     expect(await fs.readdir(dataDir)).toContain("blog-data.json");
   });
 
+  it("avbryter när en markdownfil är tom — tysta tomartiklar får inte gå live", async () => {
+    await writeLegacyFiles();
+    await fs.writeFile(path.join(dataDir, "blog", "posts", "andra-inlagget.md"), "   \n");
+    const db = openDatabase(":memory:");
+
+    await expect(importLegacyData(db, dataDir)).rejects.toThrow(/Tom markdownfil/);
+    expect((db.prepare("SELECT COUNT(*) AS n FROM blog_posts").get() as { n: number }).n).toBe(0);
+    expect(await fs.readdir(dataDir)).toContain("blog-data.json");
+  });
+
   it("hoppar över allt när SKIP_LEGACY_IMPORT=1", async () => {
     await writeLegacyFiles();
     const db = openDatabase(":memory:");

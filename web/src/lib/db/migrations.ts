@@ -102,9 +102,19 @@ export function runMigrations(db: DatabaseSync): void {
   );
 
   for (const migration of MIGRATIONS) {
-    if (applied.has(migration.version)) continue;
+    if (applied.has(migration.version)) continue; // snabbväg utan lås
     db.exec("BEGIN IMMEDIATE;");
     try {
+      // Omkontroll under write-locken: en annan process (överlappande
+      // containrar mot samma volym) kan ha applicerat migreringen mellan
+      // applied-läsningen ovan och BEGIN IMMEDIATE.
+      const row = db
+        .prepare("SELECT 1 FROM schema_migrations WHERE version = ?")
+        .get(migration.version);
+      if (row) {
+        db.exec("COMMIT;");
+        continue;
+      }
       migration.up(db);
       db.prepare("INSERT INTO schema_migrations (version, name, applied_at) VALUES (?, ?, ?)").run(
         migration.version,

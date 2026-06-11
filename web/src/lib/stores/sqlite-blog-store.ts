@@ -3,9 +3,22 @@ import type { DatabaseSync } from "node:sqlite";
 
 import { MARKDOWN_RENDERER_VERSION, renderBlogMarkdown } from "@/lib/blog/markdown";
 import { parseBlogPostEntry, type BlogPostEntry } from "@/lib/blog/schema";
-import { getDb } from "@/lib/db/client";
+import { getDb, withTransaction } from "@/lib/db/client";
 import type { BlogStore, ListPageOptions, StoredPost } from "./types";
 import { ConflictError, NotFoundError } from "./types";
+
+// Exists-kontrollen ligger före en await (markdown-rendering), så en
+// konkurrerande request kan hinna skapa samma slug. PK-constrainten skyddar
+// datat — här mappas felet till ConflictError så att API:t svarar 409, inte 400.
+function mapSlugConstraint(error: unknown, slug: string): never {
+  if (
+    error instanceof Error &&
+    error.message.includes("UNIQUE constraint failed: blog_posts.slug")
+  ) {
+    throw new ConflictError(`Blog post with slug ${slug} already exists`);
+  }
+  throw error;
+}
 
 type BlogRow = {
   slug: string;
@@ -119,33 +132,32 @@ export class SqliteBlogStore implements BlogStore {
     }
     const html = await renderBlogMarkdown(markdown);
 
-    this.db.exec("BEGIN IMMEDIATE;");
     try {
-      this.db
-        .prepare(
-          `INSERT INTO blog_posts (slug, title, date, date_ms, author_slug, author_name, author_role, excerpt, area_slugs, markdown, html, renderer_version, updated_at)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        )
-        .run(
-          validated.slug,
-          validated.title,
-          validated.date,
-          Date.parse(validated.date),
-          validated.authorSlug ?? null,
-          validated.authorName ?? null,
-          validated.authorRole ?? null,
-          validated.excerpt,
-          JSON.stringify(validated.areaSlugs),
-          markdown,
-          html,
-          MARKDOWN_RENDERER_VERSION,
-          new Date().toISOString(),
-        );
-      this.insertAreaRows(validated.slug, validated.areaSlugs);
-      this.db.exec("COMMIT;");
+      withTransaction(this.db, () => {
+        this.db
+          .prepare(
+            `INSERT INTO blog_posts (slug, title, date, date_ms, author_slug, author_name, author_role, excerpt, area_slugs, markdown, html, renderer_version, updated_at)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          )
+          .run(
+            validated.slug,
+            validated.title,
+            validated.date,
+            Date.parse(validated.date),
+            validated.authorSlug ?? null,
+            validated.authorName ?? null,
+            validated.authorRole ?? null,
+            validated.excerpt,
+            JSON.stringify(validated.areaSlugs),
+            markdown,
+            html,
+            MARKDOWN_RENDERER_VERSION,
+            new Date().toISOString(),
+          );
+        this.insertAreaRows(validated.slug, validated.areaSlugs);
+      });
     } catch (error) {
-      this.db.exec("ROLLBACK;");
-      throw error;
+      mapSlugConstraint(error, validated.slug);
     }
     return validated;
   }
@@ -167,36 +179,35 @@ export class SqliteBlogStore implements BlogStore {
     const nextHtml =
       patch.markdown !== undefined ? await renderBlogMarkdown(nextMarkdown) : existing.html;
 
-    this.db.exec("BEGIN IMMEDIATE;");
     try {
-      this.db
-        .prepare(
-          `UPDATE blog_posts
-           SET slug = ?, title = ?, date = ?, date_ms = ?, author_slug = ?, author_name = ?, author_role = ?, excerpt = ?, area_slugs = ?, markdown = ?, html = ?, renderer_version = ?, updated_at = ?
-           WHERE slug = ?`,
-        )
-        .run(
-          nextMeta.slug,
-          nextMeta.title,
-          nextMeta.date,
-          Date.parse(nextMeta.date),
-          nextMeta.authorSlug ?? null,
-          nextMeta.authorName ?? null,
-          nextMeta.authorRole ?? null,
-          nextMeta.excerpt,
-          JSON.stringify(nextMeta.areaSlugs),
-          nextMarkdown,
-          nextHtml,
-          MARKDOWN_RENDERER_VERSION,
-          new Date().toISOString(),
-          slug,
-        );
-      this.db.prepare("DELETE FROM blog_post_areas WHERE post_slug = ?").run(nextMeta.slug);
-      this.insertAreaRows(nextMeta.slug, nextMeta.areaSlugs);
-      this.db.exec("COMMIT;");
+      withTransaction(this.db, () => {
+        this.db
+          .prepare(
+            `UPDATE blog_posts
+             SET slug = ?, title = ?, date = ?, date_ms = ?, author_slug = ?, author_name = ?, author_role = ?, excerpt = ?, area_slugs = ?, markdown = ?, html = ?, renderer_version = ?, updated_at = ?
+             WHERE slug = ?`,
+          )
+          .run(
+            nextMeta.slug,
+            nextMeta.title,
+            nextMeta.date,
+            Date.parse(nextMeta.date),
+            nextMeta.authorSlug ?? null,
+            nextMeta.authorName ?? null,
+            nextMeta.authorRole ?? null,
+            nextMeta.excerpt,
+            JSON.stringify(nextMeta.areaSlugs),
+            nextMarkdown,
+            nextHtml,
+            MARKDOWN_RENDERER_VERSION,
+            new Date().toISOString(),
+            slug,
+          );
+        this.db.prepare("DELETE FROM blog_post_areas WHERE post_slug = ?").run(nextMeta.slug);
+        this.insertAreaRows(nextMeta.slug, nextMeta.areaSlugs);
+      });
     } catch (error) {
-      this.db.exec("ROLLBACK;");
-      throw error;
+      mapSlugConstraint(error, nextMeta.slug);
     }
     return nextMeta;
   }

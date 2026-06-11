@@ -14,7 +14,9 @@ Starta utvecklingsläge:
 npm run dev
 ```
 
-Skapa `.env` eller `.env.local` från `.env.example`. Lokalt pekar `DATA_DIR` mot `data`; sätt `API_TOKEN` för att kunna göra muterande API-anrop. Innehåll seedas från `web/site-data.json` om datakatalogen är tom.
+Skapa `.env` eller `.env.local` från `.env.example`. Lokalt pekar `DATA_DIR` mot `data`; sätt `API_TOKEN` för att kunna göra muterande API-anrop. `npm run dev` skapar en tom SQLite-databas (`web/data/expertbyran.db`) — det finns ingen seed-mekanism, så sidorna visar tomlägen tills innehåll skapas via API:et. Ligger gamla JSON-filer (legacy-formatet) i datakatalogen importeras de automatiskt vid första start.
+
+**Gotcha:** använd relativt `DATA_DIR=data` lokalt — `DATA_DIR=app/data` skapar `web/app/` som skuggar App Router och 404:ar alla routes.
 
 ## Produktionslik lokal körning
 
@@ -29,6 +31,7 @@ Viktiga env vars:
 - `PORT`
 - `DATA_DIR`
 - `API_TOKEN`
+- `SKIP_LEGACY_IMPORT`
 
 ## Test och kontroll
 
@@ -52,7 +55,7 @@ npx tsc --noEmit
 
 ### Byta lagringsbackend
 
-Innehåll nås via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`). De filbaserade implementationerna kan bytas mot t.ex. en databasbackend utan att konsumenterna ändras — byt implementation i kompositionsroten, inte i sidkoden.
+Innehåll nås via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`). Produktionsbackenden är SQLite (`node:sqlite`, kräver Node 22); minnesbackenden används i tester. En ny backend ska klara den delade kontraktssviten i `src/lib/stores/store-contract.ts` — byt implementation i kompositionsroten, inte i sidkoden.
 
 Justera drift via env vars, inte applikationskoden:
 

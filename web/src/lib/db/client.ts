@@ -44,3 +44,44 @@ export function __resetDbForTest(): void {
   db?.close();
   db = null;
 }
+
+// node:sqlite saknar nästlade transaktioner; WeakSet:en låter en yttre
+// transaktion (t.ex. legacy-importen) omsluta store-anrop som annars öppnar
+// egna. await inuti en transaktion är säkert här: drivrutinen är synkron och
+// importen körs vid boot, innan servern tar emot trafik.
+const inTransaction = new WeakSet<DatabaseSync>();
+
+export function withTransaction<T>(db: DatabaseSync, fn: () => T): T {
+  if (inTransaction.has(db)) return fn();
+  db.exec("BEGIN IMMEDIATE;");
+  inTransaction.add(db);
+  try {
+    const result = fn();
+    db.exec("COMMIT;");
+    return result;
+  } catch (error) {
+    db.exec("ROLLBACK;");
+    throw error;
+  } finally {
+    inTransaction.delete(db);
+  }
+}
+
+export async function withTransactionAsync<T>(
+  db: DatabaseSync,
+  fn: () => Promise<T>,
+): Promise<T> {
+  if (inTransaction.has(db)) return fn();
+  db.exec("BEGIN IMMEDIATE;");
+  inTransaction.add(db);
+  try {
+    const result = await fn();
+    db.exec("COMMIT;");
+    return result;
+  } catch (error) {
+    db.exec("ROLLBACK;");
+    throw error;
+  } finally {
+    inTransaction.delete(db);
+  }
+}

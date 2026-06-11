@@ -84,5 +84,8 @@ const loadRelatedForRadar = unstable_cache(
 export async function getRelatedForRadar(
   radarSlug: string,
 ): Promise<Record<string, RelatedItem[]>> {
+  // Existens-gate så att okända slugs inte skapar cacheposter (getRadarDetail
+  // är gate:ad mot den cachade radarlistan).
+  if (!(await getRadarDetail(radarSlug))) return {};
   return loadRelatedForRadar(radarSlug);
 }

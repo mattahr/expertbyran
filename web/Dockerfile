@@ -23,9 +23,11 @@ ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
 ENV DATA_DIR=/app/data
 
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
+# --chown=65532 (distroless nonroot-uid): annars ägs /app av root och Nexts
+# datacache kan inte persistera till .next/cache (EACCES → enbart in-memory).
+COPY --from=builder --chown=65532:65532 /app/.next/standalone ./
+COPY --from=builder --chown=65532:65532 /app/.next/static ./.next/static
+COPY --from=builder --chown=65532:65532 /app/public ./public
 
 EXPOSE 3000
 

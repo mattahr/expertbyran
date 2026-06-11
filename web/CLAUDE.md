@@ -8,7 +8,9 @@ Publik katalog som presenterar Expertbyråns experter, expertområden och market
 
 ## Datamodell
 
-All presentationsdata nås via en **lagringsabstraktion** med tre gränssnitt — `ConfigStore`, `ContentStore` och `BlogStore` — bakom en gemensam kompositionsrot. Implementationerna är filbaserade i dag (data under `DATA_DIR`) men kan bytas mot en databasbackend utan att konsumenterna ändras. Konsumenter rör aldrig filer direkt.
+All presentationsdata nås via en **lagringsabstraktion** med fem gränssnitt — `ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore` och `ForesightStore` — bakom en gemensam kompositionsrot. Innehållet lagras i **SQLite** via Nodes inbyggda `node:sqlite` (DB-fil `${DATA_DIR}/expertbyran.db`, WAL-läge); migreringar körs automatiskt vid serverstart (`src/lib/db/migrations.ts` via `src/instrumentation.ts`). Konsumenter rör aldrig databasen direkt.
+
+Det finns **ingen seed-mekanism**: en nyinstallation startar med tom databas och sidorna visar tomlägen. Vid första start mot en volym med det gamla filbaserade formatet (`site-data.json`, `blog-data.json` + `blog/posts/*.md`, `foresight-data.json` + `foresight/*.md`, `radar-data.json` + `radar/*.json`) importeras innehållet automatiskt till SQLite (validera → rendera → importera → verifiera antal → döp om källfilerna till `*.imported`); misslyckas importen avbryts uppstarten. Nödventil: `SKIP_LEGACY_IMPORT=1`. Repots [site-data.json](site-data.json) konsumeras **inte** av webben längre — den underhålls enbart som marketplace-synkad presentationsdata.
 
 ### Skrivväg via REST API
 
@@ -18,10 +20,14 @@ Det **enda** sättet att mutera innehåll (experter, expertområden, blogginläg
 * `GET/POST/PUT/DELETE /api/v1/experts/[slug]` - Experthantering
 * `GET/POST/PUT/DELETE /api/v1/areas/[slug]` - Expertområden
 * `GET/POST/PUT/DELETE /api/v1/blog/posts/[slug]` - Blogginlägg
+* `GET/POST/PUT/DELETE /api/v1/radars/[slug]` - Radarer
+* `GET/POST/PUT/DELETE /api/v1/foresights/[slug]` - Foresights
 
-Konfigurationsdata (site/organization/marketplace) är fil- och seed-hanterad och kan inte muteras via API.
+Sajtconfig (site/organization/marketplace) bor i [src/config/site-config.json](src/config/site-config.json) och **bundlas i imagen** — den kan inte muteras via API utan ändras via repo + deploy.
 
-Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `blog`). API:et invaliderar med `revalidateTag(tag, "max")` efter skrivningar; `GET /refresh` invaliderar alla innehållstaggar.
+Markdown renderas till HTML **vid skrivning** (i API:t) och lagras i en `html`-kolumn med `renderer_version`; läsvägen serverar färdig HTML. `POST /api/v1/rerender` (bearer-auth) renderar om rader med äldre renderarversion — serverstarten loggar en varning om sådana finns.
+
+Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `config`, `blog`, `radar`, `foresight`). API:et invaliderar med `revalidateTag(tag, "max")` efter skrivningar; `GET /refresh` (kräver bearer-token — samma `API_TOKEN` som skrivvägen) invaliderar alla innehållstaggar. **Inget innehåll prerendras vid build** — alla innehållssidor är `force-dynamic` och renderas on-demand mot datacachen.
 
 Se [API.md](API.md) för fullständig API-dokumentation.
 
@@ -40,9 +46,10 @@ Docker-imagen publiceras till GHCR via GitHub Actions — workflow: [../.github/
 
 | Variabel | Beskrivning | Default |
 |----------|-------------|---------|
-| `API_TOKEN` | Bearer-token för autentisering av muterande API-anrop | - (måste sättas) |
+| `API_TOKEN` | Bearer-token för muterande API-anrop, `GET /refresh` och `POST /api/v1/rerender` | - (måste sättas) |
 | `ADMIN_LOGIN_URL` | Mål-URL för "Logga in"-knappen i notisbannern | `https://admin.expertbyran.se` |
-| `DATA_DIR` | Katalog där data lagras | `/app/data` (lokalt `data`) |
+| `DATA_DIR` | Katalog (volym) där SQLite-databasen `expertbyran.db` ligger | `/app/data` (lokalt `data`) |
+| `SKIP_LEGACY_IMPORT` | Sätt till `1` för att hoppa över automatisk import av gamla JSON-filer vid start | - |
 | `HOSTNAME`, `PORT` | Serverbindning | `0.0.0.0`, `3000` |
 
 ### Docker Compose exempel
@@ -56,10 +63,13 @@ services:
     volumes:
       - expertbyran-data:/app/data
     environment:
+      # Krävs för skrivanrop, GET /refresh och POST /api/v1/rerender
       - API_TOKEN=your-secret-token
 volumes:
   expertbyran-data:
 ```
+
+Databasen är en fil på volymen — backup = kopiera volymen (eller ta en sqlite-dump). Runnern är distroless; inspektera databasen från hosten, t.ex. `docker run --rm -v <volym>:/data alpine sh -c "apk add sqlite && sqlite3 /data/expertbyran.db ..."`.
 
 ## Konventioner
 

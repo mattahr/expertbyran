@@ -71,19 +71,26 @@ function byAreaOrder(areas: ExpertArea[]) {
   );
 }
 
+// Neutralt visningsnamn när authorSlug inte längre matchar någon expert —
+// släppta poster skulle divergera från SQL-räknade total/totalPages.
+const FALLBACK_AUTHOR: ResolvedAuthor = { name: "Expertbyrån" };
+
+function resolveAuthorWithFallback(experts: Expert[], entry: ForesightEntry): ResolvedAuthor {
+  const author = resolveAuthor(experts, entry);
+  if (author) return author;
+  console.warn(
+    `[expertbyran:foresight] '${entry.slug}' saknar upplösbart visningsnamn — visar '${FALLBACK_AUTHOR.name}'.`,
+  );
+  return FALLBACK_AUTHOR;
+}
+
 // Bevarar storens ordning (nyast först).
 function resolveForesights(entries: ForesightEntry[], siteData: SiteData): ForesightSummary[] {
-  return entries
-    .map((entry) => {
-      const author = resolveAuthor(siteData.experts, entry);
-      if (!author) {
-        console.warn(`[expertbyran:foresight] Hoppar över '${entry.slug}' — saknar visningsnamn.`);
-        return null;
-      }
-      const areas = resolveAreas(siteData.expertAreas, entry.areaSlugs);
-      return { ...entry, author, areas };
-    })
-    .filter((entry): entry is ForesightSummary => entry !== null);
+  return entries.map((entry) => ({
+    ...entry,
+    author: resolveAuthorWithFallback(siteData.experts, entry),
+    areas: resolveAreas(siteData.expertAreas, entry.areaSlugs),
+  }));
 }
 
 /** Hela arkivet (metadata) — används av related-poolen, inte av listsidorna. */
@@ -117,8 +124,7 @@ export async function getForesightArchivePage(page: number): Promise<ForesightAr
 export async function getForesight(slug: string): Promise<ForesightFull | null> {
   const [stored, siteData] = await Promise.all([getStoredForesight(slug), getSiteData()]);
   if (!stored) return null;
-  const author = resolveAuthor(siteData.experts, stored.meta);
-  if (!author) return null;
+  const author = resolveAuthorWithFallback(siteData.experts, stored.meta);
   const areas = resolveAreas(siteData.expertAreas, stored.meta.areaSlugs);
   return { ...stored.meta, author, areas, contentHtml: stored.html };
 }

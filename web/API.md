@@ -4,19 +4,23 @@ API för att hantera experter, expertområden, blogginlägg, radarer och foresig
 
 ## Översikt
 
-All data nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`) med filbaserade implementationer. API:et är den **enda skrivvägen** för innehåll (experter, expertområden, blogginlägg, radarer, foresights) — konsumenter rör aldrig filer direkt. En databasbackend kan ersätta filimplementationen i framtiden utan att konsumenterna behöver ändras.
+All data nås via en lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`). Lagringen är **SQLite** via Nodes inbyggda `node:sqlite` (DB-fil `${DATA_DIR}/expertbyran.db`), men API-kontraktet är oberoende av backend. API:et är den **enda skrivvägen** för innehåll (experter, expertområden, blogginlägg, radarer, foresights) — konsumenter rör aldrig databasen direkt.
 
-Konfigurationsdata (site/organization/marketplace) är fil- och seed-hanterad och kan inte muteras via API.
+Markdown renderas till HTML **vid skrivning** och lagras tillsammans med en renderarversion; webbplatsens läsväg serverar färdig HTML. API:ets GET-svar returnerar markdown (källan), inte HTML.
+
+GET-listorna (`/api/v1/experts`, `/api/v1/blog/posts`, `/api/v1/foresights` m.fl.) är **opaginerade — det är ett medvetet kontrakt** mot skills och andra klienter. (Webbplatsens listsidor pagineras internt, men det påverkar inte API:et.) Innehållslistorna (blogg, foresights, radars) är sorterade **nyast först** (datum fallande, slug som tiebreaker); experter/områden behåller insättningsordningen. `GET /api/v1/site-data` returnerar `updatedAt` från den bundlade sajtconfigen — den ändras vid deploy, **inte** vid innehållsmutationer, och ska inte användas för förändringsdetektion. Vid tom databas (nyinstallation) svarar snapshotten 200 med tomma `experts`/`expertAreas`-arrayer.
+
+Konfigurationsdata (site/organization/marketplace) bundlas i imagen via `src/config/site-config.json` och kan inte muteras via API — den ändras via repo + deploy.
 
 ## Autentisering
 
-Mutating endpoints (POST, PUT, DELETE) kräver en Bearer token:
+Mutating endpoints (POST, PUT, DELETE) samt `GET /refresh` och `POST /api/v1/rerender` kräver en Bearer token:
 
 ```http
 Authorization: Bearer <token>
 ```
 
-Token sätts via miljövariabeln `API_TOKEN`.
+Token sätts via miljövariabeln `API_TOKEN`. Oautentiserat anrop ger `401`.
 
 ## Endpoints
 
@@ -200,7 +204,7 @@ Kan uppdatera metadata (`post`), markdown (`markdown`), eller båda.
 ```
 
 #### DELETE /api/v1/blog/posts/[slug]
-Tar bort ett blogginlägg (både metadata och markdown-fil). Kräver autentisering.
+Tar bort ett blogginlägg (metadata, markdown och renderad HTML). Kräver autentisering.
 
 ### Radarer
 
@@ -229,7 +233,7 @@ Uppdaterar metadata, blips, eller båda. Kräver autentisering. Body: `{ "meta"?
 
 #### DELETE /api/v1/radars/[slug]
 
-Tar bort en radar (metadata + blips-fil). Kräver autentisering. `404` om saknas.
+Tar bort en radar (metadata + blips). Kräver autentisering. `404` om saknas.
 
 ### Foresights
 
@@ -253,14 +257,35 @@ Uppdaterar metadata, markdown, eller båda. Kräver autentisering. Body: `{ "for
 
 #### DELETE /api/v1/foresights/[slug]
 
-Tar bort en foresight (metadata + markdown-fil). Kräver autentisering. `404` om saknas.
+Tar bort en foresight (metadata, markdown och renderad HTML). Kräver autentisering. `404` om saknas.
+
+### Cache och underhåll
+
+#### GET /refresh
+
+Invaliderar alla innehållstaggar (`experts`, `areas`, `config`, `blog`, `radar`, `foresight`) och tvingar omläsning vid nästa request. **Kräver autentisering** (`Authorization: Bearer` med samma `API_TOKEN` som skrivvägen); oautentiserat anrop ger `401`. Behövs sällan — skrivanrop invaliderar cachen automatiskt — men är nödventilen för out-of-band-ändringar (t.ex. direkt i databasen).
+
+**Response:**
+```json
+{ "ok": true, "invalidated": ["experts", "areas", "config", "blog", "radar", "foresight"], "refreshedAt": "2026-06-12T10:00:00.000Z" }
+```
+
+#### POST /api/v1/rerender
+
+Underhållsendpoint som renderar om lagrad HTML för blogginlägg och foresights vars `renderer_version` avviker från den aktuella renderarversionen (markdown är källan, HTML är härledd). Kräver autentisering. Körs efter deploy av en ny renderarversion — serverstarten loggar en varning om sådana rader finns.
+
+**Response:**
+```json
+{ "ok": true, "rerendered": { "blog": 12, "foresights": 2 }, "rendererVersion": 1 }
+```
 
 ## Miljövariabler
 
-| Variabel    | Beskrivning             | Default           |
-|-------------|-------------------------|-------------------|
-| `API_TOKEN` | Token för autentisering | - (måste sättas)  |
-| `DATA_DIR`  | Katalog där data lagras | `/app/data`       |
+| Variabel             | Beskrivning                                                        | Default          |
+|----------------------|--------------------------------------------------------------------|------------------|
+| `API_TOKEN`          | Token för autentisering                                            | - (måste sättas) |
+| `DATA_DIR`           | Katalog (volym) där SQLite-databasen `expertbyran.db` ligger       | `/app/data`      |
+| `SKIP_LEGACY_IMPORT` | Sätt till `1` för att hoppa över automatisk legacy-import vid start | -                |
 
 ## Docker
 
@@ -275,23 +300,19 @@ services:
     volumes:
       - expertbyran-data:/app/data
     environment:
+      # Krävs för skrivanrop, GET /refresh och POST /api/v1/rerender
       - API_TOKEN=your-secret-token
 volumes:
   expertbyran-data:
 ```
 
-## Dataformat
+## Lagring
 
-Data lagras i `/app/data/`:
-- `site-data.json` - Experter, områden, webbplatsinställningar
-- `blog-data.json` - Blogginlägg metadata
-- `blog/posts/*.md` - Markdown för varje blogginlägg
-- `radar-data.json` - Radarmetadata (inkl. segment)
-- `radar/*.json` - Blips för varje radar
-- `foresight-data.json` - Foresight-metadata
-- `foresight/*.md` - Markdown för varje foresight
+Allt innehåll lagras i SQLite-databasen `${DATA_DIR}/expertbyran.db` (WAL-läge). Tabeller: `blog_posts`, `blog_post_areas`, `foresights`, `radars`, `experts`, `expert_areas`, `schema_migrations`. Migreringar körs automatiskt vid serverstart.
 
-Vid första start kopieras data från `/app/seed/` till `/app/data/` om data-katalogen är tom.
+Det finns ingen seed-mekanism — en nyinstallation startar med tom databas. Vid första start mot en volym med det gamla filbaserade formatet (`site-data.json`, `blog-data.json` + `blog/posts/*.md`, `foresight-data.json` + `foresight/*.md`, `radar-data.json` + `radar/*.json`) importeras innehållet automatiskt till SQLite och källfilerna döps om till `*.imported`. Misslyckas importen avbryts uppstarten (inga halvimporter); `SKIP_LEGACY_IMPORT=1` hoppar över importen.
+
+Backup: databasen är en fil på volymen — kopiera volymen eller ta en sqlite-dump.
 
 ## Exempel med curl
 

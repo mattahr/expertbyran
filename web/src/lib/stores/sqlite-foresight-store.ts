@@ -7,6 +7,18 @@ import { getDb } from "@/lib/db/client";
 import type { ForesightStore, ListPageOptions, StoredPost } from "./types";
 import { ConflictError, NotFoundError } from "./types";
 
+// Se mapSlugConstraint i sqlite-blog-store.ts — samma TOCTOU-fönster runt
+// markdown-renderingens await; PK-felet mappas till 409 i stället för 400.
+function mapSlugConstraint(error: unknown, slug: string): never {
+  if (
+    error instanceof Error &&
+    error.message.includes("UNIQUE constraint failed: foresights.slug")
+  ) {
+    throw new ConflictError(`Foresight with slug ${slug} already exists`);
+  }
+  throw error;
+}
+
 type ForesightRow = {
   slug: string;
   title: string;
@@ -84,27 +96,31 @@ export class SqliteForesightStore implements ForesightStore {
       throw new ConflictError(`Foresight with slug ${validated.slug} already exists`);
     }
     const html = await renderBlogMarkdown(markdown);
-    this.db
-      .prepare(
-        `INSERT INTO foresights (slug, title, date, date_ms, author_slug, author_name, author_role, excerpt, horizon, area_slugs, markdown, html, renderer_version, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      )
-      .run(
-        validated.slug,
-        validated.title,
-        validated.date,
-        Date.parse(validated.date),
-        validated.authorSlug ?? null,
-        validated.authorName ?? null,
-        validated.authorRole ?? null,
-        validated.excerpt,
-        validated.horizon ?? null,
-        JSON.stringify(validated.areaSlugs),
-        markdown,
-        html,
-        MARKDOWN_RENDERER_VERSION,
-        new Date().toISOString(),
-      );
+    try {
+      this.db
+        .prepare(
+          `INSERT INTO foresights (slug, title, date, date_ms, author_slug, author_name, author_role, excerpt, horizon, area_slugs, markdown, html, renderer_version, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .run(
+          validated.slug,
+          validated.title,
+          validated.date,
+          Date.parse(validated.date),
+          validated.authorSlug ?? null,
+          validated.authorName ?? null,
+          validated.authorRole ?? null,
+          validated.excerpt,
+          validated.horizon ?? null,
+          JSON.stringify(validated.areaSlugs),
+          markdown,
+          html,
+          MARKDOWN_RENDERER_VERSION,
+          new Date().toISOString(),
+        );
+    } catch (error) {
+      mapSlugConstraint(error, validated.slug);
+    }
     return validated;
   }
 
@@ -127,29 +143,33 @@ export class SqliteForesightStore implements ForesightStore {
     const nextHtml =
       patch.markdown !== undefined ? await renderBlogMarkdown(nextMarkdown) : existing.html;
 
-    this.db
-      .prepare(
-        `UPDATE foresights
-         SET slug = ?, title = ?, date = ?, date_ms = ?, author_slug = ?, author_name = ?, author_role = ?, excerpt = ?, horizon = ?, area_slugs = ?, markdown = ?, html = ?, renderer_version = ?, updated_at = ?
-         WHERE slug = ?`,
-      )
-      .run(
-        nextMeta.slug,
-        nextMeta.title,
-        nextMeta.date,
-        Date.parse(nextMeta.date),
-        nextMeta.authorSlug ?? null,
-        nextMeta.authorName ?? null,
-        nextMeta.authorRole ?? null,
-        nextMeta.excerpt,
-        nextMeta.horizon ?? null,
-        JSON.stringify(nextMeta.areaSlugs),
-        nextMarkdown,
-        nextHtml,
-        MARKDOWN_RENDERER_VERSION,
-        new Date().toISOString(),
-        slug,
-      );
+    try {
+      this.db
+        .prepare(
+          `UPDATE foresights
+           SET slug = ?, title = ?, date = ?, date_ms = ?, author_slug = ?, author_name = ?, author_role = ?, excerpt = ?, horizon = ?, area_slugs = ?, markdown = ?, html = ?, renderer_version = ?, updated_at = ?
+           WHERE slug = ?`,
+        )
+        .run(
+          nextMeta.slug,
+          nextMeta.title,
+          nextMeta.date,
+          Date.parse(nextMeta.date),
+          nextMeta.authorSlug ?? null,
+          nextMeta.authorName ?? null,
+          nextMeta.authorRole ?? null,
+          nextMeta.excerpt,
+          nextMeta.horizon ?? null,
+          JSON.stringify(nextMeta.areaSlugs),
+          nextMarkdown,
+          nextHtml,
+          MARKDOWN_RENDERER_VERSION,
+          new Date().toISOString(),
+          slug,
+        );
+    } catch (error) {
+      mapSlugConstraint(error, nextMeta.slug);
+    }
     return nextMeta;
   }
 

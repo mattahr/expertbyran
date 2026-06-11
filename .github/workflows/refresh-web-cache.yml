@@ -1,11 +1,12 @@
 name: Refresh Web Cache
 
+# Manuell nödventil: invaliderar webbappens datacache via GET /refresh.
+# Endpointen kräver bearer-token (samma API_TOKEN som webbappens skrivväg) —
+# konfigurera repo-secreten WEB_API_TOKEN. Den tidigare triggern på
+# web/site-data.json är borttagen: webben läser inte längre den filen
+# (innehållet bor i SQLite på volymen och muteras via API:t).
+
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - web/site-data.json
   workflow_dispatch:
 
 jobs:
@@ -26,6 +27,7 @@ jobs:
               --retry-delay 5 \
               --retry-all-errors \
               --max-time 30 \
+              --header "Authorization: Bearer ${{ secrets.WEB_API_TOKEN }}" \
               https://expertbyran.ahrens.nu/refresh
           )"
 

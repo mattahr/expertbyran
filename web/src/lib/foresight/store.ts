@@ -15,16 +15,6 @@ const loadForesightCatalog = unstable_cache(
   { tags: [...FORESIGHT_TAGS] },
 );
 
-const loadForesightPage = unstable_cache(
-  async (
-    offset: number,
-    limit: number,
-  ): Promise<{ foresights: ForesightEntry[]; total: number }> =>
-    getForesightStore().listForesightsPage({ offset, limit }),
-  ["foresight-page"],
-  { tags: [...FORESIGHT_TAGS] },
-);
-
 const loadStoredForesight = unstable_cache(
   async (slug: string): Promise<StoredPost<ForesightEntry> | null> =>
     getForesightStore().getForesight(slug),
@@ -37,18 +27,24 @@ export async function getForesightCatalog(): Promise<ForesightCatalog> {
   return loadForesightCatalog();
 }
 
-/** Paginerad metadatasida, nyast först. */
+/**
+ * Paginerad metadatasida, nyast först. Cachas medvetet INTE — sidnumret är
+ * användarstyrt och obegränsat; den indexerade SQLite-frågan är sub-ms.
+ */
 export async function getForesightPage(
   offset: number,
   limit: number,
 ): Promise<{ foresights: ForesightEntry[]; total: number }> {
-  return loadForesightPage(offset, limit);
+  return getForesightStore().listForesightsPage({ offset, limit });
 }
 
 /** Hel foresight med färdigrenderad HTML (renderad vid skrivtillfället). */
 export async function getStoredForesight(
   slug: string,
 ): Promise<StoredPost<ForesightEntry> | null> {
+  // Existens-gate mot katalogen — se kommentar i blog/store.ts.
+  const catalog = await loadForesightCatalog();
+  if (!catalog.foresights.some((entry) => entry.slug === slug)) return null;
   return loadStoredForesight(slug);
 }
 

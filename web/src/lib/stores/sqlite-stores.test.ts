@@ -65,6 +65,42 @@ describe("SqliteContentStore", () => {
     await expect(store.deleteArea(referencedArea)).rejects.toThrow(/refereras av/);
   });
 
+  it("vägrar ta bort område som refereras av ett blogginlägg", async () => {
+    const db = testDb();
+    const content = new SqliteContentStore(db);
+    const blog = new SqliteBlogStore(db);
+    const area = data.expertAreas.find(
+      (candidate) => !data.experts.some((e) => e.areaSlugs.includes(candidate.slug)),
+    ) ?? data.expertAreas[0];
+    await content.createArea(area);
+    await blog.createPost(
+      {
+        slug: "post-med-omrade",
+        title: "Test",
+        date: "2026-01-01T10:00:00.000Z",
+        authorName: "A",
+        areaSlugs: [area.slug],
+        excerpt: "e",
+      },
+      "# Test",
+    );
+    await expect(content.deleteArea(area.slug)).rejects.toThrow(/refereras av: blogg:/);
+  });
+
+  it("kastar ConflictError vid dubblerat id med ny slug", async () => {
+    const store = await seededStore();
+    await expect(
+      store.createExpert({ ...data.experts[0], slug: "annan-slug" }),
+    ).rejects.toBeInstanceOf(ConflictError);
+    await expect(
+      store.createArea({ ...data.expertAreas[0], slug: "annan-omrades-slug" }),
+    ).rejects.toBeInstanceOf(ConflictError);
+    // Uppdatering av samma rad med oförändrat id ska INTE konflikta.
+    await expect(
+      store.updateExpert(data.experts[0].slug, { ...data.experts[0], name: "Nytt" }),
+    ).resolves.toBeDefined();
+  });
+
   it("uppdaterar och tar bort experter", async () => {
     const store = await seededStore();
     const expert = data.experts[0];
