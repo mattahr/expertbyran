@@ -11,7 +11,7 @@ const isoDateTimeSchema = z
     message: "Måste vara en giltig ISO 8601-tidsstämpel (t.ex. 2026-05-29T10:00:00.000Z).",
   });
 
-const foresightEntrySchema = z
+export const foresightEntrySchema = z
   .object({
     slug: slugSchema,
     title: z.string().min(1),
@@ -49,6 +49,18 @@ export type ForesightCatalog = z.infer<typeof foresightCatalogSchema>;
 
 export function formatForesightIssues(issues: z.ZodIssue[]) {
   return issues.map((issue) => ({ path: issue.path.join("."), message: issue.message }));
+}
+
+export function parseForesightEntry(input: unknown, source: string): ForesightEntry {
+  const result = foresightEntrySchema.safeParse(input);
+  if (!result.success) {
+    const issues = formatForesightIssues(result.error.issues);
+    console.error(`[schema] Invalid foresight entry from ${source}`, issues);
+    throw new Error(
+      `Invalid foresight entry from ${source}: ${issues.map((i) => `${i.path}: ${i.message}`).join("; ")}`,
+    );
+  }
+  return result.data;
 }
 
 export function parseForesightCatalog(input: unknown, source: string): ForesightCatalog {

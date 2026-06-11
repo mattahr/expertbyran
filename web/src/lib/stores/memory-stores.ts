@@ -1,10 +1,28 @@
 // web/src/lib/stores/memory-stores.ts
 import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
+import { renderBlogMarkdown } from "@/lib/blog/markdown";
 import type { BlogPostEntry } from "@/lib/blog/schema";
 import { assertRadarIntegrity, type Blip, type RadarMeta } from "@/lib/radar/schema";
 import type { ForesightEntry } from "@/lib/foresight/schema";
-import type { BlogStore, ConfigStore, ContentStore, ForesightStore, RadarStore, SiteConfig } from "./types";
+import type {
+  BlogStore,
+  ConfigStore,
+  ContentStore,
+  ForesightStore,
+  ListPageOptions,
+  RadarStore,
+  SiteConfig,
+  StoredPost,
+} from "./types";
 import { ConflictError, NotFoundError } from "./types";
+
+// Samma sorteringskontrakt som sqlite-stores: nyast först, slug som tiebreaker.
+function byDateDesc<T extends { date: string; slug: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => {
+    const diff = Date.parse(b.date) - Date.parse(a.date);
+    return diff !== 0 ? diff : a.slug.localeCompare(b.slug);
+  });
+}
 
 export class InMemoryConfigStore implements ConfigStore {
   constructor(private readonly data: SiteData) {}
@@ -83,14 +101,28 @@ export class InMemoryContentStore implements ContentStore {
 export class InMemoryBlogStore implements BlogStore {
   private posts: BlogPostEntry[] = [];
   private markdown = new Map<string, string>();
+  private html = new Map<string, string>();
 
   async listPosts() {
-    return [...this.posts];
+    return byDateDesc(this.posts);
   }
-  async getPost(slug: string) {
+  async listPostsPage(opts: ListPageOptions) {
+    const wanted = opts.areaSlugs?.length ? new Set(opts.areaSlugs) : null;
+    const filtered = byDateDesc(
+      wanted ? this.posts.filter((p) => p.areaSlugs.some((slug) => wanted.has(slug))) : this.posts,
+    );
+    return {
+      posts: filtered.slice(opts.offset, opts.offset + opts.limit),
+      total: filtered.length,
+    };
+  }
+  async listUsedAreaSlugs() {
+    return [...new Set(this.posts.flatMap((p) => p.areaSlugs))].sort();
+  }
+  async getPost(slug: string): Promise<StoredPost<BlogPostEntry> | null> {
     const meta = this.posts.find((p) => p.slug === slug);
     if (!meta) return null;
-    return { meta, markdown: this.markdown.get(slug) ?? "" };
+    return { meta, markdown: this.markdown.get(slug) ?? "", html: this.html.get(slug) ?? "" };
   }
   async createPost(meta: BlogPostEntry, markdown: string) {
     if (this.posts.some((p) => p.slug === meta.slug)) {
@@ -98,6 +130,7 @@ export class InMemoryBlogStore implements BlogStore {
     }
     this.posts.push(meta);
     this.markdown.set(meta.slug, markdown);
+    this.html.set(meta.slug, await renderBlogMarkdown(markdown));
     return meta;
   }
   async updatePost(slug: string, patch: { meta?: BlogPostEntry; markdown?: string }) {
@@ -108,8 +141,14 @@ export class InMemoryBlogStore implements BlogStore {
       throw new ConflictError(`Blog post with slug ${nextMeta.slug} already exists`);
     }
     const md = patch.markdown ?? this.markdown.get(slug) ?? "";
-    if (nextMeta.slug !== slug) this.markdown.delete(slug);
+    const html =
+      patch.markdown !== undefined ? await renderBlogMarkdown(md) : (this.html.get(slug) ?? "");
+    if (nextMeta.slug !== slug) {
+      this.markdown.delete(slug);
+      this.html.delete(slug);
+    }
     this.markdown.set(nextMeta.slug, md);
+    this.html.set(nextMeta.slug, html);
     this.posts[i] = nextMeta;
     return nextMeta;
   }
@@ -118,6 +157,7 @@ export class InMemoryBlogStore implements BlogStore {
     if (i === -1) throw new NotFoundError(`Blog post with slug ${slug} not found`);
     this.posts.splice(i, 1);
     this.markdown.delete(slug);
+    this.html.delete(slug);
   }
 }
 
@@ -126,7 +166,7 @@ export class InMemoryRadarStore implements RadarStore {
   private blips = new Map<string, Blip[]>();
 
   async listRadars() {
-    return [...this.radars];
+    return byDateDesc(this.radars);
   }
   async getRadar(slug: string) {
     const meta = this.radars.find((r) => r.slug === slug);
@@ -167,14 +207,22 @@ export class InMemoryRadarStore implements RadarStore {
 export class InMemoryForesightStore implements ForesightStore {
   private foresights: ForesightEntry[] = [];
   private markdown = new Map<string, string>();
+  private html = new Map<string, string>();
 
   async listForesights() {
-    return [...this.foresights];
+    return byDateDesc(this.foresights);
   }
-  async getForesight(slug: string) {
+  async listForesightsPage(opts: ListPageOptions) {
+    const sorted = byDateDesc(this.foresights);
+    return {
+      foresights: sorted.slice(opts.offset, opts.offset + opts.limit),
+      total: sorted.length,
+    };
+  }
+  async getForesight(slug: string): Promise<StoredPost<ForesightEntry> | null> {
     const meta = this.foresights.find((f) => f.slug === slug);
     if (!meta) return null;
-    return { meta, markdown: this.markdown.get(slug) ?? "" };
+    return { meta, markdown: this.markdown.get(slug) ?? "", html: this.html.get(slug) ?? "" };
   }
   async createForesight(meta: ForesightEntry, markdown: string) {
     if (this.foresights.some((f) => f.slug === meta.slug)) {
@@ -182,6 +230,7 @@ export class InMemoryForesightStore implements ForesightStore {
     }
     this.foresights.push(meta);
     this.markdown.set(meta.slug, markdown);
+    this.html.set(meta.slug, await renderBlogMarkdown(markdown));
     return meta;
   }
   async updateForesight(slug: string, patch: { meta?: ForesightEntry; markdown?: string }) {
@@ -192,8 +241,14 @@ export class InMemoryForesightStore implements ForesightStore {
       throw new ConflictError(`Foresight with slug ${nextMeta.slug} already exists`);
     }
     const md = patch.markdown ?? this.markdown.get(slug) ?? "";
-    if (nextMeta.slug !== slug) this.markdown.delete(slug);
+    const html =
+      patch.markdown !== undefined ? await renderBlogMarkdown(md) : (this.html.get(slug) ?? "");
+    if (nextMeta.slug !== slug) {
+      this.markdown.delete(slug);
+      this.html.delete(slug);
+    }
     this.markdown.set(nextMeta.slug, md);
+    this.html.set(nextMeta.slug, html);
     this.foresights[i] = nextMeta;
     return nextMeta;
   }
@@ -202,5 +257,6 @@ export class InMemoryForesightStore implements ForesightStore {
     if (i === -1) throw new NotFoundError(`Foresight with slug ${slug} not found`);
     this.foresights.splice(i, 1);
     this.markdown.delete(slug);
+    this.html.delete(slug);
   }
 }

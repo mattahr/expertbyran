@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 
 import styles from "@/components/site/site.module.css";
 import { getRadar } from "@/lib/radar/query";
-import { getRelatedByBlips } from "@/lib/radar/related";
+import { getRelatedForRadar } from "@/lib/radar/related";
 import { RadarChart } from "./RadarChart";
+
+// Renderas on-demand mot datacachen (per-slug); inget prerendras vid build.
+export const dynamic = "force-dynamic";
 
 type RadarPageProps = {
   params: Promise<{ slug: string }>;
@@ -22,7 +25,7 @@ export default async function RadarDetailPage({ params }: RadarPageProps) {
   const radar = await getRadar(slug);
   if (!radar) notFound();
 
-  const relatedByBlip = await getRelatedByBlips(radar.blips);
+  const relatedByBlip = await getRelatedForRadar(slug);
 
   return (
     <div className={styles.pageWrap}>

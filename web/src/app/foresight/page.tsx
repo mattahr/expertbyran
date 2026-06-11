@@ -1,11 +1,13 @@
 import type { Route } from "next";
 import Link from "next/link";
 
+import { Pagination } from "@/components/site/Pagination";
 import styles from "@/components/site/site.module.css";
 import { Pill } from "@/components/site/Pill";
-import { formatForesightDate, getForesightArchive } from "@/lib/foresight/query";
+import { formatForesightDate, getForesightArchivePage } from "@/lib/foresight/query";
 import type { ForesightSummary } from "@/lib/foresight/query";
 
+// Allt innehåll renderas on-demand mot datacachen — inget prerendras vid build.
 export const dynamic = "force-dynamic";
 
 export const metadata = {
@@ -30,9 +32,25 @@ function ForesightMeta({ foresight }: { foresight: ForesightSummary }) {
   );
 }
 
-export default async function ForesightListPage() {
-  const { foresights } = await getForesightArchive();
-  const [featured, ...rest] = foresights;
+type ForesightSearchParams = { sida?: string | string[] };
+
+type ForesightListPageProps = {
+  searchParams?: Promise<ForesightSearchParams>;
+};
+
+function parsePage(value: string | string[] | undefined): number {
+  const raw = Array.isArray(value) ? value[0] : value;
+  const parsed = Number.parseInt(raw ?? "1", 10);
+  return Number.isNaN(parsed) ? 1 : Math.max(1, parsed);
+}
+
+export default async function ForesightListPage({ searchParams }: ForesightListPageProps = {}) {
+  const resolvedSearchParams = (await searchParams) ?? {};
+  const { foresights, total, totalPages, page } = await getForesightArchivePage(
+    parsePage(resolvedSearchParams.sida),
+  );
+  // Featured-layouten visas bara överst på första sidan.
+  const [featured, ...rest] = page === 1 ? foresights : [null, ...foresights];
 
   return (
     <div className={styles.pageWrap}>
@@ -48,7 +66,9 @@ export default async function ForesightListPage() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionLabel}>Alla foresights</h2>
-          <span className={styles.sectionCount}>{`${foresights.length} foresights`}</span>
+          <span className={styles.sectionCount}>
+            {totalPages > 1 ? `${total} foresights — sida ${page} av ${totalPages}` : `${total} foresights`}
+          </span>
         </div>
 
         {foresights.length === 0 ? (
@@ -65,16 +85,20 @@ export default async function ForesightListPage() {
             ) : null}
 
             <div className={styles.blogGrid}>
-              {rest.map((foresight) => (
-                <Link key={foresight.slug} href={`/foresight/${foresight.slug}` as Route} className={styles.blogCard}>
-                  <ForesightMeta foresight={foresight} />
-                  <h3 className={styles.blogCardTitle}>{foresight.title}</h3>
-                  {foresight.excerpt ? <p className={styles.blogCardSummary}>{foresight.excerpt}</p> : null}
-                </Link>
-              ))}
+              {rest
+                .filter((foresight): foresight is ForesightSummary => foresight !== null)
+                .map((foresight) => (
+                  <Link key={foresight.slug} href={`/foresight/${foresight.slug}` as Route} className={styles.blogCard}>
+                    <ForesightMeta foresight={foresight} />
+                    <h3 className={styles.blogCardTitle}>{foresight.title}</h3>
+                    {foresight.excerpt ? <p className={styles.blogCardSummary}>{foresight.excerpt}</p> : null}
+                  </Link>
+                ))}
             </div>
           </>
         )}
+
+        <Pagination basePath="/foresight" page={page} totalPages={totalPages} />
       </section>
     </div>
   );

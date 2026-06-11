@@ -1281,6 +1281,34 @@
   background: var(--accent);
 }
 
+/* === Sidnavigering (paginering) === */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.paginationStatus {
+  color: var(--gray-500);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.paginationDisabled {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--gray-200);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
 /* === Blogglista — featured-first layout === */
 .blogFeatured {
   display: flex;

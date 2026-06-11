@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-22T19:00:00.000Z",
+  "site": {
+    "name": "Expertbyrån",
+    "tagline": "Virtuell specialistbyrå och katalog för externa expertplugins.",
+    "description": "Expertbyrån är ett helt virtuellt specialistföretag där AI-agenter bemannar uppdrag inom analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen fungerar även som publik katalog för experter, expertområden och extern Claude Code-marketplace.",
+    "hero": {
+      "eyebrow": "Virtuell specialistorganisation",
+      "title": "Analys, styrning och kvalitet genom virtuella experter.",
+      "intro": "Expertbyrån samlar AI-baserade specialistroller för analys, tjänstedesign, data, automation, risk och kvalitet. Webbplatsen beskriver organisationen, expertområdena och de experter vars metadata hålls i synk med en extern Claude Code-marketplace.",
+      "primaryCta": {
+        "label": "Utforska marknadsplatsen",
+        "href": "/marknadsplats"
+      },
+      "secondaryCta": {
+        "label": "Se expertområden",
+        "href": "/expertomraden"
+      }
+    },
+    "principles": [
+      "Tydlig ansvarsfördelning mellan experter",
+      "Spårbar leveranslogik från analys till kvalitet",
+      "Specialisering utan manuell overhead",
+      "Marknadsplatsen publiceras via GitHub",
+      "Webbkatalog och pluginmetadata hålls i synk av backend-agenter"
+    ]
+  },
+  "organization": {
+    "heading": "En virtuell specialistbyrå med tydliga roller och definierade ansvar.",
+    "summary": "Expertbyrån arbetar som en liten specialistorganisation där uppdrag bemannas utifrån tydligt mandat, avgränsad roll och dokumenterad metod. Varje AI-agent har ett specificerat expertområde och ett tydligt ansvar i leveransen.",
+    "modelTitle": "AI-agenter i tydliga roller",
+    "modelDescription": "Varje uppdrag bemannas med en ansvarig uppdragsarkitekt, relevanta specialister och ett separat kvalitetsspår. Upplägget gör det möjligt att hålla hög specialisttäthet, spårbarhet och tydlig ansvarsfördelning.",
+    "structure": [
+      {
+        "id": "orchestration",
+        "title": "Orkestrering",
+        "description": "En ansvarig agent sätter arbetssätt, bemannar uppdraget och håller ihop prioriteringar, leverabler och deadlines."
+      },
+      {
+        "id": "analysis",
+        "title": "Analys och beslutsstöd",
+        "description": "Analytiska experter bryter ned problem, bedömer målkonflikter och tar fram underlag för styrning, scenarioarbete och prioritering."
+      },
+      {
+        "id": "delivery",
+        "title": "Design och genomförande",
+        "description": "Produkt-, tjänste- och automationsspecialister omsätter strategi till arbetssätt, lösningar, prototyper och konkreta flöden."
+      },
+      {
+        "id": "quality",
+        "title": "Risk och kvalitet",
+        "description": "Kvalitets- och regulatorikexperter kvalitetssäkrar språk, struktur, kontrollpunkter och efterlevnad innan något lämnar byrån."
+      }
+    ],
+    "operations": [
+      {
+        "label": "Första kvalificerade svar",
+        "value": "< 15 min",
+        "description": "Gäller när briefen är tydlig nog för första bedömning."
+      },
+      {
+        "label": "Normal startsträcka",
+        "value": "1 arbetsdag",
+        "description": "Från tydlig brief till aktiv bemanning och arbetsplan."
+      },
+      {
+        "label": "Typisk kärnbemanning",
+        "value": "2-4 experter",
+        "description": "Skalbar uppdragsbemanning beroende på spår och leverabler."
+      },
+      {
+        "label": "Arbetsspråk",
+        "value": "Svenska + engelska",
+        "description": "Svenska först i v1, engelska kan aktiveras per uppdrag."
+      }
+    ],
+    "workflow": [
+      {
+        "title": "Brief och målbild",
+        "description": "Vi fångar uppdragets kontext, beslutspunkter och vad som faktiskt måste förändras efter leveransen."
+      },
+      {
+        "title": "Bemanning och upplägg",
+        "description": "Rätt experter kopplas in med ett tydligt scope, ansvar per delspår och en definierad leveransrytm."
+      },
+      {
+        "title": "Produktion och kvalitetssäkring",
+        "description": "Arbetet produceras snabbt men granskas alltid mot tydliga kvalitetskriterier innan det lämnas tillbaka."
+      },
+      {
+        "title": "Uppföljning och leverans",
+        "description": "Resultat sammanställs, slutsatser förankras och leverabeln överlämnas med tydlig dokumentation för vidare användning."
+      }
+    ]
+  },
+  "marketplace": {
+    "name": "expertbyran",
+    "repositoryUrl": "https://github.com/mattahr/expertbyran_marketplace",
+    "marketplaceJsonUrl": "https://raw.githubusercontent.com/mattahr/expertbyran_marketplace/main/.claude-plugin/marketplace.json",
+    "installSource": {
+      "source": "github",
+      "repo": "mattahr/expertbyran_marketplace"
+    },
+    "description": "Expertbyråns marknadsplats finns i GitHub-repot mattahr/expertbyran_marketplace."
+  }
+}

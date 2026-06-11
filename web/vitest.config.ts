@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     globals: false,
     environment: "node",
+    exclude: ["**/node_modules/**", "**/.next/**"],
     setupFiles: ["./vitest.setup.ts"],
     coverage: {
       reporter: ["text", "html"],

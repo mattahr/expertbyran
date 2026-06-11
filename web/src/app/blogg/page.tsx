@@ -1,11 +1,16 @@
 import type { Route } from "next";
 import Link from "next/link";
 
+import { Pagination } from "@/components/site/Pagination";
 import { Pill } from "@/components/site/Pill";
 import styles from "@/components/site/site.module.css";
-import { formatBlogDate, getBlogArchive } from "@/lib/blog/query";
+import { formatBlogDate, getBlogArchivePage } from "@/lib/blog/query";
 import type { BlogPostSummary } from "@/lib/blog/query";
 import type { ExpertArea } from "@/lib/content/schema";
+
+// Allt innehåll renderas on-demand mot datacachen — inget prerendras vid
+// build (tom databas vid nyinstallation; jfr c4c242f).
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Blogg",
@@ -14,25 +19,21 @@ export const metadata = {
 
 type BlogSearchParams = {
   omrade?: string | string[];
+  sida?: string | string[];
 };
 
 type BlogPageProps = {
   searchParams?: Promise<BlogSearchParams>;
 };
 
-function normalizeSelectedAreaSlugs(value: string | string[] | undefined, availableAreas: ExpertArea[]) {
-  const values = Array.isArray(value) ? value : value ? [value] : [];
-  const availableSlugs = new Set(availableAreas.map((area) => area.slug));
-  const seen = new Set<string>();
+function toArray(value: string | string[] | undefined): string[] {
+  return Array.isArray(value) ? value : value ? [value] : [];
+}
 
-  return values.filter((slug) => {
-    if (!availableSlugs.has(slug) || seen.has(slug)) {
-      return false;
-    }
-
-    seen.add(slug);
-    return true;
-  });
+function parsePage(value: string | string[] | undefined): number {
+  const raw = Array.isArray(value) ? value[0] : value;
+  const parsed = Number.parseInt(raw ?? "1", 10);
+  return Number.isNaN(parsed) ? 1 : Math.max(1, parsed);
 }
 
 function buildAreaFilterHref(areaSlug: string, selectedAreaSlugs: string[], availableAreas: ExpertArea[]) {
@@ -80,19 +81,19 @@ function BlogPostCardMeta({ post }: { post: BlogPostSummary }) {
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps = {}) {
-  const emptySearchParams: BlogSearchParams = {};
-  const [{ posts, areas }, resolvedSearchParams] = await Promise.all([
-    getBlogArchive(),
-    searchParams ?? Promise.resolve(emptySearchParams),
-  ]);
-  const selectedAreaSlugs = normalizeSelectedAreaSlugs(resolvedSearchParams.omrade, areas);
+  const resolvedSearchParams = (await searchParams) ?? {};
+  const requestedAreaSlugs = toArray(resolvedSearchParams.omrade);
+  const requestedPage = parsePage(resolvedSearchParams.sida);
+
+  const { posts, areas, selectedAreaSlugs, total, totalPages, page } = await getBlogArchivePage(
+    requestedPage,
+    requestedAreaSlugs,
+  );
   const selectedAreaSlugSet = new Set(selectedAreaSlugs);
-  const visiblePosts =
-    selectedAreaSlugs.length > 0
-      ? posts.filter((post) => post.areaSlugs.some((slug) => selectedAreaSlugSet.has(slug)))
-      : posts;
-  const [featured, ...rest] = visiblePosts;
   const isFiltered = selectedAreaSlugs.length > 0;
+
+  // Featured-layouten visas bara överst i det ofiltrerade arkivet.
+  const [featured, ...rest] = !isFiltered && page === 1 ? posts : [null, ...posts];
 
   return (
     <div className={styles.pageWrap}>
@@ -143,11 +144,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps = {}) {
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionLabel}>{isFiltered ? "Matchande inlägg" : "Alla inlägg"}</h2>
           <span className={styles.sectionCount}>
-            {isFiltered ? `${visiblePosts.length} av ${posts.length} inlägg` : `${posts.length} inlägg`}
+            {totalPages > 1
+              ? `${total} inlägg — sida ${page} av ${totalPages}`
+              : `${total} inlägg`}
           </span>
         </div>
 
-        {visiblePosts.length === 0 ? (
+        {posts.length === 0 ? (
           <div className={styles.emptyState}>
             {isFiltered ? "Inga inlägg matchar valda expertområden." : "Inga inlägg publicerade ännu."}
           </div>
@@ -163,16 +166,25 @@ export default async function BlogPage({ searchParams }: BlogPageProps = {}) {
             ) : null}
 
             <div className={styles.blogGrid}>
-              {rest.map((post) => (
-                <Link key={post.slug} href={`/blogg/${post.slug}` as Route} className={styles.blogCard}>
-                  <BlogPostCardMeta post={post} />
-                  <h3 className={styles.blogCardTitle}>{post.title}</h3>
-                  {post.excerpt ? <p className={styles.blogCardSummary}>{post.excerpt}</p> : null}
-                </Link>
-              ))}
+              {rest
+                .filter((post): post is BlogPostSummary => post !== null)
+                .map((post) => (
+                  <Link key={post.slug} href={`/blogg/${post.slug}` as Route} className={styles.blogCard}>
+                    <BlogPostCardMeta post={post} />
+                    <h3 className={styles.blogCardTitle}>{post.title}</h3>
+                    {post.excerpt ? <p className={styles.blogCardSummary}>{post.excerpt}</p> : null}
+                  </Link>
+                ))}
             </div>
           </>
         )}
+
+        <Pagination
+          basePath="/blogg"
+          page={page}
+          totalPages={totalPages}
+          extraParams={selectedAreaSlugs.map((slug) => ["omrade", slug] as [string, string])}
+        />
       </section>
     </div>
   );

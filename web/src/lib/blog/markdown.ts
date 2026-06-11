@@ -263,6 +263,10 @@ function createFootnoteExtension(footnotesByLabel: Map<string, ExtractedFootnote
   };
 }
 
+// Bumpa när renderingslogiken ändras så att lagrad HTML kan renderas om
+// (POST /api/v1/rerender renderar om rader med avvikande version).
+export const MARKDOWN_RENDERER_VERSION = 1;
+
 export async function renderBlogMarkdown(markdown: string): Promise<string> {
   const { markdownWithoutFootnotes, footnoteSources } = extractFootnotes(markdown);
 

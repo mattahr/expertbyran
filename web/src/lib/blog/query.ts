@@ -1,17 +1,27 @@
 import type { Expert, ExpertArea, SiteData } from "@/lib/content/schema";
 import { getSiteData } from "@/lib/content/store";
 
-import type { BlogCatalog, BlogPostEntry } from "@/lib/blog/schema";
-import { getBlogCatalog, getRenderedPost } from "@/lib/blog/store";
+import type { BlogPostEntry } from "@/lib/blog/schema";
+import {
+  getBlogCatalog,
+  getBlogPage,
+  getStoredBlogPost,
+  getUsedBlogAreaSlugs,
+} from "@/lib/blog/store";
+
+export const BLOG_PAGE_SIZE = 24;
+
+// Modulnivå-formatterare: Intl.DateTimeFormat är dyr att skapa per anrop.
+const blogDateFormatter = new Intl.DateTimeFormat("sv-SE", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+});
 
 export function formatBlogDate(isoDate: string): string {
-  return new Date(isoDate).toLocaleString("sv-SE", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  return blogDateFormatter.format(new Date(isoDate));
 }
 
 export type ResolvedAuthor = {
@@ -33,6 +43,18 @@ export type BlogPostFull = BlogPostSummary & {
 export type BlogArchive = {
   posts: BlogPostSummary[];
   areas: ExpertArea[];
+};
+
+export type BlogArchivePage = {
+  posts: BlogPostSummary[];
+  // Områden som används av minst ett inlägg (oavsett aktuell sida/filter).
+  areas: ExpertArea[];
+  // Begärda filterområden normaliserade mot tillgängliga (okända släpps).
+  selectedAreaSlugs: string[];
+  total: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
 };
 
 function resolveAuthor(experts: Expert[], entry: BlogPostEntry): ResolvedAuthor | null {
@@ -73,8 +95,9 @@ function byAreaOrder(areas: ExpertArea[]) {
   });
 }
 
-function resolveBlogPosts(catalog: BlogCatalog, siteData: SiteData): BlogPostSummary[] {
-  return catalog.posts
+// Bevarar storens ordning (nyast först); inlägg utan upplösbart visningsnamn filtreras bort.
+function resolveBlogPosts(posts: BlogPostEntry[], siteData: SiteData): BlogPostSummary[] {
+  return posts
     .map((post) => {
       const author = resolveAuthor(siteData.experts, post);
       if (!author) {
@@ -88,23 +111,57 @@ function resolveBlogPosts(catalog: BlogCatalog, siteData: SiteData): BlogPostSum
 
       return { ...post, author, areas };
     })
-    .filter((post): post is BlogPostSummary => post !== null)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .filter((post): post is BlogPostSummary => post !== null);
 }
 
-function resolveUsedAreas(allAreas: ExpertArea[], posts: BlogPostSummary[]): ExpertArea[] {
-  const usedAreaSlugs = new Set(posts.flatMap((post) => post.areas.map((area) => area.slug)));
-
-  return byAreaOrder(allAreas.filter((area) => usedAreaSlugs.has(area.slug)));
+function resolveUsedAreas(allAreas: ExpertArea[], usedSlugs: Iterable<string>): ExpertArea[] {
+  const used = new Set(usedSlugs);
+  return byAreaOrder(allAreas.filter((area) => used.has(area.slug)));
 }
 
+/** Hela arkivet (metadata) — används av related-poolen, inte av listsidorna. */
 export async function getBlogArchive(): Promise<BlogArchive> {
   const [catalog, siteData] = await Promise.all([getBlogCatalog(), getSiteData()]);
-  const posts = resolveBlogPosts(catalog, siteData);
+  const posts = resolveBlogPosts(catalog.posts, siteData);
 
   return {
     posts,
-    areas: resolveUsedAreas(siteData.expertAreas, posts),
+    areas: resolveUsedAreas(
+      siteData.expertAreas,
+      posts.flatMap((post) => post.areas.map((area) => area.slug)),
+    ),
+  };
+}
+
+/** En sida av arkivet, nyast först, med totalantal och filterpiller-områden. */
+export async function getBlogArchivePage(
+  page: number,
+  requestedAreaSlugs: string[] = [],
+): Promise<BlogArchivePage> {
+  const pageSize = BLOG_PAGE_SIZE;
+  const safePage = Math.max(1, Math.floor(page) || 1);
+  const [usedSlugs, siteData] = await Promise.all([getUsedBlogAreaSlugs(), getSiteData()]);
+
+  const areas = resolveUsedAreas(siteData.expertAreas, usedSlugs);
+  const available = new Set(areas.map((area) => area.slug));
+  const selectedAreaSlugs = [...new Set(requestedAreaSlugs)].filter((slug) =>
+    available.has(slug),
+  );
+
+  const { posts, total } = await getBlogPage(
+    (safePage - 1) * pageSize,
+    pageSize,
+    selectedAreaSlugs,
+  );
+
+  return {
+    posts: resolveBlogPosts(posts, siteData),
+    areas,
+    selectedAreaSlugs,
+    total,
+    totalPages: Math.max(1, Math.ceil(total / pageSize)),
+    page: safePage,
+    pageSize,
   };
 }
 
@@ -114,21 +171,13 @@ export async function getOrderedBlogPosts(): Promise<BlogPostSummary[]> {
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPostFull | null> {
-  const [catalog, siteData, contentHtml] = await Promise.all([
-    getBlogCatalog(),
-    getSiteData(),
-    getRenderedPost(slug),
-  ]);
+  const [stored, siteData] = await Promise.all([getStoredBlogPost(slug), getSiteData()]);
+  if (!stored) return null;
 
-  const entry = catalog.posts.find((post) => post.slug === slug);
-  if (!entry) return null;
-
-  const author = resolveAuthor(siteData.experts, entry);
+  const author = resolveAuthor(siteData.experts, stored.meta);
   if (!author) return null;
 
-  if (!contentHtml) return null;
+  const areas = resolveAreas(siteData.expertAreas, stored.meta.areaSlugs);
 
-  const areas = resolveAreas(siteData.expertAreas, entry.areaSlugs);
-
-  return { ...entry, author, areas, contentHtml };
+  return { ...stored.meta, author, areas, contentHtml: stored.html };
 }

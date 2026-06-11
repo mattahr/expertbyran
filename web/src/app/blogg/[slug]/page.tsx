@@ -6,18 +6,15 @@ import styles from "@/components/site/site.module.css";
 import { Pill } from "@/components/site/Pill";
 import { ReadingProgress } from "@/components/site/ReadingProgress";
 import { formatBlogDate, getBlogPost } from "@/lib/blog/query";
-import { getBlogCatalog } from "@/lib/blog/store";
+
+// Renderas on-demand mot datacachen (per-slug); inget prerendras vid build.
+export const dynamic = "force-dynamic";
 
 type BlogPostPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
-
-export async function generateStaticParams() {
-  const { posts } = await getBlogCatalog();
-  return posts.map((post) => ({ slug: post.slug }));
-}
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;

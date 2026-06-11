@@ -12,10 +12,20 @@ import {
   InMemoryRadarStore,
 } from "./memory-stores";
 import { ConflictError, NotFoundError } from "./types";
+import {
+  blogStoreContract,
+  foresightStoreContract,
+  radarStoreContract,
+} from "./store-contract";
 import type { Blip, RadarMeta } from "@/lib/radar/schema";
 import type { ForesightEntry } from "@/lib/foresight/schema";
 
 const data = siteData as unknown as SiteData;
+
+// Samma kontraktssvit som körs mot SQLite-storesen i sqlite-stores.test.ts.
+blogStoreContract("InMemoryBlogStore", () => new InMemoryBlogStore());
+foresightStoreContract("InMemoryForesightStore", () => new InMemoryForesightStore());
+radarStoreContract("InMemoryRadarStore", () => new InMemoryRadarStore());
 
 function radarFixture(): { meta: RadarMeta; blips: Blip[] } {
   const meta: RadarMeta = {

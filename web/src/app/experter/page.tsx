@@ -4,6 +4,9 @@ import Link from "next/link";
 import styles from "@/components/site/site.module.css";
 import { getAreasForExpert, getOrderedSiteData } from "@/lib/content/query";
 
+// Läser experter/områden ur databasen — renderas on-demand, prerendras inte vid build.
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Våra experter",
 };

@@ -28,9 +28,27 @@ export interface ContentStore {
   deleteArea(slug: string): Promise<void>;
 }
 
+/** Paginerad listfråga. areaSlugs filtrerar på minst ett gemensamt område. */
+export type ListPageOptions = {
+  offset: number;
+  limit: number;
+  areaSlugs?: string[];
+};
+
+/**
+ * Inlägg med färdigrenderad HTML. Markdown är källan (redigeras via API:t);
+ * HTML renderas vid skrivning och läses billigt per request.
+ */
+export type StoredPost<TMeta> = { meta: TMeta; markdown: string; html: string };
+
 export interface BlogStore {
+  /** Samtliga inlägg, nyast först. API-kontrakt: opaginerad (skills beror på den). */
   listPosts(): Promise<BlogPostEntry[]>;
-  getPost(slug: string): Promise<{ meta: BlogPostEntry; markdown: string } | null>;
+  /** Paginerad lista, nyast först, med totalantal för sidnavigering. */
+  listPostsPage(opts: ListPageOptions): Promise<{ posts: BlogPostEntry[]; total: number }>;
+  /** Områdes-slugs som används av minst ett inlägg (för filterpiller). */
+  listUsedAreaSlugs(): Promise<string[]>;
+  getPost(slug: string): Promise<StoredPost<BlogPostEntry> | null>;
   createPost(meta: BlogPostEntry, markdown: string): Promise<BlogPostEntry>;
   updatePost(
     slug: string,
@@ -40,8 +58,13 @@ export interface BlogStore {
 }
 
 export interface ForesightStore {
+  /** Samtliga foresights, nyast först. API-kontrakt: opaginerad. */
   listForesights(): Promise<ForesightEntry[]>;
-  getForesight(slug: string): Promise<{ meta: ForesightEntry; markdown: string } | null>;
+  /** Paginerad lista, nyast först, med totalantal för sidnavigering. */
+  listForesightsPage(
+    opts: ListPageOptions,
+  ): Promise<{ foresights: ForesightEntry[]; total: number }>;
+  getForesight(slug: string): Promise<StoredPost<ForesightEntry> | null>;
   createForesight(meta: ForesightEntry, markdown: string): Promise<ForesightEntry>;
   updateForesight(
     slug: string,

@@ -2,6 +2,9 @@ import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import styles from "@/components/site/site.module.css";
 import { getOrderedSiteData } from "@/lib/content/query";
 
+// Läser experter/områden ur databasen — renderas on-demand, prerendras inte vid build.
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Marknadsplats",
 };

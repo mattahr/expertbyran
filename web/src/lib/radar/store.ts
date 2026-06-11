@@ -1,26 +1,30 @@
 import { unstable_cache } from "next/cache";
 
-import type { RadarDetail } from "@/lib/radar/schema";
+import type { RadarDetail, RadarMeta } from "@/lib/radar/schema";
 import { getRadarStore } from "@/lib/stores";
 
 export const RADAR_TAGS = ["radar"] as const;
 
-const loadRadarData = unstable_cache(
-  async (): Promise<{ radars: RadarDetail[] }> => {
-    const store = getRadarStore();
-    const metas = await store.listRadars();
-    const radars = await Promise.all(
-      metas.map(async (meta): Promise<RadarDetail> => {
-        const full = await store.getRadar(meta.slug);
-        return full ?? { meta, blips: [] };
-      }),
-    );
-    return { radars };
-  },
-  ["radar-data"],
+// Lista (endast meta) och detalj (meta + blips) cachas separat så att
+// listsidan inte drar in alla blips och detaljsidan inte hela katalogen.
+const loadRadarList = unstable_cache(
+  async (): Promise<RadarMeta[]> => getRadarStore().listRadars(),
+  ["radar-list"],
   { tags: [...RADAR_TAGS] },
 );
 
-export async function getRadarData(): Promise<{ radars: RadarDetail[] }> {
-  return loadRadarData();
+const loadRadarDetail = unstable_cache(
+  async (slug: string): Promise<RadarDetail | null> => getRadarStore().getRadar(slug),
+  ["radar-detail"],
+  { tags: [...RADAR_TAGS] },
+);
+
+/** Radarkatalogen (endast meta), nyast först. */
+export async function getRadarList(): Promise<RadarMeta[]> {
+  return loadRadarList();
+}
+
+/** En radar med blips; cachas per slug. */
+export async function getRadarDetail(slug: string): Promise<RadarDetail | null> {
+  return loadRadarDetail(slug);
 }

@@ -126,7 +126,7 @@ const installSourceSchema = z.discriminatedUnion("source", [
   npmInstallSourceSchema,
 ]);
 
-const areaSchema = z.object({
+export const areaSchema = z.object({
   id: z.string().min(1),
   slug: slugSchema,
   sortOrder: z.number().int().nonnegative(),
@@ -139,7 +139,7 @@ const areaSchema = z.object({
   deliverables: z.array(z.string().min(1)).min(2),
 });
 
-const expertSchema = z.object({
+export const expertSchema = z.object({
   id: z.string().min(1),
   slug: slugSchema,
   sortOrder: z.number().int().nonnegative(),
@@ -170,38 +170,52 @@ const marketplaceSchema = z.object({
   description: z.string().min(1),
 });
 
+const siteSectionSchema = z.object({
+  name: z.string().min(1),
+  tagline: z.string().min(1),
+  description: z.string().min(1),
+  hero: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+    primaryCta: z.object({
+      label: z.string().min(1),
+      href: internalOrExternalHrefSchema,
+    }),
+    secondaryCta: z.object({
+      label: z.string().min(1),
+      href: internalOrExternalHrefSchema,
+    }),
+  }),
+  principles: z.array(z.string().min(1)).min(3),
+});
+
+const organizationSchema = z.object({
+  heading: z.string().min(1),
+  summary: z.string().min(1),
+  modelTitle: z.string().min(1),
+  modelDescription: z.string().min(1),
+  structure: z.array(structureBlockSchema).min(3),
+  operations: z.array(metricSchema).min(3),
+  workflow: z.array(richListItemSchema).min(3),
+});
+
+// Config-delen av sajtdatan — bundlas i imagen (src/config/site-config.json)
+// och är inte API-muterbar, till skillnad från experter/områden som bor i DB.
+export const siteConfigSchema = z.object({
+  version: z.number().int().positive(),
+  updatedAt: isoDateTimeSchema,
+  site: siteSectionSchema,
+  organization: organizationSchema,
+  marketplace: marketplaceSchema,
+});
+
 export const siteDataSchema = z
   .object({
     version: z.number().int().positive(),
     updatedAt: isoDateTimeSchema,
-    site: z.object({
-      name: z.string().min(1),
-      tagline: z.string().min(1),
-      description: z.string().min(1),
-      hero: z.object({
-        eyebrow: z.string().min(1),
-        title: z.string().min(1),
-        intro: z.string().min(1),
-        primaryCta: z.object({
-          label: z.string().min(1),
-          href: internalOrExternalHrefSchema,
-        }),
-        secondaryCta: z.object({
-          label: z.string().min(1),
-          href: internalOrExternalHrefSchema,
-        }),
-      }),
-      principles: z.array(z.string().min(1)).min(3),
-    }),
-    organization: z.object({
-      heading: z.string().min(1),
-      summary: z.string().min(1),
-      modelTitle: z.string().min(1),
-      modelDescription: z.string().min(1),
-      structure: z.array(structureBlockSchema).min(3),
-      operations: z.array(metricSchema).min(3),
-      workflow: z.array(richListItemSchema).min(3),
-    }),
+    site: siteSectionSchema,
+    organization: organizationSchema,
     marketplace: marketplaceSchema,
     expertAreas: z.array(areaSchema).min(1),
     experts: z.array(expertSchema).min(1),
@@ -287,6 +301,46 @@ export function parseSiteData(input: unknown, source: string): SiteData {
     const issues = formatIssues(result.error.issues);
     console.error(`[schema] Invalid site-data from ${source}`, issues);
     throw new Error(`Invalid site-data from ${source}`);
+  }
+
+  return result.data;
+}
+
+export function parseSiteConfig(input: unknown, source: string): z.infer<typeof siteConfigSchema> {
+  const result = siteConfigSchema.safeParse(input);
+
+  if (!result.success) {
+    const issues = formatIssues(result.error.issues);
+    console.error(`[schema] Invalid site-config from ${source}`, issues);
+    throw new Error(`Invalid site-config from ${source}`);
+  }
+
+  return result.data;
+}
+
+export function parseExpert(input: unknown, source: string): Expert {
+  const result = expertSchema.safeParse(input);
+
+  if (!result.success) {
+    const issues = formatIssues(result.error.issues);
+    console.error(`[schema] Invalid expert from ${source}`, issues);
+    throw new Error(
+      `Invalid expert from ${source}: ${issues.map((i) => `${i.path}: ${i.message}`).join("; ")}`,
+    );
+  }
+
+  return result.data;
+}
+
+export function parseExpertArea(input: unknown, source: string): ExpertArea {
+  const result = areaSchema.safeParse(input);
+
+  if (!result.success) {
+    const issues = formatIssues(result.error.issues);
+    console.error(`[schema] Invalid expert area from ${source}`, issues);
+    throw new Error(
+      `Invalid expert area from ${source}: ${issues.map((i) => `${i.path}: ${i.message}`).join("; ")}`,
+    );
   }
 
   return result.data;

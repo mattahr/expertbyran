@@ -1,7 +1,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 
-import { getSiteData } from "@/lib/content/store";
+import { getSiteConfig } from "@/lib/content/store";
 
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
@@ -24,7 +24,7 @@ const navigation = [
 const ADMIN_LOGIN_URL = process.env.ADMIN_LOGIN_URL ?? "https://admin.expertbyran.se";
 
 export async function SiteChrome({ children }: SiteChromeProps) {
-  const data = await getSiteData();
+  const data = await getSiteConfig();
 
   return (
     <div className={styles.shell}>

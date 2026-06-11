@@ -3,7 +3,7 @@ import { DM_Sans, Instrument_Serif } from "next/font/google";
 
 import { SiteChrome } from "@/components/site/SiteChrome";
 import { VisitLogger } from "@/components/site/VisitLogger";
-import { getSiteData } from "@/lib/content/store";
+import { getSiteConfig } from "@/lib/content/store";
 import { pageRobots } from "@/lib/robots-policy";
 
 import "./globals.css";
@@ -22,7 +22,7 @@ const displayFont = Instrument_Serif({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { site } = await getSiteData();
+  const { site } = await getSiteConfig();
 
   return {
     metadataBase: new URL("https://expertbyran.ai"),

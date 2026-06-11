@@ -1,22 +1,18 @@
 // @vitest-environment node
 
 import { renderToStaticMarkup } from "react-dom/server";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import blogData from "../test/fixtures/blog-data.fixture.json";
 import siteData from "../test/fixtures/site-data.fixture.json";
-
-vi.mock("@/lib/content/store", () => ({
-  getSiteData: vi.fn(async () => siteData),
-}));
-
-vi.mock("@/lib/blog/store", () => ({
-  getBlogCatalog: vi.fn(async () => blogData),
-  getRenderedPost: vi.fn(async (slug: string) => {
-    const post = blogData.posts.find((candidate) => candidate.slug === slug);
-    return post ? `<p>${post.title}</p>` : null;
-  }),
-}));
+import type { BlogPostEntry } from "@/lib/blog/schema";
+import type { SiteData } from "@/lib/content/schema";
+import { __setStoresForTest } from "@/lib/stores";
+import {
+  InMemoryBlogStore,
+  InMemoryConfigStore,
+  InMemoryContentStore,
+} from "@/lib/stores/memory-stores";
 
 import BlogPostPage from "./blogg/[slug]/page";
 import BlogPage from "./blogg/page";
@@ -25,10 +21,22 @@ import ExpertDetailPage from "./experter/[slug]/page";
 import MarketplacePage from "./marknadsplats/page";
 import HomePage from "./page";
 
+const typedSiteData = siteData as unknown as SiteData;
+
 describe("public pages", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+  beforeEach(async () => {
+    const blog = new InMemoryBlogStore();
+    for (const post of blogData.posts) {
+      await blog.createPost(post as BlogPostEntry, `# ${post.title}`);
+    }
+    __setStoresForTest({
+      blog,
+      config: new InMemoryConfigStore(typedSiteData),
+      content: new InMemoryContentStore(typedSiteData.experts, typedSiteData.expertAreas),
+    });
   });
+
+  afterEach(() => __setStoresForTest(null));
 
   it("renders the home page with seeded content", async () => {
     const html = renderToStaticMarkup(await HomePage());

@@ -1,8 +1,8 @@
 import { unstable_cache } from "next/cache";
 
-import { renderBlogMarkdown } from "@/lib/blog/markdown";
-import type { ForesightCatalog } from "@/lib/foresight/schema";
+import type { ForesightCatalog, ForesightEntry } from "@/lib/foresight/schema";
 import { getForesightStore } from "@/lib/stores";
+import type { StoredPost } from "@/lib/stores/types";
 
 export const FORESIGHT_TAGS = ["foresight"] as const;
 
@@ -15,22 +15,44 @@ const loadForesightCatalog = unstable_cache(
   { tags: [...FORESIGHT_TAGS] },
 );
 
-const loadRenderedForesight = unstable_cache(
-  async (slug: string): Promise<string | null> => {
-    const full = await getForesightStore().getForesight(slug);
-    if (!full) return null;
-    return renderBlogMarkdown(full.markdown);
-  },
-  ["foresight-rendered-post"],
+const loadForesightPage = unstable_cache(
+  async (
+    offset: number,
+    limit: number,
+  ): Promise<{ foresights: ForesightEntry[]; total: number }> =>
+    getForesightStore().listForesightsPage({ offset, limit }),
+  ["foresight-page"],
   { tags: [...FORESIGHT_TAGS] },
 );
 
-/** Lättviktig katalog (endast metadata) — renderar ingen markdown. */
+const loadStoredForesight = unstable_cache(
+  async (slug: string): Promise<StoredPost<ForesightEntry> | null> =>
+    getForesightStore().getForesight(slug),
+  ["foresight-stored-post"],
+  { tags: [...FORESIGHT_TAGS] },
+);
+
+/** Lättviktig katalog (endast metadata, nyast först). */
 export async function getForesightCatalog(): Promise<ForesightCatalog> {
   return loadForesightCatalog();
 }
 
+/** Paginerad metadatasida, nyast först. */
+export async function getForesightPage(
+  offset: number,
+  limit: number,
+): Promise<{ foresights: ForesightEntry[]; total: number }> {
+  return loadForesightPage(offset, limit);
+}
+
+/** Hel foresight med färdigrenderad HTML (renderad vid skrivtillfället). */
+export async function getStoredForesight(
+  slug: string,
+): Promise<StoredPost<ForesightEntry> | null> {
+  return loadStoredForesight(slug);
+}
+
 /** Renderad HTML för en enskild foresight; cachas per slug. */
 export async function getRenderedForesight(slug: string): Promise<string | null> {
-  return loadRenderedForesight(slug);
+  return (await loadStoredForesight(slug))?.html ?? null;
 }

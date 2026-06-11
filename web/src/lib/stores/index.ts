@@ -1,10 +1,10 @@
 // web/src/lib/stores/index.ts
 import type { BlogStore, ConfigStore, ContentStore, ForesightStore, RadarStore } from "./types";
-import { FileConfigStore } from "./file-config-store";
-import { FileContentStore } from "./file-content-store";
-import { FileBlogStore } from "./file-blog-store";
-import { FileForesightStore } from "./file-foresight-store";
-import { FileRadarStore } from "./file-radar-store";
+import { BundledConfigStore } from "./bundled-config-store";
+import { SqliteContentStore } from "./sqlite-content-store";
+import { SqliteBlogStore } from "./sqlite-blog-store";
+import { SqliteForesightStore } from "./sqlite-foresight-store";
+import { SqliteRadarStore } from "./sqlite-radar-store";
 
 type Stores = {
   config: ConfigStore;
@@ -20,11 +20,11 @@ let defaults: Stores | null = null;
 function getDefaults(): Stores {
   if (!defaults) {
     defaults = {
-      config: new FileConfigStore(),
-      content: new FileContentStore(),
-      blog: new FileBlogStore(),
-      foresight: new FileForesightStore(),
-      radar: new FileRadarStore(),
+      config: new BundledConfigStore(),
+      content: new SqliteContentStore(),
+      blog: new SqliteBlogStore(),
+      foresight: new SqliteForesightStore(),
+      radar: new SqliteRadarStore(),
     };
   }
   return defaults;

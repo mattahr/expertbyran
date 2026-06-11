@@ -13,6 +13,9 @@ import {
   getOrderedSiteData,
 } from "@/lib/content/query";
 
+// Läser experter/områden ur databasen — renderas on-demand, prerendras inte vid build.
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const data = await getOrderedSiteData();
   const featuredAreas = await getFeaturedExpertAreas();

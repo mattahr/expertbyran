@@ -11,7 +11,7 @@ const isoDateTimeSchema = z
     message: "Måste vara en giltig ISO 8601-tidsstämpel (t.ex. 2026-04-13T10:00:00.000Z).",
   });
 
-const blogPostEntrySchema = z
+export const blogPostEntrySchema = z
   .object({
     slug: slugSchema,
     title: z.string().min(1),
@@ -55,6 +55,20 @@ export function formatBlogIssues(issues: z.ZodIssue[]) {
     path: issue.path.join("."),
     message: issue.message,
   }));
+}
+
+export function parseBlogPostEntry(input: unknown, source: string): BlogPostEntry {
+  const result = blogPostEntrySchema.safeParse(input);
+
+  if (!result.success) {
+    const issues = formatBlogIssues(result.error.issues);
+    console.error(`[schema] Invalid blog post entry from ${source}`, issues);
+    throw new Error(
+      `Invalid blog post entry from ${source}: ${issues.map((i) => `${i.path}: ${i.message}`).join("; ")}`,
+    );
+  }
+
+  return result.data;
 }
 
 export function parseBlogCatalog(input: unknown, source: string): BlogCatalog {
