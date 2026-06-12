@@ -192,7 +192,4 @@ export async function importLegacyData(db: DatabaseSync, dataDir: string): Promi
   for (const [name, count] of performed) {
     console.log(`[import] ${name}: ${count} poster importerade till SQLite`);
   }
-  console.log(
-    "[import] Klart. Om en persistent Next-cache återanvänds från tidigare drift: anropa GET /refresh (med bearer-token) för att invalidera gamla cacheposter.",
-  );
 }

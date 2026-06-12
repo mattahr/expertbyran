@@ -27,7 +27,7 @@ Sajtconfig (site/organization/marketplace) bor i [src/config/site-config.json](s
 
 Markdown renderas till HTML **vid skrivning** (i API:t) och lagras i en `html`-kolumn med `renderer_version`; läsvägen serverar färdig HTML. `POST /api/v1/rerender` (bearer-auth) renderar om rader med äldre renderarversion — serverstarten loggar en varning om sådana finns.
 
-Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `config`, `blog`, `radar`, `foresight`). API:et invaliderar med `revalidateTag(tag, "max")` efter skrivningar; `GET /refresh` (kräver bearer-token — samma `API_TOKEN` som skrivvägen) invaliderar alla innehållstaggar. **Inget innehåll prerendras vid build** — alla innehållssidor är `force-dynamic` och renderas on-demand mot datacachen.
+Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `config`, `blog`, `radar`, `foresight`). API:et invaliderar med `revalidateTag(tag, "max")` efter skrivningar — det finns ingen separat refresh-endpoint (out-of-band-ändringar i databasen kräver omstart av containern). **Inget innehåll prerendras vid build** — alla innehållssidor är `force-dynamic` och renderas on-demand mot datacachen.
 
 Se [API.md](API.md) för fullständig API-dokumentation.
 

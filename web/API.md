@@ -259,16 +259,9 @@ Uppdaterar metadata, markdown, eller båda. Kräver autentisering. Body: `{ "for
 
 Tar bort en foresight (metadata, markdown och renderad HTML). Kräver autentisering. `404` om saknas.
 
-### Cache och underhåll
+### Underhåll
 
-#### GET /refresh
-
-Invaliderar alla innehållstaggar (`experts`, `areas`, `config`, `blog`, `radar`, `foresight`) och tvingar omläsning vid nästa request. **Kräver autentisering** (`Authorization: Bearer` med samma `API_TOKEN` som skrivvägen); oautentiserat anrop ger `401`. Behövs sällan — skrivanrop invaliderar cachen automatiskt — men är nödventilen för out-of-band-ändringar (t.ex. direkt i databasen).
-
-**Response:**
-```json
-{ "ok": true, "invalidated": ["experts", "areas", "config", "blog", "radar", "foresight"], "refreshedAt": "2026-06-12T10:00:00.000Z" }
-```
+Skrivanrop invaliderar cachen automatiskt — det finns ingen separat refresh-endpoint. Vid out-of-band-ändringar (t.ex. direkt i databasen): starta om containern.
 
 #### POST /api/v1/rerender
 

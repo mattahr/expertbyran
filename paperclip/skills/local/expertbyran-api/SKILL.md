@@ -79,9 +79,6 @@ En foresight är en strategisk framsynsanalys: metadata + markdown, med ett extr
 ### Sammansatt snapshot, cache & underhåll
 - `GET /api/v1/site-data` → hela den sammansatta snapshoten (config + experter + områden).
   **Läs-only — ingen PUT.**
-- `GET /refresh` (auth) → invaliderar cachetaggarna (`experts`, `areas`, `config`, `blog`,
-  `radar`, `foresight`). Kräver `Authorization: Bearer` (samma `WEB_API_TOKEN`); `401` utan
-  token. Behövs sällan, eftersom skrivanrop invaliderar cachen automatiskt.
 - `POST /api/v1/rerender` (auth) → renderar om lagrad HTML för blogginlägg och foresights
   som renderats med en äldre renderarversion (markdown är källan). Underhållsoperation som
   körs efter deploy av ny renderare; svar: `{ "ok": true, "rerendered": { "blog": n, "foresights": n }, … }`.

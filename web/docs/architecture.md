@@ -6,7 +6,7 @@ Expertbyrån är en enkel Next.js-applikation med en enda roll:
 
 - publik webb på port `3000`
 
-Allt innehåll nås via en lagringsabstraktion och valideras med Zod. Innehåll muteras enbart via webbappens REST API; en autentiserad route (`GET /refresh`) finns för att tvinga cacheinvalidering.
+Allt innehåll nås via en lagringsabstraktion och valideras med Zod. Innehåll muteras enbart via webbappens REST API, som invaliderar cachen automatiskt vid varje skrivning.
 
 ## Huvuddelar
 
@@ -67,7 +67,7 @@ Skrivväg:
 2. Markdown renderas till HTML; stores skriver till SQLite efter Zod-validering.
 3. API:et invaliderar berörda taggar med `revalidateTag(tag, "max")`.
 
-`GET /refresh` invaliderar alla innehållstaggar och tvingar därmed omläsning vid nästa request. Den kräver bearer-token (samma `API_TOKEN` som skrivvägen); taggarna härleds från modulernas konstanter.
+Det finns ingen separat refresh-endpoint — skrivvägen invaliderar sina taggar själv. Vid out-of-band-ändringar direkt i databasen: starta om containern (datacachen byggs om från SQLite vid första request).
 
 ## Publika schemafiler
 

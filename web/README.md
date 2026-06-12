@@ -20,7 +20,6 @@ Minimalistisk Next.js-webbplats för ett virtuellt konsultbolag med AI-experter 
 - Konfigurationsdata (site/organization/marketplace) bundlas i imagen via `src/config/site-config.json` och muteras inte via API — den ändras via repo + deploy.
 - Ingen seed-mekanism: nyinstallation = tom databas. Gamla JSON-filer på volymen importeras automatiskt till SQLite vid första start (nödventil `SKIP_LEGACY_IMPORT=1`).
 - Inget innehåll prerendras vid build — innehållssidorna är `force-dynamic` och renderas on-demand mot datacachen. Cachning sker via Next 16 `unstable_cache` med taggar (`experts`, `areas`, `config`, `blog`, `radar`, `foresight`); API:et invaliderar med `revalidateTag` efter skrivningar.
-- `GET /refresh` invaliderar alla innehållstaggar — kräver bearer-token (samma `API_TOKEN`).
 - `/blogg` och `/foresight` pagineras med `?sida=` (24 per sida); `/blogg` har områdesfilter `?omrade=`. API:ets GET-listor är opaginerade (medvetet kontrakt).
 
 Viktiga env vars:
