@@ -210,7 +210,7 @@ Tar bort ett blogginlägg (metadata, markdown och renderad HTML). Kräver autent
 
 ### Radarer
 
-En radar består av metadata (`meta`, inkl. namngivna `segments`) och en lista `blips`. Ringarna (`anta`/`prova`/`bevaka`/`avvakta`) är fasta för alla radarer; segmenten definieras per radar.
+En radar består av metadata (`meta`, inkl. namngivna `segments` och `rings`) och en lista `blips`. Både `segments` (4–6) och `rings` (2–6) definieras **per radar** — varje ring har `id`, `label`, `blurb` och `color` (hex), och ordningen i arrayen är inre→yttre. Varje blip refererar ett `segmentId` och en `ring` (ring-`id`) som måste finnas i radarn. Utelämnas `rings` i payloaden faller den tillbaka på standarduppsättningen (`anta`/`prova`/`bevaka`/`avvakta`).
 
 #### GET /api/v1/radars
 
@@ -218,12 +218,12 @@ Hämtar metadata för alla radarer (utan blips).
 
 **Response:**
 ```json
-{ "radars": [ { "slug": "teknikradar-2026", "title": "Teknikradar 2026", "date": "2026-06-03T00:00:00.000Z", "segments": [ { "id": "ai-agenter", "name": "AI & agenter" } ] } ] }
+{ "radars": [ { "slug": "teknikradar-2026", "title": "Teknikradar 2026", "date": "2026-06-03T00:00:00.000Z", "segments": [ { "id": "ai-agenter", "name": "AI & agenter" } ], "rings": [ { "id": "anta", "label": "Anta", "blurb": "I drift, hög mognad", "color": "#0e7c7b" } ] } ] }
 ```
 
 #### POST /api/v1/radars
 
-Skapar en radar. Kräver autentisering. Body: `{ "meta": {…}, "blips": [ … ] }`. `201` vid skapad, `409` om slug finns, `400` vid valideringsfel (inkl. blip mot okänt segment).
+Skapar en radar. Kräver autentisering. Body: `{ "meta": {…}, "blips": [ … ] }`. `201` vid skapad, `409` om slug finns, `400` vid valideringsfel (inkl. blip mot okänt segment eller okänd ring).
 
 #### GET /api/v1/radars/[slug]
 

@@ -2,14 +2,18 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
-import type { Blip, Segment } from "@/lib/radar/schema";
-import { RINGS, RING_BY_ID, type RingId } from "@/lib/radar/rings";
+import type { Blip, Ring, Segment } from "@/lib/radar/schema";
+import { ringsById } from "@/lib/radar/rings";
 import type { RelatedItem } from "@/lib/radar/related";
 import styles from "./RadarChart.module.css";
 
 const C = 450;
 const R_MAX = 400;
-const RING_EDGES = [0, 110, 205, 300, R_MAX];
+// Ringkanterna beräknas från ringantalet: N lika breda band från centrum till
+// R_MAX (N+1 kanter). Index 0 = innersta ringens innerkant (centrum).
+function ringEdges(count: number): number[] {
+  return Array.from({ length: count + 1 }, (_, i) => (i / count) * R_MAX);
+}
 const SEG_GAP_DEG = 2; // halv lucka mellan tårtbitarna
 const SEG_COLORS = ["#1d4e74", "#0e7c7b", "#d4982b", "#64718a", "#92651a", "#11314c"];
 
@@ -74,9 +78,10 @@ function segmentGeometry(count: number) {
 
 type PlacedBlip = Blip & { x: number; y: number; number: number };
 
-function placeBlips(segments: Segment[], blips: Blip[]): PlacedBlip[] {
+function placeBlips(segments: Segment[], blips: Blip[], rings: Ring[]): PlacedBlip[] {
   const segIndex = new Map(segments.map((segment, index) => [segment.id, index]));
-  const ringIndex = new Map<RingId, number>(RINGS.map((ring, index) => [ring.id, index]));
+  const ringIndex = new Map<string, number>(rings.map((ring, index) => [ring.id, index]));
+  const edges = ringEdges(rings.length);
   const geom = segmentGeometry(segments.length);
 
   // Gruppera på segment+ring för jämn vinkelfördelning inom varje band.
@@ -93,12 +98,12 @@ function placeBlips(segments: Segment[], blips: Blip[]): PlacedBlip[] {
   groups.forEach((group, key) => {
     const [segmentId, ring] = key.split("|");
     const seg = segIndex.get(segmentId);
-    const ringNo = ringIndex.get(ring as RingId);
+    const ringNo = ringIndex.get(ring);
     if (seg === undefined || ringNo === undefined) return;
     const g = geom[seg];
     const [a0, a1] = [g.a0, g.a1];
-    const rIn = RING_EDGES[ringNo] + 22;
-    const rOut = RING_EDGES[ringNo + 1] - 16;
+    const rIn = edges[ringNo] + 22;
+    const rOut = edges[ringNo + 1] - 16;
     group.forEach((blip, i) => {
       const frac = (i + 1) / (group.length + 1);
       const ang = ((a0 + (a1 - a0) * frac) * Math.PI) / 180;
@@ -117,14 +122,18 @@ function placeBlips(segments: Segment[], blips: Blip[]): PlacedBlip[] {
 export function RadarChart({
   segments,
   blips,
+  rings,
   relatedByBlip,
 }: {
   segments: Segment[];
   blips: Blip[];
+  rings: Ring[];
   relatedByBlip?: Record<string, RelatedItem[]>;
 }) {
   const geom = segmentGeometry(segments.length);
-  const placed = placeBlips(segments, blips);
+  const edges = ringEdges(rings.length);
+  const ringById = ringsById(rings);
+  const placed = placeBlips(segments, blips, rings);
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // Mätbaserad antikrock: vi mäter etiketternas verkliga rutor och puttar ned
@@ -195,8 +204,9 @@ export function RadarChart({
     <div className={styles.layout}>
       <div className={styles.radarCard}>
         <svg viewBox="0 0 900 900" className={styles.svg} aria-label="Radar">
-          {RING_EDGES.slice(1)
-            .map((edge, i) => ({ edge, ring: RINGS[i] }))
+          {edges
+            .slice(1)
+            .map((edge, i) => ({ edge, ring: rings[i] }))
             .reverse()
             .map(({ edge, ring }) => (
               <circle
@@ -224,8 +234,8 @@ export function RadarChart({
               />
             );
           })}
-          {RINGS.map((ring, i) => {
-            const r = (RING_EDGES[i] + RING_EDGES[i + 1]) / 2;
+          {rings.map((ring, i) => {
+            const r = (edges[i] + edges[i + 1]) / 2;
             return (
               <text key={ring.id} x={C + 4} y={C - r + 4} className={styles.ringLabel} textAnchor="start">
                 {ring.label}
@@ -253,7 +263,7 @@ export function RadarChart({
               className={`${styles.blip} ${selectedId === blip.id ? styles.blipActive : ""}`}
               role="button"
               tabIndex={0}
-              aria-label={`${blip.name} — ${RING_BY_ID[blip.ring].label}`}
+              aria-label={`${blip.name} — ${ringById[blip.ring].label}`}
               onClick={() => setSelectedId(blip.id)}
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
@@ -262,7 +272,7 @@ export function RadarChart({
                 }
               }}
             >
-              <circle cx={blip.x} cy={blip.y} r={BLIP_R} fill={RING_BY_ID[blip.ring].color} />
+              <circle cx={blip.x} cy={blip.y} r={BLIP_R} fill={ringById[blip.ring].color} />
               <text x={blip.x} y={blip.y + 4} textAnchor="middle" className={styles.blipNumber}>
                 {blip.number}
               </text>
@@ -293,7 +303,7 @@ export function RadarChart({
       <aside className={styles.side}>
         <div className={styles.legend}>
           <h3 className={styles.legendTitle}>Hållning</h3>
-          {RINGS.map((ring) => (
+          {rings.map((ring) => (
             <div key={ring.id} className={styles.legRow}>
               <span className={styles.dot} style={{ background: ring.color }} aria-hidden />
               <b>{ring.label}</b> – {ring.blurb}
@@ -305,8 +315,8 @@ export function RadarChart({
           {selected ? (
             <>
               <span className={styles.dTag}>
-                <span className={styles.dot} style={{ background: RING_BY_ID[selected.ring].color }} aria-hidden />
-                {RING_BY_ID[selected.ring].label}
+                <span className={styles.dot} style={{ background: ringById[selected.ring].color }} aria-hidden />
+                {ringById[selected.ring].label}
               </span>
               <h2 className={styles.dTitle}>
                 {selected.number}. {selected.name}

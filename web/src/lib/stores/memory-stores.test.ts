@@ -41,6 +41,12 @@ function radarFixture(): { meta: RadarMeta; blips: Blip[] } {
       { id: "plattformar", name: "Plattformar" },
       { id: "tekniker", name: "Tekniker" },
     ],
+    rings: [
+      { id: "anta", label: "Anta", blurb: "I drift.", color: "#0e7c7b" },
+      { id: "prova", label: "Pröva", blurb: "Pilot.", color: "#1d4e74" },
+      { id: "bevaka", label: "Bevaka", blurb: "Följ.", color: "#d4982b" },
+      { id: "avvakta", label: "Avvakta", blurb: "Avvakta.", color: "#64718a" },
+    ],
   };
   const blips: Blip[] = [
     {

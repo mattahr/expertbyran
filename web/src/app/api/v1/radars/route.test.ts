@@ -76,4 +76,36 @@ describe("/api/v1/radars", () => {
     const res = await POST(postReq({ meta: META, blips: BLIPS }) as never);
     expect(res.status).toBe(409);
   });
+
+  it("POST utan rings defaultar till standardringarna", async () => {
+    const res = await POST(postReq({ meta: META, blips: BLIPS }) as never);
+    expect(res.status).toBe(201);
+    const body = await res.json();
+    expect(body.data.rings.map((r: { id: string }) => r.id)).toEqual([
+      "anta",
+      "prova",
+      "bevaka",
+      "avvakta",
+    ]);
+  });
+
+  it("POST med egna ringar bevarar dem", async () => {
+    const rings = [
+      { id: "kor", label: "Kör", blurb: "I drift.", color: "#0e7c7b" },
+      { id: "vanta", label: "Vänta", blurb: "Avvakta.", color: "#64718a" },
+    ];
+    const res = await POST(
+      postReq({ meta: { ...META, rings }, blips: [{ ...BLIPS[0], ring: "kor" }] }) as never,
+    );
+    expect(res.status).toBe(201);
+    const body = await res.json();
+    expect(body.data.rings).toEqual(rings);
+  });
+
+  it("POST med blip mot okänd ring ger 400", async () => {
+    const res = await POST(
+      postReq({ meta: META, blips: [{ ...BLIPS[0], ring: "finns-ej" }] }) as never,
+    );
+    expect(res.status).toBe(400);
+  });
 });

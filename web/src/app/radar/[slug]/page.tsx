@@ -37,7 +37,12 @@ export default async function RadarDetailPage({ params }: RadarPageProps) {
       </div>
 
       <section className={styles.section}>
-        <RadarChart segments={radar.meta.segments} blips={radar.blips} relatedByBlip={relatedByBlip} />
+        <RadarChart
+          segments={radar.meta.segments}
+          blips={radar.blips}
+          rings={radar.meta.rings}
+          relatedByBlip={relatedByBlip}
+        />
       </section>
     </div>
   );

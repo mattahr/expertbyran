@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { RINGS } from "@/lib/radar/rings";
-import type { Blip, RadarMeta, Segment } from "@/lib/radar/schema";
+import { RING_COLORS } from "@/lib/radar/rings";
+import { HEX_COLOR_RE, type Blip, type RadarMeta, type Ring, type Segment } from "@/lib/radar/schema";
 
 import styles from "@/app/admin/admin.module.css";
 import { AreaPicker, type AreaOption } from "./AreaPicker";
@@ -35,6 +35,18 @@ function validate(d: RadarDraft): string[] {
     if (segIds.has(s.id)) errors.push(`Segment-id '${s.id}' är inte unikt.`);
     segIds.add(s.id);
   }
+  if (d.meta.rings.length < 2 || d.meta.rings.length > 6) {
+    errors.push("Radarn måste ha 2–6 ringar.");
+  }
+  const ringIds = new Set<string>();
+  for (const r of d.meta.rings) {
+    const rlabel = r.label || r.id;
+    if (!r.label.trim()) errors.push(`En ring saknar namn.`);
+    if (!r.blurb.trim()) errors.push(`Ringen '${rlabel}' saknar beskrivning.`);
+    if (!HEX_COLOR_RE.test(r.color)) errors.push(`Ringen '${rlabel}' har en ogiltig färg.`);
+    if (ringIds.has(r.id)) errors.push(`Ring-id '${r.id}' är inte unikt.`);
+    ringIds.add(r.id);
+  }
   const blipIds = new Set<string>();
   for (const b of d.blips) {
     const label = b.name || b.id;
@@ -42,6 +54,7 @@ function validate(d: RadarDraft): string[] {
     if (blipIds.has(b.id)) errors.push(`Blip-id '${b.id}' är inte unikt.`);
     blipIds.add(b.id);
     if (!segIds.has(b.segmentId)) errors.push(`Blip '${label}' pekar på ett okänt segment.`);
+    if (!ringIds.has(b.ring)) errors.push(`Blip '${label}' pekar på en okänd ring.`);
     if (!b.description.trim()) errors.push(`Blip '${label}' saknar beskrivning.`);
     if (!b.implications.trim()) errors.push(`Blip '${label}' saknar implikationer.`);
   }
@@ -124,7 +137,55 @@ export function RadarAdmin() {
     });
 
   const removeSegment = (i: number) =>
-    setDraft((d) => (d ? { ...d, meta: { ...d.meta, segments: d.meta.segments.filter((_, j) => j !== i) } } : d));
+    setDraft((d) => {
+      if (!d) return d;
+      const removed = d.meta.segments[i];
+      const segments = d.meta.segments.filter((_, j) => j !== i);
+      // Flytta blips som pekade på det borttagna segmentet till ett kvarvarande
+      // segment, så de inte hamnar i ett ogiltigt mellanläge.
+      const fallback = segments[0]?.id ?? "";
+      const blips = removed
+        ? d.blips.map((b) => (b.segmentId === removed.id ? { ...b, segmentId: fallback } : b))
+        : d.blips;
+      return { ...d, meta: { ...d.meta, segments }, blips };
+    });
+
+  const updateRing = (i: number, patch: Partial<Ring>) =>
+    setDraft((d) =>
+      d ? { ...d, meta: { ...d.meta, rings: d.meta.rings.map((r, j) => (j === i ? { ...r, ...patch } : r)) } } : d,
+    );
+
+  const addRing = () =>
+    setDraft((d) => {
+      if (!d || d.meta.rings.length >= 6) return d;
+      const id = nextId("ring", new Set(d.meta.rings.map((r) => r.id)));
+      const color = RING_COLORS[d.meta.rings.length % RING_COLORS.length];
+      return { ...d, meta: { ...d.meta, rings: [...d.meta.rings, { id, label: "", blurb: "", color }] } };
+    });
+
+  const removeRing = (i: number) =>
+    setDraft((d) => {
+      if (!d) return d;
+      const removed = d.meta.rings[i];
+      const rings = d.meta.rings.filter((_, j) => j !== i);
+      // Flytta blips som pekade på den borttagna ringen till en kvarvarande ring.
+      const fallback = rings[Math.floor(rings.length / 2)]?.id ?? rings[0]?.id ?? "";
+      const blips = removed
+        ? d.blips.map((b) => (b.ring === removed.id ? { ...b, ring: fallback } : b))
+        : d.blips;
+      return { ...d, meta: { ...d.meta, rings }, blips };
+    });
+
+  // Ringordningen är inre→yttre och semantiskt viktig; tillåt omflyttning.
+  const moveRing = (i: number, dir: -1 | 1) =>
+    setDraft((d) => {
+      if (!d) return d;
+      const j = i + dir;
+      if (j < 0 || j >= d.meta.rings.length) return d;
+      const rings = [...d.meta.rings];
+      [rings[i], rings[j]] = [rings[j], rings[i]];
+      return { ...d, meta: { ...d.meta, rings } };
+    });
 
   const updateBlip = (i: number, patch: Partial<Blip>) =>
     setDraft((d) => (d ? { ...d, blips: d.blips.map((b, j) => (j === i ? { ...b, ...patch } : b)) } : d));
@@ -137,7 +198,8 @@ export function RadarAdmin() {
         id,
         name: "",
         segmentId: d.meta.segments[0]?.id ?? "",
-        ring: "bevaka",
+        // Default = radarns mittersta ring (en neutral hållning).
+        ring: d.meta.rings[Math.floor(d.meta.rings.length / 2)]?.id ?? d.meta.rings[0]?.id ?? "",
         description: "",
         implications: "",
       };
@@ -190,7 +252,7 @@ export function RadarAdmin() {
             <div>
               <div className={styles.blogTitle}>{radar.title}</div>
               <div className={styles.blogMeta}>
-                {radar.date.slice(0, 10)} · {radar.segments.length} segment
+                {radar.date.slice(0, 10)} · {radar.segments.length} segment · {radar.rings.length} ringar
                 {radar.version ? ` · v${radar.version}` : ""}
               </div>
             </div>
@@ -256,6 +318,73 @@ export function RadarAdmin() {
                 </button>
               </div>
 
+              {/* Ringar */}
+              <div className={styles.subEditor}>
+                <div className={styles.subTitle}>
+                  Ringar ({draft.meta.rings.length} av 2–6 · uppifrån = inre ring)
+                </div>
+                {draft.meta.rings.map((ring, i) => (
+                  <div key={ring.id} className={styles.ringRow}>
+                    <input
+                      className={styles.input}
+                      placeholder="Ringnamn (t.ex. Anta)"
+                      value={ring.label}
+                      onChange={(e) => updateRing(i, { label: e.target.value })}
+                    />
+                    <input
+                      className={styles.input}
+                      placeholder="Kort beskrivning"
+                      value={ring.blurb}
+                      onChange={(e) => updateRing(i, { blurb: e.target.value })}
+                    />
+                    <input
+                      type="color"
+                      className={styles.colorInput}
+                      value={ring.color}
+                      onChange={(e) => updateRing(i, { color: e.target.value })}
+                      aria-label="Ringfärg"
+                    />
+                    <span className={styles.idTag}>{ring.id}</span>
+                    <div className={styles.reorder}>
+                      <button
+                        type="button"
+                        className={styles.reorderBtn}
+                        onClick={() => moveRing(i, -1)}
+                        disabled={i === 0}
+                        aria-label="Flytta ringen inåt"
+                      >
+                        ↑
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.reorderBtn}
+                        onClick={() => moveRing(i, 1)}
+                        disabled={i === draft.meta.rings.length - 1}
+                        aria-label="Flytta ringen utåt"
+                      >
+                        ↓
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      className={styles.removeBtn}
+                      onClick={() => removeRing(i)}
+                      aria-label="Ta bort ring"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  className={styles.addBtn}
+                  onClick={addRing}
+                  disabled={draft.meta.rings.length >= 6}
+                >
+                  + Lägg till ring
+                </button>
+              </div>
+
               {/* Blips */}
               <div className={styles.subEditor}>
                 <div className={styles.subTitle}>Blips ({draft.blips.length})</div>
@@ -283,11 +412,11 @@ export function RadarAdmin() {
                           <select
                             className={styles.input}
                             value={blip.ring}
-                            onChange={(e) => updateBlip(i, { ring: e.target.value as Blip["ring"] })}
+                            onChange={(e) => updateBlip(i, { ring: e.target.value })}
                           >
-                            {RINGS.map((r) => (
+                            {draft.meta.rings.map((r) => (
                               <option key={r.id} value={r.id}>
-                                {r.label}
+                                {r.label || r.id}
                               </option>
                             ))}
                           </select>

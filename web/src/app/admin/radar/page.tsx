@@ -15,7 +15,7 @@ export default function RadarAdminPage() {
   return (
     <div>
       <h1 className={styles.pageTitle}>Teknikradar</h1>
-      <p className={styles.pageIntro}>Redigera metadata, segment och blips (ring och segment via val) — eller radera.</p>
+      <p className={styles.pageIntro}>Redigera metadata, segment, ringar och blips — eller radera.</p>
       <RadarAdmin />
     </div>
   );

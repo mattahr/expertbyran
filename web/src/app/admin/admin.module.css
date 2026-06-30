@@ -505,6 +505,41 @@
   align-items: center;
   margin-bottom: 0.5rem;
 }
+.ringRow {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr auto auto auto auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.colorInput {
+  width: 2.4rem;
+  height: 2.2rem;
+  padding: 0.1rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  cursor: pointer;
+}
+.reorder {
+  display: flex;
+  gap: 0.25rem;
+}
+.reorderBtn {
+  width: 1.9rem;
+  height: 2.2rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--gray-500);
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.reorderBtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
 .idTag {
   font-family: ui-monospace, Menlo, monospace;
   font-size: 0.72rem;

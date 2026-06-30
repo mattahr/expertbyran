@@ -18,6 +18,12 @@ const META = {
     { id: "sakerhet", name: "Säkerhet" },
     { id: "styrning", name: "Styrning" },
   ],
+  rings: [
+    { id: "anta", label: "Anta", blurb: "I drift, hög mognad", color: "#0e7c7b" },
+    { id: "prova", label: "Pröva", blurb: "Pilot, bygg kompetens", color: "#1d4e74" },
+    { id: "bevaka", label: "Bevaka", blurb: "Följ utvecklingen aktivt", color: "#d4982b" },
+    { id: "avvakta", label: "Avvakta", blurb: "Omogen / hög osäkerhet", color: "#64718a" },
+  ],
 };
 
 const BLIP: Blip = {
@@ -38,6 +44,38 @@ describe("radar schema", () => {
   it("avvisar för få segment", () => {
     const bad = { radars: [{ ...META, segments: META.segments.slice(0, 2) }] };
     expect(() => parseRadarCatalog(bad, "test")).toThrow();
+  });
+
+  it("avvisar för få ringar (under 2)", () => {
+    const bad = { radars: [{ ...META, rings: META.rings.slice(0, 1) }] };
+    expect(() => parseRadarCatalog(bad, "test")).toThrow();
+  });
+
+  it("avvisar för många ringar (över 6)", () => {
+    const seventh = { id: "extra", label: "Extra", blurb: "x", color: "#000000" };
+    const bad = { radars: [{ ...META, rings: [...META.rings, ...META.rings.slice(0, 2), seventh] }] };
+    expect(() => parseRadarCatalog(bad, "test")).toThrow();
+  });
+
+  it("avvisar dubblett ring-id", () => {
+    const bad = { radars: [{ ...META, rings: [META.rings[0], META.rings[0], META.rings[1]] }] };
+    expect(() => parseRadarCatalog(bad, "test")).toThrow();
+  });
+
+  it("avvisar ogiltig ringfärg (ej hex)", () => {
+    const bad = { radars: [{ ...META, rings: [{ ...META.rings[0], color: "blå" }, META.rings[1]] }] };
+    expect(() => parseRadarCatalog(bad, "test")).toThrow();
+  });
+
+  it("defaultar till standardringar när rings saknas", () => {
+    const { rings, ...metaUtanRingar } = META;
+    void rings;
+    const parsed = parseRadarCatalog({ radars: [metaUtanRingar] }, "test");
+    expect(parsed.radars[0].rings.map((r) => r.id)).toEqual(["anta", "prova", "bevaka", "avvakta"]);
+  });
+
+  it("assertRadarIntegrity kastar för okänd ring", () => {
+    expect(() => assertRadarIntegrity(META, [{ ...BLIP, ring: "finns-ej" }])).toThrow(/ring/i);
   });
 
   it("avvisar ogiltig ring via radarInputSchema", () => {

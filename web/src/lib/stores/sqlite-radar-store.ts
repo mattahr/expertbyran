@@ -8,6 +8,7 @@ import {
   type Blip,
   type RadarMeta,
 } from "@/lib/radar/schema";
+import { defaultRings } from "@/lib/radar/rings";
 import { getDb } from "@/lib/db/client";
 import type { RadarStore } from "./types";
 import { ConflictError, NotFoundError } from "./types";
@@ -19,10 +20,11 @@ type RadarRow = {
   version: string | null;
   date: string;
   segments: string;
+  rings: string | null;
   blips?: string;
 };
 
-const META_COLUMNS = "slug, title, subtitle, version, date, segments";
+const META_COLUMNS = "slug, title, subtitle, version, date, segments, rings";
 
 function rowToMeta(row: RadarRow): RadarMeta {
   const meta: RadarMeta = {
@@ -30,6 +32,8 @@ function rowToMeta(row: RadarRow): RadarMeta {
     title: row.title,
     date: row.date,
     segments: JSON.parse(row.segments) as RadarMeta["segments"],
+    // Defensivt: en rad utan ringar (NULL) faller tillbaka på standarduppsättningen.
+    rings: row.rings ? (JSON.parse(row.rings) as RadarMeta["rings"]) : defaultRings(),
   };
   if (row.subtitle !== null) meta.subtitle = row.subtitle;
   if (row.version !== null) meta.version = row.version;
@@ -91,8 +95,8 @@ export class SqliteRadarStore implements RadarStore {
     }
     this.db
       .prepare(
-        `INSERT INTO radars (slug, title, subtitle, version, date, date_ms, segments, blips, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO radars (slug, title, subtitle, version, date, date_ms, segments, rings, blips, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
       .run(
         validatedMeta.slug,
@@ -102,6 +106,7 @@ export class SqliteRadarStore implements RadarStore {
         validatedMeta.date,
         Date.parse(validatedMeta.date),
         JSON.stringify(validatedMeta.segments),
+        JSON.stringify(validatedMeta.rings),
         JSON.stringify(validatedBlips),
         new Date().toISOString(),
       );
@@ -127,7 +132,7 @@ export class SqliteRadarStore implements RadarStore {
     this.db
       .prepare(
         `UPDATE radars
-         SET slug = ?, title = ?, subtitle = ?, version = ?, date = ?, date_ms = ?, segments = ?, blips = ?, updated_at = ?
+         SET slug = ?, title = ?, subtitle = ?, version = ?, date = ?, date_ms = ?, segments = ?, rings = ?, blips = ?, updated_at = ?
          WHERE slug = ?`,
       )
       .run(
@@ -138,6 +143,7 @@ export class SqliteRadarStore implements RadarStore {
         nextMeta.date,
         Date.parse(nextMeta.date),
         JSON.stringify(nextMeta.segments),
+        JSON.stringify(nextMeta.rings),
         JSON.stringify(nextBlips),
         new Date().toISOString(),
         slug,

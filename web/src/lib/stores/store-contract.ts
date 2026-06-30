@@ -348,6 +348,12 @@ function radar(slug: string, date: string): { meta: RadarMeta; blips: Blip[] } {
         { id: "plattformar", name: "Plattformar" },
         { id: "tekniker", name: "Tekniker" },
       ],
+      rings: [
+        { id: "anta", label: "Anta", blurb: "I drift.", color: "#0e7c7b" },
+        { id: "prova", label: "Pröva", blurb: "Pilot.", color: "#1d4e74" },
+        { id: "bevaka", label: "Bevaka", blurb: "Följ.", color: "#d4982b" },
+        { id: "avvakta", label: "Avvakta", blurb: "Avvakta.", color: "#64718a" },
+      ],
     },
     blips: [
       {
@@ -405,6 +411,36 @@ export function radarStoreContract(name: string, makeStore: () => Promise<RadarS
           blips: [{ ...blips[0], segmentId: "finns-inte" }],
         }),
       ).rejects.toThrow(/okänt segment/);
+    });
+
+    it("bevarar per-radar-ringar genom round-trip", async () => {
+      const store = await makeStore();
+      const { meta, blips } = radar("r1", "2026-01-01T10:00:00.000Z");
+      const customRings = [
+        { id: "kor", label: "Kör", blurb: "I drift.", color: "#0e7c7b" },
+        { id: "testa", label: "Testa", blurb: "Pilot.", color: "#1d4e74" },
+        { id: "vanta", label: "Vänta", blurb: "Avvakta.", color: "#64718a" },
+      ];
+      await store.createRadar(
+        { ...meta, rings: customRings },
+        blips.map((b) => ({ ...b, ring: "testa" })),
+      );
+
+      const detail = await store.getRadar("r1");
+      expect(detail?.meta.rings).toEqual(customRings);
+      expect(detail?.blips[0].ring).toBe("testa");
+    });
+
+    it("avvisar blip som pekar på en ring radarn inte har", async () => {
+      const store = await makeStore();
+      const { meta, blips } = radar("r1", "2026-01-01T10:00:00.000Z");
+      await store.createRadar(meta, blips);
+
+      await expect(
+        store.updateRadar("r1", {
+          blips: [{ ...blips[0], ring: "finns-inte" }],
+        }),
+      ).rejects.toThrow(/okänd ring/);
     });
 
     it("kastar ConflictError vid dubblett och NotFoundError vid okänd slug", async () => {

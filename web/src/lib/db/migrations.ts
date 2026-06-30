@@ -150,6 +150,21 @@ const MIGRATIONS: Migration[] = [
       `);
     },
   },
+  {
+    version: 4,
+    name: "radar-ringar",
+    up(db) {
+      // Ringar blir per-radar-data (parallellt med segments). Befintliga radarer
+      // backfillas med standarduppsättningen — vars id (anta/prova/bevaka/avvakta)
+      // matchar de ringar blips redan refererar, så integriteten bevaras.
+      db.exec(`
+        ALTER TABLE radars ADD COLUMN rings TEXT;
+        UPDATE radars
+        SET rings = '[{"id":"anta","label":"Anta","blurb":"I drift, hög mognad","color":"#0e7c7b"},{"id":"prova","label":"Pröva","blurb":"Pilot, bygg kompetens","color":"#1d4e74"},{"id":"bevaka","label":"Bevaka","blurb":"Följ utvecklingen aktivt","color":"#d4982b"},{"id":"avvakta","label":"Avvakta","blurb":"Omogen / hög osäkerhet","color":"#64718a"}]'
+        WHERE rings IS NULL;
+      `);
+    },
+  },
 ];
 
 export function runMigrations(db: DatabaseSync): void {
