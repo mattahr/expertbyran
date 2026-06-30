@@ -37,6 +37,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# geoip: committa .mmdb-databasen men ignorera nedladdnings-/temp-artefakter
+geoip/*.gz
+geoip/*.tmp
+geoip/*.tmp.*
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
