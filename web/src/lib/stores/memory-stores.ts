@@ -15,7 +15,9 @@ import type {
   OverviewResult,
   PageStat,
   RadarStore,
+  SectionStat,
   SiteConfig,
+  StatsFilters,
   StatsRange,
   StoredPost,
   TimePoint,
@@ -287,9 +289,25 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
     return this.visits.reduce((min, v) => (v.day < min ? v.day : min), this.visits[0].day);
   }
 
+  private matchesFilters(v: StoredVisit, f: StatsFilters): boolean {
+    if (f.path && v.path !== f.path) return false;
+    if (f.pathPrefix && v.path !== f.pathPrefix && !v.path.startsWith(`${f.pathPrefix}/`)) return false;
+    if (f.country && (v.country ?? "??") !== f.country) return false;
+    if (f.browser && (v.browser ?? "Okänd") !== f.browser) return false;
+    if (f.os && (v.os ?? "Okänd") !== f.os) return false;
+    if (f.device && v.device !== f.device) return false;
+    if (f.source && v.source !== f.source) return false;
+    if (f.visitorId && v.visitorId !== f.visitorId) return false;
+    return true;
+  }
+
   private inRange(range: StatsRange): StoredVisit[] {
     return this.visits.filter(
-      (v) => v.day >= range.from && v.day <= range.to && (!range.excludeBots || !v.isBot),
+      (v) =>
+        v.day >= range.from &&
+        v.day <= range.to &&
+        (!range.excludeBots || !v.isBot) &&
+        this.matchesFilters(v, range),
     );
   }
 
@@ -320,7 +338,7 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
     const visitors = new Set(rows.map((v) => v.visitorId)).size;
     const dayset = new Set(rows.map((v) => v.day));
     const botPageviews = this.visits.filter(
-      (v) => v.day >= range.from && v.day <= range.to && v.isBot,
+      (v) => v.day >= range.from && v.day <= range.to && v.isBot && this.matchesFilters(v, range),
     ).length;
 
     const byDay = new Map<string, { pv: number; vis: Set<string> }>();
@@ -344,6 +362,19 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
     const topPages: PageStat[] = [...byPath.entries()]
       .map(([path, e]) => ({ path, pageviews: e.pv, visitors: e.vis.size }))
       .sort((a, b) => b.pageviews - a.pageviews || a.path.localeCompare(b.path))
+      .slice(0, limit);
+
+    const bySection = new Map<string, { pv: number; vis: Set<string> }>();
+    for (const v of rows) {
+      const sectionKey = `/${v.path.split("/")[1] ?? ""}`;
+      const e = bySection.get(sectionKey) ?? { pv: 0, vis: new Set<string>() };
+      e.pv++;
+      e.vis.add(v.visitorId);
+      bySection.set(sectionKey, e);
+    }
+    const sections: SectionStat[] = [...bySection.entries()]
+      .map(([section, e]) => ({ section, pageviews: e.pv, visitors: e.vis.size }))
+      .sort((a, b) => b.pageviews - a.pageviews || a.section.localeCompare(b.section))
       .slice(0, limit);
 
     const byCountry = new Map<string, { name: string; pv: number; vis: Set<string> }>();
@@ -381,6 +412,7 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
         botPageviews,
       },
       timeseries,
+      sections,
       topPages,
       topCountries,
       topReferrers: this.rank(rows, (v) => v.referrerHost, true, limit).map((r) => ({ host: r.key, pageviews: r.pageviews })),
@@ -395,12 +427,10 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
   }
 
   listVisits(opts: VisitQuery): { total: number; page: number; pageSize: number; rows: VisitRow[] } {
-    let rows = this.visits.filter((v) => v.day >= opts.from && v.day <= opts.to);
+    let rows = this.visits.filter(
+      (v) => v.day >= opts.from && v.day <= opts.to && this.matchesFilters(v, opts),
+    );
     if (opts.excludeBots) rows = rows.filter((v) => !v.isBot);
-    if (opts.path) rows = rows.filter((v) => v.path === opts.path);
-    if (opts.country) rows = rows.filter((v) => v.country === opts.country);
-    if (opts.source) rows = rows.filter((v) => v.source === opts.source);
-    if (opts.device) rows = rows.filter((v) => v.device === opts.device);
     if (opts.q) {
       const q = opts.q.toLowerCase();
       rows = rows.filter(
@@ -424,6 +454,7 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
       rows: rows.slice(offset, offset + pageSize).map((v) => ({
         ts: v.ts,
         ip: v.ip,
+        visitorId: v.visitorId,
         path: v.path,
         country: v.country,
         countryName: v.countryName,

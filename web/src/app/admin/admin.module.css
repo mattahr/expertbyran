@@ -556,3 +556,153 @@
   display: grid;
   gap: 0.25rem;
 }
+
+/* === Drill-down: klickbara staplar, chips, diagram === */
+.barRowClickable {
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.2rem 0.35rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast);
+}
+.barRowClickable:hover {
+  background: var(--accent-light);
+}
+
+.chartGrid {
+  stroke: var(--gray-200);
+  stroke-width: 1;
+}
+.chartAxis {
+  fill: var(--gray-400);
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.chipsLabel {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.chip:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+.chipX {
+  font-size: 0.7rem;
+  opacity: 0.75;
+}
+.chipClear {
+  border: none;
+  background: none;
+  color: var(--gray-500);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cellLink {
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+.cellLink:hover {
+  text-decoration: underline;
+}
+
+.twoColWide {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .twoColWide {
+    grid-template-columns: 1fr;
+  }
+}
+
+.donutWrap {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.donut {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+}
+.donutTotal {
+  font-size: 20px;
+  font-weight: 600;
+  fill: var(--black);
+  font-variant-numeric: tabular-nums;
+}
+.donutTotalLabel {
+  font-size: 9px;
+  fill: var(--gray-500);
+}
+.donutLegend {
+  list-style: none;
+  display: grid;
+  gap: 0.3rem;
+  min-width: 160px;
+  flex: 1;
+}
+.legendBtn {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: var(--radius-sm);
+  text-align: left;
+}
+button.legendBtn:hover {
+  background: var(--gray-100);
+}
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.legendLabel {
+  font-size: 0.85rem;
+}
+.legendVal {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  font-variant-numeric: tabular-nums;
+}

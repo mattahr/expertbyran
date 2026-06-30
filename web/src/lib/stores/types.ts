@@ -121,7 +121,20 @@ export interface VisitInsert {
   dpr: number | null;
 }
 
-export interface StatsRange {
+/** Drill-down-filter som kan tillämpas på både översikt och besökslista. */
+export interface StatsFilters {
+  path?: string;
+  /** Sektion (första sökvägssegmentet, t.ex. "/blogg") — matchar prefixet + undersidor. */
+  pathPrefix?: string;
+  country?: string;
+  browser?: string;
+  os?: string;
+  device?: string;
+  source?: string;
+  visitorId?: string;
+}
+
+export interface StatsRange extends StatsFilters {
   from: string;
   to: string;
   excludeBots: boolean;
@@ -189,11 +202,18 @@ export type CampaignStat = {
   medium: string | null;
   pageviews: number;
 };
+// Sektion = första sökvägssegmentet ("/blogg", "/foresight", "/radar", "/" …).
+export type SectionStat = {
+  section: string;
+  pageviews: number;
+  visitors: number;
+};
 
 export interface OverviewResult {
   range: { from: string; to: string; excludeBots: boolean };
   summary: OverviewSummary;
   timeseries: TimePoint[];
+  sections: SectionStat[];
   topPages: PageStat[];
   topCountries: CountryStat[];
   topReferrers: HostStat[];
@@ -206,21 +226,18 @@ export interface OverviewResult {
   topCampaigns: CampaignStat[];
 }
 
-export interface VisitQuery {
+export interface VisitQuery extends StatsFilters {
   from: string;
   to: string;
   page: number;
   pageSize: number;
   excludeBots: boolean;
-  path?: string;
-  country?: string;
-  source?: string;
-  device?: string;
   q?: string;
 }
 export interface VisitRow {
   ts: number;
   ip: string;
+  visitorId: string;
   path: string;
   country: string | null;
   countryName: string | null;

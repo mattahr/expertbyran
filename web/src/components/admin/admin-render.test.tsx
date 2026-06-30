@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import { AreaPicker } from "./AreaPicker";
 import { AuthorPicker } from "./AuthorPicker";
 import { BarList } from "./BarList";
+import { DonutChart } from "./DonutChart";
 import { BLOG_CONFIG, MarkdownContentAdmin } from "./MarkdownContentAdmin";
 import { RadarAdmin } from "./RadarAdmin";
 import { StatsDashboard } from "./StatsDashboard";
@@ -48,6 +49,23 @@ describe("admin UI render-smoke", () => {
 
   it("RadarAdmin renderar laddningsläge", () => {
     expect(renderToStaticMarkup(<RadarAdmin />)).toContain("Laddar");
+  });
+
+  it("DonutChart: tomt och fyllt", () => {
+    expect(renderToStaticMarkup(<DonutChart slices={[]} />)).toContain("Ingen data");
+    const html = renderToStaticMarkup(
+      <DonutChart slices={[{ label: "Blogg", value: 7 }, { label: "Radar", value: 3 }]} />,
+    );
+    expect(html).toContain("Blogg");
+    expect(html).toContain("<svg");
+  });
+
+  it("BarList med onSelect renderar klickbara rader", () => {
+    const html = renderToStaticMarkup(
+      <BarList items={[{ label: "/blogg", value: 5 }]} onSelect={() => {}} />,
+    );
+    expect(html).toContain("<button");
+    expect(html).toContain("/blogg");
   });
 
   it("AreaPicker listar områden som kryssrutor", () => {

@@ -20,15 +20,33 @@ function formatTime(ts: number): string {
   return new Date(ts).toLocaleString("sv-SE", { timeZone: "Europe/Stockholm" });
 }
 
-export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; excludeBots: boolean }) {
+export type OnFilter = (key: string, value: string, label: string) => void;
+
+function CellLink({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button type="button" className={styles.cellLink} onClick={onClick} title="Filtrera på detta">
+      {children}
+    </button>
+  );
+}
+
+export function VisitsTable({
+  rangeQuery,
+  filterQuery,
+  excludeBots,
+  onFilter,
+}: {
+  rangeQuery: string;
+  filterQuery: string;
+  excludeBots: boolean;
+  onFilter: OnFilter;
+}) {
   const [page, setPage] = useState(1);
   const [q, setQ] = useState("");
   const [rows, setRows] = useState<VisitRow[]>([]);
   const [total, setTotal] = useState(0);
 
-  // Återställ till sida 1 när intervall/filter ändras (justering under render
-  // i stället för en effekt — undviker kaskad-renders).
-  const resetKey = `${rangeQuery}|${excludeBots}|${q}`;
+  const resetKey = `${rangeQuery}|${filterQuery}|${excludeBots}|${q}`;
   const [prevResetKey, setPrevResetKey] = useState(resetKey);
   if (resetKey !== prevResetKey) {
     setPrevResetKey(resetKey);
@@ -38,6 +56,7 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
   useEffect(() => {
     const ctrl = new AbortController();
     const qs = new URLSearchParams(rangeQuery);
+    new URLSearchParams(filterQuery).forEach((v, k) => qs.set(k, v));
     qs.set("excludeBots", String(excludeBots));
     qs.set("page", String(page));
     qs.set("pageSize", String(PAGE_SIZE));
@@ -51,7 +70,7 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
       })
       .catch(() => {});
     return () => ctrl.abort();
-  }, [rangeQuery, excludeBots, page, q]);
+  }, [rangeQuery, filterQuery, excludeBots, page, q]);
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
@@ -68,6 +87,7 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
           <thead>
             <tr>
               <th>Tid</th>
+              <th>Besökare</th>
               <th>IP</th>
               <th>Sida</th>
               <th>Land</th>
@@ -81,13 +101,48 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
             {rows.map((r, i) => (
               <tr key={`${r.ts}-${i}`}>
                 <td>{formatTime(r.ts)}</td>
-                <td>{r.ip || "—"}</td>
-                <td>{r.path}</td>
-                <td>{r.countryName ?? "—"}</td>
-                <td>{r.browser ?? "—"}</td>
-                <td>{r.os ?? "—"}</td>
                 <td>
-                  {DEVICE_LABELS[r.device] ?? r.device}
+                  <CellLink
+                    onClick={() => onFilter("visitorId", r.visitorId, `Besökare ${r.visitorId.slice(0, 8)}…`)}
+                  >
+                    {r.visitorId.slice(0, 8)}
+                  </CellLink>
+                </td>
+                <td>{r.ip || "—"}</td>
+                <td>
+                  <CellLink onClick={() => onFilter("path", r.path, `Sida: ${r.path}`)}>{r.path}</CellLink>
+                </td>
+                <td>
+                  {r.countryName ? (
+                    <CellLink onClick={() => onFilter("country", r.country ?? "??", `Land: ${r.countryName}`)}>
+                      {r.countryName}
+                    </CellLink>
+                  ) : (
+                    "—"
+                  )}
+                </td>
+                <td>
+                  {r.browser ? (
+                    <CellLink onClick={() => onFilter("browser", r.browser ?? "Okänd", `Webbläsare: ${r.browser}`)}>
+                      {r.browser}
+                    </CellLink>
+                  ) : (
+                    "—"
+                  )}
+                </td>
+                <td>
+                  {r.os ? (
+                    <CellLink onClick={() => onFilter("os", r.os ?? "Okänd", `OS: ${r.os}`)}>{r.os}</CellLink>
+                  ) : (
+                    "—"
+                  )}
+                </td>
+                <td>
+                  <CellLink
+                    onClick={() => onFilter("device", r.device, `Enhet: ${DEVICE_LABELS[r.device] ?? r.device}`)}
+                  >
+                    {DEVICE_LABELS[r.device] ?? r.device}
+                  </CellLink>
                   {r.isBot ? <span className={styles.botBadge}>bot</span> : null}
                 </td>
                 <td>{r.referrerHost ?? r.source}</td>
@@ -95,7 +150,7 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
             ))}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={8} className={styles.empty}>
+                <td colSpan={9} className={styles.empty}>
                   Inga besök i perioden.
                 </td>
               </tr>

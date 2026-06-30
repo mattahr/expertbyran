@@ -227,6 +227,34 @@ export function analyticsStoreContract(
       expect(r.topCampaigns).toHaveLength(2);
     });
 
+    it("grupperar sektioner och respekterar drill-down-filter", async () => {
+      const store = await makeStore();
+      store.record(visit({ ts: 1, day: "2026-06-01", path: "/blogg/a", visitorId: "V1", country: "SE", countryName: "Sverige" }));
+      store.record(visit({ ts: 2, day: "2026-06-01", path: "/blogg/b", visitorId: "V1", country: "SE", countryName: "Sverige" }));
+      store.record(visit({ ts: 3, day: "2026-06-02", path: "/foresight/x", visitorId: "V2", country: "US", countryName: "USA" }));
+
+      const r = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true });
+      expect(r.sections).toEqual([
+        { section: "/blogg", pageviews: 2, visitors: 1 },
+        { section: "/foresight", pageviews: 1, visitors: 1 },
+      ]);
+
+      const blogg = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true, pathPrefix: "/blogg" });
+      expect(blogg.summary.pageviews).toBe(2);
+      expect(blogg.topPages.map((p) => p.path).sort()).toEqual(["/blogg/a", "/blogg/b"]);
+
+      const se = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true, country: "SE" });
+      expect(se.summary.pageviews).toBe(2);
+      expect(se.summary.visitors).toBe(1);
+
+      // Filtrera på besökare (cookielös hash) — "återvändande användare"
+      const v1 = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true, visitorId: "V1" });
+      expect(v1.summary.pageviews).toBe(2);
+      const v1visits = await store.listVisits({ from: "2026-06-01", to: "2026-06-30", page: 1, pageSize: 50, excludeBots: true, visitorId: "V1" });
+      expect(v1visits.total).toBe(2);
+      expect(v1visits.rows.every((row) => row.visitorId === "V1")).toBe(true);
+    });
+
     it("earliestDay returnerar minsta dagen eller null", async () => {
       const store = await makeStore();
       expect(store.earliestDay()).toBeNull();

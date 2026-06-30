@@ -17,7 +17,9 @@ import type {
   OverviewResult,
   PageStat,
   ResolutionStat,
+  SectionStat,
   SourceStat,
+  StatsFilters,
   StatsRange,
   TimePoint,
   TimezoneStat,
@@ -27,6 +29,14 @@ import type {
 } from "./types";
 
 const DEFAULT_LIMIT = 15;
+
+// Första sökvägssegmentet, t.ex. "/blogg/foo" → "/blogg", "/" → "/".
+const SECTION_EXPR =
+  "substr(path, 1, CASE WHEN instr(substr(path, 2), '/') > 0 THEN instr(substr(path, 2), '/') ELSE length(path) END)";
+
+function escapeLike(value: string): string {
+  return value.replace(/[\\%_]/g, (c) => `\\${c}`);
+}
 
 const INSERT_SQL = `
   INSERT INTO visits (
@@ -90,10 +100,53 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
     return row.d ?? null;
   }
 
+  /** Dag-intervall + drill-down-filter (utan is_bot). Bind alltid som parametrar. */
+  private filterClauses(
+    opts: StatsFilters & { from: string; to: string },
+  ): { clauses: string[]; params: (string | number)[] } {
+    const clauses = ["day >= ?", "day <= ?"];
+    const params: (string | number)[] = [opts.from, opts.to];
+    if (opts.path) {
+      clauses.push("path = ?");
+      params.push(opts.path);
+    }
+    if (opts.pathPrefix) {
+      clauses.push("(path = ? OR path LIKE ? ESCAPE '\\')");
+      params.push(opts.pathPrefix, `${escapeLike(opts.pathPrefix)}/%`);
+    }
+    // COALESCE matchar samma visningsvärden som topplistorna (Okänt/Okänd/??).
+    if (opts.country) {
+      clauses.push("COALESCE(country, '??') = ?");
+      params.push(opts.country);
+    }
+    if (opts.browser) {
+      clauses.push("COALESCE(browser, 'Okänd') = ?");
+      params.push(opts.browser);
+    }
+    if (opts.os) {
+      clauses.push("COALESCE(os, 'Okänd') = ?");
+      params.push(opts.os);
+    }
+    if (opts.device) {
+      clauses.push("device = ?");
+      params.push(opts.device);
+    }
+    if (opts.source) {
+      clauses.push("source = ?");
+      params.push(opts.source);
+    }
+    if (opts.visitorId) {
+      clauses.push("visitor_id = ?");
+      params.push(opts.visitorId);
+    }
+    return { clauses, params };
+  }
+
   /** Bygger basvillkoret för en range + bot-exkludering. */
   private rangeWhere(range: StatsRange): { sql: string; params: (string | number)[] } {
-    const sql = `day >= ? AND day <= ?${range.excludeBots ? " AND is_bot = 0" : ""}`;
-    return { sql, params: [range.from, range.to] };
+    const { clauses, params } = this.filterClauses(range);
+    if (range.excludeBots) clauses.push("is_bot = 0");
+    return { sql: clauses.join(" AND "), params };
   }
 
   /** Generisk topplista på en fast kolumn; `keyExpr` är en intern konstant. */
@@ -126,10 +179,13 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
       )
       .get(...where.params) as { pageviews: number; visitors: number; days: number };
 
+    // Bot-räkningen respekterar drill-down-filtren men ignorerar excludeBots.
+    const botFilter = this.filterClauses(range);
+    botFilter.clauses.push("is_bot = 1");
     const botPageviews = (
       this.db
-        .prepare(`SELECT COUNT(*) AS n FROM visits WHERE day >= ? AND day <= ? AND is_bot = 1`)
-        .get(range.from, range.to) as { n: number }
+        .prepare(`SELECT COUNT(*) AS n FROM visits WHERE ${botFilter.clauses.join(" AND ")}`)
+        .get(...botFilter.params) as { n: number }
     ).n;
 
     const timeseries = this.db
@@ -139,6 +195,14 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
          GROUP BY day ORDER BY day ASC`,
       )
       .all(...where.params) as TimePoint[];
+
+    const sections = this.db
+      .prepare(
+        `SELECT ${SECTION_EXPR} AS section, COUNT(*) AS pageviews, COUNT(DISTINCT visitor_id) AS visitors
+         FROM visits WHERE ${where.sql}
+         GROUP BY section ORDER BY pageviews DESC, section ASC LIMIT ?`,
+      )
+      .all(...where.params, limit) as SectionStat[];
 
     const topPages = this.db
       .prepare(
@@ -181,6 +245,7 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
         botPageviews,
       },
       timeseries,
+      sections,
       topPages,
       topCountries,
       topReferrers: this.rankBy("referrer_host", range, true).map(toHost),
@@ -199,32 +264,15 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
   }
 
   listVisits(opts: VisitQuery): { total: number; page: number; pageSize: number; rows: VisitRow[] } {
-    const clauses: string[] = ["day >= ?", "day <= ?"];
-    const params: (string | number)[] = [opts.from, opts.to];
+    const { clauses, params } = this.filterClauses(opts);
     if (opts.excludeBots) clauses.push("is_bot = 0");
-    if (opts.path) {
-      clauses.push("path = ?");
-      params.push(opts.path);
-    }
-    if (opts.country) {
-      clauses.push("country = ?");
-      params.push(opts.country);
-    }
-    if (opts.source) {
-      clauses.push("source = ?");
-      params.push(opts.source);
-    }
-    if (opts.device) {
-      clauses.push("device = ?");
-      params.push(opts.device);
-    }
     if (opts.q) {
       // Escapa LIKE-metatecken (% _ \) så att admins sökterm matchas literalt
       // i stället för som wildcard.
       clauses.push(
         "(ip LIKE ? ESCAPE '\\' OR path LIKE ? ESCAPE '\\' OR ua_raw LIKE ? ESCAPE '\\')",
       );
-      const like = `%${opts.q.replace(/[\\%_]/g, (c) => `\\${c}`)}%`;
+      const like = `%${escapeLike(opts.q)}%`;
       params.push(like, like, like);
     }
     const where = clauses.join(" AND ");
@@ -237,7 +285,7 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
 
     const rows = this.db
       .prepare(
-        `SELECT ts, ip, path, country, country_name AS countryName, browser, os, device,
+        `SELECT ts, ip, visitor_id AS visitorId, path, country, country_name AS countryName, browser, os, device,
                 referrer_host AS referrerHost, source, is_bot AS isBot
          FROM visits WHERE ${where}
          ORDER BY ts DESC, id DESC LIMIT ? OFFSET ?`,

@@ -1,7 +1,7 @@
 // web/src/lib/admin/stats-params.ts
 //
 // Tolkar query-parametrar till StatsRange/VisitQuery. Datum i Europe/Stockholm.
-import type { StatsRange, VisitQuery } from "@/lib/stores/types";
+import type { StatsFilters, StatsRange, VisitQuery } from "@/lib/stores/types";
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const TOP_LIMIT = 15;
@@ -27,6 +27,21 @@ function shiftDays(ymd: string, delta: number): string {
   return dt.toISOString().slice(0, 10);
 }
 
+/** Plockar valfria drill-down-filter ur query-strängen. */
+export function parseFilters(params: URLSearchParams): StatsFilters {
+  const get = (key: string) => params.get(key) || undefined;
+  return {
+    path: get("path"),
+    pathPrefix: get("pathPrefix"),
+    country: get("country"),
+    browser: get("browser"),
+    os: get("os"),
+    device: get("device"),
+    source: get("source"),
+    visitorId: get("visitorId"),
+  };
+}
+
 export function parseStatsRange(
   params: URLSearchParams,
   now: number,
@@ -47,7 +62,7 @@ export function parseStatsRange(
   if (from > to) from = to;
 
   const excludeBots = params.get("excludeBots") !== "false";
-  return { from, to, excludeBots, limit: TOP_LIMIT };
+  return { from, to, excludeBots, limit: TOP_LIMIT, ...parseFilters(params) };
 }
 
 export function parseVisitQuery(
@@ -69,10 +84,7 @@ export function parseVisitQuery(
     excludeBots: range.excludeBots,
     page,
     pageSize,
-    path: params.get("path") || undefined,
-    country: params.get("country") || undefined,
-    source: params.get("source") || undefined,
-    device: params.get("device") || undefined,
     q: params.get("q") || undefined,
+    ...parseFilters(params),
   };
 }
