@@ -35,11 +35,15 @@ export function VisitsTable({
   filterQuery,
   excludeBots,
   onFilter,
+  onChanged,
+  refreshKey = 0,
 }: {
   rangeQuery: string;
   filterQuery: string;
   excludeBots: boolean;
   onFilter: OnFilter;
+  onChanged?: () => void;
+  refreshKey?: number;
 }) {
   const [page, setPage] = useState(1);
   const [q, setQ] = useState("");
@@ -70,7 +74,24 @@ export function VisitsTable({
       })
       .catch(() => {});
     return () => ctrl.abort();
-  }, [rangeQuery, filterQuery, excludeBots, page, q]);
+  }, [rangeQuery, filterQuery, excludeBots, page, q, refreshKey]);
+
+  async function nameVisitor(r: VisitRow) {
+    const name = window.prompt(
+      `Namn för besökare ${r.visitorId.slice(0, 8)}… (lämna tomt för att ta bort namnet)`,
+      r.visitorLabel ?? "",
+    );
+    if (name === null) return;
+    const trimmed = name.trim();
+    const res = trimmed
+      ? await fetch(`/api/v1/admin/visitor-labels/${r.visitorId}`, {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ label: trimmed }),
+        })
+      : await fetch(`/api/v1/admin/visitor-labels/${r.visitorId}`, { method: "DELETE" });
+    if (res.ok) onChanged?.();
+  }
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
@@ -103,10 +124,19 @@ export function VisitsTable({
                 <td>{formatTime(r.ts)}</td>
                 <td>
                   <CellLink
-                    onClick={() => onFilter("visitorId", r.visitorId, `Besökare ${r.visitorId.slice(0, 8)}…`)}
+                    onClick={() =>
+                      onFilter(
+                        "visitorId",
+                        r.visitorId,
+                        r.visitorLabel ? `Besökare: ${r.visitorLabel}` : `Besökare ${r.visitorId.slice(0, 8)}…`,
+                      )
+                    }
                   >
-                    {r.visitorId.slice(0, 8)}
+                    {r.visitorLabel ?? r.visitorId.slice(0, 8)}
                   </CellLink>
+                  <button type="button" className={styles.iconBtn} onClick={() => nameVisitor(r)} title="Namnge besökare">
+                    ✎
+                  </button>
                 </td>
                 <td>{r.ip || "—"}</td>
                 <td>

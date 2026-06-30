@@ -69,7 +69,9 @@ export function StatsDashboard() {
   const [excludeBots, setExcludeBots] = useState(true);
   const [filters, setFilters] = useState<ActiveFilters>({});
   const [data, setData] = useState<OverviewResult | null>(null);
+  const [version, setVersion] = useState(0); // bumpas vid namnändring → omladdning
 
+  const bump = () => setVersion((v) => v + 1);
   const rangeQuery = rangeToQuery(preset, custom);
   const filterQuery = (() => {
     const qs = new URLSearchParams();
@@ -87,7 +89,7 @@ export function StatsDashboard() {
       .then((d: OverviewResult) => setData(d))
       .catch(() => {});
     return () => ctrl.abort();
-  }, [rangeQuery, filterQuery, excludeBots]);
+  }, [rangeQuery, filterQuery, excludeBots, version]);
 
   const setFilter: OnFilter = (key, value, label) =>
     setFilters((f) => ({ ...f, [key]: { value, label } }));
@@ -97,6 +99,26 @@ export function StatsDashboard() {
       delete next[key as FilterKey];
       return next;
     });
+
+  async function renameVisitor(visitorId: string, current: string) {
+    const name = window.prompt(`Nytt namn för "${current}" (lämna tomt för att ta bort)`, current);
+    if (name === null) return;
+    const trimmed = name.trim();
+    const res = trimmed
+      ? await fetch(`/api/v1/admin/visitor-labels/${visitorId}`, {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ label: trimmed }),
+        })
+      : await fetch(`/api/v1/admin/visitor-labels/${visitorId}`, { method: "DELETE" });
+    if (res.ok) bump();
+  }
+
+  async function removeVisitor(visitorId: string, label: string) {
+    if (!window.confirm(`Ta bort namnet "${label}"? (besöken finns kvar)`)) return;
+    const res = await fetch(`/api/v1/admin/visitor-labels/${visitorId}`, { method: "DELETE" });
+    if (res.ok) bump();
+  }
 
   const s = data?.summary;
   const activeChips = Object.entries(filters).filter(([, f]) => f) as [FilterKey, { value: string; label: string }][];
@@ -258,10 +280,59 @@ export function StatsDashboard() {
         </div>
       </div>
 
+      {/* Namngivna besökare */}
+      <div className={styles.section}>
+        <div className={styles.sectionTitle}>Namngivna besökare</div>
+        {(data?.namedVisitors ?? []).length === 0 ? (
+          <p className={styles.empty}>
+            Inga namngivna besökare ännu — klicka på ✎ vid en besökare i tabellen nedan för att ge den ett namn.
+          </p>
+        ) : (
+          <div>
+            {(data?.namedVisitors ?? []).map((nv) => (
+              <div key={nv.visitorId} className={styles.blogRow}>
+                <div>
+                  <div className={styles.blogTitle}>{nv.label}</div>
+                  <div className={styles.blogMeta}>
+                    {nv.pageviews.toLocaleString("sv-SE")} besök i perioden
+                    {nv.lastTs
+                      ? ` · senast ${new Date(nv.lastTs).toLocaleDateString("sv-SE", { timeZone: "Europe/Stockholm" })}`
+                      : ""}{" "}
+                    · {nv.visitorId.slice(0, 8)}…
+                  </div>
+                </div>
+                <div className={styles.rowActions}>
+                  <button
+                    type="button"
+                    className={styles.smallBtn}
+                    onClick={() => setFilter("visitorId", nv.visitorId, `Besökare: ${nv.label}`)}
+                  >
+                    Visa besök
+                  </button>
+                  <button type="button" className={styles.smallBtn} onClick={() => renameVisitor(nv.visitorId, nv.label)}>
+                    Byt namn
+                  </button>
+                  <button type="button" className={styles.dangerBtn} onClick={() => removeVisitor(nv.visitorId, nv.label)}>
+                    Ta bort
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
       {/* Råa besök */}
       <div className={styles.section}>
         <div className={styles.sectionTitle}>Besök</div>
-        <VisitsTable rangeQuery={rangeQuery} filterQuery={filterQuery} excludeBots={excludeBots} onFilter={setFilter} />
+        <VisitsTable
+          rangeQuery={rangeQuery}
+          filterQuery={filterQuery}
+          excludeBots={excludeBots}
+          onFilter={setFilter}
+          onChanged={bump}
+          refreshKey={version}
+        />
       </div>
 
       <p className={styles.footerNote}>

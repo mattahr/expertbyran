@@ -13,6 +13,7 @@ import type {
   CountryStat,
   DeviceStat,
   HostStat,
+  NamedVisitorStat,
   OsStat,
   OverviewResult,
   PageStat,
@@ -24,6 +25,7 @@ import type {
   TimePoint,
   TimezoneStat,
   VisitInsert,
+  VisitorLabel,
   VisitQuery,
   VisitRow,
 } from "./types";
@@ -98,6 +100,34 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
   earliestDay(): string | null {
     const row = this.db.prepare("SELECT MIN(day) AS d FROM visits").get() as { d: string | null };
     return row.d ?? null;
+  }
+
+  setVisitorLabel(visitorId: string, label: string): void {
+    this.db
+      .prepare(
+        `INSERT INTO visitor_labels (visitor_id, label, updated_at) VALUES (?, ?, ?)
+         ON CONFLICT(visitor_id) DO UPDATE SET label = excluded.label, updated_at = excluded.updated_at`,
+      )
+      .run(visitorId, label, new Date().toISOString());
+  }
+
+  deleteVisitorLabel(visitorId: string): void {
+    this.db.prepare("DELETE FROM visitor_labels WHERE visitor_id = ?").run(visitorId);
+  }
+
+  listVisitorLabels(): VisitorLabel[] {
+    return this.db
+      .prepare("SELECT visitor_id AS visitorId, label FROM visitor_labels ORDER BY label ASC")
+      .all() as VisitorLabel[];
+  }
+
+  private labelsFor(ids: string[]): Map<string, string> {
+    if (!ids.length) return new Map();
+    const placeholders = ids.map(() => "?").join(",");
+    const rows = this.db
+      .prepare(`SELECT visitor_id, label FROM visitor_labels WHERE visitor_id IN (${placeholders})`)
+      .all(...ids) as { visitor_id: string; label: string }[];
+    return new Map(rows.map((r) => [r.visitor_id, r.label]));
   }
 
   /** Dag-intervall + drill-down-filter (utan is_bot). Bind alltid som parametrar. */
@@ -233,6 +263,32 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
       )
       .all(...where.params, limit) as CampaignStat[];
 
+    // Namngivna besökare: en stabil katalog (respekterar datum + bot-flagga,
+    // men inte drill-down-filtren) så att man alltid kan välja en känd person.
+    const labels = this.listVisitorLabels();
+    let namedVisitors: NamedVisitorStat[] = [];
+    if (labels.length > 0) {
+      const ids = labels.map((l) => l.visitorId);
+      const placeholders = ids.map(() => "?").join(",");
+      const botClause = range.excludeBots ? " AND is_bot = 0" : "";
+      const counts = this.db
+        .prepare(
+          `SELECT visitor_id, COUNT(*) AS pageviews, MAX(ts) AS lastTs FROM visits
+           WHERE day >= ? AND day <= ?${botClause} AND visitor_id IN (${placeholders})
+           GROUP BY visitor_id`,
+        )
+        .all(range.from, range.to, ...ids) as { visitor_id: string; pageviews: number; lastTs: number }[];
+      const byId = new Map(counts.map((c) => [c.visitor_id, c]));
+      namedVisitors = labels
+        .map((l) => ({
+          visitorId: l.visitorId,
+          label: l.label,
+          pageviews: byId.get(l.visitorId)?.pageviews ?? 0,
+          lastTs: byId.get(l.visitorId)?.lastTs ?? 0,
+        }))
+        .sort((a, b) => b.pageviews - a.pageviews || a.label.localeCompare(b.label));
+    }
+
     const toHost = (r: { key: string; pageviews: number }): HostStat => ({ host: r.key, pageviews: r.pageviews });
 
     return {
@@ -246,6 +302,7 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
       },
       timeseries,
       sections,
+      namedVisitors,
       topPages,
       topCountries,
       topReferrers: this.rankBy("referrer_host", range, true).map(toHost),
@@ -290,13 +347,21 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
          FROM visits WHERE ${where}
          ORDER BY ts DESC, id DESC LIMIT ? OFFSET ?`,
       )
-      .all(...params, pageSize, offset) as (Omit<VisitRow, "isBot"> & { isBot: number })[];
+      .all(...params, pageSize, offset) as (Omit<VisitRow, "isBot" | "visitorLabel"> & {
+      isBot: number;
+    })[];
+
+    const labelMap = this.labelsFor(rows.map((r) => r.visitorId));
 
     return {
       total,
       page,
       pageSize,
-      rows: rows.map((r) => ({ ...r, isBot: r.isBot === 1 })),
+      rows: rows.map((r) => ({
+        ...r,
+        isBot: r.isBot === 1,
+        visitorLabel: labelMap.get(r.visitorId) ?? null,
+      })),
     };
   }
 }

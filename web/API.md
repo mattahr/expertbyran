@@ -307,7 +307,14 @@ Returnerar `{ "authenticated": boolean }`.
 Kräver session/bearer. Query: `from`, `to` (YYYY-MM-DD), `range=all`, `excludeBots` (default `true`). Returnerar sammanställd översikt (summering, tidsserie, topplistor för sidor, länder, källor, hänvisare, webbläsare, OS, enheter, skärmupplösningar, tidszoner, UTM-kampanjer).
 
 #### GET /api/v1/admin/stats/visits
-Kräver session/bearer. Query: `from`, `to`, `page`, `pageSize` (≤200), samt filter `path`, `country`, `source`, `device`, `excludeBots`, `q`. Returnerar `{ total, page, pageSize, rows }` (nyast först).
+Kräver session/bearer. Query: `from`, `to`, `page`, `pageSize` (≤200), samt drill-down-filter `path`, `pathPrefix`, `country`, `browser`, `os`, `device`, `source`, `visitorId`, `excludeBots`, `q`. Returnerar `{ total, page, pageSize, rows }` (nyast först); varje rad har `visitorId` och ev. `visitorLabel`. `overview` accepterar samma filter och returnerar även `sections` (innehållstypsfördelning) och `namedVisitors`.
+
+#### Namngivna besökare (presentationsalias för `visitor_id`)
+* `GET /api/v1/admin/visitor-labels` — listar `{ labels: [{ visitorId, label }] }` (kräver session/bearer).
+* `PUT /api/v1/admin/visitor-labels/[visitorId]` — body `{ "label": "..." }` (1–120 tecken). Sätter/uppdaterar namnet.
+* `DELETE /api/v1/admin/visitor-labels/[visitorId]` — tar bort namnet (besöken påverkas inte).
+
+Namnet är enbart för admin-visning (ändrar inte besöksdata). Lagras i tabellen `visitor_labels`.
 
 ## Miljövariabler
 

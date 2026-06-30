@@ -12,6 +12,7 @@ import type {
   CountryStat,
   ForesightStore,
   ListPageOptions,
+  NamedVisitorStat,
   OverviewResult,
   PageStat,
   RadarStore,
@@ -22,6 +23,7 @@ import type {
   StoredPost,
   TimePoint,
   VisitInsert,
+  VisitorLabel,
   VisitQuery,
   VisitRow,
 } from "./types";
@@ -280,6 +282,8 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
   private visits: StoredVisit[] = [];
   private counter = 0;
 
+  private labels = new Map<string, string>();
+
   record(v: VisitInsert): void {
     this.visits.push({ ...v, _i: this.counter++ });
   }
@@ -287,6 +291,20 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
   earliestDay(): string | null {
     if (this.visits.length === 0) return null;
     return this.visits.reduce((min, v) => (v.day < min ? v.day : min), this.visits[0].day);
+  }
+
+  setVisitorLabel(visitorId: string, label: string): void {
+    this.labels.set(visitorId, label);
+  }
+
+  deleteVisitorLabel(visitorId: string): void {
+    this.labels.delete(visitorId);
+  }
+
+  listVisitorLabels(): VisitorLabel[] {
+    return [...this.labels.entries()]
+      .map(([visitorId, label]) => ({ visitorId, label }))
+      .sort((a, b) => a.label.localeCompare(b.label));
   }
 
   private matchesFilters(v: StoredVisit, f: StatsFilters): boolean {
@@ -413,6 +431,23 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
       },
       timeseries,
       sections,
+      namedVisitors: [...this.labels.entries()]
+        .map(([visitorId, label]) => {
+          const vs = this.visits.filter(
+            (v) =>
+              v.visitorId === visitorId &&
+              v.day >= range.from &&
+              v.day <= range.to &&
+              (!range.excludeBots || !v.isBot),
+          );
+          return {
+            visitorId,
+            label,
+            pageviews: vs.length,
+            lastTs: vs.reduce((m, v) => Math.max(m, v.ts), 0),
+          };
+        })
+        .sort((a, b) => b.pageviews - a.pageviews || a.label.localeCompare(b.label)) as NamedVisitorStat[],
       topPages,
       topCountries,
       topReferrers: this.rank(rows, (v) => v.referrerHost, true, limit).map((r) => ({ host: r.key, pageviews: r.pageviews })),
@@ -455,6 +490,7 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
         ts: v.ts,
         ip: v.ip,
         visitorId: v.visitorId,
+        visitorLabel: this.labels.get(v.visitorId) ?? null,
         path: v.path,
         country: v.country,
         countryName: v.countryName,

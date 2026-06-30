@@ -137,6 +137,19 @@ const MIGRATIONS: Migration[] = [
       `);
     },
   },
+  {
+    version: 3,
+    name: "namngivna-besokare",
+    up(db) {
+      db.exec(`
+        CREATE TABLE visitor_labels (
+          visitor_id TEXT PRIMARY KEY,
+          label TEXT NOT NULL,
+          updated_at TEXT NOT NULL
+        );
+      `);
+    },
+  },
 ];
 
 export function runMigrations(db: DatabaseSync): void {

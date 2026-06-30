@@ -208,12 +208,24 @@ export type SectionStat = {
   pageviews: number;
   visitors: number;
 };
+// Presentationsnamn (alias) för en cookielös visitor_id.
+export type VisitorLabel = {
+  visitorId: string;
+  label: string;
+};
+export type NamedVisitorStat = {
+  visitorId: string;
+  label: string;
+  pageviews: number;
+  lastTs: number;
+};
 
 export interface OverviewResult {
   range: { from: string; to: string; excludeBots: boolean };
   summary: OverviewSummary;
   timeseries: TimePoint[];
   sections: SectionStat[];
+  namedVisitors: NamedVisitorStat[];
   topPages: PageStat[];
   topCountries: CountryStat[];
   topReferrers: HostStat[];
@@ -238,6 +250,7 @@ export interface VisitRow {
   ts: number;
   ip: string;
   visitorId: string;
+  visitorLabel: string | null;
   path: string;
   country: string | null;
   countryName: string | null;
@@ -258,6 +271,11 @@ export interface AnalyticsStore {
   listVisits(opts: VisitQuery): { total: number; page: number; pageSize: number; rows: VisitRow[] };
   /** Minsta `day` i datat (för "Allt"-intervallet), eller null om tomt. */
   earliestDay(): string | null;
+
+  /** Presentationsnamn (alias) för besökare — bara för admin-visning. */
+  setVisitorLabel(visitorId: string, label: string): void;
+  deleteVisitorLabel(visitorId: string): void;
+  listVisitorLabels(): VisitorLabel[];
 }
 
 /** Kastas av stores när en slug redan finns. API mappar till 409. */

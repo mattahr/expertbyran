@@ -255,6 +255,30 @@ export function analyticsStoreContract(
       expect(v1visits.rows.every((row) => row.visitorId === "V1")).toBe(true);
     });
 
+    it("namnger besökare och visar dem i overview + besökslista", async () => {
+      const store = await makeStore();
+      store.record(visit({ ts: 10, day: "2026-06-01", path: "/blogg/a", visitorId: "V1" }));
+      store.record(visit({ ts: 20, day: "2026-06-02", path: "/blogg/b", visitorId: "V1" }));
+      store.record(visit({ ts: 30, day: "2026-06-02", path: "/radar/x", visitorId: "V2" }));
+
+      store.setVisitorLabel("V1", "Anna på dept X");
+      expect(store.listVisitorLabels()).toEqual([{ visitorId: "V1", label: "Anna på dept X" }]);
+
+      const r = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true });
+      expect(r.namedVisitors).toEqual([{ visitorId: "V1", label: "Anna på dept X", pageviews: 2, lastTs: 20 }]);
+
+      const visits = await store.listVisits({ from: "2026-06-01", to: "2026-06-30", page: 1, pageSize: 50, excludeBots: true });
+      expect(visits.rows.find((row) => row.visitorId === "V1")?.visitorLabel).toBe("Anna på dept X");
+      expect(visits.rows.find((row) => row.visitorId === "V2")?.visitorLabel).toBeNull();
+
+      store.setVisitorLabel("V1", "Anna (omdöpt)");
+      expect(store.listVisitorLabels()).toEqual([{ visitorId: "V1", label: "Anna (omdöpt)" }]);
+
+      store.deleteVisitorLabel("V1");
+      expect(store.listVisitorLabels()).toEqual([]);
+      expect((await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true })).namedVisitors).toEqual([]);
+    });
+
     it("earliestDay returnerar minsta dagen eller null", async () => {
       const store = await makeStore();
       expect(store.earliestDay()).toBeNull();

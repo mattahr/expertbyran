@@ -635,6 +635,18 @@
 .cellLink:hover {
   text-decoration: underline;
 }
+.iconBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--gray-400);
+  font-size: 0.8rem;
+  margin-left: 0.35rem;
+  padding: 0;
+}
+.iconBtn:hover {
+  color: var(--accent);
+}
 
 .twoColWide {
   display: grid;
