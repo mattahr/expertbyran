@@ -443,6 +443,14 @@
   border-radius: var(--radius-sm);
   margin: 0.5rem 0;
 }
+.markdownArea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  min-height: 340px;
+  resize: vertical;
+  tab-size: 2;
+}
 .statusMsg {
   font-size: 0.85rem;
   color: var(--teal);

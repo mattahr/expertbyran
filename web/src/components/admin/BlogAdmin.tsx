@@ -10,6 +10,9 @@ export function BlogAdmin() {
   const [posts, setPosts] = useState<BlogPostEntry[]>([]);
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState<BlogPostEntry | null>(null);
+  const [draftMarkdown, setDraftMarkdown] = useState("");
+  const [originalMarkdown, setOriginalMarkdown] = useState("");
+  const [markdownLoading, setMarkdownLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -30,23 +33,41 @@ export function BlogAdmin() {
     void load();
   }, []);
 
-  function startEdit(post: BlogPostEntry) {
+  async function startEdit(post: BlogPostEntry) {
     setEditing(post.slug);
     setDraft({ ...post });
     setStatus(null);
+    setDraftMarkdown("");
+    setOriginalMarkdown("");
+    setMarkdownLoading(true);
+    try {
+      const res = await fetch(`/api/v1/blog/posts/${post.slug}`);
+      const data = await res.json();
+      setDraftMarkdown(data.markdown ?? "");
+      setOriginalMarkdown(data.markdown ?? "");
+    } catch {
+      setStatus("Kunde inte ladda inläggets text.");
+    } finally {
+      setMarkdownLoading(false);
+    }
   }
 
   function cancel() {
     setEditing(null);
     setDraft(null);
+    setDraftMarkdown("");
+    setOriginalMarkdown("");
   }
 
   async function save() {
     if (!draft || !editing) return;
+    // Skicka bara markdown om den ändrats — annars renderas HTML i onödan om.
+    const body: { post: BlogPostEntry; markdown?: string } = { post: draft };
+    if (draftMarkdown !== originalMarkdown) body.markdown = draftMarkdown;
     const res = await fetch(`/api/v1/blog/posts/${editing}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ post: draft }),
+      body: JSON.stringify(body),
     });
     if (res.ok) {
       setStatus("Ändringarna sparades.");
@@ -145,6 +166,20 @@ export function BlogAdmin() {
                   value={draft.excerpt}
                   onChange={(e) => setDraft({ ...draft, excerpt: e.target.value })}
                 />
+              </div>
+              <div className={styles.field}>
+                <label className={styles.label}>Innehåll (Markdown)</label>
+                {markdownLoading ? (
+                  <p className={styles.empty}>Laddar text…</p>
+                ) : (
+                  <textarea
+                    className={`${styles.input} ${styles.markdownArea}`}
+                    rows={18}
+                    value={draftMarkdown}
+                    onChange={(e) => setDraftMarkdown(e.target.value)}
+                    spellCheck={false}
+                  />
+                )}
               </div>
               <div className={styles.rowActions}>
                 <button type="button" className={styles.button} onClick={save}>
