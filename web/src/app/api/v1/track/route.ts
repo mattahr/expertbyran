@@ -7,16 +7,14 @@ import { NextRequest } from "next/server";
 import { buildVisit } from "@/lib/analytics/build-visit";
 import { trackPayloadSchema } from "@/lib/analytics/track-schema";
 import { getVisitorSalt } from "@/lib/admin/config";
+import { clientIp } from "@/lib/api/client-ip";
 import { loadGeo } from "@/lib/geo";
 import { getAnalyticsStore } from "@/lib/stores";
 
 export const dynamic = "force-dynamic";
 
-function clientIp(req: NextRequest): string {
-  const xff = req.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0]?.trim() ?? "";
-  return req.headers.get("x-real-ip")?.trim() ?? "";
-}
+// Tak för beacon-payload — skydd mot oavsiktlig minnes-DoS innan req.json().
+const MAX_BODY_BYTES = 16 * 1024;
 
 function headerCountry(req: NextRequest): string | null {
   return (
@@ -28,6 +26,10 @@ function headerCountry(req: NextRequest): string | null {
 
 export async function POST(req: NextRequest) {
   try {
+    const declaredLength = Number(req.headers.get("content-length"));
+    if (Number.isFinite(declaredLength) && declaredLength > MAX_BODY_BYTES) {
+      return new Response(null, { status: 413 });
+    }
     // Säkerställ att geo-läsaren är laddad i denna modulinstans (route-grafen
     // delar inte modulstate med instrumentation). Idempotent efter första anrop.
     await loadGeo();

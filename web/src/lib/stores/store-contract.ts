@@ -210,6 +210,23 @@ export function analyticsStoreContract(
       expect(q.rows[0].ip).toBe("1.1.1.4");
     });
 
+    it("söker literalt — LIKE-wildcards (%/_) tolkas inte", async () => {
+      const store = await makeStore();
+      store.record(visit({ ts: 1, day: "2026-06-01", path: "/a%b", ip: "10.0.0.1" }));
+      store.record(visit({ ts: 2, day: "2026-06-01", path: "/azzb", ip: "10.0.0.2" }));
+      const r = await store.listVisits({ from: "2026-06-01", to: "2026-06-30", page: 1, pageSize: 50, excludeBots: true, q: "a%b" });
+      expect(r.total).toBe(1);
+      expect(r.rows[0].path).toBe("/a%b");
+    });
+
+    it("grupperar kampanjer på hela tripeln utan separatorkollision", async () => {
+      const store = await makeStore();
+      store.record(visit({ day: "2026-06-01", utmCampaign: "x y", utmSource: "a", utmMedium: null }));
+      store.record(visit({ day: "2026-06-01", utmCampaign: "x", utmSource: "y a", utmMedium: null }));
+      const r = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true });
+      expect(r.topCampaigns).toHaveLength(2);
+    });
+
     it("earliestDay returnerar minsta dagen eller null", async () => {
       const store = await makeStore();
       expect(store.earliestDay()).toBeNull();

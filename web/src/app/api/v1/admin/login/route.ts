@@ -6,6 +6,7 @@ import { checkRateLimit, clearRateLimit, verifyCredentials } from "@/lib/admin/a
 import { adminEnabled, getSessionSecret, getSessionTtlMs } from "@/lib/admin/config";
 import { createSessionToken } from "@/lib/admin/session";
 import { ADMIN_COOKIE } from "@/lib/api/auth";
+import { clientIp } from "@/lib/api/client-ip";
 
 export const dynamic = "force-dynamic";
 
@@ -13,14 +14,6 @@ const loginSchema = z.object({
   username: z.string().min(1).max(256),
   password: z.string().min(1).max(1024),
 });
-
-function clientIp(req: NextRequest): string {
-  return (
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    req.headers.get("x-real-ip")?.trim() ??
-    ""
-  );
-}
 
 export async function POST(req: NextRequest) {
   if (!adminEnabled()) {

@@ -219,8 +219,12 @@ export class SqliteAnalyticsStore implements AnalyticsStore {
       params.push(opts.device);
     }
     if (opts.q) {
-      clauses.push("(ip LIKE ? OR path LIKE ? OR ua_raw LIKE ?)");
-      const like = `%${opts.q}%`;
+      // Escapa LIKE-metatecken (% _ \) så att admins sökterm matchas literalt
+      // i stället för som wildcard.
+      clauses.push(
+        "(ip LIKE ? ESCAPE '\\' OR path LIKE ? ESCAPE '\\' OR ua_raw LIKE ? ESCAPE '\\')",
+      );
+      const like = `%${opts.q.replace(/[\\%_]/g, (c) => `\\${c}`)}%`;
       params.push(like, like, like);
     }
     const where = clauses.join(" AND ");

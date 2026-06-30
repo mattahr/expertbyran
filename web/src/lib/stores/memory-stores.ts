@@ -362,7 +362,7 @@ export class InMemoryAnalyticsStore implements AnalyticsStore {
     const byCampaign = new Map<string, { campaign: string; source: string | null; medium: string | null; pageviews: number }>();
     for (const v of rows) {
       if (!v.utmCampaign) continue;
-      const key = `${v.utmCampaign} ${v.utmSource ?? ""} ${v.utmMedium ?? ""}`;
+      const key = JSON.stringify([v.utmCampaign, v.utmSource, v.utmMedium]);
       const e = byCampaign.get(key) ?? { campaign: v.utmCampaign, source: v.utmSource, medium: v.utmMedium, pageviews: 0 };
       e.pageviews++;
       byCampaign.set(key, e);
