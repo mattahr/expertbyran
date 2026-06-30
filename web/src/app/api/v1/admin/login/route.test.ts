@@ -43,6 +43,27 @@ describe("POST /api/v1/admin/login", () => {
     expect(res.headers.get("set-cookie")).toMatch(/eb_admin=.+HttpOnly/);
   });
 
+  it("sätter INTE Secure över plain HTTP (annars kastar webbläsaren cookien → loop)", async () => {
+    const httpReq = new NextRequest("http://admin.example/api/v1/admin/login", {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-forwarded-for": "3.3.3.3" },
+      body: JSON.stringify({ username: "chef", password: "hemligt" }),
+    });
+    const res = await POST(httpReq);
+    expect(res.status).toBe(200);
+    expect(res.headers.get("set-cookie") ?? "").not.toMatch(/Secure/);
+  });
+
+  it("sätter Secure när x-forwarded-proto=https", async () => {
+    const httpsReq = new NextRequest("http://admin.example/api/v1/admin/login", {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-forwarded-for": "4.4.4.4", "x-forwarded-proto": "https" },
+      body: JSON.stringify({ username: "chef", password: "hemligt" }),
+    });
+    const res = await POST(httpsReq);
+    expect(res.headers.get("set-cookie") ?? "").toMatch(/Secure/);
+  });
+
   it("429 efter för många försök från samma IP", async () => {
     for (let i = 0; i < 10; i++) {
       await POST(req({ username: "x", password: "y" }, { "x-forwarded-for": "9.9.9.9" }));

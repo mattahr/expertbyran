@@ -15,6 +15,15 @@ const loginSchema = z.object({
   password: z.string().min(1).max(1024),
 });
 
+// Sätt Secure-flaggan utifrån om requesten faktiskt är HTTPS (proxy-header eller
+// request-protokoll) — INTE utifrån NODE_ENV. Annars sätts en Secure-cookie i
+// produktion bakom plain HTTP, som webbläsaren tyst kastar → omdirigeringsloop.
+function isHttps(req: NextRequest): boolean {
+  const proto = req.headers.get("x-forwarded-proto");
+  if (proto) return proto.split(",")[0]?.trim() === "https";
+  return req.nextUrl.protocol === "https:";
+}
+
 export async function POST(req: NextRequest) {
   if (!adminEnabled()) {
     return Response.json(
@@ -43,7 +52,7 @@ export async function POST(req: NextRequest) {
   const ttlMs = getSessionTtlMs();
   const token = createSessionToken(getSessionSecret(), ttlMs, Date.now());
   const maxAge = Math.floor(ttlMs / 1000);
-  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
+  const secure = isHttps(req) ? "; Secure" : "";
 
   const res = Response.json({ success: true });
   res.headers.set(
