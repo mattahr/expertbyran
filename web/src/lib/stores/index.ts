@@ -1,6 +1,14 @@
 // web/src/lib/stores/index.ts
-import type { BlogStore, ConfigStore, ContentStore, ForesightStore, RadarStore } from "./types";
+import type {
+  AnalyticsStore,
+  BlogStore,
+  ConfigStore,
+  ContentStore,
+  ForesightStore,
+  RadarStore,
+} from "./types";
 import { BundledConfigStore } from "./bundled-config-store";
+import { SqliteAnalyticsStore } from "./sqlite-analytics-store";
 import { SqliteContentStore } from "./sqlite-content-store";
 import { SqliteBlogStore } from "./sqlite-blog-store";
 import { SqliteForesightStore } from "./sqlite-foresight-store";
@@ -12,6 +20,7 @@ type Stores = {
   blog: BlogStore;
   foresight: ForesightStore;
   radar: RadarStore;
+  analytics: AnalyticsStore;
 };
 
 let override: Partial<Stores> | null = null;
@@ -25,6 +34,7 @@ function getDefaults(): Stores {
       blog: new SqliteBlogStore(),
       foresight: new SqliteForesightStore(),
       radar: new SqliteRadarStore(),
+      analytics: new SqliteAnalyticsStore(),
     };
   }
   return defaults;
@@ -44,6 +54,9 @@ export function getForesightStore(): ForesightStore {
 }
 export function getRadarStore(): RadarStore {
   return override?.radar ?? getDefaults().radar;
+}
+export function getAnalyticsStore(): AnalyticsStore {
+  return override?.analytics ?? getDefaults().analytics;
 }
 
 /** Endast för test: injicera in-memory-stores. */

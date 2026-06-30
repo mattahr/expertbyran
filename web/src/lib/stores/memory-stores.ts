@@ -5,14 +5,23 @@ import type { BlogPostEntry } from "@/lib/blog/schema";
 import { assertRadarIntegrity, type Blip, type RadarMeta } from "@/lib/radar/schema";
 import type { ForesightEntry } from "@/lib/foresight/schema";
 import type {
+  AnalyticsStore,
   BlogStore,
   ConfigStore,
   ContentStore,
+  CountryStat,
   ForesightStore,
   ListPageOptions,
+  OverviewResult,
+  PageStat,
   RadarStore,
   SiteConfig,
+  StatsRange,
   StoredPost,
+  TimePoint,
+  VisitInsert,
+  VisitQuery,
+  VisitRow,
 } from "./types";
 import { ConflictError, NotFoundError } from "./types";
 
@@ -258,5 +267,173 @@ export class InMemoryForesightStore implements ForesightStore {
     this.foresights.splice(i, 1);
     this.markdown.delete(slug);
     this.html.delete(slug);
+  }
+}
+
+const DEFAULT_LIMIT = 15;
+
+type StoredVisit = VisitInsert & { _i: number };
+
+export class InMemoryAnalyticsStore implements AnalyticsStore {
+  private visits: StoredVisit[] = [];
+  private counter = 0;
+
+  record(v: VisitInsert): void {
+    this.visits.push({ ...v, _i: this.counter++ });
+  }
+
+  earliestDay(): string | null {
+    if (this.visits.length === 0) return null;
+    return this.visits.reduce((min, v) => (v.day < min ? v.day : min), this.visits[0].day);
+  }
+
+  private inRange(range: StatsRange): StoredVisit[] {
+    return this.visits.filter(
+      (v) => v.day >= range.from && v.day <= range.to && (!range.excludeBots || !v.isBot),
+    );
+  }
+
+  private rank(
+    rows: StoredVisit[],
+    keyFn: (v: StoredVisit) => string | null,
+    filterNotNull: boolean,
+    limit: number,
+  ): { key: string; pageviews: number }[] {
+    const counts = new Map<string, number>();
+    for (const v of rows) {
+      const k = keyFn(v);
+      if (filterNotNull && (k === null || k === "")) continue;
+      const key = k ?? "";
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    }
+    return [...counts.entries()]
+      .map(([key, pageviews]) => ({ key, pageviews }))
+      .sort((a, b) => b.pageviews - a.pageviews || a.key.localeCompare(b.key))
+      .slice(0, limit);
+  }
+
+  overview(range: StatsRange): OverviewResult {
+    const limit = range.limit ?? DEFAULT_LIMIT;
+    const rows = this.inRange(range);
+
+    const pageviews = rows.length;
+    const visitors = new Set(rows.map((v) => v.visitorId)).size;
+    const dayset = new Set(rows.map((v) => v.day));
+    const botPageviews = this.visits.filter(
+      (v) => v.day >= range.from && v.day <= range.to && v.isBot,
+    ).length;
+
+    const byDay = new Map<string, { pv: number; vis: Set<string> }>();
+    for (const v of rows) {
+      const e = byDay.get(v.day) ?? { pv: 0, vis: new Set<string>() };
+      e.pv++;
+      e.vis.add(v.visitorId);
+      byDay.set(v.day, e);
+    }
+    const timeseries: TimePoint[] = [...byDay.entries()]
+      .map(([day, e]) => ({ day, pageviews: e.pv, visitors: e.vis.size }))
+      .sort((a, b) => a.day.localeCompare(b.day));
+
+    const byPath = new Map<string, { pv: number; vis: Set<string> }>();
+    for (const v of rows) {
+      const e = byPath.get(v.path) ?? { pv: 0, vis: new Set<string>() };
+      e.pv++;
+      e.vis.add(v.visitorId);
+      byPath.set(v.path, e);
+    }
+    const topPages: PageStat[] = [...byPath.entries()]
+      .map(([path, e]) => ({ path, pageviews: e.pv, visitors: e.vis.size }))
+      .sort((a, b) => b.pageviews - a.pageviews || a.path.localeCompare(b.path))
+      .slice(0, limit);
+
+    const byCountry = new Map<string, { name: string; pv: number; vis: Set<string> }>();
+    for (const v of rows) {
+      const country = v.country ?? "??";
+      const e = byCountry.get(country) ?? { name: v.countryName ?? "Okänt", pv: 0, vis: new Set<string>() };
+      e.pv++;
+      e.vis.add(v.visitorId);
+      byCountry.set(country, e);
+    }
+    const topCountries: CountryStat[] = [...byCountry.entries()]
+      .map(([country, e]) => ({ country, countryName: e.name, pageviews: e.pv, visitors: e.vis.size }))
+      .sort((a, b) => b.pageviews - a.pageviews || a.country.localeCompare(b.country))
+      .slice(0, limit);
+
+    const byCampaign = new Map<string, { campaign: string; source: string | null; medium: string | null; pageviews: number }>();
+    for (const v of rows) {
+      if (!v.utmCampaign) continue;
+      const key = `${v.utmCampaign} ${v.utmSource ?? ""} ${v.utmMedium ?? ""}`;
+      const e = byCampaign.get(key) ?? { campaign: v.utmCampaign, source: v.utmSource, medium: v.utmMedium, pageviews: 0 };
+      e.pageviews++;
+      byCampaign.set(key, e);
+    }
+    const topCampaigns = [...byCampaign.values()]
+      .sort((a, b) => b.pageviews - a.pageviews || a.campaign.localeCompare(b.campaign))
+      .slice(0, limit);
+
+    return {
+      range: { from: range.from, to: range.to, excludeBots: range.excludeBots },
+      summary: {
+        pageviews,
+        visitors,
+        days: dayset.size,
+        avgPerDay: dayset.size > 0 ? Math.round(pageviews / dayset.size) : 0,
+        botPageviews,
+      },
+      timeseries,
+      topPages,
+      topCountries,
+      topReferrers: this.rank(rows, (v) => v.referrerHost, true, limit).map((r) => ({ host: r.key, pageviews: r.pageviews })),
+      topSources: this.rank(rows, (v) => v.source, false, limit).map((r) => ({ source: r.key, pageviews: r.pageviews })),
+      topBrowsers: this.rank(rows, (v) => v.browser ?? "Okänd", false, limit).map((r) => ({ browser: r.key, pageviews: r.pageviews })),
+      topOs: this.rank(rows, (v) => v.os ?? "Okänd", false, limit).map((r) => ({ os: r.key, pageviews: r.pageviews })),
+      topDevices: this.rank(rows, (v) => v.device, false, limit).map((r) => ({ device: r.key, pageviews: r.pageviews })),
+      topResolutions: this.rank(rows, (v) => (v.screenW && v.screenH ? `${v.screenW}x${v.screenH}` : null), true, limit).map((r) => ({ resolution: r.key, pageviews: r.pageviews })),
+      topTimezones: this.rank(rows, (v) => v.timezone, true, limit).map((r) => ({ timezone: r.key, pageviews: r.pageviews })),
+      topCampaigns,
+    };
+  }
+
+  listVisits(opts: VisitQuery): { total: number; page: number; pageSize: number; rows: VisitRow[] } {
+    let rows = this.visits.filter((v) => v.day >= opts.from && v.day <= opts.to);
+    if (opts.excludeBots) rows = rows.filter((v) => !v.isBot);
+    if (opts.path) rows = rows.filter((v) => v.path === opts.path);
+    if (opts.country) rows = rows.filter((v) => v.country === opts.country);
+    if (opts.source) rows = rows.filter((v) => v.source === opts.source);
+    if (opts.device) rows = rows.filter((v) => v.device === opts.device);
+    if (opts.q) {
+      const q = opts.q.toLowerCase();
+      rows = rows.filter(
+        (v) =>
+          v.ip.toLowerCase().includes(q) ||
+          v.path.toLowerCase().includes(q) ||
+          (v.uaRaw ?? "").toLowerCase().includes(q),
+      );
+    }
+    rows = [...rows].sort((a, b) => b.ts - a.ts || b._i - a._i);
+
+    const total = rows.length;
+    const page = Math.max(1, opts.page);
+    const pageSize = Math.max(1, opts.pageSize);
+    const offset = (page - 1) * pageSize;
+
+    return {
+      total,
+      page,
+      pageSize,
+      rows: rows.slice(offset, offset + pageSize).map((v) => ({
+        ts: v.ts,
+        ip: v.ip,
+        path: v.path,
+        country: v.country,
+        countryName: v.countryName,
+        browser: v.browser,
+        os: v.os,
+        device: v.device,
+        referrerHost: v.referrerHost,
+        source: v.source,
+        isBot: v.isBot,
+      })),
+    };
   }
 }

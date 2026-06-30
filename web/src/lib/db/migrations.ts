@@ -84,6 +84,59 @@ const MIGRATIONS: Migration[] = [
       `);
     },
   },
+  {
+    version: 2,
+    name: "besoksstatistik",
+    up(db) {
+      db.exec(`
+        CREATE TABLE visits (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          ts INTEGER NOT NULL,
+          day TEXT NOT NULL,
+          hour INTEGER NOT NULL,
+          path TEXT NOT NULL,
+          referrer_full TEXT,
+          referrer_host TEXT,
+          source TEXT NOT NULL,
+          utm_source TEXT,
+          utm_medium TEXT,
+          utm_campaign TEXT,
+          country TEXT,
+          country_name TEXT,
+          ip TEXT NOT NULL,
+          visitor_id TEXT NOT NULL,
+          ua_raw TEXT,
+          browser TEXT,
+          browser_version TEXT,
+          os TEXT,
+          os_version TEXT,
+          device TEXT NOT NULL,
+          device_brand TEXT,
+          device_model TEXT,
+          is_bot INTEGER NOT NULL DEFAULT 0,
+          lang TEXT,
+          languages TEXT,
+          timezone TEXT,
+          screen_w INTEGER,
+          screen_h INTEGER,
+          viewport_w INTEGER,
+          viewport_h INTEGER,
+          dpr REAL
+        );
+        CREATE INDEX idx_visits_ts ON visits(ts DESC);
+        CREATE INDEX idx_visits_day ON visits(day);
+        CREATE INDEX idx_visits_path ON visits(path);
+        CREATE INDEX idx_visits_country ON visits(country);
+        CREATE INDEX idx_visits_visitor ON visits(visitor_id);
+        CREATE INDEX idx_visits_is_bot ON visits(is_bot);
+
+        CREATE TABLE settings (
+          key TEXT PRIMARY KEY,
+          value TEXT NOT NULL
+        );
+      `);
+    },
+  },
 ];
 
 export function runMigrations(db: DatabaseSync): void {

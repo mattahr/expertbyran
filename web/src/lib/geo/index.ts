@@ -8,7 +8,10 @@ import path from "node:path";
 
 import maxmind, { type CountryResponse } from "maxmind";
 
-type GeoReader = { get(ip: string): CountryResponse | null };
+// Minimal strukturell läsartyp: maxminds Reader<CountryResponse> är tilldelningsbar
+// hit, och testfejk slipper fylla i hela CountryResponse.
+type GeoLookup = { country?: { iso_code?: string } | null } | null;
+type GeoReader = { get(ip: string): GeoLookup };
 
 let reader: GeoReader | null = null;
 let loadAttempted = false;
@@ -66,7 +69,7 @@ export function lookupCountry(
   ip: string | null | undefined,
 ): { country: string; countryName: string } | null {
   if (!reader || !ip) return null;
-  let res: CountryResponse | null;
+  let res: GeoLookup;
   try {
     res = reader.get(ip);
   } catch {

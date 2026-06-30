@@ -6,10 +6,12 @@ import siteData from "@/test/fixtures/site-data.fixture.json";
 import type { SiteData } from "@/lib/content/schema";
 import { openDatabase } from "@/lib/db/client";
 import {
+  analyticsStoreContract,
   blogStoreContract,
   foresightStoreContract,
   radarStoreContract,
 } from "./store-contract";
+import { SqliteAnalyticsStore } from "./sqlite-analytics-store";
 import { SqliteBlogStore } from "./sqlite-blog-store";
 import { SqliteContentStore } from "./sqlite-content-store";
 import { SqliteForesightStore } from "./sqlite-foresight-store";
@@ -25,6 +27,7 @@ function testDb() {
 blogStoreContract("SqliteBlogStore", () => new SqliteBlogStore(testDb()));
 foresightStoreContract("SqliteForesightStore", () => new SqliteForesightStore(testDb()));
 radarStoreContract("SqliteRadarStore", () => new SqliteRadarStore(testDb()));
+analyticsStoreContract("SqliteAnalyticsStore", () => new SqliteAnalyticsStore(testDb()));
 
 describe("SqliteContentStore", () => {
   async function seededStore() {

@@ -8,7 +8,7 @@ import { describe, expect, it } from "vitest";
 import type { BlogPostEntry } from "@/lib/blog/schema";
 import type { ForesightEntry } from "@/lib/foresight/schema";
 import type { Blip, RadarMeta } from "@/lib/radar/schema";
-import type { BlogStore, ForesightStore, RadarStore } from "./types";
+import type { AnalyticsStore, BlogStore, ForesightStore, RadarStore, VisitInsert } from "./types";
 import { ConflictError, NotFoundError } from "./types";
 
 function post(slug: string, date: string, areaSlugs: string[] = ["revisionsmetodik"]): BlogPostEntry {
@@ -112,6 +112,110 @@ export function blogStoreContract(name: string, makeStore: () => Promise<BlogSto
       await store.deletePost("a");
       expect(await store.getPost("a")).toBeNull();
       expect((await store.listPostsPage({ offset: 0, limit: 10 })).total).toBe(0);
+    });
+  });
+}
+
+function visit(overrides: Partial<VisitInsert>): VisitInsert {
+  return {
+    ts: 0,
+    day: "2026-06-01",
+    hour: 12,
+    path: "/",
+    referrerFull: null,
+    referrerHost: null,
+    source: "direct",
+    utmSource: null,
+    utmMedium: null,
+    utmCampaign: null,
+    country: null,
+    countryName: null,
+    ip: "127.0.0.1",
+    visitorId: "v0",
+    uaRaw: null,
+    browser: null,
+    browserVersion: null,
+    os: null,
+    osVersion: null,
+    device: "desktop",
+    deviceBrand: null,
+    deviceModel: null,
+    isBot: false,
+    lang: null,
+    languages: null,
+    timezone: null,
+    screenW: null,
+    screenH: null,
+    viewportW: null,
+    viewportH: null,
+    dpr: null,
+    ...overrides,
+  };
+}
+
+export function analyticsStoreContract(
+  name: string,
+  makeStore: () => Promise<AnalyticsStore> | AnalyticsStore,
+) {
+  describe(`${name}: AnalyticsStore-kontrakt`, () => {
+    it("aggregerar översikt med unika besökare och bot-exkludering", async () => {
+      const store = await makeStore();
+      store.record(visit({ ts: 100, day: "2026-06-01", path: "/a", visitorId: "V1", country: "SE", countryName: "Sverige", browser: "Chrome", os: "Windows", device: "desktop" }));
+      store.record(visit({ ts: 200, day: "2026-06-01", path: "/a", visitorId: "V1", country: "SE", countryName: "Sverige", browser: "Chrome", os: "Windows", device: "desktop" }));
+      store.record(visit({ ts: 300, day: "2026-06-02", path: "/b", visitorId: "V2", country: "US", countryName: "USA", browser: "Firefox", os: "macOS", device: "mobile", source: "search", referrerHost: "google.com" }));
+      store.record(visit({ ts: 400, day: "2026-06-02", path: "/a", visitorId: "BOT", isBot: true, browser: "Bot", device: "bot" }));
+
+      const r = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true });
+      expect(r.summary.pageviews).toBe(3);
+      expect(r.summary.visitors).toBe(2);
+      expect(r.summary.days).toBe(2);
+      expect(r.summary.botPageviews).toBe(1);
+      expect(r.timeseries).toEqual([
+        { day: "2026-06-01", pageviews: 2, visitors: 1 },
+        { day: "2026-06-02", pageviews: 1, visitors: 1 },
+      ]);
+      expect(r.topPages[0]).toEqual({ path: "/a", pageviews: 2, visitors: 1 });
+      expect(r.topCountries.find((c) => c.country === "SE")).toEqual({ country: "SE", countryName: "Sverige", pageviews: 2, visitors: 1 });
+      expect(r.topReferrers).toEqual([{ host: "google.com", pageviews: 1 }]);
+
+      const all = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: false });
+      expect(all.summary.pageviews).toBe(4);
+      expect(all.topDevices.find((d) => d.device === "bot")).toEqual({ device: "bot", pageviews: 1 });
+    });
+
+    it("respekterar datumgränser", async () => {
+      const store = await makeStore();
+      store.record(visit({ day: "2026-05-31", path: "/old" }));
+      store.record(visit({ day: "2026-06-15", path: "/in" }));
+      const r = await store.overview({ from: "2026-06-01", to: "2026-06-30", excludeBots: true });
+      expect(r.summary.pageviews).toBe(1);
+      expect(r.topPages[0].path).toBe("/in");
+    });
+
+    it("paginerar och filtrerar besökslistan, nyast först", async () => {
+      const store = await makeStore();
+      for (let i = 0; i < 5; i++) {
+        store.record(visit({ ts: i, day: "2026-06-01", path: i % 2 ? "/a" : "/b", ip: `1.1.1.${i}`, country: i < 3 ? "SE" : "US" }));
+      }
+      const p1 = await store.listVisits({ from: "2026-06-01", to: "2026-06-30", page: 1, pageSize: 2, excludeBots: true });
+      expect(p1.total).toBe(5);
+      expect(p1.rows).toHaveLength(2);
+      expect(p1.rows[0].ts).toBe(4);
+
+      const se = await store.listVisits({ from: "2026-06-01", to: "2026-06-30", page: 1, pageSize: 50, excludeBots: true, country: "SE" });
+      expect(se.total).toBe(3);
+
+      const q = await store.listVisits({ from: "2026-06-01", to: "2026-06-30", page: 1, pageSize: 50, excludeBots: true, q: "1.1.1.4" });
+      expect(q.total).toBe(1);
+      expect(q.rows[0].ip).toBe("1.1.1.4");
+    });
+
+    it("earliestDay returnerar minsta dagen eller null", async () => {
+      const store = await makeStore();
+      expect(store.earliestDay()).toBeNull();
+      store.record(visit({ day: "2026-06-01" }));
+      store.record(visit({ day: "2026-05-20" }));
+      expect(store.earliestDay()).toBe("2026-05-20");
     });
   });
 }

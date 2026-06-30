@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import siteData from "@/test/fixtures/site-data.fixture.json";
 import type { SiteData } from "@/lib/content/schema";
 import {
+  InMemoryAnalyticsStore,
   InMemoryBlogStore,
   InMemoryConfigStore,
   InMemoryContentStore,
@@ -13,6 +14,7 @@ import {
 } from "./memory-stores";
 import { ConflictError, NotFoundError } from "./types";
 import {
+  analyticsStoreContract,
   blogStoreContract,
   foresightStoreContract,
   radarStoreContract,
@@ -26,6 +28,7 @@ const data = siteData as unknown as SiteData;
 blogStoreContract("InMemoryBlogStore", () => new InMemoryBlogStore());
 foresightStoreContract("InMemoryForesightStore", () => new InMemoryForesightStore());
 radarStoreContract("InMemoryRadarStore", () => new InMemoryRadarStore());
+analyticsStoreContract("InMemoryAnalyticsStore", () => new InMemoryAnalyticsStore());
 
 function radarFixture(): { meta: RadarMeta; blips: Blip[] } {
   const meta: RadarMeta = {

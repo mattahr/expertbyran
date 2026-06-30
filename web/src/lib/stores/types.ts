@@ -84,6 +84,165 @@ export interface RadarStore {
   deleteRadar(slug: string): Promise<void>;
 }
 
+// ── Besöksstatistik ────────────────────────────────────────────────────────
+
+/** En berikad besöksrad redo att skrivas. Servern härleder alla känsliga fält. */
+export interface VisitInsert {
+  ts: number;
+  day: string;
+  hour: number;
+  path: string;
+  referrerFull: string | null;
+  referrerHost: string | null;
+  source: string;
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
+  country: string | null;
+  countryName: string | null;
+  ip: string;
+  visitorId: string;
+  uaRaw: string | null;
+  browser: string | null;
+  browserVersion: string | null;
+  os: string | null;
+  osVersion: string | null;
+  device: string;
+  deviceBrand: string | null;
+  deviceModel: string | null;
+  isBot: boolean;
+  lang: string | null;
+  languages: string | null;
+  timezone: string | null;
+  screenW: number | null;
+  screenH: number | null;
+  viewportW: number | null;
+  viewportH: number | null;
+  dpr: number | null;
+}
+
+export interface StatsRange {
+  from: string;
+  to: string;
+  excludeBots: boolean;
+  /** Topplistornas längd (default 15). */
+  limit?: number;
+}
+
+export interface OverviewSummary {
+  pageviews: number;
+  visitors: number;
+  days: number;
+  avgPerDay: number;
+  botPageviews: number;
+}
+// Dessa fyra läses direkt ur SQL-resultat (`.all() as X[]`). De är `type`-alias
+// (inte interface) så att de får en implicit index-signatur och därmed är
+// kompatibla med node:sqlites Record<string, SQLOutputValue>-radtyp.
+export type TimePoint = {
+  day: string;
+  pageviews: number;
+  visitors: number;
+};
+export type PageStat = {
+  path: string;
+  pageviews: number;
+  visitors: number;
+};
+export type CountryStat = {
+  country: string;
+  countryName: string;
+  pageviews: number;
+  visitors: number;
+};
+export interface HostStat {
+  host: string;
+  pageviews: number;
+}
+export interface SourceStat {
+  source: string;
+  pageviews: number;
+}
+export interface BrowserStat {
+  browser: string;
+  pageviews: number;
+}
+export interface OsStat {
+  os: string;
+  pageviews: number;
+}
+export interface DeviceStat {
+  device: string;
+  pageviews: number;
+}
+export interface ResolutionStat {
+  resolution: string;
+  pageviews: number;
+}
+export interface TimezoneStat {
+  timezone: string;
+  pageviews: number;
+}
+export type CampaignStat = {
+  campaign: string;
+  source: string | null;
+  medium: string | null;
+  pageviews: number;
+};
+
+export interface OverviewResult {
+  range: { from: string; to: string; excludeBots: boolean };
+  summary: OverviewSummary;
+  timeseries: TimePoint[];
+  topPages: PageStat[];
+  topCountries: CountryStat[];
+  topReferrers: HostStat[];
+  topSources: SourceStat[];
+  topBrowsers: BrowserStat[];
+  topOs: OsStat[];
+  topDevices: DeviceStat[];
+  topResolutions: ResolutionStat[];
+  topTimezones: TimezoneStat[];
+  topCampaigns: CampaignStat[];
+}
+
+export interface VisitQuery {
+  from: string;
+  to: string;
+  page: number;
+  pageSize: number;
+  excludeBots: boolean;
+  path?: string;
+  country?: string;
+  source?: string;
+  device?: string;
+  q?: string;
+}
+export interface VisitRow {
+  ts: number;
+  ip: string;
+  path: string;
+  country: string | null;
+  countryName: string | null;
+  browser: string | null;
+  os: string | null;
+  device: string;
+  referrerHost: string | null;
+  source: string;
+  isBot: boolean;
+}
+
+export interface AnalyticsStore {
+  /** Skriver en besöksrad (synkront). */
+  record(visit: VisitInsert): void;
+  /** All aggregering för dashboarden i ett anrop. */
+  overview(opts: StatsRange): OverviewResult;
+  /** Paginerad, filtrerbar rålista (nyast först). */
+  listVisits(opts: VisitQuery): { total: number; page: number; pageSize: number; rows: VisitRow[] };
+  /** Minsta `day` i datat (för "Allt"-intervallet), eller null om tomt. */
+  earliestDay(): string | null;
+}
+
 /** Kastas av stores när en slug redan finns. API mappar till 409. */
 export class ConflictError extends Error {
   constructor(message: string) {
