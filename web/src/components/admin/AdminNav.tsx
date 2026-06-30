@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/admin", label: "Översikt" },
   { href: "/admin/statistik", label: "Statistik" },
   { href: "/admin/blogg", label: "Blogg" },
+  { href: "/admin/foresight", label: "Foresight" },
 ] as const;
 
 export function AdminNav() {

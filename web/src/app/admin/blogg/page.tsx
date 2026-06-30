@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { BlogAdmin } from "@/components/admin/BlogAdmin";
+import { BLOG_CONFIG, MarkdownContentAdmin } from "@/components/admin/MarkdownContentAdmin";
 
 import styles from "../admin.module.css";
 
@@ -15,8 +15,8 @@ export default function BloggAdminPage() {
   return (
     <div>
       <h1 className={styles.pageTitle}>Blogginlägg</h1>
-      <p className={styles.pageIntro}>Redigera metadata eller radera inlägg.</p>
-      <BlogAdmin />
+      <p className={styles.pageIntro}>Redigera metadata, författare, områden och själva texten — eller radera inlägg.</p>
+      <MarkdownContentAdmin config={BLOG_CONFIG} />
     </div>
   );
 }
