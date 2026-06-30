@@ -6,6 +6,7 @@ import { AreaPicker } from "./AreaPicker";
 import { AuthorPicker } from "./AuthorPicker";
 import { BarList } from "./BarList";
 import { BLOG_CONFIG, MarkdownContentAdmin } from "./MarkdownContentAdmin";
+import { RadarAdmin } from "./RadarAdmin";
 import { StatsDashboard } from "./StatsDashboard";
 import { TimeseriesChart } from "./TimeseriesChart";
 
@@ -43,6 +44,10 @@ describe("admin UI render-smoke", () => {
     );
     expect(html).toContain("Anna Ek");
     expect(html).toContain("Visningsnamn");
+  });
+
+  it("RadarAdmin renderar laddningsläge", () => {
+    expect(renderToStaticMarkup(<RadarAdmin />)).toContain("Laddar");
   });
 
   it("AreaPicker listar områden som kryssrutor", () => {

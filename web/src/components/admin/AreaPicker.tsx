@@ -12,10 +12,14 @@ export function AreaPicker({
   areas,
   selected,
   onChange,
+  label = "Expertområden (minst ett)",
+  requireOne = true,
 }: {
   areas: AreaOption[];
   selected: string[];
   onChange: (slugs: string[]) => void;
+  label?: string;
+  requireOne?: boolean;
 }) {
   const chosen = new Set(selected);
 
@@ -28,7 +32,7 @@ export function AreaPicker({
 
   return (
     <div className={styles.field}>
-      <label className={styles.label}>Expertområden (minst ett)</label>
+      <label className={styles.label}>{label}</label>
       <div className={styles.areaGrid}>
         {areas.map((a) => (
           <label key={a.slug} className={styles.areaOption}>
@@ -38,7 +42,9 @@ export function AreaPicker({
         ))}
         {areas.length === 0 && <span className={styles.empty}>Inga områden tillgängliga.</span>}
       </div>
-      {selected.length === 0 && <p className={styles.hint}>Välj minst ett område för att kunna spara.</p>}
+      {requireOne && selected.length === 0 && (
+        <p className={styles.hint}>Välj minst ett område för att kunna spara.</p>
+      )}
     </div>
   );
 }

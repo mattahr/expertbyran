@@ -477,3 +477,82 @@
   font-size: 0.85rem;
   cursor: pointer;
 }
+
+/* === Radar (strukturerad editor) === */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.subEditor {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem;
+  background: var(--white);
+}
+.subTitle {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-500);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.segmentRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.idTag {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  background: var(--gray-100);
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-sm);
+}
+.blipCard {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  margin-bottom: 0.75rem;
+  display: grid;
+  gap: 0.6rem;
+  background: var(--gray-100);
+}
+.addBtn {
+  padding: 0.5rem 0.9rem;
+  border: 1px dashed var(--gray-400);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.85rem;
+  cursor: pointer;
+  width: fit-content;
+}
+.addBtn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.removeBtn {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(179, 38, 30, 0.3);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: #b3261e;
+  font-size: 0.78rem;
+  cursor: pointer;
+  width: fit-content;
+}
+.errorList {
+  list-style: none;
+  background: rgba(179, 38, 30, 0.07);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.82rem;
+  color: #b3261e;
+  display: grid;
+  gap: 0.25rem;
+}

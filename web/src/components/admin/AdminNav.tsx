@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/admin/statistik", label: "Statistik" },
   { href: "/admin/blogg", label: "Blogg" },
   { href: "/admin/foresight", label: "Foresight" },
+  { href: "/admin/radar", label: "Radar" },
 ] as const;
 
 export function AdminNav() {
