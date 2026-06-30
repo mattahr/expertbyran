@@ -31,6 +31,15 @@ Cachning sker i webblagret via Next 16 `unstable_cache` med taggar (`experts`, `
 
 Se [API.md](API.md) för fullständig API-dokumentation.
 
+## Besöksstatistik & admin (`/admin`)
+
+Självförsörjande webbanalys utan externa tjänster, bakom en lösenordsskyddad adminpanel på `/admin`.
+
+* **Insamling:** klient-beacon (`VisitLogger`) → `POST /api/v1/track`. Servern är auktoritativ: härleder IP (`x-forwarded-for`), user-agent (header + Client Hints), tid och dag/timme i Europe/Stockholm, trafikkälla, och en **cookiefri** besökar-hash (`sha256(salt + ip + ua)`). Klienten bidrar bara med presentationskontext (sida, referrer, språk, tidszon, skärm/viewport, UTM). Lagras i SQLite-tabellen `visits` via `AnalyticsStore`.
+* **Geo:** offline-uppslag mot buntad **DB-IP Country Lite** (`geoip/dbip-country-lite.mmdb`, läses med `maxmind`). Svenska landsnamn via `Intl.DisplayNames`. Proxy-header (`cf-ipcountry` m.fl.) används som snabbväg. Uppdatera databasen med `node scripts/update-geoip.mjs`. Attribuering (CC BY 4.0) krävs — se [NOTICE](NOTICE).
+* **Auth:** ett admin-konto (`ADMIN_USERNAME`/`ADMIN_PASSWORD`) → HMAC-signerad sessionscookie (`eb_admin`). Muterande innehålls-API:er accepterar bearer **eller** session-cookie (cookie kräver matchande `Origin`, CSRF-skydd). Statistik beräknas helt i API/SQL (`/api/v1/admin/stats/*`); adminsidorna är tunna presentationslager.
+* **GDPR:** full IP lagras **utan** automatisk gallring (uttryckligt val) — IP är personuppgift; den som driftar ansvarar för rättslig grund och integritetspolicy. Besökaridentifieringen är cookiefri (ingen samtyckesbanner krävs för själva analysen).
+
 ## Stack
 
 * **Next.js 16** med App Router, TypeScript, `output: "standalone"`
@@ -46,8 +55,13 @@ Docker-imagen publiceras till GHCR via GitHub Actions — workflow: [../.github/
 
 | Variabel | Beskrivning | Default |
 |----------|-------------|---------|
-| `API_TOKEN` | Bearer-token för muterande API-anrop, `GET /refresh` och `POST /api/v1/rerender` | - (måste sättas) |
-| `ADMIN_LOGIN_URL` | Mål-URL för "Logga in"-knappen i notisbannern | `https://admin.expertbyran.se` |
+| `API_TOKEN` | Bearer-token för muterande API-anrop och `POST /api/v1/rerender` | - (måste sättas) |
+| `ADMIN_USERNAME` | Admin-användarnamn för `/admin` | `admin` |
+| `ADMIN_PASSWORD` | Admin-lösenord. **Krävs** för att aktivera adminpanelen. | - |
+| `ADMIN_SESSION_SECRET` | HMAC-hemlighet för sessionscookien | genereras + persisteras |
+| `SESSION_TTL_DAYS` | Sessionslängd i dagar | `7` |
+| `ADMIN_LOGIN_URL` | Mål för "Logga in"-knappen i notisbannern | `/admin` |
+| `GEOIP_DB` | Sökväg till offline-geodatabasen (MMDB) | buntad `geoip/dbip-country-lite.mmdb` |
 | `DATA_DIR` | Katalog (volym) där SQLite-databasen `expertbyran.db` ligger | `/app/data` (lokalt `data`) |
 | `SKIP_LEGACY_IMPORT` | Sätt till `1` för att hoppa över automatisk import av gamla JSON-filer vid start | - |
 | `HOSTNAME`, `PORT` | Serverbindning | `0.0.0.0`, `3000` |

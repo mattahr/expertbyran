@@ -28,6 +28,9 @@ ENV DATA_DIR=/app/data
 COPY --from=builder --chown=65532:65532 /app/.next/standalone ./
 COPY --from=builder --chown=65532:65532 /app/.next/static ./.next/static
 COPY --from=builder --chown=65532:65532 /app/public ./public
+# Buntad offline geo-databas (DB-IP Country Lite) — standalone-tracingen tar
+# inte med datafiler, så den kopieras explicit. Läses via GEOIP_DB ?? cwd/geoip.
+COPY --from=builder --chown=65532:65532 /app/geoip ./geoip
 
 EXPOSE 3000
 

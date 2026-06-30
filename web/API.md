@@ -22,6 +22,8 @@ Authorization: Bearer <token>
 
 Token sätts via miljövariabeln `API_TOKEN`. Oautentiserat anrop ger `401`.
 
+Muterande innehålls-endpoints godkänner **antingen** bearer-token (maskin) **eller** en giltig adminsession (cookie `eb_admin`, satt via `/api/v1/admin/login`). Vid cookie-autentisering krävs att `Origin`-headern matchar värden (CSRF-skydd) — annars `403`. Admin-statistik-endpoints (`/api/v1/admin/stats/*`) kräver giltig session eller bearer.
+
 ## Endpoints
 
 ### Site Data
@@ -272,13 +274,54 @@ Underhållsendpoint som renderar om lagrad HTML för blogginlägg och foresights
 { "ok": true, "rerendered": { "blog": 12, "foresights": 2 }, "rendererVersion": 1 }
 ```
 
+### Besöksstatistik & admin
+
+#### POST /api/v1/track
+Publik insamlingsendpoint (klient-beacon). Klienten skickar lättfångad kontext; servern härleder IP, user-agent, tid (Europe/Stockholm), land (offline geo) och en cookiefri besökar-hash. Svar: `204`. Ogiltig payload: `400`.
+
+**Body (alla fält utom `path` valfria):**
+```json
+{
+  "path": "/blogg/nagot",
+  "referrer": "https://google.com/",
+  "lang": "sv-SE",
+  "languages": ["sv-SE", "en"],
+  "timezone": "Europe/Stockholm",
+  "screen": { "w": 2560, "h": 1440 },
+  "viewport": { "w": 1280, "h": 900 },
+  "dpr": 2,
+  "utm": { "source": "...", "medium": "...", "campaign": "..." }
+}
+```
+
+#### POST /api/v1/admin/login
+Body `{ "username", "password" }`. Vid rätt credentials: `200` + `Set-Cookie: eb_admin=...; HttpOnly`. Fel: `401`. Admin ej konfigurerad (`ADMIN_PASSWORD` saknas): `503`. För många försök: `429`.
+
+#### POST /api/v1/admin/logout
+Rensar sessionscookien.
+
+#### GET /api/v1/admin/session
+Returnerar `{ "authenticated": boolean }`.
+
+#### GET /api/v1/admin/stats/overview
+Kräver session/bearer. Query: `from`, `to` (YYYY-MM-DD), `range=all`, `excludeBots` (default `true`). Returnerar sammanställd översikt (summering, tidsserie, topplistor för sidor, länder, källor, hänvisare, webbläsare, OS, enheter, skärmupplösningar, tidszoner, UTM-kampanjer).
+
+#### GET /api/v1/admin/stats/visits
+Kräver session/bearer. Query: `from`, `to`, `page`, `pageSize` (≤200), samt filter `path`, `country`, `source`, `device`, `excludeBots`, `q`. Returnerar `{ total, page, pageSize, rows }` (nyast först).
+
 ## Miljövariabler
 
-| Variabel             | Beskrivning                                                        | Default          |
-|----------------------|--------------------------------------------------------------------|------------------|
-| `API_TOKEN`          | Token för autentisering                                            | - (måste sättas) |
-| `DATA_DIR`           | Katalog (volym) där SQLite-databasen `expertbyran.db` ligger       | `/app/data`      |
-| `SKIP_LEGACY_IMPORT` | Sätt till `1` för att hoppa över automatisk legacy-import vid start | -                |
+| Variabel               | Beskrivning                                                        | Default          |
+|------------------------|--------------------------------------------------------------------|------------------|
+| `API_TOKEN`            | Token för autentisering (maskin)                                  | - (måste sättas) |
+| `ADMIN_USERNAME`       | Admin-användarnamn för `/admin`                                   | `admin`          |
+| `ADMIN_PASSWORD`       | Admin-lösenord. **Krävs** för att aktivera adminpanelen.          | -                |
+| `ADMIN_SESSION_SECRET` | HMAC-hemlighet för sessionscookien                                | genereras + persisteras |
+| `SESSION_TTL_DAYS`     | Sessionslängd i dagar                                             | `7`              |
+| `ADMIN_LOGIN_URL`      | Mål för publika "Logga in"-knappen                                | `/admin`         |
+| `GEOIP_DB`             | Sökväg till geo-databasen (MMDB)                                  | `geoip/dbip-country-lite.mmdb` |
+| `DATA_DIR`             | Katalog (volym) där SQLite-databasen `expertbyran.db` ligger       | `/app/data`      |
+| `SKIP_LEGACY_IMPORT`   | Sätt till `1` för att hoppa över automatisk legacy-import vid start | -                |
 
 ## Docker
 
@@ -301,7 +344,9 @@ volumes:
 
 ## Lagring
 
-Allt innehåll lagras i SQLite-databasen `${DATA_DIR}/expertbyran.db` (WAL-läge). Tabeller: `blog_posts`, `blog_post_areas`, `foresights`, `radars`, `experts`, `expert_areas`, `schema_migrations`. Migreringar körs automatiskt vid serverstart.
+Allt innehåll lagras i SQLite-databasen `${DATA_DIR}/expertbyran.db` (WAL-läge). Tabeller: `blog_posts`, `blog_post_areas`, `foresights`, `radars`, `experts`, `expert_areas`, `visits`, `settings`, `schema_migrations`. Migreringar körs automatiskt vid serverstart.
+
+Besöksstatistiken lagras i tabellen `visits` (full IP utan automatisk gallring — personuppgift, den som driftar ansvarar för rättslig grund). Geo-uppslag sker offline mot den buntade DB-IP Country Lite-databasen (`geoip/dbip-country-lite.mmdb`, CC BY 4.0). Äldre JSONL-besök (`${DATA_DIR}/visits/*.jsonl`) importeras till `visits` vid första start.
 
 Det finns ingen seed-mekanism — en nyinstallation startar med tom databas. Vid första start mot en volym med det gamla filbaserade formatet (`site-data.json`, `blog-data.json` + `blog/posts/*.md`, `foresight-data.json` + `foresight/*.md`, `radar-data.json` + `radar/*.json`) importeras innehållet automatiskt till SQLite och källfilerna döps om till `*.imported`. Misslyckas importen avbryts uppstarten (inga halvimporter); `SKIP_LEGACY_IMPORT=1` hoppar över importen.
 

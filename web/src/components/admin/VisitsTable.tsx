@@ -25,16 +25,18 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
   const [q, setQ] = useState("");
   const [rows, setRows] = useState<VisitRow[]>([]);
   const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
 
-  // Återställ till sida 1 när intervall/filter ändras.
-  useEffect(() => {
+  // Återställ till sida 1 när intervall/filter ändras (justering under render
+  // i stället för en effekt — undviker kaskad-renders).
+  const resetKey = `${rangeQuery}|${excludeBots}|${q}`;
+  const [prevResetKey, setPrevResetKey] = useState(resetKey);
+  if (resetKey !== prevResetKey) {
+    setPrevResetKey(resetKey);
     setPage(1);
-  }, [rangeQuery, excludeBots, q]);
+  }
 
   useEffect(() => {
     const ctrl = new AbortController();
-    setLoading(true);
     const qs = new URLSearchParams(rangeQuery);
     qs.set("excludeBots", String(excludeBots));
     qs.set("page", String(page));
@@ -47,8 +49,7 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
         setRows(d.rows ?? []);
         setTotal(d.total ?? 0);
       })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+      .catch(() => {});
     return () => ctrl.abort();
   }, [rangeQuery, excludeBots, page, q]);
 
@@ -95,7 +96,7 @@ export function VisitsTable({ rangeQuery, excludeBots }: { rangeQuery: string; e
             {rows.length === 0 && (
               <tr>
                 <td colSpan={8} className={styles.empty}>
-                  {loading ? "Laddar…" : "Inga besök i perioden."}
+                  Inga besök i perioden.
                 </td>
               </tr>
             )}

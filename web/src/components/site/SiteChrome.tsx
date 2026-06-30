@@ -32,7 +32,7 @@ const navigation = [
   { href: "/foresight", label: "Foresight" },
 ] as const;
 
-const ADMIN_LOGIN_URL = process.env.ADMIN_LOGIN_URL ?? "https://admin.expertbyran.se";
+const ADMIN_LOGIN_URL = process.env.ADMIN_LOGIN_URL ?? "/admin";
 
 export async function SiteChrome({ children }: SiteChromeProps) {
   if (await isAdminPath()) {

@@ -46,20 +46,17 @@ export function StatsDashboard() {
   const [custom, setCustom] = useState({ from: todayStockholm(), to: todayStockholm() });
   const [excludeBots, setExcludeBots] = useState(true);
   const [data, setData] = useState<OverviewResult | null>(null);
-  const [loading, setLoading] = useState(true);
 
   const rangeQuery = rangeToQuery(preset, custom);
 
   useEffect(() => {
     const ctrl = new AbortController();
-    setLoading(true);
     const qs = new URLSearchParams(rangeQuery);
     qs.set("excludeBots", String(excludeBots));
     fetch(`/api/v1/admin/stats/overview?${qs.toString()}`, { signal: ctrl.signal })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error("fel"))))
       .then((d: OverviewResult) => setData(d))
-      .catch(() => {})
-      .finally(() => setLoading(false));
+      .catch(() => {});
     return () => ctrl.abort();
   }, [rangeQuery, excludeBots]);
 
@@ -131,7 +128,7 @@ export function StatsDashboard() {
 
       {/* Tidsserie */}
       <div className={styles.section}>
-        <div className={styles.sectionTitle}>Sidvisningar per dag {loading ? "· laddar…" : ""}</div>
+        <div className={styles.sectionTitle}>Sidvisningar per dag</div>
         <TimeseriesChart points={data?.timeseries ?? []} />
       </div>
 

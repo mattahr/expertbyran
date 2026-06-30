@@ -16,10 +16,15 @@ function Card({ label, value }: { label: string; value: number }) {
   );
 }
 
-export default async function AdminHome() {
+// Datahämtning utanför komponenten — Date.now() får inte anropas under render.
+function loadHomeOverview() {
   const store = getAnalyticsStore();
   const range = parseStatsRange(new URLSearchParams(), Date.now(), store.earliestDay());
-  const overview = store.overview(range);
+  return store.overview(range);
+}
+
+export default async function AdminHome() {
+  const overview = loadHomeOverview();
 
   return (
     <div>
