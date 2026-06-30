@@ -14,7 +14,7 @@ type GeoLookup = { country?: { iso_code?: string } | null } | null;
 type GeoReader = { get(ip: string): GeoLookup };
 
 let reader: GeoReader | null = null;
-let loadAttempted = false;
+let readerPromise: Promise<void> | null = null;
 let displayNames: Intl.DisplayNames | null = null;
 
 function dbPath(): string {
@@ -23,16 +23,27 @@ function dbPath(): string {
   return path.join(process.cwd(), "geoip", "dbip-country-lite.mmdb");
 }
 
-/** Öppnar och cachar MMDB-läsaren. Idempotent; sväljer fel (uppslag → null). */
+/**
+ * Öppnar och cachar MMDB-läsaren. Idempotent och promise-cachad så att
+ * samtidiga anrop delar samma laddning. MÅSTE awaitas innan synkrona uppslag
+ * (anropas både i bootstrap och i /api/v1/track — Next buntar instrumentation
+ * och route-handlers i skilda modulgrafer, så förvärmningen i bootstrap räcker
+ * inte för route-instansen).
+ */
 export async function loadGeo(): Promise<void> {
-  if (reader || loadAttempted) return;
-  loadAttempted = true;
-  try {
-    reader = await maxmind.open<CountryResponse>(dbPath());
-  } catch (error) {
-    console.error("[geo] kunde inte öppna geo-databasen:", error instanceof Error ? error.message : error);
-    reader = null;
+  if (reader) return;
+  if (!readerPromise) {
+    readerPromise = maxmind
+      .open<CountryResponse>(dbPath())
+      .then((opened) => {
+        reader = opened;
+      })
+      .catch((error) => {
+        console.error("[geo] kunde inte öppna geo-databasen:", error instanceof Error ? error.message : error);
+        reader = null;
+      });
   }
+  return readerPromise;
 }
 
 export function isGeoLoaded(): boolean {
@@ -42,7 +53,7 @@ export function isGeoLoaded(): boolean {
 /** Endast för test: injicera en fejk-läsare (eller null för att nollställa). */
 export function __setGeoReaderForTest(fake: GeoReader | null): void {
   reader = fake;
-  loadAttempted = true;
+  readerPromise = fake ? Promise.resolve() : null;
 }
 
 const ISO2 = /^[A-Za-z]{2}$/;

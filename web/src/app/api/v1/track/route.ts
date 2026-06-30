@@ -7,6 +7,7 @@ import { NextRequest } from "next/server";
 import { buildVisit } from "@/lib/analytics/build-visit";
 import { trackPayloadSchema } from "@/lib/analytics/track-schema";
 import { getVisitorSalt } from "@/lib/admin/config";
+import { loadGeo } from "@/lib/geo";
 import { getAnalyticsStore } from "@/lib/stores";
 
 export const dynamic = "force-dynamic";
@@ -27,6 +28,9 @@ function headerCountry(req: NextRequest): string | null {
 
 export async function POST(req: NextRequest) {
   try {
+    // Säkerställ att geo-läsaren är laddad i denna modulinstans (route-grafen
+    // delar inte modulstate med instrumentation). Idempotent efter första anrop.
+    await loadGeo();
     const parsed = trackPayloadSchema.safeParse(await req.json());
     if (!parsed.success) return new Response(null, { status: 400 });
 
