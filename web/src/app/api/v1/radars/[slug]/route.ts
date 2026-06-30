@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
 
-import { requireAuth, createUnauthorizedResponse } from "@/lib/api/auth";
+import { requireAdminMutation } from "@/lib/api/auth";
 import { blipSchema, radarMetaSchema } from "@/lib/radar/schema";
 import { getRadarStore } from "@/lib/stores";
 import { ConflictError, NotFoundError } from "@/lib/stores/types";
@@ -34,7 +34,8 @@ export async function GET(_req: NextRequest, context: RouteContext) {
 }
 
 export async function PUT(req: NextRequest, context: RouteContext) {
-  if (!requireAuth(req)) return createUnauthorizedResponse();
+  const denied = requireAdminMutation(req);
+  if (denied) return denied;
   try {
     const { slug } = await context.params;
     const parsed = radarPatchSchema.safeParse(await req.json());
@@ -67,7 +68,8 @@ export async function PUT(req: NextRequest, context: RouteContext) {
 }
 
 export async function DELETE(req: NextRequest, context: RouteContext) {
-  if (!requireAuth(req)) return createUnauthorizedResponse();
+  const denied = requireAdminMutation(req);
+  if (denied) return denied;
   try {
     const { slug } = await context.params;
     await getRadarStore().deleteRadar(slug);

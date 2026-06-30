@@ -12,7 +12,7 @@ export type AuthResult = { ok: true; via: "bearer" | "cookie" } | { ok: false };
 export function requireAdmin(req: NextRequest): AuthResult {
   if (requireAuth(req)) return { ok: true, via: "bearer" };
 
-  const cookie = req.cookies.get(ADMIN_COOKIE)?.value;
+  const cookie = req.cookies?.get(ADMIN_COOKIE)?.value;
   if (cookie && verifySessionToken(cookie, getSessionSecret(), Date.now())) {
     return { ok: true, via: "cookie" };
   }
@@ -57,6 +57,23 @@ export function requireAuth(req: NextRequest): boolean {
   }
 
   return token === API_TOKEN;
+}
+
+/**
+ * Auth-grind för muterande endpoints. Returnerar ett fel-Response om åtkomst
+ * nekas, annars null. Cookie-autentiserade mutationer kräver matchande Origin
+ * (CSRF); bearer-flödet (maskin) gör det inte.
+ */
+export function requireAdminMutation(req: NextRequest): Response | null {
+  const auth = requireAdmin(req);
+  if (!auth.ok) return createUnauthorizedResponse();
+  if (auth.via === "cookie" && !assertSameOrigin(req)) {
+    return new Response(JSON.stringify({ error: "Bad origin" }), {
+      status: 403,
+      headers: { "content-type": "application/json" },
+    });
+  }
+  return null;
 }
 
 export function createUnauthorizedResponse(): Response {

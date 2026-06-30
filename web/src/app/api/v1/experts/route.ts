@@ -2,7 +2,7 @@
 import { NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
 
-import { requireAuth, createUnauthorizedResponse } from "@/lib/api/auth";
+import { requireAdminMutation } from "@/lib/api/auth";
 import type { Expert } from "@/lib/content/schema";
 import { getContentStore } from "@/lib/stores";
 import { ConflictError } from "@/lib/stores/types";
@@ -20,7 +20,8 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  if (!requireAuth(req)) return createUnauthorizedResponse();
+  const denied = requireAdminMutation(req);
+  if (denied) return denied;
   try {
     const expert = (await req.json()) as Expert;
     const created = await getContentStore().createExpert(expert);

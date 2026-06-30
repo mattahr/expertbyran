@@ -8,7 +8,7 @@
 import { NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
 
-import { requireAuth, createUnauthorizedResponse } from "@/lib/api/auth";
+import { requireAdminMutation } from "@/lib/api/auth";
 import { MARKDOWN_RENDERER_VERSION, renderBlogMarkdown } from "@/lib/blog/markdown";
 import { getDb } from "@/lib/db/client";
 
@@ -30,7 +30,8 @@ async function rerenderTable(table: "blog_posts" | "foresights"): Promise<number
 }
 
 export async function POST(req: NextRequest) {
-  if (!requireAuth(req)) return createUnauthorizedResponse();
+  const denied = requireAdminMutation(req);
+  if (denied) return denied;
   try {
     const blog = await rerenderTable("blog_posts");
     const foresights = await rerenderTable("foresights");

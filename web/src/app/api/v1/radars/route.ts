@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
 
-import { requireAuth, createUnauthorizedResponse } from "@/lib/api/auth";
+import { requireAdminMutation } from "@/lib/api/auth";
 import { radarInputSchema } from "@/lib/radar/schema";
 import { getRadarStore } from "@/lib/stores";
 import { ConflictError } from "@/lib/stores/types";
@@ -19,7 +19,8 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  if (!requireAuth(req)) return createUnauthorizedResponse();
+  const denied = requireAdminMutation(req);
+  if (denied) return denied;
   try {
     const parsed = radarInputSchema.safeParse(await req.json());
     if (!parsed.success) {
