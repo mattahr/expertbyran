@@ -1,13 +1,30 @@
 // web/src/lib/db/bootstrap.ts
 import { MARKDOWN_RENDERER_VERSION } from "@/lib/blog/markdown";
+import { loadGeo } from "@/lib/geo";
 import { resolveDataDir } from "@/lib/stores/fs-helpers";
 import { getDb } from "./client";
 import { importLegacyData } from "./import-legacy";
+import { importLegacyVisits } from "./import-legacy-visits";
 
-/** Körs vid serverstart: öppnar DB (migrerar), importerar ev. legacy-data. */
+/** Körs vid serverstart: öppnar DB (migrerar), förvärmer geo, importerar legacy. */
 export async function ensureDatabaseReady(): Promise<void> {
   const db = getDb();
-  await importLegacyData(db, resolveDataDir());
+  const dataDir = resolveDataDir();
+
+  // Förvärm geo-läsaren före importen så att legacy-besök kan geo-kodas.
+  await loadGeo();
+
+  await importLegacyData(db, dataDir);
+
+  if (process.env.SKIP_LEGACY_IMPORT !== "1") {
+    try {
+      const n = await importLegacyVisits(db, dataDir);
+      if (n > 0) console.log(`[db] importerade ${n} äldre besök från JSONL till SQLite`);
+    } catch (error) {
+      // Besöksimport får aldrig stoppa uppstarten.
+      console.error("[db] kunde inte importera äldre besök:", error);
+    }
+  }
 
   const stale = (
     db

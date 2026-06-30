@@ -1,4 +1,5 @@
 import type { Route } from "next";
+import { headers } from "next/headers";
 import Link from "next/link";
 
 import { getSiteConfig } from "@/lib/content/store";
@@ -12,6 +13,16 @@ type SiteChromeProps = {
   children: React.ReactNode;
 };
 
+/** Adminvyer (/admin) renderas utan publik chrome — de har eget skal. */
+async function isAdminPath(): Promise<boolean> {
+  try {
+    const pathname = (await headers()).get("x-pathname") ?? "";
+    return pathname.startsWith("/admin");
+  } catch {
+    return false;
+  }
+}
+
 const navigation = [
   { href: "/expertomraden", label: "Expertområden" },
   { href: "/experter", label: "Våra experter" },
@@ -24,6 +35,10 @@ const navigation = [
 const ADMIN_LOGIN_URL = process.env.ADMIN_LOGIN_URL ?? "https://admin.expertbyran.se";
 
 export async function SiteChrome({ children }: SiteChromeProps) {
+  if (await isAdminPath()) {
+    return <>{children}</>;
+  }
+
   const data = await getSiteConfig();
 
   return (
