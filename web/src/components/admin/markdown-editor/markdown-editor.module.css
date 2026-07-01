@@ -26,3 +26,19 @@
 .content {
   min-height: 340px;
 }
+
+.footnoteNote {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--gray-600, #555);
+}
+
+.fallback {
+  width: 100%;
+  min-height: 340px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm, 8px);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  resize: vertical;
+}
