@@ -79,6 +79,10 @@ export function RadarAdmin() {
   const [errors, setErrors] = useState<string[]>([]);
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  // Drag-and-drop-omordning av ringar: index för den ring som dras och den rad
+  // den för närvarande hovras över (för släpp-indikatorn).
+  const [ringDragIndex, setRingDragIndex] = useState<number | null>(null);
+  const [ringOverIndex, setRingOverIndex] = useState<number | null>(null);
 
   async function load() {
     setLoading(true);
@@ -176,16 +180,23 @@ export function RadarAdmin() {
       return { ...d, meta: { ...d.meta, rings }, blips };
     });
 
-  // Ringordningen är inre→yttre och semantiskt viktig; tillåt omflyttning.
-  const moveRing = (i: number, dir: -1 | 1) =>
+  // Ringordningen är inre→yttre och semantiskt viktig; flytta ringen från en
+  // position till en annan (drag-and-drop) genom att ta ut och sätta in den.
+  const reorderRing = (from: number, to: number) =>
     setDraft((d) => {
-      if (!d) return d;
-      const j = i + dir;
-      if (j < 0 || j >= d.meta.rings.length) return d;
+      if (!d || from === to || from < 0 || to < 0 || from >= d.meta.rings.length || to >= d.meta.rings.length) {
+        return d;
+      }
       const rings = [...d.meta.rings];
-      [rings[i], rings[j]] = [rings[j], rings[i]];
+      const [moved] = rings.splice(from, 1);
+      rings.splice(to, 0, moved);
       return { ...d, meta: { ...d.meta, rings } };
     });
+
+  const endRingDrag = () => {
+    setRingDragIndex(null);
+    setRingOverIndex(null);
+  };
 
   const updateBlip = (i: number, patch: Partial<Blip>) =>
     setDraft((d) => (d ? { ...d, blips: d.blips.map((b, j) => (j === i ? { ...b, ...patch } : b)) } : d));
@@ -321,10 +332,46 @@ export function RadarAdmin() {
               {/* Ringar */}
               <div className={styles.subEditor}>
                 <div className={styles.subTitle}>
-                  Ringar ({draft.meta.rings.length} av 2–6 · uppifrån = inre ring)
+                  Ringar ({draft.meta.rings.length} av 2–6 · dra i handtaget för att ordna · uppifrån = inre ring)
                 </div>
                 {draft.meta.rings.map((ring, i) => (
-                  <div key={ring.id} className={styles.ringRow}>
+                  <div
+                    key={ring.id}
+                    className={`${styles.ringRow}${ringDragIndex === i ? ` ${styles.ringRowDragging}` : ""}${
+                      ringOverIndex === i && ringDragIndex !== null && ringDragIndex !== i
+                        ? ` ${styles.ringRowOver}`
+                        : ""
+                    }`}
+                    onDragOver={(e) => {
+                      if (ringDragIndex === null) return;
+                      e.preventDefault();
+                      e.dataTransfer.dropEffect = "move";
+                      if (ringOverIndex !== i) setRingOverIndex(i);
+                    }}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      if (ringDragIndex !== null) reorderRing(ringDragIndex, i);
+                      endRingDrag();
+                    }}
+                  >
+                    <span
+                      className={styles.dragHandle}
+                      draggable
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`Dra för att flytta ringen ${ring.label || ring.id}`}
+                      title="Dra för att ändra ordning"
+                      onDragStart={(e) => {
+                        setRingDragIndex(i);
+                        e.dataTransfer.effectAllowed = "move";
+                        e.dataTransfer.setData("text/plain", String(i));
+                        const row = e.currentTarget.parentElement;
+                        if (row) e.dataTransfer.setDragImage(row, 16, 16);
+                      }}
+                      onDragEnd={endRingDrag}
+                    >
+                      ⠿
+                    </span>
                     <input
                       className={styles.input}
                       placeholder="Ringnamn (t.ex. Anta)"
@@ -345,26 +392,6 @@ export function RadarAdmin() {
                       aria-label="Ringfärg"
                     />
                     <span className={styles.idTag}>{ring.id}</span>
-                    <div className={styles.reorder}>
-                      <button
-                        type="button"
-                        className={styles.reorderBtn}
-                        onClick={() => moveRing(i, -1)}
-                        disabled={i === 0}
-                        aria-label="Flytta ringen inåt"
-                      >
-                        ↑
-                      </button>
-                      <button
-                        type="button"
-                        className={styles.reorderBtn}
-                        onClick={() => moveRing(i, 1)}
-                        disabled={i === draft.meta.rings.length - 1}
-                        aria-label="Flytta ringen utåt"
-                      >
-                        ↓
-                      </button>
-                    </div>
                     <button
                       type="button"
                       className={styles.removeBtn}

@@ -507,10 +507,11 @@
 }
 .ringRow {
   display: grid;
-  grid-template-columns: 1fr 1.4fr auto auto auto auto;
+  grid-template-columns: auto 1fr 1.4fr auto auto auto;
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 0.5rem;
+  border-radius: var(--radius-sm);
 }
 .colorInput {
   width: 2.4rem;
@@ -521,24 +522,32 @@
   background: var(--white);
   cursor: pointer;
 }
-.reorder {
-  display: flex;
-  gap: 0.25rem;
-}
-.reorderBtn {
-  width: 1.9rem;
+.dragHandle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
   height: 2.2rem;
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
-  background: var(--white);
-  color: var(--gray-500);
-  font-size: 0.9rem;
+  color: var(--gray-400);
+  font-size: 1.1rem;
   line-height: 1;
-  cursor: pointer;
+  cursor: grab;
+  user-select: none;
+  border-radius: var(--radius-sm);
 }
-.reorderBtn:disabled {
-  opacity: 0.35;
-  cursor: default;
+.dragHandle:hover {
+  color: var(--gray-600, var(--gray-500));
+  background: var(--gray-100);
+}
+.dragHandle:active {
+  cursor: grabbing;
+}
+/* Raden som dras tonas ned; raden man hovrar över får en insättningsmarkör. */
+.ringRowDragging {
+  opacity: 0.4;
+}
+.ringRowOver {
+  box-shadow: inset 0 2px 0 0 var(--accent);
 }
 .idTag {
   font-family: ui-monospace, Menlo, monospace;
