@@ -28,6 +28,8 @@ export function MarkdownEditor({
         onChange={onChange}
         startInSource={hasFootnotes}
         sourceOnly={hasFootnotes}
+        className={styles.editor}
+        contentEditableClassName={styles.content}
       />
     </div>
   );
