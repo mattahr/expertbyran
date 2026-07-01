@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "@/app/admin/admin.module.css";
 import { AreaPicker, type AreaOption } from "./AreaPicker";
 import { AuthorPicker, type ExpertOption } from "./AuthorPicker";
+import { MarkdownEditor } from "./markdown-editor/MarkdownEditor";
 
 // Gemensam redigerbar metadata för markdown-baserat innehåll (blogg + foresight).
 export interface EditableMeta {
@@ -212,13 +213,7 @@ export function MarkdownContentAdmin({ config }: { config: ContentConfig }) {
                 {markdownLoading ? (
                   <p className={styles.empty}>Laddar text…</p>
                 ) : (
-                  <textarea
-                    className={`${styles.input} ${styles.markdownArea}`}
-                    rows={18}
-                    value={draftMarkdown}
-                    onChange={(e) => setDraftMarkdown(e.target.value)}
-                    spellCheck={false}
-                  />
+                  <MarkdownEditor value={draftMarkdown} onChange={setDraftMarkdown} />
                 )}
               </Field>
 
