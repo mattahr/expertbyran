@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.loading {
+  padding: 0.75rem;
+  color: var(--gray-500, #888);
+  font-size: 0.9rem;
+}
+
+/* MDXEditor-roten (className) — matcha admins .input-utseende */
+.editor {
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm, 8px);
+  background: #fff;
+}
+
+.editor:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.content {
+  min-height: 340px;
+}
+
+.footnoteNote {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--gray-600, #555);
+}
+
+.fallback {
+  width: 100%;
+  min-height: 340px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm, 8px);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  resize: vertical;
+}

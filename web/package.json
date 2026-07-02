@@ -11,6 +11,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@mdxeditor/editor": "^4.0.4",
     "marked": "^18.0.0",
     "maxmind": "^5.0.6",
     "next": "16.2.3",
