@@ -291,10 +291,40 @@
 }
 
 /* === Tidsseriediagram === */
+.chartWrap {
+  position: relative;
+}
 .chart {
   width: 100%;
   height: auto;
   display: block;
+}
+.chartTooltip {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  background: rgba(12, 34, 54, 0.94);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+}
+.chartTooltipTitle {
+  font-weight: 600;
+}
+.chartHoverLine {
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  opacity: 0.6;
+}
+.chartHoverDot {
+  fill: var(--accent);
+  stroke: #fff;
+  stroke-width: 1.5;
 }
 .chartArea {
   fill: var(--accent-light);
@@ -705,6 +735,7 @@
 }
 
 .donutWrap {
+  position: relative; /* förankring för .chartTooltip */
   display: flex;
   gap: 1.25rem;
   align-items: center;

@@ -25,6 +25,24 @@ describe("admin UI render-smoke", () => {
     expect(html).toContain("<svg");
   });
 
+  it("TimeseriesChart: nollfyller dagar utan besök och ritar datumetiketter", () => {
+    const html = renderToStaticMarkup(
+      <TimeseriesChart
+        points={[
+          { day: "2026-06-01", pageviews: 3, visitors: 2 },
+          { day: "2026-06-10", pageviews: 5, visitors: 4 },
+        ]}
+        from="2026-06-01"
+        to="2026-06-12"
+      />,
+    );
+    // 12 dagar i intervallet → 12 punkter trots att bara 2 dagar har data
+    expect((html.match(/<circle/g) ?? []).length).toBe(12);
+    // första och sista dagen etiketteras på X-axeln
+    expect(html).toContain("1 juni");
+    expect(html).toContain("12 juni");
+  });
+
   it("StatsDashboard renderar tomläge utan krasch", () => {
     const html = renderToStaticMarkup(<StatsDashboard />);
     expect(html).toContain("Sidvisningar");

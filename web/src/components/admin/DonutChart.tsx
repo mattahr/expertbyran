@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef, useState } from "react";
+
 import styles from "@/app/admin/admin.module.css";
 
 export interface DonutSlice {
@@ -22,6 +26,9 @@ function arcPath(cx: number, cy: number, rOuter: number, rInner: number, start: 
 }
 
 export function DonutChart({ slices, onSelect }: { slices: DonutSlice[]; onSelect?: (value: string) => void }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [hover, setHover] = useState<{ i: number; px: number; py: number } | null>(null);
+
   const total = slices.reduce((sum, s) => sum + s.value, 0);
   if (total === 0) return <p className={styles.empty}>Ingen data i perioden.</p>;
 
@@ -40,13 +47,30 @@ export function DonutChart({ slices, onSelect }: { slices: DonutSlice[]; onSelec
     };
   });
 
+  // Tooltip direkt vid hovring — muspositionen räknas relativt omslaget
+  // så att tooltippen kan följa markören över tårtbitarna utan fördröjning.
+  function moveTo(i: number) {
+    return (e: React.MouseEvent<SVGPathElement>) => {
+      const rect = wrapRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      setHover({ i, px: e.clientX - rect.left, py: e.clientY - rect.top });
+    };
+  }
+
+  const h = hover ? arcs[hover.i] : null;
+
   return (
-    <div className={styles.donutWrap}>
+    <div className={styles.donutWrap} ref={wrapRef}>
       <svg viewBox="0 0 160 160" className={styles.donut} role="img" aria-label="Fördelning">
-        {arcs.map((a) => (
-          <path key={a.label} d={a.d} fill={a.color}>
-            <title>{`${a.label}: ${a.value} (${a.pct}%)`}</title>
-          </path>
+        {arcs.map((a, i) => (
+          <path
+            key={a.label}
+            d={a.d}
+            fill={a.color}
+            onMouseEnter={moveTo(i)}
+            onMouseMove={moveTo(i)}
+            onMouseLeave={() => setHover(null)}
+          />
         ))}
         <text x={cx} y={cy - 2} textAnchor="middle" className={styles.donutTotal}>
           {total.toLocaleString("sv-SE")}
@@ -55,6 +79,21 @@ export function DonutChart({ slices, onSelect }: { slices: DonutSlice[]; onSelec
           visningar
         </text>
       </svg>
+      {hover && h ? (
+        <div
+          className={styles.chartTooltip}
+          style={{
+            left: hover.px,
+            top: hover.py,
+            transform: `translate(${hover.px < 100 ? "0" : "-50%"}, ${
+              hover.py < 56 ? "14px" : "calc(-100% - 12px)"
+            })`,
+          }}
+        >
+          <div className={styles.chartTooltipTitle}>{h.label}</div>
+          {h.value.toLocaleString("sv-SE")} visningar · {h.pct} %
+        </div>
+      ) : null}
       <ul className={styles.donutLegend}>
         {arcs.map((a) => {
           const row = (

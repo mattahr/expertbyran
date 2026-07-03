@@ -20,15 +20,24 @@ export function shiftDays(ymd: string, delta: number): string {
   return dt.toISOString().slice(0, 10);
 }
 
-/** Bygger query-strängdelen (from/to eller range=all) för ett valt intervall. */
-export function rangeToQuery(preset: RangePreset, custom?: { from: string; to: string }): string {
-  if (preset === "all") return "range=all";
+/** Datumgränserna (from/to) för ett valt intervall; tomt objekt för "all". */
+export function rangeBounds(
+  preset: RangePreset,
+  custom?: { from: string; to: string },
+): { from?: string; to?: string } {
+  if (preset === "all") return {};
   if (preset === "custom" && custom?.from && custom?.to) {
-    return `from=${custom.from}&to=${custom.to}`;
+    return { from: custom.from, to: custom.to };
   }
   const today = todayStockholm();
   const days = preset === "7" ? 7 : preset === "90" ? 90 : 30;
-  return `from=${shiftDays(today, -(days - 1))}&to=${today}`;
+  return { from: shiftDays(today, -(days - 1)), to: today };
+}
+
+/** Bygger query-strängdelen (from/to eller range=all) för ett valt intervall. */
+export function rangeToQuery(preset: RangePreset, custom?: { from: string; to: string }): string {
+  const { from, to } = rangeBounds(preset, custom);
+  return from && to ? `from=${from}&to=${to}` : "range=all";
 }
 
 export const PRESET_LABELS: Record<Exclude<RangePreset, "custom">, string> = {

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import {
   PRESET_LABELS,
+  rangeBounds,
   rangeToQuery,
   todayStockholm,
   type RangePreset,
@@ -201,7 +202,7 @@ export function StatsDashboard() {
       {/* Tidsserie */}
       <div className={styles.section}>
         <div className={styles.sectionTitle}>Sidvisningar per dag</div>
-        <TimeseriesChart points={data?.timeseries ?? []} />
+        <TimeseriesChart points={data?.timeseries ?? []} {...rangeBounds(preset, custom)} />
       </div>
 
       {/* Fördelning per innehållstyp + populäraste sidor */}
