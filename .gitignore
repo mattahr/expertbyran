@@ -1,6 +1,10 @@
 # Globala ignores för monorepot. Delprojekten (web/, marketplace/, paperclip/)
 # äger sina egna .gitignore-filer för projektspecifika mönster.
 
+# beroenden (delprojekten har egna node_modules; denna fångar även
+# en ev. rot-node_modules, t.ex. vitest-cache som skapas vid rot-körning)
+node_modules/
+
 # macOS
 .DS_Store
 
