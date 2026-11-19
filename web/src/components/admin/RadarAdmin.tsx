@@ -103,6 +103,8 @@ export function RadarAdmin() {
   }
 
   useEffect(() => {
+    // load återanvänds efter sparande; vid montering är loading redan true.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void load();
   }, []);
 

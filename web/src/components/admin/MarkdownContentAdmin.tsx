@@ -70,6 +70,8 @@ export function MarkdownContentAdmin({ config }: { config: ContentConfig }) {
   }
 
   useEffect(() => {
+    // load återanvänds efter sparande; vid montering är loading redan true.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void load();
     // config är stabil per sida (modulkonstant) — ladda en gång.
     // eslint-disable-next-line react-hooks/exhaustive-deps

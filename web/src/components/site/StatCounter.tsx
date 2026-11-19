@@ -21,6 +21,8 @@ export function StatCounter({
 
   useEffect(() => {
     if (typeof window === "undefined" || !("IntersectionObserver" in window) || !window.IntersectionObserver) {
+      // Kontrollera webbläsarstödet efter hydrering så att serverns markup matchar.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHasObserver(false);
       setDisplay(value);
       return;

@@ -2,10 +2,11 @@
 
 ## Lokal utveckling
 
-Installera beroenden:
+Använd Node 26.13.1 LTS (versionen finns i `.nvmrc`) och installera de låsta beroendena:
 
 ```bash
-npm install
+nvm use
+npm ci
 ```
 
 Starta utvecklingsläge:
@@ -43,6 +44,13 @@ npm run test
 npx tsc --noEmit
 ```
 
+`tsc` använder TypeScript 7 via npm-aliaset `typescript-native`. Aliaset
+`typescript` till `@typescript/typescript6` ger Next och typescript-eslint det
+kompilator-API de fortfarande behöver, enligt
+[Microsofts migreringsanvisning](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0).
+ESLint ligger på senaste 9.x eftersom Nexts import-, React- och
+tillgänglighetsplugin ännu inte stöder ESLint 10.
+
 ## Vanliga ändringar
 
 ### Ändra schema
@@ -55,7 +63,7 @@ npx tsc --noEmit
 
 ### Byta lagringsbackend
 
-Innehåll nås via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`). Produktionsbackenden är SQLite (`node:sqlite`, kräver Node 22); minnesbackenden används i tester. En ny backend ska klara den delade kontraktssviten i `src/lib/stores/store-contract.ts` — byt implementation i kompositionsroten, inte i sidkoden.
+Innehåll nås via lagringsabstraktionen (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`). Produktionsbackenden är SQLite (`node:sqlite`, Node 26.13.1 LTS); minnesbackenden används i tester. En ny backend ska klara den delade kontraktssviten i `src/lib/stores/store-contract.ts` — byt implementation i kompositionsroten, inte i sidkoden.
 
 Justera drift via env vars, inte applikationskoden:
 

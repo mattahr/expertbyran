@@ -1,0 +1,796 @@
+{
+  "checked_on": "2026-11-19",
+  "scanner": "Trivy 0.76.2",
+  "image": "expertbyran-dependency-check:2026-11-19",
+  "base": "gcr.io/distroless/nodejs26-debian13:nonroot@sha256:1d736cf8b5716c07a245301f92717143215d248fd55771ee1936ef4b3302e531",
+  "npm_audit_vulnerabilities": 0,
+  "python_audit_vulnerabilities": 0,
+  "os_package_findings": 72,
+  "unique_os_cves": 44,
+  "findings": [
+    {
+      "id": "CVE-2010-4756",
+      "severity": "LOW",
+      "title": "glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions",
+      "url": "https://avd.aquasec.com/nvd/cve-2010-4756",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2018-20796",
+      "severity": "LOW",
+      "title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+      "url": "https://avd.aquasec.com/nvd/cve-2018-20796",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-1010022",
+      "severity": "LOW",
+      "title": "glibc: stack guard protection bypass",
+      "url": "https://avd.aquasec.com/nvd/cve-2019-1010022",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-1010023",
+      "severity": "LOW",
+      "title": "glibc: running ldd on malicious ELF leads to code execution because of wrong size computation",
+      "url": "https://avd.aquasec.com/nvd/cve-2019-1010023",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-1010024",
+      "severity": "LOW",
+      "title": "glibc: ASLR bypass using cache of thread stack and heap",
+      "url": "https://avd.aquasec.com/nvd/cve-2019-1010024",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-1010025",
+      "severity": "LOW",
+      "title": "glibc: information disclosure of heap addresses of pthread_created thread",
+      "url": "https://avd.aquasec.com/nvd/cve-2019-1010025",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2019-9192",
+      "severity": "LOW",
+      "title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
+      "url": "https://avd.aquasec.com/nvd/cve-2019-9192",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-100290",
+      "severity": "LOW",
+      "title": "glibc: glibc: Denial of Service via memory allocation failure during regular expression processing",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-100290",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-102010",
+      "severity": "MEDIUM",
+      "title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-102010",
+      "packages": [
+        {
+          "name": "gcc-14-base",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libatomic1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgcc-s1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgomp1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libstdc++6",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-107493",
+      "severity": "MEDIUM",
+      "title": "Issue summary: When an application passes a stack to PEM_X509_INFO_rea ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-107493",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-107496",
+      "severity": "MEDIUM",
+      "title": "Issue summary: Encrypting a CMS message to an EC certificate whose gro ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-107496",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-114690",
+      "severity": "MEDIUM",
+      "title": "gcc: Confirmed out-of-bounds read/write in libstdc++ parallel `std",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-114690",
+      "packages": [
+        {
+          "name": "gcc-14-base",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libatomic1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgcc-s1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgomp1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libstdc++6",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-114691",
+      "severity": "MEDIUM",
+      "title": "gcc: Integer wrap in `std",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-114691",
+      "packages": [
+        {
+          "name": "gcc-14-base",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libatomic1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgcc-s1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgomp1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libstdc++6",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-115455",
+      "severity": "MEDIUM",
+      "title": "gcc: Stack overflow in std::bitset on libstdc++",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-115455",
+      "packages": [
+        {
+          "name": "gcc-14-base",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libatomic1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgcc-s1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgomp1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libstdc++6",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-115456",
+      "severity": "LOW",
+      "title": "gcc: Out-of-bounds read in std::from_chars",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-115456",
+      "packages": [
+        {
+          "name": "gcc-14-base",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libatomic1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgcc-s1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgomp1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libstdc++6",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-115819",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Memory corruption via out-of-bounds write in wide scanf functions",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-115819",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-121757",
+      "severity": "UNKNOWN",
+      "title": "Converting crafted CP949 input to UTF-8 character encoding and ignorin ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-121757",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-121758",
+      "severity": "UNKNOWN",
+      "title": "Converting crafted ISO-2022-CN-EXT input to UTF-8 character encoding,  ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-121758",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-124024",
+      "severity": "UNKNOWN",
+      "title": "Converting crafted input from UCS-4 to IBM1390 or IBM1399 character en ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-124024",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-124709",
+      "severity": "MEDIUM",
+      "title": "Issue summary: A QUIC server that rejects a stream opened by the peer  ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-124709",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-125709",
+      "severity": "MEDIUM",
+      "title": "libstdc++: overflow leaves streambuf in inconsistent state on I/O error.",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-125709",
+      "packages": [
+        {
+          "name": "gcc-14-base",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libatomic1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgcc-s1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgomp1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libstdc++6",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-18374",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Heap buffer overflow via attacker-controlled fopen mode string",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-18374",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-19499",
+      "severity": "MEDIUM",
+      "title": "glibc: Buffer Overflow in strfmon right-justification padding",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-19499",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-19542",
+      "severity": "MEDIUM",
+      "title": "glibc: Fix out-of-bounds array write in tdelete",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-19542",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-35190",
+      "severity": "MEDIUM",
+      "title": "Issue summary: A server configured with the Suite B certificate flag t ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-35190",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-5435",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Out-of-bounds write via TSIG record processing",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-5435",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-6238",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Application crash or uninitialized memory read via crafted DNS response",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-6238",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-6368",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Process abort due to invalid memory in wordexp",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-6368",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-6791",
+      "severity": "MEDIUM",
+      "title": "glibc: Glibc: Denial of Service via stack exhaustion during tilde expansion",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-6791",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-77117",
+      "severity": "MEDIUM",
+      "title": "glibc: Non-progress DoS in SHIFT_JISX0213 -&gt",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-77117",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-80489",
+      "severity": "MEDIUM",
+      "title": "glibc: Non-progress DoS in EUC_JISX0213 -> UCS-4 conversion state",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-80489",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-84243",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-84786",
+      "severity": "MEDIUM",
+      "title": "A DANE-enabled TLS client may crash by dereferencing a NULL pointer wh ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-84786",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-8674",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc DNS stub resolver: Denial of Service via long search domain in configuration",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-8674",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-86805",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Privilege escalation and arbitrary code execution via TOCTOU race condition in dynamic loader",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-86805",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-88822",
+      "severity": "MEDIUM",
+      "title": "Issue summary: QUIC, when performing automated peer detection, may all ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-88822",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-88823",
+      "severity": "MEDIUM",
+      "title": "Issue summary: The AES-GCM-SIV implementation treats a zero-length Add ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-88823",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-89092",
+      "severity": "MEDIUM",
+      "title": "glibc: nscd stack overflow leads to degraded DNS resolution",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-89092",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-95619",
+      "severity": "MEDIUM",
+      "title": "gcc: libstdc++ integer overflow in `new` operator",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-95619",
+      "packages": [
+        {
+          "name": "gcc-14-base",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libatomic1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgcc-s1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libgomp1",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        },
+        {
+          "name": "libstdc++6",
+          "installed": "14.2.0-19",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-95690",
+      "severity": "MEDIUM",
+      "title": "Receiving crafted out-of-sequence DTLS handshake fragments may cause O ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-95690",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-95691",
+      "severity": "MEDIUM",
+      "title": "Issue summary: A retransmitted QUIC CRYPTO frame can release packet st ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-95691",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-95692",
+      "severity": "MEDIUM",
+      "title": "Issue summary: Setting an AES-GCM-SIV IV shorter than the expected non ...",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-95692",
+      "packages": [
+        {
+          "name": "libssl3t64",
+          "installed": "3.5.7-1~deb13u3",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-95818",
+      "severity": "MEDIUM",
+      "title": "glibc: glibc: Local attacker can cause denial of service and information disclosure via stack-based buffer overflow.",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-95818",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-97399",
+      "severity": "LOW",
+      "title": "glibc: glibc: Denial of Service via out-of-bounds read in strncasecmp",
+      "url": "https://avd.aquasec.com/nvd/cve-2026-97399",
+      "packages": [
+        {
+          "name": "libc6",
+          "installed": "2.41-12+deb13u4",
+          "fixed": null,
+          "status": "affected"
+        }
+      ]
+    }
+  ]
+}

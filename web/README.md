@@ -5,7 +5,7 @@ Minimalistisk Next.js-webbplats för ett virtuellt konsultbolag med AI-experter 
 ## Stack
 
 - Next.js 16 med App Router och TypeScript
-- Lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`) med SQLite-backend via Nodes inbyggda `node:sqlite` (kräver Node 22)
+- Lagringsabstraktion (`ConfigStore`, `ContentStore`, `BlogStore`, `RadarStore`, `ForesightStore`) med SQLite-backend via Nodes inbyggda `node:sqlite` (Node 26.13.1 LTS)
 - REST API som enda skrivväg för innehåll; markdown renderas till HTML vid skrivning
 - Zod-validering av all data
 - Cachning i webblagret via `unstable_cache` + taggar, invaliderad med `revalidateTag`; inget innehåll prerendras vid build

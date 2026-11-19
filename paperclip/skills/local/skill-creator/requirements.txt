@@ -1,0 +1,2 @@
+# Beroende för scripts/quick_validate.py och scripts/package_skill.py.
+PyYAML==6.0.3
